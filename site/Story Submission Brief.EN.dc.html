@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600&amp;family=Archivo:wght@100;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #1A1613; }
+  a { color: #B87A00; }
+  a:hover { color: #E20606; }
+</style>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <section data-label="Cover" data-screen-label="01" data-speaker-notes="Say the line, then stop. This page is one sentence and an invitation." style="background: #FAF4E2; color: #1A1613; font-family: 'Newsreader', serif; position: relative; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: #FAB414; mix-blend-mode: multiply; clip-path: polygon(52% 0, 64% 0, 84% 100%, 72% 100%);"></div>
+      <div style="position: absolute; inset: 0; background: #C9962B; mix-blend-mode: multiply; clip-path: polygon(64% 0, 70% 0, 90% 100%, 84% 100%);"></div>
+      <div style="position: absolute; inset: 0; background: #F0D23C; mix-blend-mode: multiply; clip-path: polygon(84% 0, 96% 0, 76% 100%, 64% 100%);"></div>
+      <div style="position: absolute; inset: 0; background: #F05A28; mix-blend-mode: multiply; clip-path: polygon(96% 0, 104% 0, 84% 100%, 76% 100%);"></div>
+    </div>
+    <div style="position: absolute; inset: 0; padding: 96px 130px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase; color: #B87A00;">Story Brief</div>
+      <div style="display: flex; flex-direction: column; gap: 26px; max-width: 1080px;">
+        <div style="font-weight: 600; font-size: 116px; line-height: 0.92; letter-spacing: -0.04em; color: #B87A00;">Every story is a point of light.</div>
+        <div style="font-weight: 600; font-size: 48px; line-height: 1.14; letter-spacing: -0.02em; max-width: 22ch;">You have already been sensing MEWE. Writing it is how that light reaches someone else.</div>
+      </div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(26,22,19,0.55);">Fifteen minutes is enough · innoco.co · Since 2015</div>
+    </div>
+    <div style="position: absolute; right: 44px; bottom: 40px; display: flex;"><img src="uploads/IN_Logo-010266cb.png" alt="IN" style="display: block; width: 30px; height: auto;"></div>
+  </section>
+
+  <section data-label="Four kinds" data-screen-label="02" data-speaker-notes="The permission slide. Most people think they have nothing to tell — these four doors say otherwise." style="background: #FAF4E2; color: #1A1613; font-family: 'Newsreader', serif; display: flex; position: relative; overflow: hidden;">
+    <div style="flex: 0 0 700px; display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 90px 60px 90px 130px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; color: #B87A00;">What counts</div>
+      <div style="font-weight: 600; font-size: 68px; line-height: 1.06; letter-spacing: -0.03em;">Four kinds of story, all of them welcome.</div>
+      <div style="font-size: 27px; line-height: 1.42; color: rgba(26,22,19,0.82);">A story is a free gift — it needs to be honest, not polished. You don't have to have run a workshop, or use the word MEWE at all.</div>
+    </div>
+    <div style="flex: 1; min-width: 0; align-self: stretch; padding: 90px 130px 90px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+      <div style="background: #F3EAD0; padding: 34px 34px 30px; display: flex; flex-direction: column; gap: 12px; border-top: 8px solid #FAB414;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00;">Lived</div>
+        <div style="font-weight: 600; font-size: 40px; line-height: 1.1;">Something you lived</div>
+        <div style="font-size: 26px; line-height: 1.36; color: rgba(26,22,19,0.82);">A moment you were inside. You acted, and something in you changed.</div>
+      </div>
+      <div style="background: #F3EAD0; padding: 34px 34px 30px; display: flex; flex-direction: column; gap: 12px; border-top: 8px solid #C9962B;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C6516;">Noticed</div>
+        <div style="font-weight: 600; font-size: 40px; line-height: 1.1;">Something you noticed</div>
+        <div style="font-size: 26px; line-height: 1.36; color: rgba(26,22,19,0.82);">MEWE you saw in the world: a performance, a street, a film, nature.</div>
+      </div>
+      <div style="background: #F3EAD0; padding: 34px 34px 30px; display: flex; flex-direction: column; gap: 12px; border-top: 8px solid #1E8A86;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E8A86;">Told</div>
+        <div style="font-weight: 600; font-size: 40px; line-height: 1.1;">Something you were told</div>
+        <div style="font-size: 26px; line-height: 1.36; color: rgba(26,22,19,0.82);">Someone else's story, carried here by you. Say whose it is if you can.</div>
+      </div>
+      <div style="background: #F3EAD0; padding: 34px 34px 30px; display: flex; flex-direction: column; gap: 12px; border-top: 8px solid #46325A;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #46325A;">Imagined</div>
+        <div style="font-weight: 600; font-size: 40px; line-height: 1.1;">Something you imagined</div>
+        <div style="font-size: 26px; line-height: 1.36; color: rgba(26,22,19,0.82);">It hasn't happened yet. A scene, a parable, a world you can picture.</div>
+      </div>
+    </div>
+    <div style="position: absolute; right: 44px; bottom: 40px; display: flex;"><img src="uploads/IN_Logo-010266cb.png" alt="IN" style="display: block; width: 30px; height: auto;"></div>
+  </section>
+
+  <section data-label="Four beats" data-screen-label="03" data-speaker-notes="Read the last line aloud: three honest sentences is a story. It removes the fear." style="background: #FAB414; color: #1A1613; font-family: 'Newsreader', serif; padding: 72px 130px; display: flex; flex-direction: column; gap: 24px; position: relative; overflow: hidden;">
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(26,22,19,0.65);">How to tell it</div>
+      <div style="font-weight: 600; font-size: 72px; line-height: 1.04; letter-spacing: -0.03em; max-width: 1200px;">Four gentle beats. Skip any that doesn't fit.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; flex: 1; min-height: 0; justify-content: center;">
+      <div style="display: flex; gap: 40px; align-items: baseline; border-top: 2px solid rgba(26,22,19,0.28); padding: 16px 0;">
+        <div style="flex: 0 0 90px; font-family: 'Archivo', sans-serif; font-weight: 100; font-size: 48px; line-height: 0.9; color: rgba(26,22,19,0.4);">1</div>
+        <div style="flex: 0 0 380px; font-weight: 600; font-size: 46px; line-height: 1.06;">The moment</div>
+        <div style="font-size: 30px; line-height: 1.34; color: rgba(26,22,19,0.85);">Where were you, and when? One line of ground is enough.</div>
+      </div>
+      <div style="display: flex; gap: 40px; align-items: baseline; border-top: 2px solid rgba(26,22,19,0.28); padding: 16px 0;">
+        <div style="flex: 0 0 90px; font-family: 'Archivo', sans-serif; font-weight: 100; font-size: 48px; line-height: 0.9; color: rgba(26,22,19,0.4);">2</div>
+        <div style="flex: 0 0 380px; font-weight: 600; font-size: 46px; line-height: 1.06;">What happened</div>
+        <div style="font-size: 30px; line-height: 1.34; color: rgba(26,22,19,0.85);">What you did, or what you noticed happening around you.</div>
+      </div>
+      <div style="display: flex; gap: 40px; align-items: baseline; border-top: 2px solid rgba(26,22,19,0.28); padding: 16px 0;">
+        <div style="flex: 0 0 90px; font-family: 'Archivo', sans-serif; font-weight: 100; font-size: 48px; line-height: 0.9; color: rgba(26,22,19,0.4);">3</div>
+        <div style="flex: 0 0 380px; font-weight: 600; font-size: 46px; line-height: 1.06;">What moved</div>
+        <div style="font-size: 30px; line-height: 1.34; color: rgba(26,22,19,0.85);">In you, or between people. This is usually the heart of it.</div>
+      </div>
+      <div style="display: flex; gap: 40px; align-items: baseline; border-top: 2px solid rgba(26,22,19,0.28); border-bottom: 2px solid rgba(26,22,19,0.28); padding: 16px 0;">
+        <div style="flex: 0 0 90px; font-family: 'Archivo', sans-serif; font-weight: 100; font-size: 48px; line-height: 0.9; color: rgba(26,22,19,0.4);">4</div>
+        <div style="flex: 0 0 380px; font-weight: 600; font-size: 46px; line-height: 1.06;">Why</div>
+        <div style="font-size: 30px; line-height: 1.34; color: rgba(26,22,19,0.85);">Why is this MEWE to you? Your own words, not ours.</div>
+      </div>
+    </div>
+    <div style="font-weight: 600; font-size: 48px; line-height: 1.1; letter-spacing: -0.02em; color: #6E4A00;">Three honest sentences is a story.</div>
+    <div style="position: absolute; right: 44px; bottom: 40px; display: flex;"><img src="uploads/IN_Logo-010266cb.png" alt="IN" style="display: block; width: 30px; height: auto;"></div>
+  </section>
+
+  <section data-label="Any form" data-screen-label="04" data-speaker-notes="Words first, always. The form is the second question, never the barrier." style="background: #FAF4E2; color: #1A1613; font-family: 'Newsreader', serif; padding: 90px 130px; display: flex; flex-direction: column; gap: 44px; position: relative; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; right: 0; top: 0; width: 520px; height: 100%; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: #FAB414; mix-blend-mode: multiply; clip-path: polygon(56% 0, 100% 0, 44% 100%, 0 100%);"></div>
+      <div style="position: absolute; inset: 0; background: #F0D23C; mix-blend-mode: multiply; clip-path: polygon(0 0, 44% 0, 100% 100%, 56% 100%);"></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 22px; max-width: 1160px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; color: #B87A00;">Form</div>
+      <div style="font-weight: 600; font-size: 72px; line-height: 1.06; letter-spacing: -0.03em;">Describe it in words first. Then bring whatever carries it.</div>
+      <div style="font-size: 28px; line-height: 1.42; max-width: 60ch; color: rgba(26,22,19,0.82);">A short description is the one thing we always need. If the story also lives in another form, tell us which and attach it — that is how we group and show it in the Constellation.</div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 0.04em; text-transform: uppercase; max-width: 1160px;">
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Writing</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Drawing</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Photo</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Video</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Music</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Dance</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Craft</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Recipe</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px;">Symbol</span>
+      <span style="border: 2px solid rgba(26,22,19,0.35); padding: 12px 24px; color: #B87A00; border-color: rgba(184,122,0,0.6);">…Yours</span>
+    </div>
+    <div style="display: flex; gap: 18px; align-items: stretch; max-width: 1160px;">
+      <div style="flex: 1; background: #F3EAD0; padding: 30px 34px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00;">Required</div>
+        <div style="font-weight: 600; font-size: 38px; line-height: 1.1;">Your story, and an email.</div>
+        <div style="font-size: 26px; line-height: 1.34; color: rgba(26,22,19,0.82);">Two of the five steps. Everything else can be skipped.</div>
+      </div>
+      <div style="flex: 1; background: #F3EAD0; padding: 30px 34px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00;">Optional</div>
+        <div style="font-weight: 600; font-size: 38px; line-height: 1.1;">Form, arc, and your name.</div>
+        <div style="font-size: 26px; line-height: 1.34; color: rgba(26,22,19,0.82);">Leave the name blank to stay anonymous. Let IN place it on the arc.</div>
+      </div>
+    </div>
+    <div style="position: absolute; right: 44px; bottom: 40px; display: flex;"><img src="uploads/IN_Logo-010266cb.png" alt="IN" style="display: block; width: 30px; height: auto;"></div>
+  </section>
+
+  <section data-label="What happens" data-screen-label="05" data-speaker-notes="Answers the real worry: what will you do with it. Edited for length, never for meaning." style="background: #FAF4E2; color: #1A1613; font-family: 'Newsreader', serif; padding: 90px 130px; display: flex; flex-direction: column; gap: 44px; position: relative; overflow: hidden;">
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; color: #C9962B;">What happens next</div>
+      <div style="font-weight: 600; font-size: 72px; line-height: 1.06; letter-spacing: -0.03em;">Points of light become one constellation.</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; flex: 1; min-height: 0;">
+      <div style="background: #F3EAD0; padding: 40px 36px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 100; font-size: 72px; line-height: 0.9; color: rgba(26,22,19,0.28);">01</div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00;">Make or notice</div>
+        <div style="font-weight: 600; font-size: 40px; line-height: 1.1;">You send it in</div>
+        <div style="font-size: 26px; line-height: 1.36; color: rgba(26,22,19,0.82);">One thing, one caption. A few honest sentences, a drawing, a photo, a film, a song.</div>
+      </div>
+      <div style="background: #F3EAD0; padding: 40px 36px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 100; font-size: 72px; line-height: 0.9; color: rgba(26,22,19,0.28);">02</div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00;">We read it</div>
+        <div style="font-weight: 600; font-size: 40px; line-height: 1.1;">You get a note back</div>
+        <div style="font-size: 26px; line-height: 1.36; color: rgba(26,22,19,0.82);">We place it on the ME=WE arc if you didn't. We may gently edit for length — never for meaning.</div>
+      </div>
+      <div style="background: #F3EAD0; padding: 40px 36px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 100; font-size: 72px; line-height: 0.9; color: rgba(26,22,19,0.28);">03</div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00;">It appears</div>
+        <div style="font-weight: 600; font-size: 40px; line-height: 1.1;">A new light in the Constellation</div>
+        <div style="font-size: 26px; line-height: 1.36; color: rgba(26,22,19,0.82);">A virtual museum of neighbour expressions, built together. Some stories are also chosen for the Story page.</div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,22,19,0.6);">
+      <span style="color: rgba(26,22,19,0.45);">On the arc</span>
+      <span style="border: 2px solid rgba(26,22,19,0.3); padding: 10px 20px;">Ignite</span>
+      <span style="border: 2px solid rgba(26,22,19,0.3); padding: 10px 20px;">ME ≠ WE</span>
+      <span style="border: 2px solid rgba(26,22,19,0.3); padding: 10px 20px;">ME + WE</span>
+      <span style="border: 2px solid rgba(26,22,19,0.3); padding: 10px 20px;">(ME WE)</span>
+      <span style="border: 2px solid rgba(26,22,19,0.3); padding: 10px 20px;">ME = WE</span>
+      <span style="border: 2px solid rgba(26,22,19,0.3); padding: 10px 20px;">Glow</span>
+      <span style="border: 2px solid rgba(184,122,0,0.6); padding: 10px 20px; color: #B87A00;">Let IN place it</span>
+    </div>
+    <div style="position: absolute; right: 44px; bottom: 40px; display: flex;"><img src="uploads/IN_Logo-010266cb.png" alt="IN" style="display: block; width: 30px; height: auto;"></div>
+  </section>
+
+  <section data-label="Add yours" data-screen-label="06" data-speaker-notes="The ask. Give the link, then stop talking." style="background: #FAF4E2; color: #1A1613; font-family: 'Newsreader', serif; position: relative; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden;">
+      <div style="position: absolute; inset: 0; background: #FAB414; mix-blend-mode: multiply; clip-path: polygon(66% 0, 78% 0, 98% 100%, 86% 100%);"></div>
+      <div style="position: absolute; inset: 0; background: #C9962B; mix-blend-mode: multiply; clip-path: polygon(78% 0, 84% 0, 104% 100%, 98% 100%);"></div>
+      <div style="position: absolute; inset: 0; background: #F0D23C; mix-blend-mode: multiply; clip-path: polygon(86% 0, 98% 0, 78% 100%, 66% 100%);"></div>
+    </div>
+    <div style="position: absolute; inset: 0; padding: 96px 130px 70px; display: flex; flex-direction: column; justify-content: space-between;">
+      <div style="display: flex; flex-direction: column; gap: 26px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 0.16em; text-transform: uppercase; color: #B87A00;">Add yours</div>
+        <div style="font-weight: 600; font-size: 96px; line-height: 0.96; letter-spacing: -0.04em; color: #B87A00; max-width: 1180px;">Fifteen minutes is enough.</div>
+        <div style="font-weight: 600; font-size: 42px; line-height: 1.16; letter-spacing: -0.02em; max-width: 900px;">Bring the moment. We will help it find its place.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <img src="uploads/IN_Logo-010266cb.png" alt="IN" style="display: block; width: 72px; height: auto;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.04em; line-height: 1.4;">innoco.co · hi@innoco.co · Seoul, Korea</div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 400; font-size: 22px; letter-spacing: 0.04em; line-height: 1.5; color: rgba(26,22,19,0.7);">© 2016–2026 IN (INNOCO). All rights reserved.<br>MEWE shared under Creative Commons.</div>
+      </div>
+    </div>
+  </section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

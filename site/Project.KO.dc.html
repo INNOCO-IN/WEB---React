@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  ::selection { background: #E6328C; color: #FAF4E2; }
+  a { color: #1E8A86; }
+  a:hover { color: #146560; }
+</style>
+<script src="./image-slot.js"></script>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1.05fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(3, minmax(0"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+  [style*="font-size: 300px"]{display:none !important;}
+  [style*="font-size: 60px"][style*="height: 300px"]{height:auto !important;}
+  [style*="72px 120px"]{padding:56px 0 48px 0 !important;}
+  [style*="width: 700px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 800px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 900px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1200px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1000px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 950px"]{width:auto !important;max-width:100% !important;}
+  [style*="height: 350px"],[style*="height: 250px"],[style*="height: 200px"],[style*="height: 180px"],[style*="height: 170px"],[style*="height: 130px"],[style*="height: 100px"]{height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 72px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 66px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 62px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 60px 44px"]{padding:36px 24px !important;}
+  [style*="padding: 40px 44px"]{padding:28px 22px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 64px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 40px 80px"]{padding:30px 20px !important;}
+  [style*="padding: 40px 40px"]{padding:28px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+  [style*="font-size: 130px"]{font-size:64px !important;line-height:1 !important;}
+  [style*="font-size: 60px"]{font-size:34px !important;line-height:1.15 !important;}
+}
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <dc-import name="Nav-KO" active-page="Project.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <!-- HERO -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 60px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #FAF4E2; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #FAF4E2;">프로젝트</span></div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.14; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 15ch; text-wrap: balance;">세상 밖으로 나간 실천.</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; max-width: 720px; margin: 0; color: rgba(250,244,226,0.94);">진짜 이웃과 함께하는 진짜 일 — 정원, 청년 캠프, 나라를 넘는 교류. MEWE가 아이디어이기를 멈추고 공동체가 가리킬 수 있는 무언가가 되는 곳.</p>
+    </div>
+  </section>
+
+  
+
+  
+
+  <!-- FEATURED — ASIA EXCHANGE / BRIDGEBUILDER -->
+  <section id="bridgebuilder" style="max-width: 1320px; margin: 0 auto; padding: 40px 28px 22px; scroll-margin-top: 80px;">
+    <div style="display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch; background: #E6328C; color: #FAF4E2; overflow: hidden; min-height: 340px;">
+      <div style="position: relative; min-height: 280px;">
+        <image-slot id="project-asia-hero" shape="rect" placeholder="Young BridgeBuilders across a neighborhood, five-country feel" style="position: absolute; inset: 0; width: 100%; height: 100%;" src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=1100&q=80" credit="Photo by Hannah Busing on Unsplash" credit-href="https://unsplash.com/@hannahbusing"></image-slot>
+        <div style="position: absolute; left: 16px; top: 16px; background: #FAF4E2; color: #2E3B40; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px;">대표 프로젝트 · 2026–2027</div>
+      </div>
+      <div style="padding: 40px 44px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+        <div>
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.8); margin-bottom: 16px;">중국 · 일본 · 한국 · 네팔 · 대만</div>
+          <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.16; margin: 0 0 14px; letter-spacing: -0.01em; text-wrap: balance;">MEWE 아시아 익스체인지</h2>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.44; margin: 0 0 14px; color: rgba(250,244,226,0.92); max-width: 50ch;"><strong>브리지빌더</strong>라 불리는 청년들이 자신의 동네에서 조화로운 공동체의 삶을 연습하는 국경을 넘는 프로그램 — 다섯 나라, 하나의 공유된 질문.</p>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.44; margin: 0; color: rgba(250,244,226,0.8); max-width: 50ch;">브리지빌더는 실천의 길 위의 한 단계이기도 합니다 — <a href="Protagonist.KO.dc.html" style="color: #FAF4E2; text-decoration: underline;">주역의 길에서 보기 →</a></p>
+        </div>
+        <a href="Project-Asia-Exchange.EN.dc.html" style="text-decoration: none; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; color: #E6328C; background: #FAF4E2; border-radius: 999px; padding: 13px 26px; line-height: 1.2;">프로젝트 전체 읽기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT BRIEFS -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 20px 28px 20px;">
+    <div style="border-top: 1px solid rgba(46,59,64,0.14); padding-top: 26px; margin-bottom: 20px;">
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.16; margin: 0; letter-spacing: -0.01em;">프로젝트 브리프</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px;">
+
+      <article style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">자이드 대학교, UAE · 2016년부터</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px">푸드 레볼루션</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">대학의 정원이 사회 실험실이 되었습니다 — 먹거리 시스템이 그 안의 모든 이의 안녕을 어떻게 빚는지에 대한 4년의 연구.</p>
+            <a href="Project-Food-Revolution.EN.dc.html" aria-label="Open Food Revolution" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #F6D9B0; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">샤르자, UAE · 2017</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">UAE 청년 사회혁신 워크숍 시리즈</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">청년들이 마음 쓰는 것을 소셜 벤처 프로토타입으로 바꿔낸 여섯 달 — 진지하게 유쾌한 탐구를 통해.</p>
+            <a href="Project-UAE-Youth-Social-Innovation.EN.dc.html" aria-label="Open UAE Youth Camp" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #EFC9A8; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">카트만두, 네팔 · 2016&ndash;2018</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">UAE-네팔-커넥트(UNC) 사회혁신</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">2015년 지진 이후, 두 나라의 청년들은 그들을 이어준 프로그램보다 오래 남은 관계를 지었습니다.</p>
+            <a href="Project-UNC.EN.dc.html" aria-label="Open UNC Social Innovation" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #F2E3C4; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">네팔 &middot; 2017&ndash;2018</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">UNC 다큐멘터리</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">카메라가 네팔 청년들을 2년간 따라갔습니다 — 프로그램을 기록하기 위해서가 아니라, 끝난 뒤에 무엇이 남았는지 보기 위해.</p>
+            <a href="Project-UNC-Documentary.EN.dc.html" aria-label="Open UNC Documentary" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #F6D9B0; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">알아인, UAE · 2023년 3월</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">정글 잼</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">청년들을 위한 합숙 모임 — 일상의 소음에서 벗어난 창의성, 모험, 정직한 성찰.</p>
+            <a href="Project-Jungle-Jam.EN.dc.html" aria-label="Open Jungle Jam" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">UAE · 합숙 · 여성</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">빛, 그림자, 전환</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">이틀, 여성들의 한 원, 그리고 백 가지 작은 방식으로 던져진 같은 질문: 무엇을 지니고 가고 싶은가, 무엇을 내려놓을 준비가 되었는가?</p>
+            <a href="Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html" aria-label="Open Light, Shadow, Shift" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #EFC9A8; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">난즈 센터, 대만 · 2023년 6월</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">섀도 시프터</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">열여덟 명의 청년, 이틀, 그리고 하나의 발견: 내 그림자의 모양은 내가 하는 일로 바뀔 수 있다는 것.</p>
+            <a href="Project-Shadow-Shifter.EN.dc.html" aria-label="Open Shadow Shifter" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13.5px; color: rgba(46,59,64,0.6); margin: 22px 0 0; max-width: 60ch;">프로젝트와 그것이 만든 공동체는 같은 항목이 아닙니다 — 프로젝트는 개입이고, 공동체는 남는 것입니다. 둘 다 <a href="Community.KO.dc.html">커뮤니티</a>에서 보실 수 있습니다.</p>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #1E5A64; color: #FAF4E2; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.18; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">당신의 공동체에 프로젝트를 가져오세요.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.KO.dc.html" style="text-decoration: none; color: #1E648C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">대화 시작하기</a>
+        <a href="Protagonist.KO.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">주역의 길 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer-KO" cta="#1E5A64" loop="0.489" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1320, &quot;height&quot;: 1200}}"></script>
+</body>
+</html>

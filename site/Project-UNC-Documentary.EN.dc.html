@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #1E5A64; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #0f4a45; }
+  .col-scroll::-webkit-scrollbar { width: 6px; }
+  .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }
+  .story-body p { font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 21px; line-height: 1.62; margin: 0 0 26px; color: #322c22; text-wrap: pretty; }
+  .story-body p:last-child { margin-bottom: 0; }
+  .pj-gallery { }
+  @media (max-width: 640px){
+    .pj-gallery { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 1000px){
+    .pj-grid { grid-template-columns: 1fr !important; }
+    .pj-left, .pj-right { position: static !important; max-height: none !important; border: none !important; padding: 0 !important; }
+    .pj-mid { order: 1; } .pj-left { order: 2; } .pj-right { order: 3; }
+    .pj-left, .pj-right { border-top: 1.5px solid rgba(46,59,64,0.14) !important; padding-top: 26px !important; }
+    img, svg, video { max-width: 100% !important; }
+  }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  }
+</style>
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target && e.target.closest ? e.target.closest('a[target="_blank"]') : null;
+  if (!a) return;
+  var m = a.href.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=)([\w-]{6,})/);
+  if (m) {
+    e.preventDefault(); e.stopPropagation();
+    var box = a.querySelector('div');
+    if (box && !box.querySelector('iframe')) {
+      box.innerHTML = '<iframe src="https://www.youtube.com/embed/' + m[1] + '?autoplay=1&rel=0&playsinline=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
+    }
+  }
+}, true);
+</script>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+  <dc-import name="Nav" active-page="project" hint-size="100%,64px"></dc-import>
+
+  <!-- ===== HERO ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 52px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">Documentary film</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">Nepal</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">2017–2018</span>
+      </div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 22px; text-wrap: balance;">UNC Documentary</h1>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(19px, 2.1vw, 25px); line-height: 1.46; max-width: 760px; margin: 0; color: rgba(250,244,226,0.94);">A camera followed Nepali youth for two years — not to record the program, but to see what held after it ended.</p>
+    </div>
+  </section>
+
+  <!-- ===== 3-COLUMN BODY ===== -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 90px;">
+    <div class="pj-grid" style="display: grid; grid-template-columns: 226px 1fr 288px; gap: 40px; align-items: start;">
+
+      <!-- LEFT · about -->
+      <aside class="pj-left col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-right: 1px solid rgba(46,59,64,0.14); padding-right: 22px;">
+        <a href="Project.EN.dc.html" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.13em; text-transform: uppercase; color: #1E5A64; margin-bottom: 26px;">&larr; All projects</a>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Format</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Documentary film</span>
+        </div>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Topic</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Resilience</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Youth</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Social innovation</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 18px;">
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Place</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">Kathmandu, Nepal</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Filmed</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">2017–2018</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Led by</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">Yunsun Chung, with Joanne Renaux &amp; Michael Ogden</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Part of</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">&ldquo;Designing for Social Innovation,&rdquo; Zayed University</div></div>
+        </div>
+      </aside>
+
+      <!-- MIDDLE · the story -->
+      <div class="pj-mid">
+        <figure style="margin: 0 0 40px;">
+          <div style="width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #F3EAD0;">
+            <img src="project-img/unc-documentary.jpg" alt="A young Nepali man being interviewed in a brick courtyard — the film crew seated behind the camera" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <figcaption style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.6); margin-top: 12px;">Filming began during the 2017 bootcamp and continued through the 2018 return to Kathmandu.</figcaption>
+        </figure>
+
+        <div style="max-width: 680px;">
+          <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(26px, 3vw, 32px); line-height: 1.32; letter-spacing: -0.01em; margin: 0 0 34px; color: #2E3B40; text-wrap: pretty;">Filming began in 2017, while the bootcamp was still running. The idea was simple: rather than write up what happened, follow the young people and find out what lasted.</p>
+          <div class="story-body">
+            <p>It was one strand of a wider action research project, &ldquo;Designing for Social Innovation,&rdquo; based at Zayed University in Dubai &mdash; led by Yunsun Chung with Joanne Renaux and Michael Ogden.</p>
+            <p>A year later the team returned to Kathmandu. Some of the projects pitched at the bootcamp had become real. Some had stalled. Some had turned into something their founders never planned. The film follows those paths rather than the program that started them, because resilience is only visible over time &mdash; never on a closing day.</p>
+          </div>
+
+          <blockquote style="margin: 40px 0; padding: 0 0 0 26px; border-left: 3px solid #1E5A64;">
+            <p style="font-family: 'Newsreader', serif; font-weight: 500; font-style: italic; font-size: clamp(24px, 3vw, 30px); line-height: 1.32; margin: 0; color: #2E3B40; text-wrap: pretty;">Resilience is only visible over time &mdash; never on a closing day.</p>
+          </blockquote>
+
+          <div class="story-body">
+            <p>That August 2018 return also brought everyone back together for a one-day reunion at The Inn Patan in Kathmandu: youth from every UNC year, saying where they&rsquo;d got to and what they still needed.</p>
+          </div>
+
+          <!-- GALLERY · embedded lightbox -->
+          <div style="margin-top: 44px;">
+            <div style="position: relative; aspect-ratio: 16/9; background: #16242E;">
+              <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ lbCap }}" style="{{ lbImgStyle }}"></div></sc-if>
+              <button onClick="{{ prevLb }}" aria-label="Previous photo" style="position: absolute; left: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">‹</button>
+              <button onClick="{{ nextLb }}" aria-label="Next photo" style="position: absolute; right: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">›</button>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; margin-top: 10px;">
+              <span style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.6);">{{ lbCap }}</span>
+              <span style="flex: 0 0 auto; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: rgba(46,59,64,0.55);">{{ lbCount }}</span>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px;">
+              <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="0">
+                <button onClick="{{ g.open }}" aria-label="{{ g.alt }}" style="{{ g.style }}"></button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="border-top: 1.5px solid rgba(30,90,100,0.45); margin-top: 44px; padding-top: 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E5A64; margin-bottom: 20px;">Watch</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+              <a href="https://youtu.be/d1J4AECO_9g" target="_blank" rel="noopener" style="text-decoration: none; color: #2E3B40; display: block;">
+                <div style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #1E5A64;">
+                  <img src="https://img.youtube.com/vi/d1J4AECO_9g/hqdefault.jpg" alt="UNC documentary" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9;">
+                  <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;"><span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(250,244,226,0.94); display: flex; align-items: center; justify-content: center;"><span style="border-left: 15px solid #1E5A64; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px;"></span></span></span>
+                </div>
+                <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; margin-top: 12px; line-height: 1.3;">The Documentary</div>
+              </a>
+            </div>
+          </div>
+
+          <div style="margin-top: 40px;">
+            <a href="Project-UNC.EN.dc.html" style="text-decoration: none; display: inline-flex; align-items: center; gap: 12px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; justify-content: center; line-height: 1.2; min-height: 24px;">Read the UNC project &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT · index -->
+      <aside class="pj-right col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-left: 1px solid rgba(46,59,64,0.14); padding-left: 22px;">
+        <dc-import name="ProjectIndexRail" current="unc-documentary" hint-size="100%,520px"></dc-import>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">What holds is only visible over time.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #1E5A64; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Get involved</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#1E5A64" loop="0.557" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lb: 0 };
+  photos() {
+    return [
+      { src: 'project-img/unc-documentary2.jpg', cap: 'Filming two young women outside a brick house in Kathmandu.' },
+      { src: 'project-img/unc-documentary3.jpg', cap: 'The production team planning at a table — papers, laptop, and the arc of the film.' },
+      { src: 'project-img/unc-documentary4.jpg', cap: 'A photo-card circle at the reunion courtyard — picking the image that says where you are now.' },
+      { src: 'project-img/unc-documentary5.jpg', cap: 'UNC youth gathered around a long table at the reunion.' },
+      { src: 'project-img/unc-documentary6.jpg', cap: 'The reunion group celebrating in the courtyard — The Inn Patan, August 2018.' },
+      { src: 'project-img/unc-documentary7.jpg', cap: 'An interview in the courtyard — following one participant\u2019s path a year on.', pos: 'center 30%' },
+      { src: 'project-img/unc-documentary8.jpg', cap: 'Out where the projects live — rice fields outside Kathmandu.' },
+      { src: 'project-img/unc-documentary9.jpg', cap: 'A returning participant interviewed on the 2018 return trip.' }
+    ];
+  }
+  renderVals() {
+    const ps = this.photos();
+    const lb = this.state.lb;
+    const cur = ps[lb];
+    return {
+      ready: true,
+      gallery: ps.map((p, i) => ({
+        src: p.src, alt: p.cap,
+        open: () => this.setState({ lb: i }),
+        style: "flex: 0 0 auto; width: 96px; height: 54px; padding: 0; border: none; overflow: hidden; cursor: pointer; background-image: url('" + p.src + "'); background-size: cover; background-position: center; background-color: #F3EAD0; opacity: " + (i === lb ? '1' : '0.55') + '; outline: ' + (i === lb ? '2.5px solid #1E5A64' : 'none') + '; outline-offset: -2.5px;'
+      })),
+      lbSrc: cur.src,
+      lbCap: cur.cap,
+      lbImgStyle: "position: absolute; inset: 0; background-image: url('" + cur.src + "'); background-size: cover; background-position: " + (cur.pos || 'center') + ";",
+      lbCount: (lb + 1) + ' / ' + ps.length,
+      prevLb: () => this.setState({ lb: (lb + ps.length - 1) % ps.length }),
+      nextLb: () => this.setState({ lb: (lb + 1) % ps.length })
+    };
+  }
+}
+</script>
+</body>
+</html>

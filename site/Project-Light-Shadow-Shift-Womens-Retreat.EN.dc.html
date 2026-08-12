@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #1E5A64; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #0f4a45; }
+  .col-scroll::-webkit-scrollbar { width: 6px; }
+  .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }
+  .story-body p { font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 21px; line-height: 1.62; margin: 0 0 26px; color: #322c22; text-wrap: pretty; }
+  .story-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 1000px){
+    .pj-grid { grid-template-columns: 1fr !important; }
+    .pj-left, .pj-right { position: static !important; max-height: none !important; border: none !important; padding: 0 !important; }
+    .pj-mid { order: 1; } .pj-left { order: 2; } .pj-right { order: 3; }
+    .pj-left, .pj-right { border-top: 1.5px solid rgba(46,59,64,0.14) !important; padding-top: 26px !important; }
+    img, svg, video { max-width: 100% !important; }
+  }
+  @media (max-width: 640px){
+    .pj-gallery { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  }
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+  <dc-import name="Nav" active-page="project" hint-size="100%,64px"></dc-import>
+
+  <!-- ===== HERO ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 52px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">UAE</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">Residential</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">Women</span>
+      </div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 10px; text-wrap: balance;">Light, Shadow, Shift</h1>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.8); margin-bottom: 22px;">Women&rsquo;s Retreat</div>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(19px, 2.1vw, 25px); line-height: 1.46; max-width: 760px; margin: 0; color: rgba(250,244,226,0.94);">Two days, one circle of women, and the same question asked a hundred small ways: what do you want to carry, and what are you ready to leave behind?</p>
+    </div>
+  </section>
+
+  <!-- ===== 3-COLUMN BODY ===== -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 90px;">
+    <div class="pj-grid" style="display: grid; grid-template-columns: 226px 1fr 288px; gap: 40px; align-items: start;">
+
+      <!-- LEFT · about -->
+      <aside class="pj-left col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-right: 1px solid rgba(46,59,64,0.14); padding-right: 22px;">
+        <a href="Project.EN.dc.html" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.13em; text-transform: uppercase; color: #1E5A64; margin-bottom: 26px;">&larr; All projects</a>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Audience</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Women</span>
+        </div>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Topic</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Retreat</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Transformation</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Self-inquiry</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 18px;">
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Place</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">UAE</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Format</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">Two-day residential</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Pattern</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">One of three forms of Light, Shadow, Shift</div></div>
+        </div>
+      </aside>
+
+      <!-- MIDDLE · the story -->
+      <div class="pj-mid">
+        <figure style="margin: 0 0 40px;">
+          <div style="width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #F3EAD0;">
+            <img src="project-img/light-shadow-shift-women.jpg" alt="Women reaching up to a projected wall showing overlapping circles of light, shadow, and shift" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <figcaption style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.6); margin-top: 12px;">Light, shadow, and shift &mdash; three overlapping circles, each woman adding her own pledge.</figcaption>
+        </figure>
+
+        <div style="max-width: 680px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E5A64; margin-bottom: 18px;">What it is</div>
+          <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(26px, 3vw, 32px); line-height: 1.32; letter-spacing: -0.01em; margin: 0 0 34px; color: #2E3B40; text-wrap: pretty;">A pattern IN keeps returning to, reshaped for whoever it meets.</p>
+          <div class="story-body">
+            <p>Light, Shadow, Shift appears as <a href="Project-Jungle-Jam.EN.dc.html">Jungle Jam</a> for youth in the UAE, as <a href="Project-Shadow-Shifter.EN.dc.html">Shadow Shifter</a> for youth in Taiwan, and here, over two residential days, for a circle of women.</p>
+            <p>The pattern is simple to say and slow to live: notice what&rsquo;s in the light, what&rsquo;s in the shadow, and what it takes to shift. Everything in the two days is a different door into that same question.</p>
+          </div>
+
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E5A64; margin: 40px 0 18px;">The journey</div>
+          <div class="story-body">
+            <p>A wall becomes a shared canvas &mdash; light, shadow, and shift as three overlapping circles, projected and written into live, each woman reaching up to add her own pledge. Later the same wall holds a mural the group draws together, some of it by flashlight after dark, shadow made visible by hand.</p>
+            <p>There&rsquo;s a walk outward, too &mdash; out to find something small that brings joy, a flower, a leaf, a found thing, carried back into the room and set beside a few words on what it means to reform from within.</p>
+            <p>Sitting in a circle on the floor, the group paints, unhurried. On long strips of paper laid out like a shared timeline, they mark a journey together in colored notes &mdash; where they&rsquo;ve been, where they&rsquo;re headed. A yoga session closes the retreat in the body, after two days spent mostly in mind and heart.</p>
+            <p style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(24px, 2.8vw, 30px); line-height: 1.3; margin: 40px 0 0; color: #2E3B40; text-wrap: pretty;">Nothing here is separate from anything else &mdash; <span style="color: #1E5A64;">all one continuous conversation, carried by hands as much as words.</span></p>
+          </div>
+        </div>
+
+        <!-- GALLERY · embedded viewer -->
+        <div style="margin-top: 44px;">
+          <div style="position: relative; aspect-ratio: 16/9; background: #16242E;">
+            <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ lbCap }}" style="{{ lbImgStyle }}"></div></sc-if>
+            <button onClick="{{ prevLb }}" aria-label="Previous photo" style="position: absolute; left: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">‹</button>
+            <button onClick="{{ nextLb }}" aria-label="Next photo" style="position: absolute; right: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">›</button>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; margin-top: 10px;">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.6);">{{ lbCap }}</span>
+            <span style="flex: 0 0 auto; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: rgba(46,59,64,0.55);">{{ lbCount }}</span>
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px;">
+            <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="0">
+              <button onClick="{{ g.open }}" aria-label="{{ g.alt }}" style="{{ g.style }}"></button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="max-width: 680px; border-top: 1.5px solid rgba(30,90,100,0.45); margin-top: 44px; padding-top: 30px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+            <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Who it&rsquo;s for</div><p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.82);">Women ready for two days away from the ordinary &mdash; no experience required, only the willingness to sit in a circle and be honest.</p></div>
+            <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Format</div><p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.82);">Two days, residential. A small group; seated and floor-based work, indoor and outdoor moments across both days.</p></div>
+          </div>
+          <div style="margin-top: 26px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;">One pattern, many forms</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <a href="Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 10px 18px;">Women’s Retreat — UAE</a>
+              <a href="Project-Jungle-Jam.EN.dc.html" style="text-decoration: none; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.35); border-radius: 999px; padding: 10px 18px;">Jungle Jam — UAE youth</a>
+              <a href="Project-Shadow-Shifter.EN.dc.html" style="text-decoration: none; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.35); border-radius: 999px; padding: 10px 18px;">Shadow Shifter — Taiwan youth</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT · index -->
+      <aside class="pj-right col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-left: 1px solid rgba(46,59,64,0.14); padding-left: 22px;">
+        <dc-import name="ProjectIndexRail" current="light-shadow-shift" hint-size="100%,520px"></dc-import>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Bring a retreat to your own circle.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #1E5A64; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Start a conversation</a>
+        <a href="Protagonist.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">See the Protagonist path</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#1E5A64" loop="0.503" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lb: 0 };
+  photos() {
+    return [
+      { src: 'project-img/light-shadow-shift-women2.jpg', cap: "The group drawing a mural together by flashlight after dark." },
+      { src: 'project-img/light-shadow-shift-women3.jpg', cap: "Lying in a circle on a patterned carpet, marking a shared timeline in colored notes." },
+      { src: 'project-img/light-shadow-shift-women4.jpg', cap: "A hand holding a yellow flower and a leaf against a strip of printed text." },
+      { src: 'project-img/light-shadow-shift-women5.jpg', cap: "The circle seated on the floor, painting on plates, unhurried." },
+      { src: 'project-img/light-shadow-shift-women6.jpg', cap: "A closing yoga session on mats beneath the retreat’s mural." }
+    ];
+  }
+  renderVals() {
+    const ps = this.photos();
+    const lb = this.state.lb;
+    const cur = ps[lb];
+    return {
+      ready: true,
+      gallery: ps.map((p, i) => ({
+        src: p.src, alt: p.cap,
+        open: () => this.setState({ lb: i }),
+        style: "flex: 0 0 auto; width: 96px; height: 54px; padding: 0; border: none; overflow: hidden; cursor: pointer; background-image: url('" + p.src + "'); background-size: cover; background-position: center; background-color: #F3EAD0; opacity: " + (i === lb ? '1' : '0.55') + '; outline: ' + (i === lb ? '2.5px solid #1E5A64' : 'none') + '; outline-offset: -2.5px;'
+      })),
+      lbSrc: cur.src,
+      lbCap: cur.cap,
+      lbImgStyle: "position: absolute; inset: 0; background-image: url('" + cur.src + "'); background-size: cover; background-position: " + (cur.pos || 'center') + ";",
+      lbCount: (lb + 1) + ' / ' + ps.length,
+      prevLb: () => this.setState({ lb: (lb + ps.length - 1) % ps.length }),
+      nextLb: () => this.setState({ lb: (lb + 1) % ps.length })
+    };
+  }
+}
+</script>
+</body>
+</html>

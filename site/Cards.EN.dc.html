@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<template id="__bundler_thumbnail" data-bg-color="#1E8A86">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="30" y="26" width="40" height="30" rx="2" fill="#FAF4E2"/>
+    <rect x="30" y="60" width="40" height="6" rx="3" fill="#FAF4E2"/>
+    <rect x="30" y="70" width="26" height="6" rx="3" fill="#FAF4E2"/>
+  </svg>
+</template>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  /* ---- LOCKED CARD MODULE ---- */
+  .in-card { position: relative; display: flex; flex-direction: column; width: 340px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); overflow: hidden; }
+  .in-card .imgwrap { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+  .in-card .imgwrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .in-card .fmt { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; background: rgba(46,59,64,0.9); display: flex; align-items: center; justify-content: center; }
+  .in-card .fmt svg { width: 20px; height: 20px; stroke: #FAF4E2; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .in-card .inner { position: relative; display: flex; flex: 1; padding: 20px 22px 20px 44px; }
+  .in-card .rail { position: absolute; left: 13px; top: 21px; display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .in-card .rail .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .in-card .rail .lbl { writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .in-card .col { display: flex; flex-direction: column; flex: 1; }
+  .in-card .eyebrow { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: #2E3B40; margin: 0 0 18px; }
+  .in-card h3 { font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.0; margin: 0 0 16px; }
+  .in-card p { font-family: 'Newsreader', serif; font-weight: 400; font-size: 17px; line-height: 1.3; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .in-card .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 20px; }
+  .in-card .foot .meta { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .in-card .arrow { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; color: #FAF4E2; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; text-decoration: none; }
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; padding: 60px 40px; min-height: 100vh;">
+
+  <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 8px;">Card reference · locked module + graphic set</div>
+  <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 44px; line-height: 1.0; margin: 0 0 46px;">Card system — three families</h1>
+
+  <!-- ============ STRUCTURE · three families, fixed dimensions, page map ============ -->
+  <div style="margin: 0 0 56px; max-width: 980px; background: #F3EAD0; padding: 34px 36px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 18px;">The structure — read this first</div>
+    <ul style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); margin: 0 0 22px; padding-left: 20px;">
+      <li><b>Three families, stable IDs</b> — <b>1–6</b> Content cards (clickable, one destination each) · <b>7-1…7-6</b> Infographic panels (static, triangle in its own band) · <b>8-1…8-12</b> Mark cards (static, the mark's geometry as the plate) · <b>9-1…9-4</b> Quiet plates (cream watermark on the taxonomy plate, stands in for a missing photo). IDs are never renumbered; new variants append. A page-specific colouring is written <b>7-2 / Manifesto</b>.</li>
+      <li><b>Image ratio = 16:9</b> on every photographic card. 4:3 is retired.</li>
+      <li><b>Family 7 band heights — three fixed steps only: S 160px · M 204px · L 248px.</b> A row uses ONE step, never mixed. The variety shown below (7-1…7-6) demonstrates shape options, not height freedom.</li>
+      <li><b>Family 8 plates — fixed by position:</b> top plate <b>190px</b> · left column <b>152px wide</b> · bottom plate <b>118px</b> (cut-off diamond).</li>
+      <li><b>Type lock</b> — text zone padding 28/28/32 · eyebrow Archivo 700/12px/0.16em (cream-safe colour values) · heading Newsreader 600/30px/1.05 · body 17px/1.3.</li>
+      <li><b>Rows</b> — <code>repeat(n, minmax(0,1fr))</code>, 18px gap, stretch: every card in a row ends level.</li>
+      <li><b>Drift rules</b> — 1–6 never ship without a destination · 7 and 8 never carry a tag rail or arrow · one height step per row.</li>
+    </ul>
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;">Which page uses what</div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.6; color: rgba(46,59,64,0.85); margin: 0;"><b>Home</b> 1 · 3 · 6 + rotating features &nbsp;·&nbsp; <b>News</b> 3 · 4 · 5 &nbsp;·&nbsp; <b>Community</b> 1 &nbsp;·&nbsp; <b>Project</b> 1 &nbsp;·&nbsp; <b>Workshop</b> 1 · 5 &nbsp;·&nbsp; <b>Story</b> 2 &nbsp;·&nbsp; <b>Manifesto</b> 7-2 · 7-3 · 7-5 · 8-1 · 8-2 · 8-3 · 8-8 &nbsp;·&nbsp; <b>MEWE</b> loose shapes, to be folded into family 8 &nbsp;·&nbsp; <b>Constellation / Are-you-IN / Protagonist</b> no cards yet.</p>
+  </div>
+
+
+  <div style="display: flex; flex-wrap: wrap; gap: 60px; align-items: flex-start;">
+
+    <!-- ============ TYPE 1 · STANDARD CONTENT CARD ============ -->
+    <div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 16px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">1</span>Content card (one tag)</div>
+      <div class="in-card">
+        <div style="height: 14px; background: #D21E28; flex: 0 0 auto;"></div>
+        <div class="imgwrap">
+          <img src="community-img/asia-exchange.jpg" alt="Asia Exchange">
+        </div>
+        <div class="inner">
+          <div class="rail" style="color: #D21E28;">
+            <span class="dot" style="background: #D21E28;"></span>
+            <span class="lbl">Community</span>
+          </div>
+          <div class="col">
+            <div class="eyebrow">Five countries</div>
+            <h3>Asia Exchange Community</h3>
+            <p>The group living the one-year MEWE Asia Exchange — five countries, one shared practice.</p>
+            <div class="foot">
+              <a class="arrow" href="Project-Asia-Exchange.EN.dc.html" aria-label="Open">→</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TYPE 2 · STORY CARD (two tags: Topic rail + Format icon) ============ -->
+    <div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 16px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">2</span>Story card (Topic rail + Format icon)</div>
+      <div class="in-card">
+        <div style="height: 14px; background: #FAB414; flex: 0 0 auto;"></div>
+        <div class="imgwrap">
+          <img src="community-img/nepal-storytelling.jpg" alt="Sindhuli storytelling">
+          <div class="fmt" title="Format: Video" style="display:none;">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3z"/></svg>
+          </div>
+        </div>
+        <div class="inner">
+          <div class="rail" style="color: #FAB414;">
+            <span class="dot" style="background: #FAB414;"></span>
+            <span class="lbl">Story</span>
+          </div>
+          <div class="col">
+            <div class="eyebrow">Sindhuli, Nepal</div>
+            <h3>Sindhuli Storytelling Festival</h3>
+            <p>Elders and youth gather to celebrate the folk stories of Sindhuli village — a living archive of voices.</p>
+            <div class="foot">
+              <span class="fmticon" title="Format: Video" style="flex:0 0 auto; width:44px; height:44px; border-radius:50%; border:1.5px solid #2E3B40; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3z"/></svg></span>
+              <a class="arrow" href="Story-Submission.EN.dc.html" aria-label="Open">→</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 60px; align-items: flex-start; margin-top: 60px;">
+
+    <!-- ============ TYPE 3 · NEWS CARD (with photo) ============ -->
+    <div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 16px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">3</span>News card (with photo)</div>
+      <div class="in-card">
+        <div style="height: 14px; background: #966432; flex: 0 0 auto;"></div>
+        <div class="imgwrap">
+          <img src="community-img/nepal-cluster.jpg" alt="Sindhuli">
+        </div>
+        <div class="inner">
+          <div class="rail" style="color: #966432;">
+            <span class="dot" style="background: #966432;"></span>
+            <span class="lbl">Milestone</span>
+          </div>
+          <div class="col">
+            <div class="eyebrow">21 July 2026 · Sindhuli, Nepal</div>
+            <h3>A New IN-Collective in Nepal</h3>
+            <p>StoryCycle becomes the studio's fifth IN-Collective, carrying MEWE into village storytelling circles.</p>
+            <div class="foot">
+              <a class="arrow" href="News.EN.dc.html" aria-label="Open">→</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TYPE 4 · NEWS CARD (no photo · tan bar) ============ -->
+    <div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 16px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">4</span>News card (no photo · tan bar)</div>
+      <div class="in-card">
+        <div style="height: 14px; background: #966432; flex: 0 0 auto;"></div>
+        <div class="inner">
+          <div class="rail" style="color: #966432;">
+            <span class="dot" style="background: #966432;"></span>
+            <span class="lbl">Press</span>
+          </div>
+          <div class="col">
+            <div class="eyebrow">18 May 2026 · Print · Interview</div>
+            <h3>“Alone We Tilt, Together We Turn”</h3>
+            <p>A long conversation about why the studio builds practices instead of programmes.</p>
+            <div class="foot">
+              <a class="arrow" href="News.EN.dc.html" aria-label="Open">→</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TYPE 5 · EVENT CARD (date block · joinable) ============ -->
+    <div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 16px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">5</span>Event card (upcoming · joinable)</div>
+      <div class="in-card">
+        <div style="background: #966432; color: #FAF4E2; padding: 20px 22px; display: flex; align-items: baseline; gap: 12px; flex: 0 0 auto;">
+          <span style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 46px; line-height: 1;">12</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;">Sep 2026</span>
+        </div>
+        <div class="inner">
+          <div class="rail" style="color: #966432;">
+            <span class="dot" style="background: #966432;"></span>
+            <span class="lbl">Upcoming</span>
+          </div>
+          <div class="col">
+            <div class="eyebrow">Seoul, Korea · Two days</div>
+            <h3>JUNGLE JAM · Autumn Session</h3>
+            <p>Rhythm, improvisation, and collective making. Open to anyone who has been through a MEWE session.</p>
+            <div class="foot">
+              <a class="arrow" href="Workshop-Jungle-Jam.EN.dc.html" aria-label="Open">→</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ TYPE 6 · QUOTE / INSIGHT CARD (text only) ============ -->
+    <div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 16px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">6</span>Quote / insight card (text only)</div>
+      <div class="in-card" style="background: #966432; color: #FAF4E2;">
+        <div class="inner">
+          <div class="rail" style="color: #FAF4E2;">
+            <span class="dot" style="background: #FAF4E2;"></span>
+            <span class="lbl">Insight</span>
+          </div>
+          <div class="col">
+            <p style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 27px; line-height: 1.22; margin: 6px 0 18px; color: #FAF4E2; display: block; -webkit-line-clamp: unset;">“The world changes when we change how we see and move within it.”</p>
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75);">Buckminster Fuller · Card series</div>
+            <div class="foot">
+              <a class="arrow" href="News.EN.dc.html" aria-label="Open" style="background: #FAF4E2; color: #966432;">→</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ TYPE 7 · INFOGRAPHIC PANEL (static, non-clickable) ============ -->
+  <div style="margin-top: 64px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 8px;">Type 7 · Infographic panel — static, no destination · six triangles</div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 0 0 24px;">The triangle now lives in its own band and <b>no type ever sits on it</b> — eyebrow, heading and body sit below on cream, so the shape can be as bold as it likes. Six numbered variants: side, size, proportion, count and colour all vary; only the two-zone structure is fixed. Call them by number — <b>7-1</b> through <b>7-6</b>. In use, band height comes from the three fixed steps (S 160 · M 204 · L 248) — one step per row.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+      <div style="width: 380px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-1</span>left, base-down, tall</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 116px; overflow: hidden; background: #FAB414;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 210px;">
+            <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(0 100%, 0 26%, 72% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #B4321A; margin-bottom: 14px;">01 · One → many</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">It started with one</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">One person begins to practice, and it does not stay with them. What starts as a single honest conversation becomes a group, then a collective, then a way of working that others recognise as their own.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 340px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-2</span>right, shallow band</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 94px; overflow: hidden; background: #1E648C;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 170px;">
+            <div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(100% 100%, 100% 34%, 30% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #1E5A64; margin-bottom: 14px;">02 · Room → community</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Then it left the room</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">In Canada the practice stretched to the scale of a whole county — testing whether relationship holds not just in a room, but across a community.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 300px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-3</span>centred, narrow</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 127px; overflow: hidden; background: #E6328C;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 230px;">
+            <div style="position: absolute; inset: 0; background: #46325A; clip-path: polygon(34% 100%, 50% 22%, 66% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #8E2166; margin-bottom: 14px;">03 · Local → worldwide</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Now it finds itself</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">IN took root in Korea in 2022, and IN-Collectives around the world found each other — each exploring what MEWE means in their own place.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 380px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-4</span>inverted, full width</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 88px; overflow: hidden; background: #F0D23C;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 160px;">
+            <div style="position: absolute; inset: 0; background: #3C8246; clip-path: polygon(0 0, 100% 0, 50% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E6B33; margin-bottom: 14px;">Inverted</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">It can point down</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Apex to the base of the band, full width — the same figure resting on its point instead of its base.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 420px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-5</span>two, uneven</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 110px; overflow: hidden; background: #D21E28;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 200px;">
+            <div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(0 100%, 0 40%, 54% 100%);"></div>
+            <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(100% 100%, 100% 18%, 58% 100%);"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #A81820; margin-bottom: 14px;">Paired</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Two, unequal</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Two triangles of different height on the same band — the pair reads as movement rather than symmetry.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 320px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-6</span>sliver, off-centre</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 132px; overflow: hidden; background: #1E8A86;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 240px;">
+            <div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(18% 100%, 30% 12%, 46% 100%);"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #146560; margin-bottom: 14px;">Sliver</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">A thin one, off-centre</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">A tall narrow triangle set left of centre. Same rule, different proportion — the shape does not have to be balanced.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin: 40px 0 8px;">Type 7 · thin-bar set — 7-7 … 7-12</div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 0 0 24px;">The same six triangles, cropped to a <b>14px</b> band — the graphic reads as a thin coloured bar with the shape's lower edge still in it. Use where a card needs the taxonomy signal but not a picture.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+      <div style="width: 380px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-7</span>left, base-down · 14px bar</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 14px; overflow: hidden; background: #FAB414;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 210px;">
+            <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(0 100%, 0 26%, 72% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #B4321A; margin-bottom: 14px;">01 · One → many</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">It started with one</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">One person begins to practice, and it does not stay with them. What starts as a single honest conversation becomes a group, then a collective, then a way of working that others recognise as their own.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 340px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-8</span>right · 14px bar</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 14px; overflow: hidden; background: #1E648C;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 170px;">
+            <div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(100% 100%, 100% 34%, 30% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #1E5A64; margin-bottom: 14px;">02 · Room → community</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Then it left the room</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">In Canada the practice stretched to the scale of a whole county — testing whether relationship holds not just in a room, but across a community.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 300px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-9</span>centred · 14px bar</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 14px; overflow: hidden; background: #E6328C;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 230px;">
+            <div style="position: absolute; inset: 0; background: #46325A; clip-path: polygon(34% 100%, 50% 22%, 66% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #8E2166; margin-bottom: 14px;">03 · Local → worldwide</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Now it finds itself</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">IN took root in Korea in 2022, and IN-Collectives around the world found each other — each exploring what MEWE means in their own place.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 380px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-10</span>inverted · 14px bar</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 14px; overflow: hidden; background: #F0D23C;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 160px;">
+            <div style="position: absolute; inset: 0; background: #3C8246; clip-path: polygon(0 0, 100% 0, 50% 100%); mix-blend-mode: multiply;"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E6B33; margin-bottom: 14px;">Inverted</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">It can point down</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Apex to the base of the band, full width — the same figure resting on its point instead of its base.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 420px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-11</span>two, uneven · 14px bar</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 14px; overflow: hidden; background: #D21E28;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 200px;">
+            <div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(0 100%, 0 40%, 54% 100%);"></div>
+            <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(100% 100%, 100% 18%, 58% 100%);"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #A81820; margin-bottom: 14px;">Paired</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Two, unequal</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Two triangles of different height on the same band — the pair reads as movement rather than symmetry.</p>
+          </div>
+        </div>
+      </div>
+      <div style="width: 320px;">
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">7-12</span>sliver · 14px bar</div>
+        <div style="background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 14px; overflow: hidden; background: #1E8A86;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 240px;">
+            <div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(18% 100%, 30% 12%, 46% 100%);"></div>
+          </div></div>
+          <div style="padding: 26px 28px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #146560; margin-bottom: 14px;">Sliver</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">A thin one, off-centre</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">A tall narrow triangle set left of centre. Same rule, different proportion — the shape does not have to be balanced.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 24px 0 0;"><b>Rules</b> — square corners, cream text zone, ink heading and body. Band height 88–132px and card width 300–420px are both free; a set should <b>vary</b> them — the shape is built at full height and <b>cropped from the top</b>, so what you see is its lower part. Triangle = one taxonomy colour on <code>multiply</code> over a second as the band — warm or cool, and multiply can be dropped whenever it would mute the second colour (Triangles 5 and 6). Eyebrow in a taxonomy value dark enough for cream. Heading Newsreader 600/30px, body 17px/1.3. No rail, no arrow, no link, no hover: diagrams, not doors.</p>
+  </div>
+
+  <!-- ============ TYPE 8 · GRAPHIC STATEMENT CARD (mark geometry) ============ -->
+  <div style="margin-top: 64px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 8px;">Type 8 · Graphic statement card — the mark's shapes as the image</div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 0 0 24px;">Shapes cut from the IN mark — <b>cross</b>, <b>vee</b>, <b>triangle</b>, <b>diamond</b>, then the same four <b>ruled</b>: cross, triangle and diamond gain a thin line along one edge, the vee a doubled band — each built from two to four translucent planes, multiplied where the overlap should darken. The plate replaces the photo — in the top zone by default, as a left-hand column or a closing band in the last two — and all type sits on cream, never on the shape, so the geometry can be vivid and the words stay easy to read. Every card carries its own number — <b>8-1</b> through <b>8-12</b>. Nothing here is drawn as a solid object with a lit side: planes are flat and translucent, and the only place a new colour appears is where two of them <b>cross</b>. The overlap is the connection. Colour carries taxonomy; the shape carries the idea.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start;">
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-1</span>Cross — two things held at once</div>
+        <div style="width: 320px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 190px; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(0 0, 28% 0, 100% 100%, 72% 100%); mix-blend-mode: multiply;"></div>
+        <div style="position: absolute; inset: 0; background: #1E648C; clip-path: polygon(72% 0, 100% 0, 28% 100%, 0 100%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5200; margin-bottom: 14px;">Our Work</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Practice, not talk</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Workshops, projects with neighbours, the way we flip + connect — each one a way of practicing MEWE.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-2</span>Vee — many arriving at one</div>
+        <div style="width: 320px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 190px; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: #E6328C; clip-path: polygon(0 0, 26% 0, 62% 100%, 38% 100%); mix-blend-mode: multiply;"></div>
+        <div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(74% 0, 100% 0, 62% 100%, 38% 100%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #C21573; margin-bottom: 14px;">Our Posture</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">No fixed answers</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">We turn to nature, science, art, and social action for a common language, and co-create our way toward it.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-3</span>Triangle — one becoming a field</div>
+        <div style="width: 320px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 190px; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(0 100%, 48% 0, 96% 100%); mix-blend-mode: multiply;"></div>
+        <div style="position: absolute; inset: 0; background: #46325A; clip-path: polygon(24% 100%, 100% 0, 100% 100%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #46325A; margin-bottom: 14px;">Our Shape</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Not one centre</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">IN grows through shared practice — those who continue become IN-Collectives in their own communities.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-4</span>Diamond — where ME and WE overlap</div>
+        <div style="width: 320px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 190px; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); mix-blend-mode: multiply;"></div>
+        <div style="position: absolute; inset: 0; background: #1E648C; clip-path: polygon(40% 0, 60% 0, 60% 100%, 40% 100%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #1E648C; margin-bottom: 14px;">Our Ground</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Self is not separate</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Personal growth and the wellbeing of the people around us were never two projects. That overlap is the whole idea.</p>
+          </div>
+        </div>
+      </div>
+    
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-5</span>Cross, ruled — a thin line hugging one side</div>
+        <div style="width: 320px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 190px; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: #1E648C; clip-path: polygon(0 0, 24% 0, 100% 100%, 76% 100%);"></div>
+        <div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(24% 0, 28% 0, 100% 95%, 100% 100%); mix-blend-mode: multiply;"></div>
+        <div style="position: absolute; inset: 0; background: #E6328C; clip-path: polygon(76% 0, 100% 0, 24% 100%, 0 100%);"></div>
+        <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(72% 0, 76% 0, 0 100%, 0 95%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #1E648C; margin-bottom: 14px;">Our Method</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Two lines, one path</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Each arm keeps its angle and gains a thin rule along one edge — the same move, traced once more.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-6</span>Vee, doubled — thickening as it converges</div>
+        <div style="width: 320px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; height: 190px; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: #E6328C; clip-path: polygon(0 0, 24% 0, 60% 100%, 40% 100%);"></div>
+        <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(22% 0, 33% 0, 70% 100%, 56% 100%); mix-blend-mode: multiply;"></div>
+        <div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(76% 0, 100% 0, 60% 100%, 40% 100%);"></div>
+        <div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(65% 0, 78% 0, 44% 100%, 30% 100%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #C21573; margin-bottom: 14px;">Our Direction</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Many, arriving</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">The doubled edge weights the vee toward its meeting point — more voices as the lines converge.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-7</span>Triangle crossed — graphic column beside the type</div>
+        <div style="display: grid; grid-template-columns: 152px 1fr; width: 460px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; overflow: hidden; background: #FAF4E2;">
+            <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(0 6%, 96% 50%, 0 94%);"></div>
+            <div style="position: absolute; inset: 0; background: #1E648C; clip-path: polygon(30% 0, 62% 0, 62% 100%, 30% 100%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #B4321A; margin-bottom: 14px;">Our Aim</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">It points instead</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">A triangle turned on its side, crossed by an upright band. Only the crossing makes the third colour — the plate becomes a column and the type sits beside it.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-8</span>Diamond crossed — plate below the type</div>
+        <div style="width: 460px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="padding: 28px 28px 24px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #146560; margin-bottom: 14px;">Our Overlap</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Where the two meet</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Reversed: the words come first and a diamond crossed by a level band closes the card — the overlap read as a conclusion rather than an opening.</p>
+          </div>
+          <div style="position: relative; height: 200px; overflow: hidden; background: #FAF4E2;">
+            <div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(50% 2%, 100% 50%, 50% 98%, 0 50%);"></div>
+            <div style="position: absolute; inset: 0; background: #E6328C; clip-path: polygon(0 36%, 100% 36%, 100% 64%, 0 64%); mix-blend-mode: multiply;"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-9</span>Meeting — two figures overlapping</div>
+        <div style="display: grid; grid-template-columns: 152px 1fr; width: 460px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; overflow: hidden; background: #FAF4E2;">
+            <div style="position: absolute; inset: 0; background: #E6328C; clip-path: polygon(0 0, 100% 0, 50% 64%);"></div>
+            <div style="position: absolute; inset: 0; background: #1E648C; clip-path: polygon(0 100%, 100% 100%, 50% 36%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #1E648C; margin-bottom: 14px;">Our Meeting</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Two, overlapping</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Two triangles come from opposite ends and share the middle. The overlap is the only new colour on the card — the connection makes it.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-10</span>Flip — a figure and its mirror crossing</div>
+        <div style="display: grid; grid-template-columns: 152px 1fr; width: 460px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; overflow: hidden; background: #FAF4E2;">
+            <div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(0 0, 42% 0, 100% 100%, 58% 100%);"></div>
+            <div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(58% 0, 100% 0, 42% 100%, 0 100%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #146560; margin-bottom: 14px;">Flip + Connect</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Flip it, then cross</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">The same band flipped and laid over itself. Where the two pass through each other a third colour appears — the studio's whole method in one figure.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-11</span>Chain — a run of linked overlaps</div>
+        <div style="display: grid; grid-template-columns: 152px 1fr; width: 460px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; overflow: hidden; background: #FAF4E2;">
+            <div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(50% -8%, 112% 24%, 50% 56%, -12% 24%);"></div>
+            <div style="position: absolute; inset: 0; background: #E6328C; clip-path: polygon(50% 22%, 112% 54%, 50% 86%, -12% 54%); mix-blend-mode: multiply;"></div>
+            <div style="position: absolute; inset: 0; background: #1E648C; clip-path: polygon(50% 52%, 112% 84%, 50% 116%, -12% 84%); mix-blend-mode: multiply;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #7A5200; margin-bottom: 14px;">Our Chain</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Linked, not stacked</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">Three diamonds, each overlapping the next. Nothing sits on top of anything — every link is a shared edge, all the way down.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">8-12</span>Shade only — colour without a new shape</div>
+        <div style="display: grid; grid-template-columns: 152px 1fr; width: 460px; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14);">
+          <div style="position: relative; overflow: hidden; background: #FAF4E2;">
+            <div style="position: absolute; inset: 0; background: #1E648C; clip-path: polygon(50% 4%, 100% 22%, 50% 40%, 0 22%); mix-blend-mode: multiply; opacity: 0.82;"></div>
+            <div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(50% 30%, 100% 48%, 50% 66%, 0 48%); mix-blend-mode: multiply; opacity: 0.82;"></div>
+            <div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(50% 56%, 100% 74%, 50% 92%, 0 74%); mix-blend-mode: multiply; opacity: 0.82;"></div>
+          </div>
+          <div style="padding: 26px 26px 30px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #1E648C; margin-bottom: 14px;">Our Depth</div>
+            <div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.01em; color: #1A1613; margin-bottom: 14px; text-wrap: balance;">Three colours, one figure</div>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(26,22,19,0.78);">The same shape laid three times in three colours, each whole and uncut. No new figure appears anywhere — the overlaps read only as a deeper shade, so what you see is depth of connection rather than another shape.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 24px 0 0;"><b>Rules</b> — plate 190px on a 320px card by default; the last two variants move it, one to a left-hand column and one below the type. The zone can go anywhere except <b>under</b> the words. Two to four planes per shape. In the <b>ruled</b> variants a thin line traces one edge of the main plane, overlapping it on <b>one side only</b>; the vee instead carries a full <b>doubled</b> band. <code>mix-blend-mode: multiply</code> on any plane whose overlap should darken — dropped when it would mute the colour. Label 12px Archivo in a taxonomy colour dark enough for cream (amber becomes #7A5200, teal #146560, magenta #C21573). Title Newsreader 600/30px, body 17px/1.3. Non-clickable by default — add the Type 1 arrow only when the card has a real destination. Because the plate carries the palette, a page using these needs <b>no colour divider bar</b>.</p>
+  </div>
+
+  <!-- ============ CARD STATES · ACTIVE / INACTIVE ============ -->
+  <div style="margin-top: 64px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 20px;">Card states · active vs. inactive</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 60px; align-items: flex-start;">
+
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;">Active — full color, arrow enabled</div>
+        <div class="in-card">
+          <div class="imgwrap"><img src="community-img/mewe-hub.jpg" alt="MEWE Hub"></div>
+          <div class="inner">
+            <div class="rail" style="color: #1E8A86;"><span class="dot" style="background: #1E8A86;"></span><span class="lbl">Community</span></div>
+            <div class="col">
+              <div class="eyebrow">Online</div>
+              <h3>MEWE Hub</h3>
+              <p>Anyone who completes Möbius Making joins the Hub to keep practicing together.</p>
+              <div class="foot"><span class="meta" style="color: rgba(46,59,64,0.6);">Active</span><a class="arrow" href="Community-Open-Studio.EN.dc.html" aria-label="Open">→</a></div>            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;">Inactive — desaturated, muted, no arrow</div>
+        <div class="in-card" style="opacity: 0.6; filter: grayscale(0.85);">
+          <div class="imgwrap"><img src="community-img/uae-cluster.jpg" alt="UAE Youth Cluster"></div>
+          <div class="inner">
+            <div class="rail" style="color: rgba(46,59,64,0.6);"><span class="dot" style="background: rgba(46,59,64,0.6);"></span><span class="lbl">Community</span></div>
+            <div class="col">
+              <div class="eyebrow" style="color: rgba(46,59,64,0.6);">UAE · Archived</div>
+              <h3>UAE Youth Cluster</h3>
+              <p>An earlier community of youth across Nepal and the UAE. No longer active.</p>
+              <div class="foot"><span class="meta" style="color: rgba(46,59,64,0.5);">Archived</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ CONTENT FIELDS · merged with the team's workbook ============ -->
+  <div style="margin-top: 64px; max-width: 980px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 8px;">Content fields · merged with the team's workbook</div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 0 0 26px;">One row of the workbook fills one card. These are the columns the team is already writing into — the card types above are built from exactly these fields, so nothing has to be renamed on either side.</p>
+    <div style="display: grid; grid-template-columns: 150px 1fr; gap: 14px 26px; align-items: baseline; background: #F3EAD0; padding: 30px 32px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.55);">Field</div>
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.55);">What it does on the card</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">id</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Stable handle — <code>HOME/1</code>, <code>COMM/NEWS/3</code>, <code>PROJ/2</code>. Also the image-slot key, so one drop fills the card and its destination page.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">order</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Position in its grid or feed. Rotate — don't accumulate.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">uploaded</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);"><b>yes</b> → photo card (Type 1/2/3). <b>no</b> → the no-photo build: 14px taxonomy bar (Type 4), date block (Type 5), or a graphic plate (Type 7/8). Never an empty frame.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">type</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">The rail label — Community · News · Project · Story · Story · Writing · Tool. One line only; shorten rather than wrap.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">eyebrow</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Archivo 700/13px line above the title. On News and Event cards it carries <b>full date · place</b>.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">title</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Newsreader 700/30px. A quoted title sets italic 500.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">body</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">One or two sentences, clamped to two lines on the card. Longer copy belongs in <b>full story</b>.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">image</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Path, e.g. <code>community-img/mewe-hub.jpg</code>. Blank is legitimate — see <b>uploaded</b>.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">bg</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Colour by <b>name</b>, never hex — resolved from the taxonomy below.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">link</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Destination page. No dead cards: if the page doesn't exist yet, the arrow becomes a muted <b>Page coming</b> mark.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">feed</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Which grid it appears in — <code>home</code> · <code>community</code> · <code>story</code> · <code>project</code> · <code>news</code>. A row can sit in more than one.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">status</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);"><b>live</b> ships · <b>example</b> is written but unconfirmed · <b>template</b> is a slot description, never published. Archived rows render in the inactive state.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">credit ·<br>credit_href</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Attribution for a photo, film, or contributor. Sits on the destination page, not the card.</div>
+
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: #2E3B40;">full story</div>
+      <div style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.85);">Long copy for the destination page. Paragraph breaks are kept; video links at the end become their own block.</div>
+    </div>
+
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin: 40px 0 16px;">bg names → taxonomy</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #1E648C;"></span>deep-blue · MEWE</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #E5188C;"></span>magenta · Workshop</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #FAB414;"></span>amber · Story</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #D21E28;"></span>red · Community</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #F05A28;"></span>orange · Protagonist</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #F0D23C;"></span>yellow · Constellation</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #1E5A64;"></span>slate · Project</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #1E8A86;"></span>teal · Manifesto</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #46325A;"></span>plum · Collectives</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #966432;"></span>tan · News</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #2E3B40;"><span style="width: 14px; height: 14px; background: #F3EAD0; border: 1px solid rgba(46,59,64,0.3);"></span>paper dim · bottom zone</span>
+      <span style="display: inline-flex; align-items: center; gap: 9px; background: #F3EAD0; padding: 9px 14px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(46,59,64,0.55);"><span style="width: 14px; height: 14px; background: #3C8246; opacity: 0.5;"></span>green · not in the system yet</span>
+    </div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 22px 0 0;"><b>Open with the team</b> — three workbook rows use <code>green</code> and <code>bg</code> is sometimes set to a section colour that doesn't match the row's <code>type</code> (a News row on magenta, another on deep-blue). Colour follows <b>type</b>, so either those rows change section or green joins the taxonomy. One decision, then the sheet is the single source.</p>
+  </div>
+
+  <!-- ============ FAMILY 9 · QUIET PLATE (photo stand-in) ============ -->
+  <div style="margin-top: 64px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 8px;">Family 9 · Quiet plate — what an empty photo zone shows</div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 0 0 24px;">The mark's shapes as a <b>watermark</b>: cream planes at 11–16% opacity on the card's taxonomy plate. Quiet on purpose — it reads as texture from a distance and as the mark up close. A dropped photo covers it completely, so nothing needs removing later.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start;">
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">9-1</span>Cross · deep blue</div>
+        <div style="position: relative; width: 320px; aspect-ratio: 16/9; overflow: hidden; background: #1E648C;"><div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;"><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.11); clip-path: polygon(8% 0, 30% 0, 78% 100%, 56% 100%);"></div><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.16); clip-path: polygon(56% 0, 78% 0, 30% 100%, 8% 100%);"></div></div></div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">9-2</span>Vee · magenta</div>
+        <div style="position: relative; width: 320px; aspect-ratio: 16/9; overflow: hidden; background: #E6328C;"><div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;"><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.11); clip-path: polygon(10% 0, 30% 0, 58% 100%, 38% 100%);"></div><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.16); clip-path: polygon(66% 0, 86% 0, 58% 100%, 38% 100%);"></div></div></div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">9-3</span>Triangle · orange</div>
+        <div style="position: relative; width: 320px; aspect-ratio: 16/9; overflow: hidden; background: #F05A28;"><div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;"><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.11); clip-path: polygon(10% 100%, 45% -10%, 80% 100%);"></div><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.16); clip-path: polygon(34% 100%, 74% -6%, 100% 30%, 100% 100%);"></div></div></div>
+      </div>
+      <div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 12px;"><span style="display: inline-block; background: #1A1613; color: #FAF4E2; padding: 3px 7px; margin-right: 8px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em;">9-4</span>Diamond · amber</div>
+        <div style="position: relative; width: 320px; aspect-ratio: 16/9; overflow: hidden; background: #FAB414;"><div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none;"><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.11); clip-path: polygon(50% -20%, 92% 50%, 50% 120%, 8% 50%);"></div><div style="position: absolute; inset: 0; background: rgba(250,244,226,0.16); clip-path: polygon(38% -10%, 52% -10%, 52% 110%, 38% 110%);"></div></div></div>
+      </div>
+    </div>
+    <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); max-width: 760px; margin: 24px 0 0;"><b>Rules</b> — always cream planes on the taxonomy colour, opacity 0.11 and 0.16, exactly two planes, 16:9 zone. Never coloured planes (that's family 8's job) and never on top of a photo. Shape rotates by card so neighbours differ: cross · vee · triangle · diamond.</p>
+  </div>
+
+  <!-- ============ THE RULES (reference, on-page) ============ -->
+  <div style="margin-top: 64px; max-width: 760px; background: #F3EAD0; padding: 34px 36px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 18px;">The rules on this page</div>
+    <ul style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.5; color: rgba(46,59,64,0.85); margin: 0; padding-left: 20px;">
+      <li><b>Tag rail</b> — rotates 90° <b>clockwise</b> (reads downward), dot at the <b>top</b>, sitting <b>13px from the left edge, 21px from the top</b> of the bottom zone. The label is <b>always one line</b> — never wraps to two; if a tag is too long, shorten the wording ("Story · Nature" → "Story"). On a colored card the dot matches the tag text color. On the <b>two-zone Home module</b> (paper-dim bottom) the dot is the card's <b>taxonomy color</b> — the one place that color appears below the image — with a 1px ink ring on the light tones (amber, yellow).</li>
+      <li><b>Type locked</b> — tag Archivo 700/12px · eyebrow Archivo 700/13px (same color as tag) · title Newsreader 700/30px, line-height 1.0 · body Newsreader 400/17px, line-height 1.3.</li>
+      <li><b>Image</b> — 16:9 frame, any photo auto cover-crops to fill. Identical shape on every card.</li>
+      <li><b>Spacing</b> — fixed eyebrow → title → body gaps, same on every card. Equal card height; body clamped to <b>2 lines</b> for a clean bottom edge.</li>
+      <li><b>Arrow</b> — filled ink #2E3B40 circle, paper glyph, no border, bottom-right. <b>Link sits on the arrow only</b> so all text stays editable.</li>
+      <li><b>Corners</b> square. Background = warm supporting tint of the page color; no two adjacent cards share a color.</li>
+      <li><b>Six types</b> — (1) Content: one Topic tag. (2) Story: Topic on the rail + <b>Format pictogram</b> top-right of the image (Writing · Drawing · Photo · Video · Music · Dance). (3) News with photo: 4:3 image, eyebrow carries <b>full date · place</b>. (4) News without photo: image zone replaced by a <b>14px taxonomy bar</b> — the default when no photograph exists. (5) Event: solid date block (day + month/year) in place of the image, for anything joinable. (6) Quote / insight: text only on a solid taxonomy field, arrow inverted.</li>
+      <li><b>Two static types</b> — (7) <b>Infographic panel</b>: a triangle in its own band with the type on cream below — never over the shape. Six numbered variants (Triangle 1–6) vary side, size, proportion, count and colour; card width 300–420px and band height 160–240px are meant to differ across a set. (8) <b>Graphic statement card</b>: the IN mark's own shapes — cross, vee, triangle, diamond, each also <b>ruled</b> with a thin line along one edge — as the plate in place of a photo. Both are non-clickable: diagrams, not doors.</li>
+      <li><b>States</b> — Active: full color, arrow enabled. Inactive/Archived: desaturated + muted, no arrow.</li>
+      <li><b>One row = one card</b> — every card is filled from the team workbook's columns (<code>id · order · uploaded · type · eyebrow · title · body · image · bg · link · feed · status · credit · full story</code>). <code>uploaded: no</code> selects a no-photo build rather than leaving an empty frame; <code>bg</code> is always a colour <b>name</b>, resolved from the taxonomy; <code>status: template</code> never ships. See <i>Content fields</i> above.</li>
+    </ul>
+  </div>
+
+  <!-- ============ FORMAT PICTOGRAM SET ============ -->
+  <div style="margin-top: 64px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 20px;">Format pictograms (b/w, line)</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+
+      <div style="text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FAF4E2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z"/><path d="M14 5l3 3"/></svg></div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.7);">Writing</div>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FAF4E2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2 0-1.2-1-1.5-1-2.5s.8-1.5 2-1.5h1a3 3 0 0 0 3-3c0-3.9-3.1-6.5-8-6.5z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16.5" cy="11.5" r="1"/></svg></div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.7);">Drawing</div>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FAF4E2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6l1.5-2h5L16 6"/><circle cx="12" cy="13" r="3.2"/></svg></div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.7);">Photo</div>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FAF4E2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3z"/></svg></div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.7);">Video</div>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FAF4E2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.7);">Music</div>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FAF4E2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M12 6.5v6M12 9l-5 3M12 9l5 3M9 20l3-7 3 7"/></svg></div>
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.7);">Dance</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script></script>
+</body>
+</html>

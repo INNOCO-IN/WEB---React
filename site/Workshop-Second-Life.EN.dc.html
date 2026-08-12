@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #E5188C; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #E5188C; }
+</style>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 190px 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(2, minmax(0"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(4, minmax(0"]{grid-template-columns:repeat(2, minmax(0,1fr)) !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+}
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <span id="top"></span>
+  <dc-import name="Nav" active-page="Workshop.EN.dc.html" hint-size="100%,64px"></dc-import>
+
+  <section style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 22px 28px 0;">
+      <a href="Workshop.EN.dc.html" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,244,226,0.78); text-decoration: none;">← All Workshops</a>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 56px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,244,226,0.85); margin-bottom: 20px;">Junior youth &amp; youth · A series</div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(44px, 6.6vw, 92px); line-height: 0.96; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 12ch;">Second Life Series</h1>
+      <p style="font-family: 'Newsreader', serif; font-size: clamp(21px, 2.4vw, 30px); line-height: 1.32; max-width: 26ch; margin: 0 0 34px; color: rgba(250,244,226,0.94);">Self-care as the first practice — before you can hold anything for others.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="#register" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">Ask about the next series</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 64px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 2px solid #2E3B40; padding-top: 24px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">What It Is</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', serif; font-size: clamp(23px, 2.5vw, 30px); line-height: 1.32; margin: 0 0 22px; letter-spacing: -0.01em; text-wrap: pretty;">A short series on the fundamentals of looking after yourself — movement, sleep, eating, and stillness.</p>
+        <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">Four ordinary things that decide most of how a day goes, taken seriously and practised together rather than explained. Co-created with Taejin Kim and Vahid Buehrer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">Why</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', serif; font-size: clamp(22px, 2.3vw, 28px); line-height: 1.34; margin: 0 0 20px; text-wrap: pretty;">You cannot pour from a body you are ignoring.</p>
+        <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">Young people are asked to contribute, lead, and care long before anyone asks how they sleep. Second Life starts at the other end: get the basics honest and steady, and everything built on top of them holds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 8px;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">Who It's For</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 40px; max-width: 900px;">
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Participants</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;">Junior youth and youth · small groups</div></div>
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Length</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;">A series of short sessions, with practice in between</div></div>
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Co-created with</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;">Taejin Kim &amp; Vahid Buehrer</div></div>
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Good alongside</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;">School programmes, youth groups, junior youth clusters</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px; border-bottom: 2px solid #2E3B40; padding-bottom: 34px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">What Happens</div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5px; background: rgba(46,59,64,0.16); border: 1.5px solid rgba(46,59,64,0.16); max-width: 900px;">
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">Move</div><p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.4; margin: 0;">Exercise you will actually keep doing.</p></div>
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">Sleep</div><p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.4; margin: 0;">The one habit that changes all the others.</p></div>
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">Eat</div><p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.4; margin: 0;">Food as care rather than fuel or guilt.</p></div>
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">Still</div><p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.4; margin: 0;">Meditation — a few minutes that belong to no one else.</p></div>
+      </div>
+    </div>
+  </section>
+
+    <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 10px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ws-second-life-1" shape="rect" placeholder="Second Life photo" style="display:block; flex: 0 0 auto; width: 300px; aspect-ratio: 16/9;" hint-size="300px,225px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ws-second-life-2" shape="rect" placeholder="Second Life photo" style="display:block; flex: 0 0 auto; width: 300px; aspect-ratio: 16/9;" hint-size="300px,225px"></x-import>
+      <div style="flex: 1 1 260px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; line-height: 1.5; color: rgba(46,59,64,0.6); padding-top: 4px;">Photos from the series — to be added.</div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 40px 28px;">
+    <div style="background: #CDE3CF; padding: 44px 44px 40px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40; margin-bottom: 16px;">Format</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.1; margin: 0 0 18px; max-width: 26ch; text-wrap: balance;">Run as four sessions, a weekend, or one theme at a time.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.5; margin: 0 0 14px; max-width: 62ch;">The four fundamentals stay; the pacing, the age group, and how much sits inside an existing programme are set with you.</p>
+      <p style="font-family: 'Newsreader', serif; font-style: italic; font-size: 18px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.7);">Full session details for this series are still being written — ask us and we will send what exists today.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 0 28px 44px;">
+    <a href="#top" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 14px 26px;">&uarr; Back to top</a>
+  </section>
+
+  <section id="register" style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.7); margin: 0 0 18px;">Join</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Start with the basics.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">Start a conversation</a>
+        <a href="Workshop.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">All workshops</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#E5188C" loop="0.47" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+</body>
+</html>

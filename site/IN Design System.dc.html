@@ -1,0 +1,935 @@
+<!--
+================================================================================
+  IN / INNOCO — CONSOLIDATED DESIGN SYSTEM
+  Single source of truth for the IN website. Version 2.0 — 2026-07-14
+--------------------------------------------------------------------------------
+  HOW TO READ THIS FILE
+  This one file holds TWO layers:
+    PART A — SITE ARCHITECTURE  (sitemap, wireframes, clickable paths)
+    PART B — DESIGN LANGUAGE     (color, type, spacing, cards, rules)
+  Everything renders as the REAL thing (real color, real card) so a designer,
+  a developer, or Claude Design all see identical output — no interpretation gap.
+
+  FOR DEVELOPERS: every token is defined once in the <style> :root block below.
+  Reference tokens by name (var(--color-teal)); never hard-code a hex in a page.
+  Yellow "NOTE" boxes throughout are written as build instructions.
+
+  OPEN DECISIONS are marked [OPEN] and collected in the Change Log at the bottom.
+  Nothing marked [OPEN] is final — Yunsun resolves these page-by-page in build.
+================================================================================
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IN — Consolidated Design System v2.0</title>
+
+<style>
+/* ============================================================================
+   :root — DESIGN TOKENS  (the one place values live; reference by name)
+   ============================================================================ */
+:root{
+
+  /* --- GROUNDS & NEUTRALS ------------------------------------------------ */
+  --color-paper:      #FAF4E2;   /* page background, default card ground     */
+  --color-paper-dim:  #F3EAD0;   /* recessed / outline / ecosystem cards     */
+  --color-ink:        #1A1613;   /* text, nav, footer, dark cards            */
+  --color-line:       rgba(26,22,19,0.12); /* hairlines = ink @12%, not a colour */
+
+  /* --- RESERVED  (links, buttons, kickers ONLY — never a card ground) ---- */
+  --color-teal:       #1E8A86;   /* [OPEN] brand-file alt: #218D87           */
+  --color-teal-dark:  #146560;   /* hover state for teal                     */
+
+  /* --- ACCENT PALETTE  (one per card; each carries a meaning, see B1a) ---
+     Two hex values are shown where the latest doc and the brand-palette
+     file disagree. Primary = latest (Welcome doc). [OPEN] = pick one.       */
+  --color-magenta:    #E6328C;   /* [OPEN] brand alt #E33283 · programs/featured */
+  --color-red:        #D21E28;   /* news / dated announcements               */
+  --color-amber:      #FAB414;   /* community / people                       */
+  --color-yellow:     #F0D23C;   /* [OPEN] brand alt #F3CC38 · community/people */
+  --color-green:      #3C8246;   /* [OPEN] brand alt #3F7E46 · community      */
+  --color-deep-blue:  #1E648C;   /* [OPEN] brand alt #20608C · systems/dialogue */
+  --color-slate:      #1E5A64;   /* systems / dialogue                       */
+  --color-plum:       #46325A;   /* [OPEN] brand alt #43326D · reflection     */
+  --color-forest:     #3C5A46;   /* reflection / community, deep variant     */
+  --color-orange:     #F05A28;   /* [OPEN] brand alt #EE5C28 · energy/featured */
+  --color-gold:       #F0961E;   /* [OPEN] brand alt #FBAE17 · community warm */
+  --color-tan:        #966432;   /* earthy neutral accent                    */
+  --color-navy:       #143A5C;   /* [13] deep dialogue / foundational — darker than deep blue */
+
+  /* --- ACCENT LIGHT TINTS  (controlled & consistent — muted, ~paper-dim value;
+     one soft version per accent for gentle fills. color-mix keeps the saturation
+     even across all 13 — never a raw "sky blue / light pink".) --------------- */
+  --tint-base: #ECE3CC;
+  --color-magenta-tint:   color-mix(in srgb, var(--color-magenta) 12%, var(--tint-base));
+  --color-red-tint:       color-mix(in srgb, var(--color-red) 12%, var(--tint-base));
+  --color-amber-tint:     color-mix(in srgb, var(--color-amber) 14%, var(--tint-base));
+  --color-yellow-tint:    color-mix(in srgb, var(--color-yellow) 16%, var(--tint-base));
+  --color-green-tint:     color-mix(in srgb, var(--color-green) 12%, var(--tint-base));
+  --color-deep-blue-tint: color-mix(in srgb, var(--color-deep-blue) 12%, var(--tint-base));
+  --color-slate-tint:     color-mix(in srgb, var(--color-slate) 12%, var(--tint-base));
+  --color-plum-tint:      color-mix(in srgb, var(--color-plum) 12%, var(--tint-base));
+  --color-forest-tint:    color-mix(in srgb, var(--color-forest) 12%, var(--tint-base));
+  --color-orange-tint:    color-mix(in srgb, var(--color-orange) 12%, var(--tint-base));
+  --color-gold-tint:      color-mix(in srgb, var(--color-gold) 13%, var(--tint-base));
+  --color-tan-tint:       color-mix(in srgb, var(--color-tan) 14%, var(--tint-base));
+  --color-navy-tint:      color-mix(in srgb, var(--color-navy) 12%, var(--tint-base));
+
+  /* --- TYPOGRAPHY -------------------------------------------------------- */
+  --font-display: "Newsreader", Georgia, serif;      /* headlines, titles, body prose */
+  --font-utility: "Archivo", system-ui, sans-serif;  /* nav, tags, labels, buttons (UPPERCASE) */
+  /* [OPEN] Prior candidates on file — superseded, kept for the record:
+     Fraunces + Space Grotesk (v1.0 doc) · Gotham/Merriweather/Roboto (early). */
+
+  --fs-hero:    clamp(56px, 9vw, 130px);
+  --fs-display: clamp(40px, 6vw, 76px);
+  --fs-section: clamp(30px, 4vw, 38px);
+  --fs-card:    30px;   /* card title — Newsreader 700, line-height 1.0     */
+  --fs-quote:   28px;
+  --fs-body:    17px;   /* NOTE: 17px floor. Accessibility standard — body is
+                           never smaller than nav; site serves all ages.      */
+  --fs-eyebrow:      13px;  /* card eyebrow / nav label                       */
+  --fs-eyebrow-hero: 17px;  /* hero eyebrow                                   */
+
+  /* --- SPACING  (base unit 4px) ----------------------------------------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 16px; --sp-4: 22px;
+  --sp-5: 26px; --sp-6: 40px; --sp-7: 60px; --sp-8: 80px;
+  --gutter-desktop: 40px;
+  --gutter-mobile:  20px;
+
+  /* --- SHAPE ------------------------------------------------------------- */
+  --radius-card: 0;      /* cards are square-cornered, always                 */
+  --radius-round: 999px; /* reserved for arrow-button + domain dot only       */
+  --radius-soft:  18px;  /* soft-rounded variant — visual-only blocks + avatars only */
+  --grid-gap: 1px;       /* hairline visible grid line (filled with --color-line) */
+}
+
+/* ============================================================================
+   Documentation chrome — the styling of THIS reference page (not the site)
+   ============================================================================ */
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--color-paper); color:var(--color-ink);
+  font-family:var(--font-utility);
+  font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=Archivo:wght@400;500;600;700&display=swap');
+
+.wrap{max-width:1080px; margin:0 auto; padding:var(--sp-6) var(--gutter-desktop) var(--sp-8);}
+.doc-h1{font-family:var(--font-display); font-weight:400; font-size:var(--fs-display); line-height:1.05; margin:0 0 var(--sp-2);}
+.doc-lede{font-family:var(--font-display); font-size:20px; max-width:60ch; color:#4a5a5e; margin:0 0 var(--sp-6);}
+
+.part-label{font-family:var(--font-utility); font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--color-teal); font-weight:700; margin:var(--sp-8) 0 var(--sp-2); border-top:2px solid var(--color-ink); padding-top:var(--sp-3);}
+.sec{margin:var(--sp-7) 0; scroll-margin-top:20px;}
+.sec-num{font-family:var(--font-utility); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#8a9a8f; font-weight:600;}
+.sec-h{font-family:var(--font-display); font-weight:500; font-size:var(--fs-section); line-height:1.1; margin:2px 0 var(--sp-3);}
+.sec-p{font-family:var(--font-display); font-size:var(--fs-body); max-width:66ch; color:#3a474b;}
+
+/* developer note box */
+.note{border-left:3px solid var(--color-amber); background:rgba(250,180,20,.10);
+  padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0; font-size:14px; line-height:1.55; border-radius:0;}
+.note b{font-family:var(--font-utility); letter-spacing:.08em; text-transform:uppercase; font-size:11px; display:block; margin-bottom:4px; color:#8a6a10;}
+.open{border-left:3px solid var(--color-magenta); background:rgba(230,50,140,.08);
+  padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0; font-size:14px;}
+.open b{font-family:var(--font-utility); letter-spacing:.08em; text-transform:uppercase; font-size:11px; display:block; margin-bottom:4px; color:var(--color-magenta);}
+
+code{font-family:ui-monospace,Menlo,monospace; font-size:13px; background:rgba(46,59,64,.07); padding:1px 5px;}
+
+/* nav (jump menu) */
+.jump{position:sticky; top:0; z-index:20; background:var(--color-ink); padding:10px var(--gutter-desktop); display:flex; flex-wrap:wrap; gap:16px;}
+.jump a{color:var(--color-paper); text-decoration:none; font-size:12px; letter-spacing:.08em; text-transform:uppercase; opacity:.75;}
+.jump a:hover{opacity:1; color:var(--color-yellow);}
+
+/* ---- swatches ---- */
+.swatch-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:var(--grid-gap); background:var(--color-line); border:1px solid var(--color-line);}
+.sw{background:var(--color-paper); padding:0;}
+.sw .chip{height:74px;}
+.sw .meta{padding:8px 10px; font-size:11px; line-height:1.4;}
+.sw .meta .nm{font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:11px;}
+.sw .meta .hex{font-family:ui-monospace,monospace; color:#6a7a70;}
+.sw .meta .role{color:#8a9a8f; margin-top:2px;}
+.sw .alt{color:var(--color-magenta); font-family:ui-monospace,monospace;}
+
+/* ---- type specimens ---- */
+.spec{border-bottom:1px solid var(--color-line); padding:var(--sp-3) 0; display:grid; grid-template-columns:120px 1fr; gap:var(--sp-4); align-items:baseline;}
+.spec .tag{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a9a8f;}
+
+/* ---- card demos ---- */
+.card-row{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:var(--grid-gap); background:var(--color-line); border:1px solid var(--color-line); margin:var(--sp-4) 0;}
+.card{position:relative; min-height:320px; padding:var(--sp-4) var(--sp-4) var(--sp-4) 50px; display:flex; flex-direction:column; justify-content:flex-end; color:var(--color-ink); overflow:hidden;}
+.card.dark{color:var(--color-paper);}
+.card .edgetag{position:absolute; top:var(--sp-4); left:var(--sp-4); writing-mode: vertical-rl; white-space: nowrap; text-orientation:mixed; letter-spacing:.16em; line-height:1; font-family:var(--font-utility); font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; display:flex; align-items:center; gap:8px;}
+.card .dot{width:8px; height:8px; border-radius:var(--radius-round); background:currentColor; opacity:.85; display:inline-block; margin-bottom:8px;}
+.card .subtag{position:absolute; top:var(--sp-4); left:calc(var(--sp-4) + 22px); writing-mode: vertical-rl; white-space: nowrap; text-orientation:mixed; letter-spacing:.16em; line-height:1; font-family:var(--font-utility); font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.7;}
+.card h4{font-family:var(--font-display); font-weight:700; font-size:30px; line-height:1.0; margin:0 44px 8px 0;}
+.card p{font-size:17px; line-height:1.3; margin:0 44px 0 0; opacity:.9; max-width:26ch;}
+.card .byline{font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; text-transform:uppercase; margin-top:10px; opacity:.7; margin-right:44px;}
+.card .arrow{position:absolute; bottom:var(--sp-4); right:var(--sp-4); width:44px; height:44px; border-radius:var(--radius-round); background:var(--color-ink); color:var(--color-paper); border:none; display:flex; align-items:center; justify-content:center; font-size:18px;}
+.card.portrait{min-height:360px;}
+.card.outline{background:var(--color-paper-dim); border:1px dashed var(--color-ink);}
+.card.cta{align-items:flex-start; justify-content:flex-end;}
+.card.cta h4{font-size:24px;}
+
+/* ---- wireframe ---- */
+.wire{border:1.5px solid var(--color-ink); background:#fff; margin:var(--sp-3) 0; font-family:var(--font-utility); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#5a6a60;}
+.wire .band{border-bottom:1px dashed var(--color-line); padding:10px 12px;}
+.wire .band:last-child{border-bottom:none;}
+.wire .band.hero{padding:34px 12px; background:rgba(30,138,134,.05);}
+.wire .band.dark{background:var(--color-ink); color:var(--color-paper); border-color:var(--color-ink);}
+.wire .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:8px;}
+.wire .box{border:1px solid var(--color-line); padding:16px 6px; text-align:center; background:var(--color-paper);}
+.wire .box.img{background:var(--color-slate-tint); border:1px dashed var(--color-ink); color:#4a5a5e;}
+.wire .cols2{display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:8px;}
+.wire .cols3{display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:8px;}
+.wire .imgstrip{background:var(--color-slate-tint); border-bottom:1px dashed var(--color-ink); padding:12px 6px; text-align:center; color:#4a5a5e;}
+.wire .legend{display:flex; gap:14px; align-items:center; padding:10px 12px; flex-wrap:wrap;}
+.wire .legend .box{padding:5px 14px;}
+.wire .ribbon{display:none;} /* gradient ribbon retired — footer opens with the MEWE Loop line */
+
+/* ---- sitemap tree ---- */
+.tree{font-family:var(--font-utility); font-size:14px; line-height:2;}
+.tree .root{font-family:var(--font-display); font-size:24px; font-weight:500;}
+.tree ul{list-style:none; margin:0; padding-left:22px; border-left:1px solid var(--color-line);}
+.tree li{position:relative; padding-left:14px;}
+.tree li::before{content:"—"; position:absolute; left:-2px; color:#b8c2ba;}
+.tree .lbl{font-weight:600; letter-spacing:.04em;}
+.tree .note-inline{color:#8a9a8f; font-size:12px;}
+
+table.paths{width:100%; border-collapse:collapse; font-size:13px; margin:var(--sp-3) 0;}
+table.paths th,table.paths td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--color-line); vertical-align:top;}
+table.paths th{font-family:var(--font-utility); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#8a9a8f;}
+table.paths td.k{font-weight:600;}
+
+.loopline{display:block; width:100%; height:auto; margin:var(--sp-7) 0;}
+.loopline path{fill:none; stroke:var(--color-ink); stroke-width:6; stroke-linecap:round; stroke-dasharray:2000; stroke-dashoffset:2000; animation:loopdraw 2.4s ease forwards;}
+@keyframes loopdraw{to{stroke-dashoffset:0;}}
+@media(prefers-reduced-motion:reduce){.loopline path{animation:none; stroke-dashoffset:0;}}
+.hx{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;}
+.hx i{width:13px;height:13px;flex:0 0 13px;display:inline-block;border:1px solid rgba(26,22,19,.22);}
+table.paths code, table.paths .hx{font-size:12px;}
+hr.div{border:none; border-top:1px solid var(--color-line); margin:var(--sp-6) 0;}
+
+@media(max-width:640px){
+  .wrap{padding:var(--sp-4) var(--gutter-mobile) var(--sp-7);}
+  .spec{grid-template-columns:1fr; gap:4px;}
+  .jump{overflow-x:auto;}
+}
+</style>
+
+<nav class="jump">
+  <a href="#top">IN Design System v2</a>
+  <a href="#a1">A1 Sitemap</a>
+  <a href="#a2">A2 Wireframes</a>
+  <a href="#a3">A3 Paths</a>
+  <a href="#b1">B1 Tokens</a>
+  <a href="#b2">B2 Anatomy</a>
+  <a href="#b3">B3 Cards</a>
+  <a href="#b4">B4 Blocks</a>
+  <a href="#b5">B5 Rules</a>
+  <a href="#b6">B6 A11y</a>
+  <a href="#c1" style="font-weight:700;">C1 Rulings</a>
+  <a href="#c2" style="font-weight:700;">C2 Card System</a>
+  <a href="#c3" style="font-weight:700;">C3 Nav System</a>
+  <a href="#c4" style="font-weight:700;">C4 Type &amp; Space</a>
+  <a href="#c5" style="font-weight:700;">C5 Graphic Language</a>
+  <a href="#log">Change Log</a>
+</nav>
+
+<div class="wrap" id="top">
+
+  <div class="sec-num">Consolidated · Version 3.0 · 2026-08-06</div>
+  <h1 class="doc-h1">IN — Design System</h1>
+  <p class="doc-lede"><b>Part C is the current law.</b> Where Part C and Parts A–B disagree, Part C wins — A/B are the built record, C is the consolidated ruling. One file, three layers: the site's <b>architecture</b>, its <b>design language</b>, and the <b>consolidated rules</b>. Everything renders as the real thing so a designer, a developer, and Claude Design all read identical output. Reference by name — never re-describe a color, a size, or a rule in a prompt again.</p>
+
+  <div class="note"><b>How to use this in a build</b>
+    Point Claude Design (or a developer) to a section by number: <i>"Build page per A2 · Detail template, using B3 · Workshop Card and the footer rule in B5."</i> Tokens live once in the <code>:root</code> block at the top of this file — a developer lifts them directly; a designer just names them. Yellow boxes are build instructions. Pink boxes are decisions still open — resolve page-by-page.</div>
+
+  <!-- ====================================================================== -->
+  <div class="part-label">Part A — Site Architecture</div>
+  <!-- ====================================================================== -->
+
+  <section class="sec" id="a1">
+    <div class="sec-num">A1</div>
+    <h2 class="sec-h">Sitemap</h2>
+    <p class="sec-p">Navigation is the footer, mirrored by a compressed top nav (B5): three category keywords \u2014 Start Within, Share the Space, Serve the Whole \u2014 each with three page-dots; Flip Connect is footer-only. Each keyword is a section; its dots are the pages within it.</p>
+
+    <div class="tree" style="margin-top:22px;">
+      <div class="root">IN</div>
+      <ul>
+        <li><span class="lbl">Start Within</span>
+          <ul>
+            <li>Manifesto <span class="note-inline">— “This is not finished. It is not meant to be.” (Teal)</span></li>
+            <li>Collectives <span class="note-inline">— “A Collective doesn't join. A Collective begins.” (Plum) · roster + Seoul team</span></li>
+            <li>MEWE <span class="note-inline">(Deep Blue) — the six-stage Arc + Action Research sub-page</span></li>
+          </ul>
+        </li>
+        <li><span class="lbl">Share the Space</span>
+          <ul>
+            <li>Workshop <span class="note-inline">(Magenta) — index + 10 detail pages (Möbius Making, Pathfinder, Jungle Jam, Metanoia, Two Wings, Second Life, Bucket List, Hero's Journey, Light-Shadow-Shift, Shadow Shifter)</span></li>
+            <li>Story <span class="note-inline">(Amber) — wall + Submission page (5-step)</span></li>
+            <li>News <span class="note-inline">(Tan) — network news index, newest first</span></li>
+            <li>Protagonist <span class="note-inline">(Orange) — four depths: Participant → BridgeBuilder → Facilitator → IN-Collective</span></li>
+          </ul>
+        </li>
+        <li><span class="lbl">Serve the Whole</span>
+          <ul>
+            <li>Project <span class="note-inline">(Slate) — the interventions: Food Revolution, UAE Youth Camp, UNC, Asia Exchange, GYEM, tasmena, CTN, Jungle Jam, Shadow Shifter</span></li>
+            <li>Community <span class="note-inline">(Red) — the clusters that continued after each project</span></li>
+            <li>Constellation <span class="note-inline">(Yellow) — the living collection of neighbor expressions</span></li>
+          </ul>
+        </li>
+        <li><span class="lbl">Are you IN?</span> <span class="note-inline">— the way in. Footer + hero only, never a nav category. “Come in — the door is open.”</span></li>
+      </ul>
+    </div>
+
+    <div class="note"><b>Nav rules</b>
+    Top nav = logo (→ home) + plain text links (see C3 — the hover dot-nav is being replaced); “Are you IN?” is an outline pill far right. <b>News sits in Share the Space</b>, not Serve the Whole. There is no category called “Flip Connect” — that name is retired; “Are you IN?” stands alone. Full nav lives in the footer index. “Are you IN?” appears on the Home hero and the Are-you-IN page. CTA model: <code>REGISTER</code> for open-enrollment workshops, <code>INQUIRE</code> for organization-based. No pricing anywhere on the public site.</div>
+  </section>
+
+  <svg class="loopline" viewBox="0 0 1500 80" aria-hidden="true"><path d="M0 52 C130 52 190 52 214 45 C244 36 250 14 233 13 C216 12 214 33 236 42 C262 53 300 54 372 52 C640 49 1000 55 1500 51"></path></svg>
+
+  <section class="sec" id="a2">
+    <div class="sec-num">A2</div>
+    <h2 class="sec-h">Wireframes — page templates</h2>
+    <p class="sec-p">Five reusable templates (Story shown as its three views — index, single, submission). Every current and future page fills one of these rather than being designed from scratch — this is what lets IN house many initiatives without the system fragmenting. Add a new template only deliberately (log it).</p>
+
+    <div class="note"><b>How to read these — blocks &amp; columns</b>
+    Each template shows block order top-to-bottom <b>and the columns inside each band</b>, so you can see where text and images sit. Real spacing and type come from Part B; the footer opens with the MEWE Loop line (B1d / B5).</div>
+    <div class="wire legend">
+      <span style="color:#5a6a60;">Legend</span>
+      <span class="box">TEXT box</span>
+      <span class="box img">IMAGE slot</span>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:20px;margin:26px 0 4px;">Template 1 — Landing / Home</h3>
+    <div class="wire">
+      <div class="band">NAV — logo left · six buttons right</div>
+      <div class="band hero">HERO<div class="cols2"><div class="box" style="text-align:left; padding:14px 10px;">TEXT — “What if ME and WE were never actually two things?” · triad · “Are you IN?” · CTAs</div><div class="box img">IMAGE — hero photo</div></div></div>
+      <div class="band">FEATURED WORKSHOP (2× weight)<div class="cols2"><div class="box img">IMAGE</div><div class="box" style="text-align:left; padding:14px 10px;">TEXT — title · one-line · REGISTER</div></div></div>
+      <div class="band">STORY / NEWS TEASER ROW<div class="cols"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">News</div></div><div class="box">CTA<br>(text)</div></div></div>
+      <div class="band">COMMUNITY STRIP<div class="cols3"><div class="box img">IMAGE</div><div class="box img">IMAGE</div><div class="box img">IMAGE</div></div></div>
+      <div class="band" style="text-align:center; color:#8a9a8f; font-size:9px; letter-spacing:.12em;">〜 MEWE LOOP LINE — FOOTER OPENER 〜</div>
+      <div class="band dark">FOOTER NAV — 6 columns (4 categories · empty · social)<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;"><div class="box">Start Within</div><div class="box">Share the Space</div><div class="box">Serve the Whole</div><div class="box">Are you IN?</div><div class="box" style="opacity:.45;">empty</div><div class="box">email · X · YouTube</div></div><div style="margin-top:8px; font-size:9px; letter-spacing:.08em; opacity:.75;">© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:20px;margin:26px 0 4px;">Template 2 — Section Index (Workshop / Community / Story)</h3>
+    <div class="wire">
+      <div class="band">NAV</div>
+      <div class="band hero">HERO<div class="cols2"><div class="box" style="text-align:left; padding:14px 10px;">TEXT — section headline + one-line intro</div><div class="box img">IMAGE (optional)</div></div></div>
+      <div class="band">CARD GRID — 4 col desktop / 2 tablet / 1 mobile<div class="cols"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div></div><div class="cols" style="margin-top:6px;"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Card</div></div></div></div>
+      <div class="band" style="text-align:center; color:#8a9a8f; font-size:9px; letter-spacing:.12em;">〜 MEWE LOOP LINE — FOOTER OPENER 〜</div>
+      <div class="band dark">FOOTER NAV — 6 columns (4 categories · empty · social)<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;"><div class="box">Start Within</div><div class="box">Share the Space</div><div class="box">Serve the Whole</div><div class="box">Are you IN?</div><div class="box" style="opacity:.45;">empty</div><div class="box">email · X · YouTube</div></div><div style="margin-top:8px; font-size:9px; letter-spacing:.08em; opacity:.75;">© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:20px;margin:26px 0 4px;">Template 3 — Detail Page (a single workshop / project)</h3>
+    <div class="wire">
+      <div class="band">NAV</div>
+      <div class="band hero">HERO<div class="cols2"><div class="box" style="text-align:left; padding:14px 10px;">TEXT — title + one-line promise</div><div class="box img">IMAGE — hero</div></div></div>
+      <div class="band">WHAT IT IS<div class="cols2"><div class="box" style="text-align:left; padding:14px 10px;">TEXT</div><div class="box img">IMAGE</div></div></div>
+      <div class="band">WHO IT'S FOR — TEXT</div>
+      <div class="band">FORMATS / DETAILS — TEXT <span style="opacity:.6">(no pricing)</span></div>
+      <div class="band">CTA BAND — REGISTER or INQUIRE</div>
+      <div class="band">RELATED STORIES<div class="cols"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box">—</div></div></div>
+      <div class="band" style="text-align:center; color:#8a9a8f; font-size:9px; letter-spacing:.12em;">〜 MEWE LOOP LINE — FOOTER OPENER 〜</div>
+      <div class="band dark">FOOTER NAV — 6 columns (4 categories · empty · social)<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;"><div class="box">Start Within</div><div class="box">Share the Space</div><div class="box">Serve the Whole</div><div class="box">Are you IN?</div><div class="box" style="opacity:.45;">empty</div><div class="box">email · X · YouTube</div></div><div style="margin-top:8px; font-size:9px; letter-spacing:.08em; opacity:.75;">© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:20px;margin:26px 0 4px;">Template 4a — Story Index</h3>
+    <div class="wire">
+      <div class="band">NAV</div>
+      <div class="band hero">HERO<div class="cols2"><div class="box" style="text-align:left; padding:14px 10px;">TEXT — “Stories told by everyone. Owned by no one.”</div><div class="box">FILTER (text tabs) — I LIVED IT / I NOTICED IT</div></div></div>
+      <div class="band">STORY WALL — mixed-media cards (masonry)<div class="cols"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story · wide</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div></div><div class="cols" style="margin-top:6px;"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box">More →</div></div></div>
+      <div class="band" style="text-align:center; padding:20px 12px; letter-spacing:.06em;">BIG “ADD YOURS” BAND (CTA, text) — “Fifteen minutes is enough. Add yours →” → Submission (4c)</div>
+      <div class="band" style="text-align:center; color:#8a9a8f; font-size:9px; letter-spacing:.12em;">〜 MEWE LOOP LINE — FOOTER OPENER 〜</div>
+      <div class="band dark">FOOTER NAV — 6 columns (4 categories · empty · social)<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;"><div class="box">Start Within</div><div class="box">Share the Space</div><div class="box">Serve the Whole</div><div class="box">Are you IN?</div><div class="box" style="opacity:.45;">empty</div><div class="box">email · X · YouTube</div></div><div style="margin-top:8px; font-size:9px; letter-spacing:.08em; opacity:.75;">© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:20px;margin:26px 0 4px;">Template 4b — Single Story</h3>
+    <div class="wire">
+      <div class="band">NAV</div>
+      <div class="band hero">HERO<div class="cols2"><div class="box" style="text-align:left; padding:14px 10px;">TEXT — story title · teller · medium tag</div><div class="box img">IMAGE / media</div></div></div>
+      <div class="band">THE FOUR BEATS (TEXT)<div class="cols"><div class="box">1 · one moment</div><div class="box">2 · the dare / noticed</div><div class="box">3 · what moved</div><div class="box">4 · named as MEWE</div></div></div>
+      <div class="band" style="text-align:center;">“pass it on →” (ripple CTA, text)</div>
+      <div class="band">MORE STORIES<div class="cols"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip">IMAGE</div><div style="padding:8px 10px;">Story</div></div><div class="box">More →</div></div></div>
+      <div class="band" style="text-align:center; color:#8a9a8f; font-size:9px; letter-spacing:.12em;">〜 MEWE LOOP LINE — FOOTER OPENER 〜</div>
+      <div class="band dark">FOOTER NAV — 6 columns (4 categories · empty · social)<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;"><div class="box">Start Within</div><div class="box">Share the Space</div><div class="box">Serve the Whole</div><div class="box">Are you IN?</div><div class="box" style="opacity:.45;">empty</div><div class="box">email · X · YouTube</div></div><div style="margin-top:8px; font-size:9px; letter-spacing:.08em; opacity:.75;">© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:20px;margin:26px 0 4px;">Template 4c — Story Submission <span style="font-family:var(--font-utility);font-size:10px;letter-spacing:.1em;color:var(--color-teal);">NEW</span></h3>
+    <div class="wire">
+      <div class="band">NAV</div>
+      <div class="band hero"><div class="box" style="text-align:left; padding:14px 10px;">TEXT — “Fifteen minutes. One honest moment.” intro + reassurance</div></div>
+      <div class="band">STEP 1 · YOUR STORY <span style="color:var(--color-magenta)">(required)</span><div class="cols2"><div class="box" style="text-align:left; padding:14px 10px;">TEXT AREA — the story · two doors (I LIVED IT / I NOTICED IT) · “stuck?” helper</div><div class="box">GUIDE (text)</div></div></div>
+      <div class="band">STEP 2 · FORMAT (optional)<div class="cols2"><div class="box">writing · drawing · photo · audio · video (text tags)</div><div class="box img">UPLOAD → IMAGE / media slot</div></div></div>
+      <div class="band">STEP 3 · LOOP PLACEMENT (optional) — six stage markers (text)</div>
+      <div class="band">STEP 4 · NAME OR ANONYMOUS (optional) — text field</div>
+      <div class="band">STEP 5 · EMAIL + CONSENT <span style="color:var(--color-magenta)">(required)</span> — fields</div>
+      <div class="band" style="text-align:center;">SUBMIT → · “We may gently edit for length — never for meaning.”</div>
+      <div class="band" style="text-align:center; color:#8a9a8f; font-size:9px; letter-spacing:.12em;">〜 MEWE LOOP LINE — FOOTER OPENER 〜</div>
+      <div class="band dark">FOOTER NAV — 6 columns (4 categories · empty · social)<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;"><div class="box">Start Within</div><div class="box">Share the Space</div><div class="box">Serve the Whole</div><div class="box">Are you IN?</div><div class="box" style="opacity:.45;">empty</div><div class="box">email · X · YouTube</div></div><div style="margin-top:8px; font-size:9px; letter-spacing:.08em; opacity:.75;">© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:20px;margin:26px 0 4px;">Template 5 — People / About (Team)</h3>
+    <div class="wire">
+      <div class="band">NAV</div>
+      <div class="band hero"><div class="box" style="text-align:left; padding:14px 10px;">TEXT — “A small studio with a long question.”</div></div>
+      <div class="band">CORE TEAM — portrait People Cards (image over name)<div class="cols"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div></div></div>
+      <div class="band">IN-COLLECTIVES WORLDWIDE — grouped sub-section<div class="cols"><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div><div class="box" style="padding:0; text-align:left;"><div class="imgstrip" style="padding:24px 6px;">IMAGE</div><div style="padding:8px 10px;">Name · role</div></div></div></div>
+      <div class="band" style="text-align:center; color:#8a9a8f; font-size:9px; letter-spacing:.12em;">〜 MEWE LOOP LINE — FOOTER OPENER 〜</div>
+      <div class="band dark">FOOTER NAV — 6 columns (4 categories · empty · social)<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:8px;"><div class="box">Start Within</div><div class="box">Share the Space</div><div class="box">Serve the Whole</div><div class="box">Are you IN?</div><div class="box" style="opacity:.45;">empty</div><div class="box">email · X · YouTube</div></div><div style="margin-top:8px; font-size:9px; letter-spacing:.08em; opacity:.75;">© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</div></div>
+    </div>
+
+    <div class="open"><b>Open — Connect template</b>
+    Connect is a form + thank-you screen ("You're IN."). Treat as a 6th template, or as a variant of Template 3? Decide in build.</div>
+  </section>
+
+  <svg class="loopline" viewBox="0 0 1500 80" aria-hidden="true"><path d="M0 52 C130 52 190 52 214 45 C244 36 250 14 233 13 C216 12 214 33 236 42 C262 53 300 54 372 52 C640 49 1000 55 1500 51"></path></svg>
+
+  <section class="sec" id="a3">
+    <div class="sec-num">A3</div>
+    <h2 class="sec-h">Clickable paths — where each card leads</h2>
+    <p class="sec-p">A card is not just a visual — it is a link with a destination. This table is the wiring: which card, on which template, routes where.</p>
+
+    <table class="paths">
+      <tr><th>Card / element</th><th>Appears on</th><th>Leads to</th><th>CTA verb</th></tr>
+      <tr><td class="k">Workshop Card</td><td>Home, Workshop index</td><td>Workshop detail page (Template 3)</td><td>REGISTER / INQUIRE</td></tr>
+      <tr><td class="k">Featured Workshop</td><td>Home hero area</td><td>MEWE Core / flagship detail</td><td>REGISTER</td></tr>
+      <tr><td class="k">Story Card</td><td>Home, Story wall, Detail pages</td><td>Single story (Template 4)</td><td>Read more</td></tr>
+      <tr><td class="k">People Card</td><td>About / Team</td><td>Contribution or bio (optional)</td><td>— / link</td></tr>
+      <tr><td class="k">Community Card</td><td>Community index</td><td>Project detail + evidence gallery</td><td>Learn more</td></tr>
+      <tr><td class="k">News Card</td><td>Home, Community</td><td>Event / dated announcement</td><td>Learn more / Register</td></tr>
+      <tr><td class="k">Experience Card</td><td>MEWE page only</td><td>Non-clickable (in-page)</td><td>—</td></tr>
+      <tr><td class="k">CTA Card</td><td>Any grid</td><td>Connect or a workshop form</td><td>Active imperative</td></tr>
+      <tr><td class="k">Ecosystem Card</td><td>Where platform is surfaced</td><td>IN platform (may be "Coming soon")</td><td>Learn more</td></tr>
+    </table>
+
+    <div class="open"><b>Open — Story tagging axis</b>
+    Three sources tag stories differently: by <b>medium</b> (Writing/Song/Drawing/Photo…) and by <b>theme</b> (Signature/Transformation/Community/Ancestor/Collective…). Pick the primary axis; the other becomes an optional sub-tag. Not yet resolved.</div>
+  </section>
+
+  <!-- ====================================================================== -->
+  <div class="part-label">Part B — Design Language</div>
+  <!-- ====================================================================== -->
+
+  <section class="sec" id="b1">
+    <div class="sec-num">B1a</div>
+    <h2 class="sec-h">Color</h2>
+    <p class="sec-p">One color per card — a card's ground is the first thing a reader understands, before a word. Never mix colors inside one card. Teal is reserved for links and buttons, never a card ground.</p>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:26px 0 8px;">Grounds & neutrals</h3>
+    <div class="swatch-grid">
+      <div class="sw"><div class="chip" style="background:var(--color-paper);border-bottom:1px solid var(--color-line)"></div><div class="meta"><div class="nm">Paper</div><div class="hex"><span class="hx"><i style="background:#FAF4E2"></i>#FAF4E2</span></div><div class="role">Page bg · card default</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--color-paper-dim)"></div><div class="meta"><div class="nm">Paper dim</div><div class="hex"><span class="hx"><i style="background:#F3EAD0"></i>#F3EAD0</span></div><div class="role">Recessed · outline cards</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--color-ink)"></div><div class="meta"><div class="nm">Ink</div><div class="hex"><span class="hx"><i style="background:#1A1613"></i>#1A1613</span></div><div class="role">Text · nav · dark cards</div></div></div>
+      
+    </div>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:26px 0 8px;">Reserved — links & buttons only</h3>
+    <div class="swatch-grid">
+      <div class="sw"><div class="chip" style="background:var(--color-teal)"></div><div class="meta"><div class="nm">Teal — links</div><div class="hex"><span class="hx"><i style="background:#1E8A86"></i>#1E8A86</span></div><div class="role">Link &amp; button, resting</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--color-teal-dark)"></div><div class="meta"><div class="nm">Teal dark — hover</div><div class="hex"><span class="hx"><i style="background:#146560"></i>#146560</span></div><div class="role">Link &amp; button, hover only</div></div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:30px 0 8px;">Primary — the page colours (11) · one per page, nothing else</h3>
+<p class="sec-p" style="margin-bottom:12px;">These eleven <b>are</b> the palette. A page owns one; its hero band, nav dot, card top-zone, eyebrow and footer ribbon all use that single colour. Any hex not on this page is drift.</p>
+<div class="swatch-grid"><div class="sw"><div class="chip" style="background:#1E8A86"></div><div class="meta"><div class="nm">Manifesto — Teal</div><div class="hex"><span class="hx"><i style="background:#1E8A86"></i>#1E8A86</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#46325A"></div><div class="meta"><div class="nm">Collectives — Plum</div><div class="hex"><span class="hx"><i style="background:#46325A"></i>#46325A</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#1E648C"></div><div class="meta"><div class="nm">MEWE — Deep Blue</div><div class="hex"><span class="hx"><i style="background:#1E648C"></i>#1E648C</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#1C6E92"></div><div class="meta"><div class="nm">About — About Blue</div><div class="hex"><span class="hx"><i style="background:#1C6E92"></i>#1C6E92</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#E5188C"></div><div class="meta"><div class="nm">Workshop — Magenta</div><div class="hex"><span class="hx"><i style="background:#E5188C"></i>#E5188C</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#C9962B"></div><div class="meta"><div class="nm">Story — Mustard</div><div class="hex"><span class="hx"><i style="background:#C9962B"></i>#C9962B</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#F05A28"></div><div class="meta"><div class="nm">Protagonist — Orange</div><div class="hex"><span class="hx"><i style="background:#F05A28"></i>#F05A28</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#1E5A64"></div><div class="meta"><div class="nm">Project — Slate</div><div class="hex"><span class="hx"><i style="background:#1E5A64"></i>#1E5A64</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#D21E28"></div><div class="meta"><div class="nm">Community — Red</div><div class="hex"><span class="hx"><i style="background:#D21E28"></i>#D21E28</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#F0D23C"></div><div class="meta"><div class="nm">Constellation — Yellow</div><div class="hex"><span class="hx"><i style="background:#F0D23C"></i>#F0D23C</span></div><div class="role">Page colour</div></div></div><div class="sw"><div class="chip" style="background:#966432"></div><div class="meta"><div class="nm">News — Tan</div><div class="hex"><span class="hx"><i style="background:#966432"></i>#966432</span></div><div class="role">Page colour</div></div></div></div>
+
+<h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:30px 0 8px;">Secondary — light &amp; deep of each primary (never a new hue)</h3>
+<p class="sec-p" style="margin-bottom:12px;">Each primary has exactly two relatives, both derived from it — a <b>light</b> (mixed 80% into paper, for soft fills, tinted blocks and hover grounds) and a <b>deep</b> (mixed 32% into ink, for text on a light fill, borders and pressed states). The strip shows primary / light / deep top to bottom. <b>This answers the old "light blue" question:</b> the pale band under a swatch was never a separate colour — it is that colour's own light. Nothing outside this table is a legal fill.</p>
+<div class="swatch-grid"><div class="sw"><div class="chip" style="height:34px;background:#1E8A86"></div><div class="chip" style="height:22px;background:#CEDFD0"></div><div class="chip" style="height:22px;background:#1D6561"></div><div class="meta"><div class="nm">Manifesto</div><div class="hex"><span class="hx"><i style="background:#CEDFD0"></i>#CEDFD0</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#1D6561"></i>#1D6561</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#46325A"></div><div class="chip" style="height:22px;background:#D6CDC7"></div><div class="chip" style="height:22px;background:#382943"></div><div class="meta"><div class="nm">Collectives</div><div class="hex"><span class="hx"><i style="background:#D6CDC7"></i>#D6CDC7</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#382943"></i>#382943</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#1E648C"></div><div class="chip" style="height:22px;background:#CED7D1"></div><div class="chip" style="height:22px;background:#1D4B65"></div><div class="meta"><div class="nm">MEWE</div><div class="hex"><span class="hx"><i style="background:#CED7D1"></i>#CED7D1</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#1D4B65"></i>#1D4B65</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#1C6E92"></div><div class="chip" style="height:22px;background:#CED9D2"></div><div class="chip" style="height:22px;background:#1B5269"></div><div class="meta"><div class="nm">About</div><div class="hex"><span class="hx"><i style="background:#CED9D2"></i>#CED9D2</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#1B5269"></i>#1B5269</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#E5188C"></div><div class="chip" style="height:22px;background:#F6C8D1"></div><div class="chip" style="height:22px;background:#A41765"></div><div class="meta"><div class="nm">Workshop</div><div class="hex"><span class="hx"><i style="background:#F6C8D1"></i>#F6C8D1</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#A41765"></i>#A41765</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#C9962B"></div><div class="chip" style="height:22px;background:#F0E1BD"></div><div class="chip" style="height:22px;background:#916D23"></div><div class="meta"><div class="nm">Story</div><div class="hex"><span class="hx"><i style="background:#F0E1BD"></i>#F0E1BD</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#916D23"></i>#916D23</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#F05A28"></div><div class="chip" style="height:22px;background:#F8D5BD"></div><div class="chip" style="height:22px;background:#AC4421"></div><div class="meta"><div class="nm">Protagonist</div><div class="hex"><span class="hx"><i style="background:#F8D5BD"></i>#F8D5BD</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#AC4421"></i>#AC4421</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#1E5A64"></div><div class="chip" style="height:22px;background:#CED5C9"></div><div class="chip" style="height:22px;background:#1D444A"></div><div class="meta"><div class="nm">Project</div><div class="hex"><span class="hx"><i style="background:#CED5C9"></i>#CED5C9</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#1D444A"></i>#1D444A</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#D21E28"></div><div class="chip" style="height:22px;background:#F2C9BD"></div><div class="chip" style="height:22px;background:#971B21"></div><div class="meta"><div class="nm">Community</div><div class="hex"><span class="hx"><i style="background:#F2C9BD"></i>#F2C9BD</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#971B21"></i>#971B21</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#F0D23C"></div><div class="chip" style="height:22px;background:#F8EDC1"></div><div class="chip" style="height:22px;background:#AC962F"></div><div class="meta"><div class="nm">Constellation</div><div class="hex"><span class="hx"><i style="background:#F8EDC1"></i>#F8EDC1</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#AC962F"></i>#AC962F</span> deep</div></div></div><div class="sw"><div class="chip" style="height:34px;background:#966432"></div><div class="chip" style="height:22px;background:#E6D7BF"></div><div class="chip" style="height:22px;background:#6E4B28"></div><div class="meta"><div class="nm">News</div><div class="hex"><span class="hx"><i style="background:#E6D7BF"></i>#E6D7BF</span> light</div><div class="hex" style="margin-top:3px;"><span class="hx"><i style="background:#6E4B28"></i>#6E4B28</span> deep</div></div></div></div>
+
+<h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:30px 0 8px;">Tertiary — overlap tones (optional, from the mark)</h3>
+<p class="sec-p" style="margin-bottom:12px;">Where two primaries cross and multiply, as the planes do in the mark. Use for large quiet fields, section grounds and print backs — <b>never</b> for a card, a page colour or type. Optional by nature: a page never needs one.</p>
+<div class="swatch-grid"><div class="sw"><div class="chip" style="background:#081B2F"></div><div class="meta"><div class="nm">Teal × Plum</div><div class="hex"><span class="hx"><i style="background:#081B2F"></i>#081B2F</span></div><div class="role">Overlap tone</div></div></div><div class="sw"><div class="chip" style="background:#1B094D"></div><div class="meta"><div class="nm">Deep Blue × Magenta</div><div class="hex"><span class="hx"><i style="background:#1B094D"></i>#1B094D</span></div><div class="role">Overlap tone</div></div></div><div class="sw"><div class="chip" style="background:#BD3507"></div><div class="meta"><div class="nm">Mustard × Orange</div><div class="hex"><span class="hx"><i style="background:#BD3507"></i>#BD3507</span></div><div class="role">Overlap tone</div></div></div><div class="sw"><div class="chip" style="background:#190B10"></div><div class="meta"><div class="nm">Slate × Red</div><div class="hex"><span class="hx"><i style="background:#190B10"></i>#190B10</span></div><div class="role">Overlap tone</div></div></div><div class="sw"><div class="chip" style="background:#8D520C"></div><div class="meta"><div class="nm">Yellow × Tan</div><div class="hex"><span class="hx"><i style="background:#8D520C"></i>#8D520C</span></div><div class="role">Overlap tone</div></div></div><div class="sw"><div class="chip" style="background:#B50E18"></div><div class="meta"><div class="nm">Magenta × Mustard</div><div class="hex"><span class="hx"><i style="background:#B50E18"></i>#B50E18</span></div><div class="role">Overlap tone</div></div></div><div class="sw"><div class="chip" style="background:#C60B06"></div><div class="meta"><div class="nm">Orange × Red</div><div class="hex"><span class="hx"><i style="background:#C60B06"></i>#C60B06</span></div><div class="role">Overlap tone</div></div></div><div class="sw"><div class="chip" style="background:#04364A"></div><div class="meta"><div class="nm">Teal × Deep Blue</div><div class="hex"><span class="hx"><i style="background:#04364A"></i>#04364A</span></div><div class="role">Overlap tone</div></div></div></div>
+
+<div class="note"><b>The three tiers, in one line</b>
+<b>Primary</b> = the page colour, one per page, always saturated. &nbsp; <b>Secondary</b> = that same colour lighter or deeper, for fills and states. &nbsp; <b>Tertiary</b> = two primaries multiplied, for big calm fields only. Reserved outside the tiers: <span class="hx"><i style="background:#1E8A86"></i>#1E8A86</span> links, <span class="hx"><i style="background:#146560"></i>#146560</span> hover, <span class="hx"><i style="background:#E20606"></i>#E20606</span> hero pop, <span class="hx"><i style="background:#FAB414"></i>#FAB414</span> Story hero band. Grounds: <span class="hx"><i style="background:#FAF4E2"></i>#FAF4E2</span> paper, <span class="hx"><i style="background:#F3EAD0"></i>#F3EAD0</span> paper-dim, <span class="hx"><i style="background:#1A1613"></i>#1A1613</span> ink.
+<br><b>Retired:</b> the old grey "Line" colour is gone — hairlines are ink at 12% opacity, not a colour you choose. The 13-accent numbered palette (Navy, Forest, Gold, Green) is retired as a palette; those hues survive only if a page adopts one as its primary.</div>
+
+    <hr class="div">
+    <div class="sec-num">B1b</div>
+    <h2 class="sec-h">Typography</h2>
+    <p class="sec-p">Two voices. Newsreader (warm serif) carries all human writing — headlines, quotes, body. Archivo (tidy sans, uppercase, wide) does labels and buttons. Emphasis is italic + color, never bold shouting.</p>
+
+    <div style="margin-top:20px;">
+      <div class="spec"><div class="tag">Hero · ~130</div><div style="font-family:var(--font-display);font-size:var(--fs-hero);line-height:1;font-weight:400;">Are you IN?</div></div>
+      <div class="spec"><div class="tag">Display · 76</div><div style="font-family:var(--font-display);font-size:56px;line-height:1;font-weight:400;">One path. No sides.</div></div>
+      <div class="spec"><div class="tag">Section · 38</div><div style="font-family:var(--font-display);font-size:38px;font-weight:500;">A small studio with a long question.</div></div>
+      <div class="spec"><div class="tag">Card title · 30</div><div style="font-family:var(--font-display);font-size:30px;font-weight:700;line-height:1;">Where the practice took root.</div></div>
+      <div class="spec"><div class="tag">Quote · 28</div><div style="font-family:var(--font-display);font-size:28px;font-style:italic;font-weight:400;">Perhaps we were already connected.</div></div>
+      <div class="spec"><div class="tag">Body · 17</div><div style="font-family:var(--font-display);font-size:17px;max-width:52ch;">Separation may be felt, but relationship is structural. We are not outside the pattern — we are expressions of it.</div></div>
+      <div class="spec"><div class="tag">Eyebrow · 13 / 17</div><div style="font-family:var(--font-utility);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;">Start Within &nbsp;<span style="font-size:17px;color:#8a9a8f;">· hero 17px</span></div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:26px 0 8px;">Two eyebrow / label types — don't mix them</h3>
+    <p class="sec-p" style="margin-bottom:14px;">Both are Archivo, uppercase. They do different jobs and carry different color:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-line);border:1px solid var(--color-line);">
+      <div style="background:var(--color-paper);padding:22px 24px;">
+        <div style="font-family:var(--font-utility);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin-bottom:14px;">Type 1 · Keyword kicker</div>
+        <div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--color-teal);">Start Within · Share the Space · Serve the Whole</div>
+        <div style="font-size:12px;color:#8a9a8f;margin-top:12px;line-height:1.5;">Brand keywords &amp; section kickers. <b>TEAL</b>, wide track (~.18em). A voice, not a control — never a link. Don't repeat it as a heading where the same words already act as nav category titles.</div>
+      </div>
+      <div style="background:var(--color-paper);padding:22px 24px;">
+        <div style="font-family:var(--font-utility);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin-bottom:14px;">Type 2 · Nav / label</div>
+        <div style="display:flex;gap:26px;align-items:baseline;flex-wrap:wrap;">
+          <div style="font-family:var(--font-utility);font-size:13px;letter-spacing:.13em;line-height:1.3;text-transform:uppercase;font-weight:600;color:var(--color-teal);">Start Within &nbsp;·&nbsp; category</div>
+          <div style="font-family:var(--font-utility);font-size:13px;letter-spacing:.13em;line-height:1.3;text-transform:uppercase;font-weight:600;color:var(--color-teal-dark);">Are you IN? &nbsp;·&nbsp; nav item / button</div>
+        </div>
+        <div style="font-size:12px;color:#8a9a8f;margin-top:12px;line-height:1.5;">Nav, footer columns, buttons. <b>13px</b>, track .13em, leading 1.3, uppercase — one size, same as the header <b>Are you IN?</b> button. <b>TEAL</b> for category headers; <b>TEAL-DARK</b> for nav items, links &amp; buttons.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:22px;background:var(--color-paper-dim);padding:26px 28px;">
+      <div style="font-family:var(--font-utility);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a9a8f;margin-bottom:12px;">Hero lockup — locked (shown smaller here; 130px, light weight, on the live page)</div>
+      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(34px,6vw,60px);line-height:1;color:var(--color-red);">IN is a studio</div>
+      <div style="font-family:var(--font-display);font-weight:400;font-size:clamp(24px,4.5vw,42px);line-height:1.12;color:var(--color-slate);margin-top:6px;">“where we practice MEWE through honest conversations and artful expressions.”</div>
+    </div>
+
+    <div class="note"><b>Type rules</b>
+    Body floor is <code>17px</code> — never smaller than nav. This is the accessibility standard (site serves all ages). Headline emphasis = <code>&lt;em&gt;</code> italic + color token, not bold. <b>Footer &amp; all navigation are Archivo only — never Newsreader</b> (the serif is for human writing; nav/labels/links are the sans voice). Load Newsreader + Archivo (Google Fonts, imported at top).</div>
+
+    <div class="note"><b>Typeface — locked</b>
+    Newsreader + Archivo is final. Superseded pairings (Fraunces + Space Grotesk; Gotham / Merriweather / Roboto) are retired.</div>
+
+    <hr class="div">
+    <div class="sec-num">B1c</div>
+    <h2 class="sec-h">Spacing, grid & shape</h2>
+    <div class="note"><b>Values</b>
+    Base unit 4px. Steps: 8 / 16 / 22 / 26 / 40 / 60 / 80. Gutters: 40px desktop, 20px mobile. Card grid: 4 col desktop / 2 tablet / 1 mobile, <b>1px hairline gap</b> filled with <code>line</code> (grid lines are visible). Card min-height 300px standard, 420px tall. Corners are square by default (<code>--radius-card: 0</code>) on every tagged content card. <b>Rounded-soft</b> (<code>--radius-soft: 18px</code>) and <b>circles</b> are allowed as a deliberate exception — only on visual-only blocks, avatars, and number/word circles (see B4) — never on a tagged content card. Round is otherwise reserved for the arrow-button and the domain dot.</div>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:26px 0 10px;">The spacing scale — pick from these, never in-between</h3>
+    <div style="display:flex; flex-direction:column; gap:8px; max-width:640px;">
+      <div style="display:flex; align-items:center; gap:14px;"><span style="width:60px; font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; color:#8a9a8f;">4 · xs</span><span style="height:14px; width:4px; background:var(--color-teal);"></span><span style="font-size:12px; color:#8a9a8f;">inside a chip — icon↔label</span></div>
+      <div style="display:flex; align-items:center; gap:14px;"><span style="width:60px; font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; color:#8a9a8f;">8 · sm</span><span style="height:14px; width:8px; background:var(--color-teal);"></span><span style="font-size:12px; color:#8a9a8f;">tight stacks — label↔value</span></div>
+      <div style="display:flex; align-items:center; gap:14px;"><span style="width:60px; font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; color:#8a9a8f;">16 · md</span><span style="height:14px; width:16px; background:var(--color-teal);"></span><span style="font-size:12px; color:#8a9a8f;">paragraph↔paragraph</span></div>
+      <div style="display:flex; align-items:center; gap:14px;"><span style="width:60px; font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; color:#8a9a8f;">22 · lg</span><span style="height:14px; width:22px; background:var(--color-teal);"></span><span style="font-size:12px; color:#8a9a8f;">card grid gap</span></div>
+      <div style="display:flex; align-items:center; gap:14px;"><span style="width:60px; font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; color:#8a9a8f;">40 · xl</span><span style="height:14px; width:40px; background:var(--color-teal);"></span><span style="font-size:12px; color:#8a9a8f;">heading↔its block · page gutter</span></div>
+      <div style="display:flex; align-items:center; gap:14px;"><span style="width:60px; font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; color:#8a9a8f;">80 · 2xl</span><span style="height:14px; width:80px; background:var(--color-ink);"></span><span style="font-size:12px; color:#8a9a8f;"><b>breathing gap</b> — hero copy↔buttons, buttons↔card wall</span></div>
+      <div style="display:flex; align-items:center; gap:14px;"><span style="width:60px; font-family:var(--font-utility); font-size:11px; letter-spacing:.06em; color:#8a9a8f;">120 · 3xl</span><span style="height:14px; width:120px; background:var(--color-ink);"></span><span style="font-size:12px; color:#8a9a8f;"><b>section↔section</b> — major rhythm break</span></div>
+    </div>
+    <div class="note" style="margin-top:18px;"><b>Vertical rhythm — the one rule</b>
+    Every gap on the page is one of these steps — never a hand-picked number. Three gaps set the whole page's breath: <b>80px</b> after the hero statement (so the buttons sit low and calm), <b>80px</b> before the card wall begins, and <b>120px</b> between any two major sections. Small in-component spacing uses 4–22; anything separating <i>blocks</i> uses 40 / 80 / 120. When in doubt, go one step larger — this system errs generous.</div>
+
+    <hr class="div">
+    <div class="sec-num">B1d</div>
+    <h2 class="sec-h">Signature motif — the MEWE Loop line</h2>
+    <p class="sec-p">A single, organic, hand-drawn line — one continuous surface with one gentle flip (the loop). It carries the MEWE Loop in 2D: SHIFT, kept practicing and moving — each person's shift landing in a different place along the line. It opens the footer and marks major section breaks, and on the live site it draws itself in as you move between pages.</p>
+    <svg class="loopline" viewBox="0 0 1500 80" aria-hidden="true"><path d="M0 52 C130 52 190 52 214 45 C244 36 250 14 233 13 C216 12 214 33 236 42 C262 53 300 54 372 52 C640 49 1000 55 1500 51"></path></svg>
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:30px 0 8px;">Footer opener — how it sits (seamless)</h3>
+    <div style="border:1px solid var(--color-line);">
+      <div style="background:var(--color-paper); padding:22px 22px 8px;">
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#8a9a8f;">… upper page content (paper) …</div>
+        <svg class="loopline" style="margin:20px 0 0;" viewBox="0 0 1500 80" aria-hidden="true"><path d="M0 52 C130 52 190 52 214 45 C244 36 250 14 233 13 C216 12 214 33 236 42 C262 53 300 54 372 52 C640 49 1000 55 1500 51"></path></svg>
+      </div>
+      <div style="background:var(--color-paper-dim); padding:36px 22px 30px;">
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-teal); font-weight:600;">Start Within · Share the Space · Serve the Whole</div>
+        <div style="font-size:12px; color:#8a9a8f; margin-top:8px;">The Loop line floats on the page ground, with paper continuing beneath it; the footer fill begins lower as a soft tone shift — the line is the only visible division, never a hard straight edge beside it.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:30px 0 8px;">Brand marks</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;background:var(--color-line);border:1px solid var(--color-line);">
+      <div style="background:var(--color-paper);padding:28px;display:flex;align-items:center;justify-content:center;min-height:170px;"><img src="IN_Logo.png" alt="IN ribbon mark" style="max-width:120px;max-height:120px;width:auto;height:auto;display:block;"></div>
+      <div style="background:var(--color-paper);padding:28px;display:flex;align-items:center;justify-content:center;min-height:170px;"><img src="innoco-logo.png" alt="INNOCO logo" style="max-width:80%;height:auto;object-fit:contain;display:block;"></div>
+    </div>
+
+    <div class="note"><b>Rules</b>
+    The Loop line is the one “loose” gesture against the disciplined grid. It opens the footer and appears at major section breaks — one per break, never inside a card, never decorating text. It <b>replaces the old gradient ribbon entirely</b> — no colored gradient strip anywhere. On the live footer the ribbon inherits the CTA band color and its loop sweeps position per page (see B5).</div>
+  </section>
+
+  <svg class="loopline" viewBox="0 0 1500 80" aria-hidden="true"><path d="M0 52 C130 52 190 52 214 45 C244 36 250 14 233 13 C216 12 214 33 236 42 C262 53 300 54 372 52 C640 49 1000 55 1500 51"></path></svg>
+
+  <section class="sec" id="b2">
+    <div class="sec-num">B2</div>
+    <h2 class="sec-h">Card anatomy — the base module</h2>
+    <p class="sec-p">Every card shares one skeleton. Only content and color change. A taxonomy tag rotated 90° clockwise reads top-to-bottom at the top-left, colour dot above it; title (Newsreader 700, 30px, line-height 1.0) and description (17px, line-height 1.3) sit beneath; a <b>filled ink round arrow, right-aligned</b> at the bottom means “there’s more inside.” The card link is <b>arrow-only</b> — so the card’s text stays directly editable.</p>
+
+    <div class="card-row" style="grid-template-columns:1fr;max-width:340px;">
+      <div class="card" style="background:var(--color-slate);color:var(--color-paper);">
+        <span class="edgetag"><span class="dot"></span>Systems</span>
+        <span class="subtag">Tool</span>
+        <h4>The title lives here</h4>
+        <p>A short description sits beneath it — two or three lines at most.</p>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+
+    <div class="note"><b>Required vs optional</b>
+    Required in every card: domain tag (colour dot <b>above</b> a vertical label <b>rotated 90° clockwise, reading top-to-bottom</b> — see B3), type tag, title (Newsreader 700, 30px). Optional per type: description (20px, 1–2 lines), medium/role sub-tag, byline, date, arrow (omit only on non-clickable cards, e.g. a pure quote or Experience card). <b>Arrow = filled ink #1A1613 + paper glyph, no border, right-aligned</b>; link sits on the arrow only. Image boxes default 4:3 (fixed-ratio frame, cover-crop, adjustable per photo). Corners square, always. Backgrounds use warm supporting tints of the page color — no two adjacent cards share a color.</div>
+  </section>
+
+  <section class="sec" id="b3">
+    <div class="sec-num">B3</div>
+    <h2 class="sec-h">Card catalog</h2>
+    <p class="sec-p">The module rendered at real proportions, so the anatomy can be checked by eye rather than read. <b>Only colour and size vary</b> — see C2 for the governing rules and the four-part checklist for adding one.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;align-items:stretch;margin:22px 0 0;">
+      <div style="background:#F3EAD0;color:#1A1613;display:flex;flex-direction:column;min-height:300px;"><div style="aspect-ratio:4/3;background:#E5188C;"></div><div style="position:relative;padding:16px 18px 56px 40px;flex:1;min-height:calc(14px + 9px + 7px + 156px + 16px);"><div style="position:absolute;top:16px;left:14px;display:flex;flex-direction:column;align-items:center;gap:8px;"><span style="width:9px;height:9px;border-radius:50%;background:#E5188C;"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:rgba(26,22,19,.6);">Workshop</span></div><div style="font-family:var(--font-utility);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E5188C;">Workshop</div><h4 style="font-family:var(--font-display);font-weight:700;font-size:26px;line-height:1.05;margin:8px 0 6px;">Where practice becomes a lifestyle.</h4><p style="font-family:var(--font-display);font-size:17px;line-height:1.4;margin:0;opacity:.72;">Ten workshops, one surface.</p><span style="position:absolute;right:14px;bottom:14px;width:34px;height:34px;border-radius:50%;background:#1A1613;color:#FAF4E2;display:flex;align-items:center;justify-content:center;font-size:16px;">→</span></div></div>
+      <div style="background:#F3EAD0;color:#1A1613;display:flex;flex-direction:column;min-height:300px;"><div style="aspect-ratio:4/3;background:#C9962B;"></div><div style="position:relative;padding:16px 18px 56px 40px;flex:1;min-height:calc(14px + 9px + 7px + 156px + 16px);"><div style="position:absolute;top:16px;left:14px;display:flex;flex-direction:column;align-items:center;gap:8px;"><span style="width:9px;height:9px;border-radius:50%;background:#C9962B;box-shadow:0 0 0 1px #1A1613;"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:rgba(26,22,19,.6);">Story</span></div><div style="font-family:var(--font-utility);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C9962B;">Story</div><h4 style="font-family:var(--font-display);font-weight:700;font-size:26px;line-height:1.05;margin:8px 0 6px;">Stories told by everyone.</h4><p style="font-family:var(--font-display);font-size:17px;line-height:1.4;margin:0;opacity:.72;">Owned by no one.</p><span style="position:absolute;right:14px;bottom:14px;width:34px;height:34px;border-radius:50%;background:#1A1613;color:#FAF4E2;display:flex;align-items:center;justify-content:center;font-size:16px;">→</span></div></div>
+      <div style="position:relative;background:#1E5A64;color:#FAF4E2;min-height:300px;padding:22px 22px 62px 52px;display:flex;flex-direction:column;justify-content:flex-end;"><div style="position:absolute;top:14px;left:14px;display:flex;flex-direction:column;align-items:center;gap:8px;"><span style="width:9px;height:9px;border-radius:50%;background:#FAF4E2;box-shadow:0 0 0 1px rgba(26,22,19,.35);"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:#FAF4E2;opacity:.75;">Project</span></div><h4 style="font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1;margin:0 0 10px;">The practice, out in the world.</h4><p style="font-family:var(--font-display);font-size:20px;line-height:1.4;margin:0;opacity:.9;">Nine interventions, five countries.</p><span style="position:absolute;right:14px;bottom:14px;width:34px;height:34px;border-radius:50%;background:#FAF4E2;color:#1E5A64;display:flex;align-items:center;justify-content:center;font-size:16px;">→</span></div>
+      <div style="position:relative;background:#F0D23C;color:#1A1613;min-height:300px;padding:22px 22px 62px 52px;display:flex;flex-direction:column;justify-content:flex-end;"><div style="position:absolute;top:14px;left:14px;display:flex;flex-direction:column;align-items:center;gap:8px;"><span style="width:9px;height:9px;border-radius:50%;background:#1A1613;box-shadow:0 0 0 1px rgba(26,22,19,.35);"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:#1A1613;opacity:.75;">Constellation</span></div><h4 style="font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1;margin:0 0 10px;">Separate points of light.</h4><p style="font-family:var(--font-display);font-size:20px;line-height:1.4;margin:0;opacity:.9;">One shape, seen from far enough away.</p><span style="position:absolute;right:14px;bottom:14px;width:34px;height:34px;border-radius:50%;background:#1A1613;color:#F0D23C;display:flex;align-items:center;justify-content:center;font-size:16px;">→</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;align-items:stretch;margin:18px 0 0;">
+      <div style="position:relative;background:#F3EAD0;color:#1A1613;min-height:230px;padding:26px 26px 26px 30px;clip-path:polygon(0 0,100% 0,100% 100%,0 calc(100% - 26px));overflow:hidden;">
+        <span style="position:absolute;right:-10px;bottom:-40px;font-family:var(--font-display);font-weight:700;font-size:150px;line-height:1;color:rgba(26,22,19,.07);">03</span>
+        <div style="font-family:var(--font-utility);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.55;">Type 3 · Infographic panel</div>
+        <h4 style="font-family:var(--font-display);font-weight:700;font-size:26px;line-height:1.05;margin:10px 0 6px;">Three moves, one loop</h4>
+        <p style="font-family:var(--font-display);font-size:17px;line-height:1.45;margin:0;opacity:.75;">Static. No rail, no arrow, no link, no hover. A diagram, not a door.</p>
+      </div>
+      <div style="border:1.5px solid #1A1613;background:#FAF4E2;min-height:230px;padding:28px;display:flex;align-items:center;">
+        <p style="font-family:var(--font-display);font-style:italic;font-size:21px;line-height:1.4;margin:0;">“Perhaps we were already connected.” <span style="display:block;font-family:var(--font-utility);font-size:11px;font-style:normal;letter-spacing:.16em;text-transform:uppercase;opacity:.5;margin-top:14px;">Visual-only block — not a card</span></p>
+      </div>
+    </div>
+
+    <div class="note"><b>Reading the anatomy above</b>
+    The taxonomy tag sits <b>top-left, rotated 90° clockwise and reading TOP-TO-BOTTOM</b> — never bottom-to-top, never with upright stacked letters, never below the word, never on the right. Its colour dot sits <b>above</b> the word. <b>The letters are rotated 90° clockwise, lying on their side</b> — <code>writing-mode: vertical-rl; text-orientation: mixed</code>, no <code>transform</code>, no upright stacking. The word reads downward, its baseline running down the card's left edge. Type is Archivo 700, <b>11px, .16em, line-height 1</b>, so a tag's height is simply the set width of its word — CONSTELLATION, the longest, runs about 110px. The <b>Type 2 bottom zone keeps a 202px floor</b> (<code>14px inset + 9px dot + 7px gap + 156px + 16px</code> in the CSS), which now clears every tag by 60px or more; the floor is held by the eyebrow, title and arrow stack rather than by the rail. On Type 1 the tag runs against the full card, which is 300px minimum, so it always fits. Never shrink the tag below 10px and never let it run past the card edge — grow the zone instead. <b>Locked 2026-08-06</b> against the built pages: rotated clockwise, reading top-to-bottom. Any tag reading bottom-to-top, or set with upright letters, is a defect to sweep. Content clears it with a 40–52px left inset. The arrow is a <b>filled ink circle, bottom-right</b>, and carries the link on its own so the card's text stays editable. Title Newsreader 700 · body 20px · square corners · rows stretch to equal height on an 18px gap.
+    <br><b>Type 1</b> (Project, Constellation above) — solid taxonomy ground, cream type on dark, ink type on the light tones. <b>Type 2</b> (Workshop, Story above) — the Home two-zone card: 4:3 colour plate or photo on top, paper-dim below, dot ringed in ink on Story mustard and Constellation yellow. <b>Type 3</b> — the static panel. Anything with no tag and no arrow is a visual-only block (B4), not a card.</div>
+
+     — all 9 pages (built)</h3>
+    <p class="sec-p">Full-bleed key-color band, uniform 62px band padding. Eyebrow (● + 17px) → heading (80px / 0.98) → optional 50px subheading → description (28px / 1.2). Cream text on dark; ink on amber &amp; yellow.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--color-line); border:1px solid var(--color-line); margin:var(--sp-4) 0 0;">
+      <div style="background:var(--color-teal);color:var(--color-paper);padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85;">● Manifesto</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">This is not finished. It is not meant to be.</div></div>
+      <div style="background:var(--color-plum);color:var(--color-paper);padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85;">● Collectives</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">A Collective doesn't join. A Collective begins.</div></div>
+      <div style="background:var(--color-deep-blue);color:var(--color-paper);padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85;">● MEWE</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">What if ME and WE were never actually two things?</div></div>
+      <div style="background:var(--color-magenta);color:var(--color-paper);padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85;">● Workshop</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">Where practice becomes a lifestyle.</div></div>
+      <div style="background:var(--color-amber);color:#1A1A1A;padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.7;">● Story</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">Stories told by everyone. Owned by no one.</div></div>
+      <div style="background:var(--color-orange);color:var(--color-paper);padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85;">● Protagonist</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">No spectators here.</div></div>
+      <div style="background:var(--color-slate);color:var(--color-paper);padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85;">● Project</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">The practice, out in the world.</div></div>
+      <div style="background:var(--color-red);color:var(--color-paper);padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.85;">● Community</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">Where the practice took root.</div></div>
+      <div style="background:var(--color-yellow);color:#1A1A1A;padding:22px;min-height:150px;"><div style="font-family:var(--font-utility);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.7;">● Constellation</div><div style="font-family:var(--font-display);font-size:26px;line-height:1.0;margin-top:10px;">Separate points of light. One shape.</div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:22px;margin:34px 0 6px;">MEWE Loop — the six stages (MEWE page)</h3>
+    <p class="sec-p">The full workshop journey (not Protagonist, not a single card). Two circles overlap more with each stage — ME and WE moving from apart to one surface, with the flip at (ME WE). Shown in-page, non-clickable.</p>
+    <div style="border:1px solid var(--color-line); background:#fff; padding:10px 8px; margin:var(--sp-4) 0 0;"><img src="team/mewe-arc-strip.png" alt="MEWE Loop — six hand-drawn Möbius stages: IGNITE, ME≠WE, ME+WE, (ME WE), ME=WE, GLOW" style="width:100%; height:auto; display:block;"></div>
+    <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin:14px 0 0; text-align:center;">
+      <div><div style="font-family:var(--font-utility); font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px;">Ignite</div><p style="margin:0; font-family:var(--font-display); font-size:13px; line-height:1.4; color:var(--color-ink);">Willing to turn toward my higher self, willing to look.</p></div>
+      <div><div style="font-family:var(--font-utility); font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px;">ME &ne; WE</div><p style="margin:0; font-family:var(--font-display); font-size:13px; line-height:1.4; color:var(--color-ink);">Still inside my own story.</p></div>
+      <div><div style="font-family:var(--font-utility); font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px;">ME + WE</div><p style="margin:0; font-family:var(--font-display); font-size:13px; line-height:1.4; color:var(--color-ink);">Beginning to notice the web that holds ME and WE.</p></div>
+      <div><div style="font-family:var(--font-utility); font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px;">(ME WE)</div><p style="margin:0; font-family:var(--font-display); font-size:13px; line-height:1.4; color:var(--color-ink);">The flip — a door opens, we see together.</p></div>
+      <div><div style="font-family:var(--font-utility); font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px;">ME = WE</div><p style="margin:0; font-family:var(--font-display); font-size:13px; line-height:1.4; color:var(--color-ink);">Moving in the relational field; our actions ripple outward.</p></div>
+      <div><div style="font-family:var(--font-utility); font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px;">Glow</div><p style="margin:0; font-family:var(--font-display); font-size:13px; line-height:1.4; color:var(--color-ink);">We co-create and co-evolve, toward the whole.</p></div>
+    </div>
+
+    <div class="note"><b>Card requests — shorthand</b>
+    <i>"[Type] card, [color], medium/role: [ ], title: [ ], description: [ ], size: 1×1 / wide / tall."</i> People cards are portrait (1×1.5) and grouped in their own sub-section. If a request fits no type here, say so — that's the signal to add a catalog entry, not bend one.</div>
+
+    <div class="open"><b>Open — Protagonist vs Experience vs Loop</b>
+    Three distinct systems must never be conflated: <b>MEWE Loop</b> (six stages of the workshop journey) · <b>Protagonist</b> (four communities, not tiers) · <b>Experience</b> (single-session felt pattern, above). Protagonist card content is still placeholder — swap when the fuller Protagonist copy surfaces.</div>
+  </section>
+
+  <svg class="loopline" viewBox="0 0 1500 80" aria-hidden="true"><path d="M0 52 C130 52 190 52 214 45 C244 36 250 14 233 13 C216 12 214 33 236 42 C262 53 300 54 372 52 C640 49 1000 55 1500 51"></path></svg>
+
+  <section class="sec" id="b4">
+    <div class="sec-num">B4</div>
+    <h2 class="sec-h">Visual-only blocks</h2>
+    <p class="sec-p">Blocks that carry no link — no tag, no arrow, nothing to click. They set rhythm and texture in the wall, like a breath between reading. Kept intentionally <b>light</b> — outline, soft tint, or paper — so they breathe beside the saturated content cards instead of competing with them. Three reusable types (each can hold a phrase, a number, or an image):</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:22px 0;">
+
+      <div>
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a9a8f; margin-bottom:8px;">Type 1 · Line box</div>
+        <div style="border:1.5px solid var(--color-ink); background:var(--color-paper); min-height:220px; padding:28px; display:flex; flex-direction:column; justify-content:center;">
+          <p style="font-family:var(--font-display); font-style:italic; font-size:21px; line-height:1.42; color:var(--color-ink); margin:0;">“Perhaps we were already connected.”</p>
+        </div>
+        <p style="font-size:12px; color:#8a9a8f; margin:8px 0 0;">Outline only on paper — the quietest. A held quote or aside.</p>
+      </div>
+
+      <div>
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a9a8f; margin-bottom:8px;">Type 2 · Light-tone block</div>
+        <div style="background:var(--color-slate-tint); min-height:220px; padding:28px; display:flex; flex-direction:column; justify-content:center; color:var(--color-ink);">
+          <div style="font-family:var(--font-display); font-size:46px; line-height:1;">650+</div>
+          <p style="margin:8px 0 0; font-size:13.5px; opacity:.7;">participants since 2015</p>
+        </div>
+        <p style="font-size:12px; color:#8a9a8f; margin:8px 0 0;">A soft accent tint (here slate) with ink text — colour without shouting. Any of the 13 tints works.</p>
+      </div>
+
+      <div>
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a9a8f; margin-bottom:8px;">Type 3 · Paper plate</div>
+        <div style="background:var(--color-paper-dim); min-height:220px; display:flex; align-items:center; justify-content:center; color:#8a9a8f; font-family:var(--font-utility); font-size:11px; letter-spacing:.08em; text-transform:uppercase;">Image · a real photo goes here</div>
+        <p style="font-size:12px; color:#8a9a8f; margin:8px 0 0;">A recessed paper-dim frame — for one documentary photo (4:3 / 1:1 / 3:4) or a big quiet word.</p>
+      </div>
+
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:22px;margin:34px 0 6px;">Shape variants — visual-only blocks &amp; avatars</h3>
+    <p class="sec-p">Square is the rule for content cards. These softer shapes are allowed <b>only</b> here — a gentler beat in the wall.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:16px 0 0; align-items:center;">
+      <div>
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a9a8f; margin-bottom:8px;">Rounded-soft</div>
+        <div style="border:1.5px solid var(--color-ink); border-radius:var(--radius-soft); background:var(--color-paper); min-height:180px; padding:26px; display:flex; align-items:center; justify-content:center; text-align:center;"><p style="font-family:var(--font-display); font-style:italic; font-size:19px; margin:0;">A softer moment.</p></div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a9a8f; margin-bottom:8px;">Circle · number</div>
+        <div style="min-height:180px; display:flex; align-items:center; justify-content:center;"><div style="width:150px; height:150px; border-radius:50%; background:var(--color-amber-tint); color:var(--color-ink); display:flex; flex-direction:column; align-items:center; justify-content:center;"><div style="font-family:var(--font-display); font-size:42px; line-height:1;">5</div><div style="font-family:var(--font-utility); font-size:10px; letter-spacing:.1em; text-transform:uppercase; margin-top:4px;">countries</div></div></div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-utility); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a9a8f; margin-bottom:8px;">Circle · outline</div>
+        <div style="min-height:180px; display:flex; align-items:center; justify-content:center;"><div style="width:150px; height:150px; border-radius:50%; border:1.5px solid var(--color-ink); color:var(--color-ink); display:flex; align-items:center; justify-content:center; text-align:center; padding:16px;"><p style="font-family:var(--font-display); font-style:italic; font-size:16px; margin:0;">pass it on →</p></div></div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:#8a9a8f; margin:12px 0 26px;">Rounded &amp; circular shapes are for these visual-only blocks and for avatars — tagged content cards stay square.</p>
+
+    <div class="open"><b>Open — sample content, do not ship as-is</b>
+    The "650+ participants / 5 countries" stat and any quote in a statement block are <b>placeholder</b>. Replace with verified numbers and an approved quote before publishing. (Margaret Mead quote is banned sitewide; confirm any Scharmer line is wanted before it appears.)</div>
+  </section>
+
+  <section class="sec" id="b5">
+    <div class="sec-num">B5</div>
+    <h2 class="sec-h">Relational & layout rules</h2>
+    <p class="sec-p">The "don't-make-me-repeat-this" rules. Written once here so no prompt has to restate them.</p>
+
+    <div class="note"><b>Footer opening — the rule</b>
+    The footer <b>opens with the MEWE Loop line</b> (B1d) across the full width. The <b>page (paper) ground continues beneath the line</b>; the footer fill (paper-dim) begins <b>below</b> it as a soft tone shift, so the line floats on one continuous ground. No gradient, no colored ribbon, and <b>no hard straight edge beside the line</b> — the Loop line is the only visible division.</div>
+
+    <div class="note"><b>Top navigation — compressed mirror of the footer</b>
+    Every page carries a sticky top nav that mirrors the footer in order and destinations (<b>change one, change both</b>). Three category keywords — <b>Start Within · Share the Space · Serve the Whole</b> — each with three dots beneath; <b>Flip Connect is footer-only</b>. IN mark (left) links home; <b>Are you IN?</b> sits apart on the far right as an outline <b>pill</b> (no fill).
+    <br>• <b>Keywords are labels, not links</b> — the dots are the links.
+    <br>• <b>Default:</b> small ink dot, no label. <b>Hover:</b> the page name appears as a label, the dot fills its page color, all other dots fade to 30%, and the parent keyword takes the hovered page's color (the other two keywords stay grey). <b>Active page:</b> dot stays filled in its color. <b>Touch:</b> first tap reveals labels, second tap navigates — never unlabeled-and-untappable.
+    <br>Text never below nav-menu size (13px). Lives in the shared <code>Nav.dc.html</code>; footer lives in <code>Footer.dc.html</code> — keep the two in lock-step.</div>
+
+    <div class="note"><b>Home card module — two zones, one rule (CONFIRMED)</b>
+    Every card on the Home grid is the same object: a <b>top zone</b> and a <b>bottom zone</b>. Nothing else varies but size and color.
+    <br><br><b>Top zone</b> — always 4:3, always the card's taxonomy color as its background. Three states, in order of preference:
+    <br>1 · <b>Photo</b> — a real image fills it. This is the target state for every card.
+    <br>2 · <b>Color plate</b> — no photo yet, so the taxonomy color shows as a flat plate. This is the default and is never wrong; it reads as "this section, image pending". No stock photos, no illustration stand-ins.
+    <br>3 · <b>Artwork</b> — a poster or quote card that is itself the content (e.g. Insight). Shown whole, never cropped or scrimmed.
+    <br><br><b>Bottom zone</b> — always <code>paper-dim #F3EAD0</code> with ink text, on every card without exception. Rail dot = the taxonomy color (the one place the color appears in the bottom zone) — and on the light tones, <b>Story amber #FAB414 and Constellation yellow #F0D23C</b>, the dot carries a 1px ink ring (<code>box-shadow: 0 0 0 1px ink</code>) so it stays visible on paper-dim; every other tone needs no ring. Rail label ink at 60%, eyebrow in the taxonomy color, title Newsreader, one-line description, ink arrow bottom-right.
+    <br><br><b>Why</b> — the color lives in the top zone only, so a card reads as its section at a glance while the type always sits on the same paper. Dropping a photo in replaces a color plate without touching the card's text or layout, and a new card is legible from the moment it exists.
+    <br><br><b>Adding a card</b> — decide four things: <i>which taxonomy</i> (fixes the color and the rail), <i>the size</i> (1×1 default; tall = <code>grid-row: span 2</code> for portrait artwork; wide for a feature), <i>where it links</i> (an index or a sub-page, never a dead card), and <i>the photo</i> (or accept the color plate). Share the image-slot <code>id</code> with the destination page's key image — <code>key-&lt;section&gt;</code> — so one drop fills the card and the page banner together.
+    <br><br><b>What sits on the Home grid</b> — one card per taxonomy as the standing set (ten), plus feature cards that rotate: the newest News item, the current Story, one Insight. Rotating cards are replaced, not accumulated; the grid stays around a dozen so the page can be read in one screen-and-a-half.</div>
+
+    <div class="note"><b>Page-color taxonomy — CONFIRMED AUTHORITATIVE (one color per page; dot order = footer order)</b>
+    <b>Start Within:</b> Manifesto = <span class="hx"><i style="background:#1E8A86"></i>#1E8A86</span> Teal · Collectives = <span class="hx"><i style="background:#46325A"></i>#46325A</span> Plum · MEWE = <span class="hx"><i style="background:#1E648C"></i>#1E648C</span> Deep Blue · About = <span class="hx"><i style="background:#1C6E92"></i>#1C6E92</span> About Blue. &nbsp; <b>Share the Space:</b> Workshop = <span class="hx"><i style="background:#E5188C"></i>#E5188C</span> Magenta · Story = <span class="hx"><i style="background:#C9962B"></i>#C9962B</span> Mustard · Protagonist = <span class="hx"><i style="background:#F05A28"></i>#F05A28</span> Orange · News = <span class="hx"><i style="background:#966432"></i>#966432</span> Tan. &nbsp; <b>Serve the Whole:</b> Project = <span class="hx"><i style="background:#1E5A64"></i>#1E5A64</span> Slate · Community = <span class="hx"><i style="background:#D21E28"></i>#D21E28</span> Red · Constellation = <span class="hx"><i style="background:#F0D23C"></i>#F0D23C</span> Yellow (ink text).
+    <br>“Are you IN?” has no assigned color (outline only). These 10 hexes are authoritative and supersede any earlier values (e.g. Collectives is #46325A, NOT #43326D; Project is Slate #1E5A64, NOT Gold). The page's hero band, nav dot, CTA band, and footer ribbon all use this one color. Navy, Forest, Gold, Green stay in reserve for supporting card tints (Tan is now assigned to News).</div>
+
+    <div class="note"><b>Hero banner spec — every page (built)</b>
+    Full-bleed solid band in the page key color, uniform padding <code>62px 28px 60px</code> (all eyebrows start at the same vertical position). Structure: <b>Eyebrow</b> (● dot + Archivo 700, <b>17px</b>, 0.14em, uppercase) → <b>Heading</b> (Newsreader 600, clamp to <b>80px</b>, line-height 0.98) → optional <b>Subheading</b> (Newsreader 500, clamp to 50px, e.g. MEWE “They never were. One path. No sides.” in yellow) → <b>Description</b> (Newsreader, clamp to <b>28px</b>, line-height 1.2). Text is cream on dark grounds; <b>INK (#1A1A1A) on Story (amber) and Constellation (yellow)</b>. One hero per page, once.</div>
+
+    <div class="note"><b>Ribbon color — inherits the CTA band (built)</b>
+    The footer ribbon has no fixed color: it <b>inherits the color of the CTA band directly above it</b> via the Footer <code>cta</code> prop, so band + ribbon read as one continuous field with the Möbius loop drawn across it. <b>No CTA → <code>cta="false"</code> → transparent band, loop only.</b> The loop stroke is paper on dark bands, ink on light (amber/yellow). The loop's x-position <b>sweeps left→right across the site journey</b> (Manifesto ~8% … Are-you-IN ~92%) via the Footer <code>loop</code> prop — the walked-line moving further along the path of service per page. Default fails safe to transparent.</div>
+
+    <div class="note"><b>Content card spec — the locked module (built)</b>
+    Taxonomy tag rotated 90° clockwise, reading top-to-bottom, top-left with the colour dot above it → <b>Heading</b> Newsreader 700, <b>30px</b>, line-height 1.0 → <b>Body</b> 17px, ink, line-height 1.3 → footer <b>circle arrow, right-aligned</b> (FILLED ink #1A1613 + paper glyph, NO border — one rule everywhere). Card link is <b>arrow-only</b> (keeps card text editable). Eyebrow: 13px on cards / 17px on hero. Image boxes default <b>4:3</b> (wrapped in a fixed-ratio frame, cover-crop; adjustable per photo). Backgrounds vary (solid / photo / halftone) in warm supporting tints of the page color — <b>no two adjacent cards share a color</b>, no off-system hues (no raw sky-blue/blush). Growable sets (Collectives, Story, News) built as repeatable patterns; the rest static.</div>
+
+    <div class="note"><b>Footer content — the primary nav</b>
+    The footer <b>is</b> the site navigation, now mirrored by the compressed top nav above (deep pages also carry the IN mark → home + an <b>Are you IN?</b> access point). Laid out as <b>6 columns</b>: four category columns, one empty spacer, and a social column (email · X · YouTube).
+    <br>• <b>Start Within</b> — Manifesto · Collectives · MEWE · About
+    <br>• <b>Share the Space</b> — Workshop · Story · Protagonist · <b>News</b>
+    <br>• <b>Serve the Whole</b> — Project · Community · Constellation
+    <br>• <b>Are you IN?</b> — the way in, standing alone at the end (no category name above it)
+    <br>Category headers = <b>TEAL</b>, nav items/links = <b>TEAL-DARK</b>, all 13px / .13em / uppercase (Type 2, B1b). Baseline legal line, muted ink: <code>© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</code> — Creative Commons Attribution-NonCommercial-ShareAlike (credit IN · non-commercial · share alike).</div>
+
+    <div class="note"><b>Grid rhythm</b>
+    One wide or tall card per row of four, to break monotony — never two oversized cards in the same row. CTA cards never go wide or tall (read at a glance). People cards are portrait and grouped in their own sub-section ("Meet the Crew"), never mixed into a general content grid.</div>
+
+    <div class="note"><b>Dividers</b>
+    One MEWE Loop line between major groupings (Stories → Workshops). Never stack dividers back to back. The divider is the only decorative line permitted; grid hairlines are structural, not decorative.</div>
+
+    <div class="note"><b>Footer IP split</b>
+    Site content = All Rights Reserved. MEWE framework materials = Creative Commons BY-NC-SA 4.0. Both lines live in the footer.</div>
+  </section>
+
+  <section class="sec" id="b6">
+    <div class="sec-num">B6</div>
+    <h2 class="sec-h">States, accessibility & voice</h2>
+
+    <div class="note"><b>States</b>
+    Hover: card lifts gently; arrow-button fill inverts (fill ↔ outline). No bounce, no scale, no zoom. Links are teal, sliding toward magenta on hover. Visual-only blocks never move. Focus (keyboard): visible 2px outline in ink (paper on dark cards), 2px offset — never removed. Respect <code>prefers-reduced-motion</code>: disable everything beyond opacity/color.</div>
+
+    <div class="note"><b>Contrast</b>
+    Text on dark grounds (plum, deep blue, slate, ink, forest) is always paper (light). Text on bright grounds (amber, yellow, gold) is always ink (dark). Body never below 17px.</div>
+
+    <div class="note"><b>Voice (summary — full rules live in the master content file)</b>
+    Calm, direct, humble. "We", not "I". Short sentences. <code>IN</code> in all caps; <code>MEWE</code> as one unit. "Are you IN?" appears exactly twice (Home hero + end of Connect). Every Story ends with a soft "pass it on." Banned sitewide: <i>movement, client, success story, changemaker, profound change, warrior of light</i>, any pricing, the Margaret Mead quote. No emoji.</div>
+  </section>
+
+  <!-- ====================================================================== -->
+  <div class="part-label">Part C — Consolidated Rules (supersedes A–B on conflict)</div>
+  <!-- ====================================================================== -->
+
+  <section class="sec" id="c1">
+    <div class="sec-num">C1</div>
+    <h2 class="sec-h">Rulings — every conflict, closed</h2>
+    <p class="sec-p">Three threads of work produced parallel values for the same things. Each row below is now settled. A value in the <b>Retired</b> column is a lint error wherever it still appears — it is not an alternative.</p>
+
+    <table class="paths">
+      <tr><th>Token</th><th>Ruling</th><th>Retired</th><th>Why</th></tr>
+      <tr><td class="k">Ink</td><td><code>#1A1613</code></td><td><code>#2E3B40</code></td><td>One ink. The old slate-grey ink was a second neutral pretending to be text colour — it also read as a ninth taxonomy tone. All text, all arrow fills, all rails use <code>#1A1613</code>.</td></tr>
+      <tr><td class="k">Teal dark</td><td><code>#146560</code> — <b>link/button hover only</b></td><td>any other use</td><td>Kept, not folded. It is a state, never a ground, never a card, never a tag.</td></tr>
+      <tr><td class="k">Workshop magenta</td><td><code>#E5188C</code></td><td><code>#E6328C</code></td><td>Latest brand value.</td></tr>
+      <tr><td class="k">MEWE blue</td><td><code>#1E648C</code></td><td>—</td><td>Unchanged.</td></tr>
+      <tr><td class="k">About blue</td><td><code>#1C6E92</code></td><td>—</td><td>Its own page colour, close to but distinct from MEWE. Not drift — do not merge.</td></tr>
+      <tr><td class="k">Story</td><td>Mustard <code>#C9962B</code> (taxonomy) + Amber <code>#FAB414</code> (hero band, ink text)</td><td>light cream</td><td>Mustard is the Story colour on cards, rails and dots; amber is its lighter partner for the full-bleed hero only. <b>Confirm this pairing</b> — see open decisions.</td></tr>
+      <tr><td class="k">Accent red</td><td><code>#E20606</code> — hero/brand pop only</td><td>—</td><td>Distinct from Community red <code>#D21E28</code>. Never a card ground, never a page colour.</td></tr>
+      <tr><td class="k">Section break</td><td><b>80px</b></td><td>120px</td><td>Every gap between one block and the next is 80px. Never tighter, and no 120px tier.</td></tr>
+      <tr><td class="k">Body size</td><td><b>20px</b> / 1.5</td><td>17px as default</td><td>17px survives only as the absolute floor in dense UI (tables, captions). Paragraph copy is 20px.</td></tr>
+      <tr><td class="k">Card row gap</td><td>18px, rows stretch</td><td>22px</td><td>Every card in a row ends at the same height.</td></tr>
+      <tr><td class="k">“Path”</td><td><b>Loop</b> · <b>Protagonist</b></td><td>Arc · Pathway · Four paths</td><td>Terminology base, v2.5. Applies to copy, filenames and CSS identifiers alike.</td></tr>
+    </table>
+
+    <div class="note"><b>Full page-colour taxonomy — 11 entries, authoritative</b>
+    Manifesto Teal <code>#1E8A86</code> · Collectives Plum <code>#46325A</code> · MEWE Deep Blue <code>#1E648C</code> · About Blue <code>#1C6E92</code> · Workshop Magenta <code>#E5188C</code> · Story Mustard <code>#C9962B</code> · Protagonist Orange <code>#F05A28</code> · Project Slate <code>#1E5A64</code> · Community Red <code>#D21E28</code> · Constellation Yellow <code>#F0D23C</code> (ink text) · News Tan <code>#966432</code>.
+    <br>Grounds: Paper <code>#FAF4E2</code> · Paper-dim <code>#F3EAD0</code> · Ink <code>#1A1613</code>. Reserved: Teal <code>#1E8A86</code> links, Teal-dark <code>#146560</code> hover, Accent red <code>#E20606</code> hero pop. Navy, Forest, Gold, Green remain unassigned reserve tints. <b>Any hex outside this list is drift.</b></div>
+  </section>
+
+  <section class="sec" id="c2">
+    <div class="sec-num">C2</div>
+    <h2 class="sec-h">The card system — one module, three types</h2>
+    <p class="sec-p">There is one card module. <b>Only colour and size vary</b> — the module itself never changes. Everything a card can be is one of the three types below; if a request doesn't fit one, the answer is a new size or a new colour, not a new card.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:18px;align-items:stretch;margin:22px 0 26px;">
+      <div style="background:#F3EAD0;color:#1A1613;display:flex;flex-direction:column;min-height:250px;"><div style="aspect-ratio:4/3;background:#1E8A86;"></div><div style="position:relative;padding:14px 16px 50px 38px;flex:1;min-height:calc(14px + 9px + 7px + 156px + 16px);"><div style="position:absolute;top:14px;left:13px;display:flex;flex-direction:column;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#1E8A86;"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:rgba(26,22,19,.6);">Manifesto</span></div><div style="font-family:var(--font-utility);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1E8A86;">Manifesto</div><h4 style="font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.05;margin:7px 0 0;">This is not finished.</h4><span style="position:absolute;right:13px;bottom:13px;width:30px;height:30px;border-radius:50%;background:#1A1613;color:#FAF4E2;display:flex;align-items:center;justify-content:center;font-size:15px;">→</span></div></div>
+      <div style="background:#F3EAD0;color:#1A1613;display:flex;flex-direction:column;min-height:250px;"><div style="aspect-ratio:4/3;background:#E5188C;"></div><div style="position:relative;padding:14px 16px 50px 38px;flex:1;min-height:calc(14px + 9px + 7px + 156px + 16px);"><div style="position:absolute;top:14px;left:13px;display:flex;flex-direction:column;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#E5188C;"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:rgba(26,22,19,.6);">Workshop</span></div><div style="font-family:var(--font-utility);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E5188C;">Workshop</div><h4 style="font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.05;margin:7px 0 0;">Practice as a lifestyle.</h4><span style="position:absolute;right:13px;bottom:13px;width:30px;height:30px;border-radius:50%;background:#1A1613;color:#FAF4E2;display:flex;align-items:center;justify-content:center;font-size:15px;">→</span></div></div>
+      <div style="background:#F3EAD0;color:#1A1613;display:flex;flex-direction:column;min-height:250px;"><div style="aspect-ratio:4/3;background:#C9962B;"></div><div style="position:relative;padding:14px 16px 50px 38px;flex:1;min-height:calc(14px + 9px + 7px + 156px + 16px);"><div style="position:absolute;top:14px;left:13px;display:flex;flex-direction:column;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#C9962B;box-shadow:0 0 0 1px #1A1613;"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:rgba(26,22,19,.6);">Story</span></div><div style="font-family:var(--font-utility);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#C9962B;">Story</div><h4 style="font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.05;margin:7px 0 0;">Told by everyone.</h4><span style="position:absolute;right:13px;bottom:13px;width:30px;height:30px;border-radius:50%;background:#1A1613;color:#FAF4E2;display:flex;align-items:center;justify-content:center;font-size:15px;">→</span></div></div>
+      <div style="background:#F3EAD0;color:#1A1613;display:flex;flex-direction:column;min-height:250px;"><div style="aspect-ratio:4/3;background:#966432;"></div><div style="position:relative;padding:14px 16px 50px 38px;flex:1;min-height:calc(14px + 9px + 7px + 156px + 16px);"><div style="position:absolute;top:14px;left:13px;display:flex;flex-direction:column;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#966432;"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:rgba(26,22,19,.6);">News</span></div><div style="font-family:var(--font-utility);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#966432;">News</div><h4 style="font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.05;margin:7px 0 0;">Five countries, one lab.</h4><span style="position:absolute;right:13px;bottom:13px;width:30px;height:30px;border-radius:50%;background:#1A1613;color:#FAF4E2;display:flex;align-items:center;justify-content:center;font-size:15px;">→</span></div></div>
+      <div style="background:#F3EAD0;color:#1A1613;display:flex;flex-direction:column;min-height:250px;"><div style="aspect-ratio:4/3;background:#F0D23C;"></div><div style="position:relative;padding:14px 16px 50px 38px;flex:1;min-height:calc(14px + 9px + 7px + 156px + 16px);"><div style="position:absolute;top:14px;left:13px;display:flex;flex-direction:column;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#F0D23C;box-shadow:0 0 0 1px #1A1613;"></span><span style="font-family:var(--font-utility);font-size:11px;font-weight:700;text-transform:uppercase;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.16em;line-height:1;white-space:nowrap;color:rgba(26,22,19,.6);">Constellation</span></div><div style="font-family:var(--font-utility);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F0D23C;">Constellation</div><h4 style="font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.05;margin:7px 0 0;">Separate points of light.</h4><span style="position:absolute;right:13px;bottom:13px;width:30px;height:30px;border-radius:50%;background:#1A1613;color:#FAF4E2;display:flex;align-items:center;justify-content:center;font-size:15px;">→</span></div></div>
+    </div>
+    <p class="sec-p" style="margin-bottom:20px;">Five Home cards, five taxonomies, <b>one module</b>: the top zone changes colour, the bottom zone never does. Story and Constellation carry the 1px ink ring on the dot — those two tones are too light to read unringed on paper-dim. <b>Constellation is shown deliberately</b>: it is the longest taxonomy word and therefore the card that sets the 202px bottom-zone floor. If it fits, everything fits.</p>
+
+    <div class="note"><b>Type 1 · Content card (linked)</b>
+    Taxonomy tag rotated 90° clockwise, reading top-to-bottom at the top-left, colour dot above it → title Newsreader 700, 30px / 1.0 → body 20px ink / 1.4 → filled ink circle arrow, bottom-right. <b>The link sits on the arrow only</b>, so the card's text stays directly editable. Square corners, always. Image frames 4:3, cover-crop.</div>
+
+    <div class="note"><b>Type 2 · Home card — two zones</b>
+    <b>Top zone</b> — 4:3, ground = the card's taxonomy colour. Photo if we have one; otherwise the flat colour plate <i>is</i> the correct default (never a stock photo, never an illustration stand-in). Artwork cards show whole, never cropped or scrimmed.
+    <br><b>Bottom zone</b> — always paper-dim <code>#F3EAD0</code> with ink text, on every card without exception, and <b>never shorter than 202px</b> — enough for the eyebrow, title, one-line description and arrow, and clear of the rotated tag by 60px or more (see B3). Rail dot = taxonomy colour (with a 1px ink ring on the light tones — Story mustard, Constellation yellow), rail label ink at 60%, eyebrow in the taxonomy colour, title Newsreader, one-line description, ink arrow bottom-right.
+    <br><b>Why</b> — colour lives in the top zone only, so a card reads as its section at a glance while type always sits on the same paper. Dropping in a photo replaces a plate without touching text or layout.</div>
+
+    <div class="note"><b>Type 3 · Infographic panel (static)</b>
+    Angled clip-path edges, ghost numeral, no rail, no arrow, no link, no hover. <b>Diagrams, not doors.</b> Lives in <code>Cards.EN.dc.html</code>. Use where the content explains rather than leads somewhere.</div>
+
+    <div class="note"><b>Adding a card — the four-part checklist</b>
+    1 · <b>Taxonomy</b> — fixes colour, dot and eyebrow. &nbsp; 2 · <b>Size</b> — 1×1 default; tall (<code>grid-row: span 2</code>) for portrait artwork; wide for a feature. &nbsp; 3 · <b>Destination</b> — an index or a sub-page, <b>never a dead card</b>. &nbsp; 4 · <b>Photo or plate</b> — share the slot id <code>key-&lt;section&gt;</code> with the destination page's key image so one drop fills both.
+    <br>Grid contents: one standing card per taxonomy (ten) plus rotating features — newest News, current Story, one Insight. <b>Rotate, don't accumulate</b>; the grid stays around a dozen. One wide or tall card per row of four; no two oversized cards in the same row; no two adjacent cards share a colour.</div>
+
+    <div class="note"><b>Not a card</b>
+    Visual-only blocks (quote, stat, statement) carry no tag, no arrow, nothing to click — see B4. Rounded and circular shapes are permitted <b>only</b> there and on avatars. A tagged content card is always square.</div>
+  </section>
+
+  <section class="sec" id="c3">
+    <div class="sec-num">C3</div>
+    <h2 class="sec-h">The navigation system</h2>
+    <p class="sec-p">Two navigations, one order. The footer <b>is</b> the site index; the top bar is its compressed mirror. <b>Change one, change both</b> — they live in <code>Nav.dc.html</code> and <code>Footer.dc.html</code> and are kept in lock-step.</p>
+
+    <div class="note"><b>Shared order — the spine of both</b>
+    <b>Start Within</b> — Manifesto · Collectives · MEWE · About &nbsp;|&nbsp; <b>Share the Space</b> — Workshop · Story · Protagonist · <b>News</b> &nbsp;|&nbsp; <b>Serve the Whole</b> — Project · Community · Constellation &nbsp;|&nbsp; then <b>Are you IN?</b>, standing alone.
+    <br><b>Two corrections, applied here:</b> News lives in <b>Share the Space</b> — it is something we share, not a service we run; the built <code>Nav.dc.html</code> still has it under Serve the Whole and needs moving. And <b>“Flip Connect” is retired</b> — it was a category name invented to hold a single link. “Are you IN?” now sits on its own at the end of the footer with no heading above it.
+    <br>IN mark far left → home. “Are you IN?” far right, outline pill, no fill, no assigned colour. All nav type is Archivo 13px / .13em / uppercase — <b>never Newsreader</b>, never below 13px. Category headers teal; items and links teal-dark.</div>
+
+    <div class="open"><b>Top bar — direction changed, build pending</b>
+    The built dot-nav (keyword + three page-dots, hover reveals the label and tints the keyword) tested as <b>too clever and hard to use</b> — a hover-dependent control that hides its own labels. <b>Ruling: move to a plain top bar</b> — visible text links, no dropdown, no mega-menu, no hover-to-reveal — carried by a <b>rich footer index</b> that does the wayfinding work. The dot-nav spec in B5 stays only as the record of what exists today; do not extend it.
+    <br><b>Open:</b> whether the plain bar shows all ten pages or the three category keywords with the pages living in the footer. Needs one decision before <code>Nav.dc.html</code> is rebuilt.</div>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:30px 0 8px;">The bar, measured</h3>
+    <div style="border:1px solid var(--color-line);background:var(--color-paper);overflow:hidden;">
+      <div style="width:1320px;transform:scale(.63);transform-origin:top left;height:calc((72px + 34px) * .63);">
+        <div style="width:1320px;height:72px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:nowrap;border-bottom:1px solid rgba(26,22,19,.12);box-sizing:border-box;">
+          <img src="IN_Logo.png" alt="IN" style="height:34px;width:auto;display:block;flex:0 0 auto;">
+          <div style="display:flex;align-items:center;gap:26px;flex-wrap:nowrap;">
+            <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#146560;white-space:nowrap;">Manifesto</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#146560;white-space:nowrap;">Collectives</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#146560;white-space:nowrap;">MEWE</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#1A1613;border-bottom:2px solid #E5188C;padding-bottom:3px;white-space:nowrap;">Workshop</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#146560;white-space:nowrap;">Story</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#146560;white-space:nowrap;">News</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#146560;white-space:nowrap;">Project</span><span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:#146560;white-space:nowrap;">Community</span>
+          </div>
+          <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#146560;border:1.5px solid #146560;border-radius:999px;padding:9px 18px;white-space:nowrap;flex:0 0 auto;">Are you IN?</span>
+        </div>
+        <div style="width:1320px;display:flex;justify-content:space-between;padding:10px 40px;font-family:var(--font-utility);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;box-sizing:border-box;">
+          <span>← 40px gutter</span><span>72px tall · one row · 26px between links · 13px / .16em / 1.3</span><span>40px gutter →</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#8a9a8f;margin:8px 0 0;">Shown at true 1320px geometry, scaled to 63% to fit this page — the real bar is one row, 72px tall. Below 1024px it collapses to logo + menu button; it never wraps.</p>
+    <div class="note" style="margin-top:0;"><b>Measurements — so it stops drifting page to page</b>
+    Bar content is capped at <b>1320px</b> and centred; side gutter <b>40px</b> desktop / 20px mobile. Height <b>72px</b>, items <b>vertically centred</b> on one optical line — the logo (34px tall) sets that line, and nothing else may sit above or below it. Logo hard left, links centred in the remaining space, “Are you IN?” hard right. Gap between links <b>26px</b>, never less; if the set won't fit at 1024px the bar collapses to logo + menu button rather than shrinking type or gaps. <b>No link ever wraps to a second line</b> — one line, one row, always. Type 13px / .16em / line-height 1.3, Archivo 700, uppercase. Resting <span class="hx"><i style="background:#146560"></i>#146560</span>; hover and current page in the page's own primary colour with a 2px underline; ink <span class="hx"><i style="background:#1A1613"></i>#1A1613</span> for the current label.</div>
+
+    <div class="note"><b>Rules that survive either direction</b>
+    Every page carries the top bar, sticky. Deep pages always offer the IN mark → home and an “Are you IN?” access point. <b>Touch never depends on hover</b> — anything revealed by hover must be permanently visible on touch. Active page is marked in its taxonomy colour. Keyboard focus is a visible 2px ink outline, 2px offset, never removed.</div>
+
+    <div class="note"><b>Footer — the ME=WE walked line</b>
+    The footer opens with one continuous thin ink line, gently undulating the full width with <b>one flip-and-connect loop</b>, running off both edges as an infinite Möbius path. Paper ground continues beneath the line; paper-dim fill begins below it as a soft tone shift — <b>no hard edge, no gradient, no colour ribbon</b>. The loop's x-position varies per page, sweeping left→right across the site journey. Archivo title-case links, six columns, legal line beneath: <code>© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0</code>.</div>
+  </section>
+
+  <section class="sec" id="c4">
+    <div class="sec-num">C4</div>
+    <h2 class="sec-h">Type &amp; space — four roles, one break</h2>
+    <p class="sec-p">The refined system collapses the type scale to <b>four roles and nothing in between</b>. If a size isn't one of these, it doesn't exist.</p>
+
+    <div style="margin-top:20px;">
+      <div class="spec"><div class="tag">Display</div><div><div style="font-family:var(--font-display);font-weight:600;font-size:clamp(38px,7vw,72px);line-height:1;color:var(--color-red);">IN is a studio,</div><div style="font-size:13px;color:#8a9a8f;margin-top:8px;">Newsreader 600. Page hero, <b>once per page</b>. Landing hero locked: line 1 <b>130px, red #E20606</b>; line 2 “where we practice…” <b>60px / 1.1</b>.</div></div></div>
+      <div class="spec"><div class="tag">Headline</div><div><div style="font-family:var(--font-display);font-weight:600;font-size:34px;line-height:1.05;">Section and card titles</div><div style="font-size:13px;color:#8a9a8f;margin-top:8px;">Newsreader 600, clamp ~30–40px.</div></div></div>
+      <div class="spec"><div class="tag">Body</div><div><div style="font-family:var(--font-display);font-weight:400;font-size:20px;line-height:1.5;max-width:52ch;">All paragraph copy sits here — one size, one weight, one leading, everywhere on the site.</div><div style="font-size:13px;color:#8a9a8f;margin-top:8px;">Newsreader 400, 20px / 1.5. 17px is the floor for dense UI only.</div></div></div>
+      <div class="spec"><div class="tag">Label</div><div><div style="font-family:var(--font-utility);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;">Nav · taxonomy · tags</div><div style="font-size:13px;color:#8a9a8f;margin-top:8px;">Archivo 700, 13px, uppercase, .16em.</div></div></div>
+    </div>
+
+    <h3 style="font-family:var(--font-utility);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a9a8f;margin:30px 0 8px;">Two heroes — they are not the same size</h3>
+    <table class="paths">
+      <tr><th></th><th>Landing hero (Home only)</th><th>Page hero (all other pages)</th></tr>
+      <tr><td class="k">Line 1</td><td>Newsreader 600, <b>130px</b> / 1.0, <span class="hx"><i style="background:#E20606"></i>#E20606</span> red</td><td>Newsreader 600, <b>80px</b> / 0.98, cream (ink on Story &amp; Constellation)</td></tr>
+      <tr><td class="k">Line 2</td><td>Newsreader 400, <b>60px</b> / 1.1</td><td>optional subheading, Newsreader 500, <b>50px</b></td></tr>
+      <tr><td class="k">Description</td><td>none — the two lines are the whole hero</td><td>Newsreader 400, <b>28px</b> / 1.2</td></tr>
+      <tr><td class="k">Ground</td><td>paper — no band</td><td>full-bleed band in the page primary, padding <b>62px 28px 60px</b></td></tr>
+      <tr><td class="k">Eyebrow</td><td>none</td><td>● dot + Archivo 700, <b>17px</b>, .14em</td></tr>
+    </table>
+    <p class="sec-p" style="margin:10px 0 0;"><b>Eyebrow — one word, two sizes.</b> <b>17px</b> only in a page hero, directly under the dot. <b>13px</b> everywhere else — cards, section kickers, taxonomy tags, nav. There is no third size, and the two are never mixed in one block.</p>
+
+    <div class="note" style="margin-top:20px;"><b>Spacing — memorise two numbers</b>
+    <b>80px</b> is the section break: every gap between one section or block and the next, without exception and without being asked. <b>18px</b> is the card row gap, with rows stretched so every card in a row ends at the same height. Inside a component, use 4 / 8 / 16 only. There is no 120px tier and no hand-picked value anywhere.</div>
+
+    <div class="note"><b>Voice — affirmative, humble, learning</b>
+    Never open a page, section, slide or card with what IN is <i>not</i> (“강의는 없습니다”, “We don't lecture”). State what we do and what we are still learning. No claims of expertise or transformation — IN learns alongside participants. Applies to headlines, eyebrows, card copy and speaker notes, in both languages. <b>Structure is shared, copy is separate</b>: layout, section order, card counts and colour stay identical across EN and KO; the words are per-language, and English is an adaptation, not a literal translation.</div>
+  </section>
+
+  <section class="sec" id="c5">
+    <div class="sec-num">C5</div>
+    <h2 class="sec-h">The mark as graphic language</h2>
+    <p class="sec-p">The logo's idea — translucent colour planes crossing, multiplying where they overlap — is the site's graphic device, not just a mark in a corner. It is cleared for use large, cropped and overlapped.</p>
+
+    <div class="note" style="margin-top:18px;"><b>Dividers — the crossing-planes bar is retired</b>
+    It was too loud as a repeating divider and competed with the mark itself. The flat 26px <code>IN_HorizontalStrip.png</code> strip is retired with it. <b>The MEWE Loop line is now the only divider on the site.</b> The colours that band produced were worth keeping — they live on as the <b>tertiary overlap tones</b> in B1a.</div>
+
+    <div class="note"><b>Mark band</b>
+    Cream field, the logo cropped and bleeding off the right at 124% height, multiply blend so white reads through; type column left. <b>Once per page</b>, never twice.</div>
+
+    <div class="note"><b>Principle rules</b>
+    The nine Manifesto principles each carry a 7px left rule in their taxonomy colour. This is the only place a colour bar substitutes for a card.</div>
+  </section>
+
+  <hr class="div">
+
+  <section class="sec" id="log">
+    <div class="sec-num">Change Log</div>
+    <h2 class="sec-h">Version history & open decisions</h2>
+
+    <table class="paths">
+      <tr><td class="k">Date</td><td>Change</td></tr>
+      <tr><td class="k">2026-08-06</td><td>v3.5 — <b>Tag direction corrected: rotated 90° clockwise, not upright.</b> The letters lie on their side and the word reads downward (<code>vertical-rl</code> + <code>text-orientation: mixed</code>, no transform) — upright stacking was wrong. Type back to 11px / .16em; the tag is now the set width of its word (~110px worst case), so the 202px bottom-zone floor is held by the eyebrow-title-arrow stack instead.</td></tr>
+      <tr><td class="k">2026-08-06</td><td>v3.4 — <b>Retired ink removed at the source:</b> the <code>--color-ink</code> token was still <code>#2E3B40</code>, so the whole document rendered in the colour C1 retires — now <code>#1A1613</code>, with <code>--color-line</code> re-derived from it and the hard-coded arrow fill pointed at the token. Also swept the last stale wording out of B2: the "reads up the left edge" tag description (retired in v3.2 but surviving in the anatomy note) and the retired ink <code>#2E3B40</code> in the arrow spec. B2 now matches B3 and C2 word for word.</td></tr>
+      <tr><td class="k">2026-08-06</td><td>v3.3 — Sized the upright tag so it cannot outgrow its card: Archivo 700 <b>10px / line-height 1 / no tracking</b>. Measured rather than assumed — the upright line box is <b>12px per character</b>, so CONSTELLATION (13) is <b>156px</b>. The bottom-zone floor is the whole rail, not the word: inset 14 + dot 9 + gap 7 + word 156 + clearance 16 = <b>202px</b>, written into the CSS as that literal sum so it can't be re-derived wrongly. Constellation is rendered in the C2 row as the worst-case proof.</td></tr>
+      <tr><td class="k">2026-08-06</td><td>v3.2 — <b>Tag direction locked: top-to-bottom, letters upright.</b> The catalog and C2 demos were drawing the tag rotated bottom-to-top; corrected everywhere to match the built cards (<code>writing-mode: vertical-rl; text-orientation: upright</code>). The wording "rotated / reads up the left edge" is retired from every section.</td></tr>
+      <tr><td class="k">2026-08-06</td><td>v3.1 — <b>Review pass, made visual.</b> Every hex now prints beside its own colour chip. Palette restructured into <b>Primary (11 page colours) / Secondary (each colour's own light + deep) / Tertiary (overlap tones)</b> — the 13-accent numbered palette and the grey "Line" colour are retired, and the mystery pale band under each old swatch is explained as that colour's light. Card catalog rebuilt at real proportions with the <b>corrected tag position and direction</b> (top-left, dot above, reading bottom-to-top) and the Home two-zone card rendered; C2 and C3 now show the module and the nav rather than describing them. Added the <b>measured nav bar</b> (1320 cap, 40px gutter, 72px height, 26px gaps, no wrapping). Clarified <b>landing hero vs page hero</b> and the 17/13 eyebrow split. <b>News moved to Share the Space</b>; <b>“Flip Connect” retired</b>. Crossing-planes divider removed — its colours kept as tertiary. Arc → Loop sweep completed.</td></tr>
+      <tr><td class="k">2026-08-06</td><td>v3.0 — Added <b>Part C · Consolidated Rules</b>, which supersedes A–B on any conflict. Closed eleven parallel-value conflicts in one ruling table (single ink <code>#1A1613</code>, <code>#2E3B40</code> retired; teal-dark kept as hover state only; magenta <code>#E5188C</code>; About blue <code>#1C6E92</code> confirmed distinct from MEWE; Story = mustard taxonomy + amber hero; accent red <code>#E20606</code> hero-only; <b>80px section break</b>, 120px retired; body 20px; card row gap 18px). Consolidated the <b>card system</b> into one module with three types (content / home two-zone / infographic panel) plus the four-part new-card checklist. Consolidated the <b>navigation system</b>: shared order, plain-top-bar ruling replacing the hover dot-nav, footer walked-line. Added the four type roles and the <b>mark-as-graphic-language</b> section (crossing-planes band, mark band, principle rules).</td></tr>
+      <tr><td class="k">2026-07-30</td><td>v2.5 — <b>Terminology base locked.</b> The six-stage framework is the <b>MEWE Loop</b> (“Arc” retired). Renamed the signature motif to the <b>MEWE Loop line</b>, including CSS identifiers (<code>loopline</code> / <code>loopdraw</code>; footer <code>in-foot-loop</code>). <b>BridgeBuilder</b> is one word everywhere. ME=WE / MEWE spelling now follows the teaching-vs-operating test rather than a named section. Open: the four Protagonist entries are parallel communities, not a numbered ladder — de-linearization pending.</td></tr>
+      <tr><td class="k">2026-07-20</td><td>v2.4 — Locked the <b>hero banner spec</b> (uniform 62px band, eyebrow 17px, heading 80px, description 28px, ink text on amber/yellow) across all 9 pages. Corrected the <b>page-color taxonomy</b> to the confirmed authoritative map (Collectives = Plum #46325A, Project = Slate #1E5A64). Added the <b>ribbon-inherits-CTA-color</b> rule + per-page loop sweep. Documented the built <b>content-card module</b> (heading 30/700, body 17, right-aligned filled arrow, arrow-only link, 4:3 image frames, warm non-adjacent tints). Split Jungle Jam &amp; Shadow Shifter into distinct Workshop + Project (youth 2-day residential) entries.</td></tr>
+      <tr><td class="k">2026-07-15</td><td>v2.3 — Added the compressed <b>top navigation</b> (mirrors the footer; keyword + 3 colored dots per category, hover fade + keyword tint, touch reveal, Flip Connect footer-only, “Are you IN?” outline pill). Locked the <b>page-color taxonomy</b> (one color per page). Renamed Pathway → <b>Protagonist</b>; merged <b>About IN</b> and <b>History of IN</b> into IN-Manifesto; added new <b>Project</b> and <b>Constellation</b> pages and restructured Community into living clusters. Shared chrome split into <code>Nav.dc.html</code> + <code>Footer.dc.html</code>.</td></tr>
+      <tr><td class="k">2026-07-14</td><td>v2.2 — Retired the gradient ribbon everywhere. Created the MEWE Loop line (organic continuous line with one flip-loop) as the footer opener + section divider, with a gentle draw-in animation. Reserved the horizontal geometric banner for feature headers elsewhere.</td></tr>
+      <tr><td class="k">2026-07-14</td><td>v2.1 — Locked hero (red “IN is a studio” + slate sub-statement, 130px, light weight) and typeface (Newsreader + Archivo; older pairings retired). Adopted “latest” hex for every color (alts dropped). Palette expanded: added navy as 13th accent; numbered 1–13 with a 1:1 meaning map; added one controlled light tint per accent.</td></tr>
+      <tr><td class="k">2026-07-14</td><td>v2.0 — Consolidated three sources (Welcome doc / v1.0 design system / Card-Templates-for-Tony) into one file. Added Part A (sitemap, 5 wireframe templates, clickable-path table). Rebuilt Part B on Welcome doc as latest source. Populated all tokens, full card catalog, footer ribbon rule.</td></tr>
+    </table>
+
+    <h3 style="font-family:var(--font-display);font-weight:500;font-size:22px;margin:26px 0 8px;">Open decisions — resolve page-by-page</h3>
+    <table class="paths">
+      <tr><th>#</th><th>Decision</th><th>Where</th></tr>
+      <tr><td class="k">1</td><td>Story tagging axis — medium vs theme as primary</td><td>A3</td></tr>
+      <tr><td class="k">2</td><td>Connect — own 6th template or variant of Detail</td><td>A2</td></tr>
+      <tr><td class="k">3</td><td>Which workshops get dedicated pages vs cards</td><td>A1</td></tr>
+      <tr><td class="k">4</td><td>Place the final vector IN logo (raster brand art now supplied)</td><td>B1d</td></tr>
+      <tr><td class="k">5</td><td>Verify “650+ / 5 countries” stat; confirm/remove any statement-block quote</td><td>B4</td></tr>
+      <tr><td class="k">6</td><td>Protagonist card content — swap placeholder when fuller Protagonist copy surfaces</td><td>B3</td></tr>
+      <tr><td class="k">7</td><td><b>Top bar</b> — all ten page links, or three keywords with pages in the footer only</td><td>C3</td></tr>
+      <tr><td class="k">8</td><td><b>Story colour</b> — confirm mustard #C9962B as taxonomy with amber #FAB414 as its hero partner</td><td>C1</td></tr>
+      <tr><td class="k">10</td><td><b>Nav.dc.html</b> — move News from Serve the Whole to Share the Space; drop the “Flip Connect” heading in Footer.dc.html</td><td>C3</td></tr>
+      <tr><td class="k">11</td><td><b>Wireframes A2</b> — redraw from the built pages (landing card wall missing, detail template unverified)</td><td>A2</td></tr>
+      <tr><td class="k">9</td><td><b>Sweep</b> — apply the C1 retirements across the ~13 built pages (283 lint hits) and log in the Content Register</td><td>C1</td></tr>
+    </table>
+
+    <div class="note" style="margin-top:26px;"><b>Maintenance</b>
+    This file is the single source of truth. Any token, card, or rule change gets a Change Log row and a token update in <code>:root</code>. When a decision moves from [OPEN] to locked, delete the pink box and note it here — that discipline is what stops the drift between threads.</div>
+  </section>
+
+</div>

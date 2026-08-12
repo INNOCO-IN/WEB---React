@@ -1,0 +1,33 @@
+/* IN Design System — Spacing, radius, layout tokens */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 22px;
+  --space-6: 28px;
+  --space-7: 40px;
+  --space-8: 56px;
+  --space-9: 80px;
+  --space-10: 120px;
+
+  /* Cards are square at rest — radius exists ONLY for pills/circles */
+  --radius-none: 0px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  --border-width: 1.5px;
+  --border-width-hairline: 1px;
+
+  --shadow-hover: 0 4px 16px rgba(26, 22, 19, 0.18);
+
+  --content-max-width: 1320px;
+  --content-side-padding: 28px;
+  --home-grid-column: 360px;
+  --home-grid-gap: 22px;
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 120ms; /* @kind other */
+  --duration-standard: 200ms; /* @kind other */
+}

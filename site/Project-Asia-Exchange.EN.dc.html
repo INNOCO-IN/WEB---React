@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #1E5A64; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #0f4a45; }
+  .col-scroll::-webkit-scrollbar { width: 6px; }
+  .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }
+  .story-body p { font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 21px; line-height: 1.62; margin: 0 0 26px; color: #322c22; text-wrap: pretty; }
+  .story-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 1000px){
+    .pj-grid { grid-template-columns: 1fr !important; }
+    .pj-left, .pj-right { position: static !important; max-height: none !important; border: none !important; padding: 0 !important; }
+    .pj-mid { order: 1; } .pj-left { order: 2; } .pj-right { order: 3; }
+    .pj-left, .pj-right { border-top: 1.5px solid rgba(46,59,64,0.14) !important; padding-top: 26px !important; }
+    .pj-labs { grid-template-columns: 1fr !important; }
+    img, svg, video { max-width: 100% !important; }
+  }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  }
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+  <dc-import name="Nav" active-page="project" hint-size="100%,64px"></dc-import>
+
+  <!-- ===== HERO ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 52px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">Flagship</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">China · Japan · Korea · Nepal · Taiwan</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">2026–2027</span>
+      </div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 22px; text-wrap: balance;">MEWE Asia Exchange</h1>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(19px, 2.1vw, 25px); line-height: 1.46; max-width: 760px; margin: 0; color: rgba(250,244,226,0.94);">Five countries, five neighborhoods, one question — what stirs when young people are given room to practice community life where they already live?</p>
+    </div>
+  </section>
+
+  <!-- ===== 3-COLUMN BODY ===== -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 90px;">
+    <div class="pj-grid" style="display: grid; grid-template-columns: 226px 1fr 288px; gap: 40px; align-items: start;">
+
+      <!-- LEFT · about -->
+      <aside class="pj-left col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-right: 1px solid rgba(46,59,64,0.14); padding-right: 22px;">
+        <a href="Project.EN.dc.html" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.13em; text-transform: uppercase; color: #1E5A64; margin-bottom: 26px;">&larr; All projects</a>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Audience</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Youth · BridgeBuilders</span>
+        </div>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Topic</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Neighborhood</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Exchange</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Belonging</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 18px;">
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Countries</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">China · Japan · Korea · Nepal · Taiwan</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Frame</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">2026–2027 · a one-year prototype</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Root system</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">Observe → Connect → Create → Share</div></div>
+        </div>
+      </aside>
+
+      <!-- MIDDLE · the story -->
+      <div class="pj-mid">
+        <figure style="margin: 0 0 40px;">
+          <div style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #F3EAD0; display: flex; align-items: center; justify-content: center;">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.4);">Photos to come</span>
+          </div>
+          <figcaption style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.6); margin-top: 12px;">Photos to come from the five neighborhood teams.</figcaption>
+        </figure>
+
+        <div style="max-width: 680px;">
+          <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(26px, 3vw, 32px); line-height: 1.32; letter-spacing: -0.01em; margin: 0 0 34px; color: #2E3B40; text-wrap: pretty;">Where youth lead, neighborhoods stir.</p>
+          <div class="story-body">
+            <p>Across urban and rural Asia, young people are experiencing rising loneliness and disconnection from community life. But something else is also true: many of them sense that more is possible. They are not indifferent. They are waiting for conditions in which their own capacity might become useful &mdash; to others, and to themselves.</p>
+            <p>The Asia Exchange creates those conditions, across five countries and one shared question: what begins to stir, inwardly and outwardly, when young people are given space to practice coherent community life in their own neighborhoods?</p>
+          </div>
+
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E5A64; margin: 40px 0 18px;">A journey of self-discovery and neighborhood rediscovery</div>
+          <div class="story-body">
+            <p>Young people called <strong>BridgeBuilders</strong> begin not with a project plan but with honest self-examination &mdash; the assumptions and prejudices that keep neighbors strangers, and the capacity to see what is already alive nearby but unnamed. Through a series of Global Labs they move along one continuous inner-outer arc: first going beneath the surface and practicing conversations that go deeper than usual; then imagining, not from what is missing but from what is quietly already present; then planning and acting, designing a neighborhood activation together with neighbors and local organizations.</p>
+          </div>
+        </div>
+
+        <!-- POP-UP LABS -->
+        <div style="margin-top: 44px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.12em; line-height: 1.1; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Pop-Up Labs</div>
+          <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0 0 26px; max-width: 62ch; color: rgba(46,59,64,0.82);">Each journey culminates in a lab that is not an event but an invitation &mdash; co-created with neighbors and taking its own local form.</p>
+          <div class="pj-labs" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: rgba(46,59,64,0.14);">
+            <div style="background: #FAF4E2; padding: 22px 20px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Beijing</div><p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">Multicultural dialogue across cultural and linguistic difference.</p></div>
+            <div style="background: #FAF4E2; padding: 22px 20px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Yamaguchi</div><p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">Music, song, and farm-to-table gathering.</p></div>
+            <div style="background: #FAF4E2; padding: 22px 20px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Seoul</div><p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">MEWE dialogue and meaningful conversation spaces.</p></div>
+            <div style="background: #FAF4E2; padding: 22px 20px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Sindhuli</div><p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">Storytelling, digital mapping, and intergenerational wisdom circles.</p></div>
+            <div style="background: #FAF4E2; padding: 22px 20px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1E5A64; margin-bottom: 10px;">Caotun / Taichung</div><p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">Junior-youth animator networks as everyday neighborhood presence.</p></div>
+            <div style="background: #1E5A64; padding: 22px 20px; display: flex; flex-direction: column; justify-content: center;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,244,226,0.7); margin-bottom: 10px;">The shared root</div><p style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0; color: #FAF4E2;">Observe → Connect → Create → Share.</p></div>
+          </div>
+        </div>
+
+        <div style="max-width: 680px; margin-top: 44px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E5A64; margin-bottom: 18px;">One living network</div>
+          <div class="story-body">
+            <p>Practitioners from all five countries travel to each other&rsquo;s neighborhoods &mdash; walking the streets, co-facilitating, witnessing what has grown, carrying it home. This is not five parallel projects. It is one network, strengthening what each team already wants to do.</p>
+          </div>
+          <div style="border-top: 1.5px solid rgba(30,90,100,0.45); margin-top: 30px; padding-top: 30px;">
+            <p style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(26px, 3.4vw, 34px); line-height: 1.24; letter-spacing: -0.015em; margin: 0; color: #2E3B40; text-wrap: balance;">A prototype, not an event. The one-year frame is not the container. <span style="color: #1E5A64;">It is the seed.</span></p>
+          </div>
+          <div style="margin-top: 34px;">
+            <a href="Protagonist.EN.dc.html" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 14px 28px; justify-content: center; line-height: 1.2;">BridgeBuilder on the Protagonist path &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT · index -->
+      <aside class="pj-right col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-left: 1px solid rgba(46,59,64,0.14); padding-left: 22px;">
+        <dc-import name="ProjectIndexRail" current="asia-exchange" hint-size="100%,520px"></dc-import>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Bring the Exchange to your own neighborhood.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #1E5A64; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Start a conversation</a>
+        <a href="Protagonist.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">See the Protagonist path</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#1E5A64" loop="0.478" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+</body>
+</html>

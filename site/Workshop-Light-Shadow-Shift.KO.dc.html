@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  ::selection { background: #E5188C; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #E5188C; }
+</style>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 190px 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(2, minmax(0"]{grid-template-columns:1fr !important;}
+  img{max-width:100% !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 66px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+}
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <span id="top"></span>
+  <dc-import name="Nav-KO" active-page="Workshop-Light-Shadow-Shift.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <section style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 22px 28px 0;">
+      <a href="Workshop.KO.dc.html" style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,244,226,0.78); text-decoration: none;">← 모든 워크숍</a>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 56px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,244,226,0.85); margin-bottom: 20px;">여성 · 1박 2일 합숙 리트릿</div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(42px, 6.4vw, 88px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 14ch;">빛, 그림자, 전환</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(21px, 2.4vw, 30px); line-height: 1.32; max-width: 28ch; margin: 0 0 34px; color: rgba(250,244,226,0.94);">빛 속에 있는 것, 그림자 속에 있는 것, 그리고 전환에 필요한 것을 알아차리세요.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="#register" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">우리 서클에 열기</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 64px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 2px solid #2E3B40; padding-top: 24px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">무엇인가</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(23px, 2.5vw, 30px); line-height: 1.32; margin: 0 0 22px; letter-spacing: -0.01em; text-wrap: pretty;">여성들의 원을 위한 이틀의 합숙 — IN이 계속 돌아오는 패턴을, 만나는 이들에 맞게 다시 빚은 것.</p>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">이 패턴은 말하기는 쉽고 살아내기는 느립니다. 이틀의 모든 것이 같은 질문으로 들어가는 서로 다른 문이고, 그 무엇도 서로 떨어져 있지 않습니다 — 말만큼 손으로 이어 가는 하나의 긴 대화.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">왜</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(22px, 2.3vw, 28px); line-height: 1.34; margin: 0 0 20px; text-wrap: pretty;">여성들은 다른 사람들을 위해 많은 것을 짊어집니다. 이것은 자신을 위해 무언가를 품는 이틀입니다.</p>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">같은 일을 하는 여성들의 원 안에서, 짊어지고 있는 것에 이름을 붙이는 시간. 그리고 부여된 것이 아니라 나의 것인 다짐 하나를 안고 떠나는 시간 — 함께 쓰는 벽에 적어, 모두가 증인이 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 8px;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">누구를 위한</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 40px; max-width: 900px;">
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">참가자</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">모든 연령의 여성 · 12–20명의 원</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">기간</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">이틀 합숙 · 대부분 직접 손으로</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">필요한 공간</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">작업할 벽, 앉을 바닥, 걸어 나갈 곳</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">진행된 곳</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">UAE · 어디서든 가능</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">이런 곳에도</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">엄마와 딸의 원, 조직 안의 여성 모임</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">언어</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">EN · 한 · 繁</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px; border-bottom: 2px solid #2E3B40; padding-bottom: 34px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">무슨 일이 일어나는가</div>
+      <div style="max-width: 900px; display: flex; flex-direction: column;">
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; padding: 0 0 18px;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">벽</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.4;">겹쳐진 세 개의 원으로 그린 빛·그림자·전환 — 각자 손을 뻗어 자신의 다짐을 보탭니다.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; border-top: 1px solid rgba(46,59,64,0.16); padding: 18px 0;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">벽화</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.4;">함께 그립니다. 일부는 어두워진 뒤 손전등 불빛으로 — 손으로 드러낸 그림자.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; border-top: 1px solid rgba(46,59,64,0.16); padding: 18px 0;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">산책</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.4;">기쁨을 주는 작은 것 하나를 찾으러 나갔다가, 안에서부터 다시 빚어진다는 몇 마디 곁에 놓아둡니다.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; border-top: 1px solid rgba(46,59,64,0.16); padding: 18px 0;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">타임라인</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.4;">바닥에 펼친 긴 종이 띠 — 우리가 지나온 곳과 향하는 곳을 색색의 메모로.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; border-top: 1px solid rgba(46,59,64,0.16); border-bottom: 1.5px solid rgba(46,59,64,0.25); padding: 18px 0;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">마무리</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.4;">서두르지 않고 원을 그리며 그림을 그리고, 요가로 몸 안에서 마칩니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 10px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+      <figure style="margin: 0; flex: 0 0 auto; width: 300px; max-width: 100%;">
+        <img src="project-img/light-shadow-shift-women.jpg" alt="Women adding pledges to a projected wall of overlapping light, shadow, and shift circles" style="display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+      </figure>
+      <figure style="margin: 0; flex: 0 0 auto; width: 300px; max-width: 100%;">
+        <img src="project-img/light-shadow-shift-women4.jpg" alt="The retreat circle at work" style="display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover;">
+      </figure>
+      <figcaption style="flex: 1 1 260px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; line-height: 1.5; color: rgba(46,59,64,0.6); padding-top: 4px;">여성 리트릿, UAE. <a href="Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html">프로젝트 전체 보기 →</a></figcaption>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 40px 28px;">
+    <div style="background: #F7C7D7; padding: 44px 44px 40px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40; margin-bottom: 16px;">형식</div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.1; margin: 0 0 18px; max-width: 24ch; text-wrap: balance;">이틀의 합숙, 혹은 한나절.</h2>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.5; margin: 0; max-width: 62ch;">세 단어는 어떤 길이든 담아냅니다. 그림, 걷기, 쓰기, 고요의 비율은 사전에 함께 정합니다 — 한 가지 언어로, 혹은 대부분 침묵 속에서 하고 싶다면 그렇게 짓습니다.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 8px 28px 40px;">
+    <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E5188C; margin-bottom: 16px;">하나의 패턴, 여러 형태</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13.5px;">
+      <a href="Workshop-Jungle-Jam.KO.dc.html" style="text-decoration: none; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.35); border-radius: 999px; padding: 11px 20px;">정글 잼 — UAE 청년</a>
+      <a href="Workshop-Shadow-Shifter.KO.dc.html" style="text-decoration: none; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.35); border-radius: 999px; padding: 11px 20px;">섀도 시프터 — 대만 청년</a>
+      <a href="Workshop-Mobius-Making.KO.dc.html" style="text-decoration: none; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.35); border-radius: 999px; padding: 11px 20px;">뫼비우스 만들기 — 여기서 시작</a>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 0 28px 44px;">
+    <a href="#top" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 14px 26px;">&uarr; 맨 위로</a>
+  </section>
+
+  <section id="register" style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.7); margin: 0 0 18px;">함께하기</p>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">당신의 서클을 모으세요.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.KO.dc.html" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">대화 시작하기</a>
+        <a href="Workshop.KO.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">모든 워크숍</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer-KO" cta="#E5188C" loop="0.58" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+</body>
+</html>

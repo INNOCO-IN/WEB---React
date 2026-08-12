@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #F0D23C; color: #1A1613; }
+  a { color: #1E8A86; }
+  a:hover { color: #146560; }
+  @keyframes ct-twinkle { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.62; transform: scale(0.82); } }
+  .ct-dot { transition: left 1s cubic-bezier(0.22,1,0.36,1), top 1s cubic-bezier(0.22,1,0.36,1); }
+  .ct-dot span { animation: ct-twinkle 3.2s ease-in-out infinite; }
+  .ct-dot:hover span, .ct-dot:focus span { animation-play-state: paused; opacity: 1 !important; transform: scale(1.35) !important; }
+  .ct-label { transition: left 1s cubic-bezier(0.22,1,0.36,1), top 1s cubic-bezier(0.22,1,0.36,1), opacity 0.6s ease; }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+    [style*="padding: 52px 28px"]{padding:40px 20px !important;}
+  }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <dc-import name="Nav" active-page="community" hint-size="100%,64px"></dc-import>
+
+  <!-- HERO (unchanged) -->
+  <section data-screen-label="Hero" style="background: #F0D23C; color: #1A1A1A;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 60px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #1A1A1A; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #1A1A1A;">Constellation</span></div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 0.98; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 16ch; text-wrap: balance;">Separate points of light. One shape.</h1>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; max-width: 720px; margin: 0; color: rgba(26,26,26,0.82);">The living collection of neighbor expressions — every MEWE story, act, and creation. Alone, a single point. Together, a shape none of us makes on our own.</p>
+    </div>
+  </section>
+
+  
+
+  
+
+  <!-- THE SKY -->
+  <section data-screen-label="The Sky" style="background: #16242E; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 44px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.6);">Arrange by</span>
+          <sc-for list="{{ modeButtons }}" as="m" hint-placeholder-count="2">
+            <button onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.label }}</button>
+          </sc-for>
+        </div>
+        <span style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; color: rgba(250,244,226,0.55);">{{ skyHint }}</span>
+      </div>
+
+      <div style="position: relative; width: 100%; height: clamp(440px, 58vw, 620px);">
+        <sc-for list="{{ labels }}" as="lb" hint-placeholder-count="4">
+          <div class="ct-label" style="{{ lb.style }}">{{ lb.text }}</div>
+        </sc-for>
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="20">
+          <button class="ct-dot" onClick="{{ d.onClick }}" onMouseEnter="{{ d.enter }}" onMouseLeave="{{ d.leave }}" aria-label="{{ d.title }}" style="{{ d.style }}"><span style="{{ d.inner }}"></span></button>
+        </sc-for>
+
+        <!-- DOT POPUP -->
+        <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+          <div onMouseEnter="{{ cancelClose }}" onMouseLeave="{{ closeSoon }}" style="{{ popStyle }}">
+            <button onClick="{{ closeSel }}" aria-label="Close" style="position: absolute; right: 6px; top: 6px; width: 44px; height: 44px; border: none; background: transparent; color: rgba(46,59,64,0.6); font-family: 'Archivo', sans-serif; font-size: 22px; line-height: 1; cursor: pointer;">×</button>
+            <div style="position: relative; display: flex; flex-direction: column; padding: 22px 24px 22px 50px;">
+              <span style="{{ selDot }}"></span>
+              <span style="position: absolute; left: 15px; top: 40px; writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">{{ selFormat }}</span>
+              <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #2E3B40; margin: 0 30px 8px 0;">{{ selMeta }}</div>
+              <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.05; margin: 0 0 10px; text-wrap: balance;">{{ selTitle }}</h3>
+              <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; margin: 0; color: rgba(46,59,64,0.82);">{{ selCaption }}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;">
+                <sc-if value="{{ hasRead }}" hint-placeholder-val="{{ false }}"><a href="{{ selRead }}" style="text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 12px 24px; display: inline-flex; align-items: center; line-height: 1.2;">READ →</a></sc-if>
+                <sc-if value="{{ hasMedia }}" hint-placeholder-val="{{ false }}"><a href="{{ selMedia }}" target="_blank" rel="noopener" style="text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 12px 24px; display: inline-flex; align-items: center; line-height: 1.2;">{{ mediaLabel }} →</a></sc-if>
+                <sc-if value="{{ hasView }}" hint-placeholder-val="{{ false }}"><a href="{{ selView }}" target="_blank" rel="noopener" style="text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 12px 24px; display: inline-flex; align-items: center; line-height: 1.2;">VIEW →</a></sc-if>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- LEGEND -->
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; border-top: 1px solid rgba(250,244,226,0.14); padding-top: 16px;">
+        <sc-for list="{{ legend }}" as="lg" hint-placeholder-count="10">
+          <span style="display: inline-flex; align-items: center; gap: 7px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,244,226,0.75);"><span style="{{ lg.swatch }}"></span>{{ lg.label }}</span>
+        </sc-for>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DRAFT NOTE -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 26px 28px 0;">
+    <div style="border-left: 3px solid #F0D23C; background: rgba(240,210,60,0.16); padding: 16px 22px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.72);">Prototype v1 — all copy is draft; seed entries are placeholders. Arrange by Time and by ME=WE Arc, contributor filter, and inline playback come in v2.</div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section data-screen-label="How it works" style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 20px;">
+    <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 26px;">How a light gets here</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; align-items: stretch; max-width: 1100px;">
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(50% 14%, 76% 100%, 24% 100%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(76% 100%, 82% 100%, 54% 14%, 50% 14%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">1</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">Make something, or notice something. A few honest sentences, a drawing, a photo, a film, a song.</p>
+        </div>
+      </div>
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(4% 0, 26% 0, 60% 100%, 38% 100%);"></div><div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(24% 0, 34% 0, 68% 100%, 56% 100%);"></div><div style="position: absolute; inset: 0; background: #35C0B4; clip-path: polygon(74% 0, 96% 0, 62% 100%, 40% 100%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(66% 0, 76% 0, 44% 100%, 30% 100%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">2</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">Share it through the Story form. One thing, one caption. Fifteen minutes is enough.</p>
+        </div>
+      </div>
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(38% 8%, 72% 46%, 38% 84%, 4% 46%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(72% 46%, 76% 46%, 42% 8%, 38% 8%);"></div><div style="position: absolute; inset: 0; background: #35C0B4; clip-path: polygon(66% 44%, 96% 78%, 66% 112%, 36% 78%);"></div><div style="position: absolute; inset: 0; background: #CDE3CF; clip-path: polygon(96% 78%, 100% 78%, 70% 44%, 66% 44%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">3</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">It appears here as a new light. Everything you add appears in the Constellation we are creating together. Some stories are also chosen for the Story page.</p>
+        </div>
+      </div>
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(22% 28%, 38% 46%, 22% 64%, 6% 46%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(38% 46%, 41% 46%, 25% 28%, 22% 28%);"></div><div style="position: absolute; inset: 0; background: #35C0B4; clip-path: polygon(56% 8%, 72% 26%, 56% 44%, 40% 26%);"></div><div style="position: absolute; inset: 0; background: #CDE3CF; clip-path: polygon(72% 26%, 75% 26%, 59% 8%, 56% 8%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(76% 50%, 94% 70%, 76% 90%, 58% 70%);"></div><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(94% 70%, 97% 70%, 79% 50%, 76% 50%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">4</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">Add as many as you like. Each one joins your name's own small constellation.</p>
+        </div>
+      </div>
+      </div>
+    <p style="font-family: 'Newsreader', serif; font-style: italic; font-size: 19px; line-height: 1.5; margin: 30px 0 0; color: rgba(46,59,64,0.72); max-width: 62ch;">Anyone can add — no workshop needed. And IN keeps adding too: every workshop ends with participants placing their pieces here. Many pieces begin in the Möbius Making workshop.</p>
+    <div style="margin-top: 26px;">
+      <a href="Story-Submission.EN.dc.html" style="text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.06em; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">ADD YOURS</a>
+    </div>
+  </section>
+
+  <!-- CTA (unchanged) -->
+  <section data-screen-label="CTA" style="background: #F0D23C; color: #2E3B40; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.7); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Add your light to the collection.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Story-Submission.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Share your story</a>
+        <a href="MEWE.EN.dc.html" style="text-decoration: none; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">What is MEWE?</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#F0D23C" loop="0.897" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1320, &quot;height&quot;: 1300}}">
+class Component extends DCLogic {
+  state = { mode: 'format', sel: null };
+
+  closeSoon() { clearTimeout(this._t); this._t = setTimeout(() => this.setState({ sel: null }), 260); }
+
+  colors() {
+    return { writing:'#F0D23C', drawing:'#E6328C', photo:'#35C0B4', video:'#FF5A5A', music:'#9B7BE0', dance:'#F5A81E', craft:'#6FCB7C', recipe:'#C9962B', symbol:'#7BC4F0', other:'#FAF4E2' };
+  }
+
+  // Seed data — draft. Structured one-entry-per-row so it can be fed from the card-content CSV workflow later.
+  data() {
+    return [
+      { id:'this-is-us',  title:'“This is us”',                              by:'A teacher',            format:'writing', topic:'Classroom',            arc:'ME = WE', date:'2026-03', caption:'I stopped teaching and asked one real question. By the end, a boy pointed at what they’d made and said: this is us.', read:'Story-Index.EN.dc.html?story=this-is-us' },
+      { id:'connected',   title:'“Perhaps we were already connected.”',      by:'Anonymous',            format:'music',   topic:'Collective',           date:'2026-02', caption:'A participant reflection, carried out of a MEWE Core session.', read:'Story-Index.EN.dc.html?story=connected' },
+      { id:'two-hands',   title:'Two hands, one line',                       by:'A participant',        format:'drawing', topic:'Collective',           date:'2026-02', caption:'A drawing made during Möbius Making — where the ME and WE surfaces became one.', read:'Story-Index.EN.dc.html?story=two-hands' },
+      { id:'song-whole',  title:'A song for the whole',                      by:'A collective',         format:'music',   topic:'Collective',           date:'2026-01', caption:'Recorded after a retreat — voices that learned to listen before they sang.' },
+      { id:'week-after',  title:'The week after the workshop',               by:'A participant',        format:'writing', topic:'Family',               date:'2026-01', caption:'A participant writes about the small action they chose — and what it changed at home.' },
+      { id:'street-exp',  title:'A neighbor’s small experiment',             by:'A neighbor',           format:'writing', topic:'Neighbors',            date:'2025-12', caption:'One person tried a single MEWE action for a week — and wrote down what changed on their street.' },
+      { id:'harmony',     title:'“The harmony was already in them.”',        by:'A facilitator',        format:'music',   topic:'Collective',           date:'2025-12', caption:'Overheard after a singing circle — the group found the chord before anyone taught it.' },
+      { id:'noticed',     title:'A moment someone noticed MEWE',            by:'Anonymous',            format:'photo',   topic:'Noticed in the world', date:'2025-11', caption:'A photo of strangers becoming, briefly, one thing.', view:'project-img/light-shadow-shift-women3.jpg' },
+      { id:'hasaad',      title:'Hasaad — food grown for neighbors',         by:'A UAE youth venture',  format:'video',   topic:'Nature',               date:'2025-11', caption:'A participant venture in organic food and farming, Dubai.', media:'https://youtu.be/Pl1IBR7fnTU' },
+      { id:'what-held',   title:'What held after the bootcamp',              by:'The UNC film team',    format:'video',   topic:'Collective',           date:'2025-10', caption:'A camera followed Nepali youth for two years — to see what lasted.', media:'https://youtu.be/d1J4AECO_9g' },
+      { id:'circle-dance',title:'A circle dance at closing',                 by:'Anonymous',            format:'dance',   topic:'Collective',           date:'2025-10', caption:'Nobody planned it. The last session ended and the chairs moved themselves.' },
+      { id:'plate',       title:'A plate for a neighbor',                    by:'Rana',                 format:'craft',   topic:'Neighbors',            date:'2025-09', caption:'Made in an afternoon, given the same evening.' },
+      { id:'soup',        title:'My grandmother’s soup, doubled',            by:'Anonymous',            format:'recipe',  topic:'Family',               date:'2025-09', caption:'The recipe says feeds six. She always made it feed twelve.' },
+      { id:'wire-mobius', title:'A Möbius strip in wire',                    by:'A workshop group',     format:'symbol',  topic:'Noticed in the world', date:'2025-08', caption:'Bent by four hands taking turns — one surface, no inside or outside.' },
+      { id:'our-street',  title:'The street where we all live',              by:'Amina, age 11',        format:'drawing', topic:'Neighbors',            date:'2025-08', caption:'Every house drawn with its door open.' },
+      { id:'mural',       title:'Flashlight mural, mid-shift',               by:'A retreat circle',     format:'photo',   topic:'Collective',           date:'2025-07', caption:'Shadow made visible by hand, after dark.', view:'project-img/shadow-shifter3.jpg' },
+      { id:'letter',      title:'A letter I wrote to myself',                by:'Anonymous',            format:'writing', topic:'Family',               date:'2025-07', caption:'Opened a year later. Half of it had come true; the other half still asks.' },
+      { id:'farm-song',   title:'A farm-to-table song',                      by:'Friends in Yamaguchi', format:'music',   topic:'Nature',               date:'2025-06', caption:'Sung while carrying vegetables from the field to the table.' },
+      { id:'leaf',        title:'A found leaf, pressed',                     by:'Anonymous',            format:'other',   topic:'Nature',               date:'2025-06', caption:'Carried back into the room beside a few words on reforming from within.' },
+      { id:'dawn-yoga',   title:'Movement at dawn, day two',                 by:'A retreat circle',     format:'dance',   topic:'Nature',               date:'2025-05', caption:'Two days spent in mind and heart, closed in the body.' }
+    ];
+  }
+
+  // Mode switch holds four modes; Time and ME=WE Arc ship in v2.
+  modes() {
+    return [
+      { id:'format', label:'Format', key: d => d.format },
+      { id:'topic',  label:'Topic',  key: d => d.topic }
+      // v2: { id:'time', label:'Time', key: d => d.date.slice(0,4) },
+      // v2: { id:'arc',  label:'MEWE Loop', key: d => d.arc || 'Unplaced' }
+    ];
+  }
+
+  renderVals() {
+    const colors = this.colors();
+    const all = this.data();
+    const mode = this.modes().find(m => m.id === this.state.mode) || this.modes()[0];
+    const groups = [];
+    const byGroup = {};
+    all.forEach(d => { const g = mode.key(d); if (!byGroup[g]) { byGroup[g] = []; groups.push(g); } byGroup[g].push(d); });
+
+    // cluster centers on a loose grid
+    const k = groups.length;
+    const cols = Math.min(k, Math.max(2, Math.ceil(Math.sqrt(k * 1.7))));
+    const rows = Math.ceil(k / cols);
+    const centers = {};
+    groups.forEach((g, i) => {
+      const c = i % cols, r = Math.floor(i / cols);
+      const stagger = (r % 2) ? 4 : -4;
+      centers[g] = {
+        x: 10 + (c + 0.5) / cols * 80 + stagger,
+        y: 14 + (r + 0.5) / rows * 68
+      };
+    });
+
+    const dots = [];
+    groups.forEach(g => {
+      byGroup[g].forEach((d, i) => {
+        const n = byGroup[g].length;
+        const ang = i * 2.39996 + g.length; // deterministic golden-angle spiral, seeded by group
+        const rad = n === 1 ? 0 : 3.5 + 8.5 * Math.sqrt((i + 1) / n);
+        const x = Math.min(95, Math.max(4, centers[g].x + Math.cos(ang) * rad * 1.15));
+        const y = Math.min(92, Math.max(6, centers[g].y + Math.sin(ang) * rad));
+        const col = colors[d.format] || '#FAF4E2';
+        const on = this.state.sel === d.id;
+        if (on) this._selPos = { x, y };
+        dots.push({
+          title: d.title,
+          onClick: () => this.setState({ sel: this.state.sel === d.id ? null : d.id }),
+          enter: () => { clearTimeout(this._t); if (this.state.sel !== d.id) this.setState({ sel: d.id }); },
+          leave: () => this.closeSoon(),
+          style: `position:absolute; left:${x}%; top:${y}%; width:44px; height:44px; margin:-22px 0 0 -22px; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0;`,
+          inner: `display:block; width:${on ? 20 : 14}px; height:${on ? 20 : 14}px; border-radius:50%; background:${col}; box-shadow:0 0 ${on ? 26 : 14}px ${on ? 6 : 2}px ${col}55${on ? `, 0 0 0 3px rgba(250,244,226,0.9)` : ''}; animation-delay:${(d.id.length * 0.37) % 3}s;`
+        });
+      });
+    });
+
+    const labels = groups.map(g => ({
+      text: g,
+      style: `position:absolute; left:${centers[g].x}%; top:${Math.max(2, centers[g].y - 16)}%; transform:translateX(-50%); font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,244,226,0.55); white-space:nowrap; pointer-events:none;`
+    }));
+
+    const modeButtons = this.modes().map(m => {
+      const on = m.id === this.state.mode;
+      return {
+        label: m.label,
+        onClick: () => this.setState({ mode: m.id, sel: this.state.sel }),
+        style: `font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; border-radius:999px; padding:11px 22px; cursor:pointer; line-height:1.2; border:1.5px solid ${on ? '#F0D23C' : 'rgba(250,244,226,0.35)'}; background:${on ? '#F0D23C' : 'transparent'}; color:${on ? '#1A1613' : 'rgba(250,244,226,0.85)'};`
+      };
+    });
+
+    const legend = Object.keys(colors).map(f => ({
+      label: f,
+      swatch: `display:inline-block; width:11px; height:11px; border-radius:50%; background:${colors[f]}; box-shadow:0 0 8px 1px ${colors[f]}66;`
+    }));
+
+    const sel = all.find(d => d.id === this.state.sel) || null;
+    const selCol = sel ? (colors[sel.format] || '#2E3B40') : '#2E3B40';
+    const pos = sel && this._selPos ? this._selPos : { x: 50, y: 50 };
+    const px = Math.min(78, Math.max(22, pos.x));
+    const below = pos.y < 42;
+    const popStyle = `position:absolute; left:${px}%; top:${pos.y}%; transform:translate(-50%, ${below ? '30px' : 'calc(-100% - 30px)'}); width:400px; max-width:94%; background:rgba(243,234,208,0.95); color:#2E3B40; z-index:20; box-shadow:0 18px 60px rgba(0,0,0,0.45);`;
+    return {
+      modeButtons, labels, dots, legend,
+      skyHint: all.length + ' lights and growing — hover or tap one',
+      hasSel: !!sel,
+      popStyle,
+      cancelClose: () => clearTimeout(this._t),
+      closeSoon: () => this.closeSoon(),
+      closeSel: () => this.setState({ sel: null }),
+      selTitle: sel ? sel.title : '',
+      selCaption: sel ? sel.caption : '',
+      selMeta: sel ? (sel.by + ' · ' + sel.date) : '',
+      selFormat: sel ? sel.format : '',
+      selDot: `position:absolute; left:19px; top:22px; width:8px; height:8px; border-radius:50%; background:${selCol};`,
+      hasRead: !!(sel && sel.read),
+      selRead: sel && sel.read ? sel.read : '#',
+      hasMedia: !!(sel && sel.media),
+      selMedia: sel && sel.media ? sel.media : '#',
+      mediaLabel: sel && sel.format === 'video' ? 'WATCH' : 'LISTEN',
+      hasView: !!(sel && sel.view),
+      selView: sel && sel.view ? sel.view : '#'
+    };
+  }
+}
+</script>
+</body>
+</html>

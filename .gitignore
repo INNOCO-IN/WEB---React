@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# build output
+app/dist/
+app/.vite/
+
+# local env — real keys live here, never commit
+.env
+.env.local
+.env.*.local
+
+# tooling / editor state
+.DS_Store
+Thumbs.db
+.vercel/
+*.log
+
+# static-site runtime state (see site/image-slot.js)
+.image-slots.state.json
+.thumbnail

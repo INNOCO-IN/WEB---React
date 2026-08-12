@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_ds/in-design-system-94f9dcdd-24c7-4f2a-93c7-7cddcb619c0e/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/in-design-system-94f9dcdd-24c7-4f2a-93c7-7cddcb619c0e/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/in-design-system-94f9dcdd-24c7-4f2a-93c7-7cddcb619c0e/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/in-design-system-94f9dcdd-24c7-4f2a-93c7-7cddcb619c0e/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/in-design-system-94f9dcdd-24c7-4f2a-93c7-7cddcb619c0e/styles.css">
+  <script src="_ds/in-design-system-94f9dcdd-24c7-4f2a-93c7-7cddcb619c0e/_ds_bundle.js"></script>
+  <style>
+    :root { --font-serif: 'Newsreader', 'Noto Serif KR', Georgia, serif; --font-sans: 'Archivo', 'Noto Sans KR', sans-serif; }
+    body { margin: 0; background: var(--color-paper); color: var(--color-ink); font: var(--text-body); -webkit-font-smoothing: antialiased; word-break: keep-all; }
+    a { color: var(--color-teal); text-decoration: none; }
+    a:hover { color: var(--color-magenta); }
+    .loopline path { stroke-dasharray: 2000; stroke-dashoffset: 2000; animation: loopdraw 2.4s ease forwards; }
+    @keyframes loopdraw { to { stroke-dashoffset: 0; } }
+    @media (prefers-reduced-motion: reduce) { .loopline path { animation: none; stroke-dashoffset: 0; } }
+  </style>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1.05fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(3, minmax(0"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+  [style*="font-size: 300px"]{display:none !important;}
+  [style*="font-size: 60px"][style*="height: 300px"]{height:auto !important;}
+  [style*="72px 120px"]{padding:56px 0 48px 0 !important;}
+  [style*="width: 700px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 800px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 900px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1200px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1000px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 950px"]{width:auto !important;max-width:100% !important;}
+  [style*="height: 350px"],[style*="height: 250px"],[style*="height: 200px"],[style*="height: 180px"],[style*="height: 170px"],[style*="height: 130px"],[style*="height: 100px"]{height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 72px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 66px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 62px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 60px 44px"]{padding:36px 24px !important;}
+  [style*="padding: 40px 44px"]{padding:28px 22px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 64px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 40px 80px"]{padding:30px 20px !important;}
+  [style*="padding: 40px 40px"]{padding:28px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+  [style*="font-size: 130px"]{font-size:64px !important;line-height:1 !important;}
+  [style*="font-size: 60px"]{font-size:34px !important;line-height:1.15 !important;}
+}
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+
+<dc-import name="Nav-KO" active-page="Home.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+<main id="top" style="max-width: 1320px; margin: 0 auto; padding: 0 40px;">
+
+  <section style="padding: 84px 0 72px 120px; min-height: 300px; height: 200px">
+    <div style="max-width: 1000px; position: relative;">
+      <div style="font-family: var(--font-serif); font-weight: 600; font-size: 80px; line-height: 1.12; color: #1E8A86; margin-bottom: 12px">IN은 스튜디오입니다</div>
+      <div style="font-family: var(--font-serif); font-weight: 100; font-size: 60px; line-height: 1; color: #1E8A86; width: 800px; height: 300px">정직한 대화와 예술적 표현으로 MEWE를 <em>실천</em>하는 곳.</div>
+    <span style="position: absolute; font-size: 300px; line-height: 0.6; opacity: 1; pointer-events: none; left: 565px; top: 326px; color: #1E8A86; font-family: Newsreader; height: 100px" aria-hidden="true">”</span></div>
+  </section>
+
+  <section style="padding: var(--space-9) 40px 100px;">
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px;">
+
+      <!-- 1 · MEWE (slate) -->
+      <a href="MEWE.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-deepblue);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(34% 100%, 50% 22%, 66% 100%); mix-blend-mode: multiply;"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-deepblue);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .8;">MEWE</span></div>
+          <div style="font-family: var(--font-serif); font-weight: 600; font-size: 46px; line-height: 1; margin-bottom: 18px;">MEWE</div>
+          <p style="margin: 0 56px 0 0; font: var(--text-body); font-family: var(--font-serif); opacity: .9;">분리는 느낌일 뿐, 관계는 구조입니다. 우리는 패턴 밖에 있지 않습니다 — 우리가 곧 그 패턴의 표현입니다.</p>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 2 · Workshop / Möbius (magenta) -->
+      <a href="Workshop-Mobius-Making.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-magenta);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #46325A; clip-path: polygon(0 0, 100% 0, 50% 100%); mix-blend-mode: multiply;"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-magenta);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .8;">워크숍 · 모두에게</span></div>
+          <div style="font: var(--text-eyebrow); font-family: var(--font-sans); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; opacity: .85; margin-bottom: 16px;">여기서 시작 · 3시간 · 손으로 직접</div>
+          <div style="font-family: var(--font-serif); font-weight: 600; font-size: 32px; line-height: 1.12; margin-bottom: 16px;">MEWE는 <em>가르치지</em> 않습니다.<br>함께 <em>연습</em>합니다.</div>
+          <p style="margin: 0 56px 0 0; font: var(--text-body); font-family: var(--font-serif); opacity: .9;">뫼비우스 만들기 — 대표 워크숍. 종이 띠를 접다 보면 두 면이 처음부터 하나의 면이었음을 발견하게 됩니다.</p>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 3 · Protagonist (orange) -->
+      <a href="Protagonist.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-orange);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #D21E28; clip-path: polygon(0 100%, 0 40%, 54% 100%);"></div><div style="position: absolute; inset: 0; background: #D21E28; clip-path: polygon(100% 100%, 100% 18%, 58% 100%); mix-blend-mode: multiply;"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-orange);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .7;">주역</span></div>
+          <div style="font-family: var(--font-serif); font-weight: 700; font-size: 27px; line-height: 1.14; margin-bottom: 16px;">하나의 실천,<br>네 가지 깊이</div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="font: var(--text-body); font-family: var(--font-serif); padding: 10px 0; border-top: 1px solid rgba(46,59,64,.22); margin-right: 56px;">이웃</div>
+            <div style="font: var(--text-body); font-family: var(--font-serif); padding: 10px 0; border-top: 1px solid rgba(46,59,64,.22); margin-right: 56px;">브리지 빌더</div>
+            <div style="font: var(--text-body); font-family: var(--font-serif); padding: 10px 0; border-top: 1px solid rgba(46,59,64,.22); margin-right: 56px;">퍼실리테이터</div>
+            <div style="font: var(--text-body); font-family: var(--font-serif); padding: 10px 0; border-top: 1px solid rgba(46,59,64,.22); margin-right: 56px;">IN-콜렉티브</div>
+          </div>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 4 · Story (yellow · quote / pass it on) -->
+      <a href="Story.KO.dc.html" style="position: relative; display: flex; flex-direction: column; justify-content: flex-end; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-amber);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(18% 100%, 30% 12%, 46% 100%);"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-amber); box-shadow: 0 0 0 1px var(--color-ink);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .6;">스토리</span></div>
+          <div style="font-family: var(--font-serif); font-style: normal; font-weight: 500; font-size: 27px; line-height: 1.28; margin-bottom: 24px;">“어쩌면 우리는 이미 연결되어 있었는지도.”</div>
+          <div style="font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-ink); opacity: .7; margin-right: 56px;">스토리를 건네주세요 →</div>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 5 · Community (red) -->
+      <a href="Community.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-red);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(34% 100%, 50% 22%, 66% 100%); mix-blend-mode: multiply;"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-red);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .6;">커뮤니티</span></div>
+          <div style="font-family: var(--font-serif); font-weight: 600; font-size: 29px; line-height: 1.14; margin-bottom: 12px;">멈추지 않고 여행한 실천</div>
+          <p style="margin: 0 56px 0 0; font: var(--text-body); font-family: var(--font-serif); color: var(--color-ink-40);">커뮤니티</p>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 6 · Constellation / Voices (yellow · quote) -->
+      <a href="Constellation.KO.dc.html" style="text-decoration: none; position: relative; display: flex; flex-direction: column; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-yellow);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #3C8246; clip-path: polygon(0 0, 100% 0, 50% 100%); mix-blend-mode: multiply;"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-yellow); box-shadow: 0 0 0 1px var(--color-ink);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .55;">목소리</span></div>
+          <p style="margin: 0 0 20px; font-family: var(--font-serif); font-weight: 500; font-size: 23px; line-height: 1.4;">“우리는 <em>에고 시스템</em>에서 전체를 품는 <em>생태계</em>의 감각으로 옮겨가야 합니다.”</p>
+          <div style="font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-ink-40);">— 오토 샤머</div>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 7 · News (tan) -->
+      <a href="News.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-tan);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(0 100%, 0 40%, 54% 100%);"></div><div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(100% 100%, 100% 18%, 58% 100%); mix-blend-mode: multiply;"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-tan);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .8;">소식</span></div>
+          <div style="font: var(--text-eyebrow); font-family: var(--font-sans); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--color-tan); margin-bottom: 12px;">2026년 9월 5일</div>
+          <div style="font-family: var(--font-serif); font-weight: 700; font-size: 27px; line-height: 1.14; margin-bottom: 12px;">브리지빌더 버추얼 파일럿 랩</div>
+          <p style="margin: 0 56px 0 0; font: var(--text-body); font-family: var(--font-serif); opacity: .9;">MEWE 아시아 익스체인지의 브리지빌더들이 처음으로 온라인에서 모입니다 — 다섯 나라, 하나의 실천.</p>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 7b · Insight (full card image) -->
+      <a href="News.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); grid-row: span 2; overflow: hidden; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden;">
+          <img src="community-img/news-fuller-quote-card.jpg" alt="“The world changes when we change how we see and move within it — alone, we tilt, but together, we turn.” — Buckminster Fuller" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div style="position: relative; display: flex; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-tan);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-paper);">인사이트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1;">
+            <div style="font: var(--text-eyebrow); font-family: var(--font-sans); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--color-tan); margin-bottom: 12px;">카드 시리즈</div>
+            <div style="font-family: var(--font-serif); font-weight: 700; font-size: 27px; line-height: 1.14; margin-bottom: 12px;">자꾸 돌아오게 되는 한 문장</div>
+            <p style="margin: 0 56px 0 0; font: var(--text-body); font-family: var(--font-serif); opacity: .9;">MEWE 네트워크에서 건네지는 카드 — 예술, 과학, 사회적 실천, 영성이 하나의 대화가 됩니다.</p>
+            <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 8 · Projects (slate) -->
+      <a href="Project.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-slate);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(18% 100%, 30% 12%, 46% 100%);"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-slate);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .6;">프로젝트</span></div>
+          <div style="font-family: var(--font-serif); font-weight: 600; font-size: 29px; line-height: 1.14; margin-bottom: 12px;">실천이 형태를 갖추는 곳</div>
+          <p style="margin: 0 56px 0 0; font: var(--text-body); font-family: var(--font-serif); color: var(--color-ink-40);">프로젝트</p>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+      <!-- 9 · Manifesto (teal) -->
+      <a href="Manifesto.KO.dc.html" style="position: relative; display: flex; flex-direction: column; text-decoration: none; background: var(--color-paper); border: 1px solid rgba(26,22,19,0.14); color: var(--color-ink); min-height: 340px; transition: transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard);" style-hover="transform: translateY(-4px); box-shadow: 0 14px 30px rgba(46,59,64,.18);">
+        <div style="position: relative; width: 100%; height: 14px; overflow: hidden; flex: 0 0 auto; background: var(--color-teal);"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 46px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(34% 100%, 50% 22%, 66% 100%); mix-blend-mode: multiply;"></div></div></div>
+        <div style="position: relative; display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px 44px;">
+          <div style="position: absolute; left: 13px; top: 21px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: var(--color-teal);"></span><span style="writing-mode: vertical-rl; white-space: nowrap; text-orientation: mixed; font: var(--text-label); font-family: var(--font-sans); letter-spacing: var(--tracking-label); text-transform: uppercase; opacity: .7;">읽기</span></div>
+          <div style="font-family: var(--font-serif); font-weight: 600; font-size: 30px; line-height: 1.12; margin-bottom: 14px;">가능성을 <em>현실로</em></div>
+          <p style="margin: 0 56px 0 0; font: var(--text-body); font-family: var(--font-serif); opacity: .82;">IN 매니페스토 — 지금 우리가 참이라 여기는 아홉 가지.</p>
+          <span style="position: absolute; right: 24px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%; background: var(--color-ink); color: var(--color-paper); display: flex; align-items: center; justify-content: center; font-size: 20px;">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+</main>
+
+<section style="padding: 0 40px 100px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;">
+  <a href="MEWE.KO.dc.html" style="display: inline-flex; align-items: center; line-height: 1.2; text-decoration: none; font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--color-paper); background: var(--color-ink); border: 1.5px solid var(--color-ink); border-radius: 999px; padding: 15px 32px;">MEWE 알아보기</a>
+  <a href="Workshop.KO.dc.html" style="display: inline-flex; align-items: center; line-height: 1.2; text-decoration: none; font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--color-ink); background: transparent; border: 1.5px solid rgba(26,22,19,0.35); border-radius: 999px; padding: 15px 32px;">스튜디오 참여하기</a>
+  <a href="Are-you-IN.KO.dc.html" style="display: inline-flex; align-items: center; line-height: 1.2; text-decoration: none; font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--color-ink); background: transparent; border: 1.5px solid rgba(26,22,19,0.35); border-radius: 999px; padding: 15px 32px;">연결하기</a>
+</section>
+
+<dc-import name="Footer-KO" loop="0.14" hint-size="100%,460px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script></script>
+</body>
+</html>

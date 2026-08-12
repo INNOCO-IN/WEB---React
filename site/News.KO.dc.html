@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  ::selection { background: #966432; color: #FAF4E2; }
+  a { color: #966432; }
+  a:hover { color: #6E4722; }
+  .cm-card { transition: transform 0.18s ease, box-shadow 0.18s ease; text-decoration: none; }
+  .cm-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }
+</style>
+<script src="./image-slot.js"></script>
+<style id="in-mobile">
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="font-size: 60px"]{font-size:34px !important;line-height:1.15 !important;}
+}
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <span id="top"></span>
+  <dc-import name="Nav-KO" active-page="News.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <!-- HERO -->
+  <section style="background: #966432; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 60px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #FAF4E2; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;">소식</span></div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.14; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 15ch; text-wrap: balance;">네트워크가 지금 하고 있는 일.</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; max-width: 720px; margin: 0; color: rgba(250,244,226,0.94);">모임, 축제, 랩, 이정표 — 최신순으로. 모든 소식은 하나의 공동체로 거슬러 올라갑니다.</p>
+    </div>
+  </section>
+
+  
+
+  <!-- INSIGHT -->
+  <section style="max-width: 1320px; margin: 64px auto 0; padding: 0 28px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 34px; align-items: center;">
+      <img src="community-img/news-fuller-quote-card.jpg" alt="“The world changes when we change how we see and move within it — alone, we tilt, but together, we turn.” — Buckminster Fuller" style="display: block; width: 100%; max-width: 420px; height: auto;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #966432;">인사이트</span></div>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.24; margin: 0 0 18px; text-wrap: pretty;">“세상은 우리가 그 안에서 보고 움직이는 방식을 바꿀 때 변한다 — 혼자서는 기울지만, 함께라면 돈다.”</p>
+        <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.6);">버크민스터 풀러 · 카드 시리즈</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS GRID -->
+  <section id="news" style="max-width: 1320px; margin: 64px auto 0; padding: 0 28px 12px;">
+    <div style="margin-bottom: 28px; border-top: 2px solid #2E3B40; padding-top: 24px;">
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.18; margin: 0; letter-spacing: -0.01em;">MEWE 네트워크 소식.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px;">
+<!-- NEWS:START -->
+      <article class="cm-card" data-card="COMM/NEWS/up-jungle-jam" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">예정</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 9월 12일 · 서울</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">정글 잼 · 가을 세션</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">리듬과 즉흥, 함께 만들기의 이틀. MEWE 세션을 경험한 사람도, 아직 경험하지 않은 사람도 환영합니다.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/up-open-studio" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">오픈 스튜디오</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 8월 3일 · 온라인 · 매달</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">오픈 스튜디오, 매달 열립니다</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">매달 첫째 월요일, 스튜디오의 문이 열려 있습니다. 들러서 질문 하나를 가져오고, 실천 하나를 얻어 가세요.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/mile-collective-nepal" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">이정표</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 7월 21일 · 신둘리, 네팔</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">네팔의 새 IN-콜렉티브</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">스토리사이클이 스튜디오의 다섯 번째 IN-콜렉티브가 되어, MEWE를 자신들의 언어로 마을 스토리 모임에 실어 나릅니다.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/recap-pathfinder-uae" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">돌아보기</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 6월 9일 · 아부다비, UAE</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">60명의 젊은 리더와 함께한 패스파인더</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">ME와 WE 사이의 선을 함께 걸은 사흘. 참가자들은 스스로 만든 지도와 — 서로의 연락처를 안고 돌아갔습니다.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/launch-constellation" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">런칭</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 6월 2일 · 스튜디오</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">별자리가 열렸습니다</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">모든 세션과 스토리와 콜렉티브가 하나의 자라나는 지도에. 점 하나를 보태면, 선들이 당신을 찾아옵니다.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/press-fuller" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">보도</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 5월 18일 · 지면 · 인터뷰</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">“혼자서는 기울고, 함께라면 돈다”</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">스튜디오가 프로그램 대신 실천을 짓는 이유, 그리고 뫼비우스 띠가 소속감과 무슨 관계인지에 대한 긴 대화.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/ws-mobius-chinese" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">워크숍</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 5월 6일 · 타이중, 대만</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">뫼비우스 만들기, 이제 중국어로</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">만들기 세션이 완역되어 고등학생과 교사들과 함께 시험을 마쳤습니다. 퍼실리테이터 노트는 올가을에 나옵니다.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/proj-asia-exchange" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">프로젝트</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 4월 14일 · 베이징 · 타이중 · 야마구치</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">아시아 익스체인지, 2년 차로</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">세 도시, 돌고 도는 하나의 질문. 두 번째 사이클에는 그룹과 함께 여행하는 공동 저널이 더해집니다.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/kin-storycycle" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">동행</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">2026년 3월 28일 · 카트만두, 네팔</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">스토리사이클과 함께 걷기</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">우리가 계속 배우는 뜻이 맞는 실천: 사람들이 마시는 물에 대해 들려주는 스토리로 한 나라를 지도로 그리는 일.</p>
+            <div style="margin-top: auto; align-self: flex-end; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(46,59,64,0.45);">페이지 준비 중</div>
+          </div>
+        </div>
+      </article>
+      <article class="cm-card" data-card="COMM/NEWS/1" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">소식</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">네트워크 · 성장 중</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">브리지빌더 네트워크</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">자신의 동네에서 작은 다리를 짓는 청년들의 자라나는 네트워크.</p>
+            <a href="Community-BridgeBuilders.EN.dc.html" aria-label="Read more" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #966432; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/2" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">소식</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">온라인 · 두 달마다</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">브리지빌더 버추얼 랩</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">여러 나라의 브리지빌더들이 두 달마다 발견한 것을 나누는 온라인 랩.</p>
+            <a href="Community-BridgeBuilders.EN.dc.html" aria-label="Read more" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #966432; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/3" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;"><img src="community-img/nepal-storytelling.jpg" alt="Sindhuli Storytelling Festival" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">소식</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">신둘리, 네팔</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">신둘리 스토리텔링 축제</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">사우라브 다칼이 이끄는 스토리사이클 그룹이 신둘리 마을의 옛이야기를 기리는 축제를 준비하고 있습니다 — 어르신과 청년을 이으며.</p>
+            <a href="Community-Nepal-Youth-Cluster.EN.dc.html" aria-label="Read more" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #966432; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/4" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.65);">소식</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.65); margin-top: 5px; margin-bottom: 15px;">야마구치, 일본</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">야마구치 가족 축제</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.8);">야마구치시의 가족 중심 공동체는 음악과 노래로 아이들의 영적 안녕을 돌봅니다 — 함께 배우고, 연습하고, 삶을 축하하면서.</p>
+            <a href="Community-Animators.EN.dc.html" aria-label="Read more" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #966432; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/5" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">소식</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">베이징, 중국</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">주니어 유스 스페이스</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">여러 국적의 청소년들이 미덕과 공동체의 안녕에 대한 의미 있는 대화를 나누고, 동네 봉사 프로젝트를 직접 설계합니다 — 같음을 요구하지 않는 소속의 모델.</p>
+            <a href="Project-Asia-Exchange.EN.dc.html" aria-label="Read more" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #966432; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cm-card" data-card="COMM/NEWS/6" style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #966432;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #966432;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">소식</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">타이중, 대만</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.16; margin: 0 0 10px;">차오툰의 애니메이터들</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">주니어 유스 애니메이터들이 차오툰의 학교와 동네에서 일상적인 존재가 되어 가고, 뫼비우스 만들기가 중국어로 고등학생과 교사들에게 전해졌습니다 — 실천은 언어를 건너 여행합니다.</p>
+            <a href="Project-Asia-Exchange.EN.dc.html" aria-label="Read more" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #966432; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+<!-- NEWS:END -->
+    </div>
+  </section>
+
+  <!-- BACK TO TOP -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <a href="#top" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 14px 26px;">&uarr; 맨 위로</a>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #966432; color: #FAF4E2; margin-top: 60px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">함께하기</p>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.18; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">당신 곁에서 무언가 일어나고 있나요?</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.KO.dc.html" style="text-decoration: none; color: #966432; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">우리에게 알려주세요</a>
+        <a href="Community.KO.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">모든 커뮤니티</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer-KO" cta="#966432" loop="0.36" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script data-dc-script type="text/plain"></script>
+</body>
+</html>

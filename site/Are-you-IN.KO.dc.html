@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  ::selection { background: #1E8A86; color: #FAF4E2; }
+  .in-field { width: 100%; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 18px; color: #2E3B40; background: #FAF4E2; border: 1.5px solid rgba(46,59,64,0.28); padding: 14px 16px; outline: none; }
+  .in-field:focus { border-color: #1E8A86; }
+  .in-field::placeholder { color: rgba(46,59,64,0.42); }
+  select.in-field { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231A1613' stroke-width='1.6' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+</style>
+<script src="./image-slot.js"></script>
+<script>
+  window.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-scroll-form]');
+    if (!a) return;
+    e.preventDefault();
+    var pre = a.getAttribute('data-prefill');
+    var sel = document.getElementById('cf-brings');
+    if (sel && pre) { sel.value = pre; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+    var form = document.getElementById('cf-form');
+    if (form) window.scrollTo({ top: form.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+  });
+  window.addEventListener('change', function (e) {
+    if (e.target && e.target.id === 'cf-brings') {
+      var msg = document.getElementById('cf-msg-wrap');
+      if (msg) msg.style.display = (e.target.value === '행사 소식만 받아볼게요') ? 'none' : '';
+    }
+  });
+</script>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1.05fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(3, minmax(0"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+  [style*="font-size: 300px"]{display:none !important;}
+  [style*="font-size: 60px"][style*="height: 300px"]{height:auto !important;}
+  [style*="72px 120px"]{padding:56px 0 48px 0 !important;}
+  [style*="width: 700px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 800px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 900px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1200px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1000px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 950px"]{width:auto !important;max-width:100% !important;}
+  [style*="height: 350px"],[style*="height: 250px"],[style*="height: 200px"],[style*="height: 180px"],[style*="height: 170px"],[style*="height: 130px"],[style*="height: 100px"]{height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 72px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 66px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 62px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 60px 44px"]{padding:36px 24px !important;}
+  [style*="padding: 40px 44px"]{padding:28px 22px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 64px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 40px 80px"]{padding:30px 20px !important;}
+  [style*="padding: 40px 40px"]{padding:28px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+  [style*="font-size: 130px"]{font-size:64px !important;line-height:1 !important;}
+  [style*="font-size: 60px"]{font-size:34px !important;line-height:1.15 !important;}
+}
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <dc-import name="Nav-KO" active-page="Are-you-IN.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <!-- ===================== HERO ===================== -->
+  <section style="background: #1E8A86; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 72px 28px 76px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.82); margin-bottom: 22px;">Are you IN?</div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(46px, 6.6vw, 96px); line-height: 1.14; letter-spacing: -0.02em; margin: 0 0 22px; text-wrap: balance;">들어오세요 — 문은 열려 있습니다.</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 400; font-size: clamp(20px, 2.3vw, 27px); line-height: 1.42; max-width: 680px; margin: 0; color: rgba(250,244,226,0.94);">이것이 당신의 일과, 당신이 준비하는 미래와 공명한다면, 스토리 나누러 오세요.</p>
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO + FORM (two columns) ===================== -->
+  <section id="inquiry" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 52px; align-items: flex-start;">
+
+      <div style="flex: 1 1 460px; min-width: 320px;">
+        <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.18; margin: 0 0 8px; letter-spacing: -0.01em; text-wrap: balance;">대화를 시작해요</h2>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.5; margin: 0 0 28px; color: rgba(46,59,64,0.78); max-width: 520px;">당신에 대해, 그리고 무엇을 탐구하고 싶은지 조금 들려주세요. 모든 메시지를 읽습니다.</p>
+        <form id="cf-form" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+            <div style="flex: 1 1 200px; min-width: 180px;">
+              <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">이름</label>
+              <input class="in-field" type="text" name="name" placeholder="이름" required="required">
+            </div>
+            <div style="flex: 1 1 200px; min-width: 180px;">
+              <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">이메일</label>
+              <input class="in-field" type="email" name="email" placeholder="you@example.com" required="required">
+            </div>
+          </div>
+          <div>
+            <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">무엇이 당신을 이곳으로 이끌었나요?</label>
+            <select class="in-field" id="cf-brings" name="brings">
+              <option>워크숍이 궁금해요</option>
+              <option>우리 조직에 워크숍을 열고 싶어요</option>
+              <option>이미 함께하고 있어요 — 질문 또는 필요한 것이 있어요</option>
+              <option>함께 만들 수 있는 것을 제안하고 싶어요</option>
+              <option>행사 소식만 받아볼게요</option>
+              <option>그 밖의 것</option>
+            </select>
+          </div>
+          <div id="cf-msg-wrap">
+            <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">메시지</label>
+            <textarea class="in-field" name="message" rows="5" placeholder="무엇을 탐구하고 싶으신가요?" style="resize: vertical;"></textarea>
+          </div>
+          <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 4px;">
+            <button type="submit" style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; color: #FAF4E2; background: #2E3B40; border: none; border-radius: 999px; padding: 15px 34px; cursor: pointer;">메시지 보내기</button>
+            <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px; color: rgba(46,59,64,0.55);">곧 연락드리겠습니다.</span>
+          </div>
+        </form>
+      </div>
+
+      <div style="flex: 1 1 480px; min-width: 320px;">
+        <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 18px;">영상 보기</div>
+        <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #2E3B40;">
+          <iframe src="https://www.youtube-nocookie.com/embed/RRV2gOjVx3U?rel=0" title="IN — MEWE" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== THREE CARDS ===================== -->
+  <section style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px;">
+
+      <div style="background: #BDDAE7; color: #2E3B40; display: flex; flex-direction: column;">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="People collaborating in a workshop" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;">
+        <div style="display: flex; gap: 16px; padding: 26px 28px 28px; flex: 1; background-color: #F0D23C">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.7);">지원</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1;">
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: 30px; line-height: 1.18; margin: 0 0 10px;">이미 함께하고 계신가요?</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.2; margin: 0 0 22px; color: rgba(46,59,64,0.8);">참여한 워크숍, 만들고 있는 콜렉티브, 필요한 자료에 대한 질문 — 연락 주시면 계속 나아가도록 돕겠습니다.</p>
+            <a href="#cf-form" data-scroll-form="1" style="margin-top: auto; align-self: flex-start; text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 12px 24px;">연결하기</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #46325A; color: #FAF4E2; display: flex; flex-direction: column;">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80" alt="People gathered at an event" style="display:block; width:100%; aspect-ratio: 16 / 9; object-fit: cover;">
+        <div style="display: flex; gap: 16px; padding: 26px 28px 28px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FAF4E2;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,244,226,0.75);">행사</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1;">
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: 30px; line-height: 1.18; margin: 0 0 10px;">다음엔 어디서 만날까요</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.2; margin: 0 0 22px; color: rgba(250,244,226,0.9);">팝업 스튜디오, 글로벌 랩, 커뮤니티 세션 소식은 목록에 계신 분들께 가장 먼저 전해집니다. 알림을 신청하세요.</p>
+            <a href="#cf-form" data-scroll-form="1" data-prefill="행사 소식만 받아볼게요" style="margin-top: auto; align-self: flex-start; text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #46325A; background: #FAF4E2; border-radius: 999px; padding: 12px 24px;">대화 시작하기</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: NEWS — structured for a future Instagram auto-feed; static entry until connected -->
+      <div data-ig-feed="innoco.co" style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?auto=format&fit=crop&w=900&q=80" alt="Hands making together" style="display:block; width:100%; aspect-ratio: 16 / 9; object-fit: cover;">
+        <div style="display: flex; gap: 16px; padding: 26px 28px 28px; flex: 1; background-color: #D21E28">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.7);">소식</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1;">
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: 30px; line-height: 1.18; margin: 0 0 10px;">지금 일어나고 있는 일</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.2; margin: 0 0 22px; color: rgba(46,59,64,0.8);">스튜디오의 최신 소식 — 팝업, 세션, 그리고 커뮤니티가 만들고 있는 것들.</p>
+            <a href="https://instagram.com/innoco.co" target="_blank" rel="noopener" style="margin-top: auto; align-self: flex-start; text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 12px 24px;">팔로우하기</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== TRIAD BOX (teal) ===================== -->
+  <section style="background: #1E8A86; color: #FAF4E2; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(30px, 4vw, 52px); line-height: 1.14; margin: 0 0 12px; letter-spacing: -0.01em; text-wrap: balance;">안에서 시작하기. 공간을 나누기. 더 큰 우리에게.</h2>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; margin: 0; color: rgba(250,244,226,0.9);">마음이 움직였다면 — Are you IN?</p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER (no CTA on this page → ribbon transparent, loop only) ===================== -->
+  <div id="connect"><dc-import name="Footer-KO" cta="#1E8A86" loop="0.920" hint-size="100%,460px"></dc-import></div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

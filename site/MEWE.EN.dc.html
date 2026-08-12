@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #1C6E92; color: #FAF4E2; }
+  a { color: #1C6E92; }
+  a:hover { color: #14506B; }
+</style>
+<script src="./image-slot.js"></script>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: repeat(auto-fit"]{grid-template-columns:1fr 1fr !important;}
+  [style*="grid-template-columns: repeat(3"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="grid-template-columns: repeat(auto-fit"]{grid-template-columns:1fr !important;}
+}
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <dc-import name="Nav" active-page="MEWE.EN.dc.html" hint-size="100%,64px"></dc-import>
+
+  <!-- HERO (locked) -->
+  <section data-screen-label="Hero" style="background: #1E648C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 60px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;">
+        <span style="width: 12px; height: 12px; border-radius: 50%; background: #FAF4E2; flex: 0 0 auto;"></span>
+        <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #FAF4E2;">MEWE</span>
+      </div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 0.98; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 18ch; text-wrap: balance;">What if ME and WE were never actually two things?</h1>
+      <p style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 50px); line-height: 1.0; margin: 0; letter-spacing: -0.01em; color: #F0D23C;">They Never Were. One path. No sides.</p>
+    </div>
+  </section>
+
+  <!-- INTRO STATEMENT -->
+  <section data-screen-label="The pattern" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.3; margin: 0; max-width: 900px; color: #1A1613;">MEWE names a pattern already at work — between us, within us, through us. Not a belief to adopt. Something to notice, and then to live.</p>
+  </section>
+
+  <!-- 1 · MEWE RELATIONSHIP -->
+  <section data-screen-label="1 MEWE Relationship" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px; max-width: 940px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #1C6E92; margin-bottom: 20px;">MEWE Relationship</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-style: italic; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: pretty; color: #1C6E92;">Relationships are not something we create. They are something we are already inside.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; margin: 0 0 18px; max-width: 720px; color: rgba(46,59,64,0.82);">It is natural to feel separate at times. In teams, when collaboration feels strained. In families, when misunderstanding lingers. In communities, when alignment feels fragile. Even within ourselves. Given the complexity of modern life, this sense of separation makes sense.</p>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; margin: 0; max-width: 720px; color: rgba(46,59,64,0.82);">And yet, something else is also quietly true — we are constantly influencing one another. A tone changes the atmosphere. A gesture softens tension. A single decision reshapes a conversation.</p>
+    </div>
+  </section>
+
+  <!-- 2 · NATURE ALREADY KNOWS -->
+  <section data-screen-label="2 Nature already knows" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #1C6E92; margin-bottom: 20px;">Nature Already Knows</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.04; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: balance; color: #2E3B40;">Life reflects the MEWE pattern.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; margin: 0 0 40px; max-width: 720px; color: rgba(46,59,64,0.82);">It draws attention to a pattern we have had blind spots for — one that living systems have been running all along.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 26px;">
+        <div style="border-top: 1.5px solid rgba(46,59,64,0.2); padding-top: 16px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1C6E92;">DNA</div>
+          <image-slot id="mewe-dna" shape="rect" placeholder="DNA — photo or illustration" style="display:block; width: 100%; aspect-ratio: 16 / 9;"></image-slot>
+          <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.42; margin: 0; color: rgba(46,59,64,0.82);">Strands appear separate, yet neither sustains life alone.</p>
+        </div>
+        <div style="border-top: 1.5px solid rgba(46,59,64,0.2); padding-top: 16px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1C6E92;">Nervous systems</div>
+          <image-slot id="mewe-nervous" shape="rect" placeholder="Nervous systems — photo or illustration" style="display:block; width: 100%; aspect-ratio: 16 / 9;"></image-slot>
+          <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.42; margin: 0; color: rgba(46,59,64,0.82);">Signals travel a shared network, not a solitary line.</p>
+        </div>
+        <div style="border-top: 1.5px solid rgba(46,59,64,0.2); padding-top: 16px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1C6E92;">Forest roots</div>
+          <image-slot id="mewe-roots" shape="rect" placeholder="Forest roots — photo or illustration" style="display:block; width: 100%; aspect-ratio: 16 / 9;"></image-slot>
+          <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.42; margin: 0; color: rgba(46,59,64,0.82);">Trees trade nutrients underground long before we noticed.</p>
+        </div>
+        <div style="border-top: 1.5px solid rgba(46,59,64,0.2); padding-top: 16px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #1C6E92;">Ecosystems</div>
+          <image-slot id="mewe-ecosystems" shape="rect" placeholder="Ecosystems — photo or illustration" style="display:block; width: 100%; aspect-ratio: 16 / 9;"></image-slot>
+          <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.42; margin: 0; color: rgba(46,59,64,0.82);">Thrive through interdependence, not isolation.</p>
+        </div>
+      </div>
+      <p style="font-family: 'Newsreader', serif; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.32; margin: 40px 0 0; max-width: 760px; color: #1E648C; text-wrap: pretty;">This isn't a new idea. <span style="color: #1C6E92;">Nature has always shown it to us.</span></p>
+    </div>
+  </section>
+
+  <!-- DIVIDER · THE MÖBIUS FLIP -->
+  <section data-screen-label="The Möbius Flip" style="background: #1C6E92; color: #FFFFFF; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 48px; background-color: #1C6E92">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; line-height: 1.1; text-transform: uppercase; color: #FFFFFF; margin-bottom: 22px;">The Möbius Flip</div>
+      <p style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 30px); line-height: 1.2; margin: 0; max-width: 26ch; color: #FFFFFF; font-style: italic; width: 800px">We picture “self” and “society” as two sides, facing away from each other. MEWE is the flip — the moment you let go of the orientation you started with, and see they were never fully separate.</p>
+    </div>
+  </section>
+
+  <!-- 3 · MEWE LOOP -->
+  <section data-screen-label="3 The MEWE Loop" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #1C6E92; margin-bottom: 20px;">The MEWE Loop</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.04; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: balance; color: #2E3B40;">Six stages, lived rather than learned.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; max-width: 720px; margin: 0 0 34px; color: rgba(46,59,64,0.82);">If this pattern is already operating, what changes when we become conscious of it? MEWE unfolds through practice — not as a theory, but as something lived, across six stages.</p>
+      <div style="overflow: hidden; margin: 0 0 34px;"><img src="team/mewe-arc-strip.png" alt="MEWE Loop — IGNITE, ME≠WE, ME+WE, (ME WE), ME=WE, GLOW" style="display: block; width: calc(100% + 8px); height: auto; margin-top: -8px; margin-left: -8px;"></div>
+      <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.18); padding: 20px 0;"><div style="flex: 0 0 auto; width: 150px; font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; color: #1C6E92;">IGNITE</div><div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5;">Willing to turn toward my higher self, willing to look.</div></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.18); padding: 20px 0;"><div style="flex: 0 0 auto; width: 150px; font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; color: #1C6E92;">ME ≠ WE</div><div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5;">Still inside my own story.</div></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.18); padding: 20px 0;"><div style="flex: 0 0 auto; width: 150px; font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; color: #1C6E92;">ME + WE</div><div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5;">Beginning to notice the web that holds ME and WE.</div></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.18); padding: 20px 0;"><div style="flex: 0 0 auto; width: 150px; font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; color: #1C6E92;">(ME WE)</div><div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5;">Flipping to connect, a door opens: we see together, and something new emerges. <span style="color: #1C6E92; font-style: italic;">This is the shift.</span></div></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.18); padding: 20px 0;"><div style="flex: 0 0 auto; width: 150px; font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; color: #1C6E92;">ME = WE</div><div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5;">Moving in the relational field, our thoughts, words, and actions ripple outward — shaping the collective flow.</div></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.18); border-bottom: 1.5px solid rgba(46,59,64,0.18); padding: 20px 0;"><div style="flex: 0 0 auto; width: 150px; font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; color: #1C6E92;">GLOW</div><div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5;">Learning to keep moving, we co-create and co-evolve — toward the whole.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER · WHY IT MATTERS -->
+  <section data-screen-label="Why It Matters" style="background: #1C6E92; color: #FFFFFF; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 48px; background-color: #1C6E92">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; line-height: 1.1; text-transform: uppercase; color: #FFFFFF; margin-bottom: 24px;">Why It Matters</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.1; margin: 0 0 26px; max-width: 26ch; letter-spacing: -0.01em; text-wrap: pretty; color: #FFFFFF;">Individual action does not remain individual. It shapes relationships. Relationships shape shared patterns. Shared patterns shape communities.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.35; margin: 0; max-width: 640px; color: rgba(255,255,255,0.88); font-weight: 500; font-style: italic;">Community transformation is not manufactured — it unfolds through participation. Change is rarely sustained through force. It emerges through relational alignment.</p>
+    </div>
+  </section>
+
+  <!-- 5 · ACTION RESEARCH -->
+  <section data-screen-label="5 Action Research" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #1C6E92; margin-bottom: 20px;">Action Research</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.04; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: balance; color: #2E3B40;">We keep testing the framework in practice.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; margin: 0 0 40px; max-width: 720px; color: rgba(46,59,64,0.82);">MEWE is a working hypothesis, refined through every workshop, project, and neighbor story — evidence about what actually shifts between people, gathered as we practice.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch;">
+
+        <article style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+          <div style="position: relative; width: 100%; height: 132px; overflow: hidden; background: #1E8A86;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 240px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(18% 100%, 30% 12%, 46% 100%);"></div></div></div>
+          <div style="position: relative; display: flex; flex-direction: column; flex: 1; min-height: 200px; padding: 22px 24px 20px 50px;">
+            <div style="position: absolute; left: 13px; top: 21px; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #1C6E92;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #1C6E92;">Research</span></div>
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #2E3B40; margin: 0 0 8px;">In practice</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1; margin: 0 0 10px;">Every studio is an experiment</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(46,59,64,0.82);">The six-stage Loop tested against real rooms, then adjusted from what we observe.</p>
+            <div style="margin-top: auto; display: flex; justify-content: flex-end; padding-top: 22px;"><a href="Action-Research.EN.dc.html" aria-label="Read the research" style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a></div>
+          </div>
+        </article>
+
+        <article style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+          <div style="position: relative; width: 100%; height: 132px; overflow: hidden; background: #1E648C;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 240px;"><div style="position: absolute; inset: 0; background: #1E8A86; clip-path: polygon(100% 100%, 100% 34%, 30% 100%); mix-blend-mode: multiply;"></div></div></div>
+          <div style="position: relative; display: flex; flex-direction: column; flex: 1; min-height: 200px; padding: 22px 24px 20px 50px;">
+            <div style="position: absolute; left: 13px; top: 21px; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #1C6E92;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #1C6E92;">Research</span></div>
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #2E3B40; margin: 0 0 8px;">Across fields</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1; margin: 0 0 10px;">Kept honest by many disciplines</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(46,59,64,0.82);">Relational science, systems thinking, art, and ecology — not a single discipline's claim.</p>
+            <div style="margin-top: auto; display: flex; justify-content: flex-end; padding-top: 22px;"><a href="Action-Research.EN.dc.html" aria-label="Read the research" style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a></div>
+          </div>
+        </article>
+
+        <article style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+          <div style="position: relative; width: 100%; height: 132px; overflow: hidden; background: #D21E28;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 240px;"><div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(0 100%, 0 40%, 54% 100%);"></div><div style="position: absolute; inset: 0; background: #F05A28; clip-path: polygon(100% 100%, 100% 18%, 58% 100%);"></div></div></div>
+          <div style="position: relative; display: flex; flex-direction: column; flex: 1; min-height: 200px; padding: 22px 24px 20px 50px;">
+            <div style="position: absolute; left: 13px; top: 21px; display: flex; flex-direction: column; align-items: center; gap: 9px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #1C6E92;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #1C6E92;">Research</span></div>
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #2E3B40; margin: 0 0 8px;">Shared back</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1; margin: 0 0 10px;">The network learns together</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0; color: rgba(46,59,64,0.82);">What each IN-Collective learns returns to the network, so the framework grows through many hands.</p>
+            <div style="margin-top: auto; display: flex; justify-content: flex-end; padding-top: 22px;"><a href="Action-Research.EN.dc.html" aria-label="Read the research" style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a></div>
+          </div>
+        </article>
+
+      </div>
+      <p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.55; margin: 40px 0 0; max-width: 900px; color: rgba(46,59,64,0.78); border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 28px;">Shared through peer-reviewed work and international forums: a Springer handbook chapter, “Self, Society, Service in MEWE” (2024); “Co-Designing a Pathway Through Food Revolution for Social Change” (2021); “Co-designing a social innovation model for changemakers” (2018); and a youth-empowerment case study (Banff / RSD, 2015). Presented at Dubai EXPO 2020 and the Parliament of the World's Religions 2022. <a href="Action-Research.EN.dc.html">Read the full research →</a></p>
+    </div>
+  </section>
+
+  <!-- 6 · MEWE PRACTICE -->
+  <section data-screen-label="6 MEWE Practice" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px; max-width: 940px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #1C6E92; margin-bottom: 20px;">MEWE Practice</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.04; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: balance; color: #2E3B40;">MEWE is not a movement to join. It is a practice to live.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; max-width: 720px; margin: 0; color: rgba(46,59,64,0.82);">Something we've been testing since 2015 — our workshops exist to practice it together. We're also gathering a <a href="Story.EN.dc.html">neighbor archive</a>: how people express their own MEWE story, in whatever form it takes.</p>
+    </div>
+  </section>
+
+  <!-- 7 · WHERE IT BEGAN -->
+  <section data-screen-label="7 Where It Began" style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #1C6E92; margin-bottom: 20px;">Where It Began</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.04; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: balance; color: #2E3B40;">A personal need, folded into a strip of paper.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; margin: 0 0 18px; max-width: 720px; color: rgba(46,59,64,0.82);">MEWE emerged from a personal need — guiding design students through self-discovery, and connecting their practice to a larger purpose.</p>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.55; margin: 0 0 44px; max-width: 720px; color: rgba(46,59,64,0.82);">The Möbius strip became its symbol: individual (ME) and community (WE) as one continuous surface. From that starting point, the framework opens an exploration of our relationships with the self, with others, and with the forces of energy that bind us all.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5px; background: rgba(46,59,64,0.16); border: 1.5px solid rgba(46,59,64,0.16); max-width: 1000px;">
+        <div style="background: #FAF4E2; padding: 22px 24px;"><div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 40px; line-height: 1; color: #1C6E92; margin-bottom: 8px;">2015</div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55);">In practice since</div></div>
+        <div style="background: #FAF4E2; padding: 22px 24px;"><div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 40px; line-height: 1; color: #1C6E92; margin-bottom: 8px;">5</div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55);">Countries</div></div>
+        <div style="background: #FAF4E2; padding: 22px 24px;"><div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 40px; line-height: 1; color: #1C6E92; margin-bottom: 8px;">650+</div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55);">People engaged</div></div>
+        <div style="background: #FAF4E2; padding: 22px 24px;"><div style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 40px; line-height: 1; color: #1C6E92; margin-bottom: 8px;">All ages</div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55);">Classrooms · communities · organizations</div></div>
+      </div>
+      <p style="font-family: 'Newsreader', serif; font-style: italic; font-size: 18px; line-height: 1.5; margin: 16px 0 0; color: rgba(46,59,64,0.62);">Its simplicity and adaptability keep it accessible across age groups and cultural backgrounds.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section data-screen-label="CTA" style="background: #1E648C; color: #FAF4E2; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.08; margin: 0 0 30px; letter-spacing: -0.01em; text-wrap: balance;">One path. No sides. Step into the work.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Workshop-Mobius-Making.EN.dc.html" style="text-decoration: none; color: #1E8A86; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">Start with Möbius Making</a>
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">Get involved</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#1E648C" loop="0.126" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+</body>
+</html>

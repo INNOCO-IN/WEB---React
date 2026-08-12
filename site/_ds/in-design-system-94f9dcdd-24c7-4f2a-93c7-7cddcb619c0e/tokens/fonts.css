@@ -1,0 +1,14 @@
+/* IN Design System — Web fonts
+   Newsreader (serif — display/body/quotes) and Archivo (sans — labels/UI/nav)
+   are both genuine Google Fonts; loaded via the Google Fonts CSS2 endpoint
+   rather than self-hosted binaries. If you'd rather self-host, download the
+   two families from fonts.google.com and swap this @import for local
+   @font-face rules pointing at /assets/fonts/. */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Archivo:wght@600;700;800&display=swap');
+
+:root {
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; /* no mono family in the source brand — system stack only */
+}

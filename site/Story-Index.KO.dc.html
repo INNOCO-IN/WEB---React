@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #1A1613; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  ::selection { background: #C9962B; color: #FAF4E2; }
+  a { color: #B87A00; }
+  a:hover { color: #8f5f00; }
+  .col-scroll::-webkit-scrollbar { width: 6px; }
+  .col-scroll::-webkit-scrollbar-thumb { background: rgba(26,22,19,0.2); border-radius: 3px; }
+  .story-body p { font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.5; letter-spacing: -0.003em; margin: 0 0 24px; color: #241f19; text-wrap: pretty; }
+  .story-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 980px) {
+    .si-grid { grid-template-columns: 1fr !important; }
+    .si-left, .si-right { position: static !important; height: auto !important; max-height: none !important; border: none !important; padding: 0 !important; }
+    .si-left { order: 1; } .si-mid { order: 2; } .si-right { order: 3; }
+    .si-left, .si-right { border-top: 1.5px solid rgba(26,22,19,0.14) !important; padding-top: 26px !important; }
+    .si-railscroll { display: flex !important; flex-wrap: wrap; }
+  }
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+<script src="data/stories.js"></script>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+  <dc-import name="Nav-KO" active-page="Story.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <section style="background: #FAB414; color: #1A1A1A;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 48px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #1A1A1A;"></span><span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; text-transform: uppercase;">스토리 · 별자리</span></div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(36px, 5vw, 68px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 14px; max-width: 16ch; text-wrap: balance;">모든 빛을 한자리에.</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.4; margin: 0; max-width: 60ch; color: rgba(26,26,26,0.82);">{{ totalLine }}</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 22px 28px 90px;">
+
+    <div style="display: flex; align-items: center; gap: 10px; padding: 18px 0 22px;">
+      <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,22,19,0.5);">묶어 보기</span>
+      <button onClick="{{ setByFormat }}" style="{{ byFormatStyle }}">형식</button>
+      <button onClick="{{ setByTopic }}" style="{{ byTopicStyle }}">주제</button>
+    </div>
+
+    <div class="si-grid" style="display: grid; grid-template-columns: 232px 1fr 320px; gap: 30px; align-items: start;">
+
+      <!-- LEFT · filter with counts -->
+      <div class="si-left col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-right: 1px solid rgba(26,22,19,0.14); padding-right: 20px;">
+        <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,22,19,0.5); margin-bottom: 14px;">{{ filterHeading }}</div>
+        <div class="si-railscroll" style="display: flex; flex-direction: column; gap: 5px;">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="8">
+            <button onClick="{{ f.pick }}" style="{{ f.style }}"><span>{{ f.label }}</span><span style="{{ f.countStyle }}">{{ f.count }}</span></button>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- MIDDLE · the story, read inline -->
+      <div class="si-mid">
+        <article style="max-width: 680px;">
+
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin: 4px 0 20px;">
+            <span style="display: inline-flex; align-items: center; gap: 9px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #B87A00;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #C9962B;"></span>스토리 · {{ current.format }}</span>
+            <span style="width: 1px; height: 14px; background: rgba(26,22,19,0.22);"></span>
+            <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(26,22,19,0.5);">{{ current.topic }}</span>
+          </div>
+
+          <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(38px, 5.4vw, 66px); line-height: 1.1; letter-spacing: -0.022em; margin: 0 0 22px; text-wrap: balance;">{{ current.title }}</h2>
+
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 400; font-style: normal; font-size: clamp(22px, 2.6vw, 28px); line-height: 1.34; letter-spacing: -0.01em; margin: 0 0 26px; color: rgba(26,22,19,0.72); text-wrap: pretty;">{{ current.body }}</p>
+
+          <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 28px; border-bottom: 1.5px solid rgba(26,22,19,0.16);">
+            <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: #1A1613;">{{ current.eyebrow }}</span>
+            <span style="width: 4px; height: 4px; border-radius: 50%; background: rgba(26,22,19,0.4);"></span>
+            <span style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; color: rgba(26,22,19,0.55);">{{ current.credit }}</span>
+            <span style="width: 4px; height: 4px; border-radius: 50%; background: rgba(26,22,19,0.4);"></span>
+            <span style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; color: rgba(26,22,19,0.55);">{{ current.dateLabel }}</span>
+          </div>
+
+          <sc-if value="{{ current.hasImage }}" hint-placeholder-val="{{ false }}">
+            <div role="img" aria-label="{{ current.title }}" style="{{ current.imgStyle }}"></div>
+          </sc-if>
+
+          <div class="story-body" style="padding-top: 40px;">
+            <sc-for list="{{ current.paras }}" as="p" hint-placeholder-count="6">
+              <p style="{{ p.style }}">{{ p.t }}</p>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ current.hasKicker }}" hint-placeholder-val="{{ false }}">
+            <div style="border-top: 1.5px solid rgba(201,150,43,0.5); margin-top: 48px; padding-top: 34px;">
+              <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(26px, 3.4vw, 34px); line-height: 1.24; letter-spacing: -0.015em; margin: 0 0 10px; color: #1A1613; text-wrap: balance;">{{ current.kicker1 }}</p>
+              <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(26px, 3.4vw, 34px); line-height: 1.24; letter-spacing: -0.015em; margin: 0; color: #B87A00; text-wrap: balance;">{{ current.kicker2 }}</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ current.isDraft }}" hint-placeholder-val="{{ false }}">
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-style: normal; font-size: 18px; line-height: 1.5; margin: 30px 0 0; padding: 16px 20px; background: #F3EAD0; color: rgba(26,22,19,0.7);">이 스토리의 더 온전한 판은 아직 쓰이고 있습니다 — 지금 나눌 수 있는 것은 여기까지입니다.</p>
+          </sc-if>
+
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; border-top: 1.5px solid rgba(26,22,19,0.16); margin-top: 52px; padding-top: 26px;">
+            <button type="button" onClick="{{ toTop }}" style="cursor: pointer; display: inline-flex; align-items: center; gap: 10px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2; background: #1A1613; border: none; border-radius: 999px; padding: 14px 26px;">&uarr; 다른 스토리 고르기</button>
+            <span style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 18px; line-height: 1.4; color: rgba(26,22,19,0.6);">인덱스 맨 위로 돌아갑니다.</span>
+          </div>
+
+        </article>
+      </div>
+
+      <!-- RIGHT · scalable index -->
+      <div class="si-right col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-left: 1px solid rgba(26,22,19,0.14); padding-left: 20px;">
+        <div style="position: sticky; top: 0; background: #FAF4E2; padding-bottom: 12px; z-index: 2;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 12px;">
+            <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,22,19,0.5);">{{ indexHeading }}</span>
+            
+          </div>
+          <div style="position: relative;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(26,22,19,0.4)" stroke-width="2" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%);"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4" stroke-linecap="round"></path></svg>
+            <input value="{{ query }}" onChange="{{ onSearch }}" placeholder="제목 검색…" style="width: 100%; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 16px; color: #1A1613; background: #F3EAD0; border: 1.5px solid rgba(26,22,19,0.14); border-radius: 999px; padding: 11px 16px 11px 36px; outline: none;">
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column;">
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26,22,19,0.4); padding: 18px 2px 8px; border-bottom: 1.5px solid rgba(26,22,19,0.16);">{{ g.label }}</div>
+            <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="5">
+              <button onClick="{{ s.open }}" style="{{ s.style }}">
+                <span style="display:block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #B87A00; margin-bottom: 3px;">{{ s.meta }}</span>
+                <span style="display:block; font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: 17px; line-height: 1.16; color: #1A1613;">{{ s.title }}</span>
+              </button>
+            </sc-for>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ loadMore }}" style="width: 100%; margin-top: 16px; cursor: pointer; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #1A1613; background: transparent; border: 1.5px solid rgba(26,22,19,0.3); border-radius: 999px; padding: 12px;">{{ loadMoreLabel }} ↓</button>
+        </sc-if>
+        <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 16px; color: rgba(26,22,19,0.5); padding: 20px 2px;">아직 일치하는 스토리가 없습니다.</p>
+        </sc-if>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== CTA (matches Story page) ===================== -->
+  <section style="background: #FAB414; color: #2E3B40; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.7); margin: 0 0 18px;">나누기</p>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 16px; letter-spacing: -0.01em; text-wrap: balance;">정직한 세 문장이면 스토리입니다.</h2>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.5; max-width: 640px; margin: 0 auto 28px; color: rgba(46,59,64,0.82);">스토리는 값없이 주는 선물입니다 — 다른 이들이 더 멀리 볼 수 있도록 건네는 당신의 경험. 다듬어질 필요는 없고, 정직하면 됩니다.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Story-Submission.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">스토리 나누기</a>
+        <a href="Are-you-IN.KO.dc.html" style="text-decoration: none; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">함께하기</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer-KO" cta="#FAB414" loop="0.421" hint-size="100%,460px"></dc-import></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mode: 'format', filter: 'All', query: '', current: 0, limit: 14 };
+
+  componentDidMount() {
+    if (!window.IN_STORIES) {
+      const t = setInterval(() => { if (window.IN_STORIES) { clearInterval(t); this.forceUpdate(); } }, 40);
+      setTimeout(() => clearInterval(t), 6000);
+    }
+    try {
+      const p = new URLSearchParams(location.search);
+      const id = p.get('story');
+      if (id) {
+        const i = this.data().findIndex(s => s.id === id);
+        if (i >= 0) this.setState({ current: i });
+        return;
+      }
+      const topic = p.get('topic');
+      if (topic) { this.setState({ mode: 'topic', filter: topic }); return; }
+      const format = p.get('format');
+      if (format) { this.setState({ mode: 'format', filter: format }); }
+    } catch (e) {}
+  }
+
+  // ── The stories live in data/stories.js — one record, both languages.
+  //    Add or edit a story THERE and it updates the index, the home card and
+  //    the constellation at once. Never paste story copy into this page.
+  LANG = 'ko';
+
+  data() {
+    const L = this.LANG, T = window.IN_TAXONOMY;
+    if (!window.IN_STORIES || !T) return [];
+    return window.IN_STORIES.map(r => Object.assign({}, r[L], {
+      id: r.id,
+      date: r.date,
+      color: r.color,
+      href: r.href,
+      draft: !!r.draft,
+      format: T.format[r.format][L],
+      topic: T.topic[r.topic][L],
+      image: r.media && r.media.image,
+      imgFit: r.media && r.media.fit,
+      imgRatio: r.media && r.media.ratio,
+      imgPos: r.media && r.media.pos
+    })).sort((x, y) => y.date.localeCompare(x.date));
+  }
+
+  dateLabel(iso) {
+    const dt = new Date(iso);
+    return dt.getFullYear() + '년 ' + (dt.getMonth() + 1) + '월';
+  }
+
+  renderVals() {
+    const all = this.data();
+    if (!all.length) return {};
+    const mode = this.state.mode, active = this.state.filter, q = this.state.query.trim().toLowerCase();
+    const key = mode === 'format' ? 'format' : 'topic';
+
+    const counts = {};
+    all.forEach(s => { counts[s[key]] = (counts[s[key]] || 0) + 1; });
+    // Every format the submission form offers is always listed — even at zero.
+    const ALL_FORMATS = Object.values(window.IN_TAXONOMY.format).map(v => v[this.LANG]);
+    const opts = mode === 'format'
+      ? ['All', ...ALL_FORMATS, ...Array.from(new Set(all.map(s => s.format))).filter(f => ALL_FORMATS.indexOf(f) < 0)]
+      : ['All', ...Array.from(new Set(all.map(s => s[key])))];
+
+    const pill = (on) => 'display:flex; align-items:center; justify-content:space-between; gap:8px; text-align:left; cursor:pointer; font-family:\'Archivo\',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.02em; padding:9px 14px; border-radius:999px; border:1.5px solid ' + (on ? '#1A1613' : 'rgba(26,22,19,0.2)') + '; background:' + (on ? '#1A1613' : 'transparent') + '; color:' + (on ? '#FAF4E2' : '#1A1613') + ';';
+    const countStyle = (on) => 'font-size:11px; font-weight:700; color:' + (on ? 'rgba(250,244,226,0.7)' : 'rgba(26,22,19,0.4)') + ';';
+    const toggle = (on) => 'cursor:pointer; font-family:\'Archivo\',sans-serif; font-weight:700; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; padding:8px 16px; border-radius:999px; border:1.5px solid #1A1613; background:' + (on ? '#1A1613' : 'transparent') + '; color:' + (on ? '#FAF4E2' : '#1A1613') + ';';
+
+    const filters = opts.map(o => {
+      const n = o === 'All' ? all.length : (counts[o] || 0);
+      const on = o === active;
+      return {
+        label: o === 'All' ? '전체' : o,
+        count: n === 0 ? '—' : n,
+        countStyle: countStyle(on),
+        style: pill(on) + (n === 0 && !on ? ' opacity:0.45;' : ''),
+        pick: () => this.setState({ filter: o, limit: 14 })
+      };
+    });
+
+    // filtered set (group filter + search)
+    let shown = active === 'All' ? all.slice() : all.filter(s => s[key] === active);
+    if (q) shown = shown.filter(s => s.title.toLowerCase().includes(q));
+
+    // featured story
+    const cur = all[this.state.current] || all[0];
+    const current = Object.assign({}, cur, {
+      dateLabel: this.dateLabel(cur.date),
+      paras: (cur.paras || []).map((t, i) => t.startsWith('## ')
+        ? { t: t.slice(3), style: "font-family:'Archivo','Noto Sans KR',sans-serif; font-weight:800; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:#1E8A86; margin:44px 0 18px; padding-top:22px; border-top:1.5px solid rgba(30,138,134,0.35);" }
+        : { t, style: i === 0 ? 'font-size:26px; line-height:1.5; color:#1A1613; margin:0 0 24px;' : '' }),
+      hasImage: !!cur.image,
+      imgStyle: cur.image ? 'width:100%; aspect-ratio:' + (cur.imgRatio || '16/10') + '; margin-top:34px; background-image:url(\'' + cur.image + '\'); background-size:' + (cur.imgFit || 'cover') + '; background-repeat:no-repeat; background-position:' + (cur.imgPos || 'center') + '; background-color:#F3EAD0;' : '',
+      hasKicker: !!cur.kicker,
+      kicker1: cur.kicker ? cur.kicker[0] : '',
+      kicker2: cur.kicker ? cur.kicker[1] : '',
+      isDraft: !!cur.draft,
+      hasPage: cur.href && cur.href !== '#'
+    });
+
+    // paginate, then group by month
+    const limited = shown.slice(0, this.state.limit);
+    const groups = [];
+    limited.forEach(s => {
+      const gi = all.indexOf(s);
+      const label = this.dateLabel(s.date);
+      let grp = groups[groups.length - 1];
+      if (!grp || grp.label !== label) { grp = { label, items: [] }; groups.push(grp); }
+      const on = gi === this.state.current;
+      grp.items.push({
+        title: s.title,
+        meta: s.format + ' · ' + s.topic,
+        style: 'text-align:left; cursor:pointer; background:' + (on ? 'rgba(201,150,43,0.14)' : 'transparent') + '; border:none; border-bottom:1px solid rgba(26,22,19,0.1); padding:13px 8px 13px 10px; ' + (on ? 'box-shadow: inset 3px 0 0 #C9962B;' : ''),
+        open: () => this.setState({ current: gi })
+      });
+    });
+
+    const remaining = shown.length - limited.length;
+
+    return {
+      filters, groups, current,
+      toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+
+      totalLine: all.length + '개의 스토리, 계속 자라는 중 — 이웃들이 저마다의 스토리를 보태며 별자리는 자랍니다.',
+      filterHeading: mode === 'format' ? '형식으로 거르기' : '주제로 거르기',
+      indexHeading: (active === 'All' ? '모든 스토리' : active) + ' · 최신순',
+      shownCount: shown.length + (q || active !== 'All' ? '' : '개'),
+      query: this.state.query,
+      onSearch: (e) => this.setState({ query: e.target.value, limit: 14 }),
+      byFormatStyle: toggle(mode === 'format'),
+      byTopicStyle: toggle(mode === 'topic'),
+      setByFormat: () => this.setState({ mode: 'format', filter: 'All', limit: 14 }),
+      setByTopic: () => this.setState({ mode: 'topic', filter: 'All', limit: 14 }),
+      hasMore: remaining > 0,
+      isEmpty: shown.length === 0,
+      loadMoreLabel: '이전 스토리 ' + Math.min(remaining, 14) + '개 더 보기',
+      loadMore: () => this.setState({ limit: this.state.limit + 14 })
+    };
+  }
+}
+</script>
+</body>
+</html>

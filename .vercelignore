@@ -1,0 +1,17 @@
+screenshots/
+uploads/
+deploy/
+deploy-en/
+vercel-deploy/
+in-website/
+design_handoff_in_website/
+IN Website (English)/
+_ARCHIVE-*
+*.md
+!README.md
+.image-slots.state.json
+.thumbnail
+
+# The React app has no build step wired into this deploy yet.
+# Drop this line once app/ is meant to ship (see README → Deploy).
+app/

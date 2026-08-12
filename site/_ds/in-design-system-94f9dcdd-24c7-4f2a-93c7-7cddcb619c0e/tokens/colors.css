@@ -1,0 +1,55 @@
+/* IN Design System — Color tokens
+   Flat, saturated color blocks — never gradients, never drop shadows for color.
+   Rule: one saturated accent per section/card, paired with paper or ink text.
+   Teal is reserved for interactive/link meaning across all pages. */
+
+:root {
+  /* ---- Foundation ---- */
+  --color-paper:      #FAF4E2; /* primary background */
+  --color-paper-dim:  #F3EAD0; /* secondary/recessed background */
+  --color-ink:        #2E3B40; /* primary text + dark sections — dark blue-gray, never pure black */
+  --color-ink-12:     rgba(46, 59, 64, 0.12); /* hairlines on paper */
+  --color-ink-20:     rgba(46, 59, 64, 0.20); /* hairlines on ink */
+  --color-ink-40:     rgba(46, 59, 64, 0.68); /* muted text on paper — darkened for legibility */
+
+  /* ---- Primary accent ---- */
+  --color-teal:        #1E8A86; /* links, CTAs, kickers, focus rings */
+  --color-teal-dark:   #146560; /* teal hover/press */
+
+  /* ---- Card / section accents (pick ONE per block) ----
+     All 14 traced directly from the IN logo mark — 8 solid ribbon colors
+     plus 6 overlap tones where two ribbons cross. Every accent used across
+     cards/sections comes from this set. */
+  --color-magenta:  #E6328C;
+  --color-deepblue: #1E648C;
+  --color-plum:     #46325A;
+  --color-green:    #3C8246;
+  --color-yellow:   #F0D23C;
+  --color-amber:    #FAB414;
+  --color-red:      #D21E28;
+  /* teal — see --color-teal above, also usable as a section accent */
+  --color-slate:    #1E5A64; /* teal × deep blue overlap */
+  --color-forest:   #3C5A46; /* green × plum overlap */
+  --color-orange:   #F05A28; /* amber × red overlap */
+  --color-tan:      #966432; /* amber × plum overlap */
+  --color-gold:     #F0961E; /* amber variant */
+  --color-crimson:  #DC3C28; /* red variant */
+
+  /* ---- Semantic aliases ---- */
+  --surface-page:       var(--color-paper);
+  --surface-page-dim:   var(--color-paper-dim);
+  --surface-inverse:    var(--color-ink);
+  --surface-card:       var(--color-paper);
+  --border-default:     var(--color-ink-12);
+  --border-inverse:     var(--color-ink-20);
+  --border-focus:       var(--color-teal);
+
+  --text-primary:        var(--color-ink);
+  --text-primary-inverse: var(--color-paper);
+  --text-muted:          var(--color-ink-40);
+  --text-link:           var(--color-teal);
+  --text-link-hover:     var(--color-magenta);
+
+  --accent-primary:     var(--color-teal);
+  --accent-primary-hover: var(--color-teal-dark);
+}

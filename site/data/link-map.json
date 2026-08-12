@@ -1,0 +1,431 @@
+{
+  "generatedAt": "2026-07-24T11:26:25.964Z",
+  "files": [
+    "Action-Research.EN.dc.html",
+    "Are-you-IN.EN.dc.html",
+    "Card System Prototype.EN.dc.html",
+    "Cards.EN.dc.html",
+    "Collectives.EN.dc.html",
+    "Community-Animators.EN.dc.html",
+    "Community-BridgeBuilders.EN.dc.html",
+    "Community-Facilitators.EN.dc.html",
+    "Community-IN-Collectives.EN.dc.html",
+    "Community-Index.EN.dc.html",
+    "Community-Nepal-Youth-Cluster.EN.dc.html",
+    "Community-Open-Studio.EN.dc.html",
+    "Community-UAE-Youth-Cluster.EN.dc.html",
+    "Community.EN.dc.html",
+    "Constellation.EN.dc.html",
+    "Footer.dc.html",
+    "Home.EN.dc.html",
+    "IN Design System.dc.html",
+    "MEWE.EN.dc.html",
+    "Manifesto.EN.dc.html",
+    "Nav.dc.html",
+    "Project-Asia-Exchange.EN.dc.html",
+    "Project-BridgeBuilder-Program.EN.dc.html",
+    "Project-CTN.EN.dc.html",
+    "Project-Food-Revolution.EN.dc.html",
+    "Project-GYEM.EN.dc.html",
+    "Project-I-Grow-Seed.EN.dc.html",
+    "Project-Jungle-Jam.EN.dc.html",
+    "Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html",
+    "Project-Shadow-Shifter.EN.dc.html",
+    "Project-UAE-Youth-Social-Innovation.EN.dc.html",
+    "Project-UNC-Documentary.EN.dc.html",
+    "Project-UNC.EN.dc.html",
+    "Project-tasmena.EN.dc.html",
+    "Project.EN.dc.html",
+    "ProjectIndexRail.dc.html",
+    "Protagonist.EN.dc.html",
+    "Story-Index.EN.dc.html",
+    "Story-Submission.EN.dc.html",
+    "Story-This-Is-Us.EN.dc.html",
+    "Story.EN.dc.html",
+    "Workshop-Bucket-List.EN.dc.html",
+    "Workshop-Heros-Journey.EN.dc.html",
+    "Workshop-Jungle-Jam.EN.dc.html",
+    "Workshop-Light-Shadow-Shift.EN.dc.html",
+    "Workshop-Metanoia.EN.dc.html",
+    "Workshop-Mobius-Making.EN.dc.html",
+    "Workshop-Pathfinder.EN.dc.html",
+    "Workshop-Second-Life.EN.dc.html",
+    "Workshop-Shadow-Shifter.EN.dc.html",
+    "Workshop-Two-Wings.EN.dc.html",
+    "Workshop.EN.dc.html",
+    "index.html",
+    "kr.html",
+    "zh.html"
+  ],
+  "shared": [
+    "Nav.dc.html",
+    "Footer.dc.html",
+    "ProjectIndexRail.dc.html"
+  ],
+  "refOnly": [
+    "Cards.EN.dc.html",
+    "Card System Prototype.EN.dc.html",
+    "IN Design System.dc.html"
+  ],
+  "graph": {
+    "Action-Research.EN.dc.html": {
+      "MEWE.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Are-you-IN.EN.dc.html": {},
+    "Card System Prototype.EN.dc.html": {},
+    "Cards.EN.dc.html": {
+      "Project-Asia-Exchange.EN.dc.html": 1,
+      "Story-Submission.EN.dc.html": 1,
+      "Community-Open-Studio.EN.dc.html": 1
+    },
+    "Collectives.EN.dc.html": {
+      "Are-you-IN.EN.dc.html": 2
+    },
+    "Community-Animators.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community-BridgeBuilders.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Project-BridgeBuilder-Program.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community-Facilitators.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Protagonist.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community-IN-Collectives.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Collectives.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community-Index.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Community-Open-Studio.EN.dc.html": 1,
+      "Community-Animators.EN.dc.html": 1,
+      "Community-IN-Collectives.EN.dc.html": 1,
+      "Community-Facilitators.EN.dc.html": 1,
+      "Community-BridgeBuilders.EN.dc.html": 1,
+      "Project-Asia-Exchange.EN.dc.html": 1,
+      "Project-Food-Revolution.EN.dc.html": 1,
+      "Community-Nepal-Youth-Cluster.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community-Nepal-Youth-Cluster.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Project-UNC.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community-Open-Studio.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community-UAE-Youth-Cluster.EN.dc.html": {
+      "Community.EN.dc.html": 1,
+      "Project-UAE-Youth-Social-Innovation.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Community.EN.dc.html": {
+      "Community-Open-Studio.EN.dc.html": 1,
+      "Community-Animators.EN.dc.html": 2,
+      "Community-IN-Collectives.EN.dc.html": 1,
+      "Community-Facilitators.EN.dc.html": 1,
+      "Community-BridgeBuilders.EN.dc.html": 3,
+      "Project-Asia-Exchange.EN.dc.html": 3,
+      "Project-Food-Revolution.EN.dc.html": 1,
+      "Community-Nepal-Youth-Cluster.EN.dc.html": 2,
+      "Community-UAE-Youth-Cluster.EN.dc.html": 1,
+      "Community-Index.EN.dc.html": 1,
+      "Story.EN.dc.html": 1,
+      "Constellation.EN.dc.html": 1,
+      "Protagonist.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Constellation.EN.dc.html": {
+      "Story-Submission.EN.dc.html": 2,
+      "MEWE.EN.dc.html": 1
+    },
+    "Footer.dc.html": {
+      "Manifesto.EN.dc.html": 1,
+      "Collectives.EN.dc.html": 1,
+      "MEWE.EN.dc.html": 1,
+      "Workshop.EN.dc.html": 1,
+      "Story.EN.dc.html": 1,
+      "Protagonist.EN.dc.html": 1,
+      "Project.EN.dc.html": 1,
+      "Community.EN.dc.html": 1,
+      "Constellation.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Home.EN.dc.html": {
+      "MEWE.EN.dc.html": 3,
+      "Workshop.EN.dc.html": 4,
+      "Protagonist.EN.dc.html": 2,
+      "Story.EN.dc.html": 2,
+      "Community.EN.dc.html": 4,
+      "Manifesto.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 2,
+      "Collectives.EN.dc.html": 1
+    },
+    "IN Design System.dc.html": {},
+    "Manifesto.EN.dc.html": {
+      "Collectives.EN.dc.html": 1,
+      "Community.EN.dc.html": 1,
+      "Project.EN.dc.html": 1,
+      "MEWE.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Nav.dc.html": {
+      "Home.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-Asia-Exchange.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Protagonist.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-BridgeBuilder-Program.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Community-BridgeBuilders.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-CTN.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-Food-Revolution.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-GYEM.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-I-Grow-Seed.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-Jungle-Jam.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Project-Shadow-Shifter.EN.dc.html": 2,
+      "Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html": 2,
+      "Project-Jungle-Jam.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Project-Jungle-Jam.EN.dc.html": 2,
+      "Project-Shadow-Shifter.EN.dc.html": 2,
+      "Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1,
+      "Protagonist.EN.dc.html": 1
+    },
+    "Project-Shadow-Shifter.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Project-Jungle-Jam.EN.dc.html": 2,
+      "Project-Shadow-Shifter.EN.dc.html": 1,
+      "Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1,
+      "Protagonist.EN.dc.html": 1
+    },
+    "Project-UAE-Youth-Social-Innovation.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Community-UAE-Youth-Cluster.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-UNC-Documentary.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Project-UNC.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-UNC.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Community-Nepal-Youth-Cluster.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project-tasmena.EN.dc.html": {
+      "Project.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Project.EN.dc.html": {
+      "Protagonist.EN.dc.html": 2,
+      "Project-Asia-Exchange.EN.dc.html": 1,
+      "Project-Food-Revolution.EN.dc.html": 1,
+      "Project-UAE-Youth-Social-Innovation.EN.dc.html": 1,
+      "Project-UNC.EN.dc.html": 1,
+      "Project-UNC-Documentary.EN.dc.html": 1,
+      "Project-Jungle-Jam.EN.dc.html": 1,
+      "Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html": 1,
+      "Project-Shadow-Shifter.EN.dc.html": 1,
+      "Community.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "ProjectIndexRail.dc.html": {},
+    "Protagonist.EN.dc.html": {
+      "Workshop.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 3,
+      "Workshop-Pathfinder.EN.dc.html": 1,
+      "Story.EN.dc.html": 1
+    },
+    "Story-Index.EN.dc.html": {
+      "Story-This-Is-Us.EN.dc.html": 1,
+      "Story-Submission.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Story-Submission.EN.dc.html": {
+      "Story.EN.dc.html": 2,
+      "Constellation.EN.dc.html": 1
+    },
+    "Story-This-Is-Us.EN.dc.html": {
+      "Story-Index.EN.dc.html": 2,
+      "Story-Submission.EN.dc.html": 1
+    },
+    "Story.EN.dc.html": {
+      "Story-Submission.EN.dc.html": 2,
+      "Story-Index.EN.dc.html": 19,
+      "Constellation.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Workshop-Bucket-List.EN.dc.html": {
+      "Workshop.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Workshop-Heros-Journey.EN.dc.html": {
+      "Workshop.EN.dc.html": 1,
+      "Home.EN.dc.html": 2
+    },
+    "Workshop-Jungle-Jam.EN.dc.html": {
+      "Workshop.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Workshop-Light-Shadow-Shift.EN.dc.html": {
+      "Workshop.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Workshop-Metanoia.EN.dc.html": {
+      "Workshop.EN.dc.html": 1,
+      "Home.EN.dc.html": 2
+    },
+    "Workshop-Mobius-Making.EN.dc.html": {
+      "Workshop.EN.dc.html": 1,
+      "Home.EN.dc.html": 2
+    },
+    "Workshop-Pathfinder.EN.dc.html": {
+      "Workshop.EN.dc.html": 2,
+      "Community-Facilitators.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Workshop-Second-Life.EN.dc.html": {
+      "Workshop.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Workshop-Shadow-Shifter.EN.dc.html": {
+      "Workshop.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 1
+    },
+    "Workshop-Two-Wings.EN.dc.html": {
+      "Workshop.EN.dc.html": 1,
+      "Home.EN.dc.html": 2
+    },
+    "Workshop.EN.dc.html": {
+      "Workshop-Mobius-Making.EN.dc.html": 2,
+      "Workshop-Pathfinder.EN.dc.html": 1,
+      "Workshop-Metanoia.EN.dc.html": 1,
+      "Workshop-Jungle-Jam.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 6,
+      "Collectives.EN.dc.html": 1
+    },
+    "index.html": {
+      "MEWE.EN.dc.html": 3,
+      "Workshop.EN.dc.html": 4,
+      "Protagonist.EN.dc.html": 2,
+      "Story.EN.dc.html": 2,
+      "Community.EN.dc.html": 4,
+      "Manifesto.EN.dc.html": 2,
+      "Are-you-IN.EN.dc.html": 2,
+      "Collectives.EN.dc.html": 1
+    },
+    "kr.html": {},
+    "zh.html": {},
+    "MEWE.EN.dc.html": {
+      "Workshop-Mobius-Making.EN.dc.html": 1,
+      "Are-you-IN.EN.dc.html": 1
+    }
+  },
+  "dynamic": {
+    "Constellation.EN.dc.html": [
+      "{{ selRead }}",
+      "{{ selMedia }}",
+      "{{ selView }}"
+    ],
+    "Nav.dc.html": [
+      "{{ dot.href }}"
+    ],
+    "ProjectIndexRail.dc.html": [
+      "{{ p.href }}"
+    ],
+    "Story-This-Is-Us.EN.dc.html": [
+      "{{ s.href }}"
+    ]
+  },
+  "inbound": {
+    "Action-Research.EN.dc.html": 0,
+    "Are-you-IN.EN.dc.html": 51,
+    "Card System Prototype.EN.dc.html": 0,
+    "Cards.EN.dc.html": 0,
+    "Collectives.EN.dc.html": 6,
+    "Community-Animators.EN.dc.html": 3,
+    "Community-BridgeBuilders.EN.dc.html": 5,
+    "Community-Facilitators.EN.dc.html": 3,
+    "Community-IN-Collectives.EN.dc.html": 2,
+    "Community-Index.EN.dc.html": 1,
+    "Community-Nepal-Youth-Cluster.EN.dc.html": 4,
+    "Community-Open-Studio.EN.dc.html": 3,
+    "Community-UAE-Youth-Cluster.EN.dc.html": 2,
+    "Community.EN.dc.html": 19,
+    "Constellation.EN.dc.html": 4,
+    "Footer.dc.html": 0,
+    "Home.EN.dc.html": 9,
+    "IN Design System.dc.html": 0,
+    "MEWE.EN.dc.html": 10,
+    "Manifesto.EN.dc.html": 5,
+    "Nav.dc.html": 0,
+    "Project-Asia-Exchange.EN.dc.html": 6,
+    "Project-BridgeBuilder-Program.EN.dc.html": 1,
+    "Project-CTN.EN.dc.html": 0,
+    "Project-Food-Revolution.EN.dc.html": 3,
+    "Project-GYEM.EN.dc.html": 0,
+    "Project-I-Grow-Seed.EN.dc.html": 0,
+    "Project-Jungle-Jam.EN.dc.html": 6,
+    "Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html": 5,
+    "Project-Shadow-Shifter.EN.dc.html": 6,
+    "Project-UAE-Youth-Social-Innovation.EN.dc.html": 2,
+    "Project-UNC-Documentary.EN.dc.html": 1,
+    "Project-UNC.EN.dc.html": 3,
+    "Project-tasmena.EN.dc.html": 0,
+    "Project.EN.dc.html": 15,
+    "ProjectIndexRail.dc.html": 0,
+    "Protagonist.EN.dc.html": 13,
+    "Story-Index.EN.dc.html": 21,
+    "Story-Submission.EN.dc.html": 8,
+    "Story-This-Is-Us.EN.dc.html": 1,
+    "Story.EN.dc.html": 9,
+    "Workshop-Bucket-List.EN.dc.html": 0,
+    "Workshop-Heros-Journey.EN.dc.html": 0,
+    "Workshop-Jungle-Jam.EN.dc.html": 1,
+    "Workshop-Light-Shadow-Shift.EN.dc.html": 0,
+    "Workshop-Metanoia.EN.dc.html": 1,
+    "Workshop-Mobius-Making.EN.dc.html": 3,
+    "Workshop-Pathfinder.EN.dc.html": 2,
+    "Workshop-Second-Life.EN.dc.html": 0,
+    "Workshop-Shadow-Shifter.EN.dc.html": 0,
+    "Workshop-Two-Wings.EN.dc.html": 0,
+    "Workshop.EN.dc.html": 27,
+    "index.html": 0,
+    "kr.html": 0,
+    "zh.html": 0
+  },
+  "broken": {}
+}

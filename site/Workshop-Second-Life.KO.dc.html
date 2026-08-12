@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  ::selection { background: #E5188C; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #E5188C; }
+</style>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 190px 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(2, minmax(0"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(4, minmax(0"]{grid-template-columns:repeat(2, minmax(0,1fr)) !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+}
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <span id="top"></span>
+  <dc-import name="Nav-KO" active-page="Workshop-Second-Life.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <section style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 22px 28px 0;">
+      <a href="Workshop.KO.dc.html" style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,244,226,0.78); text-decoration: none;">← 모든 워크숍</a>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 56px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,244,226,0.85); margin-bottom: 20px;">주니어 유스 &amp; 청년 · 시리즈</div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(44px, 6.6vw, 92px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 12ch;">세컨드 라이프 시리즈</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(21px, 2.4vw, 30px); line-height: 1.32; max-width: 26ch; margin: 0 0 34px; color: rgba(250,244,226,0.94);">자기 돌봄이 첫 번째 실천 — 누군가를 위해 무언가를 품기 전에.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="#register" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">다음 시리즈 문의하기</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 64px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 2px solid #2E3B40; padding-top: 24px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">무엇인가</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(23px, 2.5vw, 30px); line-height: 1.32; margin: 0 0 22px; letter-spacing: -0.01em; text-wrap: pretty;">자신을 돌보는 기본에 대한 짧은 시리즈 — 움직임, 수면, 식사, 그리고 고요.</p>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">하루의 대부분을 결정하는 평범한 네 가지를 진지하게 다룹니다 — 설명하는 대신 함께 연습하면서. 김태진, Vahid Buehrer와 공동 제작.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">왜</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(22px, 2.3vw, 28px); line-height: 1.34; margin: 0 0 20px; text-wrap: pretty;">돌보지 않는 몸에서는 아무것도 부어 줄 수 없습니다.</p>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">청년들은 잠은 잘 자는지 누가 묻기도 전에 기여하고, 이끌고, 돌보라는 요청을 받습니다. 세컨드 라이프는 반대쪽 끝에서 시작합니다: 기본을 정직하고 단단하게 하면, 그 위에 지어지는 모든 것이 버팁니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 8px;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">누구를 위한</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 40px; max-width: 900px;">
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">참가자</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">주니어 유스와 청년 · 소그룹</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">기간</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">짧은 세션들의 시리즈 · 세션 사이 실천</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">공동 제작</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">김태진 &amp; Vahid Buehrer</div></div>
+        <div><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">함께하면 좋은 곳</div><div style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 21px; line-height: 1.35;">학교 프로그램, 청년 모임, 주니어 유스 클러스터</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px; border-bottom: 2px solid #2E3B40; padding-bottom: 34px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">무슨 일이 일어나는가</div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5px; background: rgba(46,59,64,0.16); border: 1.5px solid rgba(46,59,64,0.16); max-width: 900px;">
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">움직임</div><p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.4; margin: 0;">실제로 계속하게 되는 운동.</p></div>
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">수면</div><p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.4; margin: 0;">다른 모든 습관을 바꾸는 하나의 습관.</p></div>
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">식사</div><p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.4; margin: 0;">연료도 죄책감도 아닌, 돌봄으로서의 음식.</p></div>
+        <div style="background: #FAF4E2; padding: 26px 22px 30px;"><div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #E5188C; margin-bottom: 12px;">고요</div><p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.4; margin: 0;">명상 — 누구의 것도 아닌 몇 분.</p></div>
+      </div>
+    </div>
+  </section>
+
+    <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 10px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ws-second-life-1" shape="rect" placeholder="세컨드 라이프 사진" style="display:block; flex: 0 0 auto; width: 300px; aspect-ratio: 16/9;" hint-size="300px,225px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ws-second-life-2" shape="rect" placeholder="세컨드 라이프 사진" style="display:block; flex: 0 0 auto; width: 300px; aspect-ratio: 16/9;" hint-size="300px,225px"></x-import>
+      <div style="flex: 1 1 260px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; line-height: 1.5; color: rgba(46,59,64,0.6); padding-top: 4px;">시리즈 사진 — 추가 예정.</div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 40px 28px;">
+    <div style="background: #CDE3CF; padding: 44px 44px 40px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40; margin-bottom: 16px;">형식</div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.1; margin: 0 0 18px; max-width: 26ch; text-wrap: balance;">네 번의 세션으로, 주말로, 혹은 한 번에 한 주제씩.</h2>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.5; margin: 0 0 14px; max-width: 62ch;">네 가지 기본은 그대로입니다. 속도와 연령대, 기존 프로그램 안에 얼마나 담을지는 함께 정합니다.</p>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-style: normal; font-size: 18px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.7);">이 시리즈의 세부 세션 내용은 아직 집필 중입니다 — 문의하시면 지금 있는 자료를 보내드립니다.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 0 28px 44px;">
+    <a href="#top" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 14px 26px;">&uarr; 맨 위로</a>
+  </section>
+
+  <section id="register" style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.7); margin: 0 0 18px;">함께하기</p>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">기본에서 시작하세요.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.KO.dc.html" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">대화 시작하기</a>
+        <a href="Workshop.KO.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">모든 워크숍</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer-KO" cta="#E5188C" loop="0.47" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+</body>
+</html>

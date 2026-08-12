@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #F0961E; color: #FAF4E2; }
+  a { color: #146560; }
+</style>
+<script src="./image-slot.js"></script>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1.05fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(3, minmax(0"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+  [style*="font-size: 300px"]{display:none !important;}
+  [style*="font-size: 60px"][style*="height: 300px"]{height:auto !important;}
+  [style*="72px 120px"]{padding:56px 0 48px 0 !important;}
+  [style*="width: 700px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 800px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 900px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1200px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1000px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 950px"]{width:auto !important;max-width:100% !important;}
+  [style*="height: 350px"],[style*="height: 250px"],[style*="height: 200px"],[style*="height: 180px"],[style*="height: 170px"],[style*="height: 130px"],[style*="height: 100px"]{height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 72px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 66px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 62px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 60px 44px"]{padding:36px 24px !important;}
+  [style*="padding: 40px 44px"]{padding:28px 22px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 64px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 40px 80px"]{padding:30px 20px !important;}
+  [style*="padding: 40px 40px"]{padding:28px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+  [style*="font-size: 130px"]{font-size:64px !important;line-height:1 !important;}
+  [style*="font-size: 60px"]{font-size:34px !important;line-height:1.15 !important;}
+}
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+  <dc-import name="Nav" active-page="Project.EN.dc.html" hint-size="100%,64px"></dc-import>
+
+  <section style="background: #F0961E; color: #2E3B40;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 56px;">
+      <a href="Project.EN.dc.html" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(46,59,64,0.7); text-decoration: none; display: inline-block; margin-bottom: 28px;">← All Projects</a>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+        <span style="background: rgba(46,59,64,0.14); border-radius: 999px; padding: 8px 15px;">Campaign</span>
+      </div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 22px; text-wrap: balance;">GYEM</h1>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(19px, 2.1vw, 25px); line-height: 1.46; max-width: 760px; margin: 0; color: rgba(46,59,64,0.85);">Dubai, 2010–15. The Global Youth Empowerment Movement, co-founded with Seaon Shin — youth leading change for youth.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 0.14em; line-height: 1.1; text-transform: uppercase; color: #F0961E; margin-bottom: 24px;">The brief</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; max-width: 1000px;">
+      <div style="border-top: 1.5px solid rgba(46,59,64,0.2); padding-top: 16px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F0961E; margin-bottom: 12px;">Youth-led</div><p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.82);">Young people designing and running their own initiatives.</p></div>
+      <div style="border-top: 1.5px solid rgba(46,59,64,0.2); padding-top: 16px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F0961E; margin-bottom: 12px;">Movement</div><p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.82);">A growing network across schools and communities.</p></div>
+      <div style="border-top: 1.5px solid rgba(46,59,64,0.2); padding-top: 16px;"><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F0961E; margin-bottom: 12px;">Legacy</div><p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.82);">Alumni who carried the practice into later work.</p></div>
+    </div>
+  </section>
+  <section style="background: #1E5A64; color: #FAF4E2; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Every practice began as one conversation.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #1E8A86; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Get involved</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#1E5A64" loop="0.625" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script></script>
+</body>
+</html>

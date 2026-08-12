@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  .in-foot-loop .ribbon-stroke { stroke-dasharray: 2000; stroke-dashoffset: 2000; animation: inFootArc 2.4s ease forwards; }
+  @keyframes inFootArc { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .in-foot-loop .ribbon-stroke { animation: none; stroke-dashoffset: 0; } }
+  .in-fcol a:hover { color: #E6328C; }
+  .in-social a:hover { color: #E6328C; }
+</style>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1.05fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(3, minmax(0"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+  [style*="font-size: 300px"]{display:none !important;}
+  [style*="font-size: 60px"][style*="height: 300px"]{height:auto !important;}
+  [style*="72px 120px"]{padding:56px 0 48px 0 !important;}
+  [style*="width: 700px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 800px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 900px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1200px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1000px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 950px"]{width:auto !important;max-width:100% !important;}
+  [style*="height: 350px"],[style*="height: 250px"],[style*="height: 200px"],[style*="height: 180px"],[style*="height: 170px"],[style*="height: 130px"],[style*="height: 100px"]{height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 72px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 66px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 62px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 60px 44px"]{padding:36px 24px !important;}
+  [style*="padding: 40px 44px"]{padding:28px 22px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 64px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 40px 80px"]{padding:30px 20px !important;}
+  [style*="padding: 40px 40px"]{padding:28px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+  [style*="font-size: 130px"]{font-size:64px !important;line-height:1 !important;}
+  [style*="font-size: 60px"]{font-size:34px !important;line-height:1.15 !important;}
+}
+</style>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+<footer style="background: #FAF4E2; color: #2E3B40;">
+  <div class="in-foot-loop" style="width: 100%; line-height: 0; position: relative; top: -1.5vw; margin-bottom: -1.5vw; z-index: 2;">
+    <svg viewBox="0 0 1500 120" width="100%" height="auto" preserveAspectRatio="none" style="display: block;" aria-hidden="true">
+      <rect x="0" y="0" width="1500" height="60" fill="{{ bandFill }}"></rect>
+      <rect x="0" y="60" width="1500" height="60" fill="#FAF4E2"></rect>
+      <path class="ribbon-stroke" d="{{ ribbonPath }}" fill="none" stroke="{{ strokeColor }}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+  </div>
+  <div style="max-width: 1320px; margin: 0 auto; padding: 40px 40px 44px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 0.7fr 0.5fr; gap: 28px; align-items: start;">
+
+      <div class="in-fcol">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a href="Manifesto.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">매니페스토</a>
+          <a href="Collectives.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">콜렉티브</a>
+          <a href="MEWE.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">MEWE</a>
+        </div>
+      </div>
+
+      <div class="in-fcol">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a href="Workshop.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">워크숍</a>
+          <a href="Story.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">스토리</a>
+          <a href="Protagonist.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">주역</a>
+        </div>
+      </div>
+
+      <div class="in-fcol">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a href="Project.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">프로젝트</a>
+          <a href="Community.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">커뮤니티</a>
+          <a href="Constellation.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">별자리</a>
+          <a href="News.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">소식</a>
+        </div>
+      </div>
+
+      <div class="in-fcol">
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+          <a href="Are-you-IN.KO.dc.html" style="color: #146560; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.13em; line-height: 1.3; text-transform: uppercase; text-decoration: none;">Are you IN?</a>
+        </div>
+      </div>
+
+      <div></div>
+
+      <div class="in-social" style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+        <a href="mailto:hi@innoco.co" aria-label="Email" style="color: #2E3B40; display: inline-flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 6 10 7 10-7"></path></svg></a>
+        <a href="https://www.instagram.com/innoco.co/" target="_blank" rel="noopener" aria-label="Instagram" style="color: #2E3B40; display: inline-flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://www.youtube.com/@innoco7950" target="_blank" rel="noopener" aria-label="YouTube" style="color: #2E3B40; display: inline-flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"></rect><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"></path></svg></a>
+        <a href="https://x.com/cyunsun" target="_blank" rel="noopener" aria-label="X" style="color: #2E3B40; display: inline-flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+      </div>
+
+    </div>
+    <div style="height: 1px; background: rgba(46,59,64,0.12); margin: 44px 0 20px;"></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+  <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.04em; color: rgba(46,59,64,0.68);">© 2016–2026 IN (INNOCO) · 서울 · MEWE는 CC BY-NC-SA 4.0으로 공유됩니다</div>
+      <div style="display: flex; align-items: center; gap: 8px; flex: 0 0 auto; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; line-height: 1;">
+      <span style="color: #2E3B40;">KR</span>
+      <span style="color: rgba(46,59,64,0.3);">/</span>
+      <a href="{{ altHref }}" style="color: rgba(46,59,64,0.5); text-decoration: none;">EN</a>
+    </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1320, &quot;height&quot;: 460}}">class Component extends DCLogic {
+
+  renderVals() {
+    let __f = '';
+    try { __f = decodeURIComponent(location.pathname.split('/').pop() || ''); } catch (e) {}
+    let altHref = __f.replace('.KO.', '.EN.');
+    if (altHref === __f || !__f) altHref = 'Home.EN.dc.html';
+    const c = this.props.cta;
+    const hasCta = c && c !== 'false' && c !== false;
+    let loop = parseFloat(this.props.loop);
+    if (isNaN(loop)) loop = 0.15;
+    loop = Math.max(0, Math.min(1, loop));
+    const L = Math.round(150 + loop * 1200);
+    const ribbonPath = 'M0 60 L' + (L-70) + ' 60 C' + (L-34) + ' 60 ' + (L-24) + ' 53 ' + (L-19) + ' 53 C' + (L+11) + ' 44 ' + (L+17) + ' 22 ' + L + ' 21 C' + (L-17) + ' 20 ' + (L-19) + ' 41 ' + (L+3) + ' 50 C' + (L+10) + ' 55 ' + (L+34) + ' 60 ' + (L+70) + ' 60 L1500 60';
+    const bandFill = hasCta ? String(c) : '#FAF4E2';
+    let strokeColor = '#2E3B40';
+    if (this.props.stroke) { return { altHref, bandFill, ribbonPath, strokeColor: String(this.props.stroke) }; }
+    if (hasCta) {
+      const hex = String(c).replace('#','');
+      if (hex.length === 6) {
+        const r = parseInt(hex.slice(0,2),16), g = parseInt(hex.slice(2,4),16), b = parseInt(hex.slice(4,6),16);
+        const lum = (0.299*r + 0.587*g + 0.114*b);
+        strokeColor = lum < 150 ? '#FAF4E2' : '#2E3B40';
+      }
+    }
+    return { altHref, bandFill, ribbonPath, strokeColor };
+  }
+}</script>
+</body>
+</html>

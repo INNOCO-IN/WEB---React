@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #E6328C; color: #FAF4E2; }
+  a { color: #1E8A86; }
+  a:hover { color: #146560; }
+</style>
+<script src="./image-slot.js"></script>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1.05fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(3, minmax(0"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+  [style*="font-size: 300px"]{display:none !important;}
+  [style*="font-size: 60px"][style*="height: 300px"]{height:auto !important;}
+  [style*="72px 120px"]{padding:56px 0 48px 0 !important;}
+  [style*="width: 700px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 800px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 900px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1200px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 1000px"]{width:auto !important;max-width:100% !important;}
+  [style*="width: 950px"]{width:auto !important;max-width:100% !important;}
+  [style*="height: 350px"],[style*="height: 250px"],[style*="height: 200px"],[style*="height: 180px"],[style*="height: 170px"],[style*="height: 130px"],[style*="height: 100px"]{height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 72px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 66px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 62px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 60px 44px"]{padding:36px 24px !important;}
+  [style*="padding: 40px 44px"]{padding:28px 22px !important;}
+  [style*="padding: 52px 28px"]{padding:36px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 64px 28px"]{padding:40px 20px !important;}
+  [style*="padding: 40px 80px"]{padding:30px 20px !important;}
+  [style*="padding: 40px 40px"]{padding:28px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+  [style*="font-size: 130px"]{font-size:64px !important;line-height:1 !important;}
+  [style*="font-size: 60px"]{font-size:34px !important;line-height:1.15 !important;}
+}
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <dc-import name="Nav" active-page="project" hint-size="100%,64px"></dc-import>
+
+  <!-- HERO -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 60px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #FAF4E2; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #FAF4E2;">Project</span></div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 0.98; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 15ch; text-wrap: balance;">The practice, out in the world.</h1>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; max-width: 720px; margin: 0; color: rgba(250,244,226,0.94);">Real work with real neighbors — gardens, youth camps, cross-country exchanges. Where MEWE stops being an idea and becomes something a community can point to.</p>
+    </div>
+  </section>
+
+  
+
+  
+
+  <!-- FEATURED — ASIA EXCHANGE / BRIDGEBUILDER -->
+  <section id="bridgebuilder" style="max-width: 1320px; margin: 0 auto; padding: 40px 28px 22px; scroll-margin-top: 80px;">
+    <div style="display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch; background: #E6328C; color: #FAF4E2; overflow: hidden; min-height: 340px;">
+      <div style="position: relative; min-height: 280px;">
+        <image-slot id="project-asia-hero" shape="rect" placeholder="Young BridgeBuilders across a neighborhood, five-country feel" style="position: absolute; inset: 0; width: 100%; height: 100%;" src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=1100&q=80" credit="Photo by Hannah Busing on Unsplash" credit-href="https://unsplash.com/@hannahbusing"></image-slot>
+        <div style="position: absolute; left: 16px; top: 16px; background: #FAF4E2; color: #2E3B40; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px;">Flagship · 2026–2027</div>
+      </div>
+      <div style="padding: 40px 44px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+        <div>
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.8); margin-bottom: 16px;">China · Japan · Korea · Nepal · Taiwan</div>
+          <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.02; margin: 0 0 14px; letter-spacing: -0.01em; text-wrap: balance;">MEWE Asia Exchange</h2>
+          <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.44; margin: 0 0 14px; color: rgba(250,244,226,0.92); max-width: 50ch;">A cross-border program in which young people called <strong>BridgeBuilders</strong> practice coherent community life in their own neighborhoods — across five countries, one shared question.</p>
+          <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.44; margin: 0; color: rgba(250,244,226,0.8); max-width: 50ch;">BridgeBuilder is also a stage on the practice path — <a href="Protagonist.EN.dc.html" style="color: #FAF4E2; text-decoration: underline;">see it on the Protagonist path →</a></p>
+        </div>
+        <a href="Project-Asia-Exchange.EN.dc.html" style="text-decoration: none; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; color: #E6328C; background: #FAF4E2; border-radius: 999px; padding: 13px 26px; line-height: 1.2;">Read the full project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT BRIEFS -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 20px 28px 20px;">
+    <div style="border-top: 1px solid rgba(46,59,64,0.14); padding-top: 26px; margin-bottom: 20px;">
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.0; margin: 0; letter-spacing: -0.01em;">Project briefs</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px;">
+
+      <article style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">Project</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">Zayed University, UAE · Since 2016</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.02; margin: 0 0 10px">Food Revolution</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">A university garden became a social lab — and a four-year study of how a food system shapes the wellbeing of everyone inside it.</p>
+            <a href="Project-Food-Revolution.EN.dc.html" aria-label="Open Food Revolution" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #F6D9B0; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">Project</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">Sharjah, UAE · 2017</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.02; margin: 0 0 10px;">UAE Youth Social Innovation Workshop Series</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">Six months in which young people turned something they cared about into a social enterprise prototype — through seriously playful investigation.</p>
+            <a href="Project-UAE-Youth-Social-Innovation.EN.dc.html" aria-label="Open UAE Youth Camp" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #EFC9A8; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">Project</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">Kathmandu, Nepal · 2016&ndash;2018</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.02; margin: 0 0 10px;">UAE-Nepal-Connect (UNC) Social Innovation</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">After the 2015 earthquake, youth in two countries built relationships that outlasted the program that introduced them.</p>
+            <a href="Project-UNC.EN.dc.html" aria-label="Open UNC Social Innovation" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #F2E3C4; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">Project</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">Nepal &middot; 2017&ndash;2018</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.0; margin: 0 0 10px;">UNC Documentary</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">A camera followed Nepali youth for two years — not to record the program, but to see what held after it ended.</p>
+            <a href="Project-UNC-Documentary.EN.dc.html" aria-label="Open UNC Documentary" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #F6D9B0; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">Project</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">Al Ain, UAE · March 2023</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.0; margin: 0 0 10px;">Jungle Jam</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">A residential gathering for young people — creativity, adventure, and honest reflection, away from the noise of everyday life.</p>
+            <a href="Project-Jungle-Jam.EN.dc.html" aria-label="Open Jungle Jam" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #FAF4E2; border: 1px solid rgba(26,22,19,0.14); color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">Project</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">UAE · Residential · Women</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.0; margin: 0 0 10px;">Light, Shadow, Shift</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">Two days, one circle of women, and the same question asked a hundred small ways: what do you want to carry, and what are you ready to leave behind?</p>
+            <a href="Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html" aria-label="Open Light, Shadow, Shift" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; background: #EFC9A8; color: #2E3B40;">
+        <div style="width: 100%; height: 14px; flex: 0 0 auto; background: #1E5A64;"></div>
+        <div style="display: flex; gap: 12px; padding: 6px 10px 22px; flex: 1;">
+          <div style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E3B40;"></span><span style="writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">Project</span></div>
+          <div style="display: flex; flex-direction: column; flex: 1; padding-left: 5px;">
+            <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #2E3B40; margin-top: 5px; margin-bottom: 15px;">Nanzhi Center, Taiwan · June 2023</div>
+            <h3 style="font-family: 'Newsreader', serif; font-weight: 700; font-size: 30px; line-height: 1.0; margin: 0 0 10px;">Shadow Shifter</h3>
+            <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.3; margin: 0 0 20px; color: rgba(46,59,64,0.78);">Eighteen young people, two days, and one discovery: the shape of your own shadow can be changed by what you do.</p>
+            <a href="Project-Shadow-Shifter.EN.dc.html" aria-label="Open Shadow Shifter" style="margin-top: auto; align-self: flex-end; width: 44px; height: 44px; border-radius: 50%; background: #2E3B40; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-size: 20px; color: #FAF4E2; text-decoration: none;">→</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13.5px; color: rgba(46,59,64,0.6); margin: 22px 0 0; max-width: 60ch;">A project and the community it created are not the same entry — the project is the intervention; the community is what remains. See both in <a href="Community.EN.dc.html">Community</a>.</p>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #1E5A64; color: #FAF4E2; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Bring a project to your own community.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #1E648C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Start a conversation</a>
+        <a href="Protagonist.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">See the Protagonist path</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#1E5A64" loop="0.489" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1320, &quot;height&quot;: 1200}}"></script>
+</body>
+</html>

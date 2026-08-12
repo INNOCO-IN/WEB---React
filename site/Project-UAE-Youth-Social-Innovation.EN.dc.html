@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #1E5A64; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #0f4a45; }
+  .col-scroll::-webkit-scrollbar { width: 6px; }
+  .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }
+  .story-body p { font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 21px; line-height: 1.62; margin: 0 0 26px; color: #322c22; text-wrap: pretty; }
+  .story-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 1000px){
+    .pj-grid { grid-template-columns: 1fr !important; }
+    .pj-left, .pj-right { position: static !important; max-height: none !important; border: none !important; padding: 0 !important; }
+    .pj-mid { order: 1; } .pj-left { order: 2; } .pj-right { order: 3; }
+    .pj-left, .pj-right { border-top: 1.5px solid rgba(46,59,64,0.14) !important; padding-top: 26px !important; }
+    img, svg, video { max-width: 100% !important; }
+  }
+  @media (max-width: 640px){
+    .pj-gallery { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  }
+</style>
+<script>
+document.addEventListener('click', function(e){
+  var a = e.target && e.target.closest ? e.target.closest('a[target="_blank"]') : null;
+  if (!a) return;
+  var m = a.href.match(/(?:youtu\.be\/|youtube\.com\/watch\?v=)([\w-]{6,})/);
+  if (m) {
+    e.preventDefault(); e.stopPropagation();
+    var box = a.querySelector('div');
+    if (box && !box.querySelector('iframe')) {
+      box.innerHTML = '<iframe src="https://www.youtube.com/embed/' + m[1] + '?autoplay=1&rel=0&playsinline=1" style="position:absolute;inset:0;width:100%;height:100%;border:0;" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
+    }
+  }
+}, true);
+</script>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+  <dc-import name="Nav" active-page="project" hint-size="100%,64px"></dc-import>
+
+  <!-- ===== HERO ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 52px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">Workshop series</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">Sharjah, UAE</span>
+        <span style="background: rgba(250,244,226,0.18); border-radius: 999px; padding: 8px 15px;">2017</span>
+      </div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 76px); line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 22px; text-wrap: balance;">UAE Youth Social Innovation Workshop Series</h1>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(19px, 2.1vw, 25px); line-height: 1.46; max-width: 760px; margin: 0; color: rgba(250,244,226,0.94);">Six months in which young people turned something they cared about into a social enterprise prototype — through seriously playful investigation.</p>
+    </div>
+  </section>
+
+  <!-- ===== 3-COLUMN BODY ===== -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 90px;">
+    <div class="pj-grid" style="display: grid; grid-template-columns: 226px 1fr 288px; gap: 40px; align-items: start;">
+
+      <!-- LEFT · about -->
+      <aside class="pj-left col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-right: 1px solid rgba(46,59,64,0.14); padding-right: 22px;">
+        <a href="Project.EN.dc.html" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.13em; text-transform: uppercase; color: #1E5A64; margin-bottom: 26px;">&larr; All projects</a>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Audience</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Youth</span>
+        </div>
+
+        <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.5); margin-bottom: 10px;">Topic</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;">
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Social innovation</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Entrepreneurship</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 6px 12px;">Need-finding</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 18px;">
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Place</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">Sharjah, UAE · with Sheraa</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Year</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">2017 · six months</div></div>
+          <div><div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #1E5A64; margin-bottom: 3px;">Participants</div><div style="font-family: 'Newsreader', serif; font-size: 15px; color: rgba(46,59,64,0.85);">38 registered · ~20 saw it through</div></div>
+        </div>
+      </aside>
+
+      <!-- MIDDLE · the story -->
+      <div class="pj-mid" style="min-width: 0;">
+        <figure style="margin: 0 0 40px;">
+          <div style="width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #F3EAD0;">
+            <img src="project-img/UAE-Youth-Social-Innovation.jpg" alt="The full cohort of 38 young participants and facilitators at Sheraa, Sharjah" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </div>
+          <figcaption style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.6); margin-top: 12px;">The cohort at Sheraa, Sharjah &mdash; young people from across the UAE.</figcaption>
+        </figure>
+
+        <div style="max-width: 680px;">
+          <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(26px, 3vw, 32px); line-height: 1.32; letter-spacing: -0.01em; margin: 0 0 34px; color: #2E3B40; text-wrap: pretty;">Over six months, in partnership with Sheraa, 38 young people across the UAE registered to turn something they cared about into a real social enterprise. About twenty saw it through to the end.</p>
+          <div class="story-body">
+            <p>Not by lecture. They worked through a series of workshops rooted in the MEWE framework and supported by systems thinking, design thinking, and appreciative inquiry &mdash; exploring their own identity, their relationships with self, society, and service, and where passion meets purpose.</p>
+            <p>Then they went out. Deep listening and conversations in their own communities came first &mdash; need-finding before ideas &mdash; then shaping what they heard into something, then testing it again and again with the people they hoped to serve. Most ideas changed several times before they held.</p>
+            <p>The support around them was its own lesson. INNOCO facilitators, like-minded individuals, and organizations gave their knowledge, expertise, and in-kind services freely, with no expectation of return.</p>
+            <p style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(24px, 2.8vw, 30px); line-height: 1.3; margin: 40px 0 0; color: #2E3B40; text-wrap: pretty;">What came out of it wasn&rsquo;t a set of assignments. <span style="color: #1E5A64;">It was real prototypes, real pitches, and a group of young people who discovered they could build something.</span></p>
+          </div>
+        </div>
+
+        <!-- GALLERY · embedded viewer -->
+        <div style="margin-top: 44px;">
+          <div style="position: relative; aspect-ratio: 16/9; background: #16242E;">
+            <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ lbCap }}" style="{{ lbImgStyle }}"></div></sc-if>
+            <button onClick="{{ prevLb }}" aria-label="Previous photo" style="position: absolute; left: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">‹</button>
+            <button onClick="{{ nextLb }}" aria-label="Next photo" style="position: absolute; right: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">›</button>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; margin-top: 10px;">
+            <span style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.6);">{{ lbCap }}</span>
+            <span style="flex: 0 0 auto; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; color: rgba(46,59,64,0.55);">{{ lbCount }}</span>
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px;">
+            <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="0">
+              <button onClick="{{ g.open }}" aria-label="{{ g.alt }}" style="{{ g.style }}"></button>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- WATCH -->
+        <div style="max-width: 680px; border-top: 1.5px solid rgba(30,90,100,0.45); margin-top: 44px; padding-top: 30px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E5A64; margin-bottom: 20px;">Watch &mdash; the videos are their own</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <a href="https://youtu.be/Pl1IBR7fnTU" target="_blank" rel="noopener" style="text-decoration: none; color: #2E3B40; display: block;">
+              <div style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #1E5A64;">
+                <img src="https://img.youtube.com/vi/Pl1IBR7fnTU/hqdefault.jpg" alt="Hasaad — a participant venture in organic food and farming, Dubai" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9;">
+                <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;"><span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(250,244,226,0.94); display: flex; align-items: center; justify-content: center;"><span style="border-left: 15px solid #1E5A64; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px;"></span></span></span>
+              </div>
+              <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; margin-top: 12px; line-height: 1.3;">Hasaad &mdash; a participant venture in organic food and farming, Dubai</div>
+            </a>
+            <a href="https://youtu.be/Qwv9_7UkjAo" target="_blank" rel="noopener" style="text-decoration: none; color: #2E3B40; display: block;">
+              <div style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #1E5A64;">
+                <img src="https://img.youtube.com/vi/Qwv9_7UkjAo/hqdefault.jpg" alt="Collect, Convert, Contribute — a circular-economy answer to food waste in the UAE" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9;">
+                <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;"><span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(250,244,226,0.94); display: flex; align-items: center; justify-content: center;"><span style="border-left: 15px solid #1E5A64; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px;"></span></span></span>
+              </div>
+              <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; margin-top: 12px; line-height: 1.3;">Collect, Convert, Contribute &mdash; a circular-economy answer to food waste in the UAE</div>
+            </a>
+            <a href="https://youtu.be/C7yOhZdsoCI" target="_blank" rel="noopener" style="text-decoration: none; color: #2E3B40; display: block;">
+              <div style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #1E5A64;">
+                <img src="https://img.youtube.com/vi/C7yOhZdsoCI/hqdefault.jpg" alt="Sustainable tech at home — saving water and energy without drastic lifestyle changes" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9;">
+                <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;"><span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(250,244,226,0.94); display: flex; align-items: center; justify-content: center;"><span style="border-left: 15px solid #1E5A64; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px;"></span></span></span>
+              </div>
+              <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; margin-top: 12px; line-height: 1.3;">Sustainable tech at home &mdash; saving water and energy without drastic lifestyle changes</div>
+            </a>
+            <a href="https://youtu.be/HwG7iL8wGAA" target="_blank" rel="noopener" style="text-decoration: none; color: #2E3B40; display: block;">
+              <div style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #1E5A64;">
+                <img src="https://img.youtube.com/vi/HwG7iL8wGAA/hqdefault.jpg" alt="Test before you build — validating business assumptions before investing resources" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9;">
+                <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;"><span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(250,244,226,0.94); display: flex; align-items: center; justify-content: center;"><span style="border-left: 15px solid #1E5A64; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px;"></span></span></span>
+              </div>
+              <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; margin-top: 12px; line-height: 1.3;">Test before you build &mdash; validating business assumptions before investing resources</div>
+            </a>
+            <a href="https://youtu.be/CCCkqa3mOi4" target="_blank" rel="noopener" style="text-decoration: none; color: #2E3B40; display: block;">
+              <div style="position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #1E5A64;">
+                <img src="https://img.youtube.com/vi/CCCkqa3mOi4/hqdefault.jpg" alt="After the workshop series — participants reflect on the journey" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9;">
+                <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;"><span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(250,244,226,0.94); display: flex; align-items: center; justify-content: center;"><span style="border-left: 15px solid #1E5A64; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px;"></span></span></span>
+              </div>
+              <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; margin-top: 12px; line-height: 1.3;">After the workshop series &mdash; participants reflect on the journey</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- CREDITS -->
+        <div style="max-width: 680px; background: #F3EAD0; padding: 34px 36px; margin-top: 44px;">
+          <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #1E5A64; margin-bottom: 16px;">With thanks</div>
+          <p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.55; margin: 0 0 14px; color: rgba(46,59,64,0.85);">Joanne Renaux, Aisha Khalid, Shirin Mehri, Sara Shedid, and Amina Al Marooei.</p>
+          <p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.85);">And to invited social innovation and entrepreneurship experts <strong>Amin Matni</strong> and <strong>Petar Stojanov</strong>.</p>
+        </div>
+
+        <div style="max-width: 680px; margin-top: 40px;">
+          <a href="Community-UAE-Youth-Cluster.EN.dc.html" style="text-decoration: none; display: inline-flex; align-items: center; gap: 12px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; justify-content: center; line-height: 1.2; min-height: 24px;">See the UAE Youth Cluster &rarr;</a>
+        </div>
+      </div>
+
+      <!-- RIGHT · index -->
+      <aside class="pj-right col-scroll" style="position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; border-left: 1px solid rgba(46,59,64,0.14); padding-left: 22px;">
+        <dc-import name="ProjectIndexRail" current="uae-youth" hint-size="100%,520px"></dc-import>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section style="background: #1E5A64; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Every practice began as one conversation.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #1E5A64; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Get involved</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#1E5A64" loop="0.534" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lb: 0 };
+  photos() {
+    return [
+      { src: 'project-img/uae-youth1.jpg', cap: "The Business Modeling Workshop — working walls, screens, and teams in motion." },
+      { src: 'project-img/uae-youth2.jpg', cap: "A reflection circle — participants seated on the floor around candle-lit plates." },
+      { src: 'project-img/uae-youth3.jpg', cap: "Laying out the journey by hand — Define, Empathize — one strip of tape at a time." },
+      { src: 'project-img/uae-youth4.jpg', cap: "Mapping the Value Proposition Canvas, one sticky note at a time." },
+      { src: 'project-img/uae-youth5.jpg', cap: "Walking a team's canvas — from value proposition to business model." },
+      { src: 'project-img/uae-youth6.jpg', cap: "The Food Team's board — thinking through where the problem really lives." },
+      { src: 'project-img/uae-youth7.jpg', cap: "Role-play need-finding — stepping into the shoes of farmer, worker, and customer." },
+      { src: 'project-img/uae-youth8.jpg', cap: "A team with their prototypes in hand, ready to test." },
+      { src: 'project-img/uae-youth9.jpg', cap: "Out in the field — visiting a local organic farm to listen and learn." },
+      { src: 'project-img/uae-youth10.jpg', cap: "Certificate of completion — Cycle I, March 2017." },
+      { src: 'project-img/uae-youth11.jpg', cap: "The cohort with facilitators at the close of the program." }
+    ];
+  }
+  renderVals() {
+    const ps = this.photos();
+    const lb = this.state.lb;
+    const cur = ps[lb];
+    return {
+      ready: true,
+      gallery: ps.map((p, i) => ({
+        src: p.src, alt: p.cap,
+        open: () => this.setState({ lb: i }),
+        style: "flex: 0 0 auto; width: 96px; height: 54px; padding: 0; border: none; overflow: hidden; cursor: pointer; background-image: url('" + p.src + "'); background-size: cover; background-position: center; background-color: #F3EAD0; opacity: " + (i === lb ? '1' : '0.55') + '; outline: ' + (i === lb ? '2.5px solid #1E5A64' : 'none') + '; outline-offset: -2.5px;'
+      })),
+      lbSrc: cur.src,
+      lbCap: cur.cap,
+      lbImgStyle: "position: absolute; inset: 0; background-image: url('" + cur.src + "'); background-size: cover; background-position: " + (cur.pos || 'center') + ";",
+      lbCount: (lb + 1) + ' / ' + ps.length,
+      prevLb: () => this.setState({ lb: (lb + ps.length - 1) % ps.length }),
+      nextLb: () => this.setState({ lb: (lb + 1) % ps.length })
+    };
+  }
+}
+</script>
+</body>
+</html>

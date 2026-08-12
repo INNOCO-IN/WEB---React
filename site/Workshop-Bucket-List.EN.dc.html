@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #E5188C; color: #FAF4E2; }
+  a { color: #146560; }
+  a:hover { color: #E5188C; }
+</style>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 190px 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: repeat(2, minmax(0"]{grid-template-columns:1fr !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 56px 28px"]{padding:38px 20px !important;}
+  [style*="padding: 44px 44px"]{padding:28px 20px !important;}
+}
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <span id="top"></span>
+  <dc-import name="Nav" active-page="Workshop.EN.dc.html" hint-size="100%,64px"></dc-import>
+
+  <section style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 22px 28px 0;">
+      <a href="Workshop.EN.dc.html" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,244,226,0.78); text-decoration: none;">← All Workshops</a>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 56px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(250,244,226,0.85); margin-bottom: 20px;">For all · Half day to a day</div>
+      <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(44px, 6.6vw, 92px); line-height: 0.96; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 12ch;">MEWE Bucket List</h1>
+      <p style="font-family: 'Newsreader', serif; font-size: clamp(21px, 2.4vw, 30px); line-height: 1.32; max-width: 26ch; margin: 0 0 34px; color: rgba(250,244,226,0.94);">Clarify who you are — then act on it, for yourself and for others.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="#register" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">Ask about hosting it</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 64px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 2px solid #2E3B40; padding-top: 24px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">What It Is</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', serif; font-size: clamp(23px, 2.5vw, 30px); line-height: 1.32; margin: 0 0 22px; letter-spacing: -0.01em; text-wrap: pretty;">A bucket list is usually a list of things to have. This one is a list of who you intend to be.</p>
+        <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">A session for naming what actually matters to you, and then turning it into things small enough to start this month. Co-created with Hojin Choi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: baseline; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">Why</div>
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Newsreader', serif; font-size: clamp(22px, 2.3vw, 28px); line-height: 1.34; margin: 0 0 20px; text-wrap: pretty;">Clarity is not the same as ambition. Most people are clear about what they want and vague about who they are.</p>
+        <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.55; margin: 0; color: rgba(46,59,64,0.82);">Written down and said out loud in a room of other people, an intention behaves differently — it becomes something you can be held to, gently, by people who now know about it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 8px;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">Who It's For</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 40px; max-width: 900px;">
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Participants</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;">Anyone, from youth upward · 10–25 in a group</div></div>
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Length</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;">Half a day, or a full day with more time to write</div></div>
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Co-created with</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;">Hojin Choi</div></div>
+        <div><div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.55); margin-bottom: 6px;">Good after</div><div style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.35;"><a href="Workshop-Mobius-Making.EN.dc.html">Möbius Making</a> — the natural next step</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 0;">
+    <div style="display: grid; grid-template-columns: 190px 1fr; gap: 40px; align-items: start; border-top: 1.5px solid rgba(46,59,64,0.25); padding-top: 24px; border-bottom: 2px solid #2E3B40; padding-bottom: 34px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #E5188C;">What Happens</div>
+      <div style="max-width: 900px; display: flex; flex-direction: column;">
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; padding: 0 0 18px;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">Who I am</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4;">A first pass at the question, written before anyone discusses it.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; border-top: 1px solid rgba(46,59,64,0.16); padding: 18px 0;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">The list</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4;">What you want to be able to say you did — for yourself, and for someone else.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; border-top: 1px solid rgba(46,59,64,0.16); padding: 18px 0;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">Cut it down</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4;">From a long list to the few items you would defend to a stranger.</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: baseline; border-top: 1px solid rgba(46,59,64,0.16); border-bottom: 1.5px solid rgba(46,59,64,0.25); padding: 18px 0;">
+          <div style="flex: 0 0 auto; width: 150px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40;">Say it</div>
+          <div style="flex: 1 1 320px; font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.4;">One item, out loud, to the room — and a first step with a date on it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section style="max-width: 1320px; margin: 0 auto; padding: 34px 28px 10px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ws-bucket-list-1" shape="rect" placeholder="Bucket List session photo" style="display:block; flex: 0 0 auto; width: 300px; aspect-ratio: 16/9;" hint-size="300px,225px"></x-import>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ws-bucket-list-2" shape="rect" placeholder="Bucket List session photo" style="display:block; flex: 0 0 auto; width: 300px; aspect-ratio: 16/9;" hint-size="300px,225px"></x-import>
+      <div style="flex: 1 1 260px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; line-height: 1.5; color: rgba(46,59,64,0.6); padding-top: 4px;">Photos from the session — to be added.</div>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 40px 28px;">
+    <div style="background: #BDDAE7; padding: 44px 44px 40px;">
+      <div style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #2E3B40; margin-bottom: 16px;">Format</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(26px, 3vw, 38px); line-height: 1.1; margin: 0 0 18px; max-width: 26ch; text-wrap: balance;">Works on its own, or as the closing session of a longer programme.</h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 20px; line-height: 1.5; margin: 0 0 14px; max-width: 62ch;">Length, age group, and how public the sharing gets are set with you — some groups say their item to the whole room, others only to one person.</p>
+      <p style="font-family: 'Newsreader', serif; font-style: italic; font-size: 18px; line-height: 1.5; margin: 0; color: rgba(46,59,64,0.7);">Full session details for this workshop are still being written — ask us and we will send what exists today.</p>
+    </div>
+  </section>
+
+  <section style="max-width: 1320px; margin: 0 auto; padding: 0 28px 44px;">
+    <a href="#top" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 14px 26px;">&uarr; Back to top</a>
+  </section>
+
+  <section id="register" style="background: #E5188C; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.7); margin: 0 0 18px;">Join</p>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Write the list that matters.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.EN.dc.html" style="text-decoration: none; color: #E5188C; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">Start a conversation</a>
+        <a href="Workshop.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.2;">All workshops</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer" cta="#E5188C" loop="0.63" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+</body>
+</html>

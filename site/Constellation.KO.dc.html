@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  ::selection { background: #F0D23C; color: #1A1613; }
+  a { color: #1E8A86; }
+  a:hover { color: #146560; }
+  @keyframes ct-twinkle { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.62; transform: scale(0.82); } }
+  .ct-dot { transition: left 1s cubic-bezier(0.22,1,0.36,1), top 1s cubic-bezier(0.22,1,0.36,1); }
+  .ct-dot span { animation: ct-twinkle 3.2s ease-in-out infinite; }
+  .ct-dot:hover span, .ct-dot:focus span { animation-play-state: paused; opacity: 1 !important; transform: scale(1.35) !important; }
+  .ct-label { transition: left 1s cubic-bezier(0.22,1,0.36,1), top 1s cubic-bezier(0.22,1,0.36,1), opacity 0.6s ease; }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+    [style*="padding: 52px 28px"]{padding:40px 20px !important;}
+  }
+</style>
+<script src="./image-slot.js"></script>
+<style id="ko-no-italic">em, i { font-style: normal; }</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <dc-import name="Nav-KO" active-page="Constellation.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <!-- HERO (unchanged) -->
+  <section data-screen-label="Hero" style="background: #F0D23C; color: #1A1A1A;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 60px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #1A1A1A; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #1A1A1A;">별자리</span></div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.14; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 16ch; text-wrap: balance;">저마다의 빛점들. 하나의 모양.</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; max-width: 720px; margin: 0; color: rgba(26,26,26,0.82);">이웃들의 표현이 모인 살아 있는 컬렉션 — 모든 MEWE 스토리와 행동과 창작. 홀로는 하나의 점이지만, 함께라면 누구도 혼자서는 만들 수 없는 모양이 됩니다.</p>
+    </div>
+  </section>
+
+  
+
+  
+
+  <!-- THE SKY -->
+  <section data-screen-label="The Sky" style="background: #16242E; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 44px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+          <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.6);">정렬 기준</span>
+          <sc-for list="{{ modeButtons }}" as="m" hint-placeholder-count="2">
+            <button onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.label }}</button>
+          </sc-for>
+        </div>
+        <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; color: rgba(250,244,226,0.55);">{{ skyHint }}</span>
+      </div>
+
+      <div style="position: relative; width: 100%; height: clamp(440px, 58vw, 620px);">
+        <sc-for list="{{ labels }}" as="lb" hint-placeholder-count="4">
+          <div class="ct-label" style="{{ lb.style }}">{{ lb.text }}</div>
+        </sc-for>
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="20">
+          <button class="ct-dot" onClick="{{ d.onClick }}" onMouseEnter="{{ d.enter }}" onMouseLeave="{{ d.leave }}" aria-label="{{ d.title }}" style="{{ d.style }}"><span style="{{ d.inner }}"></span></button>
+        </sc-for>
+
+        <!-- DOT POPUP -->
+        <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+          <div onMouseEnter="{{ cancelClose }}" onMouseLeave="{{ closeSoon }}" style="{{ popStyle }}">
+            <button onClick="{{ closeSel }}" aria-label="Close" style="position: absolute; right: 6px; top: 6px; width: 44px; height: 44px; border: none; background: transparent; color: rgba(46,59,64,0.6); font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-size: 22px; line-height: 1; cursor: pointer;">×</button>
+            <div style="position: relative; display: flex; flex-direction: column; padding: 22px 24px 22px 50px;">
+              <span style="{{ selDot }}"></span>
+              <span style="position: absolute; left: 15px; top: 40px; writing-mode: vertical-rl; white-space: nowrap; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(46,59,64,0.6);">{{ selFormat }}</span>
+              <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #2E3B40; margin: 0 30px 8px 0;">{{ selMeta }}</div>
+              <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 700; font-size: 30px; line-height: 1.18; margin: 0 0 10px; text-wrap: balance;">{{ selTitle }}</h3>
+              <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 17px; line-height: 1.4; margin: 0; color: rgba(46,59,64,0.82);">{{ selCaption }}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;">
+                <sc-if value="{{ hasRead }}" hint-placeholder-val="{{ false }}"><a href="{{ selRead }}" style="text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 12px 24px; display: inline-flex; align-items: center; line-height: 1.2;">읽기 →</a></sc-if>
+                <sc-if value="{{ hasMedia }}" hint-placeholder-val="{{ false }}"><a href="{{ selMedia }}" target="_blank" rel="noopener" style="text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 12px 24px; display: inline-flex; align-items: center; line-height: 1.2;">{{ mediaLabel }} →</a></sc-if>
+                <sc-if value="{{ hasView }}" hint-placeholder-val="{{ false }}"><a href="{{ selView }}" target="_blank" rel="noopener" style="text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 12px 24px; display: inline-flex; align-items: center; line-height: 1.2;">보기 →</a></sc-if>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <!-- LEGEND -->
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; border-top: 1px solid rgba(250,244,226,0.14); padding-top: 16px;">
+        <sc-for list="{{ legend }}" as="lg" hint-placeholder-count="10">
+          <span style="display: inline-flex; align-items: center; gap: 7px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,244,226,0.75);"><span style="{{ lg.swatch }}"></span>{{ lg.label }}</span>
+        </sc-for>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DRAFT NOTE -->
+  <section style="max-width: 1320px; margin: 0 auto; padding: 26px 28px 0;">
+    <div style="border-left: 3px solid #F0D23C; background: rgba(240,210,60,0.16); padding: 16px 22px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; color: rgba(46,59,64,0.72);">프로토타입 v1 — 모든 문구는 초안이며, 시드 항목은 자리 표시용입니다. 시간·MEWE 루프 정렬, 기여자 필터, 인라인 재생은 v2에서 제공됩니다.</div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section data-screen-label="How it works" style="max-width: 1320px; margin: 0 auto; padding: 44px 28px 20px;">
+    <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 26px;">빛 하나가 이곳에 오기까지</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; align-items: stretch; max-width: 1100px;">
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(50% 14%, 76% 100%, 24% 100%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(76% 100%, 82% 100%, 54% 14%, 50% 14%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">1</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">무언가를 만들거나, 알아차리세요. 정직한 몇 문장, 그림, 사진, 영상, 노래.</p>
+        </div>
+      </div>
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(4% 0, 26% 0, 60% 100%, 38% 100%);"></div><div style="position: absolute; inset: 0; background: #FAB414; clip-path: polygon(24% 0, 34% 0, 68% 100%, 56% 100%);"></div><div style="position: absolute; inset: 0; background: #35C0B4; clip-path: polygon(74% 0, 96% 0, 62% 100%, 40% 100%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(66% 0, 76% 0, 44% 100%, 30% 100%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">2</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">스토리 폼으로 나눠 주세요. 하나의 작품, 하나의 설명. 15분이면 충분합니다.</p>
+        </div>
+      </div>
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(38% 8%, 72% 46%, 38% 84%, 4% 46%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(72% 46%, 76% 46%, 42% 8%, 38% 8%);"></div><div style="position: absolute; inset: 0; background: #35C0B4; clip-path: polygon(66% 44%, 96% 78%, 66% 112%, 36% 78%);"></div><div style="position: absolute; inset: 0; background: #CDE3CF; clip-path: polygon(96% 78%, 100% 78%, 70% 44%, 66% 44%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">3</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">새로운 빛으로 이곳에 나타납니다. 당신이 보태는 모든 것은 우리가 함께 만드는 별자리에 나타나며, 어떤 스토리는 스토리 페이지에도 실립니다.</p>
+        </div>
+      </div>
+      <div style="background: #F3EAD0; color: #2E3B40; display: flex; flex-direction: column;">
+        <div style="position: relative; height: 96px; overflow: hidden; background: #16242E;"><div style="position: absolute; left: 0; right: 0; bottom: 0; height: 184px;"><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(22% 28%, 38% 46%, 22% 64%, 6% 46%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(38% 46%, 41% 46%, 25% 28%, 22% 28%);"></div><div style="position: absolute; inset: 0; background: #35C0B4; clip-path: polygon(56% 8%, 72% 26%, 56% 44%, 40% 26%);"></div><div style="position: absolute; inset: 0; background: #CDE3CF; clip-path: polygon(72% 26%, 75% 26%, 59% 8%, 56% 8%);"></div><div style="position: absolute; inset: 0; background: #7BC4F0; clip-path: polygon(76% 50%, 94% 70%, 76% 90%, 58% 70%);"></div><div style="position: absolute; inset: 0; background: #F0D23C; clip-path: polygon(94% 70%, 97% 70%, 79% 50%, 76% 50%);"></div></div></div>
+        <div style="padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; gap: 10px;">
+          <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 15px; color: #B87A00;">4</div>
+          <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 19px; line-height: 1.45; margin: 0; color: rgba(46,59,64,0.85);">원하는 만큼 보태 주세요. 하나하나가 당신 이름의 작은 별자리에 더해집니다.</p>
+        </div>
+      </div>
+      </div>
+    <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-style: normal; font-size: 19px; line-height: 1.5; margin: 30px 0 0; color: rgba(46,59,64,0.72); max-width: 62ch;">누구나 보탤 수 있습니다 — 워크숍이 필수는 아닙니다. IN도 계속 보탭니다: 모든 워크숍은 참가자들이 자신의 조각을 이곳에 놓는 것으로 끝납니다. 많은 조각이 뫼비우스 만들기 워크숍에서 시작됩니다.</p>
+    <div style="margin-top: 26px;">
+      <a href="Story-Submission.EN.dc.html" style="text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.06em; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">내 빛 보태기</a>
+    </div>
+  </section>
+
+  <!-- CTA (unchanged) -->
+  <section data-screen-label="CTA" style="background: #F0D23C; color: #2E3B40; margin-top: 80px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.7); margin: 0 0 18px;">Are you IN?</p>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.18; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">당신의 빛을 이 컬렉션에 보태 주세요.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Story-Submission.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">스토리 나누기</a>
+        <a href="MEWE.KO.dc.html" style="text-decoration: none; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">MEWE란?</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer-KO" cta="#F0D23C" loop="0.897" hint-size="100%,460px"></dc-import></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1320, &quot;height&quot;: 1300}}">
+class Component extends DCLogic {
+  state = { mode: 'format', sel: null };
+
+  closeSoon() { clearTimeout(this._t); this._t = setTimeout(() => this.setState({ sel: null }), 260); }
+
+  colors() {
+    return { writing:'#F0D23C', drawing:'#E6328C', photo:'#35C0B4', video:'#FF5A5A', music:'#9B7BE0', dance:'#F5A81E', craft:'#6FCB7C', recipe:'#C9962B', symbol:'#7BC4F0', other:'#FAF4E2' };
+  }
+
+  // Seed data — draft. Structured one-entry-per-row so it can be fed from the card-content CSV workflow later.
+  data() {
+    return [
+      { id:'this-is-us',  title:'“이게 우리예요”',                              by:'한 선생님',            format:'writing', topic:'교실',            arc:'ME = WE', date:'2026-03', caption:'가르치기를 멈추고 진짜 질문 하나를 던졌습니다. 끝날 무렵, 한 아이가 함께 만든 것을 가리키며 말했습니다: 이게 우리예요.', read:'Story-Index.KO.dc.html?story=this-is-us' },
+      { id:'connected',   title:'“어쩌면 우리는 이미 연결되어 있었는지도.”',      by:'익명',            format:'music',   topic:'콜렉티브',           date:'2026-02', caption:'MEWE 코어 세션에서 나온 한 참가자의 회고.', read:'Story-Index.KO.dc.html?story=connected' },
+      { id:'two-hands',   title:'두 손, 하나의 선',                       by:'한 참가자',        format:'drawing', topic:'콜렉티브',           date:'2026-02', caption:'뫼비우스 만들기에서 그려진 그림 — ME와 WE의 면이 하나가 된 곳.', read:'Story-Index.KO.dc.html?story=two-hands' },
+      { id:'song-whole',  title:'전체를 위한 노래',                      by:'한 콜렉티브',         format:'music',   topic:'콜렉티브',           date:'2026-01', caption:'리트릿 후 녹음된 노래 — 부르기 전에 듣는 법을 배운 목소리들.' },
+      { id:'week-after',  title:'워크숍 다음 주',               by:'한 참가자',        format:'writing', topic:'가족',               date:'2026-01', caption:'한 참가자가 자신이 고른 작은 행동에 대해 씁니다 — 그것이 집에서 무엇을 바꿨는지.' },
+      { id:'street-exp',  title:'어느 이웃의 작은 실험',             by:'한 이웃',           format:'writing', topic:'이웃',            date:'2025-12', caption:'한 사람이 일주일간 하나의 MEWE 행동을 시도하고 — 자신의 거리에서 달라진 것을 적었습니다.' },
+      { id:'harmony',     title:'“화음은 이미 그들 안에 있었다.”',        by:'한 퍼실리테이터',        format:'music',   topic:'콜렉티브',           date:'2025-12', caption:'노래 모임 후 우연히 들은 말 — 누가 가르치기 전에 그룹이 화음을 찾아냈습니다.' },
+      { id:'noticed',     title:'누군가 MEWE를 알아차린 순간',            by:'익명',            format:'photo',   topic:'세상에서 발견', date:'2025-11', caption:'낯선 이들이 잠시 하나가 되는 사진.', view:'project-img/light-shadow-shift-women3.jpg' },
+      { id:'hasaad',      title:'하사드 — 이웃을 위해 기른 먹거리',         by:'UAE 청년 벤처',  format:'video',   topic:'자연',               date:'2025-11', caption:'두바이의 유기농 먹거리·농업 참가자 벤처.', media:'https://youtu.be/Pl1IBR7fnTU' },
+      { id:'what-held',   title:'부트캠프 후에 남은 것',              by:'UNC 영상팀',    format:'video',   topic:'콜렉티브',           date:'2025-10', caption:'카메라가 네팔 청년들을 2년간 따라갔습니다 — 무엇이 지속되는지 보기 위해.', media:'https://youtu.be/d1J4AECO_9g' },
+      { id:'circle-dance',title:'마무리의 원무',                 by:'익명',            format:'dance',   topic:'콜렉티브',           date:'2025-10', caption:'아무도 계획하지 않았습니다. 마지막 세션이 끝나자 의자들이 스스로 움직였습니다.' },
+      { id:'plate',       title:'이웃을 위한 접시',                    by:'라나',                 format:'craft',   topic:'이웃',            date:'2025-09', caption:'한나절에 만들어, 그날 저녁에 건넸습니다.' },
+      { id:'soup',        title:'두 배로 끓인 할머니의 국',            by:'익명',            format:'recipe',  topic:'가족',               date:'2025-09', caption:'조리법엔 6인분이라 적혀 있지만, 할머니는 늘 12인분을 만드셨습니다.' },
+      { id:'wire-mobius', title:'철사로 만든 뫼비우스 띠',                    by:'워크숍 그룹',     format:'symbol',  topic:'세상에서 발견', date:'2025-08', caption:'네 손이 번갈아 구부린 것 — 안도 밖도 없는 하나의 면.' },
+      { id:'our-street',  title:'우리 모두가 사는 거리',              by:'아미나, 11세',        format:'drawing', topic:'이웃',            date:'2025-08', caption:'모든 집이 문을 연 채로 그려져 있습니다.' },
+      { id:'mural',       title:'손전등 벽화, 한창 그리던 중',               by:'리트릿 서클',     format:'photo',   topic:'콜렉티브',           date:'2025-07', caption:'어둠 속에서 손으로 드러낸 그림자.', view:'project-img/shadow-shifter3.jpg' },
+      { id:'letter',      title:'나에게 쓴 편지',                by:'익명',            format:'writing', topic:'가족',               date:'2025-07', caption:'1년 뒤에 열었습니다. 절반은 이루어졌고, 나머지 절반은 여전히 묻고 있습니다.' },
+      { id:'farm-song',   title:'밭에서 식탁까지의 노래',                      by:'야마구치의 친구들', format:'music',   topic:'자연',               date:'2025-06', caption:'밭에서 식탁으로 채소를 나르며 부른 노래.' },
+      { id:'leaf',        title:'주워서 눌러 둔 잎',                     by:'익명',            format:'other',   topic:'자연',               date:'2025-06', caption:'안에서부터 다시 빚어진다는 몇 마디 곁에 놓여 방으로 돌아왔습니다.' },
+      { id:'dawn-yoga',   title:'새벽의 움직임, 이틀째',                 by:'리트릿 서클',     format:'dance',   topic:'자연',               date:'2025-05', caption:'마음과 머리로 보낸 이틀을, 몸으로 닫았습니다.' }
+    ];
+  }
+
+  // Mode switch holds four modes; Time and ME=WE Arc ship in v2.
+  modes() {
+    return [
+      { id:'format', label:'형식', key: d => d.format },
+      { id:'topic',  label:'주제',  key: d => d.topic }
+      // v2: { id:'time', label:'Time', key: d => d.date.slice(0,4) },
+      // v2: { id:'arc',  label:'MEWE Loop', key: d => d.arc || 'Unplaced' }
+    ];
+  }
+
+  renderVals() {
+    const colors = this.colors();
+    const all = this.data();
+    const mode = this.modes().find(m => m.id === this.state.mode) || this.modes()[0];
+    const groups = [];
+    const byGroup = {};
+    all.forEach(d => { const g = mode.key(d); if (!byGroup[g]) { byGroup[g] = []; groups.push(g); } byGroup[g].push(d); });
+
+    // cluster centers on a loose grid
+    const k = groups.length;
+    const cols = Math.min(k, Math.max(2, Math.ceil(Math.sqrt(k * 1.7))));
+    const rows = Math.ceil(k / cols);
+    const centers = {};
+    groups.forEach((g, i) => {
+      const c = i % cols, r = Math.floor(i / cols);
+      const stagger = (r % 2) ? 4 : -4;
+      centers[g] = {
+        x: 10 + (c + 0.5) / cols * 80 + stagger,
+        y: 14 + (r + 0.5) / rows * 68
+      };
+    });
+
+    const dots = [];
+    groups.forEach(g => {
+      byGroup[g].forEach((d, i) => {
+        const n = byGroup[g].length;
+        const ang = i * 2.39996 + g.length; // deterministic golden-angle spiral, seeded by group
+        const rad = n === 1 ? 0 : 3.5 + 8.5 * Math.sqrt((i + 1) / n);
+        const x = Math.min(95, Math.max(4, centers[g].x + Math.cos(ang) * rad * 1.15));
+        const y = Math.min(92, Math.max(6, centers[g].y + Math.sin(ang) * rad));
+        const col = colors[d.format] || '#FAF4E2';
+        const on = this.state.sel === d.id;
+        if (on) this._selPos = { x, y };
+        dots.push({
+          title: d.title,
+          onClick: () => this.setState({ sel: this.state.sel === d.id ? null : d.id }),
+          enter: () => { clearTimeout(this._t); if (this.state.sel !== d.id) this.setState({ sel: d.id }); },
+          leave: () => this.closeSoon(),
+          style: `position:absolute; left:${x}%; top:${y}%; width:44px; height:44px; margin:-22px 0 0 -22px; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0;`,
+          inner: `display:block; width:${on ? 20 : 14}px; height:${on ? 20 : 14}px; border-radius:50%; background:${col}; box-shadow:0 0 ${on ? 26 : 14}px ${on ? 6 : 2}px ${col}55${on ? `, 0 0 0 3px rgba(250,244,226,0.9)` : ''}; animation-delay:${(d.id.length * 0.37) % 3}s;`
+        });
+      });
+    });
+
+    const labels = groups.map(g => ({
+      text: g,
+      style: `position:absolute; left:${centers[g].x}%; top:${Math.max(2, centers[g].y - 16)}%; transform:translateX(-50%); font-family:'Archivo','Noto Sans KR',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,244,226,0.55); white-space:nowrap; pointer-events:none;`
+    }));
+
+    const modeButtons = this.modes().map(m => {
+      const on = m.id === this.state.mode;
+      return {
+        label: m.label,
+        onClick: () => this.setState({ mode: m.id, sel: this.state.sel }),
+        style: `font-family:'Archivo','Noto Sans KR',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; border-radius:999px; padding:11px 22px; cursor:pointer; line-height:1.2; border:1.5px solid ${on ? '#F0D23C' : 'rgba(250,244,226,0.35)'}; background:${on ? '#F0D23C' : 'transparent'}; color:${on ? '#1A1613' : 'rgba(250,244,226,0.85)'};`
+      };
+    });
+
+    const legend = Object.keys(colors).map(f => ({
+      label: f,
+      swatch: `display:inline-block; width:11px; height:11px; border-radius:50%; background:${colors[f]}; box-shadow:0 0 8px 1px ${colors[f]}66;`
+    }));
+
+    const sel = all.find(d => d.id === this.state.sel) || null;
+    const selCol = sel ? (colors[sel.format] || '#2E3B40') : '#2E3B40';
+    const pos = sel && this._selPos ? this._selPos : { x: 50, y: 50 };
+    const px = Math.min(78, Math.max(22, pos.x));
+    const below = pos.y < 42;
+    const popStyle = `position:absolute; left:${px}%; top:${pos.y}%; transform:translate(-50%, ${below ? '30px' : 'calc(-100% - 30px)'}); width:400px; max-width:94%; background:rgba(243,234,208,0.95); color:#2E3B40; z-index:20; box-shadow:0 18px 60px rgba(0,0,0,0.45);`;
+    return {
+      modeButtons, labels, dots, legend,
+      skyHint: all.length + '개의 빛, 자라는 중 — 하나를 짚어 보세요',
+      hasSel: !!sel,
+      popStyle,
+      cancelClose: () => clearTimeout(this._t),
+      closeSoon: () => this.closeSoon(),
+      closeSel: () => this.setState({ sel: null }),
+      selTitle: sel ? sel.title : '',
+      selCaption: sel ? sel.caption : '',
+      selMeta: sel ? (sel.by + ' · ' + sel.date) : '',
+      selFormat: sel ? sel.format : '',
+      selDot: `position:absolute; left:19px; top:22px; width:8px; height:8px; border-radius:50%; background:${selCol};`,
+      hasRead: !!(sel && sel.read),
+      selRead: sel && sel.read ? sel.read : '#',
+      hasMedia: !!(sel && sel.media),
+      selMedia: sel && sel.media ? sel.media : '#',
+      mediaLabel: sel && sel.format === 'video' ? '보기' : '듣기',
+      hasView: !!(sel && sel.view),
+      selView: sel && sel.view ? sel.view : '#'
+    };
+  }
+}
+</script>
+</body>
+</html>
