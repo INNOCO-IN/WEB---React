@@ -1,0 +1,155 @@
+/* IN — shared site classes.
+   These replace patterns the old pages repeated inline on every element:
+   the card lift (was a `style-hover` attribute the runtime read), the ribbon
+   draw, and the responsive rules (were `[style*="…"]` substring selectors
+   matching inline styles). Real classes and real media queries instead. */
+
+/* ---- Layout ------------------------------------------------------------ */
+
+.in-shell {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.in-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ---- Card lift --------------------------------------------------------- */
+
+.in-card {
+  transition:
+    transform 0.16s var(--ease-standard),
+    box-shadow 0.16s var(--ease-standard);
+}
+
+.in-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(46, 59, 64, 0.18);
+}
+
+/* ---- Footer ribbon ----------------------------------------------------- */
+
+.in-foot-loop {
+  width: 100%;
+  line-height: 0;
+  position: relative;
+  top: -1.5vw;
+  margin-bottom: -1.5vw;
+  z-index: 2;
+}
+
+.ribbon-stroke {
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+  animation: in-ribbon-draw 2.2s var(--ease-standard) forwards;
+}
+
+@keyframes in-ribbon-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.loopline path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: in-loop-draw 2.4s ease forwards;
+}
+
+@keyframes in-loop-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-stroke,
+  .loopline path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---- Responsive -------------------------------------------------------- */
+/* The legacy stylesheet matched inline-style substrings — `[style*="width:
+   700px"]` and friends — because it had no way to add classes. The ported
+   pages keep those inline styles for one-off layout, so the same intent is
+   expressed here against the properties that actually break on narrow
+   screens, applied to the page wrapper rather than to guessed strings. */
+
+@media (max-width: 1000px) {
+  .in-page [style*='grid-template-columns'] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .in-page [style*='width: 700px'],
+  .in-page [style*='width: 800px'],
+  .in-page [style*='width: 900px'],
+  .in-page [style*='width: 950px'],
+  .in-page [style*='width: 1000px'],
+  .in-page [style*='width: 1200px'] {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  .in-page [style*='height: 100px'],
+  .in-page [style*='height: 130px'],
+  .in-page [style*='height: 170px'],
+  .in-page [style*='height: 180px'],
+  .in-page [style*='height: 200px'],
+  .in-page [style*='height: 250px'],
+  .in-page [style*='height: 350px'],
+  .in-page [style*='height: 500px'],
+  .in-page [style*='min-height: 426px'] {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .in-page [style*='font-size: 300px'] {
+    display: none !important;
+  }
+
+  .in-page [style*='padding: 84px 0 72px 120px'],
+  .in-page [style*='72px 120px'] {
+    padding: 56px 0 48px 0 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .in-container {
+    padding: 0 20px;
+  }
+
+  .in-page [style*='padding: 40px 40px'],
+  .in-page [style*='padding: 40px 44px'],
+  .in-page [style*='padding: 40px 80px'],
+  .in-page [style*='padding: 44px 44px'],
+  .in-page [style*='padding: 52px 28px'],
+  .in-page [style*='padding: 56px 28px'],
+  .in-page [style*='padding: 60px 44px'],
+  .in-page [style*='padding: 62px 28px'],
+  .in-page [style*='padding: 64px 28px'],
+  .in-page [style*='padding: 66px 28px'],
+  .in-page [style*='padding: 70px 28px'],
+  .in-page [style*='padding: 72px 28px'] {
+    padding: 34px 20px !important;
+  }
+
+  .in-page [style*='font-size: 130px'] {
+    font-size: 64px !important;
+    line-height: 1 !important;
+  }
+
+  .in-page [style*='font-size: 80px'] {
+    font-size: 42px !important;
+    line-height: 1.05 !important;
+  }
+
+  .in-page [style*='font-size: 60px'] {
+    font-size: 34px !important;
+    line-height: 1.15 !important;
+  }
+}

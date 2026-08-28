@@ -28,15 +28,25 @@
     return o;
   }
 
+  /* Errors carry two messages: `.message` is the technical one, which goes to the
+     console, and `.userMessage` is what the visitor reads. A raw PostgREST body
+     is not copy, so anything without a userMessage falls back to a generic line. */
+  function fail(technical, forVisitor) {
+    var e = new Error(technical);
+    if (forVisitor) e.userMessage = forVisitor;
+    return e;
+  }
+
   function insert(table, row) {
-    if (!CONFIGURED) return Promise.reject(new Error('Supabase isn\u2019t connected yet — add your project URL and anon key to supabase-config.js.'));
+    if (!CONFIGURED) return Promise.reject(fail('Supabase isn\u2019t connected yet — add your project URL and anon key to supabase-config.js.',
+      'This form isn’t connected yet. Please email us directly and we’ll pick it up from there.'));
     return fetch(BASE + '/rest/v1/' + table, {
       method: 'POST',
       headers: h({ 'Content-Type': 'application/json', Prefer: 'return=minimal' }),
       body: JSON.stringify(row)
     }).then(function (r) {
       if (r.ok) return true;
-      return r.text().then(function (t) { throw new Error('Save failed (' + r.status + '). ' + t); });
+      return r.text().then(function (t) { throw fail('Save failed (' + r.status + '). ' + t); });
     });
   }
 
@@ -49,18 +59,29 @@
       headers: h({ 'Content-Type': file.type || 'application/octet-stream', 'x-upsert': 'false' }),
       body: file
     }).then(function (r) {
-      if (!r.ok) return r.text().then(function (t) { throw new Error('Upload failed (' + r.status + '). ' + t); });
+      if (!r.ok) return r.text().then(function (t) { throw fail('Upload failed (' + r.status + '). ' + t,
+        'We couldn’t upload “' + file.name + '”. Check the file size, or send your story without it and reply to our note with the piece.'); });
       return BASE + '/storage/v1/object/public/' + bucket + '/' + encodeURI(path);
     });
   }
 
   /* ---------- chip / card groups ---------- */
-  function paint(btn, on) {
-    var s = on ? SEL_ON : SEL_OFF;
+  /* A group may override the "selected" colours with data-sel-bg / -fg / -border
+     so a page keeps its own key colour; unset falls back to ink-on-paper. */
+  function paint(btn, on, group) {
     if (btn.hasAttribute('data-keep-bg')) {
       btn.style.outline = on ? '2.5px solid #2E3B40' : 'none';
       btn.style.outlineOffset = on ? '-2.5px' : '0';
       return;
+    }
+    var s = SEL_OFF;
+    if (on) {
+      var g = group || btn.closest('[data-chip-group]');
+      s = {
+        background:  (g && g.getAttribute('data-sel-bg'))     || SEL_ON.background,
+        color:       (g && g.getAttribute('data-sel-fg'))     || SEL_ON.color,
+        borderColor: (g && g.getAttribute('data-sel-border')) || SEL_ON.borderColor
+      };
     }
     btn.style.background = s.background;
     btn.style.color = s.color;
@@ -78,7 +99,8 @@
       b.setAttribute('role', multi ? 'checkbox' : 'radio');
       b.setAttribute('aria-checked', String(on));
       b.style.cursor = 'pointer';
-      paint(b, on);
+      if (!b.hasAttribute('tabindex')) b.setAttribute('tabindex', '0');
+      paint(b, on, group);
     });
   }
 
@@ -181,7 +203,7 @@
         .then(function () { succeed(form); })
         .catch(function (err) {
           console.error('[IN → Supabase]', err);
-          status(form, err.message || 'Something went wrong. Please try again, or email us directly.', 'error');
+          status(form, err.userMessage || 'Something went wrong on our side — nothing was lost. Please press send again, or email us directly.', 'error');
           if (btn) { btn.disabled = false; btn.style.opacity = '1'; btn.textContent = label; }
         });
     });

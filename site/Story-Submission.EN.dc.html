@@ -22,6 +22,8 @@
   .in-lbl { display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px; }
 </style>
 <script src="./image-slot.js"></script>
+<script src="./supabase-config.js?v=1"></script>
+<script src="./in-supabase.js?v=2"></script>
 <style id="in-mobile">
 @media (max-width: 1000px){
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
@@ -74,23 +76,26 @@
 
   <!-- FORM -->
   <section style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
-    <div style="max-width: 760px; display: flex; flex-direction: column; gap: 65px;">
+    <form data-in-form="stories" data-in-thanks="Thank you for adding your light. We've got your story — you'll get a note back once we've read it." style="max-width: 760px; display: flex; flex-direction: column; gap: 65px;">
+      <div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+        <label>Leave this field empty<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>
+      </div>
 
       <!-- STEP 1 (required) -->
       <div>
         <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00; margin-bottom: 8px;">Step 1 — Your story <span style="color: rgba(46,59,64,0.5);">· required</span></div>
         <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(38px, 5.2vw, 68px); line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 18px;">Tell it however it arrives.</h2>
         <p style="font-family: 'Newsreader', serif; font-size: 21px; line-height: 1.5; margin: 0 0 22px; max-width: 660px; color: rgba(46,59,64,0.8);">Something you lived. Something you noticed. Something someone told you. Something you can only imagine — that counts too.</p>
-        <textarea class="in-field" rows="8" onInput="{{ onType }}" placeholder="Start anywhere. A rough first telling is exactly right."></textarea>
+        <textarea class="in-field" name="body" rows="8" required="required" onInput="{{ onType }}" placeholder="Start anywhere. A rough first telling is exactly right."></textarea>
         <sc-if value="{{ typed }}" hint-placeholder-val="{{ false }}">
           <div style="margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(46,59,64,0.15);">
             <p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.4; margin: 0 0 12px; color: rgba(46,59,64,0.7);">Good. Only so we can place it well — this one is something you…</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 9px;">
-              <span onClick="{{ pick1 }}" style="{{ chip1 }}">lived</span>
-              <span onClick="{{ pick2 }}" style="{{ chip2 }}">noticed</span>
-              <span onClick="{{ pick3 }}" style="{{ chip3 }}">imagined</span>
-              <span onClick="{{ pick4 }}" style="{{ chip4 }}">were told</span>
-              <span onClick="{{ pick5 }}" style="{{ chip5 }}">can't say</span>
+            <div data-chip-group="door" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px;">
+              <span data-value="lived" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">lived</span>
+              <span data-value="noticed" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">noticed</span>
+              <span data-value="imagined" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">imagined</span>
+              <span data-value="were told" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">were told</span>
+              <span data-value="can't say" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">can't say</span>
             </div>
           </div>
         </sc-if>
@@ -111,19 +116,19 @@
         <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00; margin-bottom: 12px;">Step 2 — Format <span style="color: rgba(46,59,64,0.5);">· optional</span></div>
         <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">Describe it first, then choose a form.</h2>
         <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0 0 18px; color: rgba(46,59,64,0.8);"><b>Every story starts with your words above — a short description in Step 1 is what we always need.</b> If your story also lives in another form — a drawing, a photo, a video, a song — tell us which, and attach it below. This is how we'll group and show it in the Constellation.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13.5px;">
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Writing</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Drawing</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Photo</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Video</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Music</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Dance</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Craft</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Recipe</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Symbol</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">…Yours</span>
+        <div data-chip-group="format" data-multi="1" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13.5px;">
+          <span data-value="Writing" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Writing</span>
+          <span data-value="Drawing" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Drawing</span>
+          <span data-value="Photo" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Photo</span>
+          <span data-value="Video" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Video</span>
+          <span data-value="Music" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Music</span>
+          <span data-value="Dance" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Dance</span>
+          <span data-value="Craft" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Craft</span>
+          <span data-value="Recipe" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Recipe</span>
+          <span data-value="Symbol" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Symbol</span>
+          <span data-value="Yours" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">…Yours</span>
         </div>
-        <div style="margin-top: 14px;"><label class="in-lbl">Attach your piece (optional)</label><image-slot id="story-sub-upload" shape="rect" placeholder="Drop a photo, drawing, scan, or file" style="display: block; width: 100%; aspect-ratio: 16 / 7; height: 200px;"></image-slot></div>
+        <div style="margin-top: 14px;"><label class="in-lbl" for="story-file">Attach your piece (optional)</label><input class="in-field" id="story-file" type="file" name="attachment_url" accept="image/*,video/*,audio/*,.pdf" style="padding: 13px 16px; cursor: pointer;"><p style="font-family: 'Newsreader', serif; font-size: 15px; line-height: 1.4; margin: 8px 0 0; color: rgba(46,59,64,0.6);">A photo, drawing, scan, video, or audio file — up to 50 MB.</p></div>
       </div>
 
       <!-- STEP 3 (optional) -->
@@ -131,14 +136,14 @@
         <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00; margin-bottom: 12px;">Step 3 — Where on the ME=WE Arc <span style="color: rgba(46,59,64,0.5);">· optional, skippable</span></div>
         <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">Where does it sit on the Loop?</h2>
         <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.45; margin: 0 0 14px; color: rgba(46,59,64,0.8);">Place your story anywhere on the Loop — including the stuck places. You don't need to name the stage; we'll help place it.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px;">
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">IGNITE</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">ME ≠ WE</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">ME + WE</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">(ME WE)</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">ME = WE</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">GLOW</span>
-          <span style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px;">Let IN place it</span>
+        <div data-chip-group="arc_stage" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px;">
+          <span data-value="IGNITE" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">IGNITE</span>
+          <span data-value="ME ≠ WE" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">ME ≠ WE</span>
+          <span data-value="ME + WE" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">ME + WE</span>
+          <span data-value="(ME WE)" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">(ME WE)</span>
+          <span data-value="ME = WE" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">ME = WE</span>
+          <span data-value="GLOW" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">GLOW</span>
+          <span data-value="Let IN place it" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Let IN place it</span>
         </div>
       </div>
 
@@ -146,17 +151,17 @@
       <div>
         <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00; margin-bottom: 12px;">Step 4 — Name or anonymous <span style="color: rgba(46,59,64,0.5);">· optional</span></div>
         <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">How should we credit you?</h2>
-        <label class="in-lbl">How should we credit you?</label>
-        <input class="in-field" type="text" placeholder="A name, initials, or leave blank to stay anonymous">
+        <label class="in-lbl" for="story-credit">How should we credit you?</label>
+        <input class="in-field" id="story-credit" type="text" name="credit_name" placeholder="A name, initials, or leave blank to stay anonymous">
       </div>
 
       <!-- STEP 5 (required) -->
       <div>
         <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00; margin-bottom: 12px;">Step 5 — Email &amp; consent <span style="color: rgba(46,59,64,0.5);">· required</span></div>
         <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">Where we send your note back.</h2>
-        <label class="in-lbl">Email</label>
-        <input class="in-field" type="email" placeholder="So we can reach you">
-        <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.8);"><input type="checkbox" style="margin-top: 5px;"> Everything you add appears in the Constellation we are creating together. Some stories are also chosen for the Story page. I'm offering this piece knowing it will be shared there.</label>
+        <label class="in-lbl" for="story-email">Email</label>
+        <input class="in-field" id="story-email" type="email" name="email" required="required" placeholder="So we can reach you">
+        <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.4; color: rgba(46,59,64,0.8);"><input type="checkbox" name="consent" required="required" style="margin-top: 5px;"> Everything you add appears in the Constellation we are creating together. Some stories are also chosen for the Story page. I'm offering this piece knowing it will be shared there.</label>
       </div>
 
       <div style="background: rgba(46,59,64,0.05); padding: 16px 18px;">
@@ -164,10 +169,10 @@
       </div>
 
       <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-        <a href="Story.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">Send my story</a>
-        <span style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; color: rgba(46,59,64,0.55);">You'll get a note back once we've read it. Your piece will appear in the Constellation once published.</span>
+        <button type="submit" style="border: none; cursor: pointer; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">Send my story</button>
+        <span data-in-status="1" style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; line-height: 1.4; color: rgba(46,59,64,0.55);">You'll get a note back once we've read it. Your piece will appear in the Constellation once published.</span>
       </div>
-    </div>
+    </form>
   </section>
 
   <!-- CTA (teal · constant) -->
@@ -188,19 +193,19 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+/* The "something you…" chips are now a data-chip-group read by in-supabase.js,
+   so the only state left here is the progressive reveal. setState fires on the
+   false→true edge only: a re-render on every keystroke would rebuild the chip
+   row and drop the selection the visitor had already made. */
 class Component extends DCLogic {
-  state = { typed: false, kind: 0 };
-  chip(active) {
-    return `font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid ${active ? '#2E3B40' : 'rgba(46,59,64,0.3)'}; background: ${active ? '#FAB414' : 'transparent'};`;
-  }
+  state = { typed: false };
   renderVals() {
-    const k = this.state.kind, set = (v) => () => this.setState({ kind: v });
     return {
       typed: this.state.typed,
-      onType: (e) => this.setState({ typed: e.target.value.trim().length > 0 }),
-      chip1: this.chip(k === 1), chip2: this.chip(k === 2), chip3: this.chip(k === 3),
-      chip4: this.chip(k === 4), chip5: this.chip(k === 5),
-      pick1: set(1), pick2: set(2), pick3: set(3), pick4: set(4), pick5: set(5)
+      onType: (e) => {
+        const typed = e.target.value.trim().length > 0;
+        if (typed !== this.state.typed) this.setState({ typed });
+      }
     };
   }
 }

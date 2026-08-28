@@ -1,0 +1,73 @@
+/* IN — global stylesheet.
+   Tokens first, then the resets and the handful of element defaults the old
+   site set inline on <body>. Everything here is page-agnostic; anything that
+   belongs to one page ships with that page's component. */
+
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Teal is the interactive colour across the whole system; magenta is hover.
+   Set once here rather than on every anchor, as the legacy pages did. */
+a {
+  color: var(--color-teal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-magenta);
+}
+
+/* Cards and nav items carry their own colour, so opt them out of the rule
+   above rather than fighting it with inline colour on every link. */
+a.in-plain,
+a.in-plain:hover {
+  color: inherit;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

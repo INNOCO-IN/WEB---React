@@ -1,0 +1,17 @@
+
+.page-constellation-en * { box-sizing: border-box; }
+.page-constellation-en, .page-constellation-en { margin: 0; padding: 0; }
+.page-constellation-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-constellation-en ::selection { background: #F0D23C; color: #1A1613; }
+.page-constellation-en a { color: #1E8A86; }
+.page-constellation-en a:hover { color: #146560; }
+  @keyframes ct-twinkle { 0%,100% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.62; transform: scale(0.82); } }
+.page-constellation-en .ct-dot { transition: left 1s cubic-bezier(0.22,1,0.36,1), top 1s cubic-bezier(0.22,1,0.36,1); }
+.page-constellation-en .ct-dot span { animation: ct-twinkle 3.2s ease-in-out infinite; }
+.page-constellation-en .ct-dot:hover span, .page-constellation-en .ct-dot:focus span { animation-play-state: paused; opacity: 1 !important; transform: scale(1.35) !important; }
+.page-constellation-en .ct-label { transition: left 1s cubic-bezier(0.22,1,0.36,1), top 1s cubic-bezier(0.22,1,0.36,1), opacity 0.6s ease; }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-constellation-en [style*="padding: 52px 28px"] {padding:40px 20px !important;}
+  }

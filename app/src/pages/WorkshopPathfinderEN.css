@@ -1,0 +1,36 @@
+
+.page-workshop-pathfinder-en * { box-sizing: border-box; }
+.page-workshop-pathfinder-en, .page-workshop-pathfinder-en { margin: 0; padding: 0; }
+.page-workshop-pathfinder-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-workshop-pathfinder-en ::selection { background: #E5188C; color: #FAF4E2; }
+.page-workshop-pathfinder-en a { color: #146560; }
+.page-workshop-pathfinder-en a:hover { color: #E5188C; }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+.page-workshop-pathfinder-en [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-workshop-pathfinder-en [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
+.page-workshop-pathfinder-en [style*="grid-template-columns: repeat(3, .page-workshop-pathfinder-en minmax(0"] {grid-template-columns:1fr !important;}
+.page-workshop-pathfinder-en img, .page-workshop-pathfinder-en svg, .page-workshop-pathfinder-en video {max-width:100% !important;}
+.page-workshop-pathfinder-en [style*="font-size: 300px"] {display:none !important;}
+.page-workshop-pathfinder-en [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
+.page-workshop-pathfinder-en [style*="width: 700px"] {width:auto !important;max-width:100% !important;}
+.page-workshop-pathfinder-en [style*="width: 800px"] {width:auto !important;max-width:100% !important;}
+.page-workshop-pathfinder-en [style*="width: 900px"] {width:auto !important;max-width:100% !important;}
+.page-workshop-pathfinder-en [style*="width: 1000px"] {width:auto !important;max-width:100% !important;}
+.page-workshop-pathfinder-en [style*="height: 350px"], .page-workshop-pathfinder-en [style*="height: 250px"], .page-workshop-pathfinder-en [style*="height: 200px"], .page-workshop-pathfinder-en [style*="height: 180px"], .page-workshop-pathfinder-en [style*="height: 170px"], .page-workshop-pathfinder-en [style*="height: 130px"], .page-workshop-pathfinder-en [style*="height: 100px"] {height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-workshop-pathfinder-en [style*="padding: 72px 28px"] {padding:44px 20px !important;}
+.page-workshop-pathfinder-en [style*="padding: 66px 28px"] {padding:40px 20px !important;}
+.page-workshop-pathfinder-en [style*="padding: 62px 28px"] {padding:40px 20px !important;}
+.page-workshop-pathfinder-en [style*="padding: 60px 44px"] {padding:36px 24px !important;}
+.page-workshop-pathfinder-en [style*="padding: 40px 44px"] {padding:28px 22px !important;}
+.page-workshop-pathfinder-en [style*="padding: 52px 28px"] {padding:36px 20px !important;}
+.page-workshop-pathfinder-en [style*="padding: 56px 28px"] {padding:38px 20px !important;}
+.page-workshop-pathfinder-en [style*="padding: 64px 28px"] {padding:40px 20px !important;}
+.page-workshop-pathfinder-en [style*="padding: 44px 44px"] {padding:28px 20px !important;}
+.page-workshop-pathfinder-en [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+}

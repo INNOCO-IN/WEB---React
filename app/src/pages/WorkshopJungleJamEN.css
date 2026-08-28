@@ -1,0 +1,21 @@
+
+.page-workshop-jungle-jam-en * { box-sizing: border-box; }
+.page-workshop-jungle-jam-en, .page-workshop-jungle-jam-en { margin: 0; padding: 0; }
+.page-workshop-jungle-jam-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-workshop-jungle-jam-en ::selection { background: #E5188C; color: #FAF4E2; }
+.page-workshop-jungle-jam-en a { color: #146560; }
+.page-workshop-jungle-jam-en a:hover { color: #E5188C; }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.15fr 1fr"]{grid-template-columns:1fr !important;}
+.page-workshop-jungle-jam-en [style*="grid-template-columns: 190px 1fr"] {grid-template-columns:1fr !important;}
+.page-workshop-jungle-jam-en [style*="grid-template-columns: repeat(2, .page-workshop-jungle-jam-en minmax(0"] {grid-template-columns:1fr !important;}
+.page-workshop-jungle-jam-en img {max-width:100% !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-workshop-jungle-jam-en [style*="padding: 66px 28px"] {padding:40px 20px !important;}
+.page-workshop-jungle-jam-en [style*="padding: 56px 28px"] {padding:38px 20px !important;}
+.page-workshop-jungle-jam-en [style*="padding: 64px 28px"] {padding:40px 20px !important;}
+}

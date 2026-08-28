@@ -1,0 +1,93 @@
+/* The chrome a detail page is built from — the project briefs and the
+   community write-ups share all of it.
+
+   Every rule is keyed on .in-detail rather than on a per-page scope class, so
+   one stylesheet serves both templates and a third would need no new CSS. The
+   template sets --in-detail-accent on the root; nothing else varies. */
+
+.in-detail * { box-sizing: border-box; }
+
+.in-detail {
+  font-family: 'Newsreader', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.in-detail ::selection {
+  background: var(--in-detail-accent, var(--color-teal));
+  color: var(--color-paper);
+}
+
+.in-detail a { color: var(--color-teal-dark); }
+
+/* ---- bands -------------------------------------------------------------- */
+
+/* The hero and the closing band paint edge to edge; their contents are held to
+   the same measure as everything else. The legacy pages matched these on
+   [style*="padding: 70px 28px"], which only holds while React serialises the
+   style attribute exactly that way — a class says the same thing and cannot
+   come apart. */
+.in-detail__hero,
+.in-detail__cta,
+.in-detail__section {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.in-detail__hero { padding: 30px 28px 56px; }
+.in-detail__cta { padding: 70px 28px; text-align: center; }
+
+.in-detail__section {
+  margin-top: 80px;
+  padding: 0 28px;
+}
+
+/* ---- the two-column body, where a page has a rail ----------------------- */
+
+.in-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr 288px;
+  gap: 40px;
+  align-items: start;
+}
+
+.in-detail__col { min-width: 0; }
+
+.in-detail__rail {
+  position: sticky;
+  top: 78px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  border-left: 1px solid rgba(46, 59, 64, 0.14);
+  padding-left: 22px;
+}
+
+.in-detail__rail::-webkit-scrollbar { width: 6px; }
+.in-detail__rail::-webkit-scrollbar-thumb {
+  background: rgba(46, 59, 64, 0.2);
+  border-radius: 3px;
+}
+
+/* The rail stops being a sidebar and becomes a footer to the article. */
+@media (max-width: 1000px) {
+  .in-detail__grid { grid-template-columns: 1fr !important; }
+  .in-detail__col { order: 1; }
+  .in-detail__rail {
+    order: 2;
+    position: static !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    border-left: none !important;
+    border-top: 1.5px solid rgba(46, 59, 64, 0.14) !important;
+    padding-left: 0 !important;
+    padding-top: 26px !important;
+  }
+  .in-detail img,
+  .in-detail svg,
+  .in-detail video { max-width: 100% !important; }
+}
+
+@media (max-width: 600px) {
+  .in-detail__cta { padding: 44px 20px; }
+}

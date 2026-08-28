@@ -1,0 +1,8 @@
+
+.page-community-index-en * { box-sizing: border-box; }
+.page-community-index-en, .page-community-index-en { margin: 0; padding: 0; }
+.page-community-index-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-community-index-en ::selection { background: #D21E28; color: #FAF4E2; }
+.page-community-index-en a { color: #146560; }
+.page-community-index-en .idx-row { transition: background 0.16s ease; }
+.page-community-index-en .idx-row:hover { background: rgba(210,30,40,0.06); }

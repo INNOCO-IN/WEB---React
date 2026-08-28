@@ -1,0 +1,44 @@
+
+.page-story-submission-en * { box-sizing: border-box; }
+.page-story-submission-en, .page-story-submission-en { margin: 0; padding: 0; }
+.page-story-submission-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-story-submission-en ::selection { background: #FAB414; color: #2E3B40; }
+.page-story-submission-en a { color: #B87A00; }
+.page-story-submission-en .in-field { width: 100%; font-family: 'Newsreader', serif; font-size: 18px; color: #2E3B40; background: #FAF4E2; border: 1.5px solid rgba(46,59,64,0.28); padding: 14px 16px; outline: none; }
+.page-story-submission-en .in-field:focus { border-color: #B87A00; }
+.page-story-submission-en .in-lbl { display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px; }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+.page-story-submission-en [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-story-submission-en [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
+.page-story-submission-en [style*="grid-template-columns: repeat(3, .page-story-submission-en minmax(0"] {grid-template-columns:1fr !important;}
+.page-story-submission-en img, .page-story-submission-en svg, .page-story-submission-en video {max-width:100% !important;}
+.page-story-submission-en [style*="font-size: 300px"] {display:none !important;}
+.page-story-submission-en [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}
+.page-story-submission-en [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
+.page-story-submission-en [style*="width: 700px"] {width:auto !important;max-width:100% !important;}
+.page-story-submission-en [style*="width: 800px"] {width:auto !important;max-width:100% !important;}
+.page-story-submission-en [style*="width: 900px"] {width:auto !important;max-width:100% !important;}
+.page-story-submission-en [style*="width: 1200px"] {width:auto !important;max-width:100% !important;}
+.page-story-submission-en [style*="width: 1000px"] {width:auto !important;max-width:100% !important;}
+.page-story-submission-en [style*="width: 950px"] {width:auto !important;max-width:100% !important;}
+.page-story-submission-en [style*="height: 350px"], .page-story-submission-en [style*="height: 250px"], .page-story-submission-en [style*="height: 200px"], .page-story-submission-en [style*="height: 180px"], .page-story-submission-en [style*="height: 170px"], .page-story-submission-en [style*="height: 130px"], .page-story-submission-en [style*="height: 100px"] {height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-story-submission-en [style*="padding: 72px 28px"] {padding:44px 20px !important;}
+.page-story-submission-en [style*="padding: 66px 28px"] {padding:40px 20px !important;}
+.page-story-submission-en [style*="padding: 62px 28px"] {padding:40px 20px !important;}
+.page-story-submission-en [style*="padding: 60px 44px"] {padding:36px 24px !important;}
+.page-story-submission-en [style*="padding: 40px 44px"] {padding:28px 22px !important;}
+.page-story-submission-en [style*="padding: 52px 28px"] {padding:36px 20px !important;}
+.page-story-submission-en [style*="padding: 56px 28px"] {padding:38px 20px !important;}
+.page-story-submission-en [style*="padding: 64px 28px"] {padding:40px 20px !important;}
+.page-story-submission-en [style*="padding: 40px 80px"] {padding:30px 20px !important;}
+.page-story-submission-en [style*="padding: 40px 40px"] {padding:28px 20px !important;}
+.page-story-submission-en [style*="padding: 44px 44px"] {padding:28px 20px !important;}
+.page-story-submission-en [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+.page-story-submission-en [style*="font-size: 60px"] {font-size:34px !important;line-height:1.15 !important;}
+}

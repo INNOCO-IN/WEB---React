@@ -1,0 +1,88 @@
+/* /workshop/:slug — one stylesheet for the eight pages that shipped one each.
+
+   The legacy pages carried a 34-rule block of [style*="…"] shims, of which
+   exactly four ever matched anything on this layout. They are the four
+   paddings below, written as classes: an attribute selector on an inline style
+   only holds while React serialises that style the same way, and it silently
+   stops applying when it does not. */
+
+.page-workshop-detail * { box-sizing: border-box; }
+
+.page-workshop-detail {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-workshop-detail ::selection {
+  background: var(--color-magenta-hot);
+  color: var(--color-paper);
+}
+
+.ws {
+  font-family: 'Newsreader', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Korean breaks lines between words rather than inside them. The legacy KO
+   pages set this on the page; here the one component serves both languages,
+   so it hangs off the language the page is being read in. */
+.ws[data-lang='KO'] { word-break: keep-all; }
+
+/* ---- bands ---------------------------------------------------------------
+   Each is held to the same measure; only the padding differs. */
+
+.ws__back,
+.ws__hero,
+.ws__intro,
+.ws__arc,
+.ws__helpful,
+.ws__details,
+.ws__top,
+.ws__register {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.ws__back { padding: 22px 28px 0; }
+
+.ws__hero {
+  padding: 30px 28px 56px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.ws__intro { padding: 64px 28px 24px; }
+.ws__arc { padding: 56px 28px 24px; }
+.ws__helpful { padding: 40px 28px; }
+.ws__card { padding: 44px 44px 40px; }
+.ws__details { padding: 24px 28px 40px; }
+.ws__top { padding: 0 28px 44px; }
+.ws__register { padding: 70px 28px; text-align: center; }
+
+/* ---- one movement of the Loop -------------------------------------------- */
+
+.ws__step {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  align-items: baseline;
+  border-top: 1.5px solid rgba(46, 59, 64, 0.18);
+  padding: 24px 0;
+}
+
+@media (max-width: 1000px) {
+  .ws img,
+  .ws svg,
+  .ws video { max-width: 100% !important; }
+}
+
+@media (max-width: 600px) {
+  .ws__intro { padding: 40px 20px; }
+  .ws__arc { padding: 38px 20px; }
+  .ws__card { padding: 28px 20px; }
+  .ws__register { padding: 44px 20px; }
+}

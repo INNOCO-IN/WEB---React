@@ -1,0 +1,536 @@
+/* Card walls.
+   One grid rule and one card shape, shared by news, workshops and community —
+   the legacy pages repeated both inline on every card, which is why the three
+   walls had drifted apart by a few pixels each. */
+
+.in-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* ---- News ------------------------------------------------------------- */
+
+.in-news-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  border: 1px solid rgba(26, 22, 19, 0.14);
+  color: var(--color-ink);
+}
+
+/* The card's link wraps everything except the photo credit, which has to stay
+   outside it to be clickable in its own right. */
+.in-news-card__link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.in-news-card__bar {
+  width: 100%;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.in-news-card__photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.in-news-card__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.in-news-card__body {
+  display: flex;
+  gap: 12px;
+  padding: 6px 10px 22px;
+  flex: 1;
+}
+
+.in-news-card__rail {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.in-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-circle);
+  flex: 0 0 auto;
+}
+
+.in-rail-label {
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-ink-40);
+}
+
+.in-news-card__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 5px;
+}
+
+.in-news-card__meta {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin: 5px 0 15px;
+}
+
+.in-news-card__title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  margin: 0 0 10px;
+}
+
+.in-news-card__blurb {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.3;
+  margin: 0 0 20px;
+  color: rgba(46, 59, 64, 0.78);
+}
+
+.in-news-card__cta {
+  margin-top: auto;
+  align-self: flex-end;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(46, 59, 64, 0.45);
+}
+
+.in-news-card__credit {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-40);
+  padding: 0 10px 10px;
+}
+
+.in-news-card__credit a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ---- Workshops --------------------------------------------------------- */
+
+.in-ws-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-bottom: 34px;
+}
+
+.in-ws-filter {
+  display: inline-flex;
+  align-items: center;
+  font: inherit;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  cursor: pointer;
+  line-height: 1.2;
+  background: transparent;
+  color: var(--color-ink);
+  border: var(--border-width) solid rgba(46, 59, 64, 0.3);
+  transition: background 0.14s var(--ease-standard);
+}
+
+.in-ws-filter[aria-pressed='true'] {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-color: var(--color-ink);
+}
+
+.in-ws-card {
+  display: block;
+  text-decoration: none;
+  break-inside: avoid;
+}
+
+.in-ws-card__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  padding: 26px 24px 22px 50px;
+  height: 100%;
+}
+
+.in-ws-card__rail {
+  position: absolute;
+  left: 13px;
+  top: 21px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.in-ws-card__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.05;
+  margin: 0 0 10px;
+}
+
+.in-ws-card__blurb {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.in-ws-card__foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 24px;
+}
+
+.in-ws-card__cta {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.in-arrow {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-circle);
+  border: var(--border-width) solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 20px;
+}
+
+/* ---- Community --------------------------------------------------------- */
+
+.in-community-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  border: 1px solid rgba(26, 22, 19, 0.14);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.in-community-card__photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.in-community-card__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.in-community-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 20px 20px;
+  gap: 10px;
+}
+
+.in-community-card__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-ink-40);
+}
+
+/* Where the circle stands — 'Online · Resuming soon'. Distinct from the
+   eyebrow above it, which says 'Community' on all nine of them. */
+.in-community-card__meta {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin: -2px 0 0;
+}
+
+.in-community-card__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.in-community-card__blurb {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.35;
+  margin: 0;
+  color: rgba(46, 59, 64, 0.78);
+}
+
+.in-community-card__foot {
+  margin-top: auto;
+  align-self: flex-end;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-circle);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 20px;
+}
+
+/* ---- Projects ----------------------------------------------------------- */
+/* The card the news wall uses, on the sandy tones the project index is built
+   from. Those four are the page's own, not design tokens: the token set is the
+   fourteen logo colours, and these are paper tints that only ever appear here.
+   The tone follows position rather than the row, the way the hand-written wall
+   did — so a project added in the Table Editor lands in the sequence instead
+   of arriving colourless. */
+
+.in-project-card {
+  --tone: var(--color-paper);
+  display: flex;
+  flex-direction: column;
+  background: var(--tone);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.in-project-card:nth-child(4n + 1) {
+  border: 1px solid rgba(26, 22, 19, 0.14);
+}
+
+.in-project-card:nth-child(4n + 2) { --tone: #F6D9B0; }
+.in-project-card:nth-child(4n + 3) { --tone: #EFC9A8; }
+.in-project-card:nth-child(4n + 4) { --tone: #F2E3C4; }
+
+.in-project-card__bar {
+  width: 100%;
+  height: 14px;
+  flex: 0 0 auto;
+  background: var(--color-slate);
+}
+
+.in-project-card__body {
+  display: flex;
+  gap: 12px;
+  padding: 6px 10px 22px;
+  flex: 1;
+}
+
+.in-project-card__rail {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.in-project-card__rail .in-dot {
+  background: var(--color-ink);
+}
+
+.in-project-card__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 5px;
+}
+
+.in-project-card__meta {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin: 5px 0 15px;
+}
+
+.in-project-card__title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.02;
+  margin: 0 0 10px;
+}
+
+.in-project-card__blurb {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.3;
+  margin: 0 0 20px;
+  color: rgba(46, 59, 64, 0.78);
+}
+
+.in-project-card__foot {
+  margin-top: auto;
+  align-self: flex-end;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-circle);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 20px;
+}
+
+/* ---- Empty state ------------------------------------------------------- */
+
+.in-wall-empty {
+  grid-column: 1 / -1;
+  padding: 40px 0;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  color: var(--color-ink-40);
+}
+
+/* ---- Home grid tile ----------------------------------------------------- */
+/* Matches the eight hand-built tiles it sits among: colour bar with a wedge,
+   vertical rail label, and the circular arrow bottom-right. */
+
+.in-home-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  border: 1px solid rgba(26, 22, 19, 0.14);
+  color: var(--color-ink);
+  min-height: 340px;
+}
+
+.in-home-tile__bar {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.in-home-tile__wedge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46px;
+}
+
+.in-home-tile__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 20px 44px;
+}
+
+.in-home-tile__rail {
+  position: absolute;
+  left: 13px;
+  top: 21px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.in-home-tile__date {
+  font: var(--text-eyebrow);
+  font-family: var(--font-sans);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.in-home-tile__title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 1.14;
+  margin-bottom: 12px;
+}
+
+.in-home-tile__blurb {
+  margin: 0 56px 0 0;
+  font: var(--text-body);
+  font-family: var(--font-serif);
+  opacity: 0.9;
+}
+
+.in-home-tile__arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-circle);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
