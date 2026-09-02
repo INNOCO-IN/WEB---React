@@ -2,6 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { fetchConstellation } from '../services/content';
 import { watchTable } from '../services/realtime';
 import { CONSTELLATION, FORMAT_COLORS, type ConstellationPoint } from '../content/constellation';
+import { inLang } from '../content/types';
+import { useTranslation } from 'react-i18next';
+import { useLocaleOr, type Locale } from '../lang';
 
 /**
  * The Constellation — every story as a light, clustered by format or topic.
@@ -12,7 +15,7 @@ import { CONSTELLATION, FORMAT_COLORS, type ConstellationPoint } from '../conten
  * makes a point's position mean something between visits.
  */
 
-export type Lang = 'EN' | 'KO';
+export type { Locale };
 
 interface Dot {
   title: string;
@@ -24,13 +27,15 @@ interface Dot {
 }
 
 const MODES = [
-  { id: 'format' as const, label: 'Format', of: (p: ConstellationPoint) => p.format },
-  { id: 'topic' as const, label: 'Topic', of: (p: ConstellationPoint) => p.topic },
+  { id: 'format' as const, of: (p: ConstellationPoint) => p.format },
+  { id: 'topic' as const, of: (p: ConstellationPoint) => p.topic },
 ];
 
 const CLOSE_DELAY = 260;
 
-export default function useConstellation(lang: Lang = 'EN') {
+export default function useConstellation(given?: Locale) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
   const [points, setPoints] = useState<ConstellationPoint[]>(CONSTELLATION);
   const [mode, setMode] = useState<'format' | 'topic'>('format');
   const [selected, setSelected] = useState<string | null>(null);
@@ -94,6 +99,19 @@ export default function useConstellation(lang: Lang = 'EN') {
     return { groups: order, centers: positions, byGroup: buckets };
   }, [points, active]);
 
+  /**
+   * Group key → what the label should say.
+   *
+   * The sky clusters on the English key in both languages, so a topic that has
+   * been translated and one that has not still land in the same cluster. Only
+   * the text above the cluster changes.
+   */
+  const groupLabel = (group: string): string => {
+    if (mode === 'format') return t(`sky.formats.${group}` as 'sky.formats.writing', group);
+    const translated = points.find((p) => p.topic === group && p.topicKo);
+    return inLang(group, { ko: translated?.topicKo, 'zh-TW': translated?.topicZhTw }, locale) ?? group;
+  };
+
   const dots: Dot[] = [];
   for (const group of groups) {
     const members = byGroup[group];
@@ -110,7 +128,7 @@ export default function useConstellation(lang: Lang = 'EN') {
       if (on) selectedPosition.current = { x, y };
 
       dots.push({
-        title: point.title,
+        title: inLang(point.title, { ko: point.titleKo, 'zh-TW': point.titleZhTw }, locale) ?? point.title,
         onClick: () => setSelected((current) => (current === point.id ? null : point.id)),
         enter: () => {
           clearTimeout(closeTimer.current);
@@ -131,7 +149,7 @@ export default function useConstellation(lang: Lang = 'EN') {
   }
 
   const labels = groups.map((group) => ({
-    text: group,
+    text: groupLabel(group),
     style:
       `position:absolute; left:${centers[group].x}%; top:${Math.max(2, centers[group].y - 16)}%; ` +
       "transform:translateX(-50%); font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; " +
@@ -142,7 +160,7 @@ export default function useConstellation(lang: Lang = 'EN') {
   const modeButtons = MODES.map((m) => {
     const on = m.id === mode;
     return {
-      label: m.label,
+      label: m.id === 'format' ? t('sky.format') : t('sky.topic'),
       onClick: () => setMode(m.id),
       style:
         "font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; " +
@@ -153,7 +171,7 @@ export default function useConstellation(lang: Lang = 'EN') {
   });
 
   const legend = Object.entries(FORMAT_COLORS).map(([format, color]) => ({
-    label: format,
+    label: t(`sky.formats.${format}` as 'sky.formats.writing', format),
     swatch:
       `display:inline-block; width:11px; height:11px; border-radius:50%; ` +
       `background:${color}; box-shadow:0 0 8px 1px ${color}66;`,
@@ -165,10 +183,7 @@ export default function useConstellation(lang: Lang = 'EN') {
   const px = Math.min(78, Math.max(22, position.x));
   const below = position.y < 42;
 
-  const hint =
-    lang === 'KO'
-      ? `${points.length}개의 빛 — 하나를 가리키거나 눌러 보세요`
-      : `${points.length} lights and growing — hover or tap one`;
+  const hint = t('sky.hint', { count: points.length });
 
   return {
     modeButtons,
@@ -185,9 +200,9 @@ export default function useConstellation(lang: Lang = 'EN') {
     cancelClose: () => clearTimeout(closeTimer.current),
     closeSoon,
     closeSel: () => setSelected(null),
-    selTitle: point?.title ?? '',
-    selCaption: point?.caption ?? '',
-    selMeta: point ? `${point.by ?? ''} · ${point.month}` : '',
+    selTitle: (point && inLang(point.title, { ko: point.titleKo, 'zh-TW': point.titleZhTw }, locale)) ?? '',
+    selCaption: (point && inLang(point.caption, { ko: point.captionKo, 'zh-TW': point.captionZhTw }, locale)) ?? '',
+    selMeta: point ? `${inLang(point.by, { ko: point.byKo, 'zh-TW': point.byZhTw }, locale) ?? ''} · ${point.month}` : '',
     selFormat: point?.format ?? '',
     selDot:
       `position:absolute; left:19px; top:22px; width:8px; height:8px; ` +
@@ -196,7 +211,7 @@ export default function useConstellation(lang: Lang = 'EN') {
     selRead: point?.read ?? '#',
     hasMedia: Boolean(point?.media),
     selMedia: point?.media ?? '#',
-    mediaLabel: point?.format === 'video' ? 'WATCH' : 'LISTEN',
+    mediaLabel: point?.format === 'video' ? t('sky.watch') : t('sky.listen'),
     hasView: Boolean(point?.view),
     selView: point?.view ?? '#',
   };

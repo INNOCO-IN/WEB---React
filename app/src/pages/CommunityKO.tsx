@@ -8,7 +8,7 @@ import './CommunityKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function CommunityKO() {
   return (
-    <SiteLayout lang="KO" page="Community.KO.dc.html" className="page-community-ko" footer={{ loop: "0.716", cta: "#D21E28" }}>
+    <SiteLayout page="Community.KO.dc.html" className="page-community-ko" footer={{ loop: "0.716", cta: "#D21E28" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO */}
         <section style={{ background: "#D21E28", color: "#FAF4E2" }}>
@@ -37,7 +37,7 @@ export default function CommunityKO() {
               실천을 통해 만들어져 계속 연결되어 온 공동체들 — 온라인으로, 한 장소에 뿌리내려, 아직 모양을 찾아가는 중인 곳도 있습니다. 각각은 프로젝트가 아니라 사람들의 모임입니다.
             </p>
           </div>
-          <CommunityGrid lang="KO" />
+          <CommunityGrid />
           <div style={{ display: "flex", justifyContent: "center", marginTop: "32px" }}>
             <Link to="/community/all" style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#D21E28", textDecoration: "none", border: "1.5px solid #D21E28", borderRadius: "999px", padding: "13px 28px" }} className="in-plain">
               더 많은 커뮤니티
@@ -54,7 +54,7 @@ export default function CommunityKO() {
               네트워크 곳곳에서 일어나는 일 — 모임, 축제, 랩, 이정표를 최신순으로. 모든 소식은 하나의 공동체로 거슬러 올라갑니다.
             </p>
           </div>
-          <NewsGrid feed="community" lang="KO" />
+          <NewsGrid feed="community" />
           <div style={{ display: "flex", justifyContent: "center", marginTop: "32px" }}>
             <Link to="/ko/story" style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#D21E28", textDecoration: "none", border: "1.5px solid #D21E28", borderRadius: "999px", padding: "13px 28px" }} className="in-plain">
               더 많은 소식

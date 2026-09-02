@@ -1,0 +1,110 @@
+{
+  "elements": {
+    "section": "區塊",
+    "container": "容器",
+    "columns": "欄位",
+    "heading": "標題",
+    "text": "內文",
+    "image": "圖片",
+    "button": "按鈕",
+    "spacer": "間距",
+    "newsGrid": "消息格線",
+    "workshopWall": "工作坊牆",
+    "projectWall": "專案牆",
+    "communityGrid": "社群格線",
+    "unknown": "未知元素"
+  },
+  "fields": {
+    "text": "文字",
+    "level": "層級",
+    "align": "對齊",
+    "color": "顏色",
+    "background": "背景",
+    "padding": "內距",
+    "gap": "間隔",
+    "maxWidth": "最大寬度",
+    "count": "欄數",
+    "src": "圖片",
+    "alt": "替代文字",
+    "aspect": "長寬比",
+    "label": "標籤",
+    "url": "連結目標",
+    "variant": "樣式",
+    "size": "尺寸",
+    "height": "高度",
+    "feed": "來源",
+    "limit": "數量上限"
+  },
+  "scope": {
+    "localized": "各語言獨立",
+    "shared": "所有語言共用",
+    "optional": "各語言獨立（選填）",
+    "sharedHint": "變更此項會影響所有沒有專屬版面的語言。",
+    "localizedHint": "此值僅適用於{{name}}。"
+  },
+  "toolbar": {
+    "language": "語言",
+    "translation": "翻譯",
+    "layout": "版面",
+    "status": "狀態",
+    "missing_other": "{{count}} 個欄位尚未翻譯",
+    "fallbackFrom": "改以{{name}}內容顯示",
+    "noFallback": "無需替代顯示"
+  },
+  "translation": {
+    "complete": "已完成",
+    "incomplete": "未完成",
+    "untranslated": "尚未開始"
+  },
+  "layout": {
+    "shared": "共用",
+    "custom": "此語言專屬",
+    "sharedNote": "此語言使用共用版面。修改版面會同時影響所有沒有專屬版面的語言。",
+    "customNote": "此語言使用專屬版面，共用版面的變更不會再套用。"
+  },
+  "status": {
+    "draft": "草稿",
+    "published": "已發布"
+  },
+  "actions": {
+    "editTranslation": "編輯翻譯",
+    "customizeLayout": "為此語言建立專屬版面",
+    "returnToShared": "回到共用版面",
+    "cancel": "取消",
+    "confirm": "確認",
+    "publish": "發布",
+    "unpublish": "改為草稿"
+  },
+  "confirm": {
+    "returnToSharedTitle": "要移除此語言的專屬版面嗎？",
+    "returnToSharedBody": "{{name}}將回到共用版面。文字、SEO 與網址代稱都會保留，只移除版面。此動作無法復原。",
+    "customizeTitle": "要為{{name}}建立專屬版面嗎？",
+    "customizeBody": "系統會複製共用版面作為起點。之後共用版面的變更將不再套用到{{name}}。"
+  },
+  "fallback": {
+    "badge": "來自{{name}}",
+    "title": "尚未翻譯 — 顯示{{name}}的文字",
+    "empty": "所有語言都沒有內容"
+  },
+  "seo": {
+    "heading": "搜尋與分享",
+    "title": "頁面標題",
+    "description": "描述",
+    "openGraphImage": "分享圖片",
+    "slug": "網址代稱"
+  },
+  "validation": {
+    "unknownElement": "「{{type}}」不是已註冊的元素，因此未顯示。",
+    "invalidDocument": "無法讀取此頁面文件：{{reason}}",
+    "duplicateId": "有兩個元素使用相同的 id「{{id}}」。",
+    "missingId": "有元素沒有 id。",
+    "unsupportedLocale": "「{{locale}}」不是支援的語言。",
+    "duplicateSlug": "「{{slug}}」已被{{name}}的另一個頁面使用。",
+    "emptySlug": "網址代稱為必填。",
+    "notPermitted": "您沒有發布此頁面的權限。"
+  },
+  "empty": {
+    "document": "此頁面尚未加入任何元素。",
+    "locale": "此頁面尚未以{{name}}建立內容。"
+  }
+}

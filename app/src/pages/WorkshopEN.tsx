@@ -8,7 +8,7 @@ import './WorkshopEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopEN() {
   return (
-    <SiteLayout lang="EN" page="Workshop.EN.dc.html" className="page-workshop-en" footer={{ loop: "0.171", cta: "#E6328C" }}>
+    <SiteLayout page="Workshop.EN.dc.html" className="page-workshop-en" footer={{ loop: "0.171", cta: "#E6328C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (key color box · magenta) ===================== */}
         <section style={{ background: "#E6328C", color: "#FAF4E2" }}>

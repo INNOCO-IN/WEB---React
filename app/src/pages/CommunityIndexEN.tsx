@@ -7,7 +7,7 @@ import './CommunityIndexEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function CommunityIndexEN() {
   return (
-    <SiteLayout lang="EN" page="Community-Index.EN.dc.html" className="page-community-index-en" footer={{ loop: "0.74", cta: "#D21E28" }}>
+    <SiteLayout page="Community-Index.EN.dc.html" className="page-community-index-en" footer={{ loop: "0.74", cta: "#D21E28" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <section style={{ background: "#D21E28", color: "#FAF4E2" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>

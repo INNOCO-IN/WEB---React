@@ -7,7 +7,7 @@ import './MEWEEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function MEWEEN() {
   return (
-    <SiteLayout lang="EN" page="MEWE.EN.dc.html" className="page-meween" footer={{ loop: "0.126", cta: "#1E648C" }}>
+    <SiteLayout page="MEWE.EN.dc.html" className="page-meween" footer={{ loop: "0.126", cta: "#1E648C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (locked) */}
         <section data-screen-label="Hero" style={{ background: "#1E648C", color: "#FAF4E2" }}>

@@ -7,7 +7,7 @@ import './WorkshopPathfinderKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopPathfinderKO() {
   return (
-    <SiteLayout lang="KO" page="Workshop-Pathfinder.KO.dc.html" className="page-workshop-pathfinder-ko" footer={{ loop: "0.216", cta: "#E5188C" }}>
+    <SiteLayout page="Workshop-Pathfinder.KO.dc.html" className="page-workshop-pathfinder-ko" footer={{ loop: "0.216", cta: "#E5188C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         {/* ===================== HERO ===================== */}

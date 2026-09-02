@@ -1,0 +1,296 @@
+{
+  "id": "page_news",
+  "routeKey": "news",
+  "defaultLocale": "en",
+  "sharedDocument": {
+    "nodes": [
+      {
+        "id": "news:hero",
+        "type": "section",
+        "props": {
+          "background": "tan",
+          "color": "paper",
+          "paddingTop": "52px",
+          "paddingBottom": "60px"
+        },
+        "children": [
+          {
+            "id": "news:hero.eyebrow",
+            "type": "text",
+            "props": {
+              "size": "eyebrow"
+            },
+            "bindings": {
+              "text": "hero.eyebrow.text"
+            }
+          },
+          {
+            "id": "news:hero.title",
+            "type": "heading",
+            "props": {
+              "level": "1",
+              "size": "display-2"
+            },
+            "bindings": {
+              "text": "hero.title.text"
+            }
+          },
+          {
+            "id": "news:hero.lede",
+            "type": "text",
+            "props": {
+              "size": "body-lg",
+              "maxWidth": "720px"
+            },
+            "bindings": {
+              "text": "hero.lede.text"
+            }
+          }
+        ]
+      },
+      {
+        "id": "news:insight",
+        "type": "section",
+        "props": {
+          "paddingTop": "64px",
+          "paddingBottom": "0px"
+        },
+        "children": [
+          {
+            "id": "news:insight.columns",
+            "type": "columns",
+            "props": {
+              "count": 2,
+              "gap": "34px",
+              "alignItems": "center"
+            },
+            "children": [
+              {
+                "id": "news:insight.image",
+                "type": "image",
+                "props": {
+                  "src": "/community-img/news-fuller-quote-card.jpg",
+                  "maxWidth": "420px",
+                  "fit": "contain"
+                },
+                "bindings": {
+                  "alt": "insight.image.alt"
+                }
+              },
+              {
+                "id": "news:insight.body",
+                "type": "container",
+                "props": {
+                  "gap": "18px"
+                },
+                "children": [
+                  {
+                    "id": "news:insight.eyebrow",
+                    "type": "text",
+                    "props": {
+                      "size": "eyebrow",
+                      "color": "tan"
+                    },
+                    "bindings": {
+                      "text": "insight.eyebrow.text"
+                    }
+                  },
+                  {
+                    "id": "news:insight.quote",
+                    "type": "text",
+                    "props": {
+                      "size": "quote"
+                    },
+                    "bindings": {
+                      "text": "insight.quote.text"
+                    }
+                  },
+                  {
+                    "id": "news:insight.credit",
+                    "type": "text",
+                    "props": {
+                      "size": "eyebrow",
+                      "color": "ink-40"
+                    },
+                    "bindings": {
+                      "text": "insight.credit.text"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "news:feed",
+        "type": "section",
+        "props": {
+          "paddingTop": "64px",
+          "paddingBottom": "12px"
+        },
+        "children": [
+          {
+            "id": "news:feed.heading",
+            "type": "heading",
+            "props": {
+              "level": "2",
+              "size": "display-3"
+            },
+            "bindings": {
+              "text": "feed.heading.text"
+            }
+          },
+          {
+            "id": "news:feed.gap",
+            "type": "spacer",
+            "props": {
+              "height": "28px"
+            }
+          },
+          {
+            "id": "news:feed.grid",
+            "type": "newsGrid",
+            "props": {
+              "feed": "news"
+            }
+          }
+        ]
+      },
+      {
+        "id": "news:cta",
+        "type": "section",
+        "props": {
+          "background": "tan",
+          "color": "paper",
+          "paddingTop": "70px",
+          "paddingBottom": "70px",
+          "align": "center"
+        },
+        "children": [
+          {
+            "id": "news:cta.eyebrow",
+            "type": "text",
+            "props": {
+              "size": "eyebrow",
+              "align": "center",
+              "maxWidth": "none"
+            },
+            "bindings": {
+              "text": "cta.eyebrow.text"
+            }
+          },
+          {
+            "id": "news:cta.heading",
+            "type": "heading",
+            "props": {
+              "level": "2",
+              "size": "display-3",
+              "align": "center"
+            },
+            "bindings": {
+              "text": "cta.heading.text"
+            }
+          },
+          {
+            "id": "news:cta.gap",
+            "type": "spacer",
+            "props": {
+              "height": "28px"
+            }
+          },
+          {
+            "id": "news:cta.actions",
+            "type": "container",
+            "props": {
+              "direction": "row",
+              "justify": "center",
+              "gap": "12px"
+            },
+            "children": [
+              {
+                "id": "news:cta.primary",
+                "type": "button",
+                "props": {
+                  "url": "/connect",
+                  "variant": "solid",
+                  "color": "paper"
+                },
+                "bindings": {
+                  "label": "cta.primary.label"
+                }
+              },
+              {
+                "id": "news:cta.secondary",
+                "type": "button",
+                "props": {
+                  "url": "/community",
+                  "variant": "outline",
+                  "color": "paper"
+                },
+                "bindings": {
+                  "label": "cta.secondary.label"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "locales": {
+    "en": {
+      "slug": "news",
+      "status": "published",
+      "seo": {
+        "title": "News — IN",
+        "description": "Gatherings, festivals, labs and milestones from the MEWE network, newest first."
+      },
+      "content": {
+        "hero.eyebrow.text": "News",
+        "hero.title.text": "What the network is doing right now.",
+        "hero.lede.text": "Gatherings, festivals, labs, and milestones — newest first. Every update traces back to a community.",
+        "insight.image.alt": "“The world changes when we change how we see and move within it — alone, we tilt, but together, we turn.” — Buckminster Fuller",
+        "insight.eyebrow.text": "Insight",
+        "insight.quote.text": "“The world changes when we change how we see and move within it — alone, we tilt, but together, we turn.”",
+        "insight.credit.text": "Buckminster Fuller · Card series",
+        "feed.heading.text": "MEWE Network News.",
+        "cta.eyebrow.text": "Join",
+        "cta.heading.text": "Something happening near you?",
+        "cta.primary.label": "Tell us about it",
+        "cta.secondary.label": "All communities"
+      }
+    },
+    "ko": {
+      "slug": "news",
+      "status": "published",
+      "seo": {
+        "title": "소식 — IN",
+        "description": "MEWE 네트워크의 모임, 축제, 랩, 이정표를 최신순으로."
+      },
+      "content": {
+        "hero.eyebrow.text": "소식",
+        "hero.title.text": "네트워크가 지금 하고 있는 일.",
+        "hero.lede.text": "모임, 축제, 랩, 이정표 — 최신순으로. 모든 소식은 하나의 공동체로 거슬러 올라갑니다.",
+        "insight.image.alt": "“세상은 우리가 그 안에서 보고 움직이는 방식을 바꿀 때 변한다 — 혼자서는 기울지만, 함께라면 돈다.” — 버크민스터 풀러",
+        "insight.eyebrow.text": "인사이트",
+        "insight.quote.text": "“세상은 우리가 그 안에서 보고 움직이는 방식을 바꿀 때 변한다 — 혼자서는 기울지만, 함께라면 돈다.”",
+        "insight.credit.text": "버크민스터 풀러 · 카드 시리즈",
+        "feed.heading.text": "MEWE 네트워크 소식.",
+        "cta.eyebrow.text": "함께하기",
+        "cta.heading.text": "당신 곁에서 무언가 일어나고 있나요?",
+        "cta.primary.label": "우리에게 알려주세요",
+        "cta.secondary.label": "모든 커뮤니티"
+      }
+    },
+    "zh-TW": {
+      "slug": "news",
+      "status": "draft",
+      "seo": {
+        "title": "",
+        "description": ""
+      },
+      "content": {}
+    }
+  }
+}

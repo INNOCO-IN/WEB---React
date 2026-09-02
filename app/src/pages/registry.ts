@@ -67,4 +67,3 @@ export const PAGES: Record<string, LazyExoticComponent<ComponentType>> = {
   "/ko/workshop/:slug": lazy(() => import('./templates/WorkshopDetail')),
 };
 
-export const ROUTE_PATHS = Object.keys(PAGES);

@@ -7,7 +7,7 @@ import './NewsKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function NewsKO() {
   return (
-    <SiteLayout lang="KO" page="News.KO.dc.html" className="page-news-ko" footer={{ loop: "0.36", cta: "#966432" }}>
+    <SiteLayout page="News.KO.dc.html" className="page-news-ko" footer={{ loop: "0.36", cta: "#966432" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         {/* HERO */}
@@ -54,7 +54,7 @@ export default function NewsKO() {
               MEWE 네트워크 소식.
             </h2>
           </div>
-          <NewsGrid feed="news" lang="KO" />
+          <NewsGrid feed="news" />
         </section>
         {/* BACK TO TOP */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 0" }}>

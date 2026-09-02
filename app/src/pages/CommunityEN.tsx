@@ -8,7 +8,7 @@ import './CommunityEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function CommunityEN() {
   return (
-    <SiteLayout lang="EN" page="Community.EN.dc.html" className="page-community-en" footer={{ loop: "0.716", cta: "#D21E28" }}>
+    <SiteLayout page="Community.EN.dc.html" className="page-community-en" footer={{ loop: "0.716", cta: "#D21E28" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO */}
         <section style={{ background: "#D21E28", color: "#FAF4E2" }}>

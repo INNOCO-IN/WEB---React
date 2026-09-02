@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCommunities } from '../lib/hooks/useContent';
 import { copyIn } from '../lib/content/types';
-import type { Lang } from './nav-data';
+import { localize, useLocaleOr, type Locale } from '../lib/lang';
 import './CommunityIndexList.css';
 
 /**
@@ -18,23 +18,24 @@ import './CommunityIndexList.css';
  */
 
 interface Props {
-  lang?: Lang;
+  locale?: Locale;
 }
 
-export default function CommunityIndexList({ lang = 'EN' }: Props) {
+export default function CommunityIndexList({ locale: given }: Props) {
+  const locale = useLocaleOr(given);
   const { data: communities } = useCommunities();
 
   return (
     <div className="in-index">
       {communities.map((community) => {
-        const copy = copyIn(community, lang);
+        const copy = copyIn(community, locale);
         return (
           <Link
             key={community.slug}
             // `idx-row` is the page's own class: it carries the red hover tint
             // that belongs to this page rather than to the directory.
             className="in-index__row idx-row in-plain"
-            to={community.route ?? `/community/${community.slug}`}
+            to={localize(community.route ?? `/community/${community.slug}`, locale)}
           >
             <span className="in-index__title">{copy.title}</span>
             {copy.meta ? <span className="in-index__meta">{copy.meta}</span> : null}

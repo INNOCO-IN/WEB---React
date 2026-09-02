@@ -11,7 +11,7 @@ export default function StorySubmissionEN() {
   const { onType, typed } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Story-Submission.EN.dc.html" className="page-story-submission-en" footer={{ loop: "0.443", cta: "#FAB414" }}>
+    <SiteLayout page="Story-Submission.EN.dc.html" className="page-story-submission-en" footer={{ loop: "0.443", cta: "#FAB414" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (key color · amber) */}
         <section style={{ background: "#FAB414", color: "#2E3B40" }}>

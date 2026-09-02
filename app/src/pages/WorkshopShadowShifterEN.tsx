@@ -6,7 +6,7 @@ import './WorkshopShadowShifterEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopShadowShifterEN() {
   return (
-    <SiteLayout lang="EN" page="Workshop-Shadow-Shifter.EN.dc.html" className="page-workshop-shadow-shifter-en" footer={{ loop: "0.41", cta: "#E5188C" }}>
+    <SiteLayout page="Workshop-Shadow-Shifter.EN.dc.html" className="page-workshop-shadow-shifter-en" footer={{ loop: "0.41", cta: "#E5188C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         <section style={{ background: "#E5188C", color: "#FAF4E2" }}>

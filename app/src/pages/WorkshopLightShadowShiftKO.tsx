@@ -6,7 +6,7 @@ import './WorkshopLightShadowShiftKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopLightShadowShiftKO() {
   return (
-    <SiteLayout lang="KO" page="Workshop-Light-Shadow-Shift.KO.dc.html" className="page-workshop-light-shadow-shift-ko" footer={{ loop: "0.58", cta: "#E5188C" }}>
+    <SiteLayout page="Workshop-Light-Shadow-Shift.KO.dc.html" className="page-workshop-light-shadow-shift-ko" footer={{ loop: "0.58", cta: "#E5188C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         <section style={{ background: "#E5188C", color: "#FAF4E2" }}>

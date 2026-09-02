@@ -6,7 +6,7 @@ import './ManifestoEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function ManifestoEN() {
   return (
-    <SiteLayout lang="EN" page="Manifesto.EN.dc.html" className="page-manifesto-en" footer={{ loop: "0.080", cta: "#1E8A86" }}>
+    <SiteLayout page="Manifesto.EN.dc.html" className="page-manifesto-en" footer={{ loop: "0.080", cta: "#1E8A86" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
         <section style={{ color: "#FAF4E2", backgroundColor: "#1E8A86" }}>

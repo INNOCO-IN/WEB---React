@@ -1,0 +1,207 @@
+{
+  "id": "page_news",
+  "routeKey": "news",
+  "defaultLocale": "en",
+  "locales": {
+    "en": {
+      "slug": "news",
+      "status": "published",
+      "seo": {
+        "title": "News — IN",
+        "description": "Gatherings, festivals, labs and milestones from the MEWE network, newest first."
+      }
+    },
+    "ko": {
+      "slug": "news",
+      "status": "published",
+      "seo": {
+        "title": "소식 — IN",
+        "description": "MEWE 네트워크의 모임, 축제, 랩, 이정표를 최신순으로."
+      }
+    },
+    "zh-TW": {
+      "slug": "news",
+      "status": "draft",
+      "seo": {}
+    }
+  },
+  "nodes": [
+    {
+      "key": "hero",
+      "type": "section",
+      "props": {
+        "background": "tan",
+        "color": "paper",
+        "paddingTop": "52px",
+        "paddingBottom": "60px"
+      },
+      "children": [
+        {
+          "key": "hero.eyebrow",
+          "type": "text",
+          "props": { "size": "eyebrow" },
+          "localized": {
+            "text": { "en": "News", "ko": "소식" }
+          }
+        },
+        {
+          "key": "hero.title",
+          "type": "heading",
+          "props": { "level": "1", "size": "display-2" },
+          "localized": {
+            "text": {
+              "en": "What the network is doing right now.",
+              "ko": "네트워크가 지금 하고 있는 일."
+            }
+          }
+        },
+        {
+          "key": "hero.lede",
+          "type": "text",
+          "props": { "size": "body-lg", "maxWidth": "720px" },
+          "localized": {
+            "text": {
+              "en": "Gatherings, festivals, labs, and milestones — newest first. Every update traces back to a community.",
+              "ko": "모임, 축제, 랩, 이정표 — 최신순으로. 모든 소식은 하나의 공동체로 거슬러 올라갑니다."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "insight",
+      "type": "section",
+      "props": { "paddingTop": "64px", "paddingBottom": "0px" },
+      "children": [
+        {
+          "key": "insight.columns",
+          "type": "columns",
+          "props": { "count": 2, "gap": "34px", "alignItems": "center" },
+          "children": [
+            {
+              "key": "insight.image",
+              "type": "image",
+              "props": { "src": "/community-img/news-fuller-quote-card.jpg", "maxWidth": "420px", "fit": "contain" },
+              "localized": {
+                "alt": {
+                  "en": "“The world changes when we change how we see and move within it — alone, we tilt, but together, we turn.” — Buckminster Fuller",
+                  "ko": "“세상은 우리가 그 안에서 보고 움직이는 방식을 바꿀 때 변한다 — 혼자서는 기울지만, 함께라면 돈다.” — 버크민스터 풀러"
+                }
+              }
+            },
+            {
+              "key": "insight.body",
+              "type": "container",
+              "props": { "gap": "18px" },
+              "children": [
+                {
+                  "key": "insight.eyebrow",
+                  "type": "text",
+                  "props": { "size": "eyebrow", "color": "tan" },
+                  "localized": {
+                    "text": { "en": "Insight", "ko": "인사이트" }
+                  }
+                },
+                {
+                  "key": "insight.quote",
+                  "type": "text",
+                  "props": { "size": "quote" },
+                  "localized": {
+                    "text": {
+                      "en": "“The world changes when we change how we see and move within it — alone, we tilt, but together, we turn.”",
+                      "ko": "“세상은 우리가 그 안에서 보고 움직이는 방식을 바꿀 때 변한다 — 혼자서는 기울지만, 함께라면 돈다.”"
+                    }
+                  }
+                },
+                {
+                  "key": "insight.credit",
+                  "type": "text",
+                  "props": { "size": "eyebrow", "color": "ink-40" },
+                  "localized": {
+                    "text": {
+                      "en": "Buckminster Fuller · Card series",
+                      "ko": "버크민스터 풀러 · 카드 시리즈"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "feed",
+      "type": "section",
+      "props": { "paddingTop": "64px", "paddingBottom": "12px" },
+      "children": [
+        {
+          "key": "feed.heading",
+          "type": "heading",
+          "props": { "level": "2", "size": "display-3" },
+          "localized": {
+            "text": { "en": "MEWE Network News.", "ko": "MEWE 네트워크 소식." }
+          }
+        },
+        { "key": "feed.gap", "type": "spacer", "props": { "height": "28px" } },
+        { "key": "feed.grid", "type": "newsGrid", "props": { "feed": "news" } }
+      ]
+    },
+    {
+      "key": "cta",
+      "type": "section",
+      "props": {
+        "background": "tan",
+        "color": "paper",
+        "paddingTop": "70px",
+        "paddingBottom": "70px",
+        "align": "center"
+      },
+      "children": [
+        {
+          "key": "cta.eyebrow",
+          "type": "text",
+          "props": { "size": "eyebrow", "align": "center", "maxWidth": "none" },
+          "localized": {
+            "text": { "en": "Join", "ko": "함께하기" }
+          }
+        },
+        {
+          "key": "cta.heading",
+          "type": "heading",
+          "props": { "level": "2", "size": "display-3", "align": "center" },
+          "localized": {
+            "text": {
+              "en": "Something happening near you?",
+              "ko": "당신 곁에서 무언가 일어나고 있나요?"
+            }
+          }
+        },
+        { "key": "cta.gap", "type": "spacer", "props": { "height": "28px" } },
+        {
+          "key": "cta.actions",
+          "type": "container",
+          "props": { "direction": "row", "justify": "center", "gap": "12px" },
+          "children": [
+            {
+              "key": "cta.primary",
+              "type": "button",
+              "props": { "url": "/connect", "variant": "solid", "color": "paper" },
+              "localized": {
+                "label": { "en": "Tell us about it", "ko": "우리에게 알려주세요" }
+              }
+            },
+            {
+              "key": "cta.secondary",
+              "type": "button",
+              "props": { "url": "/community", "variant": "outline", "color": "paper" },
+              "localized": {
+                "label": { "en": "All communities", "ko": "모든 커뮤니티" }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

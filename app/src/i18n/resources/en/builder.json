@@ -1,0 +1,111 @@
+{
+  "elements": {
+    "section": "Section",
+    "container": "Container",
+    "columns": "Columns",
+    "heading": "Heading",
+    "text": "Text",
+    "image": "Image",
+    "button": "Button",
+    "spacer": "Spacer",
+    "newsGrid": "News grid",
+    "workshopWall": "Workshop wall",
+    "projectWall": "Project wall",
+    "communityGrid": "Community grid",
+    "unknown": "Unknown element"
+  },
+  "fields": {
+    "text": "Text",
+    "level": "Level",
+    "align": "Alignment",
+    "color": "Colour",
+    "background": "Background",
+    "padding": "Padding",
+    "gap": "Gap",
+    "maxWidth": "Maximum width",
+    "count": "Columns",
+    "src": "Image",
+    "alt": "Alternative text",
+    "aspect": "Aspect ratio",
+    "label": "Label",
+    "url": "Link destination",
+    "variant": "Style",
+    "size": "Size",
+    "height": "Height",
+    "feed": "Feed",
+    "limit": "Limit"
+  },
+  "scope": {
+    "localized": "Per language",
+    "shared": "Shared across languages",
+    "optional": "Per language, optional",
+    "sharedHint": "Changing this affects every language without its own layout.",
+    "localizedHint": "This value belongs to {{name}} only."
+  },
+  "toolbar": {
+    "language": "Language",
+    "translation": "Translation",
+    "layout": "Layout",
+    "status": "Status",
+    "missing_one": "{{count}} field not translated",
+    "missing_other": "{{count}} fields not translated",
+    "fallbackFrom": "Falling back to {{name}}",
+    "noFallback": "No fallback needed"
+  },
+  "translation": {
+    "complete": "Complete",
+    "incomplete": "Incomplete",
+    "untranslated": "Not started"
+  },
+  "layout": {
+    "shared": "Shared",
+    "custom": "Custom for this language",
+    "sharedNote": "This language uses the shared layout. Editing the layout changes every language that does not have its own.",
+    "customNote": "This language has its own layout. Shared-layout changes no longer reach it."
+  },
+  "status": {
+    "draft": "Draft",
+    "published": "Published"
+  },
+  "actions": {
+    "editTranslation": "Edit translation",
+    "customizeLayout": "Customize layout for this language",
+    "returnToShared": "Return to shared layout",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "publish": "Publish",
+    "unpublish": "Move to draft"
+  },
+  "confirm": {
+    "returnToSharedTitle": "Remove this language's own layout?",
+    "returnToSharedBody": "{{name}} will go back to the shared layout. Its text, SEO and slug are kept — only the layout is removed. This cannot be undone.",
+    "customizeTitle": "Give {{name}} its own layout?",
+    "customizeBody": "The shared layout is copied as a starting point. From then on, shared-layout changes no longer reach {{name}}."
+  },
+  "fallback": {
+    "badge": "From {{name}}",
+    "title": "Not translated yet — showing the {{name}} text",
+    "empty": "No value in any language"
+  },
+  "seo": {
+    "heading": "Search and sharing",
+    "title": "Page title",
+    "description": "Description",
+    "openGraphImage": "Sharing image",
+    "slug": "URL slug"
+  },
+  "validation": {
+    "unknownElement": "\"{{type}}\" is not a registered element and was not rendered.",
+    "invalidDocument": "This page document could not be read: {{reason}}",
+    "duplicateId": "Two elements share the id \"{{id}}\".",
+    "missingId": "An element has no id.",
+    "unsupportedLocale": "\"{{locale}}\" is not a supported language.",
+    "duplicateSlug": "\"{{slug}}\" is already used by another page in {{name}}.",
+    "emptySlug": "A slug is required.",
+    "notPermitted": "You do not have permission to publish this page."
+  },
+  "empty": {
+    "document": "This page has no elements yet.",
+    "locale": "This page has not been started in {{name}}."
+  }
+}

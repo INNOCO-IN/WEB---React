@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWorkshops } from '../../lib/hooks/useContent';
-import { accentColor, type WorkshopCard as Workshop } from '../../lib/content/types';
-import type { Lang } from '../nav-data';
+import { accentColor, inLang, type WorkshopCard as Workshop } from '../../lib/content/types';
+import { useTranslation } from 'react-i18next';
+import { localize, useLocaleOr, type Locale } from '../../lib/lang';
 import './cards.css';
 
 /**
@@ -17,12 +18,13 @@ import './cards.css';
  */
 
 interface Props {
-  lang?: Lang;
+  locale?: Locale;
 }
 
-const ALL: Record<string, string> = { EN: 'All workshops', KO: '전체 워크숍' };
 
-export default function WorkshopWall({ lang = 'EN' }: Props) {
+export default function WorkshopWall({ locale: given }: Props) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
   const { data: workshops } = useWorkshops();
   const [filter, setFilter] = useState<string | null>(null);
 
@@ -30,16 +32,23 @@ export default function WorkshopWall({ lang = 'EN' }: Props) {
 
   // Audiences in the order the cards appear, deduped — a fixed list would go
   // stale the moment someone adds a workshop for a new audience.
+  //
+  // Key and label are separate: the filter matches on the English `audience`,
+  // which is what every row carries, while the chip is labelled in the
+  // language being read. Filtering on the label would break the moment one
+  // row was translated and the next was not.
   const audiences = useMemo(() => {
-    const seen: string[] = [];
+    const seen = new Map<string, string>();
     for (const card of cards) {
-      if (card.audience && !seen.includes(card.audience)) seen.push(card.audience);
+      if (card.audience && !seen.has(card.audience)) {
+        seen.set(card.audience, inLang(card.audience, { ko: card.audience_ko, 'zh-TW': card.audience_zh_tw }, locale) ?? card.audience);
+      }
     }
-    return seen;
-  }, [cards]);
+    return [...seen].map(([key, label]) => ({ key, label }));
+  }, [cards, locale]);
 
   const visible = filter ? cards.filter((card) => card.audience === filter) : cards;
-  const allLabel = ALL[lang] ?? ALL.EN;
+  const allLabel = t('cards.allWorkshops');
 
   return (
     <>
@@ -54,27 +63,33 @@ export default function WorkshopWall({ lang = 'EN' }: Props) {
         </button>
         {audiences.map((audience) => (
           <button
-            key={audience}
+            key={audience.key}
             type="button"
             className="in-ws-filter"
-            aria-pressed={filter === audience}
-            onClick={() => setFilter(audience)}
+            aria-pressed={filter === audience.key}
+            onClick={() => setFilter(audience.key)}
           >
-            {audience}
+            {audience.label}
           </button>
         ))}
       </div>
 
       <div className="in-wall">
         {visible.map((workshop) => (
-          <WorkshopCard key={workshop.slug} workshop={workshop} />
+          <WorkshopCard key={workshop.slug} workshop={workshop} locale={locale} />
         ))}
       </div>
     </>
   );
 }
 
-export function WorkshopCard({ workshop }: { workshop: Workshop }) {
+export function WorkshopCard({ workshop, locale: given }: { workshop: Workshop; locale?: Locale }) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
+  const title = inLang(workshop.title, { ko: workshop.title_ko, 'zh-TW': workshop.title_zh_tw }, locale) ?? workshop.title;
+  const eyebrow = inLang(workshop.eyebrow, { ko: workshop.eyebrow_ko, 'zh-TW': workshop.eyebrow_zh_tw }, locale);
+  const blurb = inLang(workshop.blurb, { ko: workshop.blurb_ko, 'zh-TW': workshop.blurb_zh_tw }, locale);
+  const cta = inLang(workshop.cta, { ko: workshop.cta_ko, 'zh-TW': workshop.cta_zh_tw }, locale) ?? t('cards.explore');
   const background = accentColor(workshop.accent, 'var(--color-teal)');
   const onPaper = workshop.ink === 'paper';
   const ink = onPaper ? 'var(--color-paper)' : 'var(--color-ink)';
@@ -82,31 +97,31 @@ export function WorkshopCard({ workshop }: { workshop: Workshop }) {
 
   return (
     <Link
-      to={workshop.route ?? `/workshop/${workshop.slug}`}
+      to={localize(workshop.route ?? `/workshop/${workshop.slug}`, locale)}
       className="in-ws-card in-card in-plain"
     >
       <div className="in-ws-card__panel" style={{ background, color: ink }}>
         <div className="in-ws-card__rail">
           <span className="in-dot" style={{ background: ink }} />
-          {workshop.eyebrow ? (
+          {eyebrow ? (
             <span className="in-rail-label" style={{ color: muted }}>
-              {workshop.eyebrow}
+              {eyebrow}
             </span>
           ) : null}
         </div>
 
         <div>
-          <h3 className="in-ws-card__title">{workshop.title}</h3>
-          {workshop.blurb ? (
+          <h3 className="in-ws-card__title">{title}</h3>
+          {blurb ? (
             <p className="in-ws-card__blurb" style={{ color: muted }}>
-              {workshop.blurb}
+              {blurb}
             </p>
           ) : null}
         </div>
 
         <div className="in-ws-card__foot">
           <span className="in-ws-card__cta" style={{ color: muted }}>
-            {workshop.cta ?? 'Explore'}
+            {cta}
           </span>
           <span className="in-arrow" aria-hidden="true">
             →

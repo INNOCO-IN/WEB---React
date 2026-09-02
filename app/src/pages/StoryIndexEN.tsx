@@ -11,7 +11,7 @@ export default function StoryIndexEN() {
   const { byFormatStyle, byTopicStyle, current, filterHeading, filters, groups, hasMore, indexHeading, isEmpty, loadMore, loadMoreLabel, onSearch, query, setByFormat, setByTopic, toTop, totalLine } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Story-Index.EN.dc.html" className="page-story-index-en" footer={{ loop: "0.421", cta: "#FAB414" }}>
+    <SiteLayout page="Story-Index.EN.dc.html" className="page-story-index-en" footer={{ loop: "0.421", cta: "#FAB414" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <section style={{ background: "#FAB414", color: "#1A1A1A" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 48px" }}>

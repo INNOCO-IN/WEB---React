@@ -7,7 +7,7 @@ import './MEWEKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function MEWEKO() {
   return (
-    <SiteLayout lang="KO" page="MEWE.KO.dc.html" className="page-meweko" footer={{ loop: "0.126", cta: "#1E648C" }}>
+    <SiteLayout page="MEWE.KO.dc.html" className="page-meweko" footer={{ loop: "0.126", cta: "#1E648C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (locked) */}
         <section data-screen-label="Hero" style={{ background: "#1E648C", color: "#FAF4E2" }}>

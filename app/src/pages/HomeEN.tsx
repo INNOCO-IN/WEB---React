@@ -7,7 +7,7 @@ import './HomeEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function HomeEN() {
   return (
-    <SiteLayout lang="EN" page="Home.EN.dc.html" className="page-home-en" footer={{ loop: "0.14" }}>
+    <SiteLayout page="Home.EN.dc.html" className="page-home-en" footer={{ loop: "0.14" }}>
       <main id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
         <section style={{ padding: "84px 0 72px 120px" }}>
           <div style={{ maxWidth: "1000px", position: "relative", minHeight: "426px" }}>

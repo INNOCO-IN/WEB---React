@@ -12,7 +12,7 @@ export default function ProjectShadowShifterEN() {
   const { gallery, lbCap, lbCount, lbImgStyle, nextLb, prevLb, ready } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Project-Shadow-Shifter.EN.dc.html" className="page-project-shadow-shifter-en" footer={{ loop: "0.531", cta: "#1E5A64" }}>
+    <SiteLayout page="Project-Shadow-Shifter.EN.dc.html" className="page-project-shadow-shifter-en" footer={{ loop: "0.531", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
         <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>

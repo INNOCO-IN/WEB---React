@@ -6,7 +6,7 @@ import './AreYouINEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function AreYouINEN() {
   return (
-    <SiteLayout lang="EN" page="Are-you-IN.EN.dc.html" className="page-are-you-inen" footer={{ loop: "0.920", cta: "#1E8A86" }}>
+    <SiteLayout page="Are-you-IN.EN.dc.html" className="page-are-you-inen" footer={{ loop: "0.920", cta: "#1E8A86" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
         <section style={{ background: "#1E8A86", color: "#FAF4E2" }}>

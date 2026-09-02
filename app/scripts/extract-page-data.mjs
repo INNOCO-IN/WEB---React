@@ -143,6 +143,18 @@ export interface Collective {
   oneLiner: string;
   fullBio: string;
   role: string | null;
+  /**
+   * Korean copy, absent until someone writes it — see \`inLang\`. The bundled
+   * roster never carries it: it is extracted from the English page.
+   */
+  nameKo?: string | null;
+  oneLinerKo?: string | null;
+  fullBioKo?: string | null;
+  roleKo?: string | null;
+  nameZhTw?: string | null;
+  oneLinerZhTw?: string | null;
+  fullBioZhTw?: string | null;
+  roleZhTw?: string | null;
 }
 
 /**

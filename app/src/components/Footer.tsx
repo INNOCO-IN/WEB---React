@@ -1,6 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
-import { FOOTER_LINKS, SOCIAL, type Lang } from './nav-data';
-import { LANG_ALTERNATES } from '../lib/route-map';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { FOOTER_COLUMNS, SOCIAL } from './nav-data';
+import LanguageSwitcher from './LanguageSwitcher';
+import { localize, useLocale } from '../lib/lang';
 import './Footer.css';
 
 /**
@@ -14,7 +16,6 @@ import './Footer.css';
  */
 
 export interface FooterProps {
-  lang?: Lang;
   /** Where the loop sits, 0 (left) to 1 (right). */
   loop?: string | number;
   /** Band colour behind the ribbon — the page's key accent. */
@@ -47,8 +48,9 @@ function ribbonPath(x: number): string {
   );
 }
 
-export default function Footer({ lang = 'EN', loop, cta, stroke }: FooterProps) {
-  const { pathname } = useLocation();
+export default function Footer({ loop, cta, stroke }: FooterProps) {
+  const locale = useLocale();
+  const { t } = useTranslation();
 
   const parsed = typeof loop === 'number' ? loop : parseFloat(loop ?? '');
   const position = Math.max(0, Math.min(1, Number.isNaN(parsed) ? 0.15 : parsed));
@@ -58,8 +60,6 @@ export default function Footer({ lang = 'EN', loop, cta, stroke }: FooterProps) 
   const bandFill = hasBand ? (cta as string) : PAPER;
   const strokeColor = stroke ?? (hasBand && isDark(bandFill) ? PAPER : INK);
 
-  const columns = FOOTER_LINKS[lang];
-  const alt = LANG_ALTERNATES[pathname] ?? (lang === 'KO' ? '/' : '/ko');
 
   return (
     <footer className="in-footer">
@@ -82,11 +82,15 @@ export default function Footer({ lang = 'EN', loop, cta, stroke }: FooterProps) 
 
       <div className="in-footer__inner">
         <div className="in-footer__grid">
-          {columns.map((column, i) => (
+          {FOOTER_COLUMNS.map((column, i) => (
             <div className="in-footer__col" key={i}>
               {column.map((link) => (
-                <Link key={link.to} to={link.to} className="in-footer__link">
-                  {link.label}
+                <Link
+                  key={link.key}
+                  to={localize(link.to, locale)}
+                  className="in-footer__link"
+                >
+                  {t(`nav.items.${link.key}`)}
                 </Link>
               ))}
             </div>
@@ -97,12 +101,12 @@ export default function Footer({ lang = 'EN', loop, cta, stroke }: FooterProps) 
           <div className="in-footer__social">
             {SOCIAL.map((s) => (
               <a
-                key={s.label}
+                key={s.key}
                 href={s.href}
-                aria-label={s.label}
+                aria-label={t(`footer.social.${s.key}`)}
                 {...(s.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
               >
-                <SocialIcon name={s.label} />
+                <SocialIcon name={s.icon} />
               </a>
             ))}
           </div>
@@ -111,14 +115,8 @@ export default function Footer({ lang = 'EN', loop, cta, stroke }: FooterProps) 
         <div className="in-footer__rule" />
 
         <div className="in-footer__base">
-          <div className="in-footer__legal">
-            © 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0
-          </div>
-          <div className="in-footer__lang">
-            <span className="is-current">{lang === 'KO' ? 'KR' : 'EN'}</span>
-            <span className="in-footer__lang-sep">/</span>
-            <Link to={alt}>{lang === 'KO' ? 'EN' : 'KR'}</Link>
-          </div>
+          <div className="in-footer__legal">{t('footer.legal')}</div>
+          <LanguageSwitcher idPrefix="footer" className="in-footer__lang" />
         </div>
       </div>
     </footer>

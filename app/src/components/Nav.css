@@ -136,6 +136,15 @@
   color: rgba(46, 59, 64, 0.5);
 }
 
+/* No page in the other language — the switch lands on the section above it,
+   and says so rather than looking like an ordinary jump. */
+.in-nav__lang a.is-approximate {
+  color: rgba(46, 59, 64, 0.32);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
 .in-nav__cta {
   flex: 0 0 auto;
   font-family: var(--font-sans);

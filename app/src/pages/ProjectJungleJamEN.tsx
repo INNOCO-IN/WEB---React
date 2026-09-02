@@ -12,7 +12,7 @@ export default function ProjectJungleJamEN() {
   const { gallery, lbCap, lbCount, lbImgStyle, nextLb, prevLb, ready } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Project-Jungle-Jam.EN.dc.html" className="page-project-jungle-jam-en" footer={{ loop: "0.542", cta: "#1E5A64" }}>
+    <SiteLayout page="Project-Jungle-Jam.EN.dc.html" className="page-project-jungle-jam-en" footer={{ loop: "0.542", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
         <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>

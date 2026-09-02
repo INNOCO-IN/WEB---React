@@ -7,7 +7,7 @@ import './WorkshopBucketListEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopBucketListEN() {
   return (
-    <SiteLayout lang="EN" page="Workshop-Bucket-List.EN.dc.html" className="page-workshop-bucket-list-en" footer={{ loop: "0.63", cta: "#E5188C" }}>
+    <SiteLayout page="Workshop-Bucket-List.EN.dc.html" className="page-workshop-bucket-list-en" footer={{ loop: "0.63", cta: "#E5188C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         <section style={{ background: "#E5188C", color: "#FAF4E2" }}>

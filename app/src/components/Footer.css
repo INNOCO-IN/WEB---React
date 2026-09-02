@@ -99,6 +99,15 @@
   color: rgba(46, 59, 64, 0.5);
 }
 
+/* No page in the other language — the switch lands on the section above it,
+   and says so rather than looking like an ordinary jump. */
+.in-footer__lang a.is-approximate {
+  color: rgba(46, 59, 64, 0.32);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 900px) {
   .in-footer__grid {
     grid-template-columns: 1fr 1fr;

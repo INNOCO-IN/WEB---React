@@ -6,7 +6,7 @@ import './ProtagonistEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function ProtagonistEN() {
   return (
-    <SiteLayout lang="EN" page="Protagonist.EN.dc.html" className="page-protagonist-en" footer={{ loop: "0.466", cta: "#F05A28" }}>
+    <SiteLayout page="Protagonist.EN.dc.html" className="page-protagonist-en" footer={{ loop: "0.466", cta: "#F05A28" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
         <section style={{ background: "#F05A28", color: "#FAF4E2" }}>

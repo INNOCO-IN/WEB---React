@@ -165,6 +165,14 @@ export const ALIASES = {
 };
 
 /** The counterpart page in the other language, for the EN/KR switch. */
+/**
+ * The same legacy page in the other language, by filename.
+ *
+ * No longer used to emit a route table — the app derives the pair from the
+ * path at runtime, which also covers the `:slug` routes a filename table
+ * cannot. Kept because the filenames are still how `site/` says the two pages
+ * are the same page.
+ */
 export function altLangRoute(file) {
   const parsed = parseFile(file);
   if (!parsed) return null;

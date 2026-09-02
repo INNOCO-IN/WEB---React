@@ -1,3 +1,5 @@
+import type { Locale } from '../../i18n/locales';
+
 /**
  * The shapes the site's editorial content takes.
  *
@@ -43,6 +45,15 @@ export interface NewsItem {
   eyebrow: string | null;
   title: string;
   body: string | null;
+  /** Per-language copy, null until someone writes it. See `inLang`. */
+  kind_ko?: string | null;
+  eyebrow_ko?: string | null;
+  title_ko?: string | null;
+  body_ko?: string | null;
+  kind_zh_tw?: string | null;
+  eyebrow_zh_tw?: string | null;
+  title_zh_tw?: string | null;
+  body_zh_tw?: string | null;
   image: string | null;
   accent: string | null;
   /** Internal route or external URL. Null renders the card unlinked. */
@@ -57,9 +68,26 @@ export interface WorkshopCard {
   title: string;
   eyebrow: string | null;
   blurb: string | null;
-  /** Drives the filter chips: For All, Parents, Organizations, Youth, Women. */
+  /**
+   * Drives the filter chips: For All, Parents, Organizations, Youth, Women.
+   * Stays English even on the Korean page — it is the grouping key, and
+   * `audience_ko` is only what the chip is labelled.
+   */
   audience: string | null;
   duration: string | null;
+  /** Per-language copy, null until someone writes it. See `inLang`. */
+  title_ko?: string | null;
+  eyebrow_ko?: string | null;
+  blurb_ko?: string | null;
+  audience_ko?: string | null;
+  duration_ko?: string | null;
+  cta_ko?: string | null;
+  title_zh_tw?: string | null;
+  eyebrow_zh_tw?: string | null;
+  blurb_zh_tw?: string | null;
+  audience_zh_tw?: string | null;
+  duration_zh_tw?: string | null;
+  cta_zh_tw?: string | null;
   accent: string | null;
   /** Whether the card's text sits as paper-on-colour or ink-on-colour. */
   ink: 'ink' | 'paper' | string;
@@ -74,6 +102,9 @@ export interface ProjectCard {
   slug: string;
   title: string;
   title_ko: string | null;
+  title_zh_tw?: string | null;
+  eyebrow_zh_tw?: string | null;
+  body_zh_tw?: string | null;
   /** The short line the index rail shows under the title. */
   meta: string | null;
   eyebrow: string | null;
@@ -94,6 +125,10 @@ export interface CommunityCard {
   slug: string;
   title: string;
   title_ko: string | null;
+  title_zh_tw?: string | null;
+  meta_zh_tw?: string | null;
+  eyebrow_zh_tw?: string | null;
+  body_zh_tw?: string | null;
   /** Where the circle stands: 'Online · Resuming soon', 'On hold · Archive'. */
   meta: string | null;
   meta_ko: string | null;
@@ -120,6 +155,26 @@ export interface PublishedStory {
   attachment_url: string | null;
 }
 
+/**
+ * One field in the language being read, falling back to English.
+ *
+ * Field by field, not row by row: a row given a Korean title but no Korean
+ * blurb should show the Korean title and the English blurb, not revert the
+ * whole thing to English. A null Korean field means nobody has translated it
+ * yet, and English is a better answer than a hole.
+ *
+ * This is the whole of the site's content fallback, and it is deliberately the
+ * only rule — a page, a card and a rail reading the same row must not disagree
+ * about when a translation counts as present.
+ */
+export function inLang(
+  base: string | null | undefined,
+  translations: Partial<Record<Locale, string | null | undefined>>,
+  locale: Locale,
+): string | null {
+  return (translations[locale] || base) ?? null;
+}
+
 /** Token name → CSS custom property, with a hex passed straight through. */
 export function accentColor(accent: string | null | undefined, fallback = 'var(--color-teal)'): string {
   if (!accent) return fallback;
@@ -127,16 +182,27 @@ export function accentColor(accent: string | null | undefined, fallback = 'var(-
   return `var(--color-${accent})`;
 }
 
-/** The fields a row can carry twice — the same card, told in two languages. */
-export interface Bilingual {
+/**
+ * The fields a row can carry once per language — the same card, told three ways.
+ *
+ * A column per language, which is the convention the projects and communities
+ * tables already set. It does not scale past a handful of languages; the page
+ * builder's per-locale content records are the shape to move these to when the
+ * fourth language arrives.
+ */
+export interface Multilingual {
   title: string;
   title_ko?: string | null;
+  title_zh_tw?: string | null;
   meta?: string | null;
   meta_ko?: string | null;
+  meta_zh_tw?: string | null;
   eyebrow?: string | null;
   eyebrow_ko?: string | null;
+  eyebrow_zh_tw?: string | null;
   body?: string | null;
   body_ko?: string | null;
+  body_zh_tw?: string | null;
 }
 
 /** What a card shows, in one language. */
@@ -148,24 +214,19 @@ export interface Copy {
 }
 
 /**
- * One row's copy in the language being read.
+ * A card's four fields, in the language being read.
  *
- * Korean falls back to English field by field rather than row by row: a row
- * that has been given a Korean title but no Korean blurb should show the
- * Korean title and the English blurb, not revert the whole card to English. A
- * null Korean field means nobody has translated it yet, and English is a
- * better answer than a hole.
- *
- * This is what makes a card wall safe to translate incrementally in the Table
- * Editor — the alternative was the copy living in two page components, which
- * is how /ko/project came to hold Korean text no database row knew about.
+ * `inLang` four times over — what makes a card wall safe to translate
+ * incrementally in the Table Editor. The alternative was the copy living in
+ * two page components, which is how /ko/project came to hold Korean text no
+ * database row knew about.
  */
-export function copyIn(row: Bilingual, lang: 'EN' | 'KO'): Copy {
-  const ko = lang === 'KO';
+export function copyIn(row: Multilingual, locale: Locale): Copy {
+  const at = (ko?: string | null, zh?: string | null) => ({ ko, 'zh-TW': zh });
   return {
-    title: (ko ? row.title_ko : null) || row.title,
-    meta: (ko ? row.meta_ko : null) || row.meta || null,
-    eyebrow: (ko ? row.eyebrow_ko : null) || row.eyebrow || null,
-    body: (ko ? row.body_ko : null) || row.body || null,
+    title: inLang(row.title, at(row.title_ko, row.title_zh_tw), locale) ?? row.title,
+    meta: inLang(row.meta, at(row.meta_ko, row.meta_zh_tw), locale),
+    eyebrow: inLang(row.eyebrow, at(row.eyebrow_ko, row.eyebrow_zh_tw), locale),
+    body: inLang(row.body, at(row.body_ko, row.body_zh_tw), locale),
   };
 }

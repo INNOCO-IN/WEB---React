@@ -1,20 +1,24 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import SiteLayout from '../components/SiteLayout';
+import { localize, useLocale } from '../lib/lang';
 
 /**
  * Kept in the site's own voice rather than a bare 404, and inside the normal
  * chrome, so a mistyped URL still gives you the nav to get somewhere real.
+ *
+ * It used to declare itself English, which meant a mistyped `/ko/` URL — or a
+ * locale with no page at that address — answered in English, inside an English
+ * nav, with a language switch that then sent you to the Korean home page. The
+ * route still says which language you were reading, so the page says it too.
  */
 export default function NotFound() {
+  const locale = useLocale();
+  const { t } = useTranslation();
+
   return (
-    <SiteLayout lang="EN" title="Not found — IN" footer={{ loop: '0.5' }}>
-      <main
-        style={{
-          maxWidth: '760px',
-          margin: '0 auto',
-          padding: '120px 40px 140px',
-        }}
-      >
+    <SiteLayout title={t('notFound.title')} footer={{ loop: '0.5' }}>
+      <main style={{ maxWidth: '760px', margin: '0 auto', padding: '120px 40px 140px' }}>
         <div
           style={{
             font: 'var(--text-eyebrow)',
@@ -25,7 +29,7 @@ export default function NotFound() {
             marginBottom: '18px',
           }}
         >
-          Not found
+          {t('notFound.eyebrow')}
         </div>
 
         <h1
@@ -35,7 +39,7 @@ export default function NotFound() {
             margin: '0 0 20px',
           }}
         >
-          This page isn't part of the pattern.
+          {t('notFound.heading')}
         </h1>
 
         <p
@@ -47,13 +51,12 @@ export default function NotFound() {
             maxWidth: '52ch',
           }}
         >
-          The address you followed doesn't lead anywhere on the site. It may have
-          moved, or it may never have existed.
+          {t('notFound.body')}
         </p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
           <Link
-            to="/"
+            to={localize('/', locale)}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -66,10 +69,10 @@ export default function NotFound() {
               padding: '15px 32px',
             }}
           >
-            Back to the studio
+            {t('notFound.home')}
           </Link>
           <Link
-            to="/workshop"
+            to={localize('/workshop', locale)}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -81,7 +84,7 @@ export default function NotFound() {
               padding: '15px 32px',
             }}
           >
-            See the workshops
+            {t('notFound.workshops')}
           </Link>
         </div>
       </main>

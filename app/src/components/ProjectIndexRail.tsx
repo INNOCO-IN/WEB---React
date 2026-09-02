@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useProjects } from '../lib/hooks/useContent';
+import { copyIn } from '../lib/content/types';
+import { useTranslation } from 'react-i18next';
+import { localize, useLocale } from '../lib/lang';
 import './ProjectIndexRail.css';
 
 /**
@@ -9,7 +12,12 @@ import './ProjectIndexRail.css';
  * the four finished project pages missing from that list were unreachable by
  * clicking. Reading the list from the projects table fixes that class of bug
  * for good: a project is in the rail because it is in the table.
+ *
+ * No Korean project brief exists, so the rail is only ever drawn on an English
+ * page today. It still reads its language off the route rather than assuming:
+ * the day one is translated, the rail follows without being told.
  */
+
 
 interface Props {
   /** Slug of the project being read, highlighted in the list. */
@@ -18,22 +26,25 @@ interface Props {
 
 export default function ProjectIndexRail({ current }: Props) {
   const { data: projects } = useProjects();
+  const locale = useLocale();
+  const { t } = useTranslation();
 
   return (
-    <nav className="in-rail" aria-label="All projects">
-      <div className="in-rail__heading">All projects</div>
+    <nav className="in-rail" aria-label={t('cards.allProjects')}>
+      <div className="in-rail__heading">{t('cards.allProjects')}</div>
       <div className="in-rail__list">
         {projects.map((project) => {
           const active = project.slug === current;
+          const copy = copyIn(project, locale);
           return (
             <Link
               key={project.slug}
-              to={project.route ?? `/project/${project.slug}`}
+              to={localize(project.route ?? `/project/${project.slug}`, locale)}
               className={`in-rail__item${active ? ' is-current' : ''}`}
               aria-current={active ? 'page' : undefined}
             >
-              <span className="in-rail__meta">{project.meta}</span>
-              <span className="in-rail__title">{project.title}</span>
+              <span className="in-rail__meta">{copy.meta}</span>
+              <span className="in-rail__title">{copy.title}</span>
             </Link>
           );
         })}

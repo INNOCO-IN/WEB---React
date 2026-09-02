@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SiteLayout from '../../components/SiteLayout';
 import ImageSlot from '../../components/ImageSlot';
 import NotFound from '../NotFound';
 import { WORKSHOP_DETAILS, type Run } from '../../lib/content/workshop-details';
 import { accentColor } from '../../lib/content/types';
+import { useLocale } from '../../lib/lang';
 import './WorkshopDetail.css';
 
 /**
@@ -53,10 +54,9 @@ function Runs({ runs, accent }: { runs: Run[]; accent: string }) {
 
 export default function WorkshopDetail() {
   const { slug = '' } = useParams();
-  const { pathname } = useLocation();
-  const lang = pathname.startsWith('/ko') ? 'KO' : 'EN';
+  const locale = useLocale();
 
-  const w = WORKSHOP_DETAILS[`${slug}:${lang}`];
+  const w = WORKSHOP_DETAILS[`${slug}:${locale === 'ko' ? 'KO' : 'EN'}`];
   if (!w) return <NotFound />;
 
   const accent = accentColor(w.accent, 'var(--color-magenta-hot)');
@@ -64,13 +64,12 @@ export default function WorkshopDetail() {
 
   return (
     <SiteLayout
-      lang={lang}
       page={`Workshop-${slug}`}
       title={`${w.title} — IN`}
       className="page-workshop-detail"
       footer={{ loop: w.loop ?? undefined, cta: w.ctaAccent ? accentColor(w.ctaAccent) : undefined }}
     >
-      <div className="ws" data-lang={lang}>
+      <div className="ws" data-lang={locale}>
         <span id="top" />
 
         {/* ---------------------------------------------------------- hero */}

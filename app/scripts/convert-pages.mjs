@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 import { parse, toJsx } from './lib/html-to-jsx.mjs';
 import {
   NON_ROUTES, ALIASES, TAKEN_OVER, TEMPLATES, routesForTemplate,
-  parseFile, componentName, routeFor, altLangRoute,
+  parseFile, componentName, routeFor,
 } from './lib/routes.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -221,7 +221,7 @@ function bindingIdentifiers(tree) {
  */
 const DATA_SWAPS = {
   'News.EN.dc.html':      [{ cards: 'article', component: '<NewsGrid feed="news" />', imports: ['NewsGrid'] }],
-  'News.KO.dc.html':      [{ cards: 'article', component: '<NewsGrid feed="news" lang="KO" />', imports: ['NewsGrid'] }],
+  'News.KO.dc.html':      [{ cards: 'article', component: '<NewsGrid feed="news" />', imports: ['NewsGrid'] }],
   'Workshop.EN.dc.html': [
     { cards: 'sc-if', component: '<WorkshopWall />', imports: ['WorkshopWall'] },
     // The page's own filter chips. WorkshopWall derives the same chips from the
@@ -229,7 +229,7 @@ const DATA_SWAPS = {
     { cards: 'button', component: null, imports: [] },
   ],
   'Workshop.KO.dc.html': [
-    { cards: ['sc-if', 'a'], component: '<WorkshopWall lang="KO" />', imports: ['WorkshopWall'] },
+    { cards: ['sc-if', 'a'], component: '<WorkshopWall />', imports: ['WorkshopWall'] },
     { cards: 'button', component: null, imports: [] },
   ],
   'Community.EN.dc.html': [
@@ -237,13 +237,13 @@ const DATA_SWAPS = {
     { cards: 'article', nth: 1, component: '<NewsGrid feed="community" />', imports: ['NewsGrid'] },
   ],
   'Community.KO.dc.html': [
-    { cards: 'article', nth: 0, component: '<CommunityGrid lang="KO" />', imports: ['CommunityGrid'] },
-    { cards: 'article', nth: 1, component: '<NewsGrid feed="community" lang="KO" />', imports: ['NewsGrid'] },
+    { cards: 'article', nth: 0, component: '<CommunityGrid />', imports: ['CommunityGrid'] },
+    { cards: 'article', nth: 1, component: '<NewsGrid feed="community" />', imports: ['NewsGrid'] },
   ],
   // The wall of project briefs. The block above it stays in the page: it is
   // the one project the index features, and it is laid out rather than listed.
   'Project.EN.dc.html':   [{ cards: 'article', component: '<ProjectWall />', imports: ['ProjectWall'] }],
-  'Project.KO.dc.html':   [{ cards: 'article', component: '<ProjectWall lang="KO" />', imports: ['ProjectWall'] }],
+  'Project.KO.dc.html':   [{ cards: 'article', component: '<ProjectWall />', imports: ['ProjectWall'] }],
   // The directory. Its rows are bare anchors rather than cards, which is the
   // only reason this rule names a tag the other walls do not.
   'Community-Index.EN.dc.html': [
@@ -252,7 +252,7 @@ const DATA_SWAPS = {
   // The home grid's news tile — the one with a dateline, not the insight card
   // beside it. It becomes the newest item on the `home` feed.
   'Home.EN.dc.html': [{ node: isHomeNewsTile, component: '<HomeNewsCard />', imports: ['HomeNewsCard'] }],
-  'Home.KO.dc.html': [{ node: isHomeNewsTile, component: '<HomeNewsCard lang="KO" />', imports: ['HomeNewsCard'] }],
+  'Home.KO.dc.html': [{ node: isHomeNewsTile, component: '<HomeNewsCard />', imports: ['HomeNewsCard'] }],
 };
 
 /**
@@ -370,7 +370,7 @@ for (const file of files) {
   // scripts/extract-detail-pages.mjs.
   const template = TAKEN_OVER.get(file);
   if (template) {
-    generated.push({ file, ...entry, alt: altLangRoute(file), template });
+    generated.push({ file, ...entry, template });
     continue;
   }
 
@@ -404,7 +404,10 @@ for (const file of files) {
   if (bindings.length) needsLogic.push({ name, file, bindings, logic });
 
   const bodyStyle = extractBodyStyle(html);
-  const layoutProps = [`lang="${parsed.lang}"`, `page=${JSON.stringify(file)}`];
+  // No `lang` prop. The route says which language a page is in, and it says
+  // so for the templates and the hand-written pages too — a second answer
+  // written into every generated file could only ever disagree with it.
+  const layoutProps = [`page=${JSON.stringify(file)}`];
   if (bodyStyle.background) layoutProps.push(`background=${JSON.stringify(bodyStyle.background)}`);
   if (bodyStyle.color) layoutProps.push(`color=${JSON.stringify(bodyStyle.color)}`);
   if (css) layoutProps.push(`className=${JSON.stringify(scope)}`);
@@ -456,17 +459,25 @@ ${jsx}
 `;
 
   writeFileSync(join(PAGES, `${name}.tsx`), source);
-  generated.push({ file, ...entry, alt: altLangRoute(file) });
+  generated.push({ file, ...entry });
 }
 
 /* ------------------------------------------------------------- route tables */
 
 // One entry per route a template serves, however many pages it took over.
-const templateRoutes = [...new Set(generated.filter((g) => g.template).map((g) => g.template))]
-  .sort()
-  .flatMap((name) =>
-    routesForTemplate(name).map((route) => `  ${JSON.stringify(route)}: lazy(() => import('./templates/${name}')),`),
-  );
+const templateNames = [...new Set(generated.filter((g) => g.template).map((g) => g.template))].sort();
+const templateRoutes = templateNames.flatMap((name) =>
+  routesForTemplate(name).map((route) => `  ${JSON.stringify(route)}: lazy(() => import('./templates/${name}')),`),
+);
+
+// The same paths as plain strings, emitted into route-map.ts. The shell needs
+// to ask "is this a route?" — that is how the language switch knows whether a
+// page has a twin — and asking the registry drags every page's dynamic import
+// into the shell's chunk.
+const routePaths = [
+  ...generated.filter((g) => !g.template).map((g) => g.route),
+  ...templateNames.flatMap((name) => routesForTemplate(name)),
+];
 
 const registry = `// Generated by scripts/convert-pages.mjs — do not edit by hand.
 import { lazy, type LazyExoticComponent, type ComponentType } from 'react';
@@ -485,7 +496,6 @@ ${generated.filter((g) => !g.template).map((g) => `  ${JSON.stringify(g.route)}:
 ${templateRoutes.join('\n')}
 };
 
-export const ROUTE_PATHS = Object.keys(PAGES);
 `;
 writeFileSync(join(PAGES, 'registry.ts'), registry);
 
@@ -495,6 +505,12 @@ const generatedFiles = new Set(generated.map((g) => g.file));
 const aliasEntries = Object.entries(ALIASES)
   .filter(([f]) => !generatedFiles.has(f))
   .map(([f, r]) => `  ${JSON.stringify(f)}: ${JSON.stringify(r)},`);
+// This used to emit a second table, LANG_ALTERNATES, pairing each route with
+// its twin in the other language. It could only ever hold the pairs the
+// converter knew about — never a `:slug` route, never a page added by hand —
+// so fifteen English routes had no entry and the EN/KR switch dropped all of
+// them on the Korean home page. lib/lang.ts derives the pair from the path
+// instead, checked against the live route table.
 const routeMap = `// Generated by scripts/convert-pages.mjs — do not edit by hand.
 
 /**
@@ -509,13 +525,17 @@ ${generated.map((g) => `  ${JSON.stringify(g.file)}: ${JSON.stringify(g.route)},
 ${aliasEntries.join('\n')}
 };
 
-/** Clean route → the same page in the other language, for the EN/KR switch. */
-export const LANG_ALTERNATES: Record<string, string> = {
-${generated
-  .filter((g) => g.alt && ROUTES.has(g.alt))
-  .map((g) => `  ${JSON.stringify(g.route)}: ${JSON.stringify(ROUTES.get(g.alt).route)},`)
-  .join('\n')}
-};
+/**
+ * Every path the router serves, patterns included.
+ *
+ * The registry's keys, as data — so a module can ask whether a path is a
+ * route without importing the registry and, with it, the dynamic import of
+ * all fifty-four pages. lib/lang.ts asks on every render, and reaching for
+ * the registry to ask pulled 200 kB of Supabase client into the shell chunk.
+ */
+export const ROUTE_PATHS: string[] = [
+${routePaths.map((route) => `  ${JSON.stringify(route)},`).join('\n')}
+];
 `;
 mkdirSync(join(SRC, 'lib'), { recursive: true });
 writeFileSync(join(SRC, 'lib', 'route-map.ts'), routeMap);

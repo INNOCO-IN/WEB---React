@@ -6,7 +6,7 @@ import './ManifestoKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function ManifestoKO() {
   return (
-    <SiteLayout lang="KO" page="Manifesto.KO.dc.html" className="page-manifesto-ko" footer={{ loop: "0.080", cta: "#1E8A86" }}>
+    <SiteLayout page="Manifesto.KO.dc.html" className="page-manifesto-ko" footer={{ loop: "0.080", cta: "#1E8A86" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
         <section style={{ color: "#FAF4E2", backgroundColor: "#1E8A86" }}>

@@ -126,6 +126,10 @@ interface CollectiveRow {
   one_liner: string | null;
   full_bio: string | null;
   role: string | null;
+  name_ko?: string | null;
+  one_liner_ko?: string | null;
+  full_bio_ko?: string | null;
+  role_ko?: string | null;
 }
 
 /**
@@ -139,7 +143,10 @@ export function fetchCollectives(): Promise<Collective[] | null> {
   return query<CollectiveRow>('collectives', () =>
     supabase!
       .from('collectives')
-      .select('num, name, photo, one_liner, full_bio, role')
+      // `*` rather than a column list, so a database that has not run the
+      // Korean-copy migration yet returns the English columns instead of
+      // failing the whole query on four names it has never heard of.
+      .select('*')
       .eq('status', 'live')
       .order('num', { ascending: true }),
   ).then(
@@ -151,6 +158,10 @@ export function fetchCollectives(): Promise<Collective[] | null> {
         oneLiner: row.one_liner ?? '',
         fullBio: row.full_bio ?? '',
         role: row.role,
+        nameKo: row.name_ko ?? null,
+        oneLinerKo: row.one_liner_ko ?? null,
+        fullBioKo: row.full_bio_ko ?? null,
+        roleKo: row.role_ko ?? null,
       })) ?? null,
   );
 }
@@ -214,6 +225,10 @@ interface ConstellationRow {
   read_href: string | null;
   media_href: string | null;
   view_href: string | null;
+  title_ko?: string | null;
+  by_line_ko?: string | null;
+  caption_ko?: string | null;
+  topic_ko?: string | null;
 }
 
 /**
@@ -228,7 +243,9 @@ export function fetchConstellation(): Promise<ConstellationPoint[] | null> {
   return query<ConstellationRow>('constellation_points', () =>
     supabase!
       .from('constellation_points')
-      .select('id, title, by_line, format, topic, arc, month, caption, read_href, media_href, view_href')
+      // `*` for the same reason as the roster: the Korean columns are a later
+      // migration, and a database without them should still draw the sky.
+      .select('*')
       .order('month', { ascending: false }),
   ).then(
     (rows) =>
@@ -244,6 +261,10 @@ export function fetchConstellation(): Promise<ConstellationPoint[] | null> {
         read: row.read_href,
         media: row.media_href,
         view: row.view_href,
+        titleKo: row.title_ko ?? null,
+        byKo: row.by_line_ko ?? null,
+        captionKo: row.caption_ko ?? null,
+        topicKo: row.topic_ko ?? null,
       })) ?? null,
   );
 }

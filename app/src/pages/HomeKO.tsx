@@ -7,7 +7,7 @@ import './HomeKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function HomeKO() {
   return (
-    <SiteLayout lang="KO" page="Home.KO.dc.html" className="page-home-ko" footer={{ loop: "0.14" }}>
+    <SiteLayout page="Home.KO.dc.html" className="page-home-ko" footer={{ loop: "0.14" }}>
       <main id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
         <section style={{ padding: "84px 0 72px 120px" }}>
           <div style={{ maxWidth: "1000px", position: "relative", minHeight: "426px" }}>
@@ -214,7 +214,7 @@ export default function HomeKO() {
               </div>
             </Link>
             {/* 7 · News (tan) */}
-            <HomeNewsCard lang="KO" />
+            <HomeNewsCard />
             {/* 7b · Insight (full card image) */}
             <Link to="/ko/news" style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", gridRow: "span 2", overflow: "hidden", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", aspectRatio: "3/4", overflow: "hidden" }}>

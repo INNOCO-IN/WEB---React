@@ -10,7 +10,7 @@ export default function CollectivesKO() {
   const { closedToNew, openToNew, roster } = useLogic();
 
   return (
-    <SiteLayout lang="KO" page="Collectives.KO.dc.html" className="page-collectives-ko" footer={{ loop: "0.103", cta: "#46325A" }}>
+    <SiteLayout page="Collectives.KO.dc.html" className="page-collectives-ko" footer={{ loop: "0.103", cta: "#46325A" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (plum band) = the CONCEPT ===================== */}
         <section style={{ background: "#46325A", color: "#FAF4E2" }}>

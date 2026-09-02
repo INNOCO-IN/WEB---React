@@ -12,7 +12,7 @@ export default function ProjectUAEYouthSocialInnovationEN() {
   const { gallery, lbCap, lbCount, lbImgStyle, nextLb, prevLb, ready } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Project-UAE-Youth-Social-Innovation.EN.dc.html" className="page-project-uaeyouth-social-innovation-en" footer={{ loop: "0.534", cta: "#1E5A64" }}>
+    <SiteLayout page="Project-UAE-Youth-Social-Innovation.EN.dc.html" className="page-project-uaeyouth-social-innovation-en" footer={{ loop: "0.534", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
         <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>

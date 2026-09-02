@@ -1,0 +1,115 @@
+{
+  "brand": {
+    "name": "IN",
+    "tagline": "IN — a studio where we practice being human together",
+    "description": "IN is a studio where we practice MEWE through honest conversations and artful expressions.",
+    "logoLabel": "IN.studio — home"
+  },
+  "nav": {
+    "groups": {
+      "startWithin": "Start Within",
+      "shareTheSpace": "Share the Space",
+      "serveTheWhole": "Serve the Whole"
+    },
+    "items": {
+      "manifesto": "Manifesto",
+      "collectives": "Collectives",
+      "mewe": "MEWE",
+      "workshop": "Workshop",
+      "story": "Story",
+      "protagonist": "Protagonist",
+      "project": "Project",
+      "community": "Community",
+      "constellation": "Constellation",
+      "news": "News",
+      "connect": "Are you IN?"
+    }
+  },
+  "footer": {
+    "legal": "© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0",
+    "social": {
+      "email": "Email",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "x": "X"
+    }
+  },
+  "language": {
+    "switcherLabel": "Language",
+    "current": "Current language: {{name}}",
+    "switchTo": "Switch to {{name}}",
+    "approximate": "This page has no {{name}} version — going to the section instead",
+    "unavailable": "Not available in {{name}} yet",
+    "names": {
+      "en": "English",
+      "zh-TW": "Traditional Chinese",
+      "ko": "Korean"
+    }
+  },
+  "cards": {
+    "open": "Open",
+    "read": "Read",
+    "pageComing": "Page coming",
+    "explore": "Explore",
+    "allWorkshops": "All workshops",
+    "allProjects": "All projects",
+    "kindProject": "Project",
+    "newsIndex": "News",
+    "newsEmpty": "Nothing here yet.",
+    "more": "More +",
+    "less": "Less −"
+  },
+  "sky": {
+    "format": "Format",
+    "topic": "Topic",
+    "watch": "WATCH",
+    "listen": "LISTEN",
+    "hint": "{{count}} lights and growing — hover or tap one",
+    "formats": {
+      "writing": "writing",
+      "drawing": "drawing",
+      "photo": "photo",
+      "video": "video",
+      "music": "music",
+      "dance": "dance",
+      "craft": "craft",
+      "recipe": "recipe",
+      "symbol": "symbol",
+      "other": "other"
+    }
+  },
+  "notFound": {
+    "title": "Not found — IN",
+    "eyebrow": "Not found",
+    "heading": "This page isn't part of the pattern.",
+    "body": "The address you followed doesn't lead anywhere on the site. It may have moved, or it may never have existed.",
+    "home": "Back to the studio",
+    "workshops": "See the workshops"
+  },
+  "form": {
+    "required": "Required",
+    "optional": "Optional",
+    "submit": "Send",
+    "submitting": "Sending…",
+    "sent": "Thank you — that reached us.",
+    "validation": {
+      "required": "{{field}} is required.",
+      "email": "That does not look like an email address.",
+      "tooLong": "{{field}} must be {{max}} characters or fewer.",
+      "fileTooLarge": "That file is larger than {{max}}."
+    }
+  },
+  "state": {
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again.",
+    "offline": "Showing the last saved copy — the live content could not be reached.",
+    "empty": "Nothing here yet."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "backToTop": "Back to top",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "externalLink": "{{label}} (opens in a new tab)"
+  }
+}

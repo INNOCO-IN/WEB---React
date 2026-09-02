@@ -104,6 +104,14 @@ create table if not exists public.news (
 
 create index if not exists news_live_idx on public.news (status, published_at desc);
 
+-- Korean copy, as on projects. Nullable and unbackfilled: the site falls back
+-- to English field by field, so translating one headline does not oblige
+-- anyone to translate its blurb in the same sitting.
+alter table public.news add column if not exists kind_ko    text;
+alter table public.news add column if not exists eyebrow_ko text;
+alter table public.news add column if not exists title_ko   text;
+alter table public.news add column if not exists body_ko    text;
+
 -- ---------- 5b. Workshops ----------
 -- Drives the Workshop index cards and the audience filter. The individual
 -- Workshop-* pages keep their own long-form copy in the app; this is the
@@ -131,6 +139,15 @@ alter table public.workshops add column if not exists ink      text not null def
 alter table public.workshops add column if not exists route    text;
 alter table public.workshops add column if not exists featured boolean not null default false;
 alter table public.workshops add column if not exists cta      text default 'Explore';
+
+-- Korean copy. `audience` stays the grouping key in both languages — the
+-- filter chips match on it — and `audience_ko` is only the chip's label.
+alter table public.workshops add column if not exists title_ko    text;
+alter table public.workshops add column if not exists eyebrow_ko  text;
+alter table public.workshops add column if not exists blurb_ko    text;
+alter table public.workshops add column if not exists audience_ko text;
+alter table public.workshops add column if not exists duration_ko text;
+alter table public.workshops add column if not exists cta_ko      text;
 
 -- Older copies of this table have a uuid id and only a unique constraint on
 -- slug. The seed upserts on slug either way, so both shapes work.
@@ -272,6 +289,14 @@ create table if not exists public.constellation_points (
   view_href   text
 );
 
+-- Korean copy. `topic_ko` labels a cluster without defining it — `topic` is
+-- the grouping key. `format` is a fixed vocabulary keyed to the colour scale,
+-- so it is translated in the app rather than per row.
+alter table public.constellation_points add column if not exists title_ko   text;
+alter table public.constellation_points add column if not exists by_line_ko text;
+alter table public.constellation_points add column if not exists caption_ko text;
+alter table public.constellation_points add column if not exists topic_ko   text;
+
 alter table public.constellation_points enable row level security;
 
 drop policy if exists "anon reads constellation" on public.constellation_points;
@@ -298,7 +323,14 @@ create table if not exists public.collectives (
   status      text not null default 'live'  -- draft | live | archived
 );
 
+-- Korean copy, as on the other registers.
+alter table public.collectives add column if not exists name_ko      text;
+alter table public.collectives add column if not exists one_liner_ko text;
+alter table public.collectives add column if not exists full_bio_ko  text;
+alter table public.collectives add column if not exists role_ko      text;
+
 alter table public.collectives enable row level security;
+
 
 drop policy if exists "anon reads live collectives" on public.collectives;
 create policy "anon reads live collectives" on public.collectives

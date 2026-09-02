@@ -8,7 +8,7 @@ import './ProjectKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function ProjectKO() {
   return (
-    <SiteLayout lang="KO" page="Project.KO.dc.html" className="page-project-ko" footer={{ loop: "0.489", cta: "#1E5A64" }}>
+    <SiteLayout page="Project.KO.dc.html" className="page-project-ko" footer={{ loop: "0.489", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO */}
         <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
@@ -70,7 +70,7 @@ export default function ProjectKO() {
               프로젝트 브리프
             </h2>
           </div>
-          <ProjectWall lang="KO" />
+          <ProjectWall />
           <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "13.5px", color: "rgba(46,59,64,0.6)", margin: "22px 0 0", maxWidth: "60ch" }}>
             {"프로젝트와 그것이 만든 공동체는 같은 항목이 아닙니다 — 프로젝트는 개입이고, 공동체는 남는 것입니다. 둘 다 "}
             <Link to="/ko/community">

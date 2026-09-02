@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useCommunities } from '../../lib/hooks/useContent';
 import { accentColor, copyIn, type CommunityCard as Community } from '../../lib/content/types';
-import type { Lang } from '../nav-data';
+import { useTranslation } from 'react-i18next';
+import { localize, useLocaleOr, type Locale } from '../../lib/lang';
 import './cards.css';
 
 /** The label the arrow carried as its aria-label on the legacy card. */
-const OPEN_LABEL: Record<Lang, string> = { EN: 'Open', KO: '열기' };
 
 /**
  * The community circles, from the `communities` table.
@@ -20,10 +20,11 @@ const OPEN_LABEL: Record<Lang, string> = { EN: 'Open', KO: '열기' };
  */
 
 interface Props {
-  lang?: Lang;
+  locale?: Locale;
 }
 
-export default function CommunityGrid({ lang = 'EN' }: Props) {
+export default function CommunityGrid({ locale: given }: Props) {
+  const locale = useLocaleOr(given);
   const { data: communities } = useCommunities();
 
   if (!communities.length) return <div className="in-wall" />;
@@ -31,21 +32,23 @@ export default function CommunityGrid({ lang = 'EN' }: Props) {
   return (
     <div className="in-wall">
       {communities.map((community) => (
-        <CommunityCard key={community.slug} community={community} lang={lang} />
+        <CommunityCard key={community.slug} community={community} locale={locale} />
       ))}
     </div>
   );
 }
 
-export function CommunityCard({ community, lang = 'EN' }: { community: Community; lang?: Lang }) {
+export function CommunityCard({ community, locale: given }: { community: Community; locale?: Locale }) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
   const accent = accentColor(community.accent, 'var(--color-teal)');
-  const copy = copyIn(community, lang);
+  const copy = copyIn(community, locale);
 
   return (
     <Link
-      to={community.route ?? `/community/${community.slug}`}
+      to={localize(community.route ?? `/community/${community.slug}`, locale)}
       className="in-community-card in-card in-plain"
-      aria-label={`${OPEN_LABEL[lang]} — ${copy.title}`}
+      aria-label={`${t('cards.open')} — ${copy.title}`}
     >
       {community.image ? (
         <div className="in-community-card__photo">

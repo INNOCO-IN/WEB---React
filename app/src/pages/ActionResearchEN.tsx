@@ -6,7 +6,7 @@ import './ActionResearchEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function ActionResearchEN() {
   return (
-    <SiteLayout lang="EN" page="Action-Research.EN.dc.html" className="page-action-research-en" footer={{ loop: "0.148", cta: "#1E648C" }}>
+    <SiteLayout page="Action-Research.EN.dc.html" className="page-action-research-en" footer={{ loop: "0.148", cta: "#1E648C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (key color · deep blue) */}
         <section style={{ background: "#1E648C", color: "#FAF4E2" }}>

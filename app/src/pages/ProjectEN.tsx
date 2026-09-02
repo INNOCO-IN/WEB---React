@@ -8,7 +8,7 @@ import './ProjectEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function ProjectEN() {
   return (
-    <SiteLayout lang="EN" page="Project.EN.dc.html" className="page-project-en" footer={{ loop: "0.489", cta: "#1E5A64" }}>
+    <SiteLayout page="Project.EN.dc.html" className="page-project-en" footer={{ loop: "0.489", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO */}
         <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>

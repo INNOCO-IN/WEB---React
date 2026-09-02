@@ -12,7 +12,7 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
   const { gallery, lbCap, lbCount, lbImgStyle, nextLb, prevLb, ready } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html" className="page-project-light-shadow-shift-womens-retreat-en" footer={{ loop: "0.503", cta: "#1E5A64" }}>
+    <SiteLayout page="Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html" className="page-project-light-shadow-shift-womens-retreat-en" footer={{ loop: "0.503", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
         <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>

@@ -11,7 +11,7 @@ export default function StoryThisIsUsEN() {
   const { byFormatStyle, byTopicStyle, filterHeading, filters, index, indexHeading, setByFormat, setByTopic } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Story-This-Is-Us.EN.dc.html" className="page-story-this-is-us-en" footer={{ loop: "0.62", cta: "#C9962B" }}>
+    <SiteLayout page="Story-This-Is-Us.EN.dc.html" className="page-story-this-is-us-en" footer={{ loop: "0.62", cta: "#C9962B" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* thin mustard taxonomy band */}
         <div style={{ height: "6px", background: "#C9962B" }} />

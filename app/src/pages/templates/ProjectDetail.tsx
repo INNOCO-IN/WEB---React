@@ -49,7 +49,6 @@ export default function ProjectDetail() {
 
   return (
     <SiteLayout
-      lang="EN"
       page={`Project-${slug}`}
       title={`${title} — IN`}
       className="page-project-detail"

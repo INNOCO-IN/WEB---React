@@ -6,7 +6,7 @@ import './WorkshopJungleJamKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopJungleJamKO() {
   return (
-    <SiteLayout lang="KO" page="Workshop-Jungle-Jam.KO.dc.html" className="page-workshop-jungle-jam-ko" footer={{ loop: "0.32", cta: "#E5188C" }}>
+    <SiteLayout page="Workshop-Jungle-Jam.KO.dc.html" className="page-workshop-jungle-jam-ko" footer={{ loop: "0.32", cta: "#E5188C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         {/* ===================== HERO ===================== */}

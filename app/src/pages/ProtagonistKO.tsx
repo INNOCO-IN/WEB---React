@@ -6,7 +6,7 @@ import './ProtagonistKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function ProtagonistKO() {
   return (
-    <SiteLayout lang="KO" page="Protagonist.KO.dc.html" className="page-protagonist-ko" footer={{ loop: "0.466", cta: "#F05A28" }}>
+    <SiteLayout page="Protagonist.KO.dc.html" className="page-protagonist-ko" footer={{ loop: "0.466", cta: "#F05A28" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
         <section style={{ background: "#F05A28", color: "#FAF4E2" }}>

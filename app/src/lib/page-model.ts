@@ -1,5 +1,5 @@
 import type { ContentTable, Feed } from './content/types';
-import type { Lang } from '../components/nav-data';
+import type { Locale } from '../i18n/locales';
 
 /**
  * What every page is made of.
@@ -57,7 +57,7 @@ export interface Writes {
 }
 
 export interface PageModel {
-  lang: Lang;
+  lang: Locale;
   /** The nav group this page sits in. */
   section: Section;
   /** What the nav, or the page's own heading, calls it. */
@@ -71,7 +71,7 @@ export interface PageModel {
 /** Route → model. The keys match `pages/registry.ts` exactly. */
 export const PAGE_MODELS: Record<string, PageModel> = {
   '/': {
-    lang: 'EN',
+    lang: 'en',
     section: 'home',
     title: 'Home',
     reads: [
@@ -79,17 +79,17 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'home',
     title: 'Home',
     reads: [
       { table: 'news', feed: 'home', drives: 'the news tile in the card grid — the newest item on the home feed' },
     ],
   },
-  '/manifesto': { lang: 'EN', section: 'start-within', title: 'Manifesto' },
-  '/ko/manifesto': { lang: 'KO', section: 'start-within', title: 'Manifesto' },
+  '/manifesto': { lang: 'en', section: 'start-within', title: 'Manifesto' },
+  '/ko/manifesto': { lang: 'ko', section: 'start-within', title: 'Manifesto' },
   '/collectives': {
-    lang: 'EN',
+    lang: 'en',
     section: 'start-within',
     title: 'Collectives',
     reads: [
@@ -97,18 +97,18 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/collectives': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'start-within',
     title: 'Collectives',
     reads: [
       { table: 'collectives', drives: 'the roster, each bio expanding in place' },
     ],
   },
-  '/mewe': { lang: 'EN', section: 'start-within', title: 'MEWE' },
-  '/ko/mewe': { lang: 'KO', section: 'start-within', title: 'MEWE' },
-  '/action-research': { lang: 'EN', section: 'start-within', title: 'Action Research' },
+  '/mewe': { lang: 'en', section: 'start-within', title: 'MEWE' },
+  '/ko/mewe': { lang: 'ko', section: 'start-within', title: 'MEWE' },
+  '/action-research': { lang: 'en', section: 'start-within', title: 'Action Research' },
   '/workshop': {
-    lang: 'EN',
+    lang: 'en',
     section: 'share-space',
     title: 'Workshop',
     reads: [
@@ -116,7 +116,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/workshop': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'share-space',
     title: 'Workshop',
     reads: [
@@ -135,33 +135,33 @@ export const PAGE_MODELS: Record<string, PageModel> = {
    * card wall, but the page's own eyebrow, lede and pills are written for the
    * page and say something different.
    */
-  '/workshop/:slug': { lang: 'EN', section: 'share-space', title: 'Workshop detail' },
-  '/ko/workshop/:slug': { lang: 'KO', section: 'share-space', title: 'Workshop detail' },
+  '/workshop/:slug': { lang: 'en', section: 'share-space', title: 'Workshop detail' },
+  '/ko/workshop/:slug': { lang: 'ko', section: 'share-space', title: 'Workshop detail' },
 
-  '/workshop/bucket-list': { lang: 'EN', section: 'share-space', title: 'Bucket List' },
-  '/ko/workshop/bucket-list': { lang: 'KO', section: 'share-space', title: 'Bucket List' },
-  '/workshop/jungle-jam': { lang: 'EN', section: 'share-space', title: 'Jungle Jam' },
-  '/ko/workshop/jungle-jam': { lang: 'KO', section: 'share-space', title: 'Jungle Jam' },
+  '/workshop/bucket-list': { lang: 'en', section: 'share-space', title: 'Bucket List' },
+  '/ko/workshop/bucket-list': { lang: 'ko', section: 'share-space', title: 'Bucket List' },
+  '/workshop/jungle-jam': { lang: 'en', section: 'share-space', title: 'Jungle Jam' },
+  '/ko/workshop/jungle-jam': { lang: 'ko', section: 'share-space', title: 'Jungle Jam' },
   '/workshop/light-shadow-shift': {
-    lang: 'EN',
+    lang: 'en',
     section: 'share-space',
     title: 'Light Shadow Shift',
   },
   '/ko/workshop/light-shadow-shift': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'share-space',
     title: 'Light Shadow Shift',
   },
-  '/workshop/pathfinder': { lang: 'EN', section: 'share-space', title: 'Pathfinder' },
-  '/ko/workshop/pathfinder': { lang: 'KO', section: 'share-space', title: 'Pathfinder' },
-  '/workshop/second-life': { lang: 'EN', section: 'share-space', title: 'Second Life' },
-  '/ko/workshop/second-life': { lang: 'KO', section: 'share-space', title: 'Second Life' },
-  '/workshop/shadow-shifter': { lang: 'EN', section: 'share-space', title: 'Shadow Shifter' },
-  '/ko/workshop/shadow-shifter': { lang: 'KO', section: 'share-space', title: 'Shadow Shifter' },
-  '/story': { lang: 'EN', section: 'share-space', title: 'Story' },
-  '/ko/story': { lang: 'KO', section: 'share-space', title: 'Story' },
+  '/workshop/pathfinder': { lang: 'en', section: 'share-space', title: 'Pathfinder' },
+  '/ko/workshop/pathfinder': { lang: 'ko', section: 'share-space', title: 'Pathfinder' },
+  '/workshop/second-life': { lang: 'en', section: 'share-space', title: 'Second Life' },
+  '/ko/workshop/second-life': { lang: 'ko', section: 'share-space', title: 'Second Life' },
+  '/workshop/shadow-shifter': { lang: 'en', section: 'share-space', title: 'Shadow Shifter' },
+  '/ko/workshop/shadow-shifter': { lang: 'ko', section: 'share-space', title: 'Shadow Shifter' },
+  '/story': { lang: 'en', section: 'share-space', title: 'Story' },
+  '/ko/story': { lang: 'ko', section: 'share-space', title: 'Story' },
   '/story/all': {
-    lang: 'EN',
+    lang: 'en',
     section: 'share-space',
     title: 'Story index',
     reads: [
@@ -169,7 +169,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/story/all': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'share-space',
     title: 'Story index',
     reads: [
@@ -177,18 +177,18 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/story/submit': {
-    lang: 'EN',
+    lang: 'en',
     section: 'share-space',
     title: 'Story submission',
     writes: [
       { table: 'stories', drives: 'the submission, and its attachment in the story-media bucket' },
     ],
   },
-  '/story/this-is-us': { lang: 'EN', section: 'share-space', title: 'This Is Us' },
-  '/protagonist': { lang: 'EN', section: 'share-space', title: 'Protagonist' },
-  '/ko/protagonist': { lang: 'KO', section: 'share-space', title: 'Protagonist' },
+  '/story/this-is-us': { lang: 'en', section: 'share-space', title: 'This Is Us' },
+  '/protagonist': { lang: 'en', section: 'share-space', title: 'Protagonist' },
+  '/ko/protagonist': { lang: 'ko', section: 'share-space', title: 'Protagonist' },
   '/project': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Project index',
     reads: [
@@ -196,7 +196,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/project': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'serve-whole',
     title: 'Project index',
     reads: [
@@ -204,7 +204,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/asia-exchange': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Asia Exchange',
     reads: [
@@ -212,7 +212,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/food-revolution': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Food Revolution',
     reads: [
@@ -220,7 +220,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/jungle-jam': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Jungle Jam',
     reads: [
@@ -228,7 +228,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/light-shadow-shift-womens-retreat': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: "Light Shadow Shift Women's Retreat",
     reads: [
@@ -236,7 +236,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/shadow-shifter': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Shadow Shifter',
     reads: [
@@ -244,7 +244,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/uae-youth-social-innovation': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'UAE Youth Social Innovation',
     reads: [
@@ -252,7 +252,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/unc-documentary': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'UNC Documentary',
     reads: [
@@ -260,7 +260,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/project/unc': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'UNC',
     reads: [
@@ -277,7 +277,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
    * which the template now takes from the row rather than from its own copy.
    */
   '/project/:slug': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Project detail',
     reads: [
@@ -285,7 +285,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/community': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Community',
     reads: [
@@ -294,7 +294,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/community': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'serve-whole',
     title: 'Community',
     reads: [
@@ -303,7 +303,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/community/all': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Community index',
     reads: [
@@ -320,9 +320,9 @@ export const PAGE_MODELS: Record<string, PageModel> = {
    * `communities` row carries for the directory, so reading the row would
    * overwrite it. The rest of the copy is only ever on the page.
    */
-  '/community/:slug': { lang: 'EN', section: 'serve-whole', title: 'Community detail' },
+  '/community/:slug': { lang: 'en', section: 'serve-whole', title: 'Community detail' },
   '/constellation': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'Constellation',
     reads: [
@@ -330,7 +330,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/constellation': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'serve-whole',
     title: 'Constellation',
     reads: [
@@ -338,7 +338,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/news': {
-    lang: 'EN',
+    lang: 'en',
     section: 'serve-whole',
     title: 'News',
     reads: [
@@ -346,7 +346,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/news': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'serve-whole',
     title: 'News',
     reads: [
@@ -354,7 +354,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/connect': {
-    lang: 'EN',
+    lang: 'en',
     section: 'connect',
     title: 'Are you IN?',
     writes: [
@@ -362,7 +362,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     ],
   },
   '/ko/connect': {
-    lang: 'KO',
+    lang: 'ko',
     section: 'connect',
     title: 'Are you IN?',
     writes: [

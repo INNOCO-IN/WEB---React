@@ -161,7 +161,10 @@ The colour belongs to the design system, so changing the token restyles every
 card using it. A raw `#RRGGBB` still works where a piece of content needs one.
 
 `route` and `link` hold **app paths** (`/workshop/mobius-making`), so an editor
-never has to know a component name. External URLs are fine in `link`.
+never has to know a component name. External URLs are fine in `link`. Write the
+English path: on a Korean page the app swaps in the `/ko` twin where one exists
+and keeps the English page where one does not, so `/ko/workshop` links to the
+Korean workshop and `/ko/project` still links to the English brief.
 
 A **`_ko` column** is the same field in Korean — `title_ko`, `body_ko`. The
 Korean pages are not translations of a data source: they are the same layout
@@ -170,6 +173,13 @@ or `/ko/project` starts rendering English. Empty means untranslated, and the
 page falls back to English *field by field* — a row with a Korean title and no
 Korean blurb shows the Korean title, rather than reverting the whole card. So a
 wall can be translated one line at a time in the Table Editor.
+
+Every content table carries them now: `news`, `workshops`, `projects`,
+`communities`, `collectives` and `constellation_points`, with `story_entries`
+carrying whole `en` and `ko` objects instead. Two are labels only —
+`workshops.audience_ko` and `constellation_points.topic_ko`. Their English
+values are grouping keys, so the filter chips and the sky's clusters match on
+those and the `_ko` column only changes what the label reads.
 
 ## Setting it up
 

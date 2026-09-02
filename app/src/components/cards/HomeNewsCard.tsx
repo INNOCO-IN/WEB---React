@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useNews } from '../../lib/hooks/useContent';
 import { accentColor } from '../../lib/content/types';
 import { formatDate } from '../../lib/format';
-import type { Lang } from '../nav-data';
+import { useTranslation } from 'react-i18next';
+import { localize, useLocaleOr, type Locale } from '../../lib/lang';
 import './cards.css';
 
 /**
@@ -18,16 +19,17 @@ import './cards.css';
  */
 
 interface Props {
-  lang?: Lang;
+  locale?: Locale;
 }
 
-const READ_MORE: Record<string, string> = { EN: 'News', KO: '소식' };
 
-export default function HomeNewsCard({ lang = 'EN' }: Props) {
+export default function HomeNewsCard({ locale: given }: Props) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
   const { data } = useNews('home', 1);
   const item = data[0];
 
-  const newsIndex = lang === 'KO' ? '/ko/news' : '/news';
+  const newsIndex = localize('/news', locale);
   if (!item) {
     return <Link to={newsIndex} className="in-home-tile in-card in-plain" />;
   }
@@ -35,7 +37,7 @@ export default function HomeNewsCard({ lang = 'EN' }: Props) {
   const accent = accentColor(item.accent, 'var(--color-tan)');
 
   return (
-    <Link to={item.link ?? newsIndex} className="in-home-tile in-card in-plain">
+    <Link to={localize(item.link ?? newsIndex, locale)} className="in-home-tile in-card in-plain">
       <div className="in-home-tile__bar" style={{ background: accent }}>
         <div className="in-home-tile__wedge">
           <div style={{ position: 'absolute', inset: 0, background: '#FAB414', clipPath: 'polygon(0 100%, 0 40%, 54% 100%)' }} />
@@ -46,11 +48,11 @@ export default function HomeNewsCard({ lang = 'EN' }: Props) {
       <div className="in-home-tile__body">
         <div className="in-home-tile__rail">
           <span className="in-dot" style={{ background: accent }} />
-          <span className="in-rail-label">{READ_MORE[lang] ?? READ_MORE.EN}</span>
+          <span className="in-rail-label">{t('cards.newsIndex')}</span>
         </div>
 
         <div className="in-home-tile__date" style={{ color: accent }}>
-          {formatDate(item.published_at, lang)}
+          {formatDate(item.published_at, locale)}
         </div>
         <div className="in-home-tile__title">{item.title}</div>
         {item.body ? <p className="in-home-tile__blurb">{item.body}</p> : null}

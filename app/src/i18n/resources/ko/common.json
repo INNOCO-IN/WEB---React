@@ -1,0 +1,115 @@
+{
+  "brand": {
+    "name": "IN",
+    "tagline": "IN — MEWE를 실천하는 스튜디오",
+    "description": "IN은 정직한 대화와 예술적 표현으로 MEWE를 실천하는 스튜디오입니다.",
+    "logoLabel": "IN.studio — 홈"
+  },
+  "nav": {
+    "groups": {
+      "startWithin": "안에서 시작하기",
+      "shareTheSpace": "공간을 나누기",
+      "serveTheWhole": "더 큰 우리에게"
+    },
+    "items": {
+      "manifesto": "매니페스토",
+      "collectives": "콜렉티브",
+      "mewe": "MEWE",
+      "workshop": "워크숍",
+      "story": "스토리",
+      "protagonist": "주역",
+      "project": "프로젝트",
+      "community": "커뮤니티",
+      "constellation": "별자리",
+      "news": "소식",
+      "connect": "Are you IN?"
+    }
+  },
+  "footer": {
+    "legal": "© 2016–2026 IN (INNOCO) · 서울, 대한민국 · MEWE는 CC BY-NC-SA 4.0으로 공유됩니다",
+    "social": {
+      "email": "이메일",
+      "instagram": "인스타그램",
+      "youtube": "유튜브",
+      "x": "X"
+    }
+  },
+  "language": {
+    "switcherLabel": "언어",
+    "current": "현재 언어: {{name}}",
+    "switchTo": "{{name}}(으)로 전환",
+    "approximate": "이 페이지는 {{name}}(으)로 제공되지 않습니다 — 상위 섹션으로 이동합니다",
+    "unavailable": "아직 {{name}}(으)로 제공되지 않습니다",
+    "names": {
+      "en": "영어",
+      "zh-TW": "번체 중국어",
+      "ko": "한국어"
+    }
+  },
+  "cards": {
+    "open": "열기",
+    "read": "읽기",
+    "pageComing": "준비 중",
+    "explore": "살펴보기",
+    "allWorkshops": "전체 워크숍",
+    "allProjects": "모든 프로젝트",
+    "kindProject": "프로젝트",
+    "newsIndex": "소식",
+    "newsEmpty": "아직 소식이 없습니다.",
+    "more": "더 보기 +",
+    "less": "접기 −"
+  },
+  "sky": {
+    "format": "형식",
+    "topic": "주제",
+    "watch": "보기",
+    "listen": "듣기",
+    "hint": "{{count}}개의 빛 — 하나를 가리키거나 눌러 보세요",
+    "formats": {
+      "writing": "글",
+      "drawing": "그림",
+      "photo": "사진",
+      "video": "영상",
+      "music": "음악",
+      "dance": "춤",
+      "craft": "공예",
+      "recipe": "요리",
+      "symbol": "상징",
+      "other": "기타"
+    }
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다 — IN",
+    "eyebrow": "찾을 수 없음",
+    "heading": "이 페이지는 패턴의 일부가 아닙니다.",
+    "body": "따라오신 주소는 이 사이트의 어느 곳으로도 이어지지 않습니다. 옮겨졌거나, 처음부터 없었을 수 있습니다.",
+    "home": "스튜디오로 돌아가기",
+    "workshops": "워크숍 보기"
+  },
+  "form": {
+    "required": "필수",
+    "optional": "선택",
+    "submit": "보내기",
+    "submitting": "보내는 중…",
+    "sent": "감사합니다 — 잘 받았습니다.",
+    "validation": {
+      "required": "{{field}}은(는) 필수입니다.",
+      "email": "이메일 주소 형식이 아닙니다.",
+      "tooLong": "{{field}}은(는) {{max}}자 이하여야 합니다.",
+      "fileTooLarge": "파일이 {{max}}보다 큽니다."
+    }
+  },
+  "state": {
+    "loading": "불러오는 중…",
+    "error": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "offline": "마지막으로 저장된 내용을 보여 주고 있습니다 — 실시간 콘텐츠에 연결하지 못했습니다.",
+    "empty": "아직 내용이 없습니다."
+  },
+  "a11y": {
+    "skipToContent": "본문으로 건너뛰기",
+    "backToTop": "맨 위로",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기",
+    "externalLink": "{{label}} (새 탭에서 열림)"
+  }
+}

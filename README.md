@@ -15,8 +15,8 @@ finished and verified locally but **not yet switched on** — see [Deploy](#depl
 cd app && npm install && npm run dev     # http://localhost:5174
 ```
 
-Vite + React 19 + TypeScript + React Router. Scripts: `dev`, `build` (typecheck
-+ build), `preview`, `lint`, `typecheck`.
+Vite + React 19 + TypeScript + React Router + i18next. Scripts: `dev`, `build`
+(typecheck + build), `preview`, `lint`, `typecheck`, `test`.
 
 All 71 routes, both languages, with real URLs:
 
@@ -28,6 +28,33 @@ All 71 routes, both languages, with real URLs:
 /constellation        /news                /connect
 /ko/…                 every EN route has a Korean twin where one exists
 ```
+
+Three languages — `en`, `zh-TW`, `ko` — with the locale in the path. Interface
+strings live in [`app/src/i18n/resources/`](app/src/i18n/resources) and are
+served by i18next; the locale itself is derived from the URL in
+[`app/src/lib/lang.ts`](app/src/lib/lang.ts), never from a header or a cookie.
+See [Korean](ROUTES.md#korean) for the fallback rules.
+
+### `app/src/builder/` — the page builder
+
+A page is one shared element tree plus one record of words per language, so a
+page's structure, colour and spacing are decided once and only the text is
+written three times. A language that needs a different design can take its own
+copy of the tree.
+
+```bash
+node scripts/migrate-builder-page.mjs        # spec → src/builder/pages/*.json
+```
+
+Element types are keys into an explicit registry
+([`app/src/builder/registry.ts`](app/src/builder/registry.ts)), which also
+declares, per field, whether a value is shared across languages or written per
+language. Saved page data can never name a component or a path.
+
+One page is migrated so far — News — and it is served by the builder only at
+`/zh-tw/news`, because the converted components still hold `/news` and
+`/ko/news`. `BUILDER_SERVES` in
+[`app/src/builder/routes.ts`](app/src/builder/routes.ts) is the switch.
 
 Every old `*.dc.html` URL redirects to its new route, so no inbound link
 breaks — `/Are-you-IN.EN.dc.html` (the most-linked page on the site, 51 inbound)

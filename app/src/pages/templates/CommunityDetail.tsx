@@ -33,7 +33,6 @@ export default function CommunityDetail() {
 
   return (
     <SiteLayout
-      lang="EN"
       page={`Community-${slug}`}
       title={`${detail.title} — IN`}
       className="page-community-detail"

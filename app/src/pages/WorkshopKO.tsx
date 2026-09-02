@@ -8,7 +8,7 @@ import './WorkshopKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopKO() {
   return (
-    <SiteLayout lang="KO" page="Workshop.KO.dc.html" className="page-workshop-ko" footer={{ loop: "0.171", cta: "#E6328C" }}>
+    <SiteLayout page="Workshop.KO.dc.html" className="page-workshop-ko" footer={{ loop: "0.171", cta: "#E6328C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (key color box · magenta) ===================== */}
         <section style={{ background: "#E6328C", color: "#FAF4E2" }}>
@@ -102,7 +102,7 @@ export default function WorkshopKO() {
         </section>
         {/* ===================== WORKSHOP CARD WALL ===================== */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px 20px" }}>
-          <WorkshopWall lang="KO" />
+          <WorkshopWall />
         </section>
         {/* ===================== HOST A STUDIO ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "30px 28px 20px" }}>

@@ -6,7 +6,7 @@ import './StoryKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function StoryKO() {
   return (
-    <SiteLayout lang="KO" page="Story.KO.dc.html" className="page-story-ko" footer={{ loop: "0.421", cta: "#FAB414", stroke: "#FAF4E2" }}>
+    <SiteLayout page="Story.KO.dc.html" className="page-story-ko" footer={{ loop: "0.421", cta: "#FAB414", stroke: "#FAF4E2" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
         <section style={{ background: "#FAB414", color: "#1A1A1A" }}>

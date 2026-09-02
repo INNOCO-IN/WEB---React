@@ -11,7 +11,7 @@ export default function ConstellationKO() {
   const { cancelClose, closeSel, closeSoon, dots, hasMedia, hasRead, hasSel, hasView, labels, legend, mediaLabel, modeButtons, popStyle, selCaption, selDot, selFormat, selMedia, selMeta, selRead, selTitle, selView, skyHint } = useLogic();
 
   return (
-    <SiteLayout lang="KO" page="Constellation.KO.dc.html" className="page-constellation-ko" footer={{ loop: "0.897", cta: "#F0D23C" }}>
+    <SiteLayout page="Constellation.KO.dc.html" className="page-constellation-ko" footer={{ loop: "0.897", cta: "#F0D23C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (unchanged) */}
         <section data-screen-label="Hero" style={{ background: "#F0D23C", color: "#1A1A1A" }}>

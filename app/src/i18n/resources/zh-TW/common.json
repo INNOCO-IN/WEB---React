@@ -1,0 +1,115 @@
+{
+  "brand": {
+    "name": "IN",
+    "tagline": "IN — 一間實踐 MEWE 的工作室",
+    "description": "IN 是一間以真誠對話與藝術表達實踐 MEWE 的工作室。",
+    "logoLabel": "IN.studio — 首頁"
+  },
+  "nav": {
+    "groups": {
+      "startWithin": "由內開始",
+      "shareTheSpace": "分享空間",
+      "serveTheWhole": "服務整體"
+    },
+    "items": {
+      "manifesto": "宣言",
+      "collectives": "共創者",
+      "mewe": "MEWE",
+      "workshop": "工作坊",
+      "story": "故事",
+      "protagonist": "主角",
+      "project": "專案",
+      "community": "社群",
+      "constellation": "星圖",
+      "news": "消息",
+      "connect": "Are you IN?"
+    }
+  },
+  "footer": {
+    "legal": "© 2016–2026 IN (INNOCO) · 韓國首爾 · MEWE 以 CC BY-NC-SA 4.0 授權分享",
+    "social": {
+      "email": "電子郵件",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "x": "X"
+    }
+  },
+  "language": {
+    "switcherLabel": "語言",
+    "current": "目前語言：{{name}}",
+    "switchTo": "切換為{{name}}",
+    "approximate": "本頁面沒有{{name}}版本 — 將前往上層區塊",
+    "unavailable": "尚未提供{{name}}版本",
+    "names": {
+      "en": "英文",
+      "zh-TW": "繁體中文",
+      "ko": "韓文"
+    }
+  },
+  "cards": {
+    "open": "開啟",
+    "read": "閱讀",
+    "pageComing": "頁面準備中",
+    "explore": "探索",
+    "allWorkshops": "所有工作坊",
+    "allProjects": "所有專案",
+    "kindProject": "專案",
+    "newsIndex": "消息",
+    "newsEmpty": "目前尚無消息。",
+    "more": "更多 +",
+    "less": "收合 −"
+  },
+  "sky": {
+    "format": "形式",
+    "topic": "主題",
+    "watch": "觀看",
+    "listen": "聆聽",
+    "hint": "{{count}} 個光點，且正在增加 — 移過去或點一下",
+    "formats": {
+      "writing": "書寫",
+      "drawing": "繪畫",
+      "photo": "攝影",
+      "video": "影片",
+      "music": "音樂",
+      "dance": "舞蹈",
+      "craft": "手作",
+      "recipe": "食譜",
+      "symbol": "象徵",
+      "other": "其他"
+    }
+  },
+  "notFound": {
+    "title": "找不到頁面 — IN",
+    "eyebrow": "找不到頁面",
+    "heading": "這個頁面不在這個圖樣裡。",
+    "body": "您造訪的網址在本站沒有對應的頁面。它可能已經移動，或從來不曾存在。",
+    "home": "回到工作室",
+    "workshops": "看看工作坊"
+  },
+  "form": {
+    "required": "必填",
+    "optional": "選填",
+    "submit": "送出",
+    "submitting": "傳送中…",
+    "sent": "謝謝您 — 我們收到了。",
+    "validation": {
+      "required": "{{field}}為必填。",
+      "email": "這看起來不像是電子郵件地址。",
+      "tooLong": "{{field}}不得超過 {{max}} 個字元。",
+      "fileTooLarge": "檔案大於 {{max}}。"
+    }
+  },
+  "state": {
+    "loading": "載入中…",
+    "error": "發生錯誤，請再試一次。",
+    "offline": "顯示的是最後儲存的內容 — 無法連線取得即時內容。",
+    "empty": "目前尚無內容。"
+  },
+  "a11y": {
+    "skipToContent": "跳至主要內容",
+    "backToTop": "回到頂端",
+    "openMenu": "開啟選單",
+    "closeMenu": "關閉選單",
+    "externalLink": "{{label}}（在新分頁開啟）"
+  }
+}

@@ -87,10 +87,49 @@ Every Korean page is the English route under `/ko`:
 /ko/news               /ko/connect
 ```
 
-The EN/KR switch in the nav and footer uses `LANG_ALTERNATES`, so it lands on
-the same page in the other language rather than on the home page. Where no
-Korean page exists — the `Community-*` and `Project-*` detail pages,
-`/story/submit`, `/action-research` — it falls back to the Korean home.
+Language is derived from the path, in one place — [`app/src/lib/lang.ts`](app/src/lib/lang.ts).
+Nothing else decides: not a prop written into a generated page, not a
+`startsWith('/ko')` in a template, not a default in a card.
+
+Three locales now: `en`, `zh-TW`, `ko`. English keeps the bare root because
+every inbound link and the whole redirect table point at it; `/en/…` is
+understood and redirected to the canonical spelling. To make English prefixed
+for real, set `LOCALE_PREFIX.en` in
+[`app/src/i18n/locales.ts`](app/src/i18n/locales.ts) — the router, the
+switcher, `hreflang` and the canonical tags all read it from there.
+
+Traditional Chinese has one page, `/zh-tw/news`, served by the page builder.
+Everywhere else the switcher shows 繁中 disabled rather than linking into a
+language that has nothing to say.
+
+### Falling back
+
+Fifteen English routes have no Korean twin — every `Project-*` brief, the seven
+`Community-*` pages, `/community/all`, `/story/submit`, `/story/this-is-us`,
+`/action-research`. Three things degrade rather than break:
+
+- **The EN/KR switch** gives up a segment at a time. Same page if it exists,
+  else the section above it (`/project/food-revolution` → `/ko/project`), and
+  the Korean home only when there is nothing in between. When it is not the
+  same page the link is dimmed and says so, instead of silently moving you.
+- **Card links** take the twin where there is one and stay English where there
+  is not — which is why `/ko/workshop` links to `/ko/workshop/metanoia` but
+  `/ko/project` still links to the English brief.
+- **Row copy** falls back field by field. A row with a Korean title and no
+  Korean blurb shows the Korean title and the English blurb. `inLang` in
+  [`app/src/lib/content/types.ts`](app/src/lib/content/types.ts) is the only
+  rule, so a page, a card and a rail reading the same row cannot disagree.
+- **Builder pages** fall back the same way, per binding key, and record which
+  values were borrowed so the editor can mark them. See
+  [`app/src/builder/resolve.ts`](app/src/builder/resolve.ts).
+
+`hreflang` is the exception that does not degrade: it is emitted only for a
+real twin, because pointing it at a section would tell a search engine that a
+project brief and the project index are the same document in two languages.
+
+This replaced a generated `LANG_ALTERNATES` table, which could only hold the
+pairs the converter knew about — never a `:slug` route — so all fifteen of
+those routes used to drop you on the Korean home page.
 
 ## Redirects
 

@@ -6,7 +6,7 @@ import './StoryEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function StoryEN() {
   return (
-    <SiteLayout lang="EN" page="Story.EN.dc.html" className="page-story-en" footer={{ loop: "0.421", cta: "#FAB414", stroke: "#FAF4E2" }}>
+    <SiteLayout page="Story.EN.dc.html" className="page-story-en" footer={{ loop: "0.421", cta: "#FAB414", stroke: "#FAF4E2" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
         <section style={{ background: "#FAB414", color: "#1A1A1A" }}>

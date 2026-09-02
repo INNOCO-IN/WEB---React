@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useProjects } from '../../lib/hooks/useContent';
 import { copyIn } from '../../lib/content/types';
 import type { ProjectCard as Project } from '../../lib/content/types';
-import type { Lang } from '../nav-data';
+import { useTranslation } from 'react-i18next';
+import { localize, useLocaleOr, type Locale } from '../../lib/lang';
 import './cards.css';
 
 /**
@@ -19,14 +20,13 @@ import './cards.css';
  */
 
 interface Props {
-  lang?: Lang;
+  locale?: Locale;
 }
 
 /** The vertical rail label, and what the arrow says to a screen reader. */
-const KIND: Record<Lang, string> = { EN: 'Project', KO: '프로젝트' };
-const OPEN: Record<Lang, string> = { EN: 'Open', KO: '열기' };
 
-export default function ProjectWall({ lang = 'EN' }: Props) {
+export default function ProjectWall({ locale: given }: Props) {
+  const locale = useLocaleOr(given);
   const { data: projects } = useProjects();
   const cards = projects.filter((project) => !project.featured);
 
@@ -35,30 +35,32 @@ export default function ProjectWall({ lang = 'EN' }: Props) {
   return (
     <div className="in-wall">
       {cards.map((project) => (
-        <ProjectBrief key={project.slug} project={project} lang={lang} />
+        <ProjectBrief key={project.slug} project={project} locale={locale} />
       ))}
     </div>
   );
 }
 
-export function ProjectBrief({ project, lang = 'EN' }: { project: Project; lang?: Lang }) {
-  const copy = copyIn(project, lang);
+export function ProjectBrief({ project, locale: given }: { project: Project; locale?: Locale }) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
+  const copy = copyIn(project, locale);
   // The card's small line is the eyebrow — 'Zayed University, UAE · Since
   // 2016'. The rail's shorter label stands in for a row that has no eyebrow.
   const label = copy.eyebrow ?? copy.meta;
 
   return (
     <Link
-      to={project.route ?? `/project/${project.slug}`}
+      to={localize(project.route ?? `/project/${project.slug}`, locale)}
       className="in-project-card in-card in-plain"
-      aria-label={`${OPEN[lang]} — ${copy.title}`}
+      aria-label={`${t('cards.open')} — ${copy.title}`}
     >
       <div className="in-project-card__bar" />
 
       <div className="in-project-card__body">
         <div className="in-project-card__rail">
           <span className="in-dot" />
-          <span className="in-rail-label">{KIND[lang]}</span>
+          <span className="in-rail-label">{t('cards.kindProject')}</span>
         </div>
 
         <div className="in-project-card__text">

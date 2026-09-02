@@ -10,7 +10,7 @@ export default function CollectivesEN() {
   const { closedToNew, openToNew, roster } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Collectives.EN.dc.html" className="page-collectives-en" footer={{ loop: "0.103", cta: "#46325A" }}>
+    <SiteLayout page="Collectives.EN.dc.html" className="page-collectives-en" footer={{ loop: "0.103", cta: "#46325A" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (plum band) = the CONCEPT ===================== */}
         <section style={{ background: "#46325A", color: "#FAF4E2" }}>

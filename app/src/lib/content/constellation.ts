@@ -15,6 +15,22 @@ export interface ConstellationPoint {
   /** yyyy-mm — points are placed by month, not by day. */
   month: string;
   caption: string | null;
+  /**
+   * Korean copy, absent until someone writes it — see `inLang`. The bundled
+   * rows never carry it: they are extracted from the English page, and the
+   * translation belongs in the table.
+   *
+   * `topicKo` is a label only. `topic` stays the grouping key, so the sky
+   * clusters the same way in both languages.
+   */
+  titleKo?: string | null;
+  byKo?: string | null;
+  captionKo?: string | null;
+  topicKo?: string | null;
+  titleZhTw?: string | null;
+  byZhTw?: string | null;
+  captionZhTw?: string | null;
+  topicZhTw?: string | null;
   /** Up to three ways to follow it. */
   read: string | null;
   media: string | null;

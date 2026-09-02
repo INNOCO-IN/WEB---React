@@ -11,7 +11,7 @@ export default function ConstellationEN() {
   const { cancelClose, closeSel, closeSoon, dots, hasMedia, hasRead, hasSel, hasView, labels, legend, mediaLabel, modeButtons, popStyle, selCaption, selDot, selFormat, selMedia, selMeta, selRead, selTitle, selView, skyHint } = useLogic();
 
   return (
-    <SiteLayout lang="EN" page="Constellation.EN.dc.html" className="page-constellation-en" footer={{ loop: "0.897", cta: "#F0D23C" }}>
+    <SiteLayout page="Constellation.EN.dc.html" className="page-constellation-en" footer={{ loop: "0.897", cta: "#F0D23C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (unchanged) */}
         <section data-screen-label="Hero" style={{ background: "#F0D23C", color: "#1A1A1A" }}>

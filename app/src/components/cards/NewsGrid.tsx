@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useNews } from '../../lib/hooks/useContent';
-import { accentColor, type Feed, type NewsItem } from '../../lib/content/types';
-import type { Lang } from '../nav-data';
+import { accentColor, inLang, type Feed, type NewsItem } from '../../lib/content/types';
+import { useTranslation } from 'react-i18next';
+import { localize, useLocaleOr, type Locale } from '../../lib/lang';
 import { formatDate } from '../../lib/format';
 import './cards.css';
 
@@ -17,22 +18,20 @@ import './cards.css';
 interface Props {
   /** Which list to draw: the News page, the Community page, the Home grid. */
   feed?: Feed;
-  lang?: Lang;
+  locale?: Locale;
   limit?: number;
 }
 
-const EMPTY: Record<string, string> = {
-  EN: 'Nothing here yet — the next entry is being written.',
-  KO: '아직 소식이 없습니다.',
-};
 
-export default function NewsGrid({ feed = 'news', lang = 'EN', limit }: Props) {
+export default function NewsGrid({ feed = 'news', locale: given, limit }: Props) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
   const { data: items } = useNews(feed, limit);
 
   if (!items.length) {
     return (
       <div className="in-wall">
-        <p className="in-wall-empty">{EMPTY[lang] ?? EMPTY.EN}</p>
+        <p className="in-wall-empty">{t('cards.newsEmpty')}</p>
       </div>
     );
   }
@@ -40,7 +39,7 @@ export default function NewsGrid({ feed = 'news', lang = 'EN', limit }: Props) {
   return (
     <div className="in-wall">
       {items.map((item) => (
-        <NewsCard key={item.id} item={item} lang={lang} />
+        <NewsCard key={item.id} item={item} locale={locale} />
       ))}
     </div>
   );
@@ -54,9 +53,15 @@ export default function NewsGrid({ feed = 'news', lang = 'EN', limit }: Props) {
  * an anchor inside an anchor is invalid — browsers recover by closing the
  * outer one early, which silently unlinks the rest of the card.
  */
-export function NewsCard({ item, lang = 'EN' }: { item: NewsItem; lang?: Lang }) {
+export function NewsCard({ item, locale: given }: { item: NewsItem; locale?: Locale }) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
   const accent = accentColor(item.accent, 'var(--color-tan)');
-  const meta = [formatDate(item.published_at, lang), item.eyebrow].filter(Boolean).join(' · ');
+  const title = inLang(item.title, { ko: item.title_ko, 'zh-TW': item.title_zh_tw }, locale) ?? item.title;
+  const eyebrow = inLang(item.eyebrow, { ko: item.eyebrow_ko, 'zh-TW': item.eyebrow_zh_tw }, locale);
+  const blurb = inLang(item.body, { ko: item.body_ko, 'zh-TW': item.body_zh_tw }, locale);
+  const kind = inLang(item.kind, { ko: item.kind_ko, 'zh-TW': item.kind_zh_tw }, locale);
+  const meta = [formatDate(item.published_at, locale), eyebrow].filter(Boolean).join(' · ');
   const external = item.link ? /^https?:/.test(item.link) : false;
 
   const body = (
@@ -72,15 +77,15 @@ export function NewsCard({ item, lang = 'EN' }: { item: NewsItem; lang?: Lang })
       <div className="in-news-card__body">
         <div className="in-news-card__rail">
           <span className="in-dot" style={{ background: accent }} />
-          {item.kind ? <span className="in-rail-label">{item.kind}</span> : null}
+          {kind ? <span className="in-rail-label">{kind}</span> : null}
         </div>
 
         <div className="in-news-card__text">
           {meta ? <div className="in-news-card__meta">{meta}</div> : null}
-          <h3 className="in-news-card__title">{item.title}</h3>
-          {item.body ? <p className="in-news-card__blurb">{item.body}</p> : null}
+          <h3 className="in-news-card__title">{title}</h3>
+          {blurb ? <p className="in-news-card__blurb">{blurb}</p> : null}
           <div className="in-news-card__cta">
-            {item.link ? (lang === 'KO' ? '읽기' : 'Read') : lang === 'KO' ? '준비 중' : 'Page coming'}
+            {item.link ? t('cards.read') : t('cards.pageComing')}
           </div>
         </div>
       </div>
@@ -95,7 +100,7 @@ export function NewsCard({ item, lang = 'EN' }: { item: NewsItem; lang?: Lang })
             {body}
           </a>
         ) : (
-          <Link className="in-news-card__link in-card in-plain" to={item.link}>
+          <Link className="in-news-card__link in-card in-plain" to={localize(item.link, locale)}>
             {body}
           </Link>
         )

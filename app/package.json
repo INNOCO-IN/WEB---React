@@ -15,22 +15,32 @@
     "db:types": "node scripts/db-types.mjs",
     "content-map": "node scripts/content-map.mjs",
     "content-map:check": "node scripts/content-map.mjs --check",
-    "model-audit": "node scripts/model-audit.mjs"
+    "model-audit": "node scripts/model-audit.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "builder:migrate": "node scripts/migrate-builder-page.mjs",
+    "builder:migrate:check": "node scripts/migrate-builder-page.mjs --check"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.112.2",
+    "i18next": "26.4.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "react-i18next": "17.0.13",
     "react-router-dom": "7.18.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
     "@types/node": "24.13.3",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.4",
     "@vitejs/plugin-react": "6.0.5",
+    "jsdom": "30.0.1",
     "oxlint": "1.77.0",
     "supabase": "2.115.0",
     "typescript": "6.0.3",
-    "vite": "8.2.1"
+    "vite": "8.2.1",
+    "vitest": "4.1.11"
   }
 }

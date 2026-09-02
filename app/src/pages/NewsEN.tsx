@@ -7,7 +7,7 @@ import './NewsEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function NewsEN() {
   return (
-    <SiteLayout lang="EN" page="News.EN.dc.html" className="page-news-en" footer={{ loop: "0.36", cta: "#966432" }}>
+    <SiteLayout page="News.EN.dc.html" className="page-news-en" footer={{ loop: "0.36", cta: "#966432" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         {/* HERO */}
