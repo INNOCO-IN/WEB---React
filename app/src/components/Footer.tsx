@@ -116,7 +116,7 @@ export default function Footer({ loop, cta, stroke }: FooterProps) {
 
         <div className="in-footer__base">
           <div className="in-footer__legal">{t('footer.legal')}</div>
-          <LanguageSwitcher idPrefix="footer" className="in-footer__lang" />
+          <LanguageSwitcher idPrefix="footer" className="in-footer__lang" placement="up" />
         </div>
       </div>
     </footer>

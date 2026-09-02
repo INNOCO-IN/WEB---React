@@ -1,0 +1,127 @@
+/* The language switch.
+   A button showing the current language, and a list of the others under it.
+   Sized and coloured like the nav labels beside it — this is chrome, and it
+   should not read louder than the page it sits on. */
+
+.in-lang {
+  position: relative;
+  flex: 0 0 auto;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.in-lang__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  margin: -6px -8px; /* the hit area grows, the layout does not */
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.in-lang__trigger:hover {
+  color: var(--color-teal);
+}
+
+.in-lang__chevron {
+  transition: transform 120ms ease-out;
+  color: rgba(46, 59, 64, 0.45);
+}
+
+.in-lang__trigger[aria-expanded='true'] .in-lang__chevron {
+  transform: rotate(180deg);
+}
+
+/* ------------------------------------------------------------------ the list */
+
+.in-lang__menu {
+  position: absolute;
+  z-index: 40;
+  inset-inline-end: 0;
+  min-width: 190px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--color-paper);
+  border: var(--border-width) solid var(--color-ink);
+  box-shadow: 0 14px 34px rgba(46, 59, 64, 0.16);
+}
+
+.in-lang[data-placement='down'] .in-lang__menu {
+  top: calc(100% + 10px);
+}
+
+/* The footer's copy has nothing below it to open into. */
+.in-lang[data-placement='up'] .in-lang__menu {
+  bottom: calc(100% + 10px);
+}
+
+.in-lang__item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 10px;
+  text-decoration: none;
+  color: rgba(46, 59, 64, 0.72);
+  /* Each language is written in its own script, so let each set its own
+     leading rather than forcing the Latin one on Hangul and Han. */
+  line-height: 1.35;
+}
+
+a.in-lang__item:hover {
+  background: var(--color-paper-dim);
+  color: var(--color-ink);
+}
+
+.in-lang__item.is-current {
+  color: var(--color-ink);
+  background: var(--color-paper-dim);
+  cursor: default;
+}
+
+.in-lang__item.is-unavailable {
+  color: rgba(46, 59, 64, 0.35);
+  cursor: default;
+}
+
+/* A language that cannot land on this page still appears — knowing it exists
+   and is not available here is more use than it quietly missing. */
+.in-lang__item.is-approximate {
+  color: rgba(46, 59, 64, 0.6);
+}
+
+.in-lang__note {
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(46, 59, 64, 0.5);
+}
+
+.in-lang__trigger:focus-visible,
+a.in-lang__item:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .in-lang__chevron {
+    transition: none;
+  }
+}
+
+/* On a narrow screen the header has no room for a panel hanging off the right
+   edge, so it opens from the edge of the viewport instead of the button. */
+@media (max-width: 480px) {
+  .in-lang__menu {
+    inset-inline-end: -8px;
+  }
+}

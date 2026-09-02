@@ -1,107 +1,239 @@
+import { useEffect, useId, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { alternates, storeLocale, useLocale } from '../lib/lang';
-import { LOCALE_SHORT, HTML_LANG, type Locale } from '../i18n/locales';
+import { LOCALE_NAMES, LOCALE_SHORT, HTML_LANG, type Locale } from '../i18n/locales';
+import './LanguageSwitcher.css';
 
 /**
- * The EN / 繁中 / KR switch, in the header and the footer.
+ * The language switch: a button showing the current language, and a list of
+ * the others under it.
+ *
+ * A disclosure — a button that reveals a list of links — rather than a
+ * `role="menu"` widget. Menu semantics are for application commands, and a
+ * screen reader announcing "menu, 3 items" over what are plainly three links
+ * to three pages is worse than announcing three links. The keyboard support
+ * here is the part `role="menu"` would have bought, written out: arrows move
+ * between the languages, Escape closes and hands focus back, and Tab still
+ * works the way Tab works.
  *
  * Three states per language, and it is honest about all three:
  *
  *   - the same page exists → a plain link
- *   - it does not, but the section above it does → a link, dimmed, saying so
+ *   - it does not, but something above it does → a link, marked, saying so
  *   - the language has nothing at all → not a link, and says that instead
  *
  * The middle case is the common one. Most of this site exists in English only,
  * and sending someone from a project brief to the Korean home page reads as
  * losing their place rather than as the page not existing.
  *
- * Each entry is a real link, so it is reachable by Tab, activates on Enter,
- * and can be opened in a new tab. `lang` on each one tells a screen reader to
- * pronounce the label in its own language rather than the page's, and
- * `aria-current` marks where you are.
+ * The list stays in the DOM when closed rather than being unmounted, so the
+ * links are there for anything reading the page without running the toggle.
  */
 
 interface Props {
   /** Distinguishes the header and footer copies for assistive technology. */
   idPrefix: string;
   className?: string;
+  /** Which way the list opens. The footer's has nothing below it. */
+  placement?: 'down' | 'up';
 }
 
-export default function LanguageSwitcher({ idPrefix, className }: Props) {
+export default function LanguageSwitcher({ idPrefix, className, placement = 'down' }: Props) {
   const { pathname } = useLocation();
   const current = useLocale();
   const { t } = useTranslation();
-  const labelId = `${idPrefix}-language-label`;
+  const [open, setOpen] = useState(false);
+
+  const root = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const generatedId = useId();
+  const menuId = `${idPrefix}-language-menu${generatedId}`;
+  const labelId = `${idPrefix}-language-label${generatedId}`;
+
+  // Navigating is the point of the thing, so the list closes behind you.
+  useEffect(() => setOpen(false), [pathname]);
+
+  // A click anywhere else, and it should be gone. Pointerdown rather than
+  // click, so it closes on press instead of waiting for the release.
+  useEffect(() => {
+    if (!open) return;
+    const away = (event: PointerEvent) => {
+      if (!root.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener('pointerdown', away);
+    return () => document.removeEventListener('pointerdown', away);
+  }, [open]);
+
+  /** The focusable entries, in the order they are shown. */
+  const items = () =>
+    Array.from(root.current?.querySelectorAll<HTMLAnchorElement>('[data-lang-item]') ?? []);
+
+  function moveFocus(step: 1 | -1, from?: number) {
+    const all = items();
+    if (!all.length) return;
+    const index = from ?? all.indexOf(document.activeElement as HTMLAnchorElement);
+    const next = index < 0 ? (step === 1 ? 0 : all.length - 1) : (index + step + all.length) % all.length;
+    all[next]?.focus();
+  }
+
+  function onTriggerKeyDown(event: React.KeyboardEvent) {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      setOpen(true);
+      // After the list is shown, not before it — the entries cannot take
+      // focus while their container is still hidden.
+      requestAnimationFrame(() => moveFocus(1, event.key === 'ArrowDown' ? -1 : items().length));
+    }
+  }
+
+  function onMenuKeyDown(event: React.KeyboardEvent) {
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        moveFocus(1);
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        moveFocus(-1);
+        break;
+      case 'Home':
+        event.preventDefault();
+        items()[0]?.focus();
+        break;
+      case 'End':
+        event.preventDefault();
+        items().at(-1)?.focus();
+        break;
+      case 'Escape':
+        event.preventDefault();
+        setOpen(false);
+        trigger.current?.focus();
+        break;
+      default:
+    }
+  }
+
+  const currentName = t(`language.names.${current}` as 'language.names.en');
 
   return (
-    <nav className={className} aria-labelledby={labelId}>
+    <div
+      className={['in-lang', className].filter(Boolean).join(' ')}
+      data-placement={placement}
+      ref={root}
+      onKeyDown={(event) => {
+        // Escape from anywhere inside, including the trigger.
+        if (event.key === 'Escape' && open) {
+          setOpen(false);
+          trigger.current?.focus();
+        }
+      }}
+    >
       <span id={labelId} className="in-visually-hidden">
         {t('language.switcherLabel')}
       </span>
 
-      {alternates(pathname).map((alt, index) => {
-        const name = t(`language.names.${alt.locale}` as 'language.names.en');
-        const short = LOCALE_SHORT[alt.locale];
-        const separator = index > 0 ? <span aria-hidden="true">/</span> : null;
+      <button
+        ref={trigger}
+        type="button"
+        className="in-lang__trigger"
+        aria-expanded={open}
+        aria-controls={menuId}
+        aria-describedby={labelId}
+        onClick={() => setOpen((was) => !was)}
+        onKeyDown={onTriggerKeyDown}
+      >
+        <span lang={HTML_LANG[current]}>{LOCALE_SHORT[current]}</span>
+        <span className="in-visually-hidden">{t('language.current', { name: currentName })}</span>
+        <Chevron />
+      </button>
 
-        if (alt.locale === current) {
-          return (
-            <span key={alt.locale}>
-              {separator}
-              <span className="is-current" lang={HTML_LANG[alt.locale]} aria-current="true">
-                {short}
-              </span>
-              <span className="in-visually-hidden">{t('language.current', { name })}</span>
-            </span>
-          );
-        }
+      <ul
+        id={menuId}
+        className="in-lang__menu"
+        aria-labelledby={labelId}
+        hidden={!open}
+        onKeyDown={onMenuKeyDown}
+      >
+        {alternates(pathname).map((alt) => {
+          const name = LOCALE_NAMES[alt.locale];
+          const translated = t(`language.names.${alt.locale}` as 'language.names.en');
 
-        if (!alt.available) {
+          if (alt.locale === current) {
+            return (
+              <li key={alt.locale}>
+                <span
+                  className="in-lang__item is-current"
+                  lang={HTML_LANG[alt.locale]}
+                  aria-current="true"
+                  data-lang-item
+                  tabIndex={-1}
+                >
+                  {name}
+                </span>
+              </li>
+            );
+          }
+
+          if (!alt.available) {
+            return (
+              <li key={alt.locale}>
+                <span
+                  className="in-lang__item is-unavailable"
+                  lang={HTML_LANG[alt.locale]}
+                  aria-disabled="true"
+                  title={t('language.unavailable', { name: translated })}
+                >
+                  {name}
+                  <span className="in-lang__note">{t('language.unavailableShort')}</span>
+                </span>
+              </li>
+            );
+          }
+
+          const note = alt.exact
+            ? t('language.switchTo', { name: translated })
+            : t('language.approximate', { name: translated });
+
           return (
-            <span key={alt.locale}>
-              {separator}
-              <span
-                className="is-unavailable"
+            <li key={alt.locale}>
+              <Link
+                to={alt.to}
                 lang={HTML_LANG[alt.locale]}
-                aria-disabled="true"
-                title={t('language.unavailable', { name })}
+                className={`in-lang__item${alt.exact ? '' : ' is-approximate'}`}
+                title={alt.exact ? undefined : note}
+                aria-label={note}
+                data-lang-item
+                onClick={() => storeLocale(alt.locale)}
               >
-                {short}
-              </span>
-            </span>
+                {name}
+                {alt.exact ? null : (
+                  // Short on screen, and the whole sentence on the accessible
+                  // name — a switcher is not the place for three lines of prose.
+                  <span className="in-lang__note">{t('language.approximateShort')}</span>
+                )}
+              </Link>
+            </li>
           );
-        }
-
-        const note = alt.exact
-          ? t('language.switchTo', { name })
-          : t('language.approximate', { name });
-
-        return (
-          <span key={alt.locale}>
-            {separator}
-            <Link
-              to={alt.to}
-              lang={HTML_LANG[alt.locale]}
-              className={alt.exact ? undefined : 'is-approximate'}
-              title={alt.exact ? undefined : note}
-              aria-label={note}
-              onClick={() => rememberChoice(alt.locale)}
-            >
-              {short}
-            </Link>
-          </span>
-        );
-      })}
-    </nav>
+        })}
+      </ul>
+    </div>
   );
 }
 
-/**
- * Clicking a language is the only signal that someone *chose* one, as opposed
- * to following a link that happened to be in it. So it is the only thing that
- * writes the preference.
- */
-function rememberChoice(locale: Locale): void {
-  storeLocale(locale);
+function Chevron() {
+  return (
+    <svg
+      className="in-lang__chevron"
+      width="9"
+      height="6"
+      viewBox="0 0 9 6"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
+
+export type { Locale };

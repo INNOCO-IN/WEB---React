@@ -44,7 +44,9 @@
       "en": "英文",
       "zh-TW": "繁體中文",
       "ko": "韓文"
-    }
+    },
+    "approximateShort": "前往上層區塊",
+    "unavailableShort": "尚未提供"
   },
   "cards": {
     "open": "開啟",

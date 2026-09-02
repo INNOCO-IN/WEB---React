@@ -44,7 +44,9 @@
       "en": "영어",
       "zh-TW": "번체 중국어",
       "ko": "한국어"
-    }
+    },
+    "approximateShort": "상위 섹션으로 이동",
+    "unavailableShort": "아직 제공되지 않음"
   },
   "cards": {
     "open": "열기",

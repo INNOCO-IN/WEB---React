@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 import i18next from './i18n';
@@ -107,44 +107,110 @@ describe('the 404', () => {
 });
 
 describe('the language switcher', () => {
-  it('offers every locale, and marks the ones that cannot land here', async () => {
-    await visit('/manifesto');
+  /**
+   * Opens the header's switch and hands back its list.
+   *
+   * The trigger is found by its accessible name in whatever language the page
+   * is in, which is also the assertion that the name is translated at all.
+   */
+  const TRIGGER = /Current language|현재 언어|目前語言/;
+
+  async function openSwitcher() {
     await screen.findByRole('banner');
+    const [trigger] = screen.getAllByRole('button', { name: TRIGGER });
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
-    const nav = screen.getAllByRole('navigation', { name: 'Language' })[0];
-    expect(nav).toBeInTheDocument();
+    // Followed through `aria-controls` rather than looked up by name, because
+    // the list's name is translated too — and following it is the check that
+    // the button and its list are actually wired together.
+    const listId = trigger.getAttribute('aria-controls');
+    const list = listId ? document.getElementById(listId) : null;
+    expect(list).not.toBeNull();
+    expect(list).toBeVisible();
+    return within(list as HTMLElement);
+  }
 
-    // Manifesto has a Korean twin, so that switch is exact. It was not
-    // collapsed, so it has no Chinese address and that switch degrades.
-    expect(nav.querySelector('a[lang="ko"]')).toHaveAttribute('href', '/ko/manifesto');
-    const chinese = nav.querySelector('a[lang="zh-Hant-TW"]');
-    expect(chinese).toHaveAttribute('href', '/zh-tw');
-    expect(chinese).toHaveClass('is-approximate');
+  it('opens on the trigger and closes on Escape', async () => {
+    await visit('/news');
+    await screen.findByRole('banner');
+    const [trigger] = screen.getAllByRole('button', { name: TRIGGER });
+
+    fireEvent.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+
+    fireEvent.keyDown(trigger, { key: 'Escape' });
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(trigger).toHaveFocus();
+  });
+
+  it('opens on ArrowDown and moves between the languages with the arrows', async () => {
+    await visit('/news');
+    await screen.findByRole('banner');
+    const [trigger] = screen.getAllByRole('button', { name: TRIGGER });
+
+    fireEvent.keyDown(trigger, { key: 'ArrowDown' });
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+
+    const listId = trigger.getAttribute('aria-controls') as string;
+    const list = document.getElementById(listId) as HTMLElement;
+    const entries = Array.from(list.querySelectorAll<HTMLElement>('[data-lang-item]'));
+    expect(entries).toHaveLength(3);
+
+    // The trigger opens and hands focus to the first entry on the next frame.
+    entries[0].focus();
+    fireEvent.keyDown(list, { key: 'ArrowDown' });
+    expect(entries[1]).toHaveFocus();
+    fireEvent.keyDown(list, { key: 'End' });
+    expect(entries[2]).toHaveFocus();
+    // And it wraps, so you cannot get stuck at the bottom.
+    fireEvent.keyDown(list, { key: 'ArrowDown' });
+    expect(entries[0]).toHaveFocus();
+    fireEvent.keyDown(list, { key: 'ArrowUp' });
+    expect(entries[2]).toHaveFocus();
+  });
+
+  it('names each language in its own language', async () => {
+    await visit('/news');
+    const menu = await openSwitcher();
+    expect(menu.getByText('English')).toBeInTheDocument();
+    expect(menu.getByText('繁體中文')).toBeInTheDocument();
+    expect(menu.getByText('한국어')).toBeInTheDocument();
+  });
+
+  it('marks the language you are already reading', async () => {
+    await visit('/ko/news');
+    const menu = await openSwitcher();
+    expect(menu.getByText('한국어')).toHaveAttribute('aria-current', 'true');
   });
 
   it('is exact in all three languages on a collapsed page', async () => {
     await visit('/news');
-    await screen.findByRole('banner');
-    const nav = screen.getAllByRole('navigation', { name: 'Language' })[0];
-    expect(nav.querySelector('a[lang="ko"]')).toHaveAttribute('href', '/ko/news');
-    expect(nav.querySelector('a[lang="zh-Hant-TW"]')).toHaveAttribute('href', '/zh-tw/news');
-    expect(nav.querySelector('a[lang="zh-Hant-TW"]')).not.toHaveClass('is-approximate');
+    const menu = await openSwitcher();
+    expect(menu.getByRole('link', { name: /Korean/ })).toHaveAttribute('href', '/ko/news');
+    const chinese = menu.getByRole('link', { name: /Traditional Chinese/ });
+    expect(chinese).toHaveAttribute('href', '/zh-tw/news');
+    expect(chinese).not.toHaveClass('is-approximate');
   });
 
   it('keeps you on the same page when a twin exists', async () => {
     await visit('/workshop/metanoia');
-    await screen.findByRole('banner');
-    const nav = screen.getAllByRole('navigation', { name: 'Language' })[0];
-    expect(nav.querySelector('a[lang="ko"]')).toHaveAttribute('href', '/ko/workshop/metanoia');
+    const menu = await openSwitcher();
+    expect(menu.getByRole('link', { name: /Korean/ })).toHaveAttribute(
+      'href',
+      '/ko/workshop/metanoia',
+    );
   });
 
   it('offers the section, marked, where the page has no twin', async () => {
     await visit('/project/food-revolution');
-    await screen.findByRole('banner');
-    const nav = screen.getAllByRole('navigation', { name: 'Language' })[0];
-    const korean = nav.querySelector('a[lang="ko"]');
+    const menu = await openSwitcher();
+    const korean = menu.getByRole('link', { name: /Korean/ });
     expect(korean).toHaveAttribute('href', '/ko/project');
     expect(korean).toHaveClass('is-approximate');
+    // And it says why, rather than only looking different.
+    expect(korean).toHaveAccessibleName(/no Korean version/i);
   });
 });
 

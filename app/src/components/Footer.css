@@ -75,38 +75,11 @@
   color: var(--color-ink-40);
 }
 
+/* Position only — the switch styles itself. See LanguageSwitcher.css. */
 .in-footer__lang {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   flex: 0 0 auto;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  line-height: 1;
 }
 
-.in-footer__lang .is-current {
-  color: var(--color-ink);
-}
-
-.in-footer__lang-sep {
-  color: rgba(46, 59, 64, 0.3);
-}
-
-.in-footer__lang a {
-  color: rgba(46, 59, 64, 0.5);
-}
-
-/* No page in the other language — the switch lands on the section above it,
-   and says so rather than looking like an ordinary jump. */
-.in-footer__lang a.is-approximate {
-  color: rgba(46, 59, 64, 0.32);
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 3px;
-}
 
 @media (max-width: 900px) {
   .in-footer__grid {

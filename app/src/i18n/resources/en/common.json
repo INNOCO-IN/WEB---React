@@ -44,7 +44,9 @@
       "en": "English",
       "zh-TW": "Traditional Chinese",
       "ko": "Korean"
-    }
+    },
+    "approximateShort": "Goes to the section",
+    "unavailableShort": "Not available yet"
   },
   "cards": {
     "open": "Open",
