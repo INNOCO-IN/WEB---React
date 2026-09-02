@@ -152,7 +152,29 @@ export function cssPropToJs(prop) {
 }
 
 /** A CSS declaration list → the source text of a React style object. */
-export function styleStringToObject(css) {
+/**
+ * A literal font stack → the design token that already means it.
+ *
+ * The Korean pages differ from the English ones partly by having Noto spliced
+ * into thirteen inline stacks. Naming the token instead makes that difference
+ * disappear rather than handling it: `--font-serif` resolves to the stack with
+ * Noto in it under `:root[lang='ko']`, so one component sets the right face in
+ * every language. See styles/tokens/fonts.css.
+ */
+function fontToken(stack) {
+  if (/^['"]?Newsreader/.test(stack.trim())) return 'var(--font-serif)';
+  if (/^['"]?Archivo/.test(stack.trim())) return 'var(--font-sans)';
+  return null;
+}
+
+/**
+ * @param {object} [opts]
+ * @param {boolean} [opts.tokeniseFonts] rewrite literal stacks to design tokens
+ * @param {string[][]} [opts.capture]    collect `[prop, value]` pairs per style
+ * @param {Map<string,string>} [opts.substitute] prop → replacement value
+ */
+export function styleStringToObject(css, opts = {}) {
+  const { tokeniseFonts = false, capture = null, substitute = null } = opts;
   // A style object cannot repeat a key, and duplicated declarations do occur
   // in the source. CSS resolves them last-wins, so a Map does the same.
   const entries = new Map();
@@ -168,6 +190,16 @@ export function styleStringToObject(css) {
     value = value.replace(/\s*!important\s*$/i, '');
 
     const key = cssPropToJs(prop);
+    if (tokeniseFonts && key === 'fontFamily') {
+      const token = fontToken(value);
+      if (token) value = token;
+    }
+    // A value that differs between the two language editions is a design
+    // decision about that language, not a word — a Hangul headline needs more
+    // leading than a Latin one. It becomes a custom property so the one
+    // component can carry both.
+    if (capture) capture.push([key, value]);
+    if (substitute?.has(key)) value = substitute.get(key);
     const quotedKey = /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(key) ? key : JSON.stringify(key);
     entries.set(quotedKey, `${quotedKey}: ${JSON.stringify(value)}`);
   }
@@ -319,6 +351,32 @@ export function parse(html, notes = []) {
  *     silently renders as `where wepractice`.
  *   - `{`, `}` and `<`, which are syntax rather than text.
  */
+/**
+ * Whether a run of text is a sentence rather than punctuation.
+ *
+ * `→`, `·`, `/` and lone digits are the same in every language, so keying them
+ * would put arrows in a translator's word list. Anything with a letter in it —
+ * Latin, Hangul or Han — is copy.
+ */
+function isCopy(value) {
+  return /[\p{Letter}]/u.test(value);
+}
+
+/**
+ * Records one translatable string and returns the key that stands in for it.
+ *
+ * Keys are positional — `003_h1` — because the words come out of the two HTML
+ * pages by walking them in step, and position is the only thing the English
+ * and the Korean file provably share. They sort into document order, which is
+ * what makes the two files readable side by side.
+ */
+function wordKey(ctx, tag, value) {
+  const index = String(ctx.words.size).padStart(3, '0');
+  const key = `${index}_${tag ?? 'text'}`;
+  ctx.words.set(key, value.replace(/\s+/g, ' ').trim());
+  return key;
+}
+
 function jsxText(value) {
   const collapsed = value.replace(/\s+/g, ' ');
   if (!collapsed.trim()) return '';
@@ -347,6 +405,25 @@ function jsxTextWithBindings(value) {
   return parts.filter(Boolean).join('');
 }
 
+/**
+ * Options for the next inline style, numbered in document order.
+ *
+ * The number is what lets the English and the Korean edition of a page be
+ * compared: same structure, same walk, so style *n* on one side is style *n*
+ * on the other.
+ */
+function styleOpts(ctx) {
+  if (!ctx.styles2) return { tokeniseFonts: ctx.tokeniseFonts };
+  const index = ctx.styles2.length;
+  const capture = [];
+  ctx.styles2.push(capture);
+  return {
+    tokeniseFonts: ctx.tokeniseFonts,
+    capture,
+    substitute: ctx.substitutions?.get(index) ?? null,
+  };
+}
+
 const INDENT = (n) => '  '.repeat(n);
 
 /**
@@ -370,6 +447,13 @@ export function toJsx(node, ctx, depth = 0) {
   }
 
   if (node.type === 'text') {
+    // On a collapsed page the words leave the component and become a key. The
+    // structure stays here, which is the whole point: one component, and the
+    // sentences in a file per language.
+    if (ctx.words && !hasBinding(node.value) && isCopy(node.value)) {
+      const key = wordKey(ctx, ctx.parentTag, node.value);
+      return `${INDENT(depth)}{t(${JSON.stringify(key)})}`;
+    }
     const out = hasBinding(node.value) ? jsxTextWithBindings(node.value) : jsxText(node.value);
     return out ? INDENT(depth) + out : '';
   }
@@ -469,7 +553,9 @@ export function toJsx(node, ctx, depth = 0) {
     ctx.chipDepth--;
     const chipProps = props.join(' ');
     const styleProp = node.attrs.find((a) => a.name === 'style');
-    const styleText = styleProp ? ` style={${styleStringToObject(styleProp.value)}}` : '';
+    const styleText = styleProp
+      ? ` style={${styleStringToObject(styleProp.value, styleOpts(ctx))}}`
+      : '';
     return `${INDENT(depth)}<ChipGroup ${chipProps}${styleText}>
 ${inner}
 ${INDENT(depth)}</ChipGroup>`;
@@ -519,8 +605,16 @@ ${INDENT(depth)}</ChipGroup>`;
         ctx.usesSx = true;
         props.push(`style={sx(\`${value.replace(/\{\{([\s\S]*?)\}\}/g, (_, e) => `\${${e.trim()}}`)}\`)}`);
       } else {
-        props.push(`style={${styleStringToObject(value)}}`);
+        props.push(`style={${styleStringToObject(value, styleOpts(ctx))}}`);
       }
+      continue;
+    }
+
+    // alt, and the labels assistive technology reads aloud, are copy — they
+    // describe the page to someone in the language they are reading it in.
+    if (ctx.words && ['alt', 'aria-label', 'title'].includes(lower) && isCopy(value) && !asBinding(value)) {
+      const react = lower === 'aria-label' ? 'aria-label' : lower;
+      props.push(`${react}={t(${JSON.stringify(wordKey(ctx, lower, value))})}`);
       continue;
     }
 
@@ -533,7 +627,14 @@ ${INDENT(depth)}</ChipGroup>`;
       }
       const to = ctx.resolveHref(value);
       if (to && to.internal) {
-        props.push(`to=${JSON.stringify(to.path)}`);
+        // One component serves every language, so its links cannot be written
+        // in one. `localize` takes the twin where there is one and keeps the
+        // default-locale page where there is not.
+        props.push(
+          ctx.localizeLinks
+            ? `to={localize(${JSON.stringify(to.path)}, locale)}`
+            : `to=${JSON.stringify(to.path)}`,
+        );
       } else {
         props.push(`href=${JSON.stringify(to ? to.path : value)}`);
       }
@@ -607,10 +708,18 @@ ${INDENT(depth)}</ChipGroup>`;
 }
 
 function renderChildren(node, ctx, depth) {
-  return node.children
+  // The tag a run of text sits inside, for naming its key. Saved and
+  // restored rather than assigned: the walk is depth-first, so without
+  // this the text after a nested element would be named for that element
+  // instead of for its own parent.
+  const outer = ctx.parentTag;
+  ctx.parentTag = node.tag;
+  const out = node.children
     .map((child) => toJsx(child, ctx, depth))
     .filter(Boolean)
     .join('\n');
+  ctx.parentTag = outer;
+  return out;
 }
 
 export { VOID, ATTR };

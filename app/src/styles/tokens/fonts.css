@@ -7,6 +7,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Archivo:wght@600;700;800&display=swap');
 
+/* The two families carry every language the site speaks, and each script
+   needs a face behind them: Newsreader and Archivo have no Hangul or Han
+   coverage, so the token names the fallback rather than each page naming it.
+   SiteLayout puts the locale on <html>, so these resolve per page and one
+   component can set the right face in every language. */
+:root[lang='ko'] {
+  --font-serif: 'Newsreader', 'Noto Serif KR', Georgia, serif;
+  --font-sans: 'Archivo', 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root[lang='zh-Hant-TW'] {
+  --font-serif: 'Newsreader', 'Noto Serif TC', Georgia, serif;
+  --font-sans: 'Archivo', 'Noto Sans TC', 'Helvetica Neue', Arial, sans-serif;
+}
+
 :root {
   --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;

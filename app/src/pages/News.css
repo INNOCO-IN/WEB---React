@@ -1,0 +1,30 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Generated: edit the legacy pages. */
+:root {
+  --in-news-0: 0.98;
+  --in-news-1: 1.04;
+  --in-news-2: 1.06;
+}
+
+:root[lang='ko'] {
+  --in-news-0: 1.14;
+  --in-news-1: 1.18;
+  --in-news-2: 1.18;
+}
+
+
+.page-news * { box-sizing: border-box; }
+.page-news, .page-news { margin: 0; padding: 0; }
+.page-news { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-news ::selection { background: #966432; color: #FAF4E2; }
+.page-news a { color: #966432; }
+.page-news a:hover { color: #6E4722; }
+.page-news .cm-card { transition: transform 0.18s ease, box-shadow 0.18s ease; text-decoration: none; }
+.page-news .cm-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }
+
+
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-news [style*="padding: 52px 28px"] {padding:36px 20px !important;}
+.page-news [style*="font-size: 60px"] {font-size:34px !important;line-height:1.15 !important;}
+}

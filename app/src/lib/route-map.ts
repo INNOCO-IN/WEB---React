@@ -142,6 +142,7 @@ export const ROUTE_PATHS: string[] = [
   "/ko/workshop/shadow-shifter",
   "/workshop",
   "/ko/workshop",
+  "/zh-tw/news",
   "/community/:slug",
   "/project/:slug",
   "/workshop/:slug",

@@ -7,7 +7,7 @@ import { resolvePage, translationProgress } from './resolve';
 import { customizeLayoutForLocale, returnToSharedLayout, setLocaleValue } from './operations';
 import { validateDocument } from './validate';
 import { parseBuilderPage } from './parse';
-import { BUILDER_PAGES, matchBuilderPath, pathForPage } from './routes';
+import { BUILDER_PAGES, BUILDER_SERVES, matchBuilderPath, pathForPage } from './routes';
 import type { BuilderPage, PageDocument } from './types';
 
 /**
@@ -302,15 +302,23 @@ describe('the migrated page', () => {
     expect(page.sharedDocument.nodes[0].props.background).toBe('tan');
   });
 
-  it('answers at its localized addresses', () => {
+  it('knows its address in every locale, from the localized slug', () => {
     expect(pathForPage(page, 'en')).toBe('/news');
     expect(pathForPage(page, 'ko')).toBe('/ko/news');
+    // zh-TW has no record of its own, so it borrows the default locale's slug
+    // rather than becoming unreachable.
     expect(pathForPage(page, 'zh-TW')).toBe('/zh-tw/news');
-    expect(matchBuilderPath('/zh-tw/news')?.locale).toBe('zh-TW');
+  });
+
+  it('answers for nothing until a routeKey is listed', () => {
+    // News is served by a collapsed component now, so the builder stands down.
+    // `BUILDER_SERVES` is the only switch; the page itself is unchanged.
+    expect(BUILDER_SERVES).toEqual([]);
+    expect(matchBuilderPath('/zh-tw/news')).toBeNull();
     expect(matchBuilderPath('/nope')).toBeNull();
   });
 
-  it('renders in the new language with English text and Chinese chrome', async () => {
+  it('still renders on demand, in a language it has no words for', async () => {
     await renderAt(<BuilderPageView page={page} locale="zh-TW" />, '/zh-tw/news');
     expect(screen.getByRole('heading', { name: 'What the network is doing right now.' })).toBeInTheDocument();
     // The shell is Chinese even where the page copy is not.

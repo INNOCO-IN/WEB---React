@@ -51,9 +51,10 @@ describe('existing pages still render', () => {
 });
 
 describe('the new locale', () => {
-  it('serves the migrated page, with the shell in Chinese', async () => {
+  it('serves a collapsed page in a language it has no words for yet', async () => {
     await visit('/zh-tw/news');
-    // The page copy has no Chinese translation, so it falls back to English…
+    // News is one component for every language. Chinese has an empty word
+    // file, so the copy falls back to English…
     expect(
       await screen.findByRole('heading', { name: 'What the network is doing right now.' }),
     ).toBeInTheDocument();

@@ -32,12 +32,19 @@ export const BUILDER_PAGES: BuilderPage[] = [parseBundledPage(newsPage, 'news')]
 /**
  * routeKeys the builder is allowed to serve.
  *
- * `news` is the one migrated page. Its English and Korean addresses are still
- * held by the converted components, so what this actually lights up today is
- * `/zh-tw/news` — a language the static site never had, rendering the shared
- * layout with its text falling back to English.
+ * Empty, and deliberately so. News was migrated into the builder as the worked
+ * example, and then collapsed into a single component instead — which turned
+ * out to be the better answer for a page that already has a hand-made design:
+ * it keeps the design exactly, rather than approximating it with primitives.
+ * `src/builder/pages/news.json` stays as the reference for what a page
+ * document looks like.
+ *
+ * The builder is for pages that should become *data* — editable without a
+ * deploy, by someone who does not write React. Add a routeKey here when a page
+ * is that. A converted route still wins, so listing one that a component
+ * already serves shadows the builder rather than replacing the page.
  */
-export const BUILDER_SERVES: readonly string[] = ['news'];
+export const BUILDER_SERVES: readonly string[] = [];
 
 function served(): BuilderPage[] {
   return BUILDER_PAGES.filter((page) => BUILDER_SERVES.includes(page.routeKey));

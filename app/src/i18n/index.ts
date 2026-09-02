@@ -9,6 +9,7 @@ import zhTWCommon from './resources/zh-TW/common.json';
 import zhTWBuilder from './resources/zh-TW/builder.json';
 import koCommon from './resources/ko/common.json';
 import koBuilder from './resources/ko/builder.json';
+import { PAGE_NAMESPACES, PAGE_RESOURCES } from './resources/pages';
 
 /**
  * The string catalogue.
@@ -25,14 +26,19 @@ import koBuilder from './resources/ko/builder.json';
  * catalogue ever grows enough to justify it.
  */
 
-export const NAMESPACES = ['common', 'builder'] as const;
+/**
+ * `common` and `builder` are written by hand. The rest are page namespaces —
+ * one per page that is served by a single component in every language, their
+ * words extracted from `site/` by the converter. See resources/pages.ts.
+ */
+export const NAMESPACES = ['common', 'builder', ...PAGE_NAMESPACES] as const;
 
 export type Namespace = (typeof NAMESPACES)[number];
 
 export const resources = {
-  en: { common: enCommon, builder: enBuilder },
-  'zh-TW': { common: zhTWCommon, builder: zhTWBuilder },
-  ko: { common: koCommon, builder: koBuilder },
+  en: { common: enCommon, builder: enBuilder, ...PAGE_RESOURCES.en },
+  'zh-TW': { common: zhTWCommon, builder: zhTWBuilder, ...PAGE_RESOURCES['zh-TW'] },
+  ko: { common: koCommon, builder: koBuilder, ...PAGE_RESOURCES.ko },
 } as const;
 
 /**

@@ -351,6 +351,121 @@ function applyDataSwaps(tree, file, ctx) {
   return applied;
 }
 
+/* ---------------------------------------------------------------- collapsing */
+
+/**
+ * Page pairs served by one component instead of two.
+ *
+ * The EN and KO editions of these pages are the same page: same elements, same
+ * order, same colours. What differs is the words, the font stack, the `/ko` on
+ * the links, and a handful of line-heights that Hangul needs and Latin does
+ * not. All four of those can be expressed once, so the page is emitted once
+ * and its sentences go to a file per language.
+ *
+ * Add a base name here to collapse that pair; remove it to go back to two
+ * components. Nothing else changes — the routes, the redirects and the design
+ * are the same either way.
+ */
+const COLLAPSED = new Set(['News']);
+
+/** `News` → `news`, the i18next namespace its words live in. */
+const namespaceFor = (base) => base.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase();
+
+const RESOURCES = join(SRC, 'i18n', 'resources');
+
+/** Mirrors LOCALE_PREFIX in src/i18n/locales.ts for the locales emitted here. */
+const LOCALE_PREFIX = { 'zh-TW': 'zh-tw' };
+const collapsedPages = [];
+
+/** Routes for the locales a collapsed page serves without a page in `site/`. */
+const extraLocaleRoutes = [];
+
+/**
+ * Writes one page's words, one file per language.
+ *
+ * The generated locales come from `site/`, which stays the source of truth —
+ * edit the legacy page and re-run. A locale with no page in `site/` gets an
+ * empty file *once* and is never written again, because that file is where a
+ * translation with no HTML behind it has to live, and clobbering it would
+ * delete somebody's work on every build.
+ */
+function writeWords(namespace, byLocale) {
+  for (const [locale, words] of Object.entries(byLocale)) {
+    const dir = join(RESOURCES, locale, 'pages');
+    mkdirSync(dir, { recursive: true });
+    const sorted = Object.fromEntries([...words.entries()].sort(([a], [b]) => a.localeCompare(b)));
+    writeFileSync(join(dir, `${namespace}.json`), `${JSON.stringify(sorted, null, 2)}\n`);
+  }
+
+  for (const locale of HAND_TRANSLATED) {
+    const dir = join(RESOURCES, locale, 'pages');
+    mkdirSync(dir, { recursive: true });
+    const target = join(dir, `${namespace}.json`);
+    if (!existsSync(target)) writeFileSync(target, '{}\n');
+  }
+}
+
+/** Locales with no edition in `site/`, whose words are written by hand. */
+const HAND_TRANSLATED = ['zh-TW'];
+
+/**
+ * Walks one edition of a page, collecting its words and its inline styles.
+ *
+ * The JSX it produces is thrown away on the second edition — this is only run
+ * twice so the two can be compared. Data swaps are applied to both, because a
+ * card wall replaced on one side and not the other would put every following
+ * text node at a different number.
+ */
+function harvest(file) {
+  const html = resolveConflicts(readFileSync(join(SITE, file), 'utf8'), file).html;
+  const ctx = {
+    imports: new Set(),
+    styles: [],
+    footer: null,
+    usesSx: false,
+    resolveHref,
+    resolveAsset,
+    words: new Map(),
+    styles2: [],
+    tokeniseFonts: true,
+  };
+  const tree = parse(extractBody(html), []);
+  applyDataSwaps(tree, file, ctx);
+  toJsx(tree, ctx, 3);
+  return { words: ctx.words, styles: ctx.styles2 };
+}
+
+/**
+ * The inline style values that differ between two editions of a page.
+ *
+ * Each one becomes a custom property, defined twice: once at the root and once
+ * under the other language. That is how a single component keeps a headline at
+ * `line-height: 0.98` in English and `1.14` in Korean without knowing which it
+ * is rendering.
+ */
+function styleDifferences(base, other, prefix) {
+  const substitutions = new Map();
+  const rootVars = [];
+  const otherVars = [];
+  let n = 0;
+
+  const count = Math.min(base.length, other.length);
+  for (let i = 0; i < count; i++) {
+    const b = new Map(base[i]);
+    const o = new Map(other[i]);
+    for (const [prop, value] of b) {
+      const alt = o.get(prop);
+      if (alt === undefined || alt === value) continue;
+      const name = `--${prefix}-${n++}`;
+      if (!substitutions.has(i)) substitutions.set(i, new Map());
+      substitutions.get(i).set(prop, `var(${name})`);
+      rootVars.push(`  ${name}: ${value};`);
+      otherVars.push(`  ${name}: ${alt};`);
+    }
+  }
+  return { substitutions, rootVars, otherVars, aligned: base.length === other.length };
+}
+
 /* ------------------------------------------------------------------ emitter */
 
 mkdirSync(PAGES, { recursive: true });
@@ -374,9 +489,20 @@ for (const file of files) {
     continue;
   }
 
-  const html = resolveConflicts(readFileSync(join(SITE, file), 'utf8'), file).html;
-  const name = entry.component;
   const parsed = parseFile(file);
+  const collapsed = parsed && COLLAPSED.has(parsed.name);
+  const base = collapsed ? parsed.name.replace(/[^A-Za-z0-9]/g, '') : null;
+
+  // The second edition of a collapsed pair keeps its route and its redirect
+  // and stops getting a component, exactly as a templated page does. Its words
+  // were harvested while the first edition was emitted.
+  if (collapsed && parsed.lang !== 'EN') {
+    generated.push({ file, ...entry, component: base });
+    continue;
+  }
+
+  const html = resolveConflicts(readFileSync(join(SITE, file), 'utf8'), file).html;
+  const name = collapsed ? base : entry.component;
 
   const ctx = {
     imports: new Set(),
@@ -386,6 +512,38 @@ for (const file of files) {
     resolveHref,
     resolveAsset,
   };
+
+  // A collapsed page is walked three times: once per edition to collect its
+  // words and inline styles, then once more to emit, with the differences
+  // already turned into custom properties.
+  let words = null;
+  let langVars = null;
+  if (collapsed) {
+    const twin = `${parsed.name}.KO.dc.html`;
+    const mine = harvest(file);
+    const theirs = harvest(twin);
+
+    const sameKeys =
+      mine.words.size === theirs.words.size &&
+      [...mine.words.keys()].every((k) => theirs.words.has(k));
+    if (!sameKeys) {
+      console.log('');
+      console.log(`!! ${parsed.name}: the two editions do not line up — not collapsed.`);
+      console.log(`   ${file} has ${mine.words.size} strings, ${twin} has ${theirs.words.size}.`);
+      console.log('   Their structures have drifted; reconcile them in site/ first.');
+      process.exitCode = 1;
+      continue;
+    }
+
+    const diff = styleDifferences(mine.styles, theirs.styles, `in-${namespaceFor(parsed.name)}`);
+    ctx.substitutions = diff.substitutions;
+    ctx.styles2 = [];
+    ctx.tokeniseFonts = true;
+    ctx.words = new Map();
+    ctx.localizeLinks = true;
+    langVars = diff;
+    words = { en: mine.words, ko: theirs.words };
+  }
 
   const notes = [];
   const tree = parse(extractBody(html), notes);
@@ -397,7 +555,29 @@ for (const file of files) {
 
   const scope = 'page-' + name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
   const css = ctx.styles.join('\n').trim();
-  if (css) writeFileSync(join(PAGES, `${name}.css`), scopeCss(css, scope) + '\n');
+  // Values this page sets differently in each language become custom
+  // properties, defined once at the root and once under the other language.
+  // That is how one component keeps a headline at `line-height: 0.98` in
+  // English and 1.14 in Korean without knowing which it is rendering.
+  const langCss =
+    langVars && langVars.rootVars.length
+      ? [
+          '/* Set differently per language — mostly leading, which Hangul needs',
+          '   more of than Latin does. Generated: edit the legacy pages. */',
+          ':root {',
+          ...langVars.rootVars,
+          '}',
+          '',
+          ":root[lang='ko'] {",
+          ...langVars.otherVars,
+          '}',
+          '',
+        ].join('\n')
+      : '';
+  if (css || langCss) {
+    const body = [langCss, css ? scopeCss(css, scope) : ''].filter(Boolean).join('\n');
+    writeFileSync(join(PAGES, `${name}.css`), body + '\n');
+  }
 
   const bindings = bindingIdentifiers(tree);
   const logic = extractLogic(html);
@@ -421,6 +601,7 @@ for (const file of files) {
 
   const imports = [];
   if (ctx.imports.has('Fragment')) imports.push(`import { Fragment } from 'react';`);
+  if (collapsed && ctx.words.size) imports.push(`import { useTranslation } from 'react-i18next';`);
   if (ctx.imports.has('Link')) imports.push(`import { Link } from 'react-router-dom';`);
   imports.push(`import SiteLayout from '../components/SiteLayout';`);
   if (ctx.imports.has('ImageSlot')) imports.push(`import ImageSlot from '../components/ImageSlot';`);
@@ -437,18 +618,32 @@ for (const file of files) {
     else parts.push(`import { Chip } from '../components/ChipGroup';`);
     imports.push(...parts);
   }
+  if (collapsed && ctx.imports.has('Link')) imports.push(`import { localize, useLocale } from '../lib/lang';`);
   if (ctx.usesSx) imports.push(`import { sx } from '../lib/sx';`);
   if (bindings.length) imports.push(`import useLogic from '../logic/${name}';`);
-  if (css) imports.push(`import './${name}.css';`);
+  if (css || langCss) imports.push(`import './${name}.css';`);
 
-  const destructure = bindings.length
-    ? `  const { ${bindings.join(', ')} } = useLogic();\n\n`
-    : '';
+  // A collapsed page reads its words from the catalogue and its links'
+  // language from the route. Both are only declared when used, so a page
+  // with no links does not carry an unused `locale`.
+  const preamble = [];
+  if (collapsed && ctx.words.size) {
+    preamble.push(`  const { t } = useTranslation(${JSON.stringify(namespaceFor(parsed.name))});`);
+  }
+  if (collapsed && ctx.imports.has('Link')) preamble.push('  const locale = useLocale();');
+  if (bindings.length) preamble.push(`  const { ${bindings.join(', ')} } = useLogic();`);
+  const destructure = preamble.length ? `${preamble.join('\n')}\n\n` : '';
 
   const source = `${imports.join('\n')}
 
-/** ${file} — generated by scripts/convert-pages.mjs. Edit the legacy page, or
- *  take this file over by hand and remove it from the converter's input. */
+${collapsed
+    ? `/** ${parsed.name} — one component for every language, generated by
+ *  scripts/convert-pages.mjs from ${file} and its KO twin. The words live in
+ *  src/i18n/resources/<locale>/pages/${namespaceFor(parsed.name)}.json; the
+ *  line-heights that differ by language are custom properties in ${name}.css.
+ *  Edit the legacy pages, not this file. */`
+    : `/** ${file} — generated by scripts/convert-pages.mjs. Edit the legacy page, or
+ *  take this file over by hand and remove it from the converter's input. */`}
 export default function ${name}() {
 ${destructure}  return (
     <SiteLayout ${layoutProps.join(' ')}>
@@ -459,7 +654,64 @@ ${jsx}
 `;
 
   writeFileSync(join(PAGES, `${name}.tsx`), source);
-  generated.push({ file, ...entry });
+  if (collapsed) {
+    writeWords(namespaceFor(parsed.name), { en: ctx.words, ko: words.ko });
+    extraLocaleRoutes.push(
+      ...HAND_TRANSLATED.map((locale) => ({ locale, route: entry.route, component: name })),
+    );
+    collapsedPages.push({ name, namespace: namespaceFor(parsed.name), strings: ctx.words.size });
+  }
+  generated.push({ file, ...entry, ...(collapsed ? { component: name } : {}) });
+}
+
+/* --------------------------------------------------------- page word bundles */
+
+// One module listing every collapsed page's words, so i18n/index.ts can pull
+// them in without being edited each time a pair is collapsed.
+if (collapsedPages.length) {
+  const locales = ['en', 'zh-TW', 'ko'];
+  const ident = (locale, ns) =>
+    `${locale.replace(/[^A-Za-z0-9]/g, '')}_${ns.replace(/[^A-Za-z0-9]/g, '_')}`;
+
+  const imports = [];
+  for (const locale of locales) {
+    for (const page of collapsedPages) {
+      imports.push(
+        `import ${ident(locale, page.namespace)} from './${locale}/pages/${page.namespace}.json';`,
+      );
+    }
+  }
+
+  const bundles = locales
+    .map((locale) => {
+      const entries = collapsedPages
+        .map((page) => `    ${JSON.stringify(page.namespace)}: ${ident(locale, page.namespace)},`)
+        .join('\n');
+      return `  ${JSON.stringify(locale)}: {\n${entries}\n  },`;
+    })
+    .join('\n');
+
+  const source = `// Generated by scripts/convert-pages.mjs — do not edit by hand.
+${imports.join('\n')}
+
+/**
+ * The words of every page that is served by one component in every language.
+ *
+ * A collapsed page keeps its structure in src/pages and its sentences here,
+ * one namespace per page and one file per language. The English and Korean
+ * files are extracted from site/; a language with no page in site/ has an
+ * empty file that the converter creates once and never overwrites, because
+ * that is where a translation with no HTML behind it has to live.
+ */
+export const PAGE_RESOURCES = {
+${bundles}
+} as const;
+
+export const PAGE_NAMESPACES = [
+${collapsedPages.map((p) => `  ${JSON.stringify(p.namespace)},`).join('\n')}
+] as const;
+`;
+  writeFileSync(join(RESOURCES, 'pages.ts'), source);
 }
 
 /* ------------------------------------------------------------- route tables */
@@ -474,8 +726,17 @@ const templateRoutes = templateNames.flatMap((name) =>
 // to ask "is this a route?" — that is how the language switch knows whether a
 // page has a twin — and asking the registry drags every page's dynamic import
 // into the shell's chunk.
+// A collapsed page answers in every language, including the ones with no
+// edition in `site/` — their words come from a hand-written file that falls
+// back to English until somebody fills it in.
+const localeRoutes = extraLocaleRoutes.map(({ locale, route, component }) => ({
+  route: route === '/' ? `/${LOCALE_PREFIX[locale]}` : `/${LOCALE_PREFIX[locale]}${route}`,
+  component,
+}));
+
 const routePaths = [
   ...generated.filter((g) => !g.template).map((g) => g.route),
+  ...localeRoutes.map((r) => r.route),
   ...templateNames.flatMap((name) => routesForTemplate(name)),
 ];
 
@@ -491,7 +752,7 @@ import { lazy, type LazyExoticComponent, type ComponentType } from 'react';
  * page that still has a component of its own keeps winning its route.
  */
 export const PAGES: Record<string, LazyExoticComponent<ComponentType>> = {
-${generated.filter((g) => !g.template).map((g) => `  ${JSON.stringify(g.route)}: lazy(() => import('./${g.component}')),`).join('\n')}
+${generated.filter((g) => !g.template).map((g) => `  ${JSON.stringify(g.route)}: lazy(() => import('./${g.component}')),`).join('\n')}\n${localeRoutes.map((r) => `  ${JSON.stringify(r.route)}: lazy(() => import('./${r.component}')),`).join('\n')}
 
 ${templateRoutes.join('\n')}
 };
