@@ -1,0 +1,72 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Generated: edit the legacy pages. */
+:root {
+  --in-collectives-0: 0.98;
+  --in-collectives-1: 1.04;
+  --in-collectives-2: italic;
+  --in-collectives-3: 20px;
+  --in-collectives-4: 1.5;
+  --in-collectives-5: var(--font-serif);
+  --in-collectives-6: 400;
+  --in-collectives-7: 20px;
+  --in-collectives-8: #43326D;
+  --in-collectives-9: 1.04;
+}
+
+:root[lang='ko'] {
+  --in-collectives-0: 1.14;
+  --in-collectives-1: 1.12;
+  --in-collectives-2: normal;
+  --in-collectives-3: clamp(24px, 3vw, 40px);
+  --in-collectives-4: 1.3;
+  --in-collectives-5: var(--font-sans);
+  --in-collectives-6: 700;
+  --in-collectives-7: 14px;
+  --in-collectives-8: rgba(38,42,56,0.6);
+  --in-collectives-9: 1.18;
+}
+
+
+.page-collectives * { box-sizing: border-box; }
+.page-collectives, .page-collectives { margin: 0; padding: 0; }
+.page-collectives { background: #FAF4E2; color: #262A38; -webkit-font-smoothing: antialiased; }
+.page-collectives ::selection { background: #3C8246; color: #FAF4E2; }
+.page-collectives .tm-photo { width: 70%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: #F3EAD0; border-radius: 50%; filter: grayscale(0.15) contrast(1.02); }
+.page-collectives .tm-ph-block { width: 70%; aspect-ratio: 1 / 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: 0.02em; }
+.page-collectives .tm-more { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; color: #43326D; background: none; border: none; padding: 0; cursor: pointer; text-align: left; }
+.page-collectives .tm-more:hover { color: #E6328C; }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+.page-collectives [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-collectives [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
+.page-collectives [style*="grid-template-columns: repeat(3, .page-collectives minmax(0"] {grid-template-columns:1fr !important;}
+.page-collectives img, .page-collectives svg, .page-collectives video {max-width:100% !important;}
+.page-collectives [style*="font-size: 300px"] {display:none !important;}
+.page-collectives [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}
+.page-collectives [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
+.page-collectives [style*="width: 700px"] {width:auto !important;max-width:100% !important;}
+.page-collectives [style*="width: 800px"] {width:auto !important;max-width:100% !important;}
+.page-collectives [style*="width: 900px"] {width:auto !important;max-width:100% !important;}
+.page-collectives [style*="width: 1200px"] {width:auto !important;max-width:100% !important;}
+.page-collectives [style*="width: 1000px"] {width:auto !important;max-width:100% !important;}
+.page-collectives [style*="width: 950px"] {width:auto !important;max-width:100% !important;}
+.page-collectives [style*="height: 350px"], .page-collectives [style*="height: 250px"], .page-collectives [style*="height: 200px"], .page-collectives [style*="height: 180px"], .page-collectives [style*="height: 170px"], .page-collectives [style*="height: 130px"], .page-collectives [style*="height: 100px"] {height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-collectives [style*="padding: 72px 28px"] {padding:44px 20px !important;}
+.page-collectives [style*="padding: 66px 28px"] {padding:40px 20px !important;}
+.page-collectives [style*="padding: 62px 28px"] {padding:40px 20px !important;}
+.page-collectives [style*="padding: 60px 44px"] {padding:36px 24px !important;}
+.page-collectives [style*="padding: 40px 44px"] {padding:28px 22px !important;}
+.page-collectives [style*="padding: 52px 28px"] {padding:36px 20px !important;}
+.page-collectives [style*="padding: 56px 28px"] {padding:38px 20px !important;}
+.page-collectives [style*="padding: 64px 28px"] {padding:40px 20px !important;}
+.page-collectives [style*="padding: 40px 80px"] {padding:30px 20px !important;}
+.page-collectives [style*="padding: 40px 40px"] {padding:28px 20px !important;}
+.page-collectives [style*="padding: 44px 44px"] {padding:28px 20px !important;}
+.page-collectives [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+.page-collectives [style*="font-size: 60px"] {font-size:34px !important;line-height:1.15 !important;}
+}

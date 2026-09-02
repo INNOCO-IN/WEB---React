@@ -1,0 +1,36 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Generated: edit the legacy pages. */
+:root {
+  --in-story-index-0: 0.98;
+  --in-story-index-1: 1.0;
+  --in-story-index-2: italic;
+  --in-story-index-3: italic;
+}
+
+:root[lang='ko'] {
+  --in-story-index-0: 1.08;
+  --in-story-index-1: 1.1;
+  --in-story-index-2: normal;
+  --in-story-index-3: normal;
+}
+
+
+.page-story-index * { box-sizing: border-box; }
+.page-story-index, .page-story-index { margin: 0; padding: 0; }
+.page-story-index { background: #FAF4E2; color: #1A1613; -webkit-font-smoothing: antialiased; }
+.page-story-index ::selection { background: #C9962B; color: #FAF4E2; }
+.page-story-index a { color: #B87A00; }
+.page-story-index a:hover { color: #8f5f00; }
+.page-story-index .col-scroll::-webkit-scrollbar { width: 6px; }
+.page-story-index .col-scroll::-webkit-scrollbar-thumb { background: rgba(26,22,19,0.2); border-radius: 3px; }
+.page-story-index .story-body p { font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.5; letter-spacing: -0.003em; margin: 0 0 24px; color: #241f19; text-wrap: pretty; }
+.page-story-index .story-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 980px) {
+    .si-grid { grid-template-columns: 1fr !important; }
+.page-story-index .si-left, .page-story-index .si-right { position: static !important; height: auto !important; max-height: none !important; border: none !important; padding: 0 !important; }
+.page-story-index .si-left { order: 1; }
+.page-story-index .si-mid { order: 2; }
+.page-story-index .si-right { order: 3; }
+.page-story-index .si-left, .page-story-index .si-right { border-top: 1.5px solid rgba(26,22,19,0.14) !important; padding-top: 26px !important; }
+.page-story-index .si-railscroll { display: flex !important; flex-wrap: wrap; }
+  }

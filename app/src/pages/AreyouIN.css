@@ -1,0 +1,64 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Generated: edit the legacy pages. */
+:root {
+  --in-are-you-in-0: 0.98;
+  --in-are-you-in-1: 1.04;
+  --in-are-you-in-2: 1.05;
+  --in-are-you-in-3: 1.05;
+  --in-are-you-in-4: 1.05;
+  --in-are-you-in-5: 1.08;
+}
+
+:root[lang='ko'] {
+  --in-are-you-in-0: 1.14;
+  --in-are-you-in-1: 1.18;
+  --in-are-you-in-2: 1.18;
+  --in-are-you-in-3: 1.18;
+  --in-are-you-in-4: 1.18;
+  --in-are-you-in-5: 1.14;
+}
+
+
+.page-areyou-in * { box-sizing: border-box; }
+.page-areyou-in, .page-areyou-in { margin: 0; padding: 0; }
+.page-areyou-in { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-areyou-in ::selection { background: #1E8A86; color: #FAF4E2; }
+.page-areyou-in .in-field { width: 100%; font-family: 'Newsreader', serif; font-size: 18px; color: #2E3B40; background: #FAF4E2; border: 1.5px solid rgba(46,59,64,0.28); padding: 14px 16px; outline: none; }
+.page-areyou-in .in-field:focus { border-color: #1E8A86; }
+.page-areyou-in .in-field::placeholder { color: rgba(46,59,64,0.42); }
+.page-areyou-in select.in-field { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231A1613' stroke-width='1.6' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+.page-areyou-in [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-areyou-in [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
+.page-areyou-in [style*="grid-template-columns: repeat(3, .page-areyou-in minmax(0"] {grid-template-columns:1fr !important;}
+.page-areyou-in img, .page-areyou-in svg, .page-areyou-in video {max-width:100% !important;}
+.page-areyou-in [style*="font-size: 300px"] {display:none !important;}
+.page-areyou-in [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}
+.page-areyou-in [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
+.page-areyou-in [style*="width: 700px"] {width:auto !important;max-width:100% !important;}
+.page-areyou-in [style*="width: 800px"] {width:auto !important;max-width:100% !important;}
+.page-areyou-in [style*="width: 900px"] {width:auto !important;max-width:100% !important;}
+.page-areyou-in [style*="width: 1200px"] {width:auto !important;max-width:100% !important;}
+.page-areyou-in [style*="width: 1000px"] {width:auto !important;max-width:100% !important;}
+.page-areyou-in [style*="width: 950px"] {width:auto !important;max-width:100% !important;}
+.page-areyou-in [style*="height: 350px"], .page-areyou-in [style*="height: 250px"], .page-areyou-in [style*="height: 200px"], .page-areyou-in [style*="height: 180px"], .page-areyou-in [style*="height: 170px"], .page-areyou-in [style*="height: 130px"], .page-areyou-in [style*="height: 100px"] {height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-areyou-in [style*="padding: 72px 28px"] {padding:44px 20px !important;}
+.page-areyou-in [style*="padding: 66px 28px"] {padding:40px 20px !important;}
+.page-areyou-in [style*="padding: 62px 28px"] {padding:40px 20px !important;}
+.page-areyou-in [style*="padding: 60px 44px"] {padding:36px 24px !important;}
+.page-areyou-in [style*="padding: 40px 44px"] {padding:28px 22px !important;}
+.page-areyou-in [style*="padding: 52px 28px"] {padding:36px 20px !important;}
+.page-areyou-in [style*="padding: 56px 28px"] {padding:38px 20px !important;}
+.page-areyou-in [style*="padding: 64px 28px"] {padding:40px 20px !important;}
+.page-areyou-in [style*="padding: 40px 80px"] {padding:30px 20px !important;}
+.page-areyou-in [style*="padding: 40px 40px"] {padding:28px 20px !important;}
+.page-areyou-in [style*="padding: 44px 44px"] {padding:28px 20px !important;}
+.page-areyou-in [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+.page-areyou-in [style*="font-size: 60px"] {font-size:34px !important;line-height:1.15 !important;}
+}

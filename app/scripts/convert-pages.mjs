@@ -366,10 +366,19 @@ function applyDataSwaps(tree, file, ctx) {
  * components. Nothing else changes — the routes, the redirects and the design
  * are the same either way.
  */
-const COLLAPSED = new Set(['News']);
+const COLLAPSED_CANDIDATES = [
+  'Are-you-IN', 'Collectives', 'Community', 'Constellation', 'Home', 'MEWE',
+  'Manifesto', 'News', 'Project', 'Protagonist', 'Story', 'Story-Index',
+  'Workshop', 'Workshop-Bucket-List', 'Workshop-Jungle-Jam',
+  'Workshop-Light-Shadow-Shift', 'Workshop-Pathfinder', 'Workshop-Second-Life',
+  'Workshop-Shadow-Shifter',
+];
 
 /** `News` → `news`, the i18next namespace its words live in. */
 const namespaceFor = (base) => base.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase();
+
+/** `zh-TW` → `wordsZhTW`, the identifier its word file is imported as. */
+const wordIdent = (locale) => `words${locale.replace(/[^A-Za-z0-9]/g, '')}`;
 
 const RESOURCES = join(SRC, 'i18n', 'resources');
 
@@ -466,6 +475,47 @@ function styleDifferences(base, other, prefix) {
   return { substitutions, rootVars, otherVars, aligned: base.length === other.length };
 }
 
+/**
+ * Decides which pairs can be collapsed, before anything is written.
+ *
+ * It has to happen up front: the second edition of a collapsed pair is skipped
+ * during emission, so discovering the pair does not line up *while* emitting
+ * would leave that language with no component at all. A pair that fails here
+ * simply is not collapsed, and both editions are emitted the way they always
+ * were.
+ */
+const COLLAPSED = new Set();
+const COLLAPSE_PLANS = new Map();
+const COLLAPSE_REJECTED = [];
+
+for (const name of COLLAPSED_CANDIDATES) {
+  const en = `${name}.EN.dc.html`;
+  const ko = `${name}.KO.dc.html`;
+  if (TAKEN_OVER.has(en) || TAKEN_OVER.has(ko)) continue;
+  if (!existsSync(join(SITE, en)) || !existsSync(join(SITE, ko))) continue;
+
+  const mine = harvest(en);
+  const theirs = harvest(ko);
+  const missing = [...mine.words.keys()].filter((k) => !theirs.words.has(k));
+
+  if (mine.words.size !== theirs.words.size || missing.length) {
+    COLLAPSE_REJECTED.push({
+      name,
+      en: mine.words.size,
+      ko: theirs.words.size,
+      firstGap: missing[0] ?? null,
+    });
+    continue;
+  }
+
+  COLLAPSED.add(name);
+  COLLAPSE_PLANS.set(name, {
+    en: mine.words,
+    ko: theirs.words,
+    diff: styleDifferences(mine.styles, theirs.styles, `in-${namespaceFor(name)}`),
+  });
+}
+
 /* ------------------------------------------------------------------ emitter */
 
 mkdirSync(PAGES, { recursive: true });
@@ -513,36 +563,20 @@ for (const file of files) {
     resolveAsset,
   };
 
-  // A collapsed page is walked three times: once per edition to collect its
-  // words and inline styles, then once more to emit, with the differences
-  // already turned into custom properties.
+  // The differences between the two editions were worked out before the loop.
+  // A pair that did not line up is not in COLLAPSED, so it lands here as two
+  // ordinary pages and nothing is lost.
   let words = null;
   let langVars = null;
   if (collapsed) {
-    const twin = `${parsed.name}.KO.dc.html`;
-    const mine = harvest(file);
-    const theirs = harvest(twin);
-
-    const sameKeys =
-      mine.words.size === theirs.words.size &&
-      [...mine.words.keys()].every((k) => theirs.words.has(k));
-    if (!sameKeys) {
-      console.log('');
-      console.log(`!! ${parsed.name}: the two editions do not line up — not collapsed.`);
-      console.log(`   ${file} has ${mine.words.size} strings, ${twin} has ${theirs.words.size}.`);
-      console.log('   Their structures have drifted; reconcile them in site/ first.');
-      process.exitCode = 1;
-      continue;
-    }
-
-    const diff = styleDifferences(mine.styles, theirs.styles, `in-${namespaceFor(parsed.name)}`);
-    ctx.substitutions = diff.substitutions;
+    const plan = COLLAPSE_PLANS.get(parsed.name);
+    ctx.substitutions = plan.diff.substitutions;
     ctx.styles2 = [];
     ctx.tokeniseFonts = true;
     ctx.words = new Map();
     ctx.localizeLinks = true;
-    langVars = diff;
-    words = { en: mine.words, ko: theirs.words };
+    langVars = plan.diff;
+    words = { en: plan.en, ko: plan.ko };
   }
 
   const notes = [];
@@ -601,7 +635,17 @@ for (const file of files) {
 
   const imports = [];
   if (ctx.imports.has('Fragment')) imports.push(`import { Fragment } from 'react';`);
-  if (collapsed && ctx.words.size) imports.push(`import { useTranslation } from 'react-i18next';`);
+  if (collapsed && ctx.words.size) {
+    // The words come in with the page, not with the shell — see
+    // src/i18n/page-words.ts for why.
+    const ns = namespaceFor(parsed.name);
+    imports.push(`import { usePageWords } from '../i18n/page-words';`);
+    for (const locale of ['en', 'zh-TW', 'ko']) {
+      imports.push(
+        `import ${wordIdent(locale)} from '../i18n/resources/${locale}/pages/${ns}.json';`,
+      );
+    }
+  }
   if (ctx.imports.has('Link')) imports.push(`import { Link } from 'react-router-dom';`);
   imports.push(`import SiteLayout from '../components/SiteLayout';`);
   if (ctx.imports.has('ImageSlot')) imports.push(`import ImageSlot from '../components/ImageSlot';`);
@@ -628,7 +672,12 @@ for (const file of files) {
   // with no links does not carry an unused `locale`.
   const preamble = [];
   if (collapsed && ctx.words.size) {
-    preamble.push(`  const { t } = useTranslation(${JSON.stringify(namespaceFor(parsed.name))});`);
+    const bundles = ['en', 'zh-TW', 'ko']
+      .map((locale) => `${JSON.stringify(locale)}: ${wordIdent(locale)}`)
+      .join(', ');
+    preamble.push(
+      `  const t = usePageWords(${JSON.stringify(namespaceFor(parsed.name))}, { ${bundles} });`,
+    );
   }
   if (collapsed && ctx.imports.has('Link')) preamble.push('  const locale = useLocale();');
   if (bindings.length) preamble.push(`  const { ${bindings.join(', ')} } = useLogic();`);
@@ -666,8 +715,9 @@ ${jsx}
 
 /* --------------------------------------------------------- page word bundles */
 
-// One module listing every collapsed page's words, so i18n/index.ts can pull
-// them in without being edited each time a pair is collapsed.
+// A module listing every collapsed page's words. Nothing imports it at
+// runtime — the pages carry their own — but i18next.d.ts types the catalogue
+// off it, so `t('001_h1')` is checked against the words actually extracted.
 if (collapsedPages.length) {
   const locales = ['en', 'zh-TW', 'ko'];
   const ident = (locale, ns) =>
@@ -807,6 +857,22 @@ for (const page of needsLogic) {
   const target = join(SRC, 'logic', `${page.name}.ts`);
   if (existsSync(target)) continue; // never clobber a hand-written hook
 
+  // A page that has just been collapsed changes name — Collectives.EN becomes
+  // Collectives — and its hand-written hook is still filed under the old one.
+  // Writing a stub here would look like a new page needing one and would bury
+  // the real hook under a component that returns `undefined as never`.
+  const perLanguage = ['EN', 'KO']
+    .map((lang) => join(SRC, 'logic', `${page.name}${lang}.ts`))
+    .filter((path) => existsSync(path));
+  if (perLanguage.length) {
+    console.log('');
+    console.log(`!! ${page.name} was collapsed but its logic hook still has the old name.`);
+    for (const path of perLanguage) console.log(`   ${path.split(/[\/]/).slice(-2).join('/')}`);
+    console.log(`   Move it to logic/${page.name}.ts and make it read the locale off the route.`);
+    process.exitCode = 1;
+    continue;
+  }
+
   const stub = `/**
  * ${page.file} — page logic.
  *
@@ -824,6 +890,24 @@ ${page.logic.replace(/\*\//g, '*\\/')}
 */
 `;
   writeFileSync(target, stub);
+}
+
+if (COLLAPSED.size || COLLAPSE_REJECTED.length) {
+  console.log('');
+  console.log(
+    `collapsed:  ${COLLAPSED.size} page pairs → one component each` +
+      (COLLAPSE_REJECTED.length ? `, ${COLLAPSE_REJECTED.length} left as two` : ''),
+  );
+  for (const page of collapsedPages) console.log(`   ${page.name} — ${page.strings} strings`);
+  for (const r of COLLAPSE_REJECTED) {
+    console.log(
+      `   ! ${r.name} — EN has ${r.en} strings, KO has ${r.ko}` +
+        (r.firstGap ? `; first gap at ${r.firstGap}` : ''),
+    );
+  }
+  if (COLLAPSE_REJECTED.length) {
+    console.log('     Their structures have drifted. Reconcile them in site/ to collapse them.');
+  }
 }
 
 if (malformed.length) {

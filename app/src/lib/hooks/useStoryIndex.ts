@@ -19,7 +19,12 @@ import { STORY_ENTRIES, TAXONOMY, type StoryCopy, type StoryEntry } from '../con
 
 const PAGE = 14;
 
-export type Lang = 'EN' | 'KO';
+import { useTranslation } from 'react-i18next';
+import { useLocaleOr, type Locale } from '../lang';
+import { INTL_LOCALE } from '../../i18n/locales';
+
+/** `story_entries` carries `en` and `ko`; anything else reads the English side. */
+const ENTRY_KEY: Record<Locale, 'en' | 'ko'> = { en: 'en', 'zh-TW': 'en', ko: 'ko' };
 
 /** A story flattened into one language, the way the index displays it. */
 export interface IndexedStory extends StoryCopy {
@@ -91,33 +96,12 @@ const toggleStyle = (on: boolean) =>
   `letter-spacing:0.08em; text-transform:uppercase; padding:8px 16px; border-radius:999px; ` +
   `border:1.5px solid ${INK}; background:${on ? INK : 'transparent'}; color:${on ? PAPER : INK};`;
 
-const COPY = {
-  EN: {
-    all: 'All',
-    byFormat: 'Filter by format',
-    byTopic: 'Filter by topic',
-    newest: '· newest first',
-    allStories: 'All stories',
-    total: (n: number) =>
-      `${n} stories and counting — the Constellation grows as neighbors add their own.`,
-    older: (n: number) => `Load ${n} older`,
-  },
-  KO: {
-    all: '전체',
-    byFormat: '형식으로 보기',
-    byTopic: '주제로 보기',
-    newest: '· 최신순',
-    allStories: '모든 이야기',
-    total: (n: number) => `${n}편의 이야기 — 이웃이 더할수록 별자리는 자랍니다.`,
-    older: (n: number) => `${n}편 더 보기`,
-  },
-} as const;
 
 /** `2026-07-16` → `July 2026`. Formatted in UTC so the month never slips. */
-function monthLabel(iso: string, lang: Lang): string {
+function monthLabel(iso: string, locale: Locale): string {
   const date = new Date(`${iso}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return '';
-  return new Intl.DateTimeFormat(lang === 'KO' ? 'ko-KR' : 'en-GB', {
+  return new Intl.DateTimeFormat(INTL_LOCALE[locale], {
     month: 'long',
     year: 'numeric',
     timeZone: 'UTC',
@@ -125,8 +109,8 @@ function monthLabel(iso: string, lang: Lang): string {
 }
 
 /** One record flattened into the requested language, with labels resolved. */
-function flatten(entry: StoryEntry, lang: Lang): IndexedStory {
-  const key = lang === 'KO' ? 'ko' : 'en';
+function flatten(entry: StoryEntry, locale: Locale): IndexedStory {
+  const key = ENTRY_KEY[locale];
   const copy = entry[key];
   return {
     ...copy,
@@ -144,8 +128,20 @@ function flatten(entry: StoryEntry, lang: Lang): IndexedStory {
   };
 }
 
-export default function useStoryIndex(lang: Lang = 'EN') {
-  const words = COPY[lang];
+export default function useStoryIndex(given?: Locale) {
+  const locale = useLocaleOr(given);
+  const { t } = useTranslation();
+  // The index's own labels. They were a table keyed by language in this file;
+  // they are interface strings like any other, so they live in the catalogue.
+  const words = {
+    all: t('stories.all'),
+    byFormat: t('stories.byFormat'),
+    byTopic: t('stories.byTopic'),
+    newest: t('stories.newest'),
+    allStories: t('stories.allStories'),
+    total: (n: number) => t('stories.total', { count: n }),
+    older: (n: number) => t('stories.older', { count: n }),
+  };
   const [entries, setEntries] = useState<StoryEntry[]>(STORY_ENTRIES);
   const [params, setParams] = useSearchParams();
 
@@ -172,8 +168,8 @@ export default function useStoryIndex(lang: Lang = 'EN') {
   }, []);
 
   const all = useMemo(
-    () => entries.map((entry) => flatten(entry, lang)).sort((a, b) => b.date.localeCompare(a.date)),
-    [entries, lang],
+    () => entries.map((entry) => flatten(entry, locale)).sort((a, b) => b.date.localeCompare(a.date)),
+    [entries, locale],
   );
 
   // ?story=<id> selects the featured story, which is what the permalinks do.
@@ -202,10 +198,10 @@ export default function useStoryIndex(lang: Lang = 'EN') {
     if (mode !== 'format') {
       return [words.all, ...new Set(all.map((s) => s.topic))];
     }
-    const offered = Object.values(TAXONOMY.format).map((v) => (lang === 'KO' ? v.ko : v.en));
+    const offered = Object.values(TAXONOMY.format).map((v) => (ENTRY_KEY[locale] === 'ko' ? v.ko : v.en));
     const extra = [...new Set(all.map((s) => s.format))].filter((f) => !offered.includes(f));
     return [words.all, ...offered, ...extra];
-  }, [all, mode, lang, words.all]);
+  }, [all, mode, locale, words.all]);
 
   const filters: FilterPill[] = options.map((option) => {
     const n = option === words.all ? all.length : (counts[option] ?? 0);
@@ -231,7 +227,7 @@ export default function useStoryIndex(lang: Lang = 'EN') {
 
   const groups: MonthGroup[] = [];
   for (const story of limited) {
-    const label = monthLabel(story.date, lang);
+    const label = monthLabel(story.date, locale);
     let group = groups[groups.length - 1];
     if (!group || group.label !== label) {
       group = { label, items: [] };
@@ -254,7 +250,7 @@ export default function useStoryIndex(lang: Lang = 'EN') {
 
   const current: FeaturedStory | undefined = source && {
     ...source,
-    dateLabel: monthLabel(source.date, lang),
+    dateLabel: monthLabel(source.date, locale),
     paras: (source.paras ?? []).map((text, i) =>
       // `## ` marks a section rule inside the body text.
       text.startsWith('## ')

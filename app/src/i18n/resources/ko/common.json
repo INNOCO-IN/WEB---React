@@ -111,5 +111,14 @@
     "openMenu": "메뉴 열기",
     "closeMenu": "메뉴 닫기",
     "externalLink": "{{label}} (새 탭에서 열림)"
+  },
+  "stories": {
+    "all": "전체",
+    "byFormat": "형식으로 보기",
+    "byTopic": "주제로 보기",
+    "newest": "· 최신순",
+    "allStories": "모든 이야기",
+    "total": "{{count}}편의 이야기 — 이웃이 더할수록 별자리는 자랍니다.",
+    "older": "{{count}}편 더 보기"
   }
 }

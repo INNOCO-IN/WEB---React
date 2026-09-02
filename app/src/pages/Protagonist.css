@@ -1,0 +1,57 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Generated: edit the legacy pages. */
+:root {
+  --in-protagonist-0: 0.96;
+  --in-protagonist-1: 1.04;
+  --in-protagonist-2: 1.04;
+  --in-protagonist-3: 0.9;
+  --in-protagonist-4: 1.02;
+  --in-protagonist-5: 0.9;
+  --in-protagonist-6: 1.02;
+  --in-protagonist-7: 0.9;
+  --in-protagonist-8: 1.02;
+  --in-protagonist-9: 0.9;
+  --in-protagonist-10: 1.02;
+  --in-protagonist-11: 1.02;
+  --in-protagonist-12: 1.0;
+  --in-protagonist-13: 1.06;
+}
+
+:root[lang='ko'] {
+  --in-protagonist-0: 1.12;
+  --in-protagonist-1: 1.12;
+  --in-protagonist-2: 1.12;
+  --in-protagonist-3: 1.12;
+  --in-protagonist-4: 1.16;
+  --in-protagonist-5: 1.12;
+  --in-protagonist-6: 1.16;
+  --in-protagonist-7: 1.12;
+  --in-protagonist-8: 1.16;
+  --in-protagonist-9: 1.12;
+  --in-protagonist-10: 1.16;
+  --in-protagonist-11: 1.1;
+  --in-protagonist-12: 1.1;
+  --in-protagonist-13: 1.18;
+}
+
+
+.page-protagonist * { box-sizing: border-box; }
+.page-protagonist, .page-protagonist { margin: 0; padding: 0; }
+.page-protagonist { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+.page-protagonist ::selection { background: #E6328C; color: #FAF4E2; }
+.page-protagonist a { color: #F05A28; }
+.page-protagonist a:hover { color: #B4321A; }
+.page-protagonist .stage { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.page-protagonist .stage:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 96px 1fr auto"]{grid-template-columns:1fr !important; gap:18px !important;}
+.page-protagonist [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-protagonist img, .page-protagonist svg, .page-protagonist video {max-width:100% !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-protagonist [style*="padding: 34px 36px"] {padding:26px 22px !important;}
+.page-protagonist [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+}

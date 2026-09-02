@@ -107,17 +107,28 @@ describe('the 404', () => {
 });
 
 describe('the language switcher', () => {
-  it('offers every locale, and says which are not available here', async () => {
+  it('offers every locale, and marks the ones that cannot land here', async () => {
     await visit('/manifesto');
     await screen.findByRole('banner');
 
     const nav = screen.getAllByRole('navigation', { name: 'Language' })[0];
     expect(nav).toBeInTheDocument();
 
-    // Korean exists for the manifesto; Chinese does not.
-    const korean = nav.querySelector('a[lang="ko"]');
-    expect(korean).toHaveAttribute('href', '/ko/manifesto');
-    expect(nav.querySelector('[lang="zh-Hant-TW"]')).toHaveAttribute('aria-disabled', 'true');
+    // Manifesto has a Korean twin, so that switch is exact. It was not
+    // collapsed, so it has no Chinese address and that switch degrades.
+    expect(nav.querySelector('a[lang="ko"]')).toHaveAttribute('href', '/ko/manifesto');
+    const chinese = nav.querySelector('a[lang="zh-Hant-TW"]');
+    expect(chinese).toHaveAttribute('href', '/zh-tw');
+    expect(chinese).toHaveClass('is-approximate');
+  });
+
+  it('is exact in all three languages on a collapsed page', async () => {
+    await visit('/news');
+    await screen.findByRole('banner');
+    const nav = screen.getAllByRole('navigation', { name: 'Language' })[0];
+    expect(nav.querySelector('a[lang="ko"]')).toHaveAttribute('href', '/ko/news');
+    expect(nav.querySelector('a[lang="zh-Hant-TW"]')).toHaveAttribute('href', '/zh-tw/news');
+    expect(nav.querySelector('a[lang="zh-Hant-TW"]')).not.toHaveClass('is-approximate');
   });
 
   it('keeps you on the same page when a twin exists', async () => {

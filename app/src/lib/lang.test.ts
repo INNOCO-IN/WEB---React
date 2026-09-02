@@ -95,11 +95,28 @@ describe('switching language keeps your place', () => {
     expect(alternateFor('/action-research', 'ko')).toMatchObject({ to: '/ko', exact: false });
   });
 
-  it('reports a locale with nothing to offer as unavailable', () => {
-    // Traditional Chinese has one page. Everywhere else the switch is dead,
-    // and says so rather than pretending.
-    expect(alternateFor('/manifesto', 'zh-TW').available).toBe(false);
+  it('answers in Chinese for the pages that were collapsed', () => {
+    // Sixteen page pairs are one component now, and a collapsed page answers
+    // in every language — its Chinese words are empty and fall back, but the
+    // address is real.
     expect(alternateFor('/news', 'zh-TW')).toMatchObject({ to: '/zh-tw/news', exact: true });
+    expect(alternateFor('/', 'zh-TW')).toMatchObject({ to: '/zh-tw', exact: true });
+  });
+
+  it('degrades to the Chinese home for a page that was not collapsed', () => {
+    // Manifesto's two editions had drifted, so it is still two components and
+    // has no Chinese address. The switch lands on the nearest thing that does.
+    expect(alternateFor('/manifesto', 'zh-TW')).toMatchObject({
+      to: '/zh-tw',
+      exact: false,
+      available: true,
+    });
+  });
+
+  it('calls a locale unavailable only when it has no home at all', () => {
+    // Every locale has a home now, so nothing is dead. The check still holds:
+    // `available` follows whether the fallback target is a route.
+    expect(alternates('/manifesto').every((a) => a.available)).toBe(true);
   });
 
   it('answers for every locale at once', () => {

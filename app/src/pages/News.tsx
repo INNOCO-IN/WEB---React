@@ -1,4 +1,7 @@
-import { useTranslation } from 'react-i18next';
+import { usePageWords } from '../i18n/page-words';
+import wordsen from '../i18n/resources/en/pages/news.json';
+import wordszhTW from '../i18n/resources/zh-TW/pages/news.json';
+import wordsko from '../i18n/resources/ko/pages/news.json';
 import { Link } from 'react-router-dom';
 import SiteLayout from '../components/SiteLayout';
 import NewsGrid from '../components/cards/NewsGrid';
@@ -11,7 +14,7 @@ import './News.css';
  *  line-heights that differ by language are custom properties in News.css.
  *  Edit the legacy pages, not this file. */
 export default function News() {
-  const { t } = useTranslation("news");
+  const t = usePageWords("news", { "en": wordsen, "zh-TW": wordszhTW, "ko": wordsko });
   const locale = useLocale();
 
   return (

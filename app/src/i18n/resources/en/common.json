@@ -111,5 +111,14 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "externalLink": "{{label}} (opens in a new tab)"
+  },
+  "stories": {
+    "all": "All",
+    "byFormat": "Filter by format",
+    "byTopic": "Filter by topic",
+    "newest": "· newest first",
+    "allStories": "All stories",
+    "total": "{{count}} stories and counting — the Constellation grows as neighbors add their own.",
+    "older": "Load {{count}} older"
   }
 }

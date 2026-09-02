@@ -373,7 +373,7 @@ function isCopy(value) {
 function wordKey(ctx, tag, value) {
   const index = String(ctx.words.size).padStart(3, '0');
   const key = `${index}_${tag ?? 'text'}`;
-  ctx.words.set(key, value.replace(/\s+/g, ' ').trim());
+  ctx.words.set(key, value.replace(/\s+/g, ' '));
   return key;
 }
 
@@ -451,6 +451,11 @@ export function toJsx(node, ctx, depth = 0) {
     // structure stays here, which is the whole point: one component, and the
     // sentences in a file per language.
     if (ctx.words && !hasBinding(node.value) && isCopy(node.value)) {
+      // The whitespace stays inside the string. It looks like layout — the gap
+      // after `<em>practice</em>` — but it is not: English needs that space
+      // and Korean, where the verb ending runs straight on from the emphasis,
+      // does not. Each language carries its own, so it has to travel with the
+      // words rather than being fixed in the markup.
       const key = wordKey(ctx, ctx.parentTag, node.value);
       return `${INDENT(depth)}{t(${JSON.stringify(key)})}`;
     }
