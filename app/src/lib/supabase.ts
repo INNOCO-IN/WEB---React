@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import type { Database } from './database.types';
 
 /**
  * The Supabase client, or null when the keys are absent.
@@ -19,18 +20,17 @@ const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 export const isSupabaseConfigured = Boolean(url && anonKey);
 
 /**
- * Untyped for now, and deliberately so: the `Database` type is generated from a
- * linked project, and importing a file that only appears after `npm run
- * db:types` would mean a fresh checkout could not typecheck. Once the generated
- * types are committed this becomes two lines —
+ * Typed from the generated schema, so every `.from('news')` knows its own
+ * columns and a query naming a column the database does not have fails at
+ * `tsc` rather than at runtime in someone's browser.
  *
- *   import type { Database } from './database.types';
- *   createClient<Database>(...)
- *
- * — after which every `.from('news')` knows its own columns. See SUPABASE.md.
+ * `database.types.ts` is committed for exactly this reason — a fresh checkout
+ * has to typecheck without a linked project. Regenerate it with `npm run
+ * db:types` after any schema change; a stale file is worse than none, because
+ * it type-checks confidently against a shape the database no longer has.
  */
-export const supabase: SupabaseClient | null = isSupabaseConfigured
-  ? createClient(url as string, anonKey as string)
+export const supabase: SupabaseClient<Database> | null = isSupabaseConfigured
+  ? createClient<Database>(url as string, anonKey as string)
   : null;
 
 if (!isSupabaseConfigured && import.meta.env.DEV) {

@@ -9,6 +9,7 @@ import type {
   WorkshopCard,
 } from '../content/types';
 import type { StoryEntry } from '../content/stories';
+import type { Json } from '../database.types';
 import type { ConstellationPoint } from '../content/constellation';
 import { BLANK_PORTRAIT, type Collective } from '../content/collectives';
 import { reportSource } from './status';
@@ -179,8 +180,14 @@ interface StoryEntryRow {
   image_fit: string | null;
   image_ratio: string | null;
   image_position: string | null;
-  en: StoryEntry['en'];
-  ko: StoryEntry['ko'];
+  /**
+   * `jsonb`, so Postgres guarantees valid JSON and nothing about its shape —
+   * the generated types call it `Json`, which is the truth. Narrowed where the
+   * row becomes a StoryEntry below, which is the one place that can say what
+   * the shape is meant to be.
+   */
+  en: Json;
+  ko: Json;
 }
 
 /** The curated story collection behind the Story index and the Constellation. */
@@ -206,8 +213,8 @@ export function fetchStoryEntries(): Promise<StoryEntry[] | null> {
         imageFit: row.image_fit,
         imageRatio: row.image_ratio,
         imagePosition: row.image_position,
-        en: row.en,
-        ko: row.ko,
+        en: row.en as unknown as StoryEntry['en'],
+        ko: row.ko as unknown as StoryEntry['ko'],
       })) ?? null,
   );
 }

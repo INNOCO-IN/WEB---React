@@ -19,7 +19,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "예정",
+    "eyebrow_ko": "서울",
+    "title_ko": "정글 잼 · 가을 세션",
+    "body_ko": "리듬과 즉흥, 함께 만들기의 이틀. MEWE 세션을 경험한 사람도, 아직 경험하지 않은 사람도 환영합니다."
   },
   {
     "id": "COMM/NEWS/1",
@@ -38,7 +42,11 @@ export const news: NewsItem[] = [
     "link": "/community/bridge-builders",
     "credit": "Photo by Duy Pham on Unsplash",
     "credit_href": "https://unsplash.com/@miinyui",
-    "status": "live"
+    "status": "live",
+    "kind_ko": "소식",
+    "eyebrow_ko": "네트워크 · 성장 중",
+    "title_ko": "브리지빌더 네트워크",
+    "body_ko": "자신의 동네에서 작은 다리를 짓는 청년들의 자라나는 네트워크."
   },
   {
     "id": "COMM/NEWS/2",
@@ -57,7 +65,11 @@ export const news: NewsItem[] = [
     "link": "/community/bridge-builders",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "소식",
+    "eyebrow_ko": "온라인 · 두 달마다",
+    "title_ko": "브리지빌더 버추얼 랩",
+    "body_ko": "여러 나라의 브리지빌더들이 두 달마다 발견한 것을 나누는 온라인 랩."
   },
   {
     "id": "COMM/NEWS/up-open-studio",
@@ -74,7 +86,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "오픈 스튜디오",
+    "eyebrow_ko": "온라인 · 매달",
+    "title_ko": "오픈 스튜디오, 매달 열립니다",
+    "body_ko": "매달 첫째 월요일, 스튜디오의 문이 열려 있습니다. 들러서 질문 하나를 가져오고, 실천 하나를 얻어 가세요."
   },
   {
     "id": "STORY/1",
@@ -91,7 +107,11 @@ export const news: NewsItem[] = [
     "link": "/story/submit",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": null,
+    "eyebrow_ko": null,
+    "title_ko": null,
+    "body_ko": null
   },
   {
     "id": "COMM/NEWS/mile-collective-nepal",
@@ -108,7 +128,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "이정표",
+    "eyebrow_ko": "신둘리, 네팔",
+    "title_ko": "네팔의 새 IN-콜렉티브",
+    "body_ko": "스토리사이클이 스튜디오의 다섯 번째 IN-콜렉티브가 되어, MEWE를 자신들의 언어로 마을 스토리 모임에 실어 나릅니다."
   },
   {
     "id": "COMM/NEWS/3",
@@ -127,7 +151,11 @@ export const news: NewsItem[] = [
     "link": "/community/nepal-youth-cluster",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "소식",
+    "eyebrow_ko": "신둘리, 네팔",
+    "title_ko": "신둘리 스토리텔링 축제",
+    "body_ko": "사우라브 다칼이 이끄는 스토리사이클 그룹이 신둘리 마을의 옛이야기를 기리는 축제를 준비하고 있습니다 — 어르신과 청년을 이으며."
   },
   {
     "id": "STORY/2",
@@ -144,7 +172,11 @@ export const news: NewsItem[] = [
     "link": "/story/submit",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": null,
+    "eyebrow_ko": null,
+    "title_ko": null,
+    "body_ko": null
   },
   {
     "id": "COMM/NEWS/4",
@@ -163,7 +195,11 @@ export const news: NewsItem[] = [
     "link": "/community/animators",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "소식",
+    "eyebrow_ko": "야마구치, 일본",
+    "title_ko": "야마구치 가족 축제",
+    "body_ko": "야마구치시의 가족 중심 공동체는 음악과 노래로 아이들의 영적 안녕을 돌봅니다 — 함께 배우고, 연습하고, 삶을 축하하면서."
   },
   {
     "id": "COMM/NEWS/recap-pathfinder-uae",
@@ -180,7 +216,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "돌아보기",
+    "eyebrow_ko": "아부다비, UAE",
+    "title_ko": "60명의 젊은 리더와 함께한 패스파인더",
+    "body_ko": "ME와 WE 사이의 선을 함께 걸은 사흘. 참가자들은 스스로 만든 지도와 — 서로의 연락처를 안고 돌아갔습니다."
   },
   {
     "id": "COMM/NEWS/launch-constellation",
@@ -197,7 +237,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "런칭",
+    "eyebrow_ko": "스튜디오",
+    "title_ko": "별자리가 열렸습니다",
+    "body_ko": "모든 세션과 스토리와 콜렉티브가 하나의 자라나는 지도에. 점 하나를 보태면, 선들이 당신을 찾아옵니다."
   },
   {
     "id": "PROJ/1",
@@ -214,7 +258,11 @@ export const news: NewsItem[] = [
     "link": "/project/food-revolution",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": null,
+    "eyebrow_ko": null,
+    "title_ko": null,
+    "body_ko": null
   },
   {
     "id": "COMM/NEWS/5",
@@ -232,7 +280,11 @@ export const news: NewsItem[] = [
     "link": "/project/asia-exchange",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "소식",
+    "eyebrow_ko": "베이징, 중국",
+    "title_ko": "주니어 유스 스페이스",
+    "body_ko": "여러 국적의 청소년들이 미덕과 공동체의 안녕에 대한 의미 있는 대화를 나누고, 동네 봉사 프로젝트를 직접 설계합니다 — 같음을 요구하지 않는 소속의 모델."
   },
   {
     "id": "COMM/NEWS/press-fuller",
@@ -249,7 +301,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "보도",
+    "eyebrow_ko": "지면 · 인터뷰",
+    "title_ko": "“혼자서는 기울고, 함께라면 돈다”",
+    "body_ko": "스튜디오가 프로그램 대신 실천을 짓는 이유, 그리고 뫼비우스 띠가 소속감과 무슨 관계인지에 대한 긴 대화."
   },
   {
     "id": "COMM/NEWS/ws-mobius-chinese",
@@ -266,7 +322,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "워크숍",
+    "eyebrow_ko": "타이중, 대만",
+    "title_ko": "뫼비우스 만들기, 이제 중국어로",
+    "body_ko": "만들기 세션이 완역되어 고등학생과 교사들과 함께 시험을 마쳤습니다. 퍼실리테이터 노트는 올가을에 나옵니다."
   },
   {
     "id": "COMM/NEWS/6",
@@ -284,7 +344,11 @@ export const news: NewsItem[] = [
     "link": "/project/asia-exchange",
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "소식",
+    "eyebrow_ko": "타이중, 대만",
+    "title_ko": "차오툰의 애니메이터들",
+    "body_ko": "주니어 유스 애니메이터들이 차오툰의 학교와 동네에서 일상적인 존재가 되어 가고, 뫼비우스 만들기가 중국어로 고등학생과 교사들에게 전해졌습니다 — 실천은 언어를 건너 여행합니다."
   },
   {
     "id": "COMM/NEWS/proj-asia-exchange",
@@ -301,7 +365,11 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "프로젝트",
+    "eyebrow_ko": "베이징 · 타이중 · 야마구치",
+    "title_ko": "아시아 익스체인지, 2년 차로",
+    "body_ko": "세 도시, 돌고 도는 하나의 질문. 두 번째 사이클에는 그룹과 함께 여행하는 공동 저널이 더해집니다."
   },
   {
     "id": "COMM/NEWS/kin-storycycle",
@@ -318,6 +386,10 @@ export const news: NewsItem[] = [
     "link": null,
     "credit": null,
     "credit_href": null,
-    "status": "live"
+    "status": "live",
+    "kind_ko": "동행",
+    "eyebrow_ko": "카트만두, 네팔",
+    "title_ko": "스토리사이클과 함께 걷기",
+    "body_ko": "우리가 계속 배우는 뜻이 맞는 실천: 사람들이 마시는 물에 대해 들려주는 스토리로 한 나라를 지도로 그리는 일."
   }
 ];

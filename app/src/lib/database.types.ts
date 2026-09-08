@@ -18,31 +18,55 @@ export type Database = {
         Row: {
           created_at: string
           full_bio: string | null
+          full_bio_ko: string | null
+          full_bio_zh_tw: string | null
           name: string
+          name_ko: string | null
+          name_zh_tw: string | null
           num: string
           one_liner: string | null
+          one_liner_ko: string | null
+          one_liner_zh_tw: string | null
           photo: string | null
           role: string | null
+          role_ko: string | null
+          role_zh_tw: string | null
           status: string
         }
         Insert: {
           created_at?: string
           full_bio?: string | null
+          full_bio_ko?: string | null
+          full_bio_zh_tw?: string | null
           name: string
+          name_ko?: string | null
+          name_zh_tw?: string | null
           num: string
           one_liner?: string | null
+          one_liner_ko?: string | null
+          one_liner_zh_tw?: string | null
           photo?: string | null
           role?: string | null
+          role_ko?: string | null
+          role_zh_tw?: string | null
           status?: string
         }
         Update: {
           created_at?: string
           full_bio?: string | null
+          full_bio_ko?: string | null
+          full_bio_zh_tw?: string | null
           name?: string
+          name_ko?: string | null
+          name_zh_tw?: string | null
           num?: string
           one_liner?: string | null
+          one_liner_ko?: string | null
+          one_liner_zh_tw?: string | null
           photo?: string | null
           role?: string | null
+          role_ko?: string | null
+          role_zh_tw?: string | null
           status?: string
         }
         Relationships: []
@@ -52,52 +76,64 @@ export type Database = {
           accent: string | null
           body: string | null
           body_ko: string | null
+          body_zh_tw: string | null
           created_at: string
           eyebrow: string | null
           eyebrow_ko: string | null
+          eyebrow_zh_tw: string | null
           image: string | null
           meta: string | null
           meta_ko: string | null
+          meta_zh_tw: string | null
           route: string | null
           slug: string
           sort_order: number
           status: string
           title: string
           title_ko: string | null
+          title_zh_tw: string | null
         }
         Insert: {
           accent?: string | null
           body?: string | null
           body_ko?: string | null
+          body_zh_tw?: string | null
           created_at?: string
           eyebrow?: string | null
           eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           image?: string | null
           meta?: string | null
           meta_ko?: string | null
+          meta_zh_tw?: string | null
           route?: string | null
           slug: string
           sort_order?: number
           status?: string
           title: string
           title_ko?: string | null
+          title_zh_tw?: string | null
         }
         Update: {
           accent?: string | null
           body?: string | null
           body_ko?: string | null
+          body_zh_tw?: string | null
           created_at?: string
           eyebrow?: string | null
           eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           image?: string | null
           meta?: string | null
           meta_ko?: string | null
+          meta_zh_tw?: string | null
           route?: string | null
           slug?: string
           sort_order?: number
           status?: string
           title?: string
           title_ko?: string | null
+          title_zh_tw?: string | null
         }
         Relationships: []
       }
@@ -105,7 +141,11 @@ export type Database = {
         Row: {
           arc: string | null
           by_line: string | null
+          by_line_ko: string | null
+          by_line_zh_tw: string | null
           caption: string | null
+          caption_ko: string | null
+          caption_zh_tw: string | null
           created_at: string
           format: string
           id: string
@@ -113,13 +153,21 @@ export type Database = {
           month: string
           read_href: string | null
           title: string
+          title_ko: string | null
+          title_zh_tw: string | null
           topic: string
+          topic_ko: string | null
+          topic_zh_tw: string | null
           view_href: string | null
         }
         Insert: {
           arc?: string | null
           by_line?: string | null
+          by_line_ko?: string | null
+          by_line_zh_tw?: string | null
           caption?: string | null
+          caption_ko?: string | null
+          caption_zh_tw?: string | null
           created_at?: string
           format: string
           id: string
@@ -127,13 +175,21 @@ export type Database = {
           month: string
           read_href?: string | null
           title: string
+          title_ko?: string | null
+          title_zh_tw?: string | null
           topic: string
+          topic_ko?: string | null
+          topic_zh_tw?: string | null
           view_href?: string | null
         }
         Update: {
           arc?: string | null
           by_line?: string | null
+          by_line_ko?: string | null
+          by_line_zh_tw?: string | null
           caption?: string | null
+          caption_ko?: string | null
+          caption_zh_tw?: string | null
           created_at?: string
           format?: string
           id?: string
@@ -141,7 +197,11 @@ export type Database = {
           month?: string
           read_href?: string | null
           title?: string
+          title_ko?: string | null
+          title_zh_tw?: string | null
           topic?: string
+          topic_ko?: string | null
+          topic_zh_tw?: string | null
           view_href?: string | null
         }
         Relationships: []
@@ -150,53 +210,151 @@ export type Database = {
         Row: {
           accent: string | null
           body: string | null
+          body_ko: string | null
+          body_zh_tw: string | null
           created_at: string
           credit: string | null
           credit_href: string | null
           eyebrow: string | null
+          eyebrow_ko: string | null
+          eyebrow_zh_tw: string | null
           feeds: string[]
           id: string
           image: string | null
           kind: string | null
+          kind_ko: string | null
+          kind_zh_tw: string | null
           link: string | null
           published_at: string | null
           sort_order: number
           status: string
           title: string
+          title_ko: string | null
+          title_zh_tw: string | null
         }
         Insert: {
           accent?: string | null
           body?: string | null
+          body_ko?: string | null
+          body_zh_tw?: string | null
           created_at?: string
           credit?: string | null
           credit_href?: string | null
           eyebrow?: string | null
+          eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           feeds?: string[]
           id: string
           image?: string | null
           kind?: string | null
+          kind_ko?: string | null
+          kind_zh_tw?: string | null
           link?: string | null
           published_at?: string | null
           sort_order?: number
           status?: string
           title: string
+          title_ko?: string | null
+          title_zh_tw?: string | null
         }
         Update: {
           accent?: string | null
           body?: string | null
+          body_ko?: string | null
+          body_zh_tw?: string | null
           created_at?: string
           credit?: string | null
           credit_href?: string | null
           eyebrow?: string | null
+          eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           feeds?: string[]
           id?: string
           image?: string | null
           kind?: string | null
+          kind_ko?: string | null
+          kind_zh_tw?: string | null
           link?: string | null
           published_at?: string | null
           sort_order?: number
           status?: string
           title?: string
+          title_ko?: string | null
+          title_zh_tw?: string | null
+        }
+        Relationships: []
+      }
+      page_localizations: {
+        Row: {
+          content: Json
+          created_at: string
+          document_override: Json | null
+          id: string
+          locale: string
+          page_id: string
+          seo: Json
+          slug: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          content?: Json
+          created_at?: string
+          document_override?: Json | null
+          id?: string
+          locale: string
+          page_id: string
+          seo?: Json
+          slug: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          document_override?: Json | null
+          id?: string
+          locale?: string
+          page_id?: string
+          seo?: Json
+          slug?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "page_localizations_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pages: {
+        Row: {
+          created_at: string
+          default_locale: string
+          id: string
+          route_key: string
+          shared_document: Json
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          default_locale?: string
+          id: string
+          route_key: string
+          shared_document?: Json
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          default_locale?: string
+          id?: string
+          route_key?: string
+          shared_document?: Json
+          updated_at?: string
         }
         Relationships: []
       }
@@ -205,9 +363,11 @@ export type Database = {
           accent: string | null
           body: string | null
           body_ko: string | null
+          body_zh_tw: string | null
           created_at: string
           eyebrow: string | null
           eyebrow_ko: string | null
+          eyebrow_zh_tw: string | null
           featured: boolean
           image: string | null
           meta: string | null
@@ -218,14 +378,17 @@ export type Database = {
           status: string
           title: string
           title_ko: string | null
+          title_zh_tw: string | null
         }
         Insert: {
           accent?: string | null
           body?: string | null
           body_ko?: string | null
+          body_zh_tw?: string | null
           created_at?: string
           eyebrow?: string | null
           eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           featured?: boolean
           image?: string | null
           meta?: string | null
@@ -236,14 +399,17 @@ export type Database = {
           status?: string
           title: string
           title_ko?: string | null
+          title_zh_tw?: string | null
         }
         Update: {
           accent?: string | null
           body?: string | null
           body_ko?: string | null
+          body_zh_tw?: string | null
           created_at?: string
           eyebrow?: string | null
           eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           featured?: boolean
           image?: string | null
           meta?: string | null
@@ -254,6 +420,7 @@ export type Database = {
           status?: string
           title?: string
           title_ko?: string | null
+          title_zh_tw?: string | null
         }
         Relationships: []
       }
@@ -453,11 +620,21 @@ export type Database = {
           accent: string | null
           active: boolean
           audience: string | null
+          audience_ko: string | null
+          audience_zh_tw: string | null
           blurb: string | null
+          blurb_ko: string | null
+          blurb_zh_tw: string | null
           created_at: string
           cta: string | null
+          cta_ko: string | null
+          cta_zh_tw: string | null
           duration: string | null
+          duration_ko: string | null
+          duration_zh_tw: string | null
           eyebrow: string | null
+          eyebrow_ko: string | null
+          eyebrow_zh_tw: string | null
           featured: boolean
           id: string
           ink: string
@@ -465,16 +642,28 @@ export type Database = {
           slug: string
           sort_order: number
           title: string
+          title_ko: string | null
+          title_zh_tw: string | null
         }
         Insert: {
           accent?: string | null
           active?: boolean
           audience?: string | null
+          audience_ko?: string | null
+          audience_zh_tw?: string | null
           blurb?: string | null
+          blurb_ko?: string | null
+          blurb_zh_tw?: string | null
           created_at?: string
           cta?: string | null
+          cta_ko?: string | null
+          cta_zh_tw?: string | null
           duration?: string | null
+          duration_ko?: string | null
+          duration_zh_tw?: string | null
           eyebrow?: string | null
+          eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           featured?: boolean
           id?: string
           ink?: string
@@ -482,16 +671,28 @@ export type Database = {
           slug: string
           sort_order?: number
           title: string
+          title_ko?: string | null
+          title_zh_tw?: string | null
         }
         Update: {
           accent?: string | null
           active?: boolean
           audience?: string | null
+          audience_ko?: string | null
+          audience_zh_tw?: string | null
           blurb?: string | null
+          blurb_ko?: string | null
+          blurb_zh_tw?: string | null
           created_at?: string
           cta?: string | null
+          cta_ko?: string | null
+          cta_zh_tw?: string | null
           duration?: string | null
+          duration_ko?: string | null
+          duration_zh_tw?: string | null
           eyebrow?: string | null
+          eyebrow_ko?: string | null
+          eyebrow_zh_tw?: string | null
           featured?: boolean
           id?: string
           ink?: string
@@ -499,6 +700,8 @@ export type Database = {
           slug?: string
           sort_order?: number
           title?: string
+          title_ko?: string | null
+          title_zh_tw?: string | null
         }
         Relationships: []
       }
@@ -526,12 +729,12 @@ export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -555,11 +758,11 @@ export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -580,11 +783,11 @@ export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -605,11 +808,11 @@ export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -622,11 +825,11 @@ export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never = never,
+    : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }

@@ -22,13 +22,22 @@ import { fileURLToPath } from 'node:url';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..');
 
-/** In dependency order: the schema, then the seeds that need it. */
+/**
+ * In dependency order: the schema, then the seeds that need it.
+ *
+ * `seed-staff.sql` is the one optional part. It is gitignored — who has admin
+ * access is per-deployment and does not belong in the repository — so a
+ * checkout without it is normal, and the bundle simply comes out without an
+ * allowlist. That means nobody can sign in to /review, which is the honest
+ * result of not having said who may.
+ */
 const PARTS = [
   ['schema.sql', 'tables, RLS policies, the storage bucket, and realtime'],
   ['seed.sql', 'news, workshops, projects, communities'],
   ['seed-collectives.sql', 'the IN-Collective roster'],
   ['seed-constellation.sql', 'the Constellation points'],
   ['seed-stories.sql', 'the curated story collection'],
+  ['seed-staff.sql', 'the staff allowlist for /review', { optional: true }],
 ];
 
 const OUT = 'supabase-setup.sql';
@@ -59,17 +68,18 @@ function rowsPerTable(sql) {
   return counts;
 }
 
-const loaded = PARTS.map(([file, what]) => {
+const loaded = PARTS.map(([file, what, options]) => {
   let sql;
   try {
     sql = readFileSync(join(ROOT, file), 'utf8');
   } catch {
+    if (options?.optional) return null;
     console.error(`!! ${file} is missing. Run the extractors first:`);
     console.error('   node scripts/extract-content.mjs && node scripts/extract-stories.mjs && node scripts/extract-page-data.mjs');
     process.exit(1);
   }
   return { file, what, sql: sql.trimEnd(), rows: rowsPerTable(sql) };
-});
+}).filter(Boolean);
 
 const inserts = loaded.flatMap((part) => part.rows);
 const total = inserts.reduce((sum, [, rows]) => sum + rows, 0);

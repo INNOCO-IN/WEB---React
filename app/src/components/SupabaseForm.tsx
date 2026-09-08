@@ -28,9 +28,18 @@ export function useFormRegistration() {
   return useContext(Ctx);
 }
 
+/**
+ * The tables a visitor may write to.
+ *
+ * Not `ContentTable`: RLS grants anon an insert on these two and nothing else,
+ * so a form pointed at `news` would compile and then fail at the policy. The
+ * union says out loud what the database already enforces.
+ */
+export type WritableTable = 'submissions' | 'stories';
+
 export interface SupabaseFormProps {
   /** Table to insert into. */
-  table: string;
+  table: WritableTable;
   /** Message shown in place of the form once the insert succeeds. */
   thanks?: string;
   /** Column that receives an uploaded file's public URL. */
@@ -120,7 +129,12 @@ export default function SupabaseForm({
 
       row.source_page = window.location.pathname;
 
-      const { error } = await supabase.from(table).insert(row);
+      // The row is assembled at runtime from the `name` attributes of whatever
+      // fields the page rendered, so its shape is not knowable here — this is
+      // the one place in the app where a cast is the honest answer rather than
+      // a shortcut. The table union above is what keeps it from being a blank
+      // cheque, and a wrong column name still fails at the insert.
+      const { error } = await supabase.from(table).insert(row as never);
       if (error) throw error;
 
       setState({ status: 'sent' });

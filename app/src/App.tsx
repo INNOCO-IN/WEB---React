@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PAGES } from './pages/registry';
@@ -15,6 +15,9 @@ import {
   stripLocale,
 } from './lib/lang';
 import { DEFAULT_LOCALE } from './i18n/locales';
+
+/** Lazy, so the staff tool and the auth client stay out of the site's bundle. */
+const Review = lazy(() => import('./pages/Review'));
 
 /**
  * The router.
@@ -39,6 +42,14 @@ export default function App() {
           {Object.entries(PAGES).map(([path, Page]) => (
             <Route key={path} path={path} element={<Page />} />
           ))}
+
+          {/*
+            The review desk is written here rather than in the registry because
+            the registry is generated from `site/` and would drop it on the next
+            run. It is also not a page of the site: no locale, no nav, nothing
+            links to it, and it is `noindex`. See pages/Review.tsx.
+          */}
+          <Route path="/review" element={<Review />} />
 
           <Route path="*" element={<Unmatched />} />
         </Routes>

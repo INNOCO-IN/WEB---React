@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useNews } from '../../lib/hooks/useContent';
-import { accentColor } from '../../lib/content/types';
+import { accentColor, inLang } from '../../lib/content/types';
 import { formatDate } from '../../lib/format';
 import { useTranslation } from 'react-i18next';
 import { localize, useLocaleOr, type Locale } from '../../lib/lang';
@@ -35,6 +35,12 @@ export default function HomeNewsCard({ locale: given }: Props) {
   }
 
   const accent = accentColor(item.accent, 'var(--color-tan)');
+  // The wall next door resolves its copy per locale; this tile did not, so a
+  // Korean home page led with an English headline even once the row had been
+  // translated. Same rule as NewsGrid — field by field, English where a
+  // translation is missing.
+  const title = inLang(item.title, { ko: item.title_ko, 'zh-TW': item.title_zh_tw }, locale) ?? item.title;
+  const blurb = inLang(item.body, { ko: item.body_ko, 'zh-TW': item.body_zh_tw }, locale);
 
   return (
     <Link to={localize(item.link ?? newsIndex, locale)} className="in-home-tile in-card in-plain">
@@ -54,8 +60,8 @@ export default function HomeNewsCard({ locale: given }: Props) {
         <div className="in-home-tile__date" style={{ color: accent }}>
           {formatDate(item.published_at, locale)}
         </div>
-        <div className="in-home-tile__title">{item.title}</div>
-        {item.body ? <p className="in-home-tile__blurb">{item.body}</p> : null}
+        <div className="in-home-tile__title">{title}</div>
+        {blurb ? <p className="in-home-tile__blurb">{blurb}</p> : null}
 
         <span className="in-home-tile__arrow" aria-hidden="true">
           →

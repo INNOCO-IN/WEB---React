@@ -86,6 +86,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'news', feed: 'home', drives: 'the news tile in the card grid — the newest item on the home feed' },
     ],
   },
+  '/zh-tw': {
+    lang: 'zh-TW',
+    section: 'home',
+    title: 'Home',
+    reads: [
+      { table: 'news', feed: 'home', drives: 'the news tile in the card grid — the newest item on the home feed' },
+    ],
+  },
   '/manifesto': { lang: 'en', section: 'start-within', title: 'Manifesto' },
   '/ko/manifesto': { lang: 'ko', section: 'start-within', title: 'Manifesto' },
   '/collectives': {
@@ -104,8 +112,17 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'collectives', drives: 'the roster, each bio expanding in place' },
     ],
   },
+  '/zh-tw/collectives': {
+    lang: 'zh-TW',
+    section: 'start-within',
+    title: 'Collectives',
+    reads: [
+      { table: 'collectives', drives: 'the roster, each bio expanding in place' },
+    ],
+  },
   '/mewe': { lang: 'en', section: 'start-within', title: 'MEWE' },
   '/ko/mewe': { lang: 'ko', section: 'start-within', title: 'MEWE' },
+  '/zh-tw/mewe': { lang: 'zh-TW', section: 'start-within', title: 'MEWE' },
   '/action-research': { lang: 'en', section: 'start-within', title: 'Action Research' },
   '/workshop': {
     lang: 'en',
@@ -140,8 +157,10 @@ export const PAGE_MODELS: Record<string, PageModel> = {
 
   '/workshop/bucket-list': { lang: 'en', section: 'share-space', title: 'Bucket List' },
   '/ko/workshop/bucket-list': { lang: 'ko', section: 'share-space', title: 'Bucket List' },
+  '/zh-tw/workshop/bucket-list': { lang: 'zh-TW', section: 'share-space', title: 'Bucket List' },
   '/workshop/jungle-jam': { lang: 'en', section: 'share-space', title: 'Jungle Jam' },
   '/ko/workshop/jungle-jam': { lang: 'ko', section: 'share-space', title: 'Jungle Jam' },
+  '/zh-tw/workshop/jungle-jam': { lang: 'zh-TW', section: 'share-space', title: 'Jungle Jam' },
   '/workshop/light-shadow-shift': {
     lang: 'en',
     section: 'share-space',
@@ -152,14 +171,23 @@ export const PAGE_MODELS: Record<string, PageModel> = {
     section: 'share-space',
     title: 'Light Shadow Shift',
   },
+  '/zh-tw/workshop/light-shadow-shift': {
+    lang: 'zh-TW',
+    section: 'share-space',
+    title: 'Light Shadow Shift',
+  },
   '/workshop/pathfinder': { lang: 'en', section: 'share-space', title: 'Pathfinder' },
   '/ko/workshop/pathfinder': { lang: 'ko', section: 'share-space', title: 'Pathfinder' },
+  '/zh-tw/workshop/pathfinder': { lang: 'zh-TW', section: 'share-space', title: 'Pathfinder' },
   '/workshop/second-life': { lang: 'en', section: 'share-space', title: 'Second Life' },
   '/ko/workshop/second-life': { lang: 'ko', section: 'share-space', title: 'Second Life' },
+  '/zh-tw/workshop/second-life': { lang: 'zh-TW', section: 'share-space', title: 'Second Life' },
   '/workshop/shadow-shifter': { lang: 'en', section: 'share-space', title: 'Shadow Shifter' },
   '/ko/workshop/shadow-shifter': { lang: 'ko', section: 'share-space', title: 'Shadow Shifter' },
+  '/zh-tw/workshop/shadow-shifter': { lang: 'zh-TW', section: 'share-space', title: 'Shadow Shifter' },
   '/story': { lang: 'en', section: 'share-space', title: 'Story' },
   '/ko/story': { lang: 'ko', section: 'share-space', title: 'Story' },
+  '/zh-tw/story': { lang: 'zh-TW', section: 'share-space', title: 'Story' },
   '/story/all': {
     lang: 'en',
     section: 'share-space',
@@ -170,6 +198,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/ko/story/all': {
     lang: 'ko',
+    section: 'share-space',
+    title: 'Story index',
+    reads: [
+      { table: 'story_entries', drives: 'every story, its filters and its reading pane' },
+    ],
+  },
+  '/zh-tw/story/all': {
+    lang: 'zh-TW',
     section: 'share-space',
     title: 'Story index',
     reads: [
@@ -187,6 +223,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   '/story/this-is-us': { lang: 'en', section: 'share-space', title: 'This Is Us' },
   '/protagonist': { lang: 'en', section: 'share-space', title: 'Protagonist' },
   '/ko/protagonist': { lang: 'ko', section: 'share-space', title: 'Protagonist' },
+  '/zh-tw/protagonist': { lang: 'zh-TW', section: 'share-space', title: 'Protagonist' },
   '/project': {
     lang: 'en',
     section: 'serve-whole',
@@ -302,6 +339,15 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'news', feed: 'community', drives: 'the news grid below the circles' },
     ],
   },
+  '/zh-tw/community': {
+    lang: 'zh-TW',
+    section: 'serve-whole',
+    title: 'Community',
+    reads: [
+      { table: 'communities', drives: 'the circles grid' },
+      { table: 'news', feed: 'community', drives: 'the news grid below the circles' },
+    ],
+  },
   '/community/all': {
     lang: 'en',
     section: 'serve-whole',
@@ -337,6 +383,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
     ],
   },
+  '/zh-tw/constellation': {
+    lang: 'zh-TW',
+    section: 'serve-whole',
+    title: 'Constellation',
+    reads: [
+      { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
+    ],
+  },
   '/news': {
     lang: 'en',
     section: 'serve-whole',
@@ -353,6 +407,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'news', feed: 'news', drives: 'the whole card wall' },
     ],
   },
+  '/zh-tw/news': {
+    lang: 'zh-TW',
+    section: 'serve-whole',
+    title: 'News',
+    reads: [
+      { table: 'news', feed: 'news', drives: 'the whole card wall' },
+    ],
+  },
   '/connect': {
     lang: 'en',
     section: 'connect',
@@ -363,6 +425,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/ko/connect': {
     lang: 'ko',
+    section: 'connect',
+    title: 'Are you IN?',
+    writes: [
+      { table: 'submissions', drives: 'the enquiry form' },
+    ],
+  },
+  '/zh-tw/connect': {
+    lang: 'zh-TW',
     section: 'connect',
     title: 'Are you IN?',
     writes: [

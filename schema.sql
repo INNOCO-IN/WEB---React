@@ -32,6 +32,125 @@ create table if not exists public.stories (
 create index if not exists stories_published_idx
   on public.stories (status, created_at desc);
 
+-- ========== 2b. Workshop registrations ==========
+-- The intake table for a workshop sign-up form, from the round before the
+-- React port — the same round that created `workshops` with an `id` column to
+-- fill that form's dropdown, which is why the live `workshops` still carries
+-- both `id` and `slug`.
+--
+-- On the live database `workshop_id` has a foreign key to `workshops.id`. It is
+-- not declared here, because §5b creates `workshops` with `slug` as its only
+-- key — the `id` column exists solely on the database that predates the port,
+-- which `create table if not exists` left in place. Declaring the FK would make
+-- this file fail on the fresh database it is supposed to build. Reconcile the
+-- two shapes before relying on the reference; until then the form has
+-- `workshop_slug`, which `workshops.slug` does key.
+--
+-- It is in the linked database and was in neither this file nor a migration,
+-- so a database built from `npm run supabase-setup` did not have it. Declared
+-- here so that stops being true. **The column list is reconstructed from the
+-- generated types** (`app/src/lib/database.types.ts`), not from the original
+-- DDL, so defaults and constraints are a best guess — check it against the
+-- live table before trusting this on a database that matters.
+--
+-- No form posts to it yet: `site/` has only `data-in-form="submissions"` and
+-- `="stories"`, and SupabaseForm's `WritableTable` names those two. The table
+-- is kept, not retired, because the sign-up flow is still wanted.
+create table if not exists public.workshop_registrations (
+  id             uuid primary key default gen_random_uuid(),
+  created_at     timestamptz not null default now(),
+  name           text not null,
+  email          text not null,
+  org            text,
+  message        text,
+  workshop_slug  text,                       -- what the form submitted
+  workshop_id    uuid,                       -- see note above: no FK here
+  source_page    text,
+  status         text not null default 'new' -- new | contacted | archived
+);
+
+-- ========== 2c. Staff allowlist ==========
+-- One email per member of staff. Nothing in this repo reads it; a single-column
+-- email table is the shape an RLS policy uses to decide who may read the form
+-- intake, and the policy that does so is not in this repo either.
+--
+-- So this declares the table and grants nothing. RLS on with no policy means
+-- anon can neither read nor write it, which is the only safe default for an
+-- allowlist — the service role bypasses RLS, so anything server-side that
+-- reads it keeps working. If the live database has a policy here, it is not
+-- named below and is left alone.
+-- No addresses here. `is_staff()` is false for everybody until the list is
+-- bootstrapped, and who has admin access is per-deployment rather than part of
+-- the schema — so it lives in `seed-staff.sql`, which is gitignored the way
+-- `.env.local` is, and which `npm run supabase-setup` folds in when present.
+create table if not exists public.staff_emails (
+  email text primary key
+);
+
+alter table public.staff_emails enable row level security;
+
+-- ========== 2d. Staff access to the intake tables ==========
+-- Who may read what visitors sent, and move it through review.
+--
+-- The allowlist above is the list; this is what consults it. A policy cannot
+-- simply select from `staff_emails`, because that select is subject to
+-- `staff_emails`' own RLS, which denies everyone — so the check goes through a
+-- `security definer` function, which runs as the function's owner and can see
+-- the table. `set search_path` is not optional on such a function: without it a
+-- caller can point `public` at a schema of their own and decide for themselves
+-- what `staff_emails` means.
+--
+-- Execute is granted to `authenticated` alone. `anon` never needs to ask
+-- whether it is staff, and being able to ask is a way of testing the list.
+create or replace function public.is_staff() returns boolean
+  language sql
+  stable
+  security definer
+  set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.staff_emails
+    where lower(email) = lower(auth.jwt() ->> 'email')
+  );
+$$;
+
+revoke execute on function public.is_staff() from public, anon;
+grant execute on function public.is_staff() to authenticated;
+
+-- Read and review, not delete. A submission is someone's account of something
+-- that happened to them; declining it is a status, not an erasure, and the row
+-- stays for whoever has to answer for that decision later.
+drop policy if exists "staff read stories" on public.stories;
+create policy "staff read stories" on public.stories
+  for select to authenticated using (public.is_staff());
+
+drop policy if exists "staff review stories" on public.stories;
+create policy "staff review stories" on public.stories
+  for update to authenticated using (public.is_staff()) with check (public.is_staff());
+
+drop policy if exists "staff read submissions" on public.submissions;
+create policy "staff read submissions" on public.submissions
+  for select to authenticated using (public.is_staff());
+
+drop policy if exists "staff review submissions" on public.submissions;
+create policy "staff review submissions" on public.submissions
+  for update to authenticated using (public.is_staff()) with check (public.is_staff());
+
+drop policy if exists "staff read registrations" on public.workshop_registrations;
+create policy "staff read registrations" on public.workshop_registrations
+  for select to authenticated using (public.is_staff());
+
+drop policy if exists "staff review registrations" on public.workshop_registrations;
+create policy "staff review registrations" on public.workshop_registrations
+  for update to authenticated using (public.is_staff()) with check (public.is_staff());
+
+-- Staff may read the allowlist itself, so the review page can tell someone who
+-- signed in and is not on it apart from someone whose session simply expired.
+drop policy if exists "staff read allowlist" on public.staff_emails;
+create policy "staff read allowlist" on public.staff_emails
+  for select to authenticated using (public.is_staff());
+
 -- ========== 3. Row Level Security: public can submit, not read ==========
 alter table public.submissions enable row level security;
 alter table public.stories     enable row level security;
@@ -44,7 +163,19 @@ drop policy if exists "anon can submit story" on public.stories;
 create policy "anon can submit story" on public.stories
   for insert to anon with check (true);
 
--- Published stories are readable by the site (Story index / Constellation).
+-- Same rule for the workshop sign-up: anyone may register, nobody may read
+-- back who else did.
+alter table public.workshop_registrations enable row level security;
+
+drop policy if exists "anon can register" on public.workshop_registrations;
+create policy "anon can register" on public.workshop_registrations
+  for insert to anon with check (true);
+
+-- Published stories are readable by anon, so a reviewed submission can reach the
+-- site. Nothing renders them yet: `useStories` exists and no page calls it, and
+-- the Story index reads the curated `story_entries` instead — an editor copies
+-- a published submission across by hand. This policy is what a direct
+-- submission-to-page path would be built on.
 drop policy if exists "anon reads published" on public.stories;
 create policy "anon reads published" on public.stories
   for select to anon using (status = 'published');
@@ -104,13 +235,24 @@ create table if not exists public.news (
 
 create index if not exists news_live_idx on public.news (status, published_at desc);
 
--- Korean copy, as on projects. Nullable and unbackfilled: the site falls back
--- to English field by field, so translating one headline does not oblige
--- anyone to translate its blurb in the same sitting.
+-- Korean and Traditional Chinese copy, as on projects. Nullable and
+-- unbackfilled: the site falls back to English field by field, so translating
+-- one headline does not oblige anyone to translate its blurb in the same
+-- sitting. See `inLang` in app/src/lib/content/types.ts.
+--
+-- A column per language does not scale past a handful of them, and the page
+-- builder's per-locale content records are where this goes when the fourth
+-- language arrives. The zh-TW columns landed as a migration first; they are
+-- restated here because this file, not the migration folder, is the schema.
 alter table public.news add column if not exists kind_ko    text;
 alter table public.news add column if not exists eyebrow_ko text;
 alter table public.news add column if not exists title_ko   text;
 alter table public.news add column if not exists body_ko    text;
+
+alter table public.news add column if not exists kind_zh_tw    text;
+alter table public.news add column if not exists eyebrow_zh_tw text;
+alter table public.news add column if not exists title_zh_tw   text;
+alter table public.news add column if not exists body_zh_tw    text;
 
 -- ---------- 5b. Workshops ----------
 -- Drives the Workshop index cards and the audience filter. The individual
@@ -148,6 +290,12 @@ alter table public.workshops add column if not exists blurb_ko    text;
 alter table public.workshops add column if not exists audience_ko text;
 alter table public.workshops add column if not exists duration_ko text;
 alter table public.workshops add column if not exists cta_ko      text;
+alter table public.workshops add column if not exists title_zh_tw    text;
+alter table public.workshops add column if not exists eyebrow_zh_tw  text;
+alter table public.workshops add column if not exists blurb_zh_tw    text;
+alter table public.workshops add column if not exists audience_zh_tw text;
+alter table public.workshops add column if not exists duration_zh_tw text;
+alter table public.workshops add column if not exists cta_zh_tw      text;
 
 -- Older copies of this table have a uuid id and only a unique constraint on
 -- slug. The seed upserts on slug either way, so both shapes work.
@@ -181,6 +329,9 @@ alter table public.projects add column if not exists featured boolean not null d
 alter table public.projects add column if not exists title_ko   text;
 alter table public.projects add column if not exists eyebrow_ko text;
 alter table public.projects add column if not exists body_ko    text;
+alter table public.projects add column if not exists title_zh_tw   text;
+alter table public.projects add column if not exists eyebrow_zh_tw text;
+alter table public.projects add column if not exists body_zh_tw    text;
 
 -- ---------- 5d. Communities ----------
 -- The circles on /community, and the directory on /community/all. A circle's
@@ -211,6 +362,10 @@ alter table public.communities add column if not exists title_ko   text;
 alter table public.communities add column if not exists meta_ko    text;
 alter table public.communities add column if not exists eyebrow_ko text;
 alter table public.communities add column if not exists body_ko    text;
+alter table public.communities add column if not exists title_zh_tw   text;
+alter table public.communities add column if not exists meta_zh_tw    text;
+alter table public.communities add column if not exists eyebrow_zh_tw text;
+alter table public.communities add column if not exists body_zh_tw    text;
 
 -- ---------- 5e. Read policies ----------
 -- Anon may read live rows and nothing else. There is no anon insert or update
@@ -296,6 +451,10 @@ alter table public.constellation_points add column if not exists title_ko   text
 alter table public.constellation_points add column if not exists by_line_ko text;
 alter table public.constellation_points add column if not exists caption_ko text;
 alter table public.constellation_points add column if not exists topic_ko   text;
+alter table public.constellation_points add column if not exists title_zh_tw   text;
+alter table public.constellation_points add column if not exists by_line_zh_tw text;
+alter table public.constellation_points add column if not exists caption_zh_tw text;
+alter table public.constellation_points add column if not exists topic_zh_tw   text;
 
 alter table public.constellation_points enable row level security;
 
@@ -328,6 +487,10 @@ alter table public.collectives add column if not exists name_ko      text;
 alter table public.collectives add column if not exists one_liner_ko text;
 alter table public.collectives add column if not exists full_bio_ko  text;
 alter table public.collectives add column if not exists role_ko      text;
+alter table public.collectives add column if not exists name_zh_tw      text;
+alter table public.collectives add column if not exists one_liner_zh_tw text;
+alter table public.collectives add column if not exists full_bio_zh_tw  text;
+alter table public.collectives add column if not exists role_zh_tw      text;
 
 alter table public.collectives enable row level security;
 
@@ -337,7 +500,143 @@ create policy "anon reads live collectives" on public.collectives
   for select to anon using (status = 'live');
 
 -- ========================================================================
--- 6. Realtime
+-- 6. Page builder
+--
+-- Base page and localized page, split into two tables, because that split is
+-- the whole point of the model: the element tree, the colours and the spacing
+-- are decided once, and only the words are written per language.
+--
+-- `shared_document` and `document_override` hold a page document —
+-- `{ "nodes": [...] }` where every node is `{ id, type, props, bindings,
+-- children }`. `type` is a key into the app's element registry, never a
+-- component name or a path, so nothing stored here can name code to run. The
+-- check constraints below enforce the shape Postgres can see; the app
+-- validates element types on read, since only the build knows what is
+-- registered.
+--
+-- Provisioned, not yet used: `app/src/builder/` renders from a bundled page
+-- document and `BUILDER_SERVES` is empty, so nothing queries these two tables
+-- yet. They are here because this file, not the migration folder, is what
+-- `npm run supabase-setup` pastes — a database built that way was missing them.
+-- ========================================================================
+
+create table if not exists public.pages (
+  id             text primary key,             -- 'page_news' — stable, never derived from a slug
+  route_key      text not null unique,         -- 'news' — stable across languages and slug changes
+  default_locale text not null default 'en',
+  shared_document jsonb not null default '{"nodes": []}'::jsonb,
+  created_at     timestamptz not null default now(),
+  updated_at     timestamptz not null default now()
+);
+
+alter table public.pages
+  drop constraint if exists pages_default_locale_supported;
+alter table public.pages
+  add constraint pages_default_locale_supported
+  check (default_locale in ('en', 'zh-TW', 'ko'));
+
+alter table public.pages
+  drop constraint if exists pages_shared_document_shape;
+alter table public.pages
+  add constraint pages_shared_document_shape
+  check (jsonb_typeof(shared_document -> 'nodes') = 'array');
+
+create table if not exists public.page_localizations (
+  id                text primary key default gen_random_uuid()::text,
+  page_id           text not null references public.pages (id) on delete cascade,
+  locale            text not null,
+  slug              text not null,
+  seo               jsonb not null default '{}'::jsonb,
+  content           jsonb not null default '{}'::jsonb,
+  document_override jsonb,
+  status            text not null default 'draft',
+  created_at        timestamptz not null default now(),
+  updated_at        timestamptz not null default now()
+);
+
+-- One record per language per page. Without this, two half-finished Korean
+-- records for the same page would both be "the" Korean record, and which one
+-- rendered would depend on row order.
+create unique index if not exists page_localizations_page_locale_key
+  on public.page_localizations (page_id, locale);
+
+-- A slug has to be unique within its language, not across all of them: `/news`
+-- and `/ko/news` are different URLs and may legitimately share a slug.
+create unique index if not exists page_localizations_locale_slug_key
+  on public.page_localizations (locale, slug);
+
+alter table public.page_localizations
+  drop constraint if exists page_localizations_locale_supported;
+alter table public.page_localizations
+  add constraint page_localizations_locale_supported
+  check (locale in ('en', 'zh-TW', 'ko'));
+
+alter table public.page_localizations
+  drop constraint if exists page_localizations_status_valid;
+alter table public.page_localizations
+  add constraint page_localizations_status_valid
+  check (status in ('draft', 'published'));
+
+alter table public.page_localizations
+  drop constraint if exists page_localizations_slug_present;
+alter table public.page_localizations
+  add constraint page_localizations_slug_present
+  check (length(btrim(slug)) > 0);
+
+alter table public.page_localizations
+  drop constraint if exists page_localizations_override_shape;
+alter table public.page_localizations
+  add constraint page_localizations_override_shape
+  check (document_override is null or jsonb_typeof(document_override -> 'nodes') = 'array');
+
+create index if not exists page_localizations_published_idx
+  on public.page_localizations (locale, status);
+
+-- ---------- Row level security ----------
+-- The anon key reads published localizations and the pages they belong to, and
+-- writes nothing. Drafts are invisible to the public site, which is what makes
+-- per-locale publishing mean anything: a page can be live in English while its
+-- Korean translation is still being written.
+--
+-- Editing is a service-role or authenticated-editor concern, and there is no
+-- editor role in this project yet — so no write policy is granted here rather
+-- than granting one that is wider than it should be.
+
+alter table public.pages enable row level security;
+alter table public.page_localizations enable row level security;
+
+drop policy if exists "anon reads pages" on public.pages;
+create policy "anon reads pages" on public.pages
+  for select to anon using (
+    exists (
+      select 1 from public.page_localizations pl
+      where pl.page_id = pages.id and pl.status = 'published'
+    )
+  );
+
+drop policy if exists "anon reads published localizations" on public.page_localizations;
+create policy "anon reads published localizations" on public.page_localizations
+  for select to anon using (status = 'published');
+
+-- ---------- updated_at ----------
+create or replace function public.touch_updated_at() returns trigger
+  language plpgsql as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+drop trigger if exists pages_touch_updated_at on public.pages;
+create trigger pages_touch_updated_at before update on public.pages
+  for each row execute function public.touch_updated_at();
+
+drop trigger if exists page_localizations_touch_updated_at on public.page_localizations;
+create trigger page_localizations_touch_updated_at before update on public.page_localizations
+  for each row execute function public.touch_updated_at();
+
+-- ========================================================================
+-- 7. Realtime
 --
 -- Content the site reads is broadcast as it changes, so an edit in the Table
 -- Editor reaches an open page without a reload. The site subscribes per
@@ -369,7 +668,8 @@ begin
 
   foreach t in array array[
     'news', 'workshops', 'projects', 'communities', 'collectives',
-    'story_entries', 'constellation_points', 'stories'
+    'story_entries', 'constellation_points', 'stories',
+    'pages', 'page_localizations'
   ] loop
     if to_regclass('public.' || t) is null then
       continue;
@@ -386,3 +686,110 @@ begin
     end if;
   end loop;
 end $$;
+
+-- ========================================================================
+-- 8. Data API grants
+--
+-- RLS decides which *rows* a role may touch. It does not decide whether the
+-- role may touch the table at all — that is a table privilege, and the two are
+-- separate gates. A policy permitting everything grants nothing on a table the
+-- role has no privilege on.
+--
+-- This file never said any of it, because it never had to: a Supabase project
+-- used to auto-expose whatever `postgres` created in `public` to `anon`,
+-- `authenticated` and `service_role`. That default is gone. A project created
+-- now — including every local `supabase start` — revokes instead, and then
+-- every read comes back
+--
+--   42501  permission denied for table news
+--
+-- with all twenty policies present and correct, which is a confusing way to
+-- learn that a policy is not a privilege. See `auto_expose_new_tables` in
+-- app/supabase/config.toml: the flag that restores the old behaviour is
+-- deprecated and removed on 2026-10-30, so writing the grants down is the only
+-- version of this that keeps working.
+--
+-- Each grant below is one verb some policy above already permits, and no more —
+-- with one named exception, on the content read grant, for the reason given
+-- there. On a project that still auto-exposes, every line here is a no-op that
+-- restates what is already true — which is what makes it safe to re-run and
+-- safe to apply to the live project.
+--
+-- No sequence grants: every id here is either supplied text or a generated
+-- uuid, so nothing uses a sequence a writer would need `usage` on.
+-- ========================================================================
+
+-- ---------- anon: the public site ----------
+
+-- Content, read-only. One table per `anon reads ...` select policy.
+--
+-- `authenticated` is here without a policy of its own, which is the one
+-- exception to the rule above, and it is about not being stricter than the
+-- database this stands in for: auto-exposure gave the privilege to all three
+-- Data API roles, so on the hosted project a signed-in reader gets 200 and no
+-- rows — the policies admit `anon` only. Withhold the privilege here and the
+-- same reader gets 403 instead, a failure mode that exists locally and nowhere
+-- else, which is the opposite of what a local copy is for.
+--
+-- That a signed-in staff member reads no live content is a real thing and is
+-- not this block's to fix: it is the `to anon` on the nine read policies, and
+-- widening those is a change to what the live site does.
+grant select on table
+  public.news,
+  public.workshops,
+  public.projects,
+  public.communities,
+  public.collectives,
+  public.constellation_points,
+  public.story_entries,
+  public.pages,
+  public.page_localizations
+to anon, authenticated;
+
+-- The three intake tables: add a row, never read one back.
+grant insert on table
+  public.submissions,
+  public.stories,
+  public.workshop_registrations
+to anon;
+
+-- The one exception, and it is a policy not a privilege: `anon reads published`
+-- narrows this to stories a reviewer has published. No page reads it yet.
+grant select on table public.stories to anon;
+
+-- ---------- authenticated: the review desk ----------
+
+-- Read the queue and move a status. No delete, deliberately: a submission is
+-- someone's account of something that happened to them, and declining it is a
+-- status rather than an erasure — see the policies in section 2d.
+grant select, update on table
+  public.submissions,
+  public.stories,
+  public.workshop_registrations
+to authenticated;
+
+-- `is_staff()` consults this, and a staff member may see the list they are on.
+grant select on table public.staff_emails to authenticated;
+
+-- ---------- service_role: the bypass key ----------
+--
+-- No policies, because it carries `bypassrls` — but bypassing RLS is not the
+-- same as holding the privilege, so without this it is refused too, which
+-- contradicts the one thing every doc says about this key. Granted the full set
+-- on the app's own tables and nothing else.
+
+grant select, insert, update, delete on table
+  public.news,
+  public.workshops,
+  public.projects,
+  public.communities,
+  public.collectives,
+  public.constellation_points,
+  public.story_entries,
+  public.pages,
+  public.page_localizations,
+  public.submissions,
+  public.stories,
+  public.workshop_registrations,
+  public.staff_emails
+to service_role;

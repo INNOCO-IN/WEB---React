@@ -5,10 +5,19 @@ node_modules/
 app/dist/
 app/.vite/
 
-# local env — real keys live here, never commit
+# local env — real keys live here, never commit.
+#
+# app/.env.devdb is deliberately NOT here: it holds the local Supabase stack's
+# keys, which address 127.0.0.1 and are the same on every machine, and
+# committing it is what makes a fresh checkout's `npm run dev` work without
+# anyone handing over a credential. Do not widen these to `.env.*`.
 .env
 .env.local
 .env.*.local
+
+# who has admin access is per-deployment, and does not belong in git history.
+# app/scripts/supabase-setup.mjs folds this in when it is present.
+seed-staff.sql
 
 # tooling / editor state
 .DS_Store
