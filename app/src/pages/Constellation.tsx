@@ -50,7 +50,7 @@ export default function Constellation() {
                 </span>
                 {(modeButtons ?? []).map((m, mIndex) => (
                   <Fragment key={mIndex}>
-                    <button onClick={m.onClick} style={sx(m.style)}>
+                    <button onClick={m.onClick} aria-pressed={m.on} style={sx(m.style)}>
                       {m.label}
                     </button>
                   </Fragment>

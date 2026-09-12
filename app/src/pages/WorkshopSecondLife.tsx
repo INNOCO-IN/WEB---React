@@ -5,6 +5,7 @@ import wordsko from '../i18n/resources/ko/pages/workshop-second-life.json';
 import { Link } from 'react-router-dom';
 import SiteLayout from '../components/SiteLayout';
 import ImageSlot from '../components/ImageSlot';
+import WorkshopRegister from '../components/WorkshopRegister';
 import { localize, useLocale } from '../lib/lang';
 import './WorkshopSecondLife.css';
 
@@ -194,6 +195,8 @@ export default function WorkshopSecondLife() {
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 28px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               {t("036_h2")}
             </h2>
+            {/* The hero's "Register now" scrolls here. The links below it are a question and the way back, not a sign-up. */}
+            <WorkshopRegister slug="second-life" accent="#E5188C" />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
               <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#E5188C", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("037_a")}

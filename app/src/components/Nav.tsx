@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NAV_GROUPS } from './nav-data';
@@ -23,6 +23,7 @@ const DARK = '#2E3B40';
 
 export default function Nav() {
   const [hover, setHover] = useState<{ group: number; item: number } | null>(null);
+  const headingIdBase = useId();
   const { pathname } = useLocation();
   const locale = useLocale();
   const { t } = useTranslation();
@@ -50,12 +51,14 @@ export default function Nav() {
           <img src="/IN_Logo.png" alt="IN.studio" />
         </Link>
 
-        <nav className="in-nav__groups">
+        <nav className="in-nav__groups" aria-label={t('nav.label')}>
           {groups.map((group, gi) => {
             const groupHovered = hover?.group === gi;
+            const headingId = `${headingIdBase}-${group.key}`;
             return (
               <div key={group.key} className="in-nav__group" onMouseLeave={() => setHover(null)}>
                 <div
+                  id={headingId}
                   className="in-nav__heading"
                   style={{ color: groupHovered ? DARK : GREY }}
                 >
@@ -63,29 +66,38 @@ export default function Nav() {
                 </div>
 
                 <div className="in-nav__dots">
-                  {group.items.map((item, ii) => {
-                    const to = localize(item.to, locale);
-                    const active = pathname === to;
-                    const lit = groupHovered ? hover?.item === ii : active && !hover;
-                    return (
-                      <Link
-                        key={item.key}
-                        to={to}
-                        aria-label={t(`nav.items.${item.key}`)}
-                        aria-current={active ? 'page' : undefined}
-                        className="in-nav__dot-link"
-                        onMouseEnter={() => setHover({ group: gi, item: ii })}
-                        onClick={(e) => onDotClick(e, gi, ii)}
-                      >
-                        <span
-                          className="in-nav__dot"
-                          style={{ background: lit ? item.color : GREY }}
-                        />
-                      </Link>
-                    );
-                  })}
+                  {/* The dots are a list of links, and the heading above them
+                      names it — so a screen reader reads "Start Within, list,
+                      3 items" rather than three unrelated dots. */}
+                  <ul className="in-nav__dot-list" aria-labelledby={headingId}>
+                    {group.items.map((item, ii) => {
+                      const to = localize(item.to, locale);
+                      const active = pathname === to;
+                      const lit = groupHovered ? hover?.item === ii : active && !hover;
+                      return (
+                        <li key={item.key}>
+                          <Link
+                            to={to}
+                            aria-label={t(`nav.items.${item.key}`)}
+                            aria-current={active ? 'page' : undefined}
+                            className="in-nav__dot-link"
+                            onMouseEnter={() => setHover({ group: gi, item: ii })}
+                            onClick={(e) => onDotClick(e, gi, ii)}
+                          >
+                            <span
+                              className="in-nav__dot"
+                              style={{ background: lit ? item.color : GREY }}
+                            />
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
 
-                  <span className="in-nav__labels">
+                  {/* One slot, eleven labels, ten of them at opacity 0 — a
+                      hover affordance for the dot above, and a duplicate of
+                      the accessible name each link already carries. */}
+                  <span className="in-nav__labels" aria-hidden="true">
                     {group.items.map((item, ii) => {
                       const active = pathname === localize(item.to, locale);
                       const lit = groupHovered ? hover?.item === ii : active && !hover;

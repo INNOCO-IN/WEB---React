@@ -89,7 +89,7 @@ const DROP_ATTR = new Set([
   'data-dc-script', 'data-props',
   // Consumed by SupabaseForm / ChipGroup, which read them as props instead.
   'data-in-form', 'data-in-thanks', 'data-chip-group', 'data-multi',
-  'data-sel-bg', 'data-sel-fg', 'data-sel-border', 'data-value',
+  'data-sel-bg', 'data-sel-fg', 'data-sel-border', 'data-value', 'data-label-id',
   // The long form of <image-slot>; the component is resolved by import.
   'component-from-global-scope', 'from',
 ]);
@@ -503,6 +503,19 @@ export function toJsx(node, ctx, depth = 0) {
       const current = node.attrs.find((a) => a.name === 'current')?.value;
       return `${INDENT(depth)}<ProjectIndexRail${current ? ` current=${JSON.stringify(current)}` : ''} />`;
     }
+    // The sign-up in a workshop's `#register` band. The legacy page has two
+    // links there and no form, because the form is this app's; naming it here
+    // is how a page says "and the component goes in this spot" without anyone
+    // having to hand-edit the file this generator overwrites.
+    if (name === 'WorkshopRegister') {
+      ctx.imports.add('WorkshopRegister');
+      const get = (k) => node.attrs.find((a) => a.name === k)?.value;
+      const props = [['slug', get('slug')], ['accent', get('accent')]]
+        .filter(([, value]) => value)
+        .map(([prop, value]) => ` ${prop}=${JSON.stringify(value)}`)
+        .join('');
+      return `${INDENT(depth)}<WorkshopRegister${props} />`;
+    }
     return '';
   }
 
@@ -549,7 +562,12 @@ export function toJsx(node, ctx, depth = 0) {
     name = 'ChipGroup';
     props.push(`name=${JSON.stringify(attrOf('data-chip-group'))}`);
     if (node.attrs.some((a) => a.name === 'data-multi')) props.push('multi');
-    for (const [attr, prop] of [['data-sel-bg', 'selBg'], ['data-sel-fg', 'selFg'], ['data-sel-border', 'selBorder']]) {
+    // `data-label-id` names the group by pointing at the visible question
+    // above it, which is the only place that text should live.
+    for (const [attr, prop] of [
+      ['data-sel-bg', 'selBg'], ['data-sel-fg', 'selFg'], ['data-sel-border', 'selBorder'],
+      ['data-label-id', 'labelledBy'],
+    ]) {
       const value = attrOf(attr);
       if (value) props.push(`${prop}=${JSON.stringify(value)}`);
     }

@@ -67,6 +67,18 @@
   flex-wrap: nowrap;
 }
 
+/* Same row, same 13px gap the dots had when they were direct children — the
+   list box exists for semantics, not for layout. */
+.in-nav__dot-list {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .in-nav__dot-link {
   display: inline-flex;
   align-items: center;

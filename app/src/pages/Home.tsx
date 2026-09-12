@@ -19,19 +19,19 @@ export default function Home() {
 
   return (
     <SiteLayout page="Home.EN.dc.html" className="page-home" footer={{ loop: "0.14" }}>
-      <main id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
+      <div id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
         <section style={{ padding: "84px 0 72px 120px" }}>
           <div style={{ maxWidth: "1000px", position: "relative", minHeight: "426px" }}>
-            <div style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "80px", lineHeight: "var(--in-home-0)", color: "#1E8A86", marginBottom: "12px" }}>
-              {t("000_div")}
-            </div>
-            <div style={{ fontFamily: "var(--font-serif)", fontWeight: "100", fontSize: "60px", lineHeight: "1", color: "#1E8A86", maxWidth: "800px" }}>
-              {t("001_div")}
+            <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "80px", lineHeight: "var(--in-home-0)", color: "#1E8A86", margin: "0 0 12px" }}>
+              {t("000_h1")}
+            </h1>
+            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "100", fontSize: "60px", lineHeight: "1", color: "#1E8A86", maxWidth: "800px", margin: "0" }}>
+              {t("001_p")}
               <em>
                 {t("002_em")}
               </em>
-              {t("003_div")}
-            </div>
+              {t("003_p")}
+            </p>
             <span style={{ position: "absolute", fontSize: "300px", lineHeight: "0.6", opacity: "1", pointerEvents: "none", left: "565px", top: "326px", color: "#1E8A86", fontFamily: "var(--font-serif)", height: "100px" }} aria-hidden="true">
               ”
             </span>
@@ -309,7 +309,7 @@ export default function Home() {
             </Link>
           </div>
         </section>
-      </main>
+      </div>
       <section style={{ padding: "0 40px 100px", display: "flex", flexWrap: "wrap", gap: "14px", justifyContent: "center" }}>
         <Link to={localize("/mewe", locale)} style={{ display: "inline-flex", alignItems: "center", lineHeight: "1.2", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", border: "1.5px solid var(--color-ink)", borderRadius: "999px", padding: "15px 32px" }} className="in-plain">
           {t("048_a")}

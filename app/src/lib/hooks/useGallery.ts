@@ -32,10 +32,17 @@ export interface Gallery {
   nextLb: () => void;
 }
 
+/**
+ * The thumbnail's frame. The picture inside it is an `<img>`.
+ *
+ * It used to be this element's `background-image`, which is the wrong element
+ * for a photograph: a background cannot be lazy-loaded, cannot carry alt text
+ * of its own, does not print, and cannot be saved or zoomed. The `<img>` in
+ * the markup fills this box with `object-fit: cover`.
+ */
 const THUMB =
   'flex: 0 0 auto; width: 96px; height: 54px; padding: 0; border: none; ' +
-  'overflow: hidden; cursor: pointer; background-size: cover; ' +
-  'background-position: center; background-color: #F3EAD0;';
+  'overflow: hidden; cursor: pointer; background-color: #F3EAD0;';
 
 export function useGallery(page: keyof typeof GALLERIES | string): Gallery {
   const photos = GALLERIES[page] ?? [];
@@ -65,16 +72,16 @@ export function useGallery(page: keyof typeof GALLERIES | string): Gallery {
       selected: i === index,
       open: () => setIndex(i),
       style:
-        `${THUMB} background-image: url('${photo.src}'); ` +
-        `opacity: ${i === index ? '1' : '0.55'}; ` +
+        `${THUMB} opacity: ${i === index ? '1' : '0.55'}; ` +
         `outline: ${i === index ? '2.5px solid #1E5A64' : 'none'}; outline-offset: -2.5px;`,
     })),
     photo: current,
     lbSrc: current?.src ?? '',
     lbCap: current?.alt ?? '',
+    // The `<img>`'s own box, filling the viewer. `lbSrc` is the picture.
     lbImgStyle: current
-      ? `position: absolute; inset: 0; background-image: url('${current.src}'); ` +
-        `background-size: cover; background-position: ${current.position ?? 'center'};`
+      ? 'position: absolute; inset: 0; width: 100%; height: 100%; ' +
+        `object-fit: cover; object-position: ${current.position ?? 'center'};`
       : '',
     lbCount: count ? `${index + 1} / ${count}` : '',
     prevLb,

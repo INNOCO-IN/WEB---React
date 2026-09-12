@@ -94,7 +94,12 @@ const conflicted = [];
  * height, so which side wins is a design decision, not a build one.
  *
  * Markers are matched exactly (seven characters), so the 80-character `=`
- * rules used as section separators elsewhere are left alone.
+ * rules used as section separators elsewhere are left alone. The `\r?` on the
+ * middle marker is load-bearing: `.gitattributes` is not set, so a Windows
+ * checkout hands these files over with CRLF endings, `=======\r` failed the
+ * exact match, the resolver never left the `ours` side, and both versions of
+ * every hunk — plus the literal `=======` and `>>>>>>> <sha>` lines — were
+ * emitted as page copy. Which is what the Manifesto pages shipped.
  */
 function resolveConflicts(html, file) {
   if (!/^<{7} /m.test(html)) return { html, hunks: 0 };
@@ -106,7 +111,7 @@ function resolveConflicts(html, file) {
 
   for (const line of lines) {
     if (/^<{7} /.test(line)) { side = 'ours'; hunks++; continue; }
-    if (/^={7}$/.test(line) && side === 'ours') { side = 'theirs'; continue; }
+    if (/^={7}\r?$/.test(line) && side === 'ours') { side = 'theirs'; continue; }
     if (/^>{7} /.test(line) && side === 'theirs') { side = 'both'; continue; }
     if (side !== 'theirs') out.push(line);
   }
@@ -652,6 +657,7 @@ for (const file of files) {
   if (ctx.imports.has('ProjectIndexRail')) imports.push(`import ProjectIndexRail from '../components/ProjectIndexRail';`);
   if (ctx.imports.has('CommunityIndexList')) imports.push(`import CommunityIndexList from '../components/CommunityIndexList';`);
   if (ctx.imports.has('SupabaseForm')) imports.push(`import SupabaseForm from '../components/SupabaseForm';`);
+  if (ctx.imports.has('WorkshopRegister')) imports.push(`import WorkshopRegister from '../components/WorkshopRegister';`);
   for (const name of ['NewsGrid', 'WorkshopWall', 'CommunityGrid', 'HomeNewsCard', 'ProjectWall']) {
     if (ctx.imports.has(name)) imports.push(`import ${name} from '../components/cards/${name}';`);
   }

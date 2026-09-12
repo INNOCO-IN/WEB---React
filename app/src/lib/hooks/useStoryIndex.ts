@@ -67,11 +67,31 @@ export interface Paragraph {
 }
 
 /** The story being read. `paras` is styled here, so it replaces the raw text. */
-export interface FeaturedStory extends Omit<IndexedStory, 'paras'> {
+export interface FeaturedStory extends Omit<IndexedStory, 'paras' | 'image'> {
   dateLabel: string;
   paras: Paragraph[];
-  hasImage: boolean;
+  /**
+   * The attachment, narrowed to a string because the page puts it in a `src`.
+   *
+   * The column is called `image` and for a long time only ever held one. The
+   * submission form has always accepted four kinds — image, video, audio and
+   * PDF — so a story can arrive with a recording or a document in it, and one
+   * did: a PDF in an `<img>` renders as an empty frame, silently, because the
+   * markup had no other idea. The four flags below are what the page switches
+   * on; a story with no attachment gets an empty string rather than a null the
+   * markup would have to re-check.
+   */
+  image: string;
+  isImage: boolean;
+  isVideo: boolean;
+  isAudio: boolean;
+  /** Anything else, PDF included: shown in a frame, with a link out. */
+  isDoc: boolean;
   imgStyle: string;
+  audioStyle: string;
+  docStyle: string;
+  /** The words on the link beside a framed document. */
+  docLabel: string;
   hasKicker: boolean;
   kicker1: string;
   kicker2: string;
@@ -106,6 +126,32 @@ function monthLabel(iso: string, locale: Locale): string {
     year: 'numeric',
     timeZone: 'UTC',
   }).format(date);
+}
+
+/**
+ * What kind of file an attachment is, read off its name.
+ *
+ * The kind is a property of the file rather than an editorial decision, so it
+ * is derived here instead of being a column someone has to keep in step with
+ * the upload. Uploads are named `<uuid>.<ext>` by the submission form, so the
+ * extension is reliable; a query string is not part of it.
+ *
+ * Anything unrecognised is a `doc`, which is the branch that degrades best: a
+ * frame that may show nothing, and a link that always works.
+ */
+type MediaKind = 'image' | 'video' | 'audio' | 'doc';
+
+const MEDIA_KIND: Record<string, MediaKind> = {
+  jpg: 'image', jpeg: 'image', png: 'image', gif: 'image', webp: 'image', avif: 'image', svg: 'image',
+  mp4: 'video', webm: 'video', mov: 'video', m4v: 'video', ogv: 'video',
+  mp3: 'audio', wav: 'audio', m4a: 'audio', aac: 'audio', oga: 'audio', ogg: 'audio',
+};
+
+function mediaKind(url: string | null): MediaKind | null {
+  if (!url) return null;
+  const name = url.split(/[?#]/)[0];
+  const ext = name.slice(name.lastIndexOf('.') + 1).toLowerCase();
+  return MEDIA_KIND[ext] ?? 'doc';
 }
 
 /** One record flattened into the requested language, with labels resolved. */
@@ -247,6 +293,7 @@ export default function useStoryIndex(given?: Locale) {
   }
 
   const source = all[currentIndex] ?? all[0];
+  const kind = mediaKind(source?.image ?? null);
 
   const current: FeaturedStory | undefined = source && {
     ...source,
@@ -263,12 +310,30 @@ export default function useStoryIndex(given?: Locale) {
           }
         : { t: text, style: i === 0 ? 'font-size:26px; line-height:1.5; color:#1A1613; margin:0 0 24px;' : '' },
     ),
-    hasImage: Boolean(source.image),
+    image: source.image ?? '',
+    isImage: kind === 'image',
+    isVideo: kind === 'video',
+    isAudio: kind === 'audio',
+    isDoc: kind === 'doc',
+    // The box the story's picture fills. It was this element's
+    // `background-image` on a `role="img"` div; it is an `<img>` now, so the
+    // fit and position become the object-* pair. See the page's markup.
+    //
+    // A video fills the same box: `object-fit` and `object-position` mean the
+    // same thing on a `<video>`, so the two branches share this.
     imgStyle: source.image
       ? `width:100%; aspect-ratio:${source.imageRatio ?? '16/10'}; margin-top:34px; ` +
-        `background-image:url('${source.image}'); background-size:${source.imageFit ?? 'cover'}; ` +
-        `background-repeat:no-repeat; background-position:${source.imagePosition ?? 'center'}; background-color:#F3EAD0;`
+        `object-fit:${source.imageFit ?? 'cover'}; ` +
+        `object-position:${source.imagePosition ?? 'center'}; background-color:#F3EAD0;`
       : '',
+    // A player is a control strip, not a picture: full width, its own height.
+    audioStyle: 'width:100%; margin-top:34px;',
+    // Tall rather than wide — a document is read down the page, and the
+    // browser's own viewer brings its scrollbar with it.
+    docStyle:
+      'width:100%; height:min(78vh, 900px); margin-top:34px; border:1px solid rgba(26,22,19,0.16); ' +
+      'background-color:#F3EAD0;',
+    docLabel: t('stories.attachment'),
     hasKicker: Boolean(source.kicker?.length),
     kicker1: source.kicker?.[0] ?? '',
     kicker2: source.kicker?.[1] ?? '',

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FOOTER_COLUMNS, SOCIAL } from './nav-data';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -50,6 +50,7 @@ function ribbonPath(x: number): string {
 
 export default function Footer({ loop, cta, stroke }: FooterProps) {
   const locale = useLocale();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
 
   const parsed = typeof loop === 'number' ? loop : parseFloat(loop ?? '');
@@ -81,41 +82,50 @@ export default function Footer({ loop, cta, stroke }: FooterProps) {
       </div>
 
       <div className="in-footer__inner">
-        <div className="in-footer__grid">
+        {/* Four columns of links and a column of social icons: navigation, and
+            five lists of it. The grid element is the <nav> rather than a
+            wrapper inside it, because the columns are its grid items. */}
+        <nav className="in-footer__grid" aria-label={t('footer.navLabel')}>
           {FOOTER_COLUMNS.map((column, i) => (
-            <div className="in-footer__col" key={i}>
-              {column.map((link) => (
-                <Link
-                  key={link.key}
-                  to={localize(link.to, locale)}
-                  className="in-footer__link"
-                >
-                  {t(`nav.items.${link.key}`)}
-                </Link>
-              ))}
-            </div>
+            <ul className="in-footer__col" key={i}>
+              {column.map((link) => {
+                const to = localize(link.to, locale);
+                return (
+                  <li key={link.key}>
+                    <Link
+                      to={to}
+                      className="in-footer__link"
+                      aria-current={pathname === to ? 'page' : undefined}
+                    >
+                      {t(`nav.items.${link.key}`)}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           ))}
 
           <div />
 
-          <div className="in-footer__social">
+          <ul className="in-footer__social">
             {SOCIAL.map((s) => (
-              <a
-                key={s.key}
-                href={s.href}
-                aria-label={t(`footer.social.${s.key}`)}
-                {...(s.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
-              >
-                <SocialIcon name={s.icon} />
-              </a>
+              <li key={s.key}>
+                <a
+                  href={s.href}
+                  aria-label={t(`footer.social.${s.key}`)}
+                  {...(s.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
+                >
+                  <SocialIcon name={s.icon} />
+                </a>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </nav>
 
-        <div className="in-footer__rule" />
+        <hr className="in-footer__rule" />
 
         <div className="in-footer__base">
-          <div className="in-footer__legal">{t('footer.legal')}</div>
+          <p className="in-footer__legal">{t('footer.legal')}</p>
           <LanguageSwitcher idPrefix="footer" className="in-footer__lang" placement="up" />
         </div>
       </div>

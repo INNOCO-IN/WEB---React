@@ -6,6 +6,7 @@
     "logoLabel": "IN.studio — home"
   },
   "nav": {
+    "label": "Sections",
     "groups": {
       "startWithin": "Start Within",
       "shareTheSpace": "Share the Space",
@@ -26,6 +27,7 @@
     }
   },
   "footer": {
+    "navLabel": "Footer",
     "legal": "© 2016–2026 IN (INNOCO) · Seoul, Korea · MEWE shared under CC BY-NC-SA 4.0",
     "social": {
       "email": "Email",
@@ -101,6 +103,19 @@
       "fileTooLarge": "That file is larger than {{max}}."
     }
   },
+  "register": {
+    "name": "Your name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "org": "Organisation or group",
+    "orgPlaceholder": "Where you are coming from",
+    "message": "Anything we should know?",
+    "messagePlaceholder": "What you are hoping for, and anything we should plan around",
+    "submit": "Send my registration",
+    "thanks": "Thank you — you are on the list. We will write with the details.",
+    "honeypot": "Leave this field empty"
+  },
   "state": {
     "loading": "Loading…",
     "error": "Something went wrong. Please try again.",
@@ -121,6 +136,7 @@
     "newest": "· newest first",
     "allStories": "All stories",
     "total": "{{count}} stories and counting — the Constellation grows as neighbors add their own.",
-    "older": "Load {{count}} older"
+    "older": "Load {{count}} older",
+    "attachment": "Open the file"
   }
 }

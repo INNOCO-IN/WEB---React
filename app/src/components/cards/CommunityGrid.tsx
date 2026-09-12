@@ -30,11 +30,13 @@ export default function CommunityGrid({ locale: given }: Props) {
   if (!communities.length) return <div className="in-wall" />;
 
   return (
-    <div className="in-wall">
+    <ul className="in-wall">
       {communities.map((community) => (
-        <CommunityCard key={community.slug} community={community} locale={locale} />
+        <li key={community.slug}>
+          <CommunityCard community={community} locale={locale} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

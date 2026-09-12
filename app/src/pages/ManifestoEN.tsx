@@ -45,137 +45,105 @@ export default function ManifestoEN() {
             <div style={{ background: "#F3EAD0" }}>
               <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#D21E28" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  {" ======= "}
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "24px" }}>
-                    ABOUT IN | WHO WE ARE
-                  </div>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(28px, 3.4vw, 50px)", lineHeight: "1.15", margin: "0 0 20px", letterSpacing: "-0.01em", maxWidth: "22ch", fontWeight: "600", height: "330px", width: "800px" }}>
-                    {"IN is a small studio built on one idea: personal growth and the wellbeing of the people around us aren't separate things. We call this "}
-                    <span style={{ color: "#E6328C", fontStyle: "normal", fontWeight: "700" }}>
-                      MEWE
-                    </span>
-                    .
-                  </p>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-                    <div style={{ background: "#F3EAD0" }}>
-                      <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#D21E28" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                          {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                          <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
-                          <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
-                        </div>
-                      </div>
-                      <div style={{ padding: "28px 28px 32px" }}>
-                        <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#A81820", marginBottom: "14px" }}>
-                          Our Work
-                        </div>
-                        <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                          Practicing, not talking
-                        </div>
-                        <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                          {"Everything we do — workshops, projects with our neighbors, the way we "}
-                          <b>
-                            flip + connect
-                          </b>
-                          {" — is a way of practicing MEWE, not just talking about it."}
-                        </p>
-                      </div>
-                    </div>
-                    <div style={{ background: "#F3EAD0" }}>
-                      <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#1E648C" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                          {" ======= "}
-                          <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#1E648C" }}>
-                            <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                              {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                              <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
-                            </div>
-                          </div>
-                          <div style={{ padding: "28px 28px 32px" }}>
-                            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "14px" }}>
-                              Our Posture
-                            </div>
-                            <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                              No fixed answers
-                            </div>
-                            <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                              Just a humble posture of learning. We turn to nature, science, art, and social action for a common language, deep-listening and co-creating our way toward it.
-                            </p>
-                          </div>
-                        </div>
-                        <div style={{ background: "#F3EAD0" }}>
-                          <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#E6328C" }}>
-                            <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                              {" ======= "}
-                              <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#E6328C" }}>
-                                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                                  {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
-                                </div>
-                              </div>
-                              <div style={{ padding: "28px 28px 32px" }}>
-                                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#8E2166", marginBottom: "14px" }}>
-                                  Our Shape
-                                </div>
-                                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                                  Not one organization
-                                </div>
-                                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                                  {"IN isn't built to be one centralized organization. It grows through shared practice — those who continue become "}
-                                  <Link to="/collectives" style={{ color: "#8E2166" }} className="in-plain">
-                                    IN-Collectives
-                                  </Link>
-                                  , carrying the work forward in their own communities.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-                            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
-                              <div style={{ padding: "28px 28px 24px" }}>
-                                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
-                                  Interactive &amp; Experiential
-                                </div>
-                                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                                  Beyond theory
-                                </div>
-                                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                                  Moving into felt experience — noticed, made, and practiced together.
-                                </p>
-                              </div>
-                            </div>
-                            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-                              <div style={{ padding: "28px 28px 24px", backgroundColor: "#FAF4E2" }}>
-                                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
-                                  Grounded in Research
-                                </div>
-                                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                                  Systemic and relational
-                                </div>
-                                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                                  Informed by systemic and relational science — not slogans, but real ways of understanding how we're connected.
-                                </p>
-                              </div>
-                            </div>
-                            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
-                              <div style={{ padding: "28px 28px 24px" }}>
-                                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
-                                  Adaptable
-                                </div>
-                                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                                  Never one-size-fits-all
-                                </div>
-                                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                                  Shaped to the needs of each community and context.
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
                 </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#A81820", marginBottom: "14px" }}>
+                  Our Work
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  Practicing, not talking
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  {"Everything we do — workshops, projects with our neighbors, the way we "}
+                  <strong>
+                    flip + connect
+                  </strong>
+                  {" — is a way of practicing MEWE, not just talking about it."}
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#1E648C" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "14px" }}>
+                  Our Posture
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  No fixed answers
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  Just a humble posture of learning. We turn to nature, science, art, and social action for a common language, deep-listening and co-creating our way toward it.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#E6328C" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#8E2166", marginBottom: "14px" }}>
+                  Our Shape
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  Not one organization
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  {"IN isn't built to be one centralized organization. It grows through shared practice — those who continue become "}
+                  <Link to="/collectives" style={{ color: "#8E2166" }} className="in-plain">
+                    IN-Collectives
+                  </Link>
+                  , carrying the work forward in their own communities.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+              <div style={{ padding: "28px 28px 24px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
+                  Interactive &amp; Experiential
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  Beyond theory
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  Moving into felt experience — noticed, made, and practiced together.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ padding: "28px 28px 24px", backgroundColor: "#FAF4E2" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+                  Grounded in Research
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  Systemic and relational
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  Informed by systemic and relational science — not slogans, but real ways of understanding how we're connected.
+                </p>
+              </div>
+            </div>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+              <div style={{ padding: "28px 28px 24px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+                  Adaptable
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  Never one-size-fits-all
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  Shaped to the needs of each community and context.
+                </p>
               </div>
             </div>
           </div>
@@ -189,15 +157,6 @@ export default function ManifestoEN() {
             </b>
             This isn't a question for elders alone — it's for everyone, at any age. We're all bridges between who came before us and who comes next.
           </p>
-          {" ======= "}
-          <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(30px, 3.4vw, 50px)", lineHeight: "1.2", margin: "0", color: "#1A1613", maxWidth: "900px" }}>
-            <b style={{ color: "rgb(230, 50, 140)", fontWeight: "500" }}>
-              {"What kind of ancestor do I want to be? "}
-              <br />
-            </b>
-            This isn't a question for elders alone — it's for everyone, at any age. We're all bridges between who came before us and who comes next.
-          </p>
-          {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
         </section>
         <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "#F3EAD0" }}>
           <div aria-hidden="true" style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: "47px", overflow: "hidden", background: "#E52D84", transform: "rotate(180deg)" }}>
@@ -209,11 +168,6 @@ export default function ManifestoEN() {
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "18px", whiteSpace: "nowrap" }}>
                 A living agreement
               </div>
-              {" ======= "}
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C21573", marginBottom: "18px", whiteSpace: "nowrap" }}>
-                A living agreement
-              </div>
-              {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
               <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: "1.18", letterSpacing: "-0.01em", margin: "0", color: "#1A1613", fontStyle: "italic", textWrap: "pretty" }}>
                 Think of it less as a declaration and more as a living agreement: nine things we hold to be true for now, held open on purpose. Read it slowly. Then help us change it.
               </p>
@@ -224,11 +178,6 @@ export default function ManifestoEN() {
           <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E8A86", marginBottom: "14px" }}>
             THE MANIFESTO | WHAT WE BELIEVE
           </div>
-          {" ======= "}
-          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "14px" }}>
-            THE MANIFESTO | WHAT WE BELIEVE
-          </div>
-          {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
           <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.0", letterSpacing: "-0.02em", margin: "0 0 28px", textWrap: "balance" }}>
             Why we exist — nine things we hold true, for now.
           </h2>
@@ -253,11 +202,6 @@ export default function ManifestoEN() {
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
               2 · Truth
             </div>
-            {" ======= "}
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
-              2 · Truth
-            </div>
-            {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               My growth is our growth. This is MEWE.
             </h2>
@@ -324,11 +268,6 @@ export default function ManifestoEN() {
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
               8 · Bridge
             </div>
-            {" ======= "}
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
-              8 · Bridge
-            </div>
-            {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               We build — between what was and next.
             </h2>
@@ -358,11 +297,6 @@ export default function ManifestoEN() {
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "18px", whiteSpace: "nowrap" }}>
                 What we believe → How we practice
               </div>
-              {" ======= "}
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C21573", marginBottom: "18px", whiteSpace: "nowrap" }}>
-                What we believe → How we practice
-              </div>
-              {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
               <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: "1.1", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "12px" }}>
                 IN is a studio
               </div>
@@ -384,14 +318,6 @@ export default function ManifestoEN() {
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.0", letterSpacing: "-0.02em", margin: "0 0 22px", maxWidth: "20ch", textWrap: "balance", width: "800px" }}>
               Learning MEWE by practicing it with others.
             </h2>
-            {" ======= "}
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "16px", height: "60px" }}>
-              IN STORY | HOW WE PRACTICE
-            </div>
-            <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.0", letterSpacing: "-0.02em", margin: "0 0 22px", maxWidth: "20ch", textWrap: "balance", width: "800px" }}>
-              Learning MEWE by practicing it with others.
-            </h2>
-            {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(20px, 2.2vw, 26px)", lineHeight: "1.35", maxWidth: "46ch", margin: "0", color: "rgba(38,42,56,0.82)" }}>
               Before IN had a name, it had a question — how do ME and WE actually grow together? We never answered it in theory. We practiced our way toward it: trying something real, listening to what came back, and letting each attempt teach us the next.
             </p>
@@ -403,81 +329,58 @@ export default function ManifestoEN() {
             <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
               <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  {" ======= "}
-                  <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#FAF4E2" }}>
-                    <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                      {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                      <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
-                      <div style={{ position: "absolute", inset: "0", background: "#1E648C", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
-                    </div>
-                  </div>
-                  <div style={{ padding: "28px 28px 32px" }}>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#7A5200", marginBottom: "14px" }}>
-                      One → many
-                    </div>
-                    <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                      It started with one
-                    </div>
-                    <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                      One design student became a collective, reaching across art, design, and the wider university — then youth in the UAE and Nepal, growing alongside one another, discovering a relationship could hold across two very different countries. A university garden turned into a living lab.
-                    </p>
-                  </div>
+                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#1E648C", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
                 </div>
-                <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-                  <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
-                    <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                      {" ======= "}
-                      <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#FAF4E2" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                          {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                          <div style={{ position: "absolute", inset: "0", background: "#E6328C", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
-                          <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
-                        </div>
-                      </div>
-                      <div style={{ padding: "28px 28px 32px" }}>
-                        <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
-                          Room → community
-                        </div>
-                        {" ======= "}
-                        <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
-                          Room → community
-                        </div>
-                        {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                        <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                          Then it left the room
-                        </div>
-                        <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                          The practice kept asking more of us. In Canada it stretched to the scale of a whole county — a Pathfinder facilitator series and a MEWE exploration of race and unity — testing whether relationship could be practiced not just in a room, but across a community.
-                        </p>
-                      </div>
-                    </div>
-                    <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-                      <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                          {" ======= "}
-                          <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#FAF4E2" }}>
-                            <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                              {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                              <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
-                              <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
-                            </div>
-                          </div>
-                          <div style={{ padding: "28px 28px 32px" }}>
-                            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
-                              Local → worldwide
-                            </div>
-                            <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                              Now it finds itself
-                            </div>
-                            <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                              In 2022, IN took root in Korea, and something shifted: IN-Collectives from around the world found each other, and a new way of working together began — online and face to face, across the USA, Dubai, Saudi Arabia, and Korea — each exploring what MEWE can mean.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#7A5200", marginBottom: "14px" }}>
+                  One → many
                 </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  It started with one
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  One design student became a collective, reaching across art, design, and the wider university — then youth in the UAE and Nepal, growing alongside one another, discovering a relationship could hold across two very different countries. A university garden turned into a living lab.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#E6328C", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+                  Room → community
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  Then it left the room
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  The practice kept asking more of us. In Canada it stretched to the scale of a whole county — a Pathfinder facilitator series and a MEWE exploration of race and unity — testing whether relationship could be practiced not just in a room, but across a community.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
+                  Local → worldwide
+                </div>
+                <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  Now it finds itself
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  In 2022, IN took root in Korea, and something shifted: IN-Collectives from around the world found each other, and a new way of working together began — online and face to face, across the USA, Dubai, Saudi Arabia, and Korea — each exploring what MEWE can mean.
+                </p>
               </div>
             </div>
           </div>

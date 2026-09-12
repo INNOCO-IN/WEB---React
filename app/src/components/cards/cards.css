@@ -10,6 +10,29 @@
   align-items: stretch;
 }
 
+/* A wall of cards is a list of things, so it is a list — which is worth the
+   two rules below, because it is what lets a screen reader say "8 items,
+   item 3" instead of reading eight untitled groups in a row.
+
+   The `<li>` is the grid cell now, and the card inside fills it. That keeps
+   every card rule below unchanged: they were written against a box that was
+   the grid item, and this box is the same size in the same place. */
+.in-wall:where(ul) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.in-wall > li {
+  display: flex;
+  min-width: 0;
+}
+
+.in-wall > li > * {
+  flex: 1;
+  min-width: 0;
+}
+
 /* ---- News ------------------------------------------------------------- */
 
 .in-news-card {
@@ -355,13 +378,13 @@
   text-decoration: none;
 }
 
-.in-project-card:nth-child(4n + 1) {
+.in-wall > li:nth-child(4n + 1) .in-project-card {
   border: 1px solid rgba(26, 22, 19, 0.14);
 }
 
-.in-project-card:nth-child(4n + 2) { --tone: #F6D9B0; }
-.in-project-card:nth-child(4n + 3) { --tone: #EFC9A8; }
-.in-project-card:nth-child(4n + 4) { --tone: #F2E3C4; }
+.in-wall > li:nth-child(4n + 2) .in-project-card { --tone: #F6D9B0; }
+.in-wall > li:nth-child(4n + 3) .in-project-card { --tone: #EFC9A8; }
+.in-wall > li:nth-child(4n + 4) .in-project-card { --tone: #F2E3C4; }
 
 .in-project-card__bar {
   width: 100%;
@@ -510,7 +533,7 @@
   font-weight: 700;
   font-size: 27px;
   line-height: 1.14;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 }
 
 .in-home-tile__blurb {

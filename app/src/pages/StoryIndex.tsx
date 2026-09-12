@@ -104,9 +104,27 @@ export default function StoryIndex() {
                     {current.dateLabel}
                   </span>
                 </div>
-                {current.hasImage ? (
+                {current.isImage ? (
                   <>
-                  <div role="img" aria-label={current.title} style={sx(current.imgStyle)} />
+                  <img src={current.image} alt={current.title} style={sx(current.imgStyle)} />
+                  </>
+                ) : null}
+                {current.isVideo ? (
+                  <>
+                  <video src={current.image} controls={true} style={sx(current.imgStyle)} />
+                  </>
+                ) : null}
+                {current.isAudio ? (
+                  <>
+                  <audio src={current.image} controls={true} style={sx(current.audioStyle)} />
+                  </>
+                ) : null}
+                {current.isDoc ? (
+                  <>
+                  <iframe src={current.image} title={current.title} style={sx(current.docStyle)} />
+                  <a href={current.image} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "14px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#1A1613" }} className="in-plain">
+                    {current.docLabel}
+                  </a>
                   </>
                 ) : null}
                 <div className="story-body" style={{ paddingTop: "40px" }}>
@@ -155,12 +173,15 @@ export default function StoryIndex() {
                     {indexHeading}
                   </span>
                 </div>
-                <div style={{ position: "relative" }}>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(26,22,19,0.4)" strokeWidth="2" style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)" }}>
+                <div role="search" style={{ position: "relative" }}>
+                  <label className="in-visually-hidden" htmlFor="si-search">
+                    {t("008_label")}
+                  </label>
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="rgba(26,22,19,0.4)" strokeWidth="2" style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)" }}>
                     <circle cx="11" cy="11" r="7" />
                     <path d="M21 21l-4-4" strokeLinecap="round" />
                   </svg>
-                  <input value={query} onChange={onSearch} placeholder="Search titles…" style={{ width: "100%", fontFamily: "var(--font-serif)", fontSize: "16px", color: "#1A1613", background: "#F3EAD0", border: "1.5px solid rgba(26,22,19,0.14)", borderRadius: "999px", padding: "11px 16px 11px 36px", outline: "none" }} />
+                  <input id="si-search" type="search" value={query} onChange={onSearch} placeholder="Search titles…" style={{ width: "100%", fontFamily: "var(--font-serif)", fontSize: "16px", color: "#1A1613", background: "#F3EAD0", border: "1.5px solid rgba(26,22,19,0.14)", borderRadius: "999px", padding: "11px 16px 11px 36px", outline: "none" }} />
                 </div>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -194,7 +215,7 @@ export default function StoryIndex() {
               {isEmpty ? (
                 <>
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "16px", color: "rgba(26,22,19,0.5)", padding: "20px 2px" }}>
-                  {t("008_p")}
+                  {t("009_p")}
                 </p>
                 </>
               ) : null}
@@ -205,20 +226,20 @@ export default function StoryIndex() {
         <section style={{ background: "#FAB414", color: "#2E3B40", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)", margin: "0 0 18px" }}>
-              {t("009_p")}
+              {t("010_p")}
             </p>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 16px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              {t("010_h2")}
+              {t("011_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.5", maxWidth: "640px", margin: "0 auto 28px", color: "rgba(46,59,64,0.82)" }}>
-              {t("011_p")}
+              {t("012_p")}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
               <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
-                {t("012_a")}
+                {t("013_a")}
               </Link>
               <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
-                {t("013_a")}
+                {t("014_a")}
               </Link>
             </div>
           </div>

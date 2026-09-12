@@ -105,16 +105,16 @@
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 16px;">
             <div style="flex: 1 1 200px; min-width: 180px;">
-              <label style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">Name</label>
-              <input class="in-field" type="text" name="name" placeholder="Your name" required="required">
+              <label for="cf-name" style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">Name</label>
+              <input class="in-field" type="text" name="name" id="cf-name" placeholder="Your name" required="required">
             </div>
             <div style="flex: 1 1 200px; min-width: 180px;">
-              <label style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">Email</label>
-              <input class="in-field" type="email" name="email" placeholder="you@example.com" required="required">
+              <label for="cf-email" style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">Email</label>
+              <input class="in-field" type="email" name="email" id="cf-email" placeholder="you@example.com" required="required">
             </div>
           </div>
           <div>
-            <label style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">What brings you here?</label>
+            <label for="cf-brings" style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">What brings you here?</label>
             <select class="in-field" id="cf-brings" name="brings">
               <option>Curious about a workshop</option>
               <option>Bringing a workshop to my organization</option>
@@ -125,8 +125,8 @@
             </select>
           </div>
           <div id="cf-msg-wrap">
-            <label style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">Message</label>
-            <textarea class="in-field" name="message" rows="5" placeholder="What are you hoping to explore?" style="resize: vertical;"></textarea>
+            <label for="cf-message" style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">Message</label>
+            <textarea class="in-field" name="message" id="cf-message" rows="5" placeholder="What are you hoping to explore?" style="resize: vertical;"></textarea>
           </div>
           <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 4px;">
             <button type="submit" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; color: #FAF4E2; background: #2E3B40; border: none; border-radius: 999px; padding: 15px 34px; cursor: pointer;">Send message</button>

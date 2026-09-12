@@ -117,7 +117,7 @@ document.addEventListener('click', function(e){
         <!-- GALLERY · embedded viewer -->
         <div style="margin-top: 44px;">
           <div style="position: relative; aspect-ratio: 16/9; background: #16242E;">
-            <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ lbCap }}" style="{{ lbImgStyle }}"></div></sc-if>
+            <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><img src="{{ lbSrc }}" alt="{{ lbCap }}" style="{{ lbImgStyle }}"></sc-if>
             <button onClick="{{ prevLb }}" aria-label="Previous photo" style="position: absolute; left: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">‹</button>
             <button onClick="{{ nextLb }}" aria-label="Next photo" style="position: absolute; right: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: none; border-radius: 50%; background: rgba(250,244,226,0.85); color: #16242E; font-family: 'Archivo', sans-serif; font-size: 24px; line-height: 1; cursor: pointer;">›</button>
           </div>
@@ -127,7 +127,7 @@ document.addEventListener('click', function(e){
           </div>
           <div style="display: flex; gap: 8px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px;">
             <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="0">
-              <button onClick="{{ g.open }}" aria-label="{{ g.alt }}" style="{{ g.style }}"></button>
+              <button onClick="{{ g.open }}" aria-label="{{ g.alt }}" style="{{ g.style }}"><img src="{{ g.src }}" alt="" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;"></button>
             </sc-for>
           </div>
         </div>
@@ -236,11 +236,11 @@ class Component extends DCLogic {
       gallery: ps.map((p, i) => ({
         src: p.src, alt: p.cap,
         open: () => this.setState({ lb: i }),
-        style: "flex: 0 0 auto; width: 96px; height: 54px; padding: 0; border: none; overflow: hidden; cursor: pointer; background-image: url('" + p.src + "'); background-size: cover; background-position: center; background-color: #F3EAD0; opacity: " + (i === lb ? '1' : '0.55') + '; outline: ' + (i === lb ? '2.5px solid #1E5A64' : 'none') + '; outline-offset: -2.5px;'
+        style: "flex: 0 0 auto; width: 96px; height: 54px; padding: 0; border: none; overflow: hidden; cursor: pointer; background-color: #F3EAD0; opacity: " + (i === lb ? '1' : '0.55') + '; outline: ' + (i === lb ? '2.5px solid #1E5A64' : 'none') + '; outline-offset: -2.5px;'
       })),
       lbSrc: cur.src,
       lbCap: cur.cap,
-      lbImgStyle: "position: absolute; inset: 0; background-image: url('" + cur.src + "'); background-size: cover; background-position: " + (cur.pos || 'center') + ";",
+      lbImgStyle: "position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: " + (cur.pos || 'center') + ";",
       lbCount: (lb + 1) + ' / ' + ps.length,
       prevLb: () => this.setState({ lb: (lb + ps.length - 1) % ps.length }),
       nextLb: () => this.setState({ lb: (lb + 1) % ps.length })

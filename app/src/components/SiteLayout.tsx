@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Nav from './Nav';
 import Footer, { type FooterProps } from './Footer';
 import ContentStatus from './ContentStatus';
@@ -20,6 +21,10 @@ import '../styles/site.css';
  * and they all happen to be right, but the default was English — so a page
  * that forgot rendered an English shell around Korean copy and said nothing.
  * The route already knows, so the route decides and the prop is an override.
+ *
+ * The page itself is the `<main>` landmark, and the skip link above it is what
+ * makes that landmark worth having: the nav is three groups of coloured dots,
+ * eleven links, and every one of them stood between a keyboard and the page.
  */
 
 export interface SiteLayoutProps {
@@ -55,6 +60,7 @@ export default function SiteLayout({
 }: SiteLayoutProps) {
   const { pathname } = useLocation();
   const locale = localeProp ?? localeOf(pathname);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const { body } = document;
@@ -81,10 +87,17 @@ export default function SiteLayout({
 
   return (
     <div className="in-shell" style={{ fontFamily: FONT_STACK[locale] }}>
+      <a href="#in-main" className="in-skip">
+        {t('a11y.skipToContent')}
+      </a>
       <Nav />
-      <div className={['in-page', className].filter(Boolean).join(' ')} data-page={page}>
+      <main
+        id="in-main"
+        className={['in-page', className].filter(Boolean).join(' ')}
+        data-page={page}
+      >
         {children}
-      </div>
+      </main>
       <Footer {...footer} />
 
       {/* The page's data model, as it is actually running. Development only:

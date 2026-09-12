@@ -25,9 +25,9 @@ export default function StorySubmissionEN() {
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(19px, 2.1vw, 25px)", lineHeight: "1.46", maxWidth: "760px", margin: "0", color: "rgba(46,59,64,0.85)" }}>
               It can be a few honest sentences, or a drawing, a photo, a film, a piece of music. Start with a short description of the moment — then bring whatever form carries it best. Only steps 1 and 5 are required.&nbsp;
               <span style={{ fontSize: "clamp(19px, 2.1vw, 25px)" }}>
-                <b>
+                <strong>
                   Thank you for adding your light.
-                </b>
+                </strong>
               </span>
               <br />
             </p>
@@ -60,10 +60,10 @@ export default function StorySubmissionEN() {
               {typed ? (
                 <>
                 <div style={{ marginTop: "18px", paddingTop: "16px", borderTop: "1px solid rgba(46,59,64,0.15)" }}>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.4", margin: "0 0 12px", color: "rgba(46,59,64,0.7)" }}>
+                  <p id="story-door-q" style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.4", margin: "0 0 12px", color: "rgba(46,59,64,0.7)" }}>
                     Good. Only so we can place it well — this one is something you…
                   </p>
-                  <ChipGroup name="door" selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" style={{ display: "flex", flexWrap: "wrap", gap: "9px" }}>
+                  <ChipGroup name="door" selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" labelledBy="story-door-q" style={{ display: "flex", flexWrap: "wrap", gap: "9px" }}>
                     <Chip value="lived" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
                       lived
                     </Chip>
@@ -146,16 +146,16 @@ export default function StorySubmissionEN() {
                   · optional
                 </span>
               </div>
-              <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(24px, 2.6vw, 32px)", lineHeight: "1.05", letterSpacing: "-0.01em", margin: "0 0 14px" }}>
+              <h2 id="story-format-q" style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(24px, 2.6vw, 32px)", lineHeight: "1.05", letterSpacing: "-0.01em", margin: "0 0 14px" }}>
                 Describe it first, then choose a form.
               </h2>
               <p style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", lineHeight: "1.5", margin: "0 0 18px", color: "rgba(46,59,64,0.8)" }}>
-                <b>
+                <strong>
                   Every story starts with your words above — a short description in Step 1 is what we always need.
-                </b>
+                </strong>
                 {" If your story also lives in another form — a drawing, a photo, a video, a song — tell us which, and attach it below. This is how we'll group and show it in the Constellation."}
               </p>
-              <ChipGroup name="format" multi selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" style={{ display: "flex", flexWrap: "wrap", gap: "9px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13.5px" }}>
+              <ChipGroup name="format" multi selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" labelledBy="story-format-q" style={{ display: "flex", flexWrap: "wrap", gap: "9px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13.5px" }}>
                 <Chip value="Writing" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
                   Writing
                 </Chip>
@@ -205,13 +205,13 @@ export default function StorySubmissionEN() {
                   · optional, skippable
                 </span>
               </div>
-              <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(24px, 2.6vw, 32px)", lineHeight: "1.05", letterSpacing: "-0.01em", margin: "0 0 14px" }}>
+              <h2 id="story-arc-q" style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(24px, 2.6vw, 32px)", lineHeight: "1.05", letterSpacing: "-0.01em", margin: "0 0 14px" }}>
                 Where does it sit on the Loop?
               </h2>
               <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.45", margin: "0 0 14px", color: "rgba(46,59,64,0.8)" }}>
                 Place your story anywhere on the Loop — including the stuck places. You don't need to name the stage; we'll help place it.
               </p>
-              <ChipGroup name="arc_stage" selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" style={{ display: "flex", flexWrap: "wrap", gap: "9px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px" }}>
+              <ChipGroup name="arc_stage" selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" labelledBy="story-arc-q" style={{ display: "flex", flexWrap: "wrap", gap: "9px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px" }}>
                 <Chip value="IGNITE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
                   IGNITE
                 </Chip>

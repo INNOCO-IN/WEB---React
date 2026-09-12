@@ -116,36 +116,44 @@ export interface BriefGridProps {
   accent: string;
 }
 
-/** The heading and the row of rule-topped fact cards under it. */
+/**
+ * The heading and the row of rule-topped fact cards under it.
+ *
+ * The facts are `Role`, `Location`, `Dates`, `Partners` — a term and what it
+ * says about this project — so they are a description list rather than eight
+ * unrelated divs, and the section's name is a real heading rather than 26px
+ * of uppercase. The `<div>` between `<dl>` and each pair is allowed, and it
+ * is what keeps each pair one grid cell.
+ */
 export function BriefGrid({ label, facts, accent }: BriefGridProps) {
   return (
     <>
-      <div
+      <h2
         style={{
           fontFamily: SANS, fontWeight: '700', fontSize: '26px', letterSpacing: '0.14em',
-          lineHeight: '1.1', textTransform: 'uppercase', color: accent, marginBottom: '24px',
+          lineHeight: '1.1', textTransform: 'uppercase', color: accent, margin: '0 0 24px',
         }}
       >
         {label}
-      </div>
+      </h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '22px', maxWidth: '1000px' }}>
+      <dl style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '22px', maxWidth: '1000px', margin: '0' }}>
         {facts.map((fact) => (
           <div key={fact.label} style={{ borderTop: `1.5px solid ${ink(0.2)}`, paddingTop: '16px' }}>
-            <div
+            <dt
               style={{
                 fontFamily: SANS, fontWeight: '800', fontSize: '13px', letterSpacing: '0.12em',
                 textTransform: 'uppercase', color: accent, marginBottom: '12px',
               }}
             >
               {fact.label}
-            </div>
-            <p style={{ fontFamily: SERIF, fontSize: '19px', lineHeight: '1.5', margin: '0', color: ink(0.82) }}>
+            </dt>
+            <dd style={{ fontFamily: SERIF, fontSize: '19px', lineHeight: '1.5', margin: '0', color: ink(0.82) }}>
               {fact.body}
-            </p>
+            </dd>
           </div>
         ))}
-      </div>
+      </dl>
     </>
   );
 }

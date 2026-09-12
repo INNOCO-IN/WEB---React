@@ -27,7 +27,8 @@ export type ContentTable =
   | 'story_entries'
   | 'constellation_points'
   | 'stories'
-  | 'submissions';
+  | 'submissions'
+  | 'workshop_registrations';
 
 export type Status = 'draft' | 'live' | 'archived';
 

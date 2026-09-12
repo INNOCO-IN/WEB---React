@@ -56,7 +56,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
           <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.6);">정렬 기준</span>
           <sc-for list="{{ modeButtons }}" as="m" hint-placeholder-count="2">
-            <button onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.label }}</button>
+            <button onClick="{{ m.onClick }}" aria-pressed="{{ m.on }}" style="{{ m.style }}">{{ m.label }}</button>
           </sc-for>
         </div>
         <span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; color: rgba(250,244,226,0.55);">{{ skyHint }}</span>
@@ -259,6 +259,7 @@ class Component extends DCLogic {
       const on = m.id === this.state.mode;
       return {
         label: m.label,
+        on: on,
         onClick: () => this.setState({ mode: m.id, sel: this.state.sel }),
         style: `font-family:'Archivo','Noto Sans KR',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; border-radius:999px; padding:11px 22px; cursor:pointer; line-height:1.2; border:1.5px solid ${on ? '#F0D23C' : 'rgba(250,244,226,0.35)'}; background:${on ? '#F0D23C' : 'transparent'}; color:${on ? '#1A1613' : 'rgba(250,244,226,0.85)'};`
       };

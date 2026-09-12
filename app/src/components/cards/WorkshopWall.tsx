@@ -74,11 +74,13 @@ export default function WorkshopWall({ locale: given }: Props) {
         ))}
       </div>
 
-      <div className="in-wall">
+      <ul className="in-wall">
         {visible.map((workshop) => (
-          <WorkshopCard key={workshop.slug} workshop={workshop} locale={locale} />
+          <li key={workshop.slug}>
+            <WorkshopCard workshop={workshop} locale={locale} />
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 }

@@ -3,6 +3,9 @@
 
 .in-index {
   border-top: 1.5px solid rgba(46, 59, 64, 0.16);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .in-index__row {

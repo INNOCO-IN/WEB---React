@@ -6,6 +6,7 @@
     "logoLabel": "IN.studio — 首頁"
   },
   "nav": {
+    "label": "網站分區",
     "groups": {
       "startWithin": "由內開始",
       "shareTheSpace": "分享空間",
@@ -26,6 +27,7 @@
     }
   },
   "footer": {
+    "navLabel": "頁尾導覽",
     "legal": "© 2016–2026 IN (INNOCO) · 韓國首爾 · MEWE 以 CC BY-NC-SA 4.0 授權分享",
     "social": {
       "email": "電子郵件",
@@ -101,6 +103,19 @@
       "fileTooLarge": "檔案大於 {{max}}。"
     }
   },
+  "register": {
+    "name": "姓名",
+    "namePlaceholder": "你的名字",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "org": "單位／團體",
+    "orgPlaceholder": "你從哪裡來",
+    "message": "有什麼想先讓我們知道的嗎？",
+    "messagePlaceholder": "你期待什麼，以及有沒有需要我們特別安排的事",
+    "submit": "送出報名",
+    "thanks": "謝謝你 —— 報名已經收到，我們會把細節寄給你。",
+    "honeypot": "請將此欄留空"
+  },
   "state": {
     "loading": "載入中…",
     "error": "發生錯誤，請再試一次。",
@@ -121,6 +136,7 @@
     "newest": "· 最新優先",
     "allStories": "所有故事",
     "total": "{{count}} 篇故事，還在增加 — 每位鄰人加入自己的一篇，星圖就長大一些。",
-    "older": "再載入 {{count}} 篇"
+    "older": "再載入 {{count}} 篇",
+    "attachment": "開啟檔案"
   }
 }

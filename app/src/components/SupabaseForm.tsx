@@ -8,9 +8,11 @@ import { supabase, STORY_MEDIA_BUCKET, isSupabaseConfigured } from '../lib/supab
  * `data-in-form="table"` and read the field `name` attributes as column names.
  * That convention is worth keeping — it is genuinely nice that adding a field
  * needs no wiring — so it survives here as props instead of attributes, with
- * the same rule: a field's `name` is its column.
+ * the same rule: a field's `name` is its column. The one exception is the
+ * `chip:` prefix, which means "a real control, but not a column" — see the
+ * loop in `onSubmit`.
  *
- * Chip rows register through context rather than through hidden inputs,
+ * Chip rows register through context rather than through their inputs,
  * because one of them (`format`) is a text[] and there is no HTML control that
  * means "array".
  */
@@ -31,17 +33,26 @@ export function useFormRegistration() {
 /**
  * The tables a visitor may write to.
  *
- * Not `ContentTable`: RLS grants anon an insert on these two and nothing else,
- * so a form pointed at `news` would compile and then fail at the policy. The
- * union says out loud what the database already enforces.
+ * Not `ContentTable`: RLS grants anon an insert on these three and nothing
+ * else, so a form pointed at `news` would compile and then fail at the policy.
+ * The union says out loud what the database already enforces.
  */
-export type WritableTable = 'submissions' | 'stories';
+export type WritableTable = 'submissions' | 'stories' | 'workshop_registrations';
 
 export interface SupabaseFormProps {
   /** Table to insert into. */
   table: WritableTable;
   /** Message shown in place of the form once the insert succeeds. */
   thanks?: string;
+  /**
+   * Whether the form sits on paper or on one of the accent bands.
+   *
+   * Only the status line reads it, and only because that line is the one part
+   * of a form this component colours itself — a page's own fields bring their
+   * own styles, but nothing outside here knows when "Sending…" is on screen.
+   * `ink` on a magenta band is unreadable, so a caller on colour says so.
+   */
+  tone?: 'ink' | 'paper';
   /** Column that receives an uploaded file's public URL. */
   fileColumn?: string;
   children: ReactNode;
@@ -59,6 +70,7 @@ type State =
 export default function SupabaseForm({
   table,
   thanks = 'Thank you — we have it.',
+  tone = 'ink',
   fileColumn = 'attachment_url',
   children,
   className,
@@ -105,6 +117,11 @@ export default function SupabaseForm({
 
       for (const [key, value] of data.entries()) {
         if (key === '_hp') continue;
+        // A chip row's radios and checkboxes are named `chip:<column>` so that
+        // the browser groups them for the keyboard without their name being
+        // read as a column here. Their value arrives through `register`, which
+        // is the only path that can carry a text[]. See ChipGroup.
+        if (key.startsWith('chip:')) continue;
         if (value instanceof File) {
           if (value.size > 0) file = value;
           continue;
@@ -180,7 +197,15 @@ export default function SupabaseForm({
             fontFamily: 'var(--font-sans)',
             margin: 0,
             minHeight: '1.2em',
-            color: state.status === 'error' ? 'var(--color-red)' : 'var(--color-ink-40)',
+            fontWeight: state.status === 'error' && tone === 'paper' ? 700 : undefined,
+            color:
+              tone === 'paper'
+                ? state.status === 'error'
+                  ? 'var(--color-paper)'
+                  : 'var(--color-paper-dim)'
+                : state.status === 'error'
+                  ? 'var(--color-red)'
+                  : 'var(--color-ink-40)',
           }}
         >
           {state.status === 'sending' ? 'Sending…' : state.status === 'error' ? state.message : ''}

@@ -86,3 +86,35 @@ button {
   white-space: nowrap;
   border: 0;
 }
+
+/* The first thing in the tab order, and invisible until it is focused.
+
+   It matters here more than on most sites: the header is three groups of
+   coloured dots — eleven links — so reaching the page by keyboard meant
+   passing all of them, on every page. `top` rather than `transform` so the
+   focused state is a real position and not a paint the sticky nav can cover. */
+.in-skip {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 200;
+  padding: 12px 20px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font: var(--text-button);
+  font-family: var(--font-sans);
+  letter-spacing: var(--tracking-button);
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  transition: top 0.12s var(--ease-standard);
+}
+
+.in-skip:focus-visible {
+  top: 0;
+}
+
+/* The nav is sticky, so an anchor jump lands the top of the page underneath
+   it. This is how much of the page that costs. */
+#in-main {
+  scroll-margin-top: 96px;
+}

@@ -21,10 +21,14 @@
  */
 
 import { readFileSync } from 'node:fs';
-import { TAXONOMY } from '../src/lib/content/stories.ts';
-
-const FORMATS = Object.keys(TAXONOMY.format);
-const TOPICS = Object.keys(TAXONOMY.topic);
+import {
+  FORMATS,
+  TOPICS,
+  buildEntry,
+  buildPoint,
+  formatOf,
+  paragraphs,
+} from './lib/story-promotion.mjs';
 
 /* ------------------------------------------------------------------ input */
 
@@ -77,22 +81,6 @@ try {
 
 /* ------------------------------------------------------- what the row gives */
 
-/** The form offers a multi-select; the index colours by a single format. */
-function formatOf(value) {
-  const first = Array.isArray(value) ? value[0] : value;
-  if (!first) return null;
-  const key = String(first).toLowerCase().trim();
-  return FORMATS.includes(key) ? key : null;
-}
-
-/** A submission arrives as one text field; the reader wants paragraphs. */
-function paragraphs(body) {
-  return String(body ?? '')
-    .split(/\n\s*\n/)
-    .map((p) => p.replace(/\s+/g, ' ').trim())
-    .filter(Boolean);
-}
-
 const paras = paragraphs(row.body);
 const format = flags.format ?? formatOf(row.format);
 const date = flags.date ?? String(row.created_at ?? '').slice(0, 10);
@@ -133,54 +121,48 @@ if (missing.length) {
 
 /* ------------------------------------------------------------------ build */
 
-// 'I lived it · A classroom' — the door is the half the submitter chose, the
-// context is the half an editor adds.
-const eyebrow = flags.eyebrow ?? [row.door, flags.context].filter(Boolean).join(' · ') ?? null;
-const blurb = flags.blurb ?? paras[0];
-
-const en = {
-  eyebrow: eyebrow || null,
-  title: flags.title,
-  body: blurb,
-  credit: row.credit_name || null,
-  paras,
-};
-
 const translated = Boolean(flags['ko-title'] || flags['ko-blurb'] || flags['ko-body']);
-const ko = {
-  eyebrow: en.eyebrow,
-  title: flags['ko-title'] ?? en.title,
-  body: flags['ko-blurb'] ?? en.body,
-  credit: en.credit,
-  paras: flags['ko-body'] ? paragraphs(flags['ko-body']) : en.paras,
-};
+
+// The shape is scripts/lib/story-promotion.mjs's, so that what this prints and
+// what promote-watch.mjs writes are the same row.
+const entry = buildEntry(row, {
+  slug: flags.slug,
+  title: flags.title,
+  topic: flags.topic,
+  format,
+  date,
+  blurb: flags.blurb,
+  eyebrow: flags.eyebrow,
+  context: flags.context,
+  color: flags.color,
+  koTitle: flags['ko-title'],
+  koBlurb: flags['ko-blurb'],
+  koBody: flags['ko-body'],
+});
 
 /* -------------------------------------------------------------------- SQL */
 
 const q = (v) => (v === null || v === undefined || v === '' ? 'null' : `'${String(v).replace(/'/g, "''")}'`);
 const json = (v) => `'${JSON.stringify(v).replace(/'/g, "''")}'::jsonb`;
 
-const values = [
-  q(flags.slug),
-  q(date),
-  q(format),
-  q(flags.topic),
-  q(flags.color ?? null),
-  'null',
-  'false',
-  q(row.attachment_url ?? null),
-  'null',
-  'null',
-  'null',
-  json(en),
-  json(ko),
-].join(', ');
+const ENTRY_COLUMNS = [
+  'id', 'published_on', 'format', 'topic', 'color', 'href', 'draft',
+  'image', 'image_fit', 'image_ratio', 'image_position', 'en', 'ko',
+];
+
+const literal = (column, value) => {
+  if (column === 'draft') return value ? 'true' : 'false';
+  if (column === 'en' || column === 'ko') return json(value);
+  return q(value);
+};
+
+const values = ENTRY_COLUMNS.map((column) => literal(column, entry[column])).join(', ');
 
 console.log(`-- Promoted from stories.${row.id ?? '(no id)'} by scripts/promote-story.mjs
 -- Read it before you run it, then set status = 'published' on the submission
 -- so the intake table records that this one was carried across.
 insert into public.story_entries
-  (id, published_on, format, topic, color, href, draft, image, image_fit, image_ratio, image_position, en, ko)
+  (${ENTRY_COLUMNS.join(', ')})
 values
   (${values})
 on conflict (id) do update set
@@ -200,20 +182,24 @@ on conflict (id) do update set
  * index has no arc, and the map's `arc` column is exactly what it was for.
  */
 if (flags.constellation) {
-  const arc = flags.arc ?? row.arc_stage ?? null;
+  const point = buildPoint(entry, row, flags.arc);
+  const POINT_COLUMNS = [
+    'id', 'title', 'by_line', 'format', 'topic', 'arc',
+    'month', 'caption', 'read_href', 'media_href', 'view_href',
+  ];
 
   console.log(`
 -- The same story as a point on the map. Placed by month, coloured by format.
 insert into public.constellation_points
-  (id, title, by_line, format, topic, arc, month, caption, read_href, media_href, view_href)
+  (${POINT_COLUMNS.join(', ')})
 values
-  (${q(flags.slug)}, ${q(en.title)}, ${q(en.credit ?? 'Anonymous')}, ${q(format)}, ${q(flags.topic)}, ${q(arc)}, ${q(date.slice(0, 7))}, ${q(en.body)}, ${q(`/story/all?story=${flags.slug}`)}, null, null)
+  (${POINT_COLUMNS.map((column) => q(point[column])).join(', ')})
 on conflict (id) do update set
   title = excluded.title, by_line = excluded.by_line, format = excluded.format,
   topic = excluded.topic, arc = excluded.arc, month = excluded.month,
   caption = excluded.caption, read_href = excluded.read_href;`);
 
-  if (!arc) {
+  if (!point.arc) {
     console.error(
       '\nNote: the row carries no arc_stage, so the point is unplaced on the loop.\n' +
         'Pass --arc to place it, or set it later in the Table Editor.',

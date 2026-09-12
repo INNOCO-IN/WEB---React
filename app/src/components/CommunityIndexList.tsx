@@ -26,22 +26,23 @@ export default function CommunityIndexList({ locale: given }: Props) {
   const { data: communities } = useCommunities();
 
   return (
-    <div className="in-index">
+    <ul className="in-index">
       {communities.map((community) => {
         const copy = copyIn(community, locale);
         return (
-          <Link
-            key={community.slug}
-            // `idx-row` is the page's own class: it carries the red hover tint
-            // that belongs to this page rather than to the directory.
-            className="in-index__row idx-row in-plain"
-            to={localize(community.route ?? `/community/${community.slug}`, locale)}
-          >
-            <span className="in-index__title">{copy.title}</span>
-            {copy.meta ? <span className="in-index__meta">{copy.meta}</span> : null}
-          </Link>
+          <li key={community.slug}>
+            <Link
+              // `idx-row` is the page's own class: it carries the red hover tint
+              // that belongs to this page rather than to the directory.
+              className="in-index__row idx-row in-plain"
+              to={localize(community.route ?? `/community/${community.slug}`, locale)}
+            >
+              <span className="in-index__title">{copy.title}</span>
+              {copy.meta ? <span className="in-index__meta">{copy.meta}</span> : null}
+            </Link>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

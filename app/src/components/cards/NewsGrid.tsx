@@ -37,11 +37,13 @@ export default function NewsGrid({ feed = 'news', locale: given, limit }: Props)
   }
 
   return (
-    <div className="in-wall">
+    <ul className="in-wall">
       {items.map((item) => (
-        <NewsCard key={item.id} item={item} locale={locale} />
+        <li key={item.id}>
+          <NewsCard item={item} locale={locale} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -61,7 +63,7 @@ export function NewsCard({ item, locale: given }: { item: NewsItem; locale?: Loc
   const eyebrow = inLang(item.eyebrow, { ko: item.eyebrow_ko, 'zh-TW': item.eyebrow_zh_tw }, locale);
   const blurb = inLang(item.body, { ko: item.body_ko, 'zh-TW': item.body_zh_tw }, locale);
   const kind = inLang(item.kind, { ko: item.kind_ko, 'zh-TW': item.kind_zh_tw }, locale);
-  const meta = [formatDate(item.published_at, locale), eyebrow].filter(Boolean).join(' · ');
+  const dateText = formatDate(item.published_at, locale);
   const external = item.link ? /^https?:/.test(item.link) : false;
 
   const body = (
@@ -81,7 +83,18 @@ export function NewsCard({ item, locale: given }: { item: NewsItem; locale?: Loc
         </div>
 
         <div className="in-news-card__text">
-          {meta ? <div className="in-news-card__meta">{meta}</div> : null}
+          {dateText || eyebrow ? (
+            <div className="in-news-card__meta">
+              {/* The formatted date is for reading; `dateTime` is the same day
+                  in a form a browser, a crawler or a calendar can parse. The
+                  two were one joined string, which is why neither worked. */}
+              {dateText && item.published_at ? (
+                <time dateTime={item.published_at}>{dateText}</time>
+              ) : null}
+              {dateText && eyebrow ? ' · ' : null}
+              {eyebrow}
+            </div>
+          ) : null}
           <h3 className="in-news-card__title">{title}</h3>
           {blurb ? <p className="in-news-card__blurb">{blurb}</p> : null}
           <div className="in-news-card__cta">

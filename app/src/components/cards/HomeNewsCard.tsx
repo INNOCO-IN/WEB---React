@@ -58,9 +58,14 @@ export default function HomeNewsCard({ locale: given }: Props) {
         </div>
 
         <div className="in-home-tile__date" style={{ color: accent }}>
-          {formatDate(item.published_at, locale)}
+          {item.published_at ? (
+            <time dateTime={item.published_at}>{formatDate(item.published_at, locale)}</time>
+          ) : null}
         </div>
-        <div className="in-home-tile__title">{title}</div>
+        {/* h3, like the news wall's cards next door: this tile sits in the
+            home grid under the page's h1, and it was the one card whose
+            headline was not a heading. */}
+        <h3 className="in-home-tile__title">{title}</h3>
         {blurb ? <p className="in-home-tile__blurb">{blurb}</p> : null}
 
         <span className="in-home-tile__arrow" aria-hidden="true">

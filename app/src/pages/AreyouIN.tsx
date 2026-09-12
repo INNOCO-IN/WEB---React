@@ -50,20 +50,20 @@ export default function AreyouIN() {
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
                   <div style={{ flex: "1 1 200px", minWidth: "180px" }}>
-                    <label style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
+                    <label htmlFor="cf-name" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
                       {t("006_label")}
                     </label>
-                    <input className="in-field" type="text" name="name" placeholder="Your name" required={true} />
+                    <input className="in-field" type="text" name="name" id="cf-name" placeholder="Your name" required={true} />
                   </div>
                   <div style={{ flex: "1 1 200px", minWidth: "180px" }}>
-                    <label style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
+                    <label htmlFor="cf-email" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
                       {t("007_label")}
                     </label>
-                    <input className="in-field" type="email" name="email" placeholder="you@example.com" required={true} />
+                    <input className="in-field" type="email" name="email" id="cf-email" placeholder="you@example.com" required={true} />
                   </div>
                 </div>
                 <div>
-                  <label style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
+                  <label htmlFor="cf-brings" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
                     {t("008_label")}
                   </label>
                   <select className="in-field" id="cf-brings" name="brings">
@@ -88,10 +88,10 @@ export default function AreyouIN() {
                   </select>
                 </div>
                 <div id="cf-msg-wrap">
-                  <label style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
+                  <label htmlFor="cf-message" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
                     {t("015_label")}
                   </label>
-                  <textarea className="in-field" name="message" rows={5} placeholder="What are you hoping to explore?" style={{ resize: "vertical" }} />
+                  <textarea className="in-field" name="message" id="cf-message" rows={5} placeholder="What are you hoping to explore?" style={{ resize: "vertical" }} />
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "18px", flexWrap: "wrap", marginTop: "4px" }}>
                   <button type="submit" style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.02em", color: "#FAF4E2", background: "#2E3B40", border: "none", borderRadius: "999px", padding: "15px 34px", cursor: "pointer" }}>

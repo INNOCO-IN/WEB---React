@@ -6,6 +6,7 @@
     "logoLabel": "IN.studio — 홈"
   },
   "nav": {
+    "label": "섹션",
     "groups": {
       "startWithin": "안에서 시작하기",
       "shareTheSpace": "공간을 나누기",
@@ -26,6 +27,7 @@
     }
   },
   "footer": {
+    "navLabel": "푸터 메뉴",
     "legal": "© 2016–2026 IN (INNOCO) · 서울, 대한민국 · MEWE는 CC BY-NC-SA 4.0으로 공유됩니다",
     "social": {
       "email": "이메일",
@@ -101,6 +103,19 @@
       "fileTooLarge": "파일이 {{max}}보다 큽니다."
     }
   },
+  "register": {
+    "name": "이름",
+    "namePlaceholder": "이름",
+    "email": "이메일",
+    "emailPlaceholder": "you@example.com",
+    "org": "소속 · 단체",
+    "orgPlaceholder": "어디에서 오시는지",
+    "message": "미리 알려주실 것이 있나요?",
+    "messagePlaceholder": "기대하시는 것, 그리고 저희가 준비해야 할 것",
+    "submit": "신청 보내기",
+    "thanks": "감사합니다 — 신청이 접수되었습니다. 자세한 안내를 곧 보내드립니다.",
+    "honeypot": "이 칸은 비워 두세요"
+  },
   "state": {
     "loading": "불러오는 중…",
     "error": "문제가 발생했습니다. 다시 시도해 주세요.",
@@ -121,6 +136,7 @@
     "newest": "· 최신순",
     "allStories": "모든 이야기",
     "total": "{{count}}편의 이야기 — 이웃이 더할수록 별자리는 자랍니다.",
-    "older": "{{count}}편 더 보기"
+    "older": "{{count}}편 더 보기",
+    "attachment": "파일 열기"
   }
 }

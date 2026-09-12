@@ -253,3 +253,193 @@ describe('document metadata', () => {
     );
   });
 });
+
+/**
+ * The elements, as opposed to the words.
+ *
+ * These assert through the accessibility tree rather than through class names,
+ * because that is the thing being fixed: a landmark, a list, a heading, a
+ * radio group and a labelled field are all invisible to CSS and all of them
+ * are what a screen reader, a crawler and Reader mode actually read. Every
+ * check here failed before the markup was corrected.
+ */
+describe('semantic elements', () => {
+  it('gives every page one main landmark, and a skip link into it', async () => {
+    await visit('/news');
+    await screen.findByRole('banner');
+
+    // Exactly one: the shell owns it, so a page cannot nest a second.
+    const main = screen.getByRole('main');
+    expect(main).toHaveAttribute('id', 'in-main');
+
+    const skip = screen.getByRole('link', { name: 'Skip to content' });
+    expect(skip).toHaveAttribute('href', `#${main.id}`);
+    // First in the tab order, or it is not a skip link.
+    expect(document.body.querySelector('a')).toBe(skip);
+  });
+
+  it('translates the skip link with the rest of the chrome', async () => {
+    await visit('/ko/news');
+    await screen.findByRole('banner');
+    expect(screen.getByRole('link', { name: '본문으로 건너뛰기' })).toBeInTheDocument();
+  });
+
+  it('builds the news wall as a list of articles with real datelines', async () => {
+    const { container } = await visit('/news');
+    await screen.findByRole('heading', { name: 'What the network is doing right now.' });
+
+    const wall = container.querySelector('ul.in-wall') as HTMLElement;
+    expect(wall).not.toBeNull();
+    const cards = within(wall).getAllByRole('listitem');
+    expect(cards.length).toBeGreaterThan(1);
+    // Each item holds one article, and the headline inside it is a heading.
+    expect(cards[0].querySelector('article')).not.toBeNull();
+    expect(within(cards[0]).getByRole('heading')).toBeInTheDocument();
+
+    // The date is readable by a machine as well as by a person.
+    const time = wall.querySelector('time') as HTMLTimeElement;
+    expect(time).not.toBeNull();
+    expect(time.dateTime).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(time.textContent).not.toBe(time.dateTime);
+  });
+
+  it('names the header and footer navigation, and lists their links', async () => {
+    const { container } = await visit('/news');
+    await screen.findByRole('banner');
+
+    // Three groups of dots, each list named by the heading above it.
+    const sections = screen.getByRole('navigation', { name: 'Sections' });
+    const groups = within(sections).getAllByRole('list');
+    expect(groups).toHaveLength(3);
+    for (const group of groups) {
+      expect(group).toHaveAccessibleName();
+      expect(within(group).getAllByRole('listitem').length).toBeGreaterThan(0);
+    }
+
+    const footer = screen.getByRole('navigation', { name: 'Footer' });
+    expect(within(footer).getAllByRole('list').length).toBeGreaterThan(1);
+    // The rule above the small print is a thematic break, not a styled div.
+    expect(container.querySelector('footer hr')).not.toBeNull();
+  });
+
+  it('marks the current page in the footer as well as the header', async () => {
+    await visit('/news');
+    await screen.findByRole('banner');
+    const footer = screen.getByRole('navigation', { name: 'Footer' });
+    expect(within(footer).getByRole('link', { name: 'News' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+  });
+
+  it('gives the home page an h1', async () => {
+    await visit('/');
+    expect(await screen.findByRole('heading', { level: 1, name: 'IN is a studio' })).toBeInTheDocument();
+  });
+
+  it('names every field on the enquiry form', async () => {
+    const { container } = await visit('/connect');
+    await screen.findByRole('banner');
+
+    const form = container.querySelector('#cf-form') as HTMLElement;
+    const fields = form.querySelectorAll<HTMLInputElement>('input, select, textarea');
+    expect(fields.length).toBeGreaterThan(3);
+    for (const field of fields) {
+      // `labels` is empty unless the label is actually associated with it.
+      expect(Array.from(field.labels ?? [])).not.toHaveLength(0);
+    }
+    // Scoped to the form: the footer has an Email link of its own.
+    expect(within(form).getByLabelText('Email')).toHaveAttribute('name', 'email');
+  });
+
+  it('puts a labelled sign-up in a workshop page register band', async () => {
+    const { container } = await visit('/workshop/mobius-making');
+    await screen.findByRole('banner');
+
+    const form = container.querySelector('form.wsreg') as HTMLElement;
+    expect(form).not.toBeNull();
+
+    const fields = form.querySelectorAll<HTMLInputElement>('input:not([type="hidden"]), textarea');
+    expect(fields.length).toBeGreaterThan(3);
+    for (const field of fields) {
+      expect(Array.from(field.labels ?? [])).not.toHaveLength(0);
+    }
+
+    // Which workshop is the page, not something the visitor is asked to type.
+    expect(form.querySelector('input[name="workshop_slug"]')).toHaveAttribute(
+      'value',
+      'mobius-making',
+    );
+    expect(within(form).getByRole('button', { name: 'Send my registration' })).toBeInTheDocument();
+  });
+
+  it('gives a workshop page off the template the same sign-up, in its own language', async () => {
+    const { container } = await visit('/ko/workshop/jungle-jam');
+    await screen.findByRole('banner');
+
+    const form = container.querySelector('form.wsreg') as HTMLElement;
+    expect(form.querySelector('input[name="workshop_slug"]')).toHaveAttribute('value', 'jungle-jam');
+    expect(within(form).getByLabelText('이름')).toHaveAttribute('name', 'name');
+    expect(within(form).getByRole('button', { name: '신청 보내기' })).toBeInTheDocument();
+  });
+
+  it('makes the story index search a labelled search field', async () => {
+    const { container } = await visit('/story/all');
+    await screen.findByRole('banner');
+
+    const search = screen.getByRole('searchbox', { name: 'Search stories by title' });
+    expect(search).toHaveAttribute('type', 'search');
+    expect(container.querySelector('[role="search"]')).toContainElement(search);
+  });
+
+  it('makes a chip row a radio group named by the question above it', async () => {
+    await visit('/story/submit');
+    await screen.findByRole('banner');
+
+    const group = screen.getByRole('radiogroup', { name: 'Where does it sit on the Loop?' });
+    const options = within(group).getAllByRole('radio');
+    expect(options.length).toBeGreaterThan(2);
+    expect(options[0]).toHaveAccessibleName('IGNITE');
+    // The database column is what it writes to, not what it is called.
+    expect(group).not.toHaveAccessibleName('arc_stage');
+
+    // One at a time, and choosing another releases the first.
+    fireEvent.click(options[0]);
+    expect(options[0]).toBeChecked();
+    fireEvent.click(options[1]);
+    expect(options[0]).not.toBeChecked();
+    expect(options[1]).toBeChecked();
+    // Clicking the chosen one again clears it — these answers are optional.
+    fireEvent.click(options[1]);
+    expect(options[1]).not.toBeChecked();
+  });
+
+  it('makes a multi-select chip row checkboxes, and keeps them out of the row', async () => {
+    await visit('/story/submit');
+    await screen.findByRole('banner');
+
+    const group = screen.getByRole('group', { name: 'Describe it first, then choose a form.' });
+    const options = within(group).getAllByRole('checkbox');
+    fireEvent.click(options[0]);
+    fireEvent.click(options[1]);
+    expect(options[0]).toBeChecked();
+    expect(options[1]).toBeChecked();
+
+    // The control is named for the keyboard's benefit, not the table's: the
+    // column is `format`, a text[], and FormData cannot carry one.
+    expect(options[0].getAttribute('name')).toMatch(/^chip:format/);
+  });
+
+  it('writes a detail page brief as a description list under a heading', async () => {
+    const { container } = await visit('/community/animators');
+    await screen.findByRole('heading', { level: 1, name: 'Animators' });
+
+    expect(screen.getByRole('heading', { level: 2, name: 'What formed' })).toBeInTheDocument();
+    const list = container.querySelector('dl') as HTMLElement;
+    expect(list).not.toBeNull();
+    const terms = list.querySelectorAll('dt');
+    expect(terms.length).toBeGreaterThan(1);
+    // Each term is paired with its own description, not merely near one.
+    expect(list.querySelectorAll('dd')).toHaveLength(terms.length);
+  });
+});

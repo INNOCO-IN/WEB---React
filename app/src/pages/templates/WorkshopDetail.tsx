@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import SiteLayout from '../../components/SiteLayout';
 import ImageSlot from '../../components/ImageSlot';
+import WorkshopRegister from '../../components/WorkshopRegister';
 import NotFound from '../NotFound';
 import { WORKSHOP_DETAILS, type Run } from '../../lib/content/workshop-details';
 import { accentColor } from '../../lib/content/types';
@@ -343,6 +344,12 @@ export default function WorkshopDetail() {
             >
               {w.cta.heading}
             </h2>
+
+            {/* What the hero's "Register now" has always pointed at, and now
+                what it reaches. The links below it stay: one is for a question
+                rather than a sign-up, the other is the way back to the wall. */}
+            <WorkshopRegister slug={slug} accent={accent} />
+
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', fontFamily: SANS, fontWeight: '700', fontSize: '15px' }}>
               {w.cta.links.map((link, i) => (
                 <Link

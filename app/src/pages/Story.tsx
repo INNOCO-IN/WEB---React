@@ -33,9 +33,9 @@ export default function Story() {
             </h1>
             <p style={{ fontFamily: "var(--font-serif)", fontWeight: "400", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.3", maxWidth: "700px", margin: "0", color: "rgba(26,26,26,0.82)" }}>
               {t("002_p")}
-              <b>
-                {t("003_b")}
-              </b>
+              <strong>
+                {t("003_strong")}
+              </strong>
             </p>
           </div>
         </section>

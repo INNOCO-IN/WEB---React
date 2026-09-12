@@ -161,6 +161,9 @@ export default function useConstellation(given?: Locale) {
     const on = m.id === mode;
     return {
       label: m.id === 'format' ? t('sky.format') : t('sky.topic'),
+      // Two buttons, one of them always the current grouping — so each says
+      // whether it is the one in effect. Colour alone said it before.
+      on,
       onClick: () => setMode(m.id),
       style:
         "font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; " +

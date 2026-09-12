@@ -70,7 +70,7 @@
     <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 56px;">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #2E3B40; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #2E3B40;">Story Submission</span></div>
       
-      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(19px, 2.1vw, 25px); line-height: 1.46; max-width: 760px; margin: 0; color: rgba(46,59,64,0.85);">It can be a few honest sentences, or a drawing, a photo, a film, a piece of music. Start with a short description of the moment — then bring whatever form carries it best. Only steps 1 and 5 are required.&nbsp;<span style="font-size: clamp(19px, 2.1vw, 25px);"><b>Thank you for adding your light.</b></span><br></p>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(19px, 2.1vw, 25px); line-height: 1.46; max-width: 760px; margin: 0; color: rgba(46,59,64,0.85);">It can be a few honest sentences, or a drawing, a photo, a film, a piece of music. Start with a short description of the moment — then bring whatever form carries it best. Only steps 1 and 5 are required.&nbsp;<span style="font-size: clamp(19px, 2.1vw, 25px);"><strong>Thank you for adding your light.</strong></span><br></p>
     </div>
   </section>
 
@@ -89,8 +89,8 @@
         <textarea class="in-field" name="body" rows="8" required="required" onInput="{{ onType }}" placeholder="Start anywhere. A rough first telling is exactly right."></textarea>
         <sc-if value="{{ typed }}" hint-placeholder-val="{{ false }}">
           <div style="margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(46,59,64,0.15);">
-            <p style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.4; margin: 0 0 12px; color: rgba(46,59,64,0.7);">Good. Only so we can place it well — this one is something you…</p>
-            <div data-chip-group="door" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px;">
+            <p id="story-door-q" style="font-family: 'Newsreader', serif; font-size: 18px; line-height: 1.4; margin: 0 0 12px; color: rgba(46,59,64,0.7);">Good. Only so we can place it well — this one is something you…</p>
+            <div data-chip-group="door" data-label-id="story-door-q" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px;">
               <span data-value="lived" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">lived</span>
               <span data-value="noticed" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">noticed</span>
               <span data-value="imagined" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .15s; color: #2E3B40; border: 1.5px solid rgba(46,59,64,0.3); background: transparent;">imagined</span>
@@ -114,9 +114,9 @@
       <!-- STEP 2 (optional) -->
       <div>
         <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00; margin-bottom: 12px;">Step 2 — Format <span style="color: rgba(46,59,64,0.5);">· optional</span></div>
-        <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">Describe it first, then choose a form.</h2>
-        <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0 0 18px; color: rgba(46,59,64,0.8);"><b>Every story starts with your words above — a short description in Step 1 is what we always need.</b> If your story also lives in another form — a drawing, a photo, a video, a song — tell us which, and attach it below. This is how we'll group and show it in the Constellation.</p>
-        <div data-chip-group="format" data-multi="1" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13.5px;">
+        <h2 id="story-format-q" style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">Describe it first, then choose a form.</h2>
+        <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0 0 18px; color: rgba(46,59,64,0.8);"><strong>Every story starts with your words above — a short description in Step 1 is what we always need.</strong> If your story also lives in another form — a drawing, a photo, a video, a song — tell us which, and attach it below. This is how we'll group and show it in the Constellation.</p>
+        <div data-chip-group="format" data-multi="1" data-label-id="story-format-q" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13.5px;">
           <span data-value="Writing" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Writing</span>
           <span data-value="Drawing" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Drawing</span>
           <span data-value="Photo" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">Photo</span>
@@ -134,9 +134,9 @@
       <!-- STEP 3 (optional) -->
       <div>
         <div style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #B87A00; margin-bottom: 12px;">Step 3 — Where on the ME=WE Arc <span style="color: rgba(46,59,64,0.5);">· optional, skippable</span></div>
-        <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">Where does it sit on the Loop?</h2>
+        <h2 id="story-arc-q" style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 14px;">Where does it sit on the Loop?</h2>
         <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.45; margin: 0 0 14px; color: rgba(46,59,64,0.8);">Place your story anywhere on the Loop — including the stuck places. You don't need to name the stage; we'll help place it.</p>
-        <div data-chip-group="arc_stage" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px;">
+        <div data-chip-group="arc_stage" data-label-id="story-arc-q" data-sel-bg="#FAB414" data-sel-fg="#2E3B40" data-sel-border="#2E3B40" style="display: flex; flex-wrap: wrap; gap: 9px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px;">
           <span data-value="IGNITE" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">IGNITE</span>
           <span data-value="ME ≠ WE" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">ME ≠ WE</span>
           <span data-value="ME + WE" style="border: 1.5px solid rgba(46,59,64,0.3); border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .15s; color: #2E3B40; background: transparent;">ME + WE</span>

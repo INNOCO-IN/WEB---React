@@ -1,13 +1,19 @@
 # Connecting the forms to Supabase
 
-Two forms write to your Supabase project:
+Three forms write to your Supabase project:
 
 | Form | Static page | React route | Table |
 |---|---|---|---|
 | Connect / inquiry | `site/Are-you-IN.EN.dc.html` | `/connect`, `/ko/connect` | `submissions` |
 | Story submission | `site/Story-Submission.EN.dc.html` | `/story/submit` | `stories` (+ `story-media` bucket) |
+| Workshop sign-up | — | every `/workshop/…` detail page | `workshop_registrations` |
 
-Both are wired and verified in both trees.
+The first two are wired and verified in both trees. The workshop sign-up is
+`app/` only: it is a React component in the `#register` band that every
+workshop page already had, and the static pages under `site/` still offer the
+two links that band used to hold. Adding it there is one
+`data-in-form="workshop_registrations"` per page — `in-supabase.js` needs no
+change, and the table's insert policy is already in place either way.
 
 **In `site/`** the forms are driven by `in-supabase.js`, which scans for
 `data-in-form="table"` and reads each field's `name` as its column. Those two
@@ -62,8 +68,8 @@ VITE_SUPABASE_ANON_KEY=eyJhbGci...
 ```
 
 Supabase → Project Settings → API. Both values are safe in public code — RLS
-lets the anon key **insert** into the two form tables and **read** only rows
-marked live. It can never read a submission.
+lets the anon key **insert** into the three form tables and **read** only rows
+marked live. It can never read a submission, a story in review, or a sign-up.
 
 If `app/.env.local` is missing, the React app still runs: it renders its
 bundled content and the forms say so rather than failing silently.
@@ -379,6 +385,50 @@ gives you a clean file.
 Without `--ko-title` / `--ko-blurb` / `--ko-body` the English copy is carried
 into the `ko` column so the Korean page renders something, and it tells you it
 did.
+
+### Locally: approve and it is live
+
+Refusing to guess is right for the site and three commands too many while you
+are working on your own machine, so there is the other end of that trade:
+
+```bash
+npm --prefix app run promote-watch
+```
+
+It watches `stories`, and the moment a row's status becomes `published` — from
+`/review`, from Studio, from anywhere — it derives an entry, writes it to
+`story_entries` and places a point on the map. An open `/story/all` is
+subscribed to that table, so the story arrives about a second later with no
+reload. Submit, approve, done.
+
+What it derives, and how wrong it can be:
+
+| | |
+|---|---|
+| **title** | the first sentence of the body, cut at a word boundary |
+| **slug** | that title, hyphenated — it is the permalink, so it is the one worth a look |
+| **topic** | the door, where the door is a topic. `lived` and `noticed` are; `imagined`, `were told` and `can't say` are not, so those land in `blog` or `family` and the line says it guessed |
+| **format** | the first format chip, or `writing` when the form collected none |
+
+The rest is the derivation `promote-story` already does. Both read
+[`scripts/lib/story-promotion.mjs`](app/scripts/lib/story-promotion.mjs), so the
+row this writes and the row that one prints cannot drift apart.
+
+**It refuses to run against anything but a local stack**, and the check is the
+URL rather than a flag. A guessed headline is a fine thing to put on a
+development database and not a thing to put on the site — publishing there stays
+`promote-story`, where a person types the title.
+
+It does not overwrite, either: a submission whose entry already exists is left
+alone, so a title you corrected in Studio stays corrected. `--force` rewrites,
+`--once` sweeps what is already published and exits, `--no-constellation` leaves
+the map out of it.
+
+Two things it does on purpose. It **sweeps on start**, so anything approved while
+it was not running is picked up the next time it is. And it never takes a story
+*down*: moving a published row to `declined` logs a line and leaves the entry
+where it is, because deleting an editor's work on a guess about what a status
+change meant is not a watcher's decision to make.
 
 ## What changed in the forms
 

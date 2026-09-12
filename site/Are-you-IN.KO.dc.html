@@ -106,16 +106,16 @@
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 16px;">
             <div style="flex: 1 1 200px; min-width: 180px;">
-              <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">이름</label>
-              <input class="in-field" type="text" name="name" placeholder="이름" required="required">
+              <label for="cf-name" style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">이름</label>
+              <input class="in-field" type="text" name="name" id="cf-name" placeholder="이름" required="required">
             </div>
             <div style="flex: 1 1 200px; min-width: 180px;">
-              <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">이메일</label>
-              <input class="in-field" type="email" name="email" placeholder="you@example.com" required="required">
+              <label for="cf-email" style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">이메일</label>
+              <input class="in-field" type="email" name="email" id="cf-email" placeholder="you@example.com" required="required">
             </div>
           </div>
           <div>
-            <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">무엇이 당신을 이곳으로 이끌었나요?</label>
+            <label for="cf-brings" style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">무엇이 당신을 이곳으로 이끌었나요?</label>
             <select class="in-field" id="cf-brings" name="brings">
               <option>워크숍이 궁금해요</option>
               <option>우리 조직에 워크숍을 열고 싶어요</option>
@@ -126,8 +126,8 @@
             </select>
           </div>
           <div id="cf-msg-wrap">
-            <label style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">메시지</label>
-            <textarea class="in-field" name="message" rows="5" placeholder="무엇을 탐구하고 싶으신가요?" style="resize: vertical;"></textarea>
+            <label for="cf-message" style="display: block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">메시지</label>
+            <textarea class="in-field" name="message" id="cf-message" rows="5" placeholder="무엇을 탐구하고 싶으신가요?" style="resize: vertical;"></textarea>
           </div>
           <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 4px;">
             <button type="submit" style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; color: #FAF4E2; background: #2E3B40; border: none; border-radius: 999px; padding: 15px 34px; cursor: pointer;">메시지 보내기</button>

@@ -18,7 +18,7 @@ export default function NotFound() {
 
   return (
     <SiteLayout title={t('notFound.title')} footer={{ loop: '0.5' }}>
-      <main style={{ maxWidth: '760px', margin: '0 auto', padding: '120px 40px 140px' }}>
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '120px 40px 140px' }}>
         <div
           style={{
             font: 'var(--text-eyebrow)',
@@ -87,7 +87,7 @@ export default function NotFound() {
             {t('notFound.workshops')}
           </Link>
         </div>
-      </main>
+      </div>
     </SiteLayout>
   );
 }

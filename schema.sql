@@ -53,9 +53,11 @@ create index if not exists stories_published_idx
 -- DDL, so defaults and constraints are a best guess — check it against the
 -- live table before trusting this on a database that matters.
 --
--- No form posts to it yet: `site/` has only `data-in-form="submissions"` and
--- `="stories"`, and SupabaseForm's `WritableTable` names those two. The table
--- is kept, not retired, because the sign-up flow is still wanted.
+-- The React app posts to it: `components/WorkshopRegister` is the form in the
+-- `#register` band of every workshop detail page, and `workshop_slug` is the
+-- page it was sent from. `site/` does not — those pages still carry only
+-- `data-in-form="submissions"` and `="stories"`, so a sign-up made on the
+-- static site is still an enquiry.
 create table if not exists public.workshop_registrations (
   id             uuid primary key default gen_random_uuid(),
   created_at     timestamptz not null default now(),
@@ -157,11 +159,11 @@ alter table public.stories     enable row level security;
 
 drop policy if exists "anon can submit" on public.submissions;
 create policy "anon can submit" on public.submissions
-  for insert to anon with check (true);
+  for insert to anon, authenticated with check (true);
 
 drop policy if exists "anon can submit story" on public.stories;
 create policy "anon can submit story" on public.stories
-  for insert to anon with check (true);
+  for insert to anon, authenticated with check (true);
 
 -- Same rule for the workshop sign-up: anyone may register, nobody may read
 -- back who else did.
@@ -169,7 +171,7 @@ alter table public.workshop_registrations enable row level security;
 
 drop policy if exists "anon can register" on public.workshop_registrations;
 create policy "anon can register" on public.workshop_registrations
-  for insert to anon with check (true);
+  for insert to anon, authenticated with check (true);
 
 -- Published stories are readable by anon, so a reviewed submission can reach the
 -- site. Nothing renders them yet: `useStories` exists and no page calls it, and
@@ -178,7 +180,7 @@ create policy "anon can register" on public.workshop_registrations
 -- submission-to-page path would be built on.
 drop policy if exists "anon reads published" on public.stories;
 create policy "anon reads published" on public.stories
-  for select to anon using (status = 'published');
+  for select to anon, authenticated using (status = 'published');
 
 -- ========== 4. Storage bucket for attachments ==========
 insert into storage.buckets (id, name, public)
@@ -187,7 +189,7 @@ on conflict (id) do nothing;
 
 drop policy if exists "anon uploads story media" on storage.objects;
 create policy "anon uploads story media" on storage.objects
-  for insert to anon with check (bucket_id = 'story-media');
+  for insert to anon, authenticated with check (bucket_id = 'story-media');
 
 drop policy if exists "public reads story media" on storage.objects;
 create policy "public reads story media" on storage.objects
@@ -368,9 +370,18 @@ alter table public.communities add column if not exists eyebrow_zh_tw text;
 alter table public.communities add column if not exists body_zh_tw    text;
 
 -- ---------- 5e. Read policies ----------
--- Anon may read live rows and nothing else. There is no anon insert or update
--- on any of these: editorial content is changed in the Supabase dashboard, so
--- a leaked anon key can never rewrite the site's copy.
+-- Both Data API roles may read live rows and nothing else.
+--
+-- `authenticated` is named alongside `anon` because signing in must not take the
+-- site away. A reviewer who signed in at /review is still a reader of the public
+-- pages, and a policy admitting `anon` alone answers them 200 with zero rows —
+-- which the app cannot tell apart from an empty table, so every page quietly
+-- falls back to its bundled copy and stays there until they sign out. Silent is
+-- the whole problem: nothing errors, nothing logs, the content is just old.
+--
+-- There is still no insert or update for either role: editorial content is
+-- changed in the Supabase dashboard, so a leaked key of either kind can never
+-- rewrite the site's copy.
 alter table public.news        enable row level security;
 alter table public.workshops   enable row level security;
 alter table public.projects    enable row level security;
@@ -378,19 +389,19 @@ alter table public.communities enable row level security;
 
 drop policy if exists "anon reads live news" on public.news;
 create policy "anon reads live news" on public.news
-  for select to anon using (status = 'live');
+  for select to anon, authenticated using (status = 'live');
 
 drop policy if exists "anon reads active workshops" on public.workshops;
 create policy "anon reads active workshops" on public.workshops
-  for select to anon using (active = true);
+  for select to anon, authenticated using (active = true);
 
 drop policy if exists "anon reads live projects" on public.projects;
 create policy "anon reads live projects" on public.projects
-  for select to anon using (status = 'live');
+  for select to anon, authenticated using (status = 'live');
 
 drop policy if exists "anon reads live communities" on public.communities;
 create policy "anon reads live communities" on public.communities
-  for select to anon using (status = 'live');
+  for select to anon, authenticated using (status = 'live');
 
 -- ---------- 5f. Story entries ----------
 -- The curated story collection — what site/data/stories.js held as two globals
@@ -423,7 +434,7 @@ alter table public.story_entries enable row level security;
 
 drop policy if exists "anon reads story entries" on public.story_entries;
 create policy "anon reads story entries" on public.story_entries
-  for select to anon using (true);
+  for select to anon, authenticated using (true);
 
 -- ---------- 5g. Constellation points ----------
 -- The lights on the Constellation map. A superset of story_entries: every
@@ -460,7 +471,7 @@ alter table public.constellation_points enable row level security;
 
 drop policy if exists "anon reads constellation" on public.constellation_points;
 create policy "anon reads constellation" on public.constellation_points
-  for select to anon using (true);
+  for select to anon, authenticated using (true);
 
 -- ---------- 5h. IN-Collectives ----------
 -- The roster on /collectives: the people who carry MEWE into their own
@@ -497,7 +508,7 @@ alter table public.collectives enable row level security;
 
 drop policy if exists "anon reads live collectives" on public.collectives;
 create policy "anon reads live collectives" on public.collectives
-  for select to anon using (status = 'live');
+  for select to anon, authenticated using (status = 'live');
 
 -- ========================================================================
 -- 6. Page builder
@@ -607,7 +618,7 @@ alter table public.page_localizations enable row level security;
 
 drop policy if exists "anon reads pages" on public.pages;
 create policy "anon reads pages" on public.pages
-  for select to anon using (
+  for select to anon, authenticated using (
     exists (
       select 1 from public.page_localizations pl
       where pl.page_id = pages.id and pl.status = 'published'
@@ -616,7 +627,7 @@ create policy "anon reads pages" on public.pages
 
 drop policy if exists "anon reads published localizations" on public.page_localizations;
 create policy "anon reads published localizations" on public.page_localizations
-  for select to anon using (status = 'published');
+  for select to anon, authenticated using (status = 'published');
 
 -- ---------- updated_at ----------
 create or replace function public.touch_updated_at() returns trigger
@@ -709,9 +720,8 @@ end $$;
 -- deprecated and removed on 2026-10-30, so writing the grants down is the only
 -- version of this that keeps working.
 --
--- Each grant below is one verb some policy above already permits, and no more —
--- with one named exception, on the content read grant, for the reason given
--- there. On a project that still auto-exposes, every line here is a no-op that
+-- Each grant below is one verb some policy above already permits, and no more.
+-- On a project that still auto-exposes, every line here is a no-op that
 -- restates what is already true — which is what makes it safe to re-run and
 -- safe to apply to the live project.
 --
@@ -721,19 +731,13 @@ end $$;
 
 -- ---------- anon: the public site ----------
 
--- Content, read-only. One table per `anon reads ...` select policy.
+-- Content, read-only. One table per read policy in section 5e.
 --
--- `authenticated` is here without a policy of its own, which is the one
--- exception to the rule above, and it is about not being stricter than the
--- database this stands in for: auto-exposure gave the privilege to all three
--- Data API roles, so on the hosted project a signed-in reader gets 200 and no
--- rows — the policies admit `anon` only. Withhold the privilege here and the
--- same reader gets 403 instead, a failure mode that exists locally and nowhere
--- else, which is the opposite of what a local copy is for.
---
--- That a signed-in staff member reads no live content is a real thing and is
--- not this block's to fix: it is the `to anon` on the nine read policies, and
--- widening those is a change to what the live site does.
+-- `authenticated` was for a while the one grant here with no policy behind it,
+-- carried so that a signed-in reader would get the hosted project's answer —
+-- 200 and no rows — rather than a 403 that existed locally and nowhere else.
+-- Section 5e now admits that role, so the privilege and the policy agree and
+-- the exception is gone: signing in at /review no longer costs you the site.
 grant select on table
   public.news,
   public.workshops,
@@ -746,12 +750,16 @@ grant select on table
   public.page_localizations
 to anon, authenticated;
 
--- The three intake tables: add a row, never read one back.
+-- The three intake tables: add a row. `authenticated` is here for the reason
+-- the read grant gives — a signed-in visitor has to be able to send the form
+-- too, and an insert policy admitting `anon` alone fails them at the database
+-- with the form looking perfectly fine. Reading back is staff-only, and that
+-- grant is further down.
 grant insert on table
   public.submissions,
   public.stories,
   public.workshop_registrations
-to anon;
+to anon, authenticated;
 
 -- The one exception, and it is a policy not a privilege: `anon reads published`
 -- narrows this to stories a reviewer has published. No page reads it yet.

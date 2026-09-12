@@ -37,7 +37,8 @@ import type { Locale } from '../i18n/locales';
  * as much as they are written, so their copy lives in the component. The
  * workshop detail pages are the interesting near-miss — the `workshops` row
  * behind each one carries its title, blurb and audience for the card wall, but
- * the page renders its own copy, so the model says it reads nothing.
+ * the page renders its own copy, so the model says it reads nothing. It writes,
+ * though: each of them ends in a sign-up.
  */
 
 export type Section = 'home' | 'start-within' | 'share-space' | 'serve-whole' | 'connect';
@@ -50,7 +51,7 @@ export interface Reads {
   feed?: Feed;
 }
 
-/** A table a page writes to — the two forms. */
+/** A table a page writes to — the enquiry, the story, the workshop sign-up. */
 export interface Writes {
   table: ContentTable;
   drives: string;
@@ -67,6 +68,18 @@ export interface PageModel {
   /** Content that belongs in a table and is still written into the page. */
   gaps?: Reads[];
 }
+
+/**
+ * The sign-up every workshop page carries.
+ *
+ * Declared once rather than fourteen times: the `#register` band is the same
+ * component on every one of them, so it is one fact about fourteen routes
+ * rather than fourteen facts. The band is where the hero's "Register now" has
+ * always pointed — see components/WorkshopRegister.
+ */
+const WORKSHOP_SIGNUP: Writes[] = [
+  { table: 'workshop_registrations', drives: 'the sign-up in the register band' },
+];
 
 /** Route → model. The keys match `pages/registry.ts` exactly. */
 export const PAGE_MODELS: Record<string, PageModel> = {
@@ -147,44 +160,48 @@ export const PAGE_MODELS: Record<string, PageModel> = {
    * One entry serves both language routes because one component does: the
    * template reads the language off the path.
    *
-   * It names no table, and the note at the top of this file explains why: the
+   * It reads no table, and the note at the top of this file explains why: the
    * `workshops` row behind each of these carries a title and a blurb for the
    * card wall, but the page's own eyebrow, lede and pills are written for the
-   * page and say something different.
+   * page and say something different. What it writes is the sign-up, which
+   * every workshop page carries and which is the same on all of them.
    */
-  '/workshop/:slug': { lang: 'en', section: 'share-space', title: 'Workshop detail' },
-  '/ko/workshop/:slug': { lang: 'ko', section: 'share-space', title: 'Workshop detail' },
+  '/workshop/:slug': { lang: 'en', section: 'share-space', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/:slug': { lang: 'ko', section: 'share-space', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
 
-  '/workshop/bucket-list': { lang: 'en', section: 'share-space', title: 'Bucket List' },
-  '/ko/workshop/bucket-list': { lang: 'ko', section: 'share-space', title: 'Bucket List' },
-  '/zh-tw/workshop/bucket-list': { lang: 'zh-TW', section: 'share-space', title: 'Bucket List' },
-  '/workshop/jungle-jam': { lang: 'en', section: 'share-space', title: 'Jungle Jam' },
-  '/ko/workshop/jungle-jam': { lang: 'ko', section: 'share-space', title: 'Jungle Jam' },
-  '/zh-tw/workshop/jungle-jam': { lang: 'zh-TW', section: 'share-space', title: 'Jungle Jam' },
+  '/workshop/bucket-list': { lang: 'en', section: 'share-space', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/bucket-list': { lang: 'ko', section: 'share-space', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/bucket-list': { lang: 'zh-TW', section: 'share-space', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
+  '/workshop/jungle-jam': { lang: 'en', section: 'share-space', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/jungle-jam': { lang: 'ko', section: 'share-space', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/jungle-jam': { lang: 'zh-TW', section: 'share-space', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
   '/workshop/light-shadow-shift': {
     lang: 'en',
     section: 'share-space',
     title: 'Light Shadow Shift',
+    writes: WORKSHOP_SIGNUP,
   },
   '/ko/workshop/light-shadow-shift': {
     lang: 'ko',
     section: 'share-space',
     title: 'Light Shadow Shift',
+    writes: WORKSHOP_SIGNUP,
   },
   '/zh-tw/workshop/light-shadow-shift': {
     lang: 'zh-TW',
     section: 'share-space',
     title: 'Light Shadow Shift',
+    writes: WORKSHOP_SIGNUP,
   },
-  '/workshop/pathfinder': { lang: 'en', section: 'share-space', title: 'Pathfinder' },
-  '/ko/workshop/pathfinder': { lang: 'ko', section: 'share-space', title: 'Pathfinder' },
-  '/zh-tw/workshop/pathfinder': { lang: 'zh-TW', section: 'share-space', title: 'Pathfinder' },
-  '/workshop/second-life': { lang: 'en', section: 'share-space', title: 'Second Life' },
-  '/ko/workshop/second-life': { lang: 'ko', section: 'share-space', title: 'Second Life' },
-  '/zh-tw/workshop/second-life': { lang: 'zh-TW', section: 'share-space', title: 'Second Life' },
-  '/workshop/shadow-shifter': { lang: 'en', section: 'share-space', title: 'Shadow Shifter' },
-  '/ko/workshop/shadow-shifter': { lang: 'ko', section: 'share-space', title: 'Shadow Shifter' },
-  '/zh-tw/workshop/shadow-shifter': { lang: 'zh-TW', section: 'share-space', title: 'Shadow Shifter' },
+  '/workshop/pathfinder': { lang: 'en', section: 'share-space', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/pathfinder': { lang: 'ko', section: 'share-space', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/pathfinder': { lang: 'zh-TW', section: 'share-space', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
+  '/workshop/second-life': { lang: 'en', section: 'share-space', title: 'Second Life', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/second-life': { lang: 'ko', section: 'share-space', title: 'Second Life', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/second-life': { lang: 'zh-TW', section: 'share-space', title: 'Second Life', writes: WORKSHOP_SIGNUP },
+  '/workshop/shadow-shifter': { lang: 'en', section: 'share-space', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/shadow-shifter': { lang: 'ko', section: 'share-space', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/shadow-shifter': { lang: 'zh-TW', section: 'share-space', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
   '/story': { lang: 'en', section: 'share-space', title: 'Story' },
   '/ko/story': { lang: 'ko', section: 'share-space', title: 'Story' },
   '/zh-tw/story': { lang: 'zh-TW', section: 'share-space', title: 'Story' },

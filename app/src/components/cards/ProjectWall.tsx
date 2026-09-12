@@ -33,11 +33,13 @@ export default function ProjectWall({ locale: given }: Props) {
   if (!cards.length) return <div className="in-wall" />;
 
   return (
-    <div className="in-wall">
+    <ul className="in-wall">
       {cards.map((project) => (
-        <ProjectBrief key={project.slug} project={project} locale={locale} />
+        <li key={project.slug}>
+          <ProjectBrief project={project} locale={locale} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

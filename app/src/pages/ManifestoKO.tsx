@@ -23,9 +23,9 @@ export default function ManifestoKO() {
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.2", margin: "0", color: "rgba(250,244,226,0.94)", maxWidth: "56ch", textAlign: "left" }}>
               <em style={{ fontSize: "50px" }}>
                 <i style={{}}>
-                  <u>
+                  <span style={{ textDecoration: "underline" }}>
                     "나는 어떤 사람이 되고 싶은가?"
-                  </u>
+                  </span>
                 </i>
                 <br />
               </em>
@@ -51,127 +51,109 @@ export default function ManifestoKO() {
             <div style={{ background: "#F3EAD0" }}>
               <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#D21E28" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  {" ======= "}
-                  <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#D21E28" }}>
-                    <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                      {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                      <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
-                      <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
-                    </div>
-                  </div>
-                  <div style={{ padding: "28px 28px 32px" }}>
-                    <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#A81820", marginBottom: "14px" }}>
-                      우리의 일
-                    </div>
-                    <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                      말이 아니라 실천으로
-                    </div>
-                    <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                      {"우리가 하는 모든 것 — 워크숍, 이웃과 함께하는 프로젝트, "}
-                      <b>
-                        뒤집어 연결하는
-                      </b>
-                      {" 방식 — 은 "}
-                      <br />
-                      MEWE를 말하는 것이 아니라 실천하는 방법입니다.
-                    </p>
-                  </div>
+                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
                 </div>
-                <div style={{ background: "#F3EAD0" }}>
-                  <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#1E648C" }}>
-                    <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                      {" ======= "}
-                      <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#1E648C" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                          {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                          <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
-                        </div>
-                      </div>
-                      <div style={{ padding: "28px 28px 32px" }}>
-                        <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "14px" }}>
-                          우리의 자세
-                        </div>
-                        <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                          정해진 답을 찾지 않으며
-                        </div>
-                        <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                          {"다만 배우려는 겸손한 자세가 있을 뿐. 우리는 자연, 과학, 예술, 사회적 실천에서 "}
-                          <br />
-                          공통의 언어를 찾고, 깊이 듣고 함께 만들며 그 길로 나아갑니다.
-                        </p>
-                      </div>
-                    </div>
-                    <div style={{ background: "#F3EAD0" }}>
-                      <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#E6328C" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                          {" ======= "}
-                          <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#E6328C" }}>
-                            <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                              {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                              <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
-                            </div>
-                          </div>
-                          <div style={{ padding: "28px 28px 32px" }}>
-                            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#8E2166", marginBottom: "14px" }}>
-                              우리의 모양
-                            </div>
-                            <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                              개인과 네트워크를 동시에
-                            </div>
-                            <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                              인(IN)은 성숙해지는 워크샵과 프로젝트들의 활성화와 동시에 다양한 주인공들이&nbsp;
-                              <Link to="/ko/collectives" style={{ color: "rgb(142, 33, 102)" }} className="in-plain">
-                                IN-콜렉티
-                              </Link>
-                              를 중심으로&nbsp;MEWE 실천을 통해 키워가는 역량과 배움을 공유하며 각자의 공동체의 일들을 이어갑니다.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-                        <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
-                          <div style={{ padding: "28px 28px 24px" }}>
-                            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
-                              상호적 · 경험적
-                            </div>
-                            <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                              이론 너머로
-                            </div>
-                            <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                              몸으로 느끼는 경험으로 — 함께 알아차리고, 만들고, 연습합니다.
-                            </p>
-                          </div>
-                        </div>
-                        <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-                          <div style={{ padding: "28px 28px 24px", backgroundColor: "#FAF4E2" }}>
-                            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
-                              연구에 뿌리내림
-                            </div>
-                            <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                              시스템적이고 관계적인
-                            </div>
-                            <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                              시스템 과학과 관계 과학에 기반합니다 — 구호가 아니라, 우리가 어떻게 연결되어 있는지 이해하는 실제 방법들입니다.
-                            </p>
-                          </div>
-                        </div>
-                        <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
-                          <div style={{ padding: "28px 28px 24px" }}>
-                            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
-                              유연함
-                            </div>
-                            <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                              획일적이지 않게
-                            </div>
-                            <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                              워크샵과 프로젝트들은 공동체와 맥락의 필요에 맞게 디자인되고 소통되고 공명되며 MEWE 스토리들로 이 시대의 필요한 언어를 찾아갑니다.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#A81820", marginBottom: "14px" }}>
+                  우리의 일
                 </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  말이 아니라 실천으로
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  {"우리가 하는 모든 것 — 워크숍, 이웃과 함께하는 프로젝트, "}
+                  <strong>
+                    뒤집어 연결하는
+                  </strong>
+                  {" 방식 — 은 "}
+                  <br />
+                  MEWE를 말하는 것이 아니라 실천하는 방법입니다.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#1E648C" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "14px" }}>
+                  우리의 자세
+                </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  정해진 답을 찾지 않으며
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  {"다만 배우려는 겸손한 자세가 있을 뿐. 우리는 자연, 과학, 예술, 사회적 실천에서 "}
+                  <br />
+                  공통의 언어를 찾고, 깊이 듣고 함께 만들며 그 길로 나아갑니다.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#E6328C" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#8E2166", marginBottom: "14px" }}>
+                  우리의 모양
+                </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  개인과 네트워크를 동시에
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  인(IN)은 성숙해지는 워크샵과 프로젝트들의 활성화와 동시에 다양한 주인공들이&nbsp;
+                  <Link to="/ko/collectives" style={{ color: "rgb(142, 33, 102)" }} className="in-plain">
+                    IN-콜렉티
+                  </Link>
+                  를 중심으로&nbsp;MEWE 실천을 통해 키워가는 역량과 배움을 공유하며 각자의 공동체의 일들을 이어갑니다.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+              <div style={{ padding: "28px 28px 24px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
+                  상호적 · 경험적
+                </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  이론 너머로
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  몸으로 느끼는 경험으로 — 함께 알아차리고, 만들고, 연습합니다.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ padding: "28px 28px 24px", backgroundColor: "#FAF4E2" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+                  연구에 뿌리내림
+                </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  시스템적이고 관계적인
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  시스템 과학과 관계 과학에 기반합니다 — 구호가 아니라, 우리가 어떻게 연결되어 있는지 이해하는 실제 방법들입니다.
+                </p>
+              </div>
+            </div>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+              <div style={{ padding: "28px 28px 24px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+                  유연함
+                </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  획일적이지 않게
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  워크샵과 프로젝트들은 공동체와 맥락의 필요에 맞게 디자인되고 소통되고 공명되며 MEWE 스토리들로 이 시대의 필요한 언어를 찾아갑니다.
+                </p>
               </div>
             </div>
           </div>
@@ -204,9 +186,9 @@ export default function ManifestoKO() {
             우리가 존재하는 이유 — 지금, 참이라 여기는 아홉 가지.
           </h2>
           <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "400", fontSize: "clamp(19px, 1.7vw, 24px)", lineHeight: "1.35", margin: "0", color: "#1A1613", maxWidth: "62ch", textAlign: "left" }}>
-            <b>
+            <strong>
               인(IN) 매니페스토
-            </b>
+            </strong>
             는 인의 본질적 의도와 태도를 나누려는 겸허한 맘으로 시작되었고, MEWE를 삶에서 실천하는 모든 이들에 의해 지속적으로 진화할 것입니다 — 한 줄을 보태고, 다른 줄에 물음을 던지고, 각자의 공동체에서 살아내며 배운 것을 다시 가져오면서.
           </p>
         </section>
@@ -354,76 +336,58 @@ export default function ManifestoKO() {
             <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
               <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  {" ======= "}
-                  <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#FAF4E2" }}>
-                    <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                      {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                      <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
-                      <div style={{ position: "absolute", inset: "0", background: "#1E648C", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
-                    </div>
-                  </div>
-                  <div style={{ padding: "28px 28px 32px" }}>
-                    <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#7A5200", marginBottom: "14px" }}>
-                      하나 → 여럿
-                    </div>
-                    <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                      한 사람에게서 시작되었습니다
-                    </div>
-                    <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                      디자인을 배우던 한 학생이 콜렉티브가 되었습니다 — 예술과 디자인, 대학 전체로 뻗어 나갔고, 이어 UAE와 네팔의 청년들이 나란히 자라며 아주 다른 두 나라 사이에서도 관계가 유지될 수 있음을 발견했습니다. 대학의 정원은 살아 있는 실험실이 되었습니다.
-                    </p>
-                  </div>
+                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#1E648C", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
                 </div>
-                <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-                  <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
-                    <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                      {" ======= "}
-                      <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#FAF4E2" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                          {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                          <div style={{ position: "absolute", inset: "0", background: "#E6328C", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
-                          <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
-                        </div>
-                      </div>
-                      <div style={{ padding: "28px 28px 32px" }}>
-                        <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
-                          방 → 공동체
-                        </div>
-                        <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                          그리고 방을 떠났습니다
-                        </div>
-                        <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                          실천은 계속 우리에게 더 많은 것을 요구했습니다. 캐나다에서는 카운티 전체의 규모로 늘어났습니다 — 패스파인더 퍼실리테이터 시리즈와 인종과 하나됨에 대한 MEWE 탐구 — 관계가 방 안에서만이 아니라 공동체 전체에서 연습될 수 있는지 시험하면서.
-                        </p>
-                      </div>
-                    </div>
-                    <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-                      <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
-                        <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                          {" ======= "}
-                          <div style={{ position: "relative", height: "112px", overflow: "hidden", background: "#FAF4E2" }}>
-                            <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "204px" }}>
-                              {" >>>>>>> 638462755147c04386ba4b9ea2673e0d754fd92a "}
-                              <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
-                              <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
-                            </div>
-                          </div>
-                          <div style={{ padding: "28px 28px 32px" }}>
-                            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
-                              지역 → 세계
-                            </div>
-                            <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
-                              이제 서로를 찾아냅니다
-                            </div>
-                            <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                              2022년, IN은 한국에 뿌리를 내렸고 무언가 달라졌습니다: 세계 곳곳의 IN-콜렉티브들이 서로를 찾아냈고, 함께 일하는 새로운 방식이 시작되었습니다 — 온라인과 대면으로, 미국, 두바이, 사우디아라비아, 한국을 가로질러 — 저마다 MEWE의 의미를 탐구하면서.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#7A5200", marginBottom: "14px" }}>
+                  하나 → 여럿
                 </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  한 사람에게서 시작되었습니다
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  디자인을 배우던 한 학생이 콜렉티브가 되었습니다 — 예술과 디자인, 대학 전체로 뻗어 나갔고, 이어 UAE와 네팔의 청년들이 나란히 자라며 아주 다른 두 나라 사이에서도 관계가 유지될 수 있음을 발견했습니다. 대학의 정원은 살아 있는 실험실이 되었습니다.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#E6328C", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
+                  방 → 공동체
+                </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  그리고 방을 떠났습니다
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  실천은 계속 우리에게 더 많은 것을 요구했습니다. 캐나다에서는 카운티 전체의 규모로 늘어났습니다 — 패스파인더 퍼실리테이터 시리즈와 인종과 하나됨에 대한 MEWE 탐구 — 관계가 방 안에서만이 아니라 공동체 전체에서 연습될 수 있는지 시험하면서.
+                </p>
+              </div>
+            </div>
+            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+                <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
+                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
+                </div>
+              </div>
+              <div style={{ padding: "28px 28px 32px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
+                  지역 → 세계
+                </div>
+                <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
+                  이제 서로를 찾아냅니다
+                </div>
+                <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
+                  2022년, IN은 한국에 뿌리를 내렸고 무언가 달라졌습니다: 세계 곳곳의 IN-콜렉티브들이 서로를 찾아냈고, 함께 일하는 새로운 방식이 시작되었습니다 — 온라인과 대면으로, 미국, 두바이, 사우디아라비아, 한국을 가로질러 — 저마다 MEWE의 의미를 탐구하면서.
+                </p>
               </div>
             </div>
           </div>

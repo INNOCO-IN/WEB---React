@@ -1,0 +1,107 @@
+/**
+ * The registration form on a workshop page's accent band.
+ *
+ * Paper fields on colour: the band owns the background, so the fields have to
+ * bring their own ground rather than inherit one. `.in-field` was not reusable
+ * here — every copy of it is scoped to the page it was extracted from, and all
+ * of them assume ink on paper.
+ *
+ * The band centres its text; a form of any length is harder to read centred,
+ * so this block sets itself left again.
+ */
+
+.wsreg {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 620px;
+  margin: 0 auto 32px;
+  text-align: left;
+}
+
+.wsreg__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Two across where there is room, stacked where there is not. */
+.wsreg__cell {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+.wsreg__label {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(250, 244, 226, 0.78);
+  margin-bottom: 8px;
+}
+
+/* "Optional", inside the label so it is read with the field it belongs to. */
+.wsreg__hint {
+  margin-left: 8px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: rgba(250, 244, 226, 0.55);
+}
+
+.wsreg__field {
+  width: 100%;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  border: 1.5px solid rgba(250, 244, 226, 0.55);
+  padding: 14px 16px;
+  outline: none;
+}
+
+/* The band is already the accent colour, so focus cannot be shown in it — the
+   ring is paper, drawn outside the field's own border. */
+.wsreg__field:focus-visible {
+  border-color: var(--color-paper);
+  box-shadow: 0 0 0 3px rgba(250, 244, 226, 0.4);
+}
+
+.wsreg__field::placeholder {
+  color: var(--color-ink-40);
+}
+
+.wsreg textarea.wsreg__field {
+  resize: vertical;
+}
+
+/* Off-screen rather than `display: none`: a hidden field a bot fills in is the
+   whole point, and the ones worth catching skip what is not rendered. */
+.wsreg__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* The same pill as the primary link beside it. Its letters are the band's
+   colour, which the component passes in. */
+.wsreg__submit {
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  background: var(--color-paper);
+  border: 1.5px solid var(--color-paper);
+  border-radius: 999px;
+  padding: 15px 32px;
+  cursor: pointer;
+}
+
+.wsreg__submit:focus-visible {
+  box-shadow: 0 0 0 3px rgba(250, 244, 226, 0.4);
+}

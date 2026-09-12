@@ -120,7 +120,7 @@ for (const table of all) {
   const result = results.get(table);
   const role = readTables.has(table) ? (writeTables.has(table) ? 'read+write' : 'read') : 'write';
   console.log(
-    `  ${MARK[result.state]} ${table.padEnd(21)} ${role.padEnd(11)} ${LABEL[result.state](result)}`,
+    `  ${MARK[result.state]} ${table.padEnd(23)} ${role.padEnd(11)} ${LABEL[result.state](result)}`,
   );
 }
 

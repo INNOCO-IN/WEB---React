@@ -32,23 +32,24 @@ export default function ProjectIndexRail({ current }: Props) {
   return (
     <nav className="in-rail" aria-label={t('cards.allProjects')}>
       <div className="in-rail__heading">{t('cards.allProjects')}</div>
-      <div className="in-rail__list">
+      <ul className="in-rail__list">
         {projects.map((project) => {
           const active = project.slug === current;
           const copy = copyIn(project, locale);
           return (
-            <Link
-              key={project.slug}
-              to={localize(project.route ?? `/project/${project.slug}`, locale)}
-              className={`in-rail__item${active ? ' is-current' : ''}`}
-              aria-current={active ? 'page' : undefined}
-            >
-              <span className="in-rail__meta">{copy.meta}</span>
-              <span className="in-rail__title">{copy.title}</span>
-            </Link>
+            <li key={project.slug}>
+              <Link
+                to={localize(project.route ?? `/project/${project.slug}`, locale)}
+                className={`in-rail__item${active ? ' is-current' : ''}`}
+                aria-current={active ? 'page' : undefined}
+              >
+                <span className="in-rail__meta">{copy.meta}</span>
+                <span className="in-rail__title">{copy.title}</span>
+              </Link>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </nav>
   );
 }
