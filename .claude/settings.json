@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/inject-rules.mjs",
+            "timeout": 10,
+            "statusMessage": "Loading project rules"
+          }
+        ]
+      }
+    ]
+  }
+}

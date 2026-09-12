@@ -1,29 +1,25 @@
 # AGENTS.md
 
-給 AI 助手（Claude Code 等）的專案約定。**這個檔案可以隨時手動編輯**，改完下次工作階段自動生效。
+Project conventions for AI assistants (Claude Code and friends). **Edit this file
+directly** — it is the single source of truth, and `.claude/hooks/inject-rules.mjs`
+re-injects it on every prompt, so a change here takes effect on the very next message.
 
-## 對話語言
+## Reply language
 
-- 用**繁體中文（台灣用語，zh-TW）**回覆我，包括說明、總結、提問和回報結果。
-- 我用英文提問時也一樣用繁體中文回覆。
-- 只有在我明確說 "reply in English" / 「用英文」時才切換。
+- Reply to me in **English**.
+- Not affected: the website's own copy. The site is trilingual — **EN / KO / zh-TW**
+  (i18next, `app/src/i18n/resources/`). That is unrelated to the language you reply
+  in; never touch page copy because of this rule.
 
-不受影響的部分（維持現狀，仍然是英文／專案原有語言）：
+## Shell: Windows PowerShell 5.1
 
-- 程式碼、變數名稱、型別名稱、檔案名稱
-- 程式碼註解、commit message、PR 標題和內文
-- 網站本身的文案 —— 站台是 **EN / KO 雙語**（i18next），和這裡說的「回覆語言」無關，
-  不要因為這條規則去改 `app/src/i18n` 或任何頁面文案。
+- **No `&&` and no `||`** — this is Windows PowerShell 5.1, where both are a syntax error.
+  - Sequential: `cmdA; cmdB`
+  - Only if the previous succeeded: `cmdA; if ($?) { cmdB }`
+- No `?:`, `??` or `?.` either.
+- Supabase CLI: do not `cd`, pass `--workdir` — `npx supabase db push --workdir app`
+  (the project config lives in `app/supabase/`).
 
-## 專案約定
+## Project conventions
 
-### Shell：Windows PowerShell 5.1
-
-- **不要用 `&&` 或 `||`** —— 這裡是 Windows PowerShell 5.1，這兩個運算子會直接噴語法錯誤。
-  - 連續執行：`指令A; 指令B`
-  - 成功才執行：`指令A; if ($?) { 指令B }`
-- 同理沒有 `?:`、`??`、`?.` 這些運算子。
-- Supabase CLI 不用 `cd`，改用 `--workdir`：`npx supabase db push --workdir app`
-  （專案設定在 `app/supabase/`）。
-
-（這一節留給你以後自己加規則，例如建置指令、程式碼風格、不要碰的目錄等。）
+(Add your own rules here — build commands, code style, directories to leave alone.)
