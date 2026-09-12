@@ -268,6 +268,17 @@ class Component extends DCLogic {
     let shown = active === 'All' ? all.slice() : all.filter(s => s[key] === active);
     if (q) shown = shown.filter(s => s.title.toLowerCase().includes(q));
 
+    // What kind of file the attachment is, read off its name. The submission
+    // form takes image, video, audio and PDF; a PDF in an <img> is an empty
+    // frame, so the pane switches on this. Anything unrecognised is a doc,
+    // which is the branch that degrades best: a frame that may show nothing,
+    // and a link that always works.
+    const MEDIA = (src) => !src ? ''
+      : /\.(jpe?g|png|gif|webp|avif|svg)(\?|#|$)/i.test(src) ? 'image'
+      : /\.(mp4|webm|mov|m4v|ogv)(\?|#|$)/i.test(src) ? 'video'
+      : /\.(mp3|wav|m4a|aac|oga|ogg)(\?|#|$)/i.test(src) ? 'audio'
+      : 'doc';
+
     // featured story
     const cur = all[this.state.current] || all[0];
     const current = Object.assign({}, cur, {
@@ -275,8 +286,14 @@ class Component extends DCLogic {
       paras: (cur.paras || []).map((t, i) => t.startsWith('## ')
         ? { t: t.slice(3), style: "font-family:'Archivo',sans-serif; font-weight:800; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:#1E8A86; margin:44px 0 18px; padding-top:22px; border-top:1.5px solid rgba(30,138,134,0.35);" }
         : { t, style: i === 0 ? 'font-size:26px; line-height:1.5; color:#1A1613; margin:0 0 24px;' : '' }),
-      hasImage: !!cur.image,
+      isImage: MEDIA(cur.image) === 'image',
+      isVideo: MEDIA(cur.image) === 'video',
+      isAudio: MEDIA(cur.image) === 'audio',
+      isDoc: MEDIA(cur.image) === 'doc',
       imgStyle: cur.image ? 'width:100%; aspect-ratio:' + (cur.imgRatio || '16/10') + '; margin-top:34px; object-fit:' + (cur.imgFit || 'cover') + '; object-position:' + (cur.imgPos || 'center') + '; background-color:#F3EAD0;' : '',
+      audioStyle: 'width:100%; margin-top:34px;',
+      docStyle: 'width:100%; height:min(78vh, 900px); margin-top:34px; border:1px solid rgba(26,22,19,0.16); background-color:#F3EAD0;',
+      docLabel: 'Open the file',
       hasKicker: !!cur.kicker,
       kicker1: cur.kicker ? cur.kicker[0] : '',
       kicker2: cur.kicker ? cur.kicker[1] : '',

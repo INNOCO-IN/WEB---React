@@ -438,6 +438,29 @@ const INDENT = (n) => '  '.repeat(n);
 export function toJsx(node, ctx, depth = 0) {
   if (node.type === 'comment') {
     const text = node.value.trim().replace(/\*\//g, '*\\/');
+
+    // `<!-- in-component: WorkshopRegister slug="pathfinder" -->` is a slot for
+    // a component this app has and the legacy page does not.
+    //
+    // A `dc-import` would be the obvious spelling, and it is wrong here: the
+    // static site resolves that name by fetching `<name>.dc.html`, so naming
+    // something that only exists under src/components/ costs the live page a
+    // 404 for a component it was never going to render. A comment is the one
+    // thing both readers already agree on — the legacy runtime ignores it, and
+    // this generator is the only thing that looks inside.
+    //
+    // The name still needs its import line in convert-pages.mjs; a name without
+    // one fails at `tsc` rather than in a browser.
+    const slot = /^in-component:\s*([A-Z][A-Za-z0-9]*)\s*([\s\S]*)$/.exec(text);
+    if (slot) {
+      const [, component, rest] = slot;
+      ctx.imports.add(component);
+      const props = [...rest.matchAll(/([a-zA-Z][\w-]*)="([^"]*)"/g)]
+        .map(([, key, value]) => ` ${key}=${JSON.stringify(value)}`)
+        .join('');
+      return `${INDENT(depth)}<${component}${props} />`;
+    }
+
     return text ? `${INDENT(depth)}{/* ${text} */}` : '';
   }
 
@@ -502,19 +525,6 @@ export function toJsx(node, ctx, depth = 0) {
       ctx.imports.add('ProjectIndexRail');
       const current = node.attrs.find((a) => a.name === 'current')?.value;
       return `${INDENT(depth)}<ProjectIndexRail${current ? ` current=${JSON.stringify(current)}` : ''} />`;
-    }
-    // The sign-up in a workshop's `#register` band. The legacy page has two
-    // links there and no form, because the form is this app's; naming it here
-    // is how a page says "and the component goes in this spot" without anyone
-    // having to hand-edit the file this generator overwrites.
-    if (name === 'WorkshopRegister') {
-      ctx.imports.add('WorkshopRegister');
-      const get = (k) => node.attrs.find((a) => a.name === k)?.value;
-      const props = [['slug', get('slug')], ['accent', get('accent')]]
-        .filter(([, value]) => value)
-        .map(([prop, value]) => ` ${prop}=${JSON.stringify(value)}`)
-        .join('');
-      return `${INDENT(depth)}<WorkshopRegister${props} />`;
     }
     return '';
   }
