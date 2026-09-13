@@ -139,7 +139,13 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1320, &quot;height&quot;: 1200}, &quot;openToNewFacilitators&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Recruiting&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1320, &quot;height&quot;: 1200}, &quot;openToNewFacilitators&quot;: {&quot;type&quot;: &quot;boolean&quot;, &quot;default&quot;: true}}">
+/* The roster, and the one piece of state a card has: whether its bio is open.
+   It lives here rather than in the markup because it is a `collectives` table
+   in the app, and eighteen people written into the page is a second roster
+   that starts disagreeing with the first one the moment either is edited.
+   scripts/extract-page-data.mjs reads `data` into the bundled copy and the
+   seed, so this array is the one place the names are written down. */
 class Component extends DCLogic {
   state = { expanded: {} };
 
@@ -149,20 +155,59 @@ class Component extends DCLogic {
 
   renderVals() {
     const openToNew = this.props.openToNewFacilitators ?? true;
-    const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+    const data = [
+      ['01', 'Yunsun Chung', 'team/01_Yunsun.jpg', '"A cool grandma in the making." Design educator and community advocate; the first IN-Collective.',
+       "I'm a cool grandma in the making, constantly learning and growing alongside you all as the very first IN-Collective at IN (INNOCO). My path as a design educator and community advocate has been fueled by a passion for connecting with others and fostering creative collaboration. My hands have planted seeds in both the literal and metaphorical gardens of innovation, always striving to nurture spaces where our collective ideas can flourish. In this journey of co-creation, I've learned that every voice adds value and every perspective can spark change. Here at INNOCO, I'm just one of many dedicated to weaving a tapestry of social innovation, where our combined efforts lead to a vibrant community and a more connected world."],
+      ['02', 'Joanne Renaux', 'team/02_Joanne.jpg', 'Arts educator & illustrator. Co-founded IN; co-created Möbius Making.',
+       "I'm a passionate arts educator, illustrator, and facilitator for changemaking practices. My journey has been a tapestry of art and education, woven through my roles as a secondary school educator and arts instructor at Zayed University, Dubai. My heart lies in creative play, using visual storytelling as a tool to build community and facilitate meaningful conversations. With a vision to nurture a systems-thinking approach in education, I co-founded INNOCO. Here, we crafted the ME=WE framework, a blueprint for changemaking pathways that intertwine individual creativity with collective action."],
+      ['03', 'Tanya Albus', 'team/03_Tanya.jpg', 'Journey designer & social-impact strategist; co-created Pathfinder.',
+       "Tanya Albus is a journey designer, social impact strategist, and facilitator for transformative practices. Her academic background is in medical sciences, having studied at the VU Medical Centre in Amsterdam. She is co-founder of Human of Health, a social enterprise focused on bringing healthcare back to its intended purpose — caring for health — through leadership schools, health hubs and events, and consulting services. Her focus has broadened beyond healthcare, looking at fundamental ways she can assist organizations, communities, and people in creating the journeys and ecosystems that make it possible for them to excel. She has studied yoga philosophy, ayurveda, and (quantum-based) holistic health sciences. Since 2021 she lives in Sweden with her family, and has recently pursued a degree in UX Design."],
+      ['04', 'Irene Pavlos', 'team/04_Irene.jpg', 'Companion to the young, ally to the elder. Community-builder at Noor, Dubai; co-created Two Wings.',
+       "A companion to the young and ally to the elder, with a heart dedicated to service. My journey with the UN has taken me across many paths, and now I find joy in nurturing the community at Noor in Dubai. In this role, I design spaces for conversations that matter, fostering virtues and actions aimed at bettering our world. Coordination is my forte — I organize tutor groups, manage children's classes, steer junior youth groups, and facilitate study circles. Each setting is an opportunity to kindle understanding and encourage growth. To me, everyone is a divine friend; each meeting is a chance to extend love, sincerity, and perhaps, to melt a heart with kindness."],
+      ['05', 'Taejin Kim', 'team/05_Taejin.jpg', 'Trilingual educator (EN/中文/한국어); co-created Second Life.',
+       "I'm a dedicated mother of two beautiful kids. My trilingual prowess in English, Chinese, and Korean shone brightly when I facilitated crucial conversations at an international meeting in Taiwan. My translation skills bridged not just languages but hearts and minds. As an educator with a deep commitment to language teaching, I've had the joy of co-designing and translating at a youth social innovation workshop, earning accolades for my dual role. Balancing the demands of full-time teaching and motherhood, I bring passion and precision to empowering the young."],
+      ['06', 'Vahid Buehrer', 'team/06_Vahid.jpg', 'Educator & community-builder; co-created Second Life; runs a language school with Taejin.',
+       "I'm a father of two incredible kids, a community enthusiast, and an advocate for the transformative power of education. Alongside my wife Taejin, we run a school dedicated to teaching English, where we pour our joint expertise into every lesson, shaping the global citizens of tomorrow. But teaching languages is just one thread of my life's fabric. I've volunteered in various community-building activities, from children's classes to junior youth empowerment programs, always aiming to accompany and uplift those around me. My role extends to animating youth and young adults, steering study groups and workshops that inspire and guide them to uncover their own truths and potentials."],
+      ['07', 'Hojin Choi', 'team/07_Hojin.jpg', '"Bucket List Specialist." Author of Finally, Self-Discovery (2022); co-created Bucket List.',
+       "I'm your friendly Bucket List Specialist and facilitator of fun and transformative experiences. I wear many hats, but my true passion lies in helping people embark on their journey of self-discovery through my \"Me-Finding Workshops.\" In 2023 alone, I've had the pleasure of conducting over 100 workshops for both individuals and corporations, guiding them toward their real goals and aspirations. In addition to my work in self-discovery, I'm no stranger to the world of finance, marketing, and digital transformation. With a background in sociology, I bring a unique perspective that combines analytical skill with a deep understanding of human dynamics. I'm also the author of the book \"Finally, Self-Discovery,\" published in November 2022."],
+      ['08', 'Conrad Saldanha', 'team/08_Conrad.jpg', 'Lifelong learner; 32-year career (VP, The Times of India); co-created METANOIA; author of Seeking to Live.',
+       "I'm a lifelong learner and a bit of an adventure seeker. I've recently jumped into the artsy world of drawing and painting, and I'm also unraveling the mysteries of Sanskrit. My journey began at Mumbai University, studying management, and led to a fulfilling 32-year career, topping it off as Vice President at The Times of India. Retirement? Just a new chapter for me — I spent the next decade in education, sharing my experiences. I've been involved with the Archdiocese of Mumbai, helping in the 2001 Synod, and conducting workshops globally on \"Vision, Mission, and Values.\" I also served on various advisory boards and am currently with the Asian Heart Institute's Ethics Committee and the Consumer Guidance Society of India. In my downtime, I'm a blogger and author of \"Seeking to Live.\""],
+      ['09', 'Bushra Ali', 'team/09_Bushra.jpg', 'Scholar-practitioner; research, EdTech, and non-profit leadership, USA.',
+       "I've built a career out of following many threads at once — research, entrepreneurship, EdTech, school improvement, and non-profit leadership — and finding where they meet. My work has centered on a single question: how do communities rise and organize to close real gaps, in education, healthcare, career development, and financial literacy? I care about a new vision for quality, affordable education, and about the kind of non-profit leadership that actually reaches people. For me, ME=WE names something I've long practiced — that lifting one is lifting all."],
+      ['10', 'Saurav Dhakal', 'team/10_Saurav.jpg', 'Sustainability advocate & social entrepreneur, Nepal; Asia Exchange & UNC.',
+       "Saurav is a climate communicator and social entrepreneur dedicated to regenerative development and climate justice. He currently serves as Director of Sustainable Growth and Innovation at StoryCycle+, where he leads the T.E.A. Strategy — a holistic approach integrating Tourism, Energy, and Agriculture to build climate-resilient communities and promote green livelihoods. He has been engaged with IN since 2016, through the UNC project and the Food Revolution project, and is a passionate practitioner of ME=WE."],
+      ['11', 'Shirin Mehri', 'team/11_Shirin.jpg', 'Scholar-practitioner in higher education & community development, USA.',
+       "A first-generation South Asian college graduate and Pakistani-Zoroastrian woman, Shirin brings a deep commitment to equity and justice — shaped by her own experience with identity, power, and privilege. With a decade of work across the UAE, Pakistan, and the US in gender, education, and community development, she has spent her career co-creating spaces where people's dignity is honored. Her approach is rooted in restorative justice and community-building, supporting students' growth, resilience, and sense of belonging. A colleague and friend since high school, Shirin has contributed so much to our shared practice — both as a scholar and as an IN-Collective."],
+      ['12', 'Tony Huyuhua', 'team/12_Tony.jpg', 'IN CTO; engineer & community practitioner, Taiwan; Asia Exchange.',
+       "Tony brings a rare mix of patience, warmth, and quiet determination — the kind of steady, goal-oriented presence that keeps a growing practice grounded. He supports the overall development of the initiative through cross-cultural collaboration, connecting community, education, and technology. He has already delivered the ME=WE Möbius Making workshop in Chinese to Junyi High School students and teachers, and is now building networks that connect elementary school children, teachers, and parents. Easygoing and a little playful in person, Tony shows up for IN with real commitment — a friend whose steadiness helps the whole collective grow."],
+      ['13', 'Barbara Ruys', 'team/13_Barbara.png', 'Architect; facilitator of art, meaning & place, San Diego, USA.',
+       "Barbara is an architect who works with art, meaning and place — how a space holds what people bring to it. She facilitates with the same attention: making room for a group to find its own shape."],
+      ['14', 'Aisha Khalid', 'team/15_Aisha.jpg', 'UAE-based design studio; exhibition design, branding, wayfinding; ran Creative Confidence.',
+       "Aisha Khalid Design is a UAE-based design studio with a passion for meaningful and effective design. We specialize in exhibition design, branding, wayfinding, signage, product design, and educational workshops. From concept to execution, creativity and design thinking inform everything we do."],
+      ['15', 'Noora Dakhan', 'team/16_Noora.jpg', 'Design + coaching; guides self-discovery through ME=WE Workshops.',
+       "I'm your go-to for creative thinking and self-empowerment, passionate about lighting up that spark within you through our unique \"ME=WE Workshops.\" Blending my skills in design, business, and coaching, I'm here to guide you on an enlightening journey of self-discovery and personal growth. Think of me as your friendly guide in this adventure toward becoming the best version of yourself. I'm a horse lover at heart, a design enthusiast, and a coaching expert, all rolled into one."],
+      ['16', 'Deepika Gyawali', 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', 'Keeps the books, and keeps the neighborhood in the room.',
+       "Photo and full bio coming soon."],
+      ['17', 'Mona Al-Beiti', 'team/17_Mona.jpg', 'Finds the meaning in things, and gives it a shape people can share.',
+       "Mona is a brand and creative strategist based in Dubai, with a background in design and a habit of starting everything from research. The work sits at the point where an idea turns into something real: a brand's philosophy, a story, or a half-formed thought, carried through to language and design people can actually feel. Most at home on the bridge between the thinking and the making. What drew Mona to IN is a belief already there in the work: that the personal and the shared were never quite separate, which is the heart of ME=WE. That spirit carries into the creative and cultural work across the Gulf, finding the meaning in things and giving it a shape people can hold onto and share."],
+      ['18', 'Yeonsu Park', 'team/18_Yeonsu_sq2.jpg', 'A teacher who is also a learner — learning from every child, every day.',
+       "Yeonsu Park is an English teacher based in Korea, with a habit of learning something new from every child she meets. Years of focusing on academic growth gave way to a deeper conviction: that children need to be seen and nurtured with hope and values, not just knowledge — and that her growth and theirs were never truly separate, but one continuous journey.This is what drew her to ME=WE and the IN-Collective, where personal growth and community building through education are inseparable. A lifetime learner at heart, she loves traveling and hopes to carry this same spirit of connection into learning and serving internationally — not just in the classroom, but wherever life takes her."]
+    ];
 
-
-    const out = { openToNew: openToNew, closedToNew: !openToNew };
-    ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18"].forEach(num => {
-      const on = !!this.state.expanded[num];
-      out['exp' + num] = on;
-      out['lbl' + num] = on ? 'Less −' : 'More +';
-      out['tg' + num] = () => this.toggle(num);
+    const roster = data.map(([num, name, photo, oneLiner, fullBio]) => {
+      const expanded = !!this.state.expanded[num];
+      const roleMap = { '01': 'Founder, CEO & Facilitation Lead', '12': 'CTO / Technical Officer', '16': 'Accountant & Community Builder · Sindhuli, Nepal', '17': 'Brand & Creative Strategist · Creative Director at IN', '18': 'Educator · Community Builder · Korea' };
+      return {
+        num, name, photo, oneLiner, fullBio, expanded,
+        role: roleMap[num] || '',
+        toggleLabel: expanded ? 'Less −' : 'More +',
+        toggle: () => this.toggle(num)
+      };
     });
-    return out;
+
+    return { roster, openToNew, closedToNew: !openToNew };
   }
 }
-
 </script>
 </body>
 </html>

@@ -33,4 +33,221 @@ export interface Collective {
  */
 export const BLANK_PORTRAIT = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
-export const ROSTER: Collective[] = [];
+export const ROSTER: Collective[] = [
+  {
+    "num": "01",
+    "name": "Yunsun Chung",
+    "photo": "/team/01_Yunsun.jpg",
+    "oneLiner": "\"A cool grandma in the making.\" Design educator and community advocate; the first IN-Collective.",
+    "fullBio": "I'm a cool grandma in the making, constantly learning and growing alongside you all as the very first IN-Collective at IN (INNOCO). My path as a design educator and community advocate has been fueled by a passion for connecting with others and fostering creative collaboration. My hands have planted seeds in both the literal and metaphorical gardens of innovation, always striving to nurture spaces where our collective ideas can flourish. In this journey of co-creation, I've learned that every voice adds value and every perspective can spark change. Here at INNOCO, I'm just one of many dedicated to weaving a tapestry of social innovation, where our combined efforts lead to a vibrant community and a more connected world.",
+    "role": "Founder, CEO & Facilitation Lead",
+    "nameKo": null,
+    "roleKo": "설립자 · CEO · 퍼실리테이션 리드",
+    "oneLinerKo": "\"멋진 할머니가 되어 가는 중.\" 디자인 교육자이자 커뮤니티 옹호자, 첫 번째 IN-콜렉티브.",
+    "fullBioKo": null
+  },
+  {
+    "num": "02",
+    "name": "Joanne Renaux",
+    "photo": "/team/02_Joanne.jpg",
+    "oneLiner": "Arts educator & illustrator. Co-founded IN; co-created Möbius Making.",
+    "fullBio": "I'm a passionate arts educator, illustrator, and facilitator for changemaking practices. My journey has been a tapestry of art and education, woven through my roles as a secondary school educator and arts instructor at Zayed University, Dubai. My heart lies in creative play, using visual storytelling as a tool to build community and facilitate meaningful conversations. With a vision to nurture a systems-thinking approach in education, I co-founded INNOCO. Here, we crafted the ME=WE framework, a blueprint for changemaking pathways that intertwine individual creativity with collective action.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "예술 교육자 · 일러스트레이터. IN 공동 설립, 뫼비우스 만들기 공동 제작.",
+    "fullBioKo": null
+  },
+  {
+    "num": "03",
+    "name": "Tanya Albus",
+    "photo": "/team/03_Tanya.jpg",
+    "oneLiner": "Journey designer & social-impact strategist; co-created Pathfinder.",
+    "fullBio": "Tanya Albus is a journey designer, social impact strategist, and facilitator for transformative practices. Her academic background is in medical sciences, having studied at the VU Medical Centre in Amsterdam. She is co-founder of Human of Health, a social enterprise focused on bringing healthcare back to its intended purpose — caring for health — through leadership schools, health hubs and events, and consulting services. Her focus has broadened beyond healthcare, looking at fundamental ways she can assist organizations, communities, and people in creating the journeys and ecosystems that make it possible for them to excel. She has studied yoga philosophy, ayurveda, and (quantum-based) holistic health sciences. Since 2021 she lives in Sweden with her family, and has recently pursued a degree in UX Design.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "여정 디자이너 · 소셜 임팩트 전략가, 패스파인더 공동 제작.",
+    "fullBioKo": null
+  },
+  {
+    "num": "04",
+    "name": "Irene Pavlos",
+    "photo": "/team/04_Irene.jpg",
+    "oneLiner": "Companion to the young, ally to the elder. Community-builder at Noor, Dubai; co-created Two Wings.",
+    "fullBio": "A companion to the young and ally to the elder, with a heart dedicated to service. My journey with the UN has taken me across many paths, and now I find joy in nurturing the community at Noor in Dubai. In this role, I design spaces for conversations that matter, fostering virtues and actions aimed at bettering our world. Coordination is my forte — I organize tutor groups, manage children's classes, steer junior youth groups, and facilitate study circles. Each setting is an opportunity to kindle understanding and encourage growth. To me, everyone is a divine friend; each meeting is a chance to extend love, sincerity, and perhaps, to melt a heart with kindness.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "젊은이의 동반자, 어르신의 벗. 두바이 누르의 커뮤니티 빌더, 두 날개 공동 제작.",
+    "fullBioKo": null
+  },
+  {
+    "num": "05",
+    "name": "Taejin Kim",
+    "photo": "/team/05_Taejin.jpg",
+    "oneLiner": "Trilingual educator (EN/中文/한국어); co-created Second Life.",
+    "fullBio": "I'm a dedicated mother of two beautiful kids. My trilingual prowess in English, Chinese, and Korean shone brightly when I facilitated crucial conversations at an international meeting in Taiwan. My translation skills bridged not just languages but hearts and minds. As an educator with a deep commitment to language teaching, I've had the joy of co-designing and translating at a youth social innovation workshop, earning accolades for my dual role. Balancing the demands of full-time teaching and motherhood, I bring passion and precision to empowering the young.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "3개 언어(영어/중국어/한국어) 교육자, 세컨드 라이프 공동 제작.",
+    "fullBioKo": null
+  },
+  {
+    "num": "06",
+    "name": "Vahid Buehrer",
+    "photo": "/team/06_Vahid.jpg",
+    "oneLiner": "Educator & community-builder; co-created Second Life; runs a language school with Taejin.",
+    "fullBio": "I'm a father of two incredible kids, a community enthusiast, and an advocate for the transformative power of education. Alongside my wife Taejin, we run a school dedicated to teaching English, where we pour our joint expertise into every lesson, shaping the global citizens of tomorrow. But teaching languages is just one thread of my life's fabric. I've volunteered in various community-building activities, from children's classes to junior youth empowerment programs, always aiming to accompany and uplift those around me. My role extends to animating youth and young adults, steering study groups and workshops that inspire and guide them to uncover their own truths and potentials.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "교육자 · 커뮤니티 빌더, 세컨드 라이프 공동 제작. 태진과 함께 어학원 운영.",
+    "fullBioKo": null
+  },
+  {
+    "num": "07",
+    "name": "Hojin Choi",
+    "photo": "/team/07_Hojin.jpg",
+    "oneLiner": "\"Bucket List Specialist.\" Author of Finally, Self-Discovery (2022); co-created Bucket List.",
+    "fullBio": "I'm your friendly Bucket List Specialist and facilitator of fun and transformative experiences. I wear many hats, but my true passion lies in helping people embark on their journey of self-discovery through my \"Me-Finding Workshops.\" In 2023 alone, I've had the pleasure of conducting over 100 workshops for both individuals and corporations, guiding them toward their real goals and aspirations. In addition to my work in self-discovery, I'm no stranger to the world of finance, marketing, and digital transformation. With a background in sociology, I bring a unique perspective that combines analytical skill with a deep understanding of human dynamics. I'm also the author of the book \"Finally, Self-Discovery,\" published in November 2022.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "\"버킷 리스트 스페셜리스트.\" 『드디어, 자기 발견』(2022) 저자, 버킷 리스트 공동 제작.",
+    "fullBioKo": null
+  },
+  {
+    "num": "08",
+    "name": "Conrad Saldanha",
+    "photo": "/team/08_Conrad.jpg",
+    "oneLiner": "Lifelong learner; 32-year career (VP, The Times of India); co-created METANOIA; author of Seeking to Live.",
+    "fullBio": "I'm a lifelong learner and a bit of an adventure seeker. I've recently jumped into the artsy world of drawing and painting, and I'm also unraveling the mysteries of Sanskrit. My journey began at Mumbai University, studying management, and led to a fulfilling 32-year career, topping it off as Vice President at The Times of India. Retirement? Just a new chapter for me — I spent the next decade in education, sharing my experiences. I've been involved with the Archdiocese of Mumbai, helping in the 2001 Synod, and conducting workshops globally on \"Vision, Mission, and Values.\" I also served on various advisory boards and am currently with the Asian Heart Institute's Ethics Committee and the Consumer Guidance Society of India. In my downtime, I'm a blogger and author of \"Seeking to Live.\"",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "평생 학습자. 타임스 오브 인디아 부사장 등 32년 경력, 메타노이아 공동 제작, 『Seeking to Live』 저자.",
+    "fullBioKo": null
+  },
+  {
+    "num": "09",
+    "name": "Bushra Ali",
+    "photo": "/team/09_Bushra.jpg",
+    "oneLiner": "Scholar-practitioner; research, EdTech, and non-profit leadership, USA.",
+    "fullBio": "I've built a career out of following many threads at once — research, entrepreneurship, EdTech, school improvement, and non-profit leadership — and finding where they meet. My work has centered on a single question: how do communities rise and organize to close real gaps, in education, healthcare, career development, and financial literacy? I care about a new vision for quality, affordable education, and about the kind of non-profit leadership that actually reaches people. For me, ME=WE names something I've long practiced — that lifting one is lifting all.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "연구자이자 실천가. 미국에서 연구, 에드테크, 비영리 리더십을 넘나듭니다.",
+    "fullBioKo": null
+  },
+  {
+    "num": "10",
+    "name": "Saurav Dhakal",
+    "photo": "/team/10_Saurav.jpg",
+    "oneLiner": "Sustainability advocate & social entrepreneur, Nepal; Asia Exchange & UNC.",
+    "fullBio": "Saurav is a climate communicator and social entrepreneur dedicated to regenerative development and climate justice. He currently serves as Director of Sustainable Growth and Innovation at StoryCycle+, where he leads the T.E.A. Strategy — a holistic approach integrating Tourism, Energy, and Agriculture to build climate-resilient communities and promote green livelihoods. He has been engaged with IN since 2016, through the UNC project and the Food Revolution project, and is a passionate practitioner of ME=WE.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "네팔의 지속가능성 옹호자 · 사회적 기업가. 아시아 익스체인지와 UNC.",
+    "fullBioKo": null
+  },
+  {
+    "num": "11",
+    "name": "Shirin Mehri",
+    "photo": "/team/11_Shirin.jpg",
+    "oneLiner": "Scholar-practitioner in higher education & community development, USA.",
+    "fullBio": "A first-generation South Asian college graduate and Pakistani-Zoroastrian woman, Shirin brings a deep commitment to equity and justice — shaped by her own experience with identity, power, and privilege. With a decade of work across the UAE, Pakistan, and the US in gender, education, and community development, she has spent her career co-creating spaces where people's dignity is honored. Her approach is rooted in restorative justice and community-building, supporting students' growth, resilience, and sense of belonging. A colleague and friend since high school, Shirin has contributed so much to our shared practice — both as a scholar and as an IN-Collective.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "미국 고등교육 · 커뮤니티 개발 분야의 연구자이자 실천가.",
+    "fullBioKo": null
+  },
+  {
+    "num": "12",
+    "name": "Tony Huyuhua",
+    "photo": "/team/12_Tony.jpg",
+    "oneLiner": "IN CTO; engineer & community practitioner, Taiwan; Asia Exchange.",
+    "fullBio": "Tony brings a rare mix of patience, warmth, and quiet determination — the kind of steady, goal-oriented presence that keeps a growing practice grounded. He supports the overall development of the initiative through cross-cultural collaboration, connecting community, education, and technology. He has already delivered the ME=WE Möbius Making workshop in Chinese to Junyi High School students and teachers, and is now building networks that connect elementary school children, teachers, and parents. Easygoing and a little playful in person, Tony shows up for IN with real commitment — a friend whose steadiness helps the whole collective grow.",
+    "role": "CTO / Technical Officer",
+    "nameKo": null,
+    "roleKo": "CTO · 기술 책임",
+    "oneLinerKo": "IN CTO. 대만의 엔지니어이자 커뮤니티 실천가, 아시아 익스체인지.",
+    "fullBioKo": null
+  },
+  {
+    "num": "13",
+    "name": "Barbara Ruys",
+    "photo": "/team/13_Barbara.png",
+    "oneLiner": "Architect; facilitator of art, meaning & place, San Diego, USA.",
+    "fullBio": "Barbara is an architect who works with art, meaning and place — how a space holds what people bring to it. She facilitates with the same attention: making room for a group to find its own shape.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "건축가 · 예술, 의미, 장소의 퍼실리테이터. 미국 샌디에이고.",
+    "fullBioKo": null
+  },
+  {
+    "num": "14",
+    "name": "Aisha Khalid",
+    "photo": "/team/15_Aisha.jpg",
+    "oneLiner": "UAE-based design studio; exhibition design, branding, wayfinding; ran Creative Confidence.",
+    "fullBio": "Aisha Khalid Design is a UAE-based design studio with a passion for meaningful and effective design. We specialize in exhibition design, branding, wayfinding, signage, product design, and educational workshops. From concept to execution, creativity and design thinking inform everything we do.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "UAE 기반 디자인 스튜디오. 전시 디자인, 브랜딩, 웨이파인딩. 크리에이티브 컨피던스 진행.",
+    "fullBioKo": null
+  },
+  {
+    "num": "15",
+    "name": "Noora Dakhan",
+    "photo": "/team/16_Noora.jpg",
+    "oneLiner": "Design + coaching; guides self-discovery through ME=WE Workshops.",
+    "fullBio": "I'm your go-to for creative thinking and self-empowerment, passionate about lighting up that spark within you through our unique \"ME=WE Workshops.\" Blending my skills in design, business, and coaching, I'm here to guide you on an enlightening journey of self-discovery and personal growth. Think of me as your friendly guide in this adventure toward becoming the best version of yourself. I'm a horse lover at heart, a design enthusiast, and a coaching expert, all rolled into one.",
+    "role": null,
+    "nameKo": null,
+    "roleKo": null,
+    "oneLinerKo": "디자인 + 코칭. ME=WE 워크숍으로 자기 발견을 안내합니다.",
+    "fullBioKo": null
+  },
+  {
+    "num": "16",
+    "name": "Deepika Gyawali",
+    "photo": "/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+    "oneLiner": "Keeps the books, and keeps the neighborhood in the room.",
+    "fullBio": "Photo and full bio coming soon.",
+    "role": "Accountant & Community Builder · Sindhuli, Nepal",
+    "nameKo": null,
+    "roleKo": "회계 & 커뮤니티 빌더 · 네팔 신둘리",
+    "oneLinerKo": "장부를 지키고, 동네를 이 방 안에 함께 있게 합니다.",
+    "fullBioKo": "사진과 소개는 곧 올라갑니다."
+  },
+  {
+    "num": "17",
+    "name": "Mona Al-Beiti",
+    "photo": "/team/17_Mona.jpg",
+    "oneLiner": "Finds the meaning in things, and gives it a shape people can share.",
+    "fullBio": "Mona is a brand and creative strategist based in Dubai, with a background in design and a habit of starting everything from research. The work sits at the point where an idea turns into something real: a brand's philosophy, a story, or a half-formed thought, carried through to language and design people can actually feel. Most at home on the bridge between the thinking and the making. What drew Mona to IN is a belief already there in the work: that the personal and the shared were never quite separate, which is the heart of ME=WE. That spirit carries into the creative and cultural work across the Gulf, finding the meaning in things and giving it a shape people can hold onto and share.",
+    "role": "Brand & Creative Strategist · Creative Director at IN",
+    "nameKo": null,
+    "roleKo": "브랜드 & 크리에이티브 전략가 · IN 크리에이티브 디렉터",
+    "oneLinerKo": "사물 속의 의미를 찾아, 사람들이 나눌 수 있는 형태로 만듭니다.",
+    "fullBioKo": "두바이를 기반으로 일하는 브랜드 · 크리에이티브 전략가. 디자인을 공부했고, 모든 일을 리서치에서 시작하는 습관이 있습니다. 하나의 생각이 실재하는 무엇이 되는 지점에서 일합니다. 브랜드의 철학, 하나의 스토리, 아직 채 자라지 않은 생각을 사람들이 실제로 느낄 수 있는 언어와 디자인으로 이어 갑니다. 생각하는 일과 만드는 일 사이의 다리 위가 가장 편한 자리입니다. 모나를 IN으로 이끈 것은 이미 이 일 안에 있던 믿음이었습니다. 개인의 것과 함께의 것이 애초에 분리된 적이 없다는 것, ME=WE의 핵심입니다. 그 마음으로 걸프 지역의 크리에이티브 · 문화 작업을 이어가며, 사물 속의 의미를 찾아 사람들이 붙들고 나눌 수 있는 형태로 만듭니다."
+  },
+  {
+    "num": "18",
+    "name": "Yeonsu Park",
+    "photo": "/team/18_Yeonsu_sq2.jpg",
+    "oneLiner": "A teacher who is also a learner — learning from every child, every day.",
+    "fullBio": "Yeonsu Park is an English teacher based in Korea, with a habit of learning something new from every child she meets. Years of focusing on academic growth gave way to a deeper conviction: that children need to be seen and nurtured with hope and values, not just knowledge — and that her growth and theirs were never truly separate, but one continuous journey.This is what drew her to ME=WE and the IN-Collective, where personal growth and community building through education are inseparable. A lifetime learner at heart, she loves traveling and hopes to carry this same spirit of connection into learning and serving internationally — not just in the classroom, but wherever life takes her.",
+    "role": "Educator · Community Builder · Korea",
+    "nameKo": "박연수",
+    "roleKo": "교육자 · 커뮤니티 빌더 · 한국",
+    "oneLinerKo": "가르치면서 배우는 사람 — 매일 모든 아이에게서 배웁니다.",
+    "fullBioKo": "박연수는 한국에서 아이들에게 영어를 가르치는 교사입니다. 만나는 모든 아이에게서 매일 하나씩 배우는 습관을 지니고 있습니다. 오랫동안 아이들의 학업이 자라도록 돕는 일에 집중해 왔지만, 그 시간은 더 깊은 확신으로 이어졌습니다. 아이들에게 필요한 것은 지식만이 아니라 보여지고, 희망과 가치 안에서 자라나는 일이라는 확신 — 그리고 자신의 성장과 아이들의 성장이 결코 따로였던 적이 없고, 하나의 이어진 여정이라는 확신입니다.그래서 ME=WE와 IN-Collective에 마음이 갔습니다. 이곳에서는 교육을 통한 개인의 성장과 공동체 만들기가 서로 떨어질 수 없습니다. 마음은 늘 배우는 사람이어서, 여행을 사랑하고, 이 연결의 마음을 국제적인 배움과 섬김으로 이어가기를 바랍니다 — 교실 안에서만이 아니라, 삶이 데려가는 어느 곳에서든."
+  }
+];
