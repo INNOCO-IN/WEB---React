@@ -18,6 +18,7 @@
     "db:reset": "supabase db reset",
     "db:env": "node scripts/db-env.mjs",
     "db:types": "node scripts/db-types.mjs",
+    "handoff:check": "node scripts/handoff-check.mjs",
     "design:check": "node scripts/design-sync.mjs",
     "design:words": "node scripts/design-sync.mjs --words",
     "design:apply": "node scripts/design-sync.mjs --apply",
