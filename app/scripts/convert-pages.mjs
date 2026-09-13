@@ -265,6 +265,13 @@ const DATA_SWAPS = {
   'Community-Index.EN.dc.html': [
     { cards: 'a', component: '<CommunityIndexList />', imports: ['CommunityIndexList'] },
   ],
+  // The 2026 design gave the directory a Korean edition. Its two editions
+  // differ structurally, so they are two components — but a directory of every
+  // community is a list of rows either way, and listing them twice is how one
+  // of the two ends up a circle short.
+  'Community-Index.KO.dc.html': [
+    { cards: 'a', component: '<CommunityIndexList />', imports: ['CommunityIndexList'] },
+  ],
   // The home grid's news tile — the one with a dateline, not the insight card
   // beside it. It becomes the newest item on the `home` feed.
   'Home.EN.dc.html': [{ node: isHomeNewsTile, component: '<HomeNewsCard />', imports: ['HomeNewsCard'] }],

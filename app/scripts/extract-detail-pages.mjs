@@ -20,7 +20,7 @@
  * the same rule the other bundled content follows.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { routeFor } from './lib/routes.mjs';
@@ -63,6 +63,20 @@ function text(html) {
 const slugOf = (file) => (routeFor(file) ?? '').split('/').filter(Boolean).pop() ?? '';
 
 /**
+ * The languages a detail page can be written in.
+ *
+ * Until the 2026 design there was only English: the templates served
+ * `/project/:slug` and `/community/:slug` and nothing else, because there was
+ * no Korean page to serve. There is now, for all twelve, so the records are
+ * keyed `slug:lang` — the same shape workshop-details.ts has always used.
+ *
+ * The rules below turn out to need no Korean variants. They key on structure —
+ * the hero's two hex values, the `border-top` on a fact card, the ink pill —
+ * rather than on the font stack, which is the thing that differs.
+ */
+const LANGS = ['EN', 'KO'];
+
+/**
  * The parts both families share: a coloured hero, a heading over a grid of
  * fact cards, one optional link onward, and a footer ribbon.
  *
@@ -91,6 +105,12 @@ function common(file, { chips }) {
   const linkMatch = /<a href="([^"]+)"[^>]*background: #2E3B40[^"]*">([\s\S]*?)<\/a>/.exec(html);
   const link = linkMatch ? { label: text(linkMatch[2]), to: routeFor(linkMatch[1]) ?? '/' } : null;
 
+  // The way back to the index, above the title. Its wording is the page's —
+  // '← All Projects', '← 프로젝트 전체' — so it travels with the copy rather
+  // than being written into the template, where it could only be English.
+  const backMatch = /<a href="([^"]+)"[^>]*>\s*(←[^<]*)<\/a>/.exec(html);
+  const back = backMatch ? { label: text(backMatch[2]), to: routeFor(backMatch[1]) ?? '/' } : null;
+
   const footer = /<dc-import name="Footer"([^>]*)>/.exec(html)?.[1] ?? '';
 
   return {
@@ -103,6 +123,7 @@ function common(file, { chips }) {
     lede,
     briefLabel,
     brief,
+    back,
     link,
     loop: /loop="([^"]+)"/.exec(footer)?.[1] ?? null,
     ctaAccent: token(/cta="(#[0-9A-Fa-f]{6})"/.exec(footer)?.[1] ?? null),
@@ -159,9 +180,19 @@ const FAMILIES = [
 for (const family of FAMILIES) {
   const details = {};
   for (const page of family.pages) {
-    const detail = common(page, family);
-    if (!detail.slug) throw new Error(`${page}: no route, so no slug`);
-    details[detail.slug] = detail;
+    for (const lang of LANGS) {
+      const file = page.replace('.EN.', `.${lang}.`);
+      // A checkout without the Korean edition of a page is not an error — the
+      // template falls back to English for a slug it has no Korean record for.
+      if (!existsSync(join(SITE, file))) continue;
+
+      const detail = common(file, family);
+      // The route is the English one: `Project-CTN.KO` answers at
+      // `/ko/project/ctn`, so its last segment is the same slug.
+      if (!detail.slug) throw new Error(`${file}: no route, so no slug`);
+      detail.lang = lang;
+      details[`${detail.slug}:${lang}`] = detail;
+    }
   }
 
   writeFileSync(
@@ -181,6 +212,8 @@ export type { BriefFact, DetailLink } from './detail-types';
  */
 export interface ${family.type} {
   slug: string;
+  /** Which edition this record is the copy for. */
+  lang: 'EN' | 'KO';
   /** Design-token name for the hero band — \`gold\`, \`red\`. */
   accent: string;
   /** Token name for the hero's text: \`ink\` on a light band, \`paper\` on a dark one. */
@@ -192,6 +225,8 @@ export interface ${family.type} {
   /** The heading over the fact cards — 'The brief', 'What formed'. */
   briefLabel: string;
   brief: BriefFact[];
+  /** The way back to the index, in this page's own words. */
+  back: DetailLink | null;
   link: DetailLink | null;
   /** Where the footer ribbon sits on this page, 0–1. */
   loop: string | null;
@@ -199,12 +234,13 @@ export interface ${family.type} {
   ctaAccent: string | null;
 }
 
+/** Keyed \`slug:lang\` — 'animators:KO'. */
 export const ${family.constant}: Record<string, ${family.type}> = ${JSON.stringify(details, null, 2)};
 `,
   );
 
   for (const d of Object.values(details)) {
-    console.log(`${d.slug.padEnd(24)} ${d.accent}/${d.ink} · ${d.chips.join('/') || '—'} · ${d.brief.length} facts${d.link ? ' · 1 link' : ''}`);
+    console.log(`${(d.slug + ':' + d.lang).padEnd(28)} ${d.accent}/${d.ink} · ${d.chips.join('/') || '—'} · ${d.brief.length} facts${d.link ? ' · 1 link' : ''}`);
   }
   console.log(`${Object.keys(details).length} ${family.name} details → src/lib/content/${family.file}\n`);
 }

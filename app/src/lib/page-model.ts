@@ -41,7 +41,7 @@ import type { Locale } from '../i18n/locales';
  * though: each of them ends in a sign-up.
  */
 
-export type Section = 'home' | 'start-within' | 'share-space' | 'serve-whole' | 'connect';
+export type Section = 'home' | 'start-here' | 'go-further' | 'bigger-picture' | 'connect';
 
 /** A table a page reads, and what its rows become on the page. */
 export interface Reads {
@@ -107,240 +107,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'news', feed: 'home', drives: 'the news tile in the card grid — the newest item on the home feed' },
     ],
   },
-  '/manifesto': { lang: 'en', section: 'start-within', title: 'Manifesto' },
-  '/ko/manifesto': { lang: 'ko', section: 'start-within', title: 'Manifesto' },
-  '/collectives': {
-    lang: 'en',
-    section: 'start-within',
-    title: 'Collectives',
-    reads: [
-      { table: 'collectives', drives: 'the roster, each bio expanding in place' },
-    ],
-  },
-  '/ko/collectives': {
-    lang: 'ko',
-    section: 'start-within',
-    title: 'Collectives',
-    reads: [
-      { table: 'collectives', drives: 'the roster, each bio expanding in place' },
-    ],
-  },
-  '/zh-tw/collectives': {
-    lang: 'zh-TW',
-    section: 'start-within',
-    title: 'Collectives',
-    reads: [
-      { table: 'collectives', drives: 'the roster, each bio expanding in place' },
-    ],
-  },
-  '/mewe': { lang: 'en', section: 'start-within', title: 'MEWE' },
-  '/ko/mewe': { lang: 'ko', section: 'start-within', title: 'MEWE' },
-  '/zh-tw/mewe': { lang: 'zh-TW', section: 'start-within', title: 'MEWE' },
-  '/action-research': { lang: 'en', section: 'start-within', title: 'Action Research' },
-  '/workshop': {
-    lang: 'en',
-    section: 'share-space',
-    title: 'Workshop',
-    reads: [
-      { table: 'workshops', drives: 'the featured row, the card wall below it, and the audience filter chips' },
-    ],
-  },
-  '/ko/workshop': {
-    lang: 'ko',
-    section: 'share-space',
-    title: 'Workshop',
-    reads: [
-      { table: 'workshops', drives: 'the featured row, the card wall below it, and the audience filter chips' },
-    ],
-  },
-  /**
-   * Hero's Journey, Metanoia, Möbius Making and Two Wings, in both languages.
-   *
-   * Eight pages of the same layout — see pages/templates/WorkshopDetail.tsx.
-   * One entry serves both language routes because one component does: the
-   * template reads the language off the path.
-   *
-   * It reads no table, and the note at the top of this file explains why: the
-   * `workshops` row behind each of these carries a title and a blurb for the
-   * card wall, but the page's own eyebrow, lede and pills are written for the
-   * page and say something different. What it writes is the sign-up, which
-   * every workshop page carries and which is the same on all of them.
-   */
-  '/workshop/:slug': { lang: 'en', section: 'share-space', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
-  '/ko/workshop/:slug': { lang: 'ko', section: 'share-space', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
-
-  '/workshop/bucket-list': { lang: 'en', section: 'share-space', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
-  '/ko/workshop/bucket-list': { lang: 'ko', section: 'share-space', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
-  '/zh-tw/workshop/bucket-list': { lang: 'zh-TW', section: 'share-space', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
-  '/workshop/jungle-jam': { lang: 'en', section: 'share-space', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
-  '/ko/workshop/jungle-jam': { lang: 'ko', section: 'share-space', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
-  '/zh-tw/workshop/jungle-jam': { lang: 'zh-TW', section: 'share-space', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
-  '/workshop/light-shadow-shift': {
-    lang: 'en',
-    section: 'share-space',
-    title: 'Light Shadow Shift',
-    writes: WORKSHOP_SIGNUP,
-  },
-  '/ko/workshop/light-shadow-shift': {
-    lang: 'ko',
-    section: 'share-space',
-    title: 'Light Shadow Shift',
-    writes: WORKSHOP_SIGNUP,
-  },
-  '/zh-tw/workshop/light-shadow-shift': {
-    lang: 'zh-TW',
-    section: 'share-space',
-    title: 'Light Shadow Shift',
-    writes: WORKSHOP_SIGNUP,
-  },
-  '/workshop/pathfinder': { lang: 'en', section: 'share-space', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
-  '/ko/workshop/pathfinder': { lang: 'ko', section: 'share-space', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
-  '/zh-tw/workshop/pathfinder': { lang: 'zh-TW', section: 'share-space', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
-  '/workshop/second-life': { lang: 'en', section: 'share-space', title: 'Second Life', writes: WORKSHOP_SIGNUP },
-  '/ko/workshop/second-life': { lang: 'ko', section: 'share-space', title: 'Second Life', writes: WORKSHOP_SIGNUP },
-  '/zh-tw/workshop/second-life': { lang: 'zh-TW', section: 'share-space', title: 'Second Life', writes: WORKSHOP_SIGNUP },
-  '/workshop/shadow-shifter': { lang: 'en', section: 'share-space', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
-  '/ko/workshop/shadow-shifter': { lang: 'ko', section: 'share-space', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
-  '/zh-tw/workshop/shadow-shifter': { lang: 'zh-TW', section: 'share-space', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
-  '/story': { lang: 'en', section: 'share-space', title: 'Story' },
-  '/ko/story': { lang: 'ko', section: 'share-space', title: 'Story' },
-  '/zh-tw/story': { lang: 'zh-TW', section: 'share-space', title: 'Story' },
-  '/story/all': {
-    lang: 'en',
-    section: 'share-space',
-    title: 'Story index',
-    reads: [
-      { table: 'story_entries', drives: 'every story, its filters and its reading pane' },
-    ],
-  },
-  '/ko/story/all': {
-    lang: 'ko',
-    section: 'share-space',
-    title: 'Story index',
-    reads: [
-      { table: 'story_entries', drives: 'every story, its filters and its reading pane' },
-    ],
-  },
-  '/zh-tw/story/all': {
-    lang: 'zh-TW',
-    section: 'share-space',
-    title: 'Story index',
-    reads: [
-      { table: 'story_entries', drives: 'every story, its filters and its reading pane' },
-    ],
-  },
-  '/story/submit': {
-    lang: 'en',
-    section: 'share-space',
-    title: 'Story submission',
-    writes: [
-      { table: 'stories', drives: 'the submission, and its attachment in the story-media bucket' },
-    ],
-  },
-  '/story/this-is-us': { lang: 'en', section: 'share-space', title: 'This Is Us' },
-  '/protagonist': { lang: 'en', section: 'share-space', title: 'Protagonist' },
-  '/ko/protagonist': { lang: 'ko', section: 'share-space', title: 'Protagonist' },
-  '/zh-tw/protagonist': { lang: 'zh-TW', section: 'share-space', title: 'Protagonist' },
-  '/project': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'Project index',
-    reads: [
-      { table: 'projects', drives: 'the wall of project briefs — every project but the one the page features' },
-    ],
-  },
-  '/ko/project': {
-    lang: 'ko',
-    section: 'serve-whole',
-    title: 'Project index',
-    reads: [
-      { table: 'projects', drives: 'the wall of project briefs — every project but the one the page features' },
-    ],
-  },
-  '/project/asia-exchange': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'Asia Exchange',
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  '/project/food-revolution': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'Food Revolution',
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  '/project/jungle-jam': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'Jungle Jam',
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  '/project/light-shadow-shift-womens-retreat': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: "Light Shadow Shift Women's Retreat",
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  '/project/shadow-shifter': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'Shadow Shifter',
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  '/project/uae-youth-social-innovation': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'UAE Youth Social Innovation',
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  '/project/unc-documentary': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'UNC Documentary',
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  '/project/unc': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'UNC',
-    reads: [
-      { table: 'projects', drives: 'the All projects rail beside the article' },
-    ],
-  },
-  /**
-   * The five plainer project pages, which are one template now.
-   *
-   * BridgeBuilder Program, CTN, GYEM, I Grow Seed and tasmena were the same
-   * page five times — see pages/templates/ProjectDetail.tsx. The model follows
-   * the route rather than the page, so there is one entry, and it reads the
-   * `projects` table twice over: once for the rail, and once for the title,
-   * which the template now takes from the row rather than from its own copy.
-   */
-  '/project/:slug': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'Project detail',
-    reads: [
-      { table: 'projects', drives: 'the title, and the All projects rail beside the article' },
-    ],
-  },
+  '/action-research': { lang: 'en', section: 'bigger-picture', title: 'Action Research' },
+  '/ko/action-research': { lang: 'ko', section: 'bigger-picture', title: 'Action Research' },
+  '/zh-tw/action-research': { lang: 'zh-TW', section: 'bigger-picture', title: 'Action Research' },
+  '/bridge-builder': { lang: 'en', section: 'bigger-picture', title: 'Bridge Builder' },
+  '/ko/bridge-builder': { lang: 'ko', section: 'bigger-picture', title: 'Bridge Builder' },
   '/community': {
     lang: 'en',
-    section: 'serve-whole',
+    section: 'go-further',
     title: 'Community',
     reads: [
       { table: 'communities', drives: 'the circles grid' },
@@ -349,7 +123,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/ko/community': {
     lang: 'ko',
-    section: 'serve-whole',
+    section: 'go-further',
     title: 'Community',
     reads: [
       { table: 'communities', drives: 'the circles grid' },
@@ -358,78 +132,37 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/zh-tw/community': {
     lang: 'zh-TW',
-    section: 'serve-whole',
+    section: 'go-further',
     title: 'Community',
     reads: [
       { table: 'communities', drives: 'the circles grid' },
       { table: 'news', feed: 'community', drives: 'the news grid below the circles' },
     ],
   },
+  '/community/:slug': { lang: 'en', section: 'go-further', title: 'Community detail' },
+  '/ko/community/:slug': { lang: 'ko', section: 'go-further', title: 'Community detail' },
   '/community/all': {
     lang: 'en',
-    section: 'serve-whole',
+    section: 'go-further',
     title: 'Community index',
     reads: [
       { table: 'communities', drives: 'the directory — every circle, with the line that says where it stands' },
     ],
   },
-  /**
-   * The seven circle write-ups, which are one template now.
-   *
-   * Animators, BridgeBuilders, Facilitators, IN-Collectives, the two youth
-   * clusters and Open Studio were the same page seven times — see
-   * pages/templates/CommunityDetail.tsx. It reads no table: unlike the project
-   * briefs, the title on the page is deliberately shorter than the one the
-   * `communities` row carries for the directory, so reading the row would
-   * overwrite it. The rest of the copy is only ever on the page.
-   */
-  '/community/:slug': { lang: 'en', section: 'serve-whole', title: 'Community detail' },
-  '/constellation': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'Constellation',
-    reads: [
-      { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
-    ],
-  },
-  '/ko/constellation': {
+  '/ko/community/all': {
     lang: 'ko',
-    section: 'serve-whole',
-    title: 'Constellation',
+    section: 'go-further',
+    title: 'Community index',
     reads: [
-      { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
+      { table: 'communities', drives: 'the directory — every circle, with the line that says where it stands' },
     ],
   },
-  '/zh-tw/constellation': {
+  '/zh-tw/community/all': {
     lang: 'zh-TW',
-    section: 'serve-whole',
-    title: 'Constellation',
+    section: 'go-further',
+    title: 'Community index',
     reads: [
-      { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
-    ],
-  },
-  '/news': {
-    lang: 'en',
-    section: 'serve-whole',
-    title: 'News',
-    reads: [
-      { table: 'news', feed: 'news', drives: 'the whole card wall' },
-    ],
-  },
-  '/ko/news': {
-    lang: 'ko',
-    section: 'serve-whole',
-    title: 'News',
-    reads: [
-      { table: 'news', feed: 'news', drives: 'the whole card wall' },
-    ],
-  },
-  '/zh-tw/news': {
-    lang: 'zh-TW',
-    section: 'serve-whole',
-    title: 'News',
-    reads: [
-      { table: 'news', feed: 'news', drives: 'the whole card wall' },
+      { table: 'communities', drives: 'the directory — every circle, with the line that says where it stands' },
     ],
   },
   '/connect': {
@@ -456,6 +189,395 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'submissions', drives: 'the enquiry form' },
     ],
   },
+  '/constellation': {
+    lang: 'en',
+    section: 'bigger-picture',
+    title: 'Constellation',
+    reads: [
+      { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
+    ],
+  },
+  '/ko/constellation': {
+    lang: 'ko',
+    section: 'bigger-picture',
+    title: 'Constellation',
+    reads: [
+      { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
+    ],
+  },
+  '/zh-tw/constellation': {
+    lang: 'zh-TW',
+    section: 'bigger-picture',
+    title: 'Constellation',
+    reads: [
+      { table: 'constellation_points', drives: 'every light on the map, and both grouping modes' },
+    ],
+  },
+  '/manifesto': { lang: 'en', section: 'bigger-picture', title: 'Manifesto' },
+  '/ko/manifesto': { lang: 'ko', section: 'bigger-picture', title: 'Manifesto' },
+  '/mewe': { lang: 'en', section: 'start-here', title: 'MEWE' },
+  '/ko/mewe': { lang: 'ko', section: 'start-here', title: 'MEWE' },
+  '/zh-tw/mewe': { lang: 'zh-TW', section: 'start-here', title: 'MEWE' },
+  '/news': {
+    lang: 'en',
+    section: 'bigger-picture',
+    title: 'News',
+    reads: [
+      { table: 'news', feed: 'news', drives: 'the whole card wall' },
+    ],
+  },
+  '/ko/news': {
+    lang: 'ko',
+    section: 'bigger-picture',
+    title: 'News',
+    reads: [
+      { table: 'news', feed: 'news', drives: 'the whole card wall' },
+    ],
+  },
+  '/zh-tw/news': {
+    lang: 'zh-TW',
+    section: 'bigger-picture',
+    title: 'News',
+    reads: [
+      { table: 'news', feed: 'news', drives: 'the whole card wall' },
+    ],
+  },
+  '/pathway': { lang: 'en', section: 'go-further', title: 'Pathway' },
+  '/ko/pathway': { lang: 'ko', section: 'go-further', title: 'Pathway' },
+  '/zh-tw/pathway': { lang: 'zh-TW', section: 'go-further', title: 'Pathway' },
+  '/people': {
+    lang: 'en',
+    section: 'bigger-picture',
+    title: 'People',
+    reads: [
+      { table: 'collectives', drives: 'the roster, each bio expanding in place' },
+    ],
+  },
+  '/ko/people': {
+    lang: 'ko',
+    section: 'bigger-picture',
+    title: 'People',
+    reads: [
+      { table: 'collectives', drives: 'the roster, each bio expanding in place' },
+    ],
+  },
+  '/zh-tw/people': {
+    lang: 'zh-TW',
+    section: 'bigger-picture',
+    title: 'People',
+    reads: [
+      { table: 'collectives', drives: 'the roster, each bio expanding in place' },
+    ],
+  },
+  '/project': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'Project index',
+    reads: [
+      { table: 'projects', drives: 'the wall of project briefs — every project but the one the page features' },
+    ],
+  },
+  '/ko/project': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'Project index',
+    reads: [
+      { table: 'projects', drives: 'the wall of project briefs — every project but the one the page features' },
+    ],
+  },
+  '/project/:slug': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'Project detail',
+    reads: [
+      { table: 'projects', drives: 'the title, and the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/:slug': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'Project detail',
+    reads: [
+      { table: 'projects', drives: 'the title, and the All projects rail beside the article' },
+    ],
+  },
+  '/project/asia-exchange': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'Asia Exchange',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/asia-exchange': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'Asia Exchange',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/project/food-revolution': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'Food Revolution',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/food-revolution': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'Food Revolution',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/food-revolution': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'Food Revolution',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/project/jungle-jam': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'Jungle Jam',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/jungle-jam': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'Jungle Jam',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/jungle-jam': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'Jungle Jam',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/project/light-shadow-shift-womens-retreat': {
+    lang: 'en',
+    section: 'go-further',
+    title: "Light Shadow Shift Women's Retreat",
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/light-shadow-shift-womens-retreat': {
+    lang: 'ko',
+    section: 'go-further',
+    title: "Light Shadow Shift Women's Retreat",
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/light-shadow-shift-womens-retreat': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: "Light Shadow Shift Women's Retreat",
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/project/shadow-shifter': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'Shadow Shifter',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/shadow-shifter': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'Shadow Shifter',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/shadow-shifter': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'Shadow Shifter',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/project/uae-youth-social-innovation': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'UAE Youth Social Innovation',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/uae-youth-social-innovation': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'UAE Youth Social Innovation',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/uae-youth-social-innovation': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'UAE Youth Social Innovation',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/project/unc': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'UNC',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/unc': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'UNC',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/unc': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'UNC',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/project/unc-documentary': {
+    lang: 'en',
+    section: 'go-further',
+    title: 'UNC Documentary',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/ko/project/unc-documentary': {
+    lang: 'ko',
+    section: 'go-further',
+    title: 'UNC Documentary',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/unc-documentary': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'UNC Documentary',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/story': { lang: 'en', section: 'start-here', title: 'Story' },
+  '/ko/story': { lang: 'ko', section: 'start-here', title: 'Story' },
+  '/story/all': {
+    lang: 'en',
+    section: 'start-here',
+    title: 'Story index',
+    reads: [
+      { table: 'story_entries', drives: 'every story, its filters and its reading pane' },
+    ],
+  },
+  '/ko/story/all': {
+    lang: 'ko',
+    section: 'start-here',
+    title: 'Story index',
+    reads: [
+      { table: 'story_entries', drives: 'every story, its filters and its reading pane' },
+    ],
+  },
+  '/zh-tw/story/all': {
+    lang: 'zh-TW',
+    section: 'start-here',
+    title: 'Story index',
+    reads: [
+      { table: 'story_entries', drives: 'every story, its filters and its reading pane' },
+    ],
+  },
+  '/story/submit': {
+    lang: 'en',
+    section: 'start-here',
+    title: 'Story submission',
+    writes: [
+      { table: 'stories', drives: 'the submission, and its attachment in the story-media bucket' },
+    ],
+  },
+  '/ko/story/submit': {
+    lang: 'ko',
+    section: 'start-here',
+    title: 'Story submission',
+    writes: [
+      { table: 'stories', drives: 'the submission, and its attachment in the story-media bucket' },
+    ],
+  },
+  '/workshop': {
+    lang: 'en',
+    section: 'start-here',
+    title: 'Workshop',
+    reads: [
+      { table: 'workshops', drives: 'the featured row, the card wall below it, and the audience filter chips' },
+    ],
+  },
+  '/ko/workshop': {
+    lang: 'ko',
+    section: 'start-here',
+    title: 'Workshop',
+    reads: [
+      { table: 'workshops', drives: 'the featured row, the card wall below it, and the audience filter chips' },
+    ],
+  },
+  '/workshop/:slug': { lang: 'en', section: 'start-here', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/:slug': { lang: 'ko', section: 'start-here', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
+  '/workshop/bucket-list': { lang: 'en', section: 'start-here', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/bucket-list': { lang: 'ko', section: 'start-here', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/bucket-list': { lang: 'zh-TW', section: 'start-here', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
+  '/workshop/jungle-jam': { lang: 'en', section: 'start-here', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/jungle-jam': { lang: 'ko', section: 'start-here', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/jungle-jam': { lang: 'zh-TW', section: 'start-here', title: 'Jungle Jam', writes: WORKSHOP_SIGNUP },
+  '/workshop/light-shadow-shift': {
+    lang: 'en',
+    section: 'start-here',
+    title: 'Light Shadow Shift',
+    writes: WORKSHOP_SIGNUP,
+  },
+  '/ko/workshop/light-shadow-shift': {
+    lang: 'ko',
+    section: 'start-here',
+    title: 'Light Shadow Shift',
+    writes: WORKSHOP_SIGNUP,
+  },
+  '/zh-tw/workshop/light-shadow-shift': {
+    lang: 'zh-TW',
+    section: 'start-here',
+    title: 'Light Shadow Shift',
+    writes: WORKSHOP_SIGNUP,
+  },
+  '/workshop/pathfinder': { lang: 'en', section: 'start-here', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/pathfinder': { lang: 'ko', section: 'start-here', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/pathfinder': { lang: 'zh-TW', section: 'start-here', title: 'Pathfinder', writes: WORKSHOP_SIGNUP },
+  '/workshop/second-life': { lang: 'en', section: 'start-here', title: 'Second Life', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/second-life': { lang: 'ko', section: 'start-here', title: 'Second Life', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/second-life': { lang: 'zh-TW', section: 'start-here', title: 'Second Life', writes: WORKSHOP_SIGNUP },
+  '/workshop/shadow-shifter': { lang: 'en', section: 'start-here', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
+  '/ko/workshop/shadow-shifter': { lang: 'ko', section: 'start-here', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/shadow-shifter': { lang: 'zh-TW', section: 'start-here', title: 'Shadow Shifter', writes: WORKSHOP_SIGNUP },
 };
 
 /**

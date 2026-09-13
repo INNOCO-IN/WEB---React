@@ -51,18 +51,30 @@ export const NON_ROUTES = new Set([
  */
 export const TAKEN_OVER = new Map([
   ['Project-BridgeBuilder-Program.EN.dc.html', 'ProjectDetail'],
+  ['Project-BridgeBuilder-Program.KO.dc.html', 'ProjectDetail'],
   ['Project-CTN.EN.dc.html', 'ProjectDetail'],
+  ['Project-CTN.KO.dc.html', 'ProjectDetail'],
   ['Project-GYEM.EN.dc.html', 'ProjectDetail'],
+  ['Project-GYEM.KO.dc.html', 'ProjectDetail'],
   ['Project-I-Grow-Seed.EN.dc.html', 'ProjectDetail'],
+  ['Project-I-Grow-Seed.KO.dc.html', 'ProjectDetail'],
   ['Project-tasmena.EN.dc.html', 'ProjectDetail'],
+  ['Project-tasmena.KO.dc.html', 'ProjectDetail'],
 
   ['Community-Animators.EN.dc.html', 'CommunityDetail'],
+  ['Community-Animators.KO.dc.html', 'CommunityDetail'],
   ['Community-BridgeBuilders.EN.dc.html', 'CommunityDetail'],
+  ['Community-BridgeBuilders.KO.dc.html', 'CommunityDetail'],
   ['Community-Facilitators.EN.dc.html', 'CommunityDetail'],
+  ['Community-Facilitators.KO.dc.html', 'CommunityDetail'],
   ['Community-IN-Collectives.EN.dc.html', 'CommunityDetail'],
+  ['Community-IN-Collectives.KO.dc.html', 'CommunityDetail'],
   ['Community-Nepal-Youth-Cluster.EN.dc.html', 'CommunityDetail'],
+  ['Community-Nepal-Youth-Cluster.KO.dc.html', 'CommunityDetail'],
   ['Community-Open-Studio.EN.dc.html', 'CommunityDetail'],
+  ['Community-Open-Studio.KO.dc.html', 'CommunityDetail'],
   ['Community-UAE-Youth-Cluster.EN.dc.html', 'CommunityDetail'],
+  ['Community-UAE-Youth-Cluster.KO.dc.html', 'CommunityDetail'],
 
   ['Workshop-Heros-Journey.EN.dc.html', 'WorkshopDetail'],
   ['Workshop-Heros-Journey.KO.dc.html', 'WorkshopDetail'],
@@ -87,8 +99,8 @@ export const TAKEN_OVER = new Map([
  * the path.
  */
 export const TEMPLATES = {
-  ProjectDetail: '/project/:slug',
-  CommunityDetail: '/community/:slug',
+  ProjectDetail: ['/project/:slug', '/ko/project/:slug'],
+  CommunityDetail: ['/community/:slug', '/ko/community/:slug'],
   WorkshopDetail: ['/workshop/:slug', '/ko/workshop/:slug'],
 };
 

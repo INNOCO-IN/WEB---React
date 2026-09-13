@@ -1,8 +1,0 @@
-
-.page-community-index-en * { box-sizing: border-box; }
-.page-community-index-en, .page-community-index-en { margin: 0; padding: 0; }
-.page-community-index-en { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
-.page-community-index-en ::selection { background: var(--color-red); color: var(--color-paper); }
-.page-community-index-en a { color: var(--color-teal-dark); }
-.page-community-index-en .idx-row { transition: background 0.16s ease; }
-.page-community-index-en .idx-row:hover { background: rgba(210,30,40,0.06); }

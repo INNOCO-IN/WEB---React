@@ -4,6 +4,7 @@ import { BriefGrid, ClosingBand, DetailHero, DetailPage, InkLink } from '../../c
 import NotFound from '../NotFound';
 import { COMMUNITY_DETAILS } from '../../lib/content/community-details';
 import { accentColor } from '../../lib/content/types';
+import { useLocale } from '../../lib/lang';
 
 /**
  * `/community/:slug` — one circle, in full.
@@ -21,10 +22,19 @@ import { accentColor } from '../../lib/content/types';
  *
  * The copy is extracted from `site/` by scripts/extract-detail-pages.mjs, so
  * the legacy page is still the thing you edit.
+ *
+ * It serves `/ko/community/:slug` too, since the 2026 design wrote a Korean
+ * edition of all seven. The record is keyed `slug:lang`, and the way back to
+ * the index travels with it rather than being written here, where it could
+ * only ever have been English.
  */
 export default function CommunityDetail() {
   const { slug = '' } = useParams();
-  const detail = COMMUNITY_DETAILS[slug];
+  const locale = useLocale();
+  // English is the fallback rather than a 404: a slug whose Korean page has
+  // not been written is a page that exists, told in the language there is.
+  const detail =
+    COMMUNITY_DETAILS[`${slug}:${locale === 'ko' ? 'KO' : 'EN'}`] ?? COMMUNITY_DETAILS[`${slug}:EN`];
 
   if (!detail) return <NotFound />;
 
@@ -42,7 +52,7 @@ export default function CommunityDetail() {
         <DetailHero
           accent={accent}
           mode={detail.ink}
-          back={{ label: '← All Communities', to: '/community' }}
+          back={detail.back ?? { label: '← All Communities', to: '/community' }}
           chips={detail.chips}
           chipStyle="status"
           title={detail.title}

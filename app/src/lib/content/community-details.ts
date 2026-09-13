@@ -13,6 +13,8 @@ export type { BriefFact, DetailLink } from './detail-types';
  */
 export interface CommunityDetail {
   slug: string;
+  /** Which edition this record is the copy for. */
+  lang: 'EN' | 'KO';
   /** Design-token name for the hero band — `gold`, `red`. */
   accent: string;
   /** Token name for the hero's text: `ink` on a light band, `paper` on a dark one. */
@@ -24,6 +26,8 @@ export interface CommunityDetail {
   /** The heading over the fact cards — 'The brief', 'What formed'. */
   briefLabel: string;
   brief: BriefFact[];
+  /** The way back to the index, in this page's own words. */
+  back: DetailLink | null;
   link: DetailLink | null;
   /** Where the footer ribbon sits on this page, 0–1. */
   loop: string | null;
@@ -31,8 +35,9 @@ export interface CommunityDetail {
   ctaAccent: string | null;
 }
 
+/** Keyed `slug:lang` — 'animators:KO'. */
 export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
-  "animators": {
+  "animators:EN": {
     "slug": "animators",
     "accent": "red",
     "ink": "paper",
@@ -40,7 +45,7 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
       "Continued"
     ],
     "title": "Animators",
-    "lede": "Peer animators who carry MEWE sessions in their own neighborhoods — the practice, hosted locally.",
+    "lede": "Peer animators who carry ME=WE sessions in their own neighborhoods — the practice, hosted locally.",
     "briefLabel": "What formed",
     "brief": [
       {
@@ -56,11 +61,49 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
         "body": "Regular neighborhood sessions and new animators."
       }
     ],
+    "back": {
+      "label": "← All Communities",
+      "to": "/community"
+    },
     "link": null,
     "loop": "0.784",
-    "ctaAccent": "red"
+    "ctaAccent": "red",
+    "lang": "EN"
   },
-  "bridge-builders": {
+  "animators:KO": {
+    "slug": "animators",
+    "accent": "red",
+    "ink": "paper",
+    "chips": [
+      "이어짐"
+    ],
+    "title": "애니메이터",
+    "lede": "자신의 동네에서 ME=WE 세션을 여는 동료 애니메이터들 — 실천이 지역에서 살아가는 방식입니다.",
+    "briefLabel": "무엇이 만들어졌나",
+    "brief": [
+      {
+        "label": "누가 모였나",
+        "body": "가볍게 열 수 있는 세션을 훈련받은 동료 퍼실리테이터들."
+      },
+      {
+        "label": "상태",
+        "body": "이어짐 — 활동 중이며 자라고 있습니다."
+      },
+      {
+        "label": "남은 것",
+        "body": "동네에서 이어지는 정기 세션, 그리고 새로운 애니메이터들."
+      }
+    ],
+    "back": {
+      "label": "← 커뮤니티 전체",
+      "to": "/ko/community"
+    },
+    "link": null,
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "bridge-builders:EN": {
     "slug": "bridge-builders",
     "accent": "red",
     "ink": "paper",
@@ -84,14 +127,55 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
         "body": "Collaborating through Asia Exchange."
       }
     ],
+    "back": {
+      "label": "← All Communities",
+      "to": "/community"
+    },
     "link": {
       "label": "See the BridgeBuilder Program →",
       "to": "/project/bridge-builder-program"
     },
     "loop": "0.852",
-    "ctaAccent": "red"
+    "ctaAccent": "red",
+    "lang": "EN"
   },
-  "facilitators": {
+  "bridge-builders:KO": {
+    "slug": "bridge-builders",
+    "accent": "red",
+    "ink": "paper",
+    "chips": [
+      "이어짐"
+    ],
+    "title": "브리지빌더",
+    "lede": "다섯 도시의 브리지빌더들이 갈라진 것을 잇습니다 — 프로그램의 부름으로 모여, 아시아 익스체인지에서 함께 일합니다.",
+    "briefLabel": "무엇이 만들어졌나",
+    "brief": [
+      {
+        "label": "누가 모였나",
+        "body": "브리지빌더의 부름에 응답한 사람들."
+      },
+      {
+        "label": "상태",
+        "body": "이어짐 — 여러 도시에서 활동 중입니다."
+      },
+      {
+        "label": "지금 하는 일",
+        "body": "아시아 익스체인지를 통해 함께 일하고 있습니다."
+      }
+    ],
+    "back": {
+      "label": "← 커뮤니티 전체",
+      "to": "/ko/community"
+    },
+    "link": {
+      "label": "브리지빌더 프로그램 보기 →",
+      "to": "/ko/project/bridge-builder-program"
+    },
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "facilitators:EN": {
     "slug": "facilitators",
     "accent": "red",
     "ink": "paper",
@@ -99,7 +183,7 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
       "Continued"
     ],
     "title": "Facilitators",
-    "lede": "Pathfinder-trained facilitators who hold the MEWE workshop for others.",
+    "lede": "Pathfinder-trained facilitators who hold the ME=WE workshop for others.",
     "briefLabel": "What formed",
     "brief": [
       {
@@ -115,14 +199,55 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
         "body": "The path runs through Pathfinder, on the Protagonist page."
       }
     ],
+    "back": {
+      "label": "← All Communities",
+      "to": "/community"
+    },
     "link": {
       "label": "See the Protagonist paths →",
-      "to": "/protagonist"
+      "to": "/pathway"
     },
     "loop": "0.829",
-    "ctaAccent": "red"
+    "ctaAccent": "red",
+    "lang": "EN"
   },
-  "in-collectives": {
+  "facilitators:KO": {
+    "slug": "facilitators",
+    "accent": "red",
+    "ink": "paper",
+    "chips": [
+      "이어짐"
+    ],
+    "title": "퍼실리테이터",
+    "lede": "패스파인더 훈련을 마치고 다른 이들을 위해 ME=WE 워크숍을 여는 퍼실리테이터들.",
+    "briefLabel": "무엇이 만들어졌나",
+    "brief": [
+      {
+        "label": "누가 모였나",
+        "body": "패스파인더 훈련을 마친 이들."
+      },
+      {
+        "label": "상태",
+        "body": "이어짐 — 함께 연습하는 활동 공동체."
+      },
+      {
+        "label": "합류하는 길",
+        "body": "길은 주역 페이지의 패스파인더를 지나갑니다."
+      }
+    ],
+    "back": {
+      "label": "← 커뮤니티 전체",
+      "to": "/ko/community"
+    },
+    "link": {
+      "label": "주역의 길 보기 →",
+      "to": "/ko/pathway"
+    },
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "in-collectives:EN": {
     "slug": "in-collectives",
     "accent": "red",
     "ink": "paper",
@@ -146,14 +271,55 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
         "body": "The path runs through the Collectives page."
       }
     ],
+    "back": {
+      "label": "← All Communities",
+      "to": "/community"
+    },
     "link": {
       "label": "Meet the Collectives →",
-      "to": "/collectives"
+      "to": "/people"
     },
     "loop": "0.806",
-    "ctaAccent": "red"
+    "ctaAccent": "red",
+    "lang": "EN"
   },
-  "nepal-youth-cluster": {
+  "in-collectives:KO": {
+    "slug": "in-collectives",
+    "accent": "red",
+    "ink": "paper",
+    "chips": [
+      "이어짐"
+    ],
+    "title": "IN-콜렉티브",
+    "lede": "세계 곳곳에서 각자의 공동체에 스튜디오를 여는 독립 파트너들 — 지점이 아니라 파트너입니다.",
+    "briefLabel": "무엇이 만들어졌나",
+    "brief": [
+      {
+        "label": "누가 모였나",
+        "body": "IN 스튜디오를 열고 자신의 맥락에 맞게 옮기는 실천가들."
+      },
+      {
+        "label": "상태",
+        "body": "이어짐 — 살아 있는 네트워크."
+      },
+      {
+        "label": "합류하는 길",
+        "body": "길은 콜렉티브 페이지를 지나갑니다."
+      }
+    ],
+    "back": {
+      "label": "← 커뮤니티 전체",
+      "to": "/ko/community"
+    },
+    "link": {
+      "label": "콜렉티브 만나기 →",
+      "to": "/ko/people"
+    },
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "nepal-youth-cluster:EN": {
     "slug": "nepal-youth-cluster",
     "accent": "red",
     "ink": "paper",
@@ -177,14 +343,55 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
         "body": "Local initiatives and lasting cross-border ties."
       }
     ],
+    "back": {
+      "label": "← All Communities",
+      "to": "/community"
+    },
     "link": {
       "label": "From the UNC project →",
       "to": "/project/unc"
     },
     "loop": "0.761",
-    "ctaAccent": "red"
+    "ctaAccent": "red",
+    "lang": "EN"
   },
-  "open-studio": {
+  "nepal-youth-cluster:KO": {
+    "slug": "nepal-youth-cluster",
+    "accent": "red",
+    "ink": "paper",
+    "chips": [
+      "거두어짐"
+    ],
+    "title": "네팔 유스 클러스터",
+    "lede": "교류가 끝난 뒤에도 함께 연습을 이어간 UAE 네팔 커넥트의 네팔 청년들.",
+    "briefLabel": "무엇이 만들어졌나",
+    "brief": [
+      {
+        "label": "누가 모였나",
+        "body": "UNC 교류에 참여한 청년들."
+      },
+      {
+        "label": "상태",
+        "body": "거두어짐 — 마무리되고 기록된 한 주기."
+      },
+      {
+        "label": "남은 것",
+        "body": "지역의 활동들, 그리고 국경을 넘어 남은 관계."
+      }
+    ],
+    "back": {
+      "label": "← 커뮤니티 전체",
+      "to": "/ko/community"
+    },
+    "link": {
+      "label": "UNC 프로젝트에서 보기 →",
+      "to": "/ko/project/unc"
+    },
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "open-studio:EN": {
     "slug": "open-studio",
     "accent": "red",
     "ink": "paper",
@@ -192,7 +399,7 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
       "Continued"
     ],
     "title": "Open Studio",
-    "lede": "An open, drop-in MEWE space — no prerequisite, just a room where the practice is always available.",
+    "lede": "An open, drop-in ME=WE space — no prerequisite, just a room where the practice is always available.",
     "briefLabel": "What formed",
     "brief": [
       {
@@ -208,11 +415,49 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
         "body": "A steady on-ramp into the wider practice."
       }
     ],
+    "back": {
+      "label": "← All Communities",
+      "to": "/community"
+    },
     "link": null,
     "loop": "0.875",
-    "ctaAccent": "red"
+    "ctaAccent": "red",
+    "lang": "EN"
   },
-  "uae-youth-cluster": {
+  "open-studio:KO": {
+    "slug": "open-studio",
+    "accent": "red",
+    "ink": "paper",
+    "chips": [
+      "이어짐"
+    ],
+    "title": "오픈 스튜디오",
+    "lede": "누구나 들어올 수 있는 ME=WE 공간 — 조건 없이, 실천이 늘 열려 있는 방입니다.",
+    "briefLabel": "무엇이 만들어졌나",
+    "brief": [
+      {
+        "label": "누가 모였나",
+        "body": "걸어 들어오는 누구나 — 처음 온 사람과 오래 온 사람."
+      },
+      {
+        "label": "상태",
+        "body": "이어짐 — 정기적으로 열립니다."
+      },
+      {
+        "label": "남은 것",
+        "body": "더 넓은 실천으로 들어서는 꾸준한 입구."
+      }
+    ],
+    "back": {
+      "label": "← 커뮤니티 전체",
+      "to": "/ko/community"
+    },
+    "link": null,
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "uae-youth-cluster:EN": {
     "slug": "uae-youth-cluster",
     "accent": "red",
     "ink": "paper",
@@ -236,11 +481,52 @@ export const COMMUNITY_DETAILS: Record<string, CommunityDetail> = {
         "body": "Alumni ventures, further workshops, documented learning."
       }
     ],
+    "back": {
+      "label": "← All Communities",
+      "to": "/community"
+    },
     "link": {
       "label": "From the UAE Youth project →",
       "to": "/project/uae-youth-social-innovation"
     },
     "loop": "0.738",
-    "ctaAccent": "red"
+    "ctaAccent": "red",
+    "lang": "EN"
+  },
+  "uae-youth-cluster:KO": {
+    "slug": "uae-youth-cluster",
+    "accent": "red",
+    "ink": "paper",
+    "chips": [
+      "거두어짐"
+    ],
+    "title": "UAE 유스 클러스터",
+    "lede": "샤르자에서 실제 벤처를 운영한 청년들 — 많은 이들이 지금도 체인지메이커로 실천하고 있습니다.",
+    "briefLabel": "무엇이 만들어졌나",
+    "brief": [
+      {
+        "label": "누가 모였나",
+        "body": "UAE 청년 사회혁신 코호트의 구성원들."
+      },
+      {
+        "label": "상태",
+        "body": "거두어짐 — 주기가 끝나고 배움이 모였습니다."
+      },
+      {
+        "label": "남은 것",
+        "body": "졸업생들의 벤처, 이어진 워크숍, 기록된 배움."
+      }
+    ],
+    "back": {
+      "label": "← 커뮤니티 전체",
+      "to": "/ko/community"
+    },
+    "link": {
+      "label": "UAE 청년 프로젝트에서 보기 →",
+      "to": "/ko/project/uae-youth-social-innovation"
+    },
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
   }
 };

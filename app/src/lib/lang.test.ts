@@ -88,9 +88,11 @@ describe('switching language keeps your place', () => {
       reach: 'section',
       available: true,
     });
+    // The directory itself is not one of them: its two editions line up, so it
+    // is one component answering in all three languages.
     expect(alternateFor('/community/all', 'zh-TW')).toMatchObject({
-      to: '/zh-tw/community',
-      reach: 'section',
+      to: '/zh-tw/community/all',
+      reach: 'page',
     });
   });
 

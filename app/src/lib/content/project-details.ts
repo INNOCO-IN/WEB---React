@@ -13,6 +13,8 @@ export type { BriefFact, DetailLink } from './detail-types';
  */
 export interface ProjectDetail {
   slug: string;
+  /** Which edition this record is the copy for. */
+  lang: 'EN' | 'KO';
   /** Design-token name for the hero band — `gold`, `red`. */
   accent: string;
   /** Token name for the hero's text: `ink` on a light band, `paper` on a dark one. */
@@ -24,6 +26,8 @@ export interface ProjectDetail {
   /** The heading over the fact cards — 'The brief', 'What formed'. */
   briefLabel: string;
   brief: BriefFact[];
+  /** The way back to the index, in this page's own words. */
+  back: DetailLink | null;
   link: DetailLink | null;
   /** Where the footer ribbon sits on this page, 0–1. */
   loop: string | null;
@@ -31,8 +35,9 @@ export interface ProjectDetail {
   ctaAccent: string | null;
 }
 
+/** Keyed `slug:lang` — 'animators:KO'. */
 export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
-  "bridge-builder-program": {
+  "bridge-builder-program:EN": {
     "slug": "bridge-builder-program",
     "accent": "gold",
     "ink": "ink",
@@ -56,14 +61,55 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
         "body": "Those who answer form an ongoing community."
       }
     ],
+    "back": {
+      "label": "← All Projects",
+      "to": "/project"
+    },
     "link": {
       "label": "See the BridgeBuilders community →",
       "to": "/community/bridge-builders"
     },
     "loop": "0.602",
-    "ctaAccent": "slate"
+    "ctaAccent": "slate",
+    "lang": "EN"
   },
-  "ctn": {
+  "bridge-builder-program:KO": {
+    "slug": "bridge-builder-program",
+    "accent": "gold",
+    "ink": "ink",
+    "chips": [
+      "캠페인"
+    ],
+    "title": "브리지빌더 프로그램",
+    "lede": "다섯 도시에서 브리지빌더를 찾는 부름 — 자기 공동체에서 갈라진 것을 이을 준비가 된 사람들에게.",
+    "briefLabel": "프로젝트 브리프",
+    "brief": [
+      {
+        "label": "다섯 도시",
+        "body": "서로 다른 맥락으로 흩어져 전해진 부름."
+      },
+      {
+        "label": "부름",
+        "body": "다리를 짓는 자리로 한 걸음 들어오도록 초대합니다."
+      },
+      {
+        "label": "커뮤니티",
+        "body": "응답한 사람들이 계속 이어지는 공동체를 이룹니다."
+      }
+    ],
+    "back": {
+      "label": "← 프로젝트 전체",
+      "to": "/ko/project"
+    },
+    "link": {
+      "label": "브리지빌더 커뮤니티 보기 →",
+      "to": "/ko/community/bridge-builders"
+    },
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "ctn:EN": {
     "slug": "ctn",
     "accent": "gold",
     "ink": "ink",
@@ -71,7 +117,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       "Action research"
     ],
     "title": "Change The Now (CTN)",
-    "lede": "Georgian College, Canada, 2021–23. Bringing MEWE into a post-secondary setting — students changing their now, not someday.",
+    "lede": "Georgian College, Canada, 2021–23. Bringing ME=WE into a post-secondary setting — students changing their now, not someday.",
     "briefLabel": "The brief",
     "brief": [
       {
@@ -87,11 +133,49 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
         "body": "Multiple student groups over two years."
       }
     ],
+    "back": {
+      "label": "← All Projects",
+      "to": "/project"
+    },
     "link": null,
     "loop": "0.648",
-    "ctaAccent": "slate"
+    "ctaAccent": "slate",
+    "lang": "EN"
   },
-  "gyem": {
+  "ctn:KO": {
+    "slug": "ctn",
+    "accent": "gold",
+    "ink": "ink",
+    "chips": [
+      "액션 리서치"
+    ],
+    "title": "체인지 더 나우(CTN)",
+    "lede": "조지언 칼리지, 캐나다, 2021–23. ME=WE를 고등교육 현장으로 가져왔습니다 — 학생들이 언젠가가 아니라 지금을 바꾸는 일.",
+    "briefLabel": "프로젝트 브리프",
+    "brief": [
+      {
+        "label": "캠퍼스",
+        "body": "대학의 교과와 학생 생활 안에 자리 잡았습니다."
+      },
+      {
+        "label": "지금",
+        "body": "변화를 미루지 않고 현재에서 실행합니다."
+      },
+      {
+        "label": "코호트",
+        "body": "2년에 걸친 여러 학생 그룹."
+      }
+    ],
+    "back": {
+      "label": "← 프로젝트 전체",
+      "to": "/ko/project"
+    },
+    "link": null,
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "gyem:EN": {
     "slug": "gyem",
     "accent": "gold",
     "ink": "ink",
@@ -115,11 +199,49 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
         "body": "Alumni who carried the practice into later work."
       }
     ],
+    "back": {
+      "label": "← All Projects",
+      "to": "/project"
+    },
     "link": null,
     "loop": "0.625",
-    "ctaAccent": "slate"
+    "ctaAccent": "slate",
+    "lang": "EN"
   },
-  "i-grow-seed": {
+  "gyem:KO": {
+    "slug": "gyem",
+    "accent": "gold",
+    "ink": "ink",
+    "chips": [
+      "캠페인"
+    ],
+    "title": "GYEM",
+    "lede": "두바이, 2010–15. Seaon Shin과 함께 세운 글로벌 유스 임파워먼트 무브먼트 — 청년이 청년을 위한 변화를 이끕니다.",
+    "briefLabel": "프로젝트 브리프",
+    "brief": [
+      {
+        "label": "청년 주도",
+        "body": "청년들이 자신의 활동을 직접 설계하고 운영했습니다."
+      },
+      {
+        "label": "무브먼트",
+        "body": "학교와 공동체로 자라난 네트워크."
+      },
+      {
+        "label": "남은 것",
+        "body": "실천을 이후의 일로 가져간 졸업생들."
+      }
+    ],
+    "back": {
+      "label": "← 프로젝트 전체",
+      "to": "/ko/project"
+    },
+    "link": null,
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "i-grow-seed:EN": {
     "slug": "i-grow-seed",
     "accent": "gold",
     "ink": "ink",
@@ -127,7 +249,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       "Campaign"
     ],
     "title": "I Grow Seed",
-    "lede": "A campaign turning the MEWE practice into small, plantable acts — each person a seed, each act growing outward.",
+    "lede": "A campaign turning the ME=WE practice into small, plantable acts — each person a seed, each act growing outward.",
     "briefLabel": "The brief",
     "brief": [
       {
@@ -143,11 +265,49 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
         "body": "Carried person to person, neighborhood to neighborhood."
       }
     ],
+    "back": {
+      "label": "← All Projects",
+      "to": "/project"
+    },
     "link": null,
     "loop": "0.670",
-    "ctaAccent": "slate"
+    "ctaAccent": "slate",
+    "lang": "EN"
   },
-  "tasmena": {
+  "i-grow-seed:KO": {
+    "slug": "i-grow-seed",
+    "accent": "gold",
+    "ink": "ink",
+    "chips": [
+      "캠페인"
+    ],
+    "title": "아이 그로우 시드",
+    "lede": "ME=WE 실천을 작고 심을 수 있는 행동으로 바꾸는 캠페인 — 한 사람이 하나의 씨앗이고, 하나의 행동이 밖으로 자라납니다.",
+    "briefLabel": "프로젝트 브리프",
+    "brief": [
+      {
+        "label": "씨앗",
+        "body": "누구나 시작할 수 있는 단순하고 반복 가능한 행동."
+      },
+      {
+        "label": "자람",
+        "body": "작은 실천들이 공동체 안에서 쌓입니다."
+      },
+      {
+        "label": "번짐",
+        "body": "사람에서 사람으로, 동네에서 동네로 전해집니다."
+      }
+    ],
+    "back": {
+      "label": "← 프로젝트 전체",
+      "to": "/ko/project"
+    },
+    "link": null,
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
+  },
+  "tasmena:EN": {
     "slug": "tasmena",
     "accent": "gold",
     "ink": "ink",
@@ -155,7 +315,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       "Partner"
     ],
     "title": "tasmena / MENAlab",
-    "lede": "Dubai, 2009. An interdisciplinary design lab for change — the earliest room where the MEWE question took working shape.",
+    "lede": "Dubai, 2009. An interdisciplinary design lab for change — the earliest room where the ME=WE question took working shape.",
     "briefLabel": "The brief",
     "brief": [
       {
@@ -168,11 +328,49 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       },
       {
         "label": "Seed",
-        "body": "Where the methods that became MEWE were first prototyped."
+        "body": "Where the methods that became ME=WE were first prototyped."
       }
     ],
+    "back": {
+      "label": "← All Projects",
+      "to": "/project"
+    },
     "link": null,
     "loop": "0.693",
-    "ctaAccent": "slate"
+    "ctaAccent": "slate",
+    "lang": "EN"
+  },
+  "tasmena:KO": {
+    "slug": "tasmena",
+    "accent": "gold",
+    "ink": "ink",
+    "chips": [
+      "파트너"
+    ],
+    "title": "tasmena / MENAlab",
+    "lede": "두바이, 2009. 변화를 위한 학제 간 디자인 랩 — ME=WE라는 질문이 처음 일하는 모양을 갖춘 방입니다.",
+    "briefLabel": "프로젝트 브리프",
+    "brief": [
+      {
+        "label": "랩",
+        "body": "디자이너, 학생, 시민 파트너를 하나의 과정으로 모은 스튜디오."
+      },
+      {
+        "label": "지역",
+        "body": "MENA의 맥락에 뿌리내리고, 지역의 현실에 맞추었습니다."
+      },
+      {
+        "label": "씨앗",
+        "body": "ME=WE가 된 방법들이 처음 시도된 곳."
+      }
+    ],
+    "back": {
+      "label": "← 프로젝트 전체",
+      "to": "/ko/project"
+    },
+    "link": null,
+    "loop": null,
+    "ctaAccent": null,
+    "lang": "KO"
   }
 };

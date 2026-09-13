@@ -68,7 +68,7 @@ one.
 Generated from [`app/src/lib/page-model.ts`](app/src/lib/page-model.ts) by
 `node scripts/content-map.mjs`. Edit the model, re-run, commit both.
 
-56 of 70 pages read or write a table; the rest carry their copy in the
+75 of 92 pages read or write a table; the rest carry their copy in the
 component. Every table listed under **Reads** is watched while a page that reads it
 is open, so an edit in the Table Editor arrives without a reload.
 
@@ -78,28 +78,11 @@ is open, so an edit in the Table Editor arrives without a reload.
 |---|---|---|---|
 | **Home** | | | |
 | Home | `/`, `/ko`, `/zh-tw` | `news` (feed `home`) | the news tile in the card grid — the newest item on the home feed |
-| **Start Within** | | | |
-| Collectives | `/collectives`, `/ko/collectives`, `/zh-tw/collectives` | `collectives` | the roster, each bio expanding in place |
-| **Share the Space** | | | |
-| Workshop | `/workshop`, `/ko/workshop` | `workshops` | the featured row, the card wall below it, and the audience filter chips |
-| Story index | `/story/all`, `/ko/story/all`, `/zh-tw/story/all` | `story_entries` | every story, its filters and its reading pane |
-| **Serve the Whole** | | | |
-| Project index | `/project`, `/ko/project` | `projects` | the wall of project briefs — every project but the one the page features |
-| Project detail (×8) | `/project/asia-exchange`, `/project/food-revolution`, `/project/jungle-jam`, `/project/light-shadow-shift-womens-retreat`, `/project/shadow-shifter`, `/project/uae-youth-social-innovation`, `/project/unc-documentary`, `/project/unc` | `projects` | the All projects rail beside the article |
-| Project detail | `/project/:slug` | `projects` | the title, and the All projects rail beside the article |
-| Community | `/community`, `/ko/community`, `/zh-tw/community` | `communities` | the circles grid |
-| | | `news` (feed `community`) | the news grid below the circles |
-| Community index | `/community/all` | `communities` | the directory — every circle, with the line that says where it stands |
-| Constellation | `/constellation`, `/ko/constellation`, `/zh-tw/constellation` | `constellation_points` | every light on the map, and both grouping modes |
-| News | `/news`, `/ko/news`, `/zh-tw/news` | `news` (feed `news`) | the whole card wall |
 
 ### Writes
 
 | Page | Route | Table | What goes into it |
 |---|---|---|---|
-| **Share the Space** | | | |
-| Workshop detail (×7) | `/workshop/:slug`, `/ko/workshop/:slug`, `/workshop/bucket-list`, `/ko/workshop/bucket-list`, `/zh-tw/workshop/bucket-list`, `/workshop/jungle-jam`, `/ko/workshop/jungle-jam`, `/zh-tw/workshop/jungle-jam`, `/workshop/light-shadow-shift`, `/ko/workshop/light-shadow-shift`, `/zh-tw/workshop/light-shadow-shift`, `/workshop/pathfinder`, `/ko/workshop/pathfinder`, `/zh-tw/workshop/pathfinder`, `/workshop/second-life`, `/ko/workshop/second-life`, `/zh-tw/workshop/second-life`, `/workshop/shadow-shifter`, `/ko/workshop/shadow-shifter`, `/zh-tw/workshop/shadow-shifter` | `workshop_registrations` | the sign-up in the register band |
-| Story submission | `/story/submit` | `stories` | the submission, and its attachment in the story-media bucket |
 | **Connect** | | | |
 | Are you IN? | `/connect`, `/ko/connect`, `/zh-tw/connect` | `submissions` | the enquiry form |
 
