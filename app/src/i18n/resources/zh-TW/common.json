@@ -8,22 +8,22 @@
   "nav": {
     "label": "網站分區",
     "groups": {
-      "startWithin": "由內開始",
-      "shareTheSpace": "分享空間",
-      "serveTheWhole": "服務整體"
+      "startHere": "從這裡開始",
+      "goFurther": "再走一步",
+      "biggerPicture": "更大的圖景"
     },
     "items": {
-      "manifesto": "宣言",
-      "collectives": "共創者",
-      "mewe": "MEWE",
+      "mewe": "ME=WE",
       "workshop": "工作坊",
       "story": "故事",
-      "protagonist": "主角",
+      "pathway": "路徑",
       "project": "專案",
       "community": "社群",
+      "people": "團隊",
+      "manifesto": "宣言",
       "constellation": "星圖",
       "news": "消息",
-      "connect": "Are you IN?"
+      "connect": "Are You IN?"
     }
   },
   "footer": {

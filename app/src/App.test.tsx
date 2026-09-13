@@ -204,13 +204,16 @@ describe('the language switcher', () => {
   });
 
   it('offers the section, marked, where the page has no twin', async () => {
-    await visit('/project/food-revolution');
+    // Chinese, because Korean no longer has a gap to demonstrate: the 2026
+    // design gave every English page a Korean edition, so the Korean link is
+    // exact everywhere and it is Chinese that falls back to the section.
+    await visit('/community/animators');
     const menu = await openSwitcher();
-    const korean = menu.getByRole('link', { name: /Korean/ });
-    expect(korean).toHaveAttribute('href', '/ko/project');
-    expect(korean).toHaveClass('is-approximate');
+    const chinese = menu.getByRole('link', { name: /Chinese/ });
+    expect(chinese).toHaveAttribute('href', '/zh-tw/community');
+    expect(chinese).toHaveClass('is-approximate');
     // And it says why, rather than only looking different.
-    expect(korean).toHaveAccessibleName(/no Korean version/i);
+    expect(chinese).toHaveAccessibleName(/no .*Chinese.* version/i);
   });
 });
 
@@ -239,10 +242,18 @@ describe('document metadata', () => {
     );
   });
 
-  it('emits no hreflang for a page that exists in one language only', async () => {
-    await visit('/action-research');
+  it('names only the languages that genuinely have the page', async () => {
+    // No page is one-language-only any more — the 2026 design closed that gap
+    // for Korean — so what is worth checking is the other half of the rule: a
+    // page in two languages advertises two, and does not invent a third by
+    // pointing Chinese at the section above it.
+    await visit('/story/submit');
     await screen.findByRole('banner');
-    expect(document.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
+
+    const alternates = [...document.head.querySelectorAll('link[rel="alternate"]')];
+    const langs = alternates.map((link) => link.getAttribute('hreflang'));
+    expect(langs).toEqual(['en', 'ko', 'x-default']);
+    expect(langs).not.toContain('zh-Hant-TW');
   });
 
   it('sets a canonical URL', async () => {

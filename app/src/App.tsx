@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { PAGES } from './pages/registry';
-import { LEGACY_ROUTES } from './lib/route-map';
+import { LEGACY_ROUTES, RENAMED_ROUTES } from './lib/route-map';
 import NotFound from './pages/NotFound';
 import BuilderPageView from './builder/BuilderPageView';
 import { matchBuilderPath } from './builder/routes';
@@ -108,6 +108,13 @@ function Unmatched() {
   if (canonical !== trimmed) {
     return <Navigate to={`${canonical}${search}${hash}`} replace />;
   }
+
+  // A page the design renamed. Checked before the builder and before the
+  // filename table because this is a route the app itself used to serve: the
+  // old word is still in links and bookmarks, and it has to land on the one
+  // page that answers for it now.
+  const renamed = RENAMED_ROUTES[trimmed];
+  if (renamed) return <Navigate to={`${renamed}${search}${hash}`} replace />;
 
   const built = matchBuilderPath(trimmed);
   if (built) return <BuilderPageView page={built.page} locale={built.locale} />;

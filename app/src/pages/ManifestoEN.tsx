@@ -37,7 +37,7 @@ export default function ManifestoEN() {
           <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(28px, 3.4vw, 50px)", lineHeight: "1.15", margin: "0 0 20px", letterSpacing: "-0.01em", maxWidth: "22ch", fontWeight: "600", height: "330px", width: "800px" }}>
             {"IN is a small studio built on one idea: personal growth and the wellbeing of the people around us aren't separate things. We call this "}
             <span style={{ color: "var(--color-teal)", fontStyle: "normal", fontWeight: "700" }}>
-              MEWE
+              ME=WE
             </span>
             .
           </p>
@@ -58,10 +58,10 @@ export default function ManifestoEN() {
                 </div>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
                   {"Everything we do — workshops, projects with our neighbors, the way we "}
-                  <strong>
+                  <b>
                     flip + connect
-                  </strong>
-                  {" — is a way of practicing MEWE, not just talking about it."}
+                  </b>
+                  {" — is a way of practicing ME=WE, not just talking about it."}
                 </p>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function ManifestoEN() {
               </div>
             </div>
             <div style={{ background: "var(--color-paper-dim)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-magenta)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-magenta-hot)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
                   <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
                 </div>
@@ -98,7 +98,7 @@ export default function ManifestoEN() {
                 </div>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
                   {"IN isn't built to be one centralized organization. It grows through shared practice — those who continue become "}
-                  <Link to="/collectives" style={{ color: "#8E2166" }} className="in-plain">
+                  <Link to="/people" style={{ color: "#8E2166" }} className="in-plain">
                     IN-Collectives
                   </Link>
                   , carrying the work forward in their own communities.
@@ -198,12 +198,12 @@ export default function ManifestoEN() {
               We're more reachable than any generation before us, and more alone. That's not a contradiction — it's a pattern we've stopped questioning. IN starts by naming it plainly: taking the veils off, without judgment, and relearning how to actually listen.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta-hot)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               2 · Truth
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              My growth is our growth. This is MEWE.
+              My growth is our growth. This is ME=WE.
             </h2>
             <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(22px, 2.2vw, 30px)", lineHeight: "1.3", margin: "0", color: "rgba(38,42,56,0.82)" }}>
               Growing as a person and caring for the people around you were never two separate projects. Like a Möbius strip, what looks like two sides — self and society — is one continuous surface. Once you see it, the old choice between them disappears.
@@ -250,7 +250,7 @@ export default function ManifestoEN() {
               We live it daily. We don't just believe it.
             </h2>
             <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(22px, 2.2vw, 30px)", lineHeight: "1.3", margin: "0", color: "rgba(38,42,56,0.82)" }}>
-              MEWE isn't taught — it's practiced, in workshops and real projects with real neighbors, drawing on nature, science, art, and social action, across generations and fields that rarely share a room. The framework was never the point. What shifts between people is.
+              ME=WE isn't taught — it's practiced, in workshops and real projects with real neighbors, drawing on nature, science, art, and social action, across generations and fields that rarely share a room. The framework was never the point. What shifts between people is.
             </p>
           </div>
           <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-teal)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
@@ -264,7 +264,7 @@ export default function ManifestoEN() {
               Empathy isn't installed — it's already there, built into what it means to be human. Everyone who comes through IN carries a birthright and a responsibility to help others thrive. Every person leads their own path. No one waits in the wings.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta-hot)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               8 · Bridge
             </div>
@@ -280,7 +280,7 @@ export default function ManifestoEN() {
               9 · Invitation
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              Bring your light. Are you IN?
+              Bring your light. Are You IN?
             </h2>
             <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(22px, 2.2vw, 30px)", lineHeight: "1.3", margin: "0", color: "rgba(38,42,56,0.82)" }}>
               When we find something good, we share it — a recipe, a remedy, a way through something hard. This is that, at the scale of a life. Small, contagious practice, carried person to person, adding light where it's needed.
@@ -305,7 +305,7 @@ export default function ManifestoEN() {
                 <em>
                   practice
                 </em>
-                {" MEWE through honest conversations and artful expressions."}
+                {" ME=WE through honest conversations and artful expressions."}
               </div>
             </div>
           </div>
@@ -316,7 +316,7 @@ export default function ManifestoEN() {
               IN STORY | HOW WE PRACTICE
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.0", letterSpacing: "-0.02em", margin: "0 0 22px", maxWidth: "20ch", textWrap: "balance", width: "800px" }}>
-              Learning MEWE by practicing it with others.
+              Learning ME=WE by practicing it with others.
             </h2>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(20px, 2.2vw, 26px)", lineHeight: "1.35", maxWidth: "46ch", margin: "0", color: "rgba(38,42,56,0.82)" }}>
               Before IN had a name, it had a question — how do ME and WE actually grow together? We never answered it in theory. We practiced our way toward it: trying something real, listening to what came back, and letting each attempt teach us the next.
@@ -348,7 +348,7 @@ export default function ManifestoEN() {
             <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
               <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "var(--color-magenta)", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-magenta-hot)", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
                   <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
@@ -360,7 +360,7 @@ export default function ManifestoEN() {
                   Then it left the room
                 </div>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                  The practice kept asking more of us. In Canada it stretched to the scale of a whole county — a Pathfinder facilitator series and a MEWE exploration of race and unity — testing whether relationship could be practiced not just in a room, but across a community.
+                  The practice kept asking more of us. In Canada it stretched to the scale of a whole county — a Pathfinder facilitator series and a ME=WE exploration of race and unity — testing whether relationship could be practiced not just in a room, but across a community.
                 </p>
               </div>
             </div>
@@ -379,7 +379,7 @@ export default function ManifestoEN() {
                   Now it finds itself
                 </div>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                  In 2022, IN took root in Korea, and something shifted: IN-Collectives from around the world found each other, and a new way of working together began — online and face to face, across the USA, Dubai, Saudi Arabia, and Korea — each exploring what MEWE can mean.
+                  In 2022, IN took root in Korea, and something shifted: IN-Collectives from around the world found each other, and a new way of working together began — online and face to face, across the USA, Dubai, Saudi Arabia, and Korea — each exploring what ME=WE can mean.
                 </p>
               </div>
             </div>
@@ -408,14 +408,14 @@ export default function ManifestoEN() {
               Research & Recognition
             </p>
             <p style={{ fontFamily: "'Newsreader', serif", fontSize: "22px", lineHeight: "1.3", margin: "0", color: "#262A38" }}>
-              The MEWE framework has been shared through peer-reviewed work and international forums: a Springer handbook chapter, “Self, Society, Service in MEWE” (2024); “Co-Designing a Pathway Through Food Revolution for Social Change” (2021); “Co-designing a social innovation model for changemakers” (2018); and a youth-empowerment case study (Banff / RSD, 2015). Presented at Dubai EXPO 2020 and the Parliament of the World's Religions 2022.
+              The ME=WE framework has been shared through peer-reviewed work and international forums: a Springer handbook chapter, “Self, Society, Service in ME=WE” (2024); “Co-Designing a Pathway Through Food Revolution for Social Change” (2021); “Co-designing a social innovation model for changemakers” (2018); and a youth-empowerment case study (Banff / RSD, 2015). Presented at Dubai EXPO 2020 and the Parliament of the World's Religions 2022.
             </p>
           </div>
         </section>
         <section style={{ background: "var(--color-teal)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
-              Are you IN?
+              Are You IN?
             </p>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 26px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               The door is open.

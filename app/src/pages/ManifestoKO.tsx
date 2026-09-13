@@ -23,9 +23,9 @@ export default function ManifestoKO() {
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.2", margin: "0", color: "rgba(250,244,226,0.94)", maxWidth: "56ch", textAlign: "left" }}>
               <em style={{ fontSize: "50px" }}>
                 <i style={{}}>
-                  <span style={{ textDecoration: "underline" }}>
+                  <u>
                     "나는 어떤 사람이 되고 싶은가?"
-                  </span>
+                  </u>
                 </i>
                 <br />
               </em>
@@ -38,7 +38,7 @@ export default function ManifestoKO() {
         </section>
         {/* ===================== §1 · WHO WE ARE ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "80px 28px 0" }}>
-          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "24px" }}>
+          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "24px" }}>
             ABOUT IN | 우리는 누구인가
           </div>
           <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.2", letterSpacing: "-0.02em", margin: "0 0 28px", maxWidth: "28ch", color: "#1A1613", wordBreak: "keep-all", textWrap: "pretty" }}>
@@ -64,12 +64,12 @@ export default function ManifestoKO() {
                 </div>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
                   {"우리가 하는 모든 것 — 워크숍, 이웃과 함께하는 프로젝트, "}
-                  <strong>
+                  <b>
                     뒤집어 연결하는
-                  </strong>
+                  </b>
                   {" 방식 — 은 "}
                   <br />
-                  MEWE를 말하는 것이 아니라 실천하는 방법입니다.
+                  ME=WE를 말하는 것이 아니라 실천하는 방법입니다.
                 </p>
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function ManifestoKO() {
               </div>
             </div>
             <div style={{ background: "var(--color-paper-dim)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-magenta)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-magenta-hot)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
                   <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
                 </div>
@@ -108,10 +108,10 @@ export default function ManifestoKO() {
                 </div>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
                   {"인(IN)은 성숙해지는 워크샵과 프로젝트들의 활성화와 동시에 다양한 주인공들이\u00a0"}
-                  <Link to="/ko/collectives" style={{ color: "rgb(142, 33, 102)" }} className="in-plain">
+                  <Link to="/ko/people" style={{ color: "rgb(142, 33, 102)" }} className="in-plain">
                     IN-콜렉티
                   </Link>
-                  {"를 중심으로\u00a0MEWE 실천을 통해 키워가는 역량과 배움을 공유하며 각자의 공동체의 일들을 이어갑니다."}
+                  {"를 중심으로\u00a0ME=WE 실천을 통해 키워가는 역량과 배움을 공유하며 각자의 공동체의 일들을 이어갑니다."}
                 </p>
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function ManifestoKO() {
                   획일적이지 않게
                 </div>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                  워크샵과 프로젝트들은 공동체와 맥락의 필요에 맞게 디자인되고 소통되고 공명되며 MEWE 스토리들로 이 시대의 필요한 언어를 찾아갑니다.
+                  워크샵과 프로젝트들은 공동체와 맥락의 필요에 맞게 디자인되고 소통되고 공명되며 ME=WE 스토리들로 이 시대의 필요한 언어를 찾아갑니다.
                 </p>
               </div>
             </div>
@@ -179,17 +179,17 @@ export default function ManifestoKO() {
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "80px 28px 0" }}>
-          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "14px" }}>
+          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "14px" }}>
             매니페스토 | 우리가 믿는 것
           </div>
           <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.1", letterSpacing: "-0.02em", margin: "0 0 28px", textWrap: "balance" }}>
             우리가 존재하는 이유 — 지금, 참이라 여기는 아홉 가지.
           </h2>
           <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "400", fontSize: "clamp(19px, 1.7vw, 24px)", lineHeight: "1.35", margin: "0", color: "#1A1613", maxWidth: "62ch", textAlign: "left" }}>
-            <strong>
+            <b>
               인(IN) 매니페스토
-            </strong>
-            는 인의 본질적 의도와 태도를 나누려는 겸허한 맘으로 시작되었고, MEWE를 삶에서 실천하는 모든 이들에 의해 지속적으로 진화할 것입니다 — 한 줄을 보태고, 다른 줄에 물음을 던지고, 각자의 공동체에서 살아내며 배운 것을 다시 가져오면서.
+            </b>
+            는 인의 본질적 의도와 태도를 나누려는 겸허한 맘으로 시작되었고, ME=WE를 삶에서 실천하는 모든 이들에 의해 지속적으로 진화할 것입니다 — 한 줄을 보태고, 다른 줄에 물음을 던지고, 각자의 공동체에서 살아내며 배운 것을 다시 가져오면서.
           </p>
         </section>
         {/* ===================== PRINCIPLES ===================== */}
@@ -205,12 +205,12 @@ export default function ManifestoKO() {
               우리는 이전 어느 세대보다 닿기 쉬워졌지만, 더 외롭습니다. 모순이 아니라, 우리가 묻기를 그만둔 패턴입니다. IN은 그것을 담백하게 이름 부르는 데서 시작합니다: 판단 없이 베일을 걷어내고, 진짜로 듣는 법을 다시 배우는 것.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta-hot)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
               2 · 진실
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              나의 성장이 곧 우리의 성장. 이것이 MEWE입니다.
+              나의 성장이 곧 우리의 성장. 이것이 ME=WE입니다.
             </h2>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "clamp(22px, 2.2vw, 30px)", lineHeight: "1.3", margin: "0", color: "rgba(38,42,56,0.82)" }}>
               한 사람으로 자라는 것과 곁의 사람들을 돌보는 것은 애초에 두 개의 과제가 아니었습니다. 뫼비우스 띠처럼, 양면으로 보이는 것 — 자신과 사회 — 은 하나의 이어진 면입니다. 한번 보고 나면, 둘 사이에서 골라야 했던 오래된 선택은 사라집니다.
@@ -257,7 +257,7 @@ export default function ManifestoKO() {
               믿는 데서 멈추지 않고, 매일 살아냅니다.
             </h2>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "clamp(22px, 2.2vw, 30px)", lineHeight: "1.3", margin: "0", color: "rgba(38,42,56,0.82)" }}>
-              MEWE는 가르쳐지지 않습니다 — 워크숍에서, 진짜 이웃과 함께하는 진짜 프로젝트에서 연습됩니다. 자연, 과학, 예술, 사회적 실천을 넘나들며, 한자리에 모이기 어려운 세대와 분야를 가로질러. 프레임워크가 핵심이었던 적은 없습니다. 사람들 사이에서 무엇이 달라지는가가 핵심입니다.
+              ME=WE는 가르쳐지지 않습니다 — 워크숍에서, 진짜 이웃과 함께하는 진짜 프로젝트에서 연습됩니다. 자연, 과학, 예술, 사회적 실천을 넘나들며, 한자리에 모이기 어려운 세대와 분야를 가로질러. 프레임워크가 핵심이었던 적은 없습니다. 사람들 사이에서 무엇이 달라지는가가 핵심입니다.
             </p>
           </div>
           <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-teal)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
@@ -271,7 +271,7 @@ export default function ManifestoKO() {
               공감은 설치되는 것이 아닙니다 — 인간이라는 것 안에 이미 새겨져 있습니다. IN을 거쳐 가는 모두는 타인의 번영을 도울 타고난 권리와 책임을 지닙니다. 저마다 자기 길의 주역이며, 무대 뒤에서 기다리는 사람은 없습니다.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta-hot)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
               8 · 다리
             </div>
@@ -287,7 +287,7 @@ export default function ManifestoKO() {
               9 · 초대
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              당신의 빛을 가져오세요. Are you IN?
+              당신의 빛을 가져오세요. Are You IN?
             </h2>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "clamp(22px, 2.2vw, 30px)", lineHeight: "1.3", margin: "0", color: "rgba(38,42,56,0.82)" }}>
               좋은 것을 발견하면 우리는 나눕니다 — 요리법이든, 처방이든, 어려움을 지나는 길이든. 이것은 삶의 크기로 하는 그 일입니다. 사람에서 사람으로 옮겨 가는 작고 전염성 있는 실천이, 필요한 곳에 빛을 보탭니다.
@@ -308,7 +308,7 @@ export default function ManifestoKO() {
                 IN은 스튜디오입니다
               </div>
               <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "500", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: "1.1", letterSpacing: "-0.01em", color: "#1A1613" }}>
-                {"정직한 대화와 예술적 표현으로 MEWE를 "}
+                {"정직한 대화와 예술적 표현으로 ME=WE를 "}
                 <em>
                   실천
                 </em>
@@ -319,11 +319,11 @@ export default function ManifestoKO() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ paddingTop: "40px", position: "relative" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "16px", height: "60px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "16px", height: "60px" }}>
               IN 스토리 | 우리가 실천해 온 길
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.1", letterSpacing: "-0.02em", margin: "0 0 22px", maxWidth: "20ch", textWrap: "balance", width: "800px" }}>
-              다른 이들과 함께 실천하며 MEWE를 배워 왔습니다.
+              다른 이들과 함께 실천하며 ME=WE를 배워 왔습니다.
             </h2>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "400", fontSize: "clamp(20px, 2.2vw, 26px)", lineHeight: "1.35", maxWidth: "46ch", margin: "0", color: "rgba(38,42,56,0.82)" }}>
               IN에 이름이 생기기 전, 질문이 먼저 있었습니다 — ME와 WE는 실제로 어떻게 함께 자라는가? 우리는 그 답을 이론으로 구한 적이 없습니다. 실천으로 다가갔습니다: 진짜 무언가를 시도하고, 돌아오는 것을 듣고, 각 시도가 다음을 가르치게 하면서.
@@ -355,7 +355,7 @@ export default function ManifestoKO() {
             <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
               <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "var(--color-magenta)", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-magenta-hot)", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
                   <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
@@ -367,7 +367,7 @@ export default function ManifestoKO() {
                   그리고 방을 떠났습니다
                 </div>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                  실천은 계속 우리에게 더 많은 것을 요구했습니다. 캐나다에서는 카운티 전체의 규모로 늘어났습니다 — 패스파인더 퍼실리테이터 시리즈와 인종과 하나됨에 대한 MEWE 탐구 — 관계가 방 안에서만이 아니라 공동체 전체에서 연습될 수 있는지 시험하면서.
+                  실천은 계속 우리에게 더 많은 것을 요구했습니다. 캐나다에서는 카운티 전체의 규모로 늘어났습니다 — 패스파인더 퍼실리테이터 시리즈와 인종과 하나됨에 대한 ME=WE 탐구 — 관계가 방 안에서만이 아니라 공동체 전체에서 연습될 수 있는지 시험하면서.
                 </p>
               </div>
             </div>
@@ -386,7 +386,7 @@ export default function ManifestoKO() {
                   이제 서로를 찾아냅니다
                 </div>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                  2022년, IN은 한국에 뿌리를 내렸고 무언가 달라졌습니다: 세계 곳곳의 IN-콜렉티브들이 서로를 찾아냈고, 함께 일하는 새로운 방식이 시작되었습니다 — 온라인과 대면으로, 미국, 두바이, 사우디아라비아, 한국을 가로질러 — 저마다 MEWE의 의미를 탐구하면서.
+                  2022년, IN은 한국에 뿌리를 내렸고 무언가 달라졌습니다: 세계 곳곳의 IN-콜렉티브들이 서로를 찾아냈고, 함께 일하는 새로운 방식이 시작되었습니다 — 온라인과 대면으로, 미국, 두바이, 사우디아라비아, 한국을 가로질러 — 저마다 ME=WE의 의미를 탐구하면서.
                 </p>
               </div>
             </div>
@@ -415,14 +415,14 @@ export default function ManifestoKO() {
               연구와 인정
             </p>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "22px", lineHeight: "1.3", margin: "0", color: "#262A38" }}>
-              MEWE 프레임워크는 동료 심사 연구와 국제 포럼을 통해 공유되었습니다: Springer 핸드북 챕터 “Self, Society, Service in MEWE”(2024), “Co-Designing a Pathway Through Food Revolution for Social Change”(2021), “Co-designing a social innovation model for changemakers”(2018), 청년 임파워먼트 사례 연구(Banff / RSD, 2015). 두바이 EXPO 2020과 세계종교의회 2022에서 발표되었습니다.
+              ME=WE 프레임워크는 동료 심사 연구와 국제 포럼을 통해 공유되었습니다: Springer 핸드북 챕터 “Self, Society, Service in ME=WE”(2024), “Co-Designing a Pathway Through Food Revolution for Social Change”(2021), “Co-designing a social innovation model for changemakers”(2018), 청년 임파워먼트 사례 연구(Banff / RSD, 2015). 두바이 EXPO 2020과 세계종교의회 2022에서 발표되었습니다.
             </p>
           </div>
         </section>
         <section style={{ background: "var(--color-teal)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
-              Are you IN?
+              Are You IN?
             </p>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.18", margin: "0 0 26px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               문은 열려 있습니다.

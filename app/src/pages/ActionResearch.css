@@ -1,0 +1,53 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
+:root {
+  --in-action-research-0: 1.0;
+}
+
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
+  --in-action-research-0: 1.06;
+}
+
+
+.page-action-research * { box-sizing: border-box; }
+.page-action-research, .page-action-research { margin: 0; padding: 0; }
+.page-action-research { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-action-research ::selection { background: var(--color-deepblue); color: var(--color-paper); }
+.page-action-research a { color: var(--color-deepblue); }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+.page-action-research [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-action-research [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
+.page-action-research [style*="grid-template-columns: repeat(3, .page-action-research minmax(0"] {grid-template-columns:1fr !important;}
+.page-action-research img, .page-action-research svg, .page-action-research video {max-width:100% !important;}
+.page-action-research [style*="font-size: 300px"] {display:none !important;}
+.page-action-research [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}
+.page-action-research [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
+.page-action-research [style*="width: 700px"] {width:auto !important;max-width:100% !important;}
+.page-action-research [style*="width: 800px"] {width:auto !important;max-width:100% !important;}
+.page-action-research [style*="width: 900px"] {width:auto !important;max-width:100% !important;}
+.page-action-research [style*="width: 1200px"] {width:auto !important;max-width:100% !important;}
+.page-action-research [style*="width: 1000px"] {width:auto !important;max-width:100% !important;}
+.page-action-research [style*="width: 950px"] {width:auto !important;max-width:100% !important;}
+.page-action-research [style*="height: 350px"], .page-action-research [style*="height: 250px"], .page-action-research [style*="height: 200px"], .page-action-research [style*="height: 180px"], .page-action-research [style*="height: 170px"], .page-action-research [style*="height: 130px"], .page-action-research [style*="height: 100px"] {height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-action-research [style*="padding: 72px 28px"] {padding:44px 20px !important;}
+.page-action-research [style*="padding: 66px 28px"] {padding:40px 20px !important;}
+.page-action-research [style*="padding: 62px 28px"] {padding:40px 20px !important;}
+.page-action-research [style*="padding: 60px 44px"] {padding:36px 24px !important;}
+.page-action-research [style*="padding: 40px 44px"] {padding:28px 22px !important;}
+.page-action-research [style*="padding: 52px 28px"] {padding:36px 20px !important;}
+.page-action-research [style*="padding: 56px 28px"] {padding:38px 20px !important;}
+.page-action-research [style*="padding: 64px 28px"] {padding:40px 20px !important;}
+.page-action-research [style*="padding: 40px 80px"] {padding:30px 20px !important;}
+.page-action-research [style*="padding: 40px 40px"] {padding:28px 20px !important;}
+.page-action-research [style*="padding: 44px 44px"] {padding:28px 20px !important;}
+.page-action-research [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+.page-action-research [style*="font-size: 60px"] {font-size:34px !important;line-height:1.15 !important;}
+}

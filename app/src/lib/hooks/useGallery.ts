@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { GALLERIES, type GalleryPhoto } from '../content/galleries';
+import { useLocale } from '../lang';
 
 /**
  * The project pages' photo lightbox.
@@ -87,4 +88,23 @@ export function useGallery(page: keyof typeof GALLERIES | string): Gallery {
     prevLb,
     nextLb,
   };
+}
+
+/**
+ * The same photographs, captioned in the reader's language.
+ *
+ * A project page is one component serving both editions, but its captions are
+ * not one thing: they are alt text, which is what a screen reader reads out, so
+ * the Korean page serving the English caption would be the page telling a
+ * Korean reader about the photograph in a language they did not ask for.
+ *
+ * The photo list is per edition in `site/`, so it is per edition here too. Only
+ * the captions differ — the pictures and their order are the same list — and a
+ * locale with no page of its own falls back to English, which is the same
+ * answer the rest of the site gives.
+ */
+export function useGalleryFor(base: string): Gallery {
+  const locale = useLocale();
+  const korean = `${base}KO`;
+  return useGallery(locale === 'ko' && korean in GALLERIES ? korean : `${base}EN`);
 }

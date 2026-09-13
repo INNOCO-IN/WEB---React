@@ -2,7 +2,7 @@
 .page-manifesto-ko * { box-sizing: border-box; }
 .page-manifesto-ko, .page-manifesto-ko { margin: 0; padding: 0; }
 .page-manifesto-ko { background: var(--color-paper); color: #262A38; -webkit-font-smoothing: antialiased; word-break: keep-all; }
-.page-manifesto-ko ::selection { background: var(--color-magenta); color: var(--color-paper); }
+.page-manifesto-ko ::selection { background: var(--color-magenta-hot); color: var(--color-paper); }
 
 
 @media (max-width: 1000px){

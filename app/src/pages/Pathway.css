@@ -1,0 +1,59 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
+:root {
+  --in-pathway-0: 0.96;
+  --in-pathway-1: 1.04;
+  --in-pathway-2: 1.04;
+  --in-pathway-3: 0.9;
+  --in-pathway-4: 1.02;
+  --in-pathway-5: 0.9;
+  --in-pathway-6: 1.02;
+  --in-pathway-7: 0.9;
+  --in-pathway-8: 1.02;
+  --in-pathway-9: 0.9;
+  --in-pathway-10: 1.02;
+  --in-pathway-11: 1.02;
+  --in-pathway-12: 1.0;
+  --in-pathway-13: 1.06;
+}
+
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
+  --in-pathway-0: 1.12;
+  --in-pathway-1: 1.12;
+  --in-pathway-2: 1.12;
+  --in-pathway-3: 1.12;
+  --in-pathway-4: 1.16;
+  --in-pathway-5: 1.12;
+  --in-pathway-6: 1.16;
+  --in-pathway-7: 1.12;
+  --in-pathway-8: 1.16;
+  --in-pathway-9: 1.12;
+  --in-pathway-10: 1.16;
+  --in-pathway-11: 1.1;
+  --in-pathway-12: 1.1;
+  --in-pathway-13: 1.18;
+}
+
+
+.page-pathway * { box-sizing: border-box; }
+.page-pathway, .page-pathway { margin: 0; padding: 0; }
+.page-pathway { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-pathway ::selection { background: var(--color-magenta-hot); color: var(--color-paper); }
+.page-pathway a { color: var(--color-orange); }
+.page-pathway a:hover { color: #B4321A; }
+.page-pathway .stage { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.page-pathway .stage:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 96px 1fr auto"]{grid-template-columns:1fr !important; gap:18px !important;}
+.page-pathway [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-pathway img, .page-pathway svg, .page-pathway video {max-width:100% !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-pathway [style*="padding: 34px 36px"] {padding:26px 22px !important;}
+.page-pathway [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+}

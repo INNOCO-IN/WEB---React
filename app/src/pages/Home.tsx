@@ -19,27 +19,27 @@ export default function Home() {
 
   return (
     <SiteLayout page="Home.EN.dc.html" className="page-home" footer={{ loop: "0.14" }}>
-      <div id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
-        <section style={{ padding: "84px 0 72px 120px" }}>
-          <div style={{ maxWidth: "1000px", position: "relative", minHeight: "426px" }}>
-            <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "80px", lineHeight: "var(--in-home-0)", color: "var(--color-teal)", margin: "0 0 12px" }}>
+      <main id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
+        <section style={{ padding: "84px 0 72px 120px", minHeight: "300px", height: "200px" }}>
+          <div style={{ maxWidth: "1000px", position: "relative" }}>
+            <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "var(--in-home-0)", lineHeight: "var(--in-home-1)", color: "var(--in-home-2)", marginBottom: "12px" }}>
               {t("000_h1")}
             </h1>
-            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "100", fontSize: "60px", lineHeight: "1", color: "var(--color-teal)", maxWidth: "800px", margin: "0" }}>
-              {t("001_p")}
+            <div style={{ fontFamily: "var(--font-serif)", fontWeight: "100", fontSize: "60px", lineHeight: "var(--in-home-3)", color: "var(--in-home-4)", width: "800px", height: "300px" }}>
+              {t("001_div")}
               <em>
                 {t("002_em")}
               </em>
-              {t("003_p")}
-            </p>
-            <span style={{ position: "absolute", fontSize: "300px", lineHeight: "0.6", opacity: "1", pointerEvents: "none", left: "565px", top: "326px", color: "var(--color-teal)", fontFamily: "var(--font-serif)", height: "100px" }} aria-hidden="true">
+              {t("003_div")}
+            </div>
+            <span style={{ position: "absolute", fontSize: "300px", lineHeight: "0.6", opacity: "1", pointerEvents: "none", left: "565px", top: "326px", color: "var(--in-home-5)", fontFamily: "var(--font-serif)", height: "100px" }} aria-hidden="true">
               ”
             </span>
           </div>
         </section>
         <section style={{ padding: "var(--space-9) 40px 100px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "22px" }}>
-            {/* 1 · MEWE (slate) */}
+            {/* 1 · ME=WE (slate) */}
             <Link to={localize("/mewe", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-deepblue)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
@@ -102,8 +102,8 @@ export default function Home() {
                 </span>
               </div>
             </Link>
-            {/* 3 · Protagonist (orange) */}
-            <Link to={localize("/protagonist", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
+            {/* 3 · Pathway (orange) */}
+            <Link to={localize("/pathway", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-orange)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
                   <div style={{ position: "absolute", inset: "0", background: "var(--color-red)", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
@@ -155,7 +155,7 @@ export default function Home() {
                     {t("023_span")}
                   </span>
                 </div>
-                <div style={{ fontFamily: "var(--font-serif)", fontStyle: "var(--in-home-1)", fontWeight: "500", fontSize: "27px", lineHeight: "1.28", marginBottom: "24px" }}>
+                <div style={{ fontFamily: "var(--font-serif)", fontStyle: "var(--in-home-6)", fontWeight: "500", fontSize: "27px", lineHeight: "1.28", marginBottom: "24px" }}>
                   {t("024_div")}
                 </div>
                 <div style={{ font: "var(--text-label)", fontFamily: "var(--font-sans)", letterSpacing: "var(--tracking-label)", textTransform: "uppercase", color: "var(--color-ink)", opacity: ".7", marginRight: "56px" }}>
@@ -309,7 +309,7 @@ export default function Home() {
             </Link>
           </div>
         </section>
-      </div>
+      </main>
       <section style={{ padding: "0 40px 100px", display: "flex", flexWrap: "wrap", gap: "14px", justifyContent: "center" }}>
         <Link to={localize("/mewe", locale)} style={{ display: "inline-flex", alignItems: "center", lineHeight: "1.2", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", border: "1.5px solid var(--color-ink)", borderRadius: "999px", padding: "15px 32px" }} className="in-plain">
           {t("048_a")}

@@ -23,13 +23,13 @@ export default function ProjectKO() {
               세상 밖으로 나간 실천.
             </h1>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "400", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.2", maxWidth: "720px", margin: "0", color: "rgba(250,244,226,0.94)" }}>
-              진짜 이웃과 함께하는 진짜 일 — 정원, 청년 캠프, 나라를 넘는 교류. MEWE가 아이디어이기를 멈추고 공동체가 가리킬 수 있는 무언가가 되는 곳.
+              진짜 이웃과 함께하는 진짜 일 — 정원, 청년 캠프, 나라를 넘는 교류. ME=WE가 아이디어이기를 멈추고 공동체가 가리킬 수 있는 무언가가 되는 곳.
             </p>
           </div>
         </section>
         {/* FEATURED — ASIA EXCHANGE / BRIDGEBUILDER */}
         <section id="bridgebuilder" style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px 22px", scrollMarginTop: "80px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", background: "var(--color-magenta)", color: "var(--color-paper)", overflow: "hidden", minHeight: "340px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", background: "var(--color-magenta-hot)", color: "var(--color-paper)", overflow: "hidden", minHeight: "340px" }}>
             <div style={{ position: "relative", minHeight: "280px" }}>
               <ImageSlot id="project-asia-hero" shape="rect" placeholder="Young BridgeBuilders across a neighborhood, five-country feel" style={{ position: "absolute", inset: "0", width: "100%", height: "100%" }} src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=1100&q=80" credit="Photo by Hannah Busing on Unsplash" credit-href="https://unsplash.com/@hannahbusing" />
               <div style={{ position: "absolute", left: "16px", top: "16px", background: "var(--color-paper)", color: "var(--color-ink)", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
@@ -42,7 +42,7 @@ export default function ProjectKO() {
                   중국 · 일본 · 한국 · 네팔 · 대만
                 </div>
                 <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(30px, 3.2vw, 46px)", lineHeight: "1.16", margin: "0 0 14px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-                  MEWE 아시아 익스체인지
+                  ME=WE 아시아 익스체인지
                 </h2>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "19px", lineHeight: "1.44", margin: "0 0 14px", color: "rgba(250,244,226,0.92)", maxWidth: "50ch" }}>
                   <strong>
@@ -52,12 +52,12 @@ export default function ProjectKO() {
                 </p>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.44", margin: "0", color: "rgba(250,244,226,0.8)", maxWidth: "50ch" }}>
                   {"브리지빌더는 실천의 길 위의 한 단계이기도 합니다 — "}
-                  <Link to="/ko/protagonist" style={{ color: "var(--color-paper)", textDecoration: "underline" }} className="in-plain">
+                  <Link to="/ko/pathway" style={{ color: "var(--color-paper)", textDecoration: "underline" }} className="in-plain">
                     주역의 길에서 보기 →
                   </Link>
                 </p>
               </div>
-              <Link to="/project/asia-exchange" style={{ textDecoration: "none", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "14px", letterSpacing: "0.04em", color: "var(--color-magenta)", background: "var(--color-paper)", borderRadius: "999px", padding: "13px 26px", lineHeight: "1.2" }} className="in-plain">
+              <Link to="/ko/project/asia-exchange" style={{ textDecoration: "none", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "14px", letterSpacing: "0.04em", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "13px 26px", lineHeight: "1.2" }} className="in-plain">
                 프로젝트 전체 읽기 →
               </Link>
             </div>
@@ -83,7 +83,7 @@ export default function ProjectKO() {
         <section style={{ background: "var(--color-slate)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
-              Are you IN?
+              Are You IN?
             </p>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.18", margin: "0 0 28px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               당신의 공동체에 프로젝트를 가져오세요.
@@ -92,7 +92,7 @@ export default function ProjectKO() {
               <Link to="/ko/connect" style={{ textDecoration: "none", color: "var(--color-deepblue)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 대화 시작하기
               </Link>
-              <Link to="/ko/protagonist" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/ko/pathway" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 주역의 길 보기
               </Link>
             </div>

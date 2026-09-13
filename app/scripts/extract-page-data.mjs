@@ -19,7 +19,7 @@
  * they quietly go wrong.
  */
 
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentName } from './lib/routes.mjs';
@@ -57,6 +57,60 @@ function photosIn(html) {
  * a path; that constant is inlined here so the field is always a usable src.
  */
 const BLANK_GIF = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+
+/**
+ * The same roster, read off the page instead of out of its script.
+ *
+ * The 2026 design writes each person out as their own `<article>` rather than
+ * looping one card over a list in the page's DCLogic. That is where the roster
+ * now lives, so that is where it is read from — and having read it, `site/`'s
+ * page goes back to looping, because eighteen people written into the markup is
+ * a roster that needs a deploy to change and that disagrees with the table the
+ * moment anybody edits either one.
+ *
+ * Matched on the shape rather than on the styles: a card is an `<article>` with
+ * a `tm-photo` in it, its number is the `#NN`, and its two paragraphs are the
+ * one-liner and the bio, in that order.
+ */
+function rosterInMarkup(html) {
+  const rows = [];
+  for (const card of html.matchAll(/<article[^>]*>([\s\S]*?)<\/article>/g)) {
+    const body = card[1];
+    const photo = /<img class="tm-photo" src="([^"]*)" alt="([^"]*)"/.exec(body);
+    const num = /># *(\d+)</.exec(body);
+    if (!photo || !num) continue;
+
+    const texts = [...body.matchAll(/<(div|p)[^>]*>([^<]+)<\/\1>/g)].map((m) => decode(m[2].trim()));
+    // #NN, name, role, one-liner, bio — the role is optional, and the bio only
+    // exists once somebody has written one.
+    const after = texts.slice(texts.findIndex((t) => t === '#' + num[1]) + 1);
+    const paras = [...body.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) =>
+      decode(m[1].replace(/<[^>]+>/g, '').trim()),
+    );
+
+    rows.push({
+      num: num[1],
+      name: decode(photo[2]),
+      photo: '/' + photo[1].replace(/^\//, ''),
+      oneLiner: paras[0] ?? '',
+      fullBio: paras[1] ?? '',
+      role: after[1] && after[1] !== paras[0] ? after[1] : null,
+    });
+  }
+  rows.sort((a, b) => a.num.localeCompare(b.num));
+  return rows.length ? rows : null;
+}
+
+/** `&amp;` and friends — the markup's entities, which the data should not carry. */
+function decode(text) {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
 
 function rosterIn(html) {
   const block = /const data = \[([\s\S]*?)\n    \];/.exec(html);
@@ -108,7 +162,35 @@ for (const file of readdirSync(SITE).sort()) {
   const photos = photosIn(html);
   if (photos) galleries[componentName(file)] = photos;
 
+  // Collectives became People in the 2026 design, and the roster moved out of
+  // the page's script and into its markup. Both spellings are read so a
+  // checkout that still has the old page keeps working.
   if (!roster && file.startsWith('Collectives.')) roster = rosterIn(html);
+  if (!roster && file === 'People.EN.dc.html') roster = rosterInMarkup(html);
+}
+
+// The Korean page is the same roster in the other language. Until now there was
+// no Korean page to read, so every Korean field was null and `inLang` fell back
+// to English for all of them; the bios exist now, and a bio nobody transcribed
+// is a bio that cannot go wrong.
+const koreanPage = join(SITE, 'People.KO.dc.html');
+if (roster && existsSync(koreanPage)) {
+  const korean = rosterInMarkup(readFileSync(koreanPage, 'utf8')) ?? [];
+  const byNum = new Map(korean.map((person) => [person.num, person]));
+  // A field only counts as translated when it says something different. Several
+  // of the Korean bios are still the English ones, and storing those would make
+  // an untranslated field indistinguishable from a translated one — `inLang`
+  // would stop falling back, and nothing would be able to list what is left to
+  // write.
+  const translated = (ko, en) => (ko && ko !== en ? ko : null);
+  for (const person of roster) {
+    const ko = byNum.get(person.num);
+    if (!ko) continue;
+    person.nameKo = translated(ko.name, person.name);
+    person.roleKo = translated(ko.role, person.role);
+    person.oneLinerKo = translated(ko.oneLiner, person.oneLiner);
+    person.fullBioKo = translated(ko.fullBio, person.fullBio);
+  }
 }
 
 writeFileSync(

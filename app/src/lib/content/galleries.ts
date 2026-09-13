@@ -38,6 +38,33 @@ export const GALLERIES: Record<string, GalleryPhoto[]> = {
       "position": null
     }
   ],
+  "ProjectJungleJamKO": [
+    {
+      "src": "/project-img/jungle-jam2.jpg",
+      "alt": "손으로 그린 종이 접시 얼굴을 든 두 참여자.",
+      "position": null
+    },
+    {
+      "src": "/project-img/jungle-jam3.jpg",
+      "alt": "움직임과 역할극으로 함께 한 장면을 만드는 그룹.",
+      "position": null
+    },
+    {
+      "src": "/project-img/jungle-jam4.jpg",
+      "alt": "등에 그림을 붙인 참여자들이 스크린에 비친 빛 프롬프트를 향해 팔을 들어 올립니다.",
+      "position": null
+    },
+    {
+      "src": "/project-img/jungle-jam5.jpg",
+      "alt": "Self / Light / Shadow / Shift 프롬프트를 둘러싸고 바닥에 앉은 원 전체.",
+      "position": null
+    },
+    {
+      "src": "/project-img/jungle-jam6.jpg",
+      "alt": "큰 벽에 색색의 크레용으로 자유롭게 그리는 두 참여자.",
+      "position": null
+    }
+  ],
   "ProjectLightShadowShiftWomensRetreatEN": [
     {
       "src": "/project-img/light-shadow-shift-women2.jpg",
@@ -62,6 +89,33 @@ export const GALLERIES: Record<string, GalleryPhoto[]> = {
     {
       "src": "/project-img/light-shadow-shift-women6.jpg",
       "alt": "A closing yoga session on mats beneath the retreat’s mural.",
+      "position": null
+    }
+  ],
+  "ProjectLightShadowShiftWomensRetreatKO": [
+    {
+      "src": "/project-img/light-shadow-shift-women2.jpg",
+      "alt": "어두워진 뒤 손전등 빛으로 함께 벽화를 그리는 그룹.",
+      "position": null
+    },
+    {
+      "src": "/project-img/light-shadow-shift-women3.jpg",
+      "alt": "무늬 카펫 위에 둥글게 누워 색색의 메모로 공동의 시간선을 표시합니다.",
+      "position": null
+    },
+    {
+      "src": "/project-img/light-shadow-shift-women4.jpg",
+      "alt": "인쇄된 글줄 위로 노란 꽃과 잎을 든 손.",
+      "position": null
+    },
+    {
+      "src": "/project-img/light-shadow-shift-women5.jpg",
+      "alt": "바닥에 둥글게 앉아 접시에 그림을 그리는 사람들, 서두르지 않고.",
+      "position": null
+    },
+    {
+      "src": "/project-img/light-shadow-shift-women6.jpg",
+      "alt": "리트릿의 벽화 아래 매트에서 진행된 마지막 요가 시간.",
       "position": null
     }
   ],
@@ -94,6 +148,38 @@ export const GALLERIES: Record<string, GalleryPhoto[]> = {
     {
       "src": "/project-img/shadow-shifter7.jpg",
       "alt": "The whole group striking a playful balanced pose in front of the mural.",
+      "position": null
+    }
+  ],
+  "ProjectShadowShifterKO": [
+    {
+      "src": "/project-img/shadow-shifter2.jpg",
+      "alt": "함께 그린 벽화 아래 펼쳐진 색색의 종이 띠에 바닥에 누워 글을 쓰는 그룹.",
+      "position": null
+    },
+    {
+      "src": "/project-img/shadow-shifter3.jpg",
+      "alt": "크레용 벽화 앞에서 노란 종이 띠를 자르는 참여자.",
+      "position": null
+    },
+    {
+      "src": "/project-img/shadow-shifter4.jpg",
+      "alt": "빛/그림자 과제 벽 옆에서 글을 적은 카드와 레고 롤모델을 든 참여자.",
+      "position": null
+    },
+    {
+      "src": "/project-img/shadow-shifter5.jpg",
+      "alt": "아침에 길을 건너며 마음을 챙겨 걷는 참여자들.",
+      "position": null
+    },
+    {
+      "src": "/project-img/shadow-shifter6.jpg",
+      "alt": "벽에 그린 큰 공동 크레용 벽화에 덧그리는 참여자.",
+      "position": null
+    },
+    {
+      "src": "/project-img/shadow-shifter7.jpg",
+      "alt": "벽화 앞에서 유쾌하게 균형을 잡은 그룹 전체.",
       "position": null
     }
   ],
@@ -154,6 +240,63 @@ export const GALLERIES: Record<string, GalleryPhoto[]> = {
       "position": null
     }
   ],
+  "ProjectUAEYouthSocialInnovationKO": [
+    {
+      "src": "/project-img/uae-youth1.jpg",
+      "alt": "비즈니스 모델링 워크숍 — 작업 벽, 화면, 그리고 움직이는 팀들.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth2.jpg",
+      "alt": "성찰의 원 — 촛불을 올린 접시를 둘러싸고 바닥에 앉은 참여자들.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth3.jpg",
+      "alt": "여정을 손으로 펼쳐 놓기 — Define, Empathize — 테이프 한 줄씩.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth4.jpg",
+      "alt": "가치 제안 캔버스를 포스트잇 하나씩 채워 갑니다.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth5.jpg",
+      "alt": "한 팀의 캔버스를 함께 짚어 봅니다 — 가치 제안에서 사업 모델까지.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth6.jpg",
+      "alt": "푸드 팀의 보드 — 문제가 실제로 어디에 있는지 짚어 봅니다.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth7.jpg",
+      "alt": "역할극으로 필요 찾기 — 농부와 노동자와 손님의 자리에 서 봅니다.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth8.jpg",
+      "alt": "프로토타입을 손에 들고 시험할 준비를 마친 팀.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth9.jpg",
+      "alt": "현장으로 — 지역 유기농 농장을 찾아가 듣고 배웁니다.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth10.jpg",
+      "alt": "수료증 — 1기, 2017년 3월.",
+      "position": null
+    },
+    {
+      "src": "/project-img/uae-youth11.jpg",
+      "alt": "프로그램을 마치며 퍼실리테이터들과 함께한 참여자들.",
+      "position": null
+    }
+  ],
   "ProjectUNCDocumentaryEN": [
     {
       "src": "/project-img/unc-documentary2.jpg",
@@ -193,6 +336,48 @@ export const GALLERIES: Record<string, GalleryPhoto[]> = {
     {
       "src": "/project-img/unc-documentary9.jpg",
       "alt": "A returning participant interviewed on the 2018 return trip.",
+      "position": null
+    }
+  ],
+  "ProjectUNCDocumentaryKO": [
+    {
+      "src": "/project-img/unc-documentary2.jpg",
+      "alt": "카트만두의 벽돌집 앞에서 두 청년 여성을 촬영하는 장면.",
+      "position": null
+    },
+    {
+      "src": "/project-img/unc-documentary3.jpg",
+      "alt": "테이블에서 계획을 세우는 제작팀 — 서류, 노트북, 그리고 영화의 흐름.",
+      "position": null
+    },
+    {
+      "src": "/project-img/unc-documentary4.jpg",
+      "alt": "재회 마당의 사진 카드 원 — 지금 내가 어디에 있는지 말해 주는 이미지를 고릅니다.",
+      "position": null
+    },
+    {
+      "src": "/project-img/unc-documentary5.jpg",
+      "alt": "재회에서 긴 테이블에 모여 앉은 UNC 청년들.",
+      "position": null
+    },
+    {
+      "src": "/project-img/unc-documentary6.jpg",
+      "alt": "마당에서 함께 축하하는 재회 그룹 — The Inn Patan, 2018년 8월.",
+      "position": null
+    },
+    {
+      "src": "/project-img/unc-documentary7.jpg",
+      "alt": "마당에서의 인터뷰 — 1년 뒤 한 참여자의 길을 따라갑니다.",
+      "position": "center 30%"
+    },
+    {
+      "src": "/project-img/unc-documentary8.jpg",
+      "alt": "프로젝트가 살아 있는 곳으로 — 카트만두 외곽의 논.",
+      "position": null
+    },
+    {
+      "src": "/project-img/unc-documentary9.jpg",
+      "alt": "2018년 재방문에서 인터뷰한 참여자.",
       "position": null
     }
   ]

@@ -13,19 +13,24 @@
 
 /** Every nav destination, as a key into `nav.items`. */
 export type NavItemKey =
-  | 'manifesto'
-  | 'collectives'
   | 'mewe'
   | 'workshop'
   | 'story'
-  | 'protagonist'
+  | 'pathway'
   | 'project'
   | 'community'
+  | 'people'
+  | 'manifesto'
   | 'constellation'
   | 'news'
   | 'connect';
 
-export type NavGroupKey = 'startWithin' | 'shareTheSpace' | 'serveTheWhole';
+/**
+ * The group wording is fixed by the design and is not a thing to improve:
+ * "Start Here · Go Further · Bigger Picture". These are the keys those three
+ * sentences live under.
+ */
+export type NavGroupKey = 'startHere' | 'goFurther' | 'biggerPicture';
 
 export interface NavItem {
   /** Translation key under `nav.items`, and the item's stable identity. */
@@ -42,26 +47,28 @@ export interface NavGroup {
 
 export const NAV_GROUPS: NavGroup[] = [
   {
-    key: 'startWithin',
+    key: 'startHere',
     items: [
-      { key: 'manifesto', to: '/manifesto', color: '#1E8A86' },
-      { key: 'collectives', to: '/collectives', color: '#46325A' },
       { key: 'mewe', to: '/mewe', color: '#1E648C' },
-    ],
-  },
-  {
-    key: 'shareTheSpace',
-    items: [
-      { key: 'workshop', to: '/workshop', color: '#E6328C' },
+      // The magenta the pages actually use. The palette's `--color-magenta` is
+      // #E6328C, which the 2026 handoff names as the stale one.
+      { key: 'workshop', to: '/workshop', color: '#E5188C' },
       { key: 'story', to: '/story', color: '#FAB414' },
-      { key: 'protagonist', to: '/protagonist', color: '#F05A28' },
     ],
   },
   {
-    key: 'serveTheWhole',
+    key: 'goFurther',
     items: [
+      { key: 'pathway', to: '/pathway', color: '#F05A28' },
       { key: 'project', to: '/project', color: '#1E5A64' },
       { key: 'community', to: '/community', color: '#D21E28' },
+    ],
+  },
+  {
+    key: 'biggerPicture',
+    items: [
+      { key: 'people', to: '/people', color: '#46325A' },
+      { key: 'manifesto', to: '/manifesto', color: '#1E8A86' },
       { key: 'constellation', to: '/constellation', color: '#F0D23C' },
       { key: 'news', to: '/news', color: '#966432' },
     ],
@@ -71,18 +78,18 @@ export const NAV_GROUPS: NavGroup[] = [
 /** Footer link columns, mirroring the nav groups plus the connect CTA. */
 export const FOOTER_COLUMNS: { key: NavItemKey; to: string }[][] = [
   [
-    { key: 'manifesto', to: '/manifesto' },
-    { key: 'collectives', to: '/collectives' },
     { key: 'mewe', to: '/mewe' },
-  ],
-  [
     { key: 'workshop', to: '/workshop' },
     { key: 'story', to: '/story' },
-    { key: 'protagonist', to: '/protagonist' },
   ],
   [
+    { key: 'pathway', to: '/pathway' },
     { key: 'project', to: '/project' },
     { key: 'community', to: '/community' },
+  ],
+  [
+    { key: 'people', to: '/people' },
+    { key: 'manifesto', to: '/manifesto' },
     { key: 'constellation', to: '/constellation' },
     { key: 'news', to: '/news' },
   ],

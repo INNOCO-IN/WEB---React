@@ -77,22 +77,36 @@ describe('switching language keeps your place', () => {
     expect(alt).toMatchObject({ to: '/workshop/metanoia', reach: 'page', available: true });
   });
 
+  // These cases are all in Chinese now. The 2026 design wrote a Korean twin for
+  // every page that had none, so Korean reaches the page itself everywhere and
+  // no longer exercises either fallback — which is the good outcome, and leaves
+  // Chinese as the language that still has gaps to fall through.
   it('falls back to the section rather than the home page', () => {
-    // No Korean project briefs exist, so the nearest true thing is the index.
-    expect(alternateFor('/project/food-revolution', 'ko')).toMatchObject({
-      to: '/ko/project',
+    // No Chinese community pages exist, so the nearest true thing is the index.
+    expect(alternateFor('/community/animators', 'zh-TW')).toMatchObject({
+      to: '/zh-tw/community',
       reach: 'section',
       available: true,
     });
-    expect(alternateFor('/community/animators', 'ko')).toMatchObject({
-      to: '/ko/community',
+    expect(alternateFor('/community/all', 'zh-TW')).toMatchObject({
+      to: '/zh-tw/community',
       reach: 'section',
     });
-    expect(alternateFor('/story/submit', 'ko')).toMatchObject({ to: '/ko/story', reach: 'section' });
   });
 
   it('reaches the locale home only when there is nothing in between', () => {
-    expect(alternateFor('/action-research', 'ko')).toMatchObject({ to: '/ko', reach: 'home' });
+    // `/zh-tw/story` is not a route, so there is no section to stop at.
+    expect(alternateFor('/story/submit', 'zh-TW')).toMatchObject({ to: '/zh-tw', reach: 'home' });
+  });
+
+  it('lands on the page itself in Korean, everywhere', () => {
+    // What the 2026 design changed: twenty-seven pages that had only an English
+    // edition now have both, including every project brief and every community
+    // entry. A Korean reader on any of them stays where they are.
+    for (const path of ['/project/food-revolution', '/project/ctn', '/community/animators',
+                        '/story/submit', '/action-research', '/people', '/pathway']) {
+      expect(alternateFor(path, 'ko')).toMatchObject({ to: '/ko' + path, reach: 'page' });
+    }
   });
 
   it('answers in Chinese for the pages that were collapsed', () => {
@@ -115,10 +129,10 @@ describe('switching language keeps your place', () => {
 
   it('tells the section and the home page apart', () => {
     // The switcher says which one happened, so the two cannot share an answer.
-    // A Korean project brief keeps the reader in the projects; a Chinese one
-    // of the four workshops still on the :slug template has nowhere nearer
+    // A Chinese community entry keeps the reader in the community; a Chinese
+    // one of the four workshops still on the :slug template has nowhere nearer
     // than the home page, because `/zh-tw/workshop` is not a route either.
-    expect(alternateFor('/project/food-revolution', 'ko').reach).toBe('section');
+    expect(alternateFor('/community/animators', 'zh-TW').reach).toBe('section');
     expect(alternateFor('/workshop/heros-journey', 'zh-TW')).toMatchObject({
       to: '/zh-tw',
       reach: 'home',
@@ -145,8 +159,11 @@ describe('switching language keeps your place', () => {
 describe('link localization', () => {
   it('takes the twin where there is one and keeps the default where there is not', () => {
     expect(localize('/workshop/metanoia', 'ko')).toBe('/ko/workshop/metanoia');
-    expect(localize('/project/food-revolution', 'ko')).toBe('/project/food-revolution');
+    expect(localize('/project/food-revolution', 'ko')).toBe('/ko/project/food-revolution');
     expect(localize('/news', 'zh-TW')).toBe('/zh-tw/news');
+    // Chinese has no workshop briefs, so the link stays on the English one
+    // rather than pointing at an address that is not a route.
+    expect(localize('/workshop/metanoia', 'zh-TW')).toBe('/workshop/metanoia');
   });
 
   it('leaves anything that is not an internal path alone', () => {

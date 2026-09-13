@@ -8,22 +8,22 @@
   "nav": {
     "label": "Sections",
     "groups": {
-      "startWithin": "Start Within",
-      "shareTheSpace": "Share the Space",
-      "serveTheWhole": "Serve the Whole"
+      "startHere": "Start Here",
+      "goFurther": "Go Further",
+      "biggerPicture": "Bigger Picture"
     },
     "items": {
-      "manifesto": "Manifesto",
-      "collectives": "Collectives",
-      "mewe": "MEWE",
+      "mewe": "ME=WE",
       "workshop": "Workshop",
       "story": "Story",
-      "protagonist": "Protagonist",
+      "pathway": "Pathway",
       "project": "Project",
       "community": "Community",
+      "people": "People",
+      "manifesto": "Manifesto",
       "constellation": "Constellation",
       "news": "News",
-      "connect": "Are you IN?"
+      "connect": "Are You IN?"
     }
   },
   "footer": {

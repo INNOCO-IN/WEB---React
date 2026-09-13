@@ -19,13 +19,22 @@ export const NON_ROUTES = new Set([
   'Footer.dc.html',
   'Footer-KO.dc.html',
   'ProjectIndexRail.dc.html',
+  'ProjectIndexRail-KO.dc.html',
   'Cards.EN.dc.html',
-  'Card System Prototype.EN.dc.html',
   'IN Design System.dc.html',
-  'Story Submission Brief.EN.dc.html',
-  // Superseded by MEWE.EN. Kept out of the routes so its URL redirects to the
-  // page that replaced it, rather than serving a second copy of it.
-  'ME=WE.EN.dc.html',
+
+  // The three Global Lab briefs, in both languages. The 2026 handoff lists them
+  // in its sitemap, but they are not pages: each is `<doc-page size="a4">` laid
+  // out in millimetres, driven by a `doc-page.js` the bundle does not ship, and
+  // opening with `doc-page:not(:defined) { visibility: hidden; }` — so as a
+  // route each one is a blank screen. They stay in `site/` as the print
+  // originals they are.
+  'WS-HTP.EN.dc.html',
+  'WS-HTP.KO.dc.html',
+  'WS-Foresight.EN.dc.html',
+  'WS-Foresight.KO.dc.html',
+  'WS-Springtime.EN.dc.html',
+  'WS-Springtime.KO.dc.html',
 ]);
 
 /**
@@ -94,7 +103,6 @@ const EXPLICIT = {
   'Community-Index': 'community/all',
   'Story-Index': 'story/all',
   'Story-Submission': 'story/submit',
-  'Story-This-Is-Us': 'story/this-is-us',
   'Action-Research': 'action-research',
 };
 
@@ -157,11 +165,43 @@ export function routeFor(file) {
 /**
  * Routes that exist only as redirects — a page the site superseded, or an
  * alternate spelling that was linked from somewhere.
+ *
+ * The entries whose file is no longer in `site/` are the point of this table
+ * rather than an oversight: the file is gone, and the URL it used to answer is
+ * still written down in somebody's bookmarks.
  */
 export const ALIASES = {
   'ME=WE.EN.dc.html': '/mewe',
   'index.html': '/',
   'kr.html': '/ko',
+
+  // Renamed by the 2026 design. See RENAMED_ROUTES for the clean URLs.
+  'Collectives.EN.dc.html': '/people',
+  'Collectives.KO.dc.html': '/ko/people',
+  'Protagonist.EN.dc.html': '/pathway',
+  'Protagonist.KO.dc.html': '/ko/pathway',
+  'Story-This-Is-Us.EN.dc.html': '/story',
+};
+
+/**
+ * Clean route → the clean route that replaced it.
+ *
+ * ALIASES answers for the old *filenames*; this answers for the URLs the React
+ * app has been serving. `Collectives` became `People` and `Protagonist` became
+ * `Pathway` in the design, which renames two pages the site has already been
+ * publishing under the old words — so `/collectives` has to keep resolving, and
+ * has to resolve to one place, or the same page sits at two URLs and neither is
+ * canonical.
+ *
+ * `/story/this-is-us` is not a rename: the design dropped the page. It goes to
+ * the section above it, which is the nearest thing that still exists.
+ */
+export const RENAMED_ROUTES = {
+  '/collectives': '/people',
+  '/ko/collectives': '/ko/people',
+  '/protagonist': '/pathway',
+  '/ko/protagonist': '/ko/pathway',
+  '/story/this-is-us': '/story',
 };
 
 /** The counterpart page in the other language, for the EN/KR switch. */

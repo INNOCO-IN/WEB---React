@@ -24,7 +24,7 @@ export default function CommunityIndexEN() {
               Every community, in one place.
             </h1>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(20px, 2.2vw, 26px)", lineHeight: "1.3", maxWidth: "700px", margin: "0", color: "rgba(250,244,226,0.94)" }}>
-              A full directory of the groups practicing MEWE — active, resuming, and archived.
+              A full directory of the groups practicing ME=WE — active, resuming, and archived.
             </p>
           </div>
         </section>
@@ -34,7 +34,7 @@ export default function CommunityIndexEN() {
         <section style={{ background: "var(--color-red)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
-              Are you IN?
+              Are You IN?
             </p>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 28px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               Find your people, or start a new circle.

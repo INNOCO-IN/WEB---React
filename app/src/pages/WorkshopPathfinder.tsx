@@ -25,7 +25,7 @@ export default function WorkshopPathfinder() {
         {/* ===================== HERO ===================== */}
         <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "22px 28px 0" }}>
-            <Link to={localize("/workshop", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(250,244,226,0.78)", textDecoration: "none" }} className="in-plain">
+            <Link to={localize("/pathway", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(250,244,226,0.78)", textDecoration: "none" }} className="in-plain">
               {t("000_a")}
             </Link>
           </div>
@@ -244,7 +244,7 @@ export default function WorkshopPathfinder() {
               </div>
               <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "22px", lineHeight: "1.34" }}>
                 {t("046_div")}
-                <Link to={localize("/collectives", locale)}>
+                <Link to={localize("/people", locale)}>
                   {t("047_a")}
                 </Link>
                 {t("048_div")}

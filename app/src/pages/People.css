@@ -1,0 +1,74 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
+:root {
+  --in-people-0: 0.98;
+  --in-people-1: 1.04;
+  --in-people-2: italic;
+  --in-people-3: 20px;
+  --in-people-4: 1.5;
+  --in-people-5: var(--font-serif);
+  --in-people-6: 400;
+  --in-people-7: 20px;
+  --in-people-8: #43326D;
+  --in-people-9: 1.04;
+}
+
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
+  --in-people-0: 1.14;
+  --in-people-1: 1.12;
+  --in-people-2: normal;
+  --in-people-3: clamp(24px, 3vw, 40px);
+  --in-people-4: 1.3;
+  --in-people-5: var(--font-sans);
+  --in-people-6: 700;
+  --in-people-7: 14px;
+  --in-people-8: rgba(38,42,56,0.6);
+  --in-people-9: 1.18;
+}
+
+
+.page-people * { box-sizing: border-box; }
+.page-people, .page-people { margin: 0; padding: 0; }
+.page-people { background: var(--color-paper); color: #262A38; -webkit-font-smoothing: antialiased; }
+.page-people ::selection { background: var(--color-green); color: var(--color-paper); }
+.page-people .tm-photo { width: 70%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: var(--color-paper-dim); border-radius: 50%; filter: grayscale(0.15) contrast(1.02); }
+.page-people .tm-ph-block { width: 70%; aspect-ratio: 1 / 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: 0.02em; }
+.page-people .tm-more { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; color: #43326D; background: none; border: none; padding: 0; cursor: pointer; text-align: left; }
+.page-people .tm-more:hover { color: var(--color-magenta-hot); }
+
+
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
+.page-people [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
+.page-people [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
+.page-people [style*="grid-template-columns: repeat(3, .page-people minmax(0"] {grid-template-columns:1fr !important;}
+.page-people img, .page-people svg, .page-people video {max-width:100% !important;}
+.page-people [style*="font-size: 300px"] {display:none !important;}
+.page-people [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}
+.page-people [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
+.page-people [style*="width: 700px"] {width:auto !important;max-width:100% !important;}
+.page-people [style*="width: 800px"] {width:auto !important;max-width:100% !important;}
+.page-people [style*="width: 900px"] {width:auto !important;max-width:100% !important;}
+.page-people [style*="width: 1200px"] {width:auto !important;max-width:100% !important;}
+.page-people [style*="width: 1000px"] {width:auto !important;max-width:100% !important;}
+.page-people [style*="width: 950px"] {width:auto !important;max-width:100% !important;}
+.page-people [style*="height: 350px"], .page-people [style*="height: 250px"], .page-people [style*="height: 200px"], .page-people [style*="height: 180px"], .page-people [style*="height: 170px"], .page-people [style*="height: 130px"], .page-people [style*="height: 100px"] {height:auto !important;min-height:0 !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+.page-people [style*="padding: 72px 28px"] {padding:44px 20px !important;}
+.page-people [style*="padding: 66px 28px"] {padding:40px 20px !important;}
+.page-people [style*="padding: 62px 28px"] {padding:40px 20px !important;}
+.page-people [style*="padding: 60px 44px"] {padding:36px 24px !important;}
+.page-people [style*="padding: 40px 44px"] {padding:28px 22px !important;}
+.page-people [style*="padding: 52px 28px"] {padding:36px 20px !important;}
+.page-people [style*="padding: 56px 28px"] {padding:38px 20px !important;}
+.page-people [style*="padding: 64px 28px"] {padding:40px 20px !important;}
+.page-people [style*="padding: 40px 80px"] {padding:30px 20px !important;}
+.page-people [style*="padding: 40px 40px"] {padding:28px 20px !important;}
+.page-people [style*="padding: 44px 44px"] {padding:28px 20px !important;}
+.page-people [style*="font-size: 130px"] {font-size:64px !important;line-height:1 !important;}
+.page-people [style*="font-size: 60px"] {font-size:34px !important;line-height:1.15 !important;}
+}

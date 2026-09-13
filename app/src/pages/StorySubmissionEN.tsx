@@ -54,7 +54,7 @@ export default function StorySubmissionEN() {
                 Tell it however it arrives.
               </h2>
               <p style={{ fontFamily: "'Newsreader', serif", fontSize: "21px", lineHeight: "1.5", margin: "0 0 22px", maxWidth: "660px", color: "rgba(46,59,64,0.8)" }}>
-                Something you lived. Something you noticed. Something someone told you. Something you can only imagine — that counts too.
+                Something you lived. Something you noticed. Something you heard. Something you can only imagine — that counts too.
               </p>
               <textarea className="in-field" name="body" rows={8} required={true} onInput={onType} placeholder="Start anywhere. A rough first telling is exactly right." />
               {typed ? (
@@ -74,7 +74,7 @@ export default function StorySubmissionEN() {
                       imagined
                     </Chip>
                     <Chip value="were told" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
-                      were told
+                      heard
                     </Chip>
                     <Chip value="can't say" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
                       can't say
@@ -288,7 +288,7 @@ export default function StorySubmissionEN() {
         <section style={{ background: "var(--color-amber)", color: "var(--color-ink)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)", margin: "0 0 18px" }}>
-              Are you IN?
+              Are You IN?
             </p>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 28px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               Read what others have shared.

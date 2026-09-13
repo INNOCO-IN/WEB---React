@@ -3,13 +3,23 @@
    pages are these same components, so the Korean block answers for
    both. Generated: edit the legacy pages. */
 :root {
-  --in-home-0: 0.95;
-  --in-home-1: italic;
+  --in-home-0: 130px;
+  --in-home-1: 0.95;
+  --in-home-2: #E20606;
+  --in-home-3: 1.1;
+  --in-home-4: #E20606;
+  --in-home-5: #E20606;
+  --in-home-6: italic;
 }
 
 :root[lang='ko'], :root[lang='zh-Hant-TW'] {
-  --in-home-0: 1.12;
-  --in-home-1: normal;
+  --in-home-0: 80px;
+  --in-home-1: 1.12;
+  --in-home-2: var(--color-teal);
+  --in-home-3: 1;
+  --in-home-4: var(--color-teal);
+  --in-home-5: var(--color-teal);
+  --in-home-6: normal;
 }
 
 
@@ -28,7 +38,7 @@
 .page-home [style*="grid-template-columns: repeat(3, .page-home minmax(0"] {grid-template-columns:1fr !important;}
 .page-home img, .page-home svg, .page-home video {max-width:100% !important;}
 .page-home [style*="font-size: 300px"] {display:none !important;}
-.page-home [style*="min-height: 426px"] {min-height:0 !important;}
+.page-home [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}
 .page-home [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
 .page-home [style*="width: 700px"] {width:auto !important;max-width:100% !important;}
 .page-home [style*="width: 800px"] {width:auto !important;max-width:100% !important;}

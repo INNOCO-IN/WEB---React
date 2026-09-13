@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constellation · IN</title>
+<link rel="icon" href="innoco-mark.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Constellation · IN">
+<meta property="og:image" content="IN_Logo.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -40,7 +45,7 @@
     <div style="max-width: 1320px; margin: 0 auto; padding: 52px 28px 60px;">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #1A1A1A; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #1A1A1A;">Constellation</span></div>
       <h1 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(40px, 5.6vw, 80px); line-height: 0.98; letter-spacing: -0.02em; margin: 0 0 22px; max-width: 16ch; text-wrap: balance;">Separate points of light. One shape.</h1>
-      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; max-width: 720px; margin: 0; color: rgba(26,26,26,0.82);">The living collection of neighbor expressions — every MEWE story, act, and creation. Alone, a single point. Together, a shape none of us makes on our own.</p>
+      <p style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.2; max-width: 720px; margin: 0; color: rgba(26,26,26,0.82);">The living collection of neighbor expressions — every ME=WE story, act, and creation. Alone, a single point. Together, a shape none of us makes on our own.</p>
     </div>
   </section>
 
@@ -55,7 +60,7 @@
         <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
           <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.6);">Arrange by</span>
           <sc-for list="{{ modeButtons }}" as="m" hint-placeholder-count="2">
-            <button onClick="{{ m.onClick }}" aria-pressed="{{ m.on }}" style="{{ m.style }}">{{ m.label }}</button>
+            <button onClick="{{ m.onClick }}" style="{{ m.style }}">{{ m.label }}</button>
           </sc-for>
         </div>
         <span style="font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; color: rgba(250,244,226,0.55);">{{ skyHint }}</span>
@@ -146,11 +151,11 @@
   <!-- CTA (unchanged) -->
   <section data-screen-label="CTA" style="background: #F0D23C; color: #2E3B40; margin-top: 80px;">
     <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
-      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.7); margin: 0 0 18px;">Are you IN?</p>
+      <p style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(46,59,64,0.7); margin: 0 0 18px;">Are You IN?</p>
       <h2 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Add your light to the collection.</h2>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;">
         <a href="Story-Submission.EN.dc.html" style="text-decoration: none; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">Share your story</a>
-        <a href="MEWE.EN.dc.html" style="text-decoration: none; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">What is MEWE?</a>
+        <a href="MEWE.EN.dc.html" style="text-decoration: none; color: #2E3B40; background: transparent; border: 1.5px solid rgba(46,59,64,0.5); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.2; min-height: 24px;">What is ME=WE?</a>
       </div>
     </div>
   </section>
@@ -166,20 +171,20 @@ class Component extends DCLogic {
   closeSoon() { clearTimeout(this._t); this._t = setTimeout(() => this.setState({ sel: null }), 260); }
 
   colors() {
-    return { writing:'#F0D23C', drawing:'#E6328C', photo:'#35C0B4', video:'#FF5A5A', music:'#9B7BE0', dance:'#F5A81E', craft:'#6FCB7C', recipe:'#C9962B', symbol:'#7BC4F0', other:'#FAF4E2' };
+    return { writing:'#F0D23C', drawing:'#E5188C', photo:'#35C0B4', video:'#FF5A5A', music:'#9B7BE0', dance:'#F5A81E', craft:'#6FCB7C', recipe:'#C9962B', symbol:'#7BC4F0', other:'#FAF4E2' };
   }
 
   // Seed data — draft. Structured one-entry-per-row so it can be fed from the card-content CSV workflow later.
   data() {
     return [
       { id:'this-is-us',  title:'“This is us”',                              by:'A teacher',            format:'writing', topic:'Classroom',            arc:'ME = WE', date:'2026-03', caption:'I stopped teaching and asked one real question. By the end, a boy pointed at what they’d made and said: this is us.', read:'Story-Index.EN.dc.html?story=this-is-us' },
-      { id:'connected',   title:'“Perhaps we were already connected.”',      by:'Anonymous',            format:'music',   topic:'Collective',           date:'2026-02', caption:'A participant reflection, carried out of a MEWE Core session.', read:'Story-Index.EN.dc.html?story=connected' },
+      { id:'connected',   title:'“Perhaps we were already connected.”',      by:'Anonymous',            format:'music',   topic:'Collective',           date:'2026-02', caption:'A participant reflection, carried out of a ME=WE Core session.', read:'Story-Index.EN.dc.html?story=connected' },
       { id:'two-hands',   title:'Two hands, one line',                       by:'A participant',        format:'drawing', topic:'Collective',           date:'2026-02', caption:'A drawing made during Möbius Making — where the ME and WE surfaces became one.', read:'Story-Index.EN.dc.html?story=two-hands' },
       { id:'song-whole',  title:'A song for the whole',                      by:'A collective',         format:'music',   topic:'Collective',           date:'2026-01', caption:'Recorded after a retreat — voices that learned to listen before they sang.' },
       { id:'week-after',  title:'The week after the workshop',               by:'A participant',        format:'writing', topic:'Family',               date:'2026-01', caption:'A participant writes about the small action they chose — and what it changed at home.' },
-      { id:'street-exp',  title:'A neighbor’s small experiment',             by:'A neighbor',           format:'writing', topic:'Neighbors',            date:'2025-12', caption:'One person tried a single MEWE action for a week — and wrote down what changed on their street.' },
+      { id:'street-exp',  title:'A neighbor’s small experiment',             by:'A neighbor',           format:'writing', topic:'Neighbors',            date:'2025-12', caption:'One person tried a single ME=WE action for a week — and wrote down what changed on their street.' },
       { id:'harmony',     title:'“The harmony was already in them.”',        by:'A facilitator',        format:'music',   topic:'Collective',           date:'2025-12', caption:'Overheard after a singing circle — the group found the chord before anyone taught it.' },
-      { id:'noticed',     title:'A moment someone noticed MEWE',            by:'Anonymous',            format:'photo',   topic:'Noticed in the world', date:'2025-11', caption:'A photo of strangers becoming, briefly, one thing.', view:'project-img/light-shadow-shift-women3.jpg' },
+      { id:'noticed',     title:'A moment someone noticed ME=WE',            by:'Anonymous',            format:'photo',   topic:'Noticed in the world', date:'2025-11', caption:'A photo of strangers becoming, briefly, one thing.', view:'project-img/light-shadow-shift-women3.jpg' },
       { id:'hasaad',      title:'Hasaad — food grown for neighbors',         by:'A UAE youth venture',  format:'video',   topic:'Nature',               date:'2025-11', caption:'A participant venture in organic food and farming, Dubai.', media:'https://youtu.be/Pl1IBR7fnTU' },
       { id:'what-held',   title:'What held after the bootcamp',              by:'The UNC film team',    format:'video',   topic:'Collective',           date:'2025-10', caption:'A camera followed Nepali youth for two years — to see what lasted.', media:'https://youtu.be/d1J4AECO_9g' },
       { id:'circle-dance',title:'A circle dance at closing',                 by:'Anonymous',            format:'dance',   topic:'Collective',           date:'2025-10', caption:'Nobody planned it. The last session ended and the chairs moved themselves.' },
@@ -201,7 +206,7 @@ class Component extends DCLogic {
       { id:'format', label:'Format', key: d => d.format },
       { id:'topic',  label:'Topic',  key: d => d.topic }
       // v2: { id:'time', label:'Time', key: d => d.date.slice(0,4) },
-      // v2: { id:'arc',  label:'MEWE Loop', key: d => d.arc || 'Unplaced' }
+      // v2: { id:'arc',  label:'ME=WE Loop', key: d => d.arc || 'Unplaced' }
     ];
   }
 
@@ -258,7 +263,6 @@ class Component extends DCLogic {
       const on = m.id === this.state.mode;
       return {
         label: m.label,
-        on: on,
         onClick: () => this.setState({ mode: m.id, sel: this.state.sel }),
         style: `font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; border-radius:999px; padding:11px 22px; cursor:pointer; line-height:1.2; border:1.5px solid ${on ? '#F0D23C' : 'rgba(250,244,226,0.35)'}; background:${on ? '#F0D23C' : 'transparent'}; color:${on ? '#1A1613' : 'rgba(250,244,226,0.85)'};`
       };

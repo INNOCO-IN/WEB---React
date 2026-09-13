@@ -1,0 +1,38 @@
+/* Set differently per language — mostly leading, which Hangul needs
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
+:root {
+  --in-project-jungle-jam-0: 1.0;
+}
+
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
+  --in-project-jungle-jam-0: 1.06;
+}
+
+
+.page-project-jungle-jam * { box-sizing: border-box; }
+.page-project-jungle-jam, .page-project-jungle-jam { margin: 0; padding: 0; }
+.page-project-jungle-jam { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-project-jungle-jam ::selection { background: var(--color-slate); color: var(--color-paper); }
+.page-project-jungle-jam a { color: var(--color-teal-dark); }
+.page-project-jungle-jam a:hover { color: #0f4a45; }
+.page-project-jungle-jam .col-scroll::-webkit-scrollbar { width: 6px; }
+.page-project-jungle-jam .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }
+.page-project-jungle-jam .story-body p { font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 21px; line-height: 1.62; margin: 0 0 26px; color: #322c22; text-wrap: pretty; }
+.page-project-jungle-jam .story-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 1000px){
+    .pj-grid { grid-template-columns: 1fr !important; }
+.page-project-jungle-jam .pj-left, .page-project-jungle-jam .pj-right { position: static !important; max-height: none !important; border: none !important; padding: 0 !important; }
+.page-project-jungle-jam .pj-mid { order: 1; }
+.page-project-jungle-jam .pj-left { order: 2; }
+.page-project-jungle-jam .pj-right { order: 3; }
+.page-project-jungle-jam .pj-left, .page-project-jungle-jam .pj-right { border-top: 1.5px solid rgba(46,59,64,0.14) !important; padding-top: 26px !important; }
+.page-project-jungle-jam img, .page-project-jungle-jam svg, .page-project-jungle-jam video { max-width: 100% !important; }
+  }
+  @media (max-width: 640px){
+    .pj-gallery { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 600px){
+    [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  }

@@ -14,17 +14,11 @@ export default function ProjectAsiaExchangeEN() {
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
-                Flagship
-              </span>
-              <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
                 China · Japan · Korea · Nepal · Taiwan
-              </span>
-              <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
-                2026–2027
               </span>
             </div>
             <h1 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(40px, 5.6vw, 76px)", lineHeight: "1.0", letterSpacing: "-0.02em", margin: "0 0 22px", textWrap: "balance" }}>
-              MEWE Asia Exchange
+              ME=WE Asia Exchange
             </h1>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(19px, 2.1vw, 25px)", lineHeight: "1.46", maxWidth: "760px", margin: "0", color: "rgba(250,244,226,0.94)" }}>
               Five countries, five neighborhoods, one question — what stirs when young people are given room to practice community life where they already live?
@@ -91,13 +85,11 @@ export default function ProjectAsiaExchangeEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid">
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(46,59,64,0.4)" }}>
-                    Photos to come
-                  </span>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
+                  <img src="/project-img/asia-exchange-key.png" alt="Young people sitting together outdoors, laughing, with folded paper shapes around them" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 45%" }} />
                 </div>
                 <figcaption style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.6)", marginTop: "12px" }}>
-                  Photos to come from the five neighborhood teams.
+                  Photo by Hannah Busing on Unsplash. Photos from the five neighborhood teams to come.
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
@@ -125,13 +117,116 @@ export default function ProjectAsiaExchangeEN() {
                   </p>
                 </div>
               </div>
+              {/* GLOBAL LABS */}
+              <div style={{ marginTop: "44px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "22px", letterSpacing: "0.12em", lineHeight: "1.1", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
+                  Global Labs
+                </div>
+                <p style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", lineHeight: "1.5", margin: "0 0 26px", maxWidth: "62ch", color: "rgba(46,59,64,0.82)" }}>
+                  An Orientation Lab opens the year, then three Global Labs, each on a two-month Action and Reflection cycle, bringing practitioners from all five countries into one room. Each lab meets one root condition as a reality to encounter in the neighborhood, not a topic to study.
+                </p>
+                <div className="pj-labs" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2px", background: "rgba(46,59,64,0.14)" }}>
+                  <div style={{ background: "var(--color-slate)", padding: "22px 20px" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "baseline", justifyContent: "space-between", marginBottom: "10px" }}>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-paper)" }}>
+                        Orientation · Online
+                      </div>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(250,244,226,0.7)" }}>
+                        Before Session 01
+                      </div>
+                    </div>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "21px", lineHeight: "1.25", margin: "0 0 8px", color: "var(--color-paper)" }}>
+                      Orientation Lab
+                    </p>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(250,244,226,0.88)" }}>
+                      The five country teams meet each other, the shared root system, and what the year asks of a BridgeBuilder.
+                    </p>
+                  </div>
+                  <Link to="/" target="_blank" rel="noopener" style={{ textDecoration: "none", background: "var(--color-paper)", padding: "22px 20px", display: "block" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "baseline", justifyContent: "space-between", marginBottom: "10px" }}>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-orange)" }}>
+                        Session 01 · Online
+                      </div>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)" }}>
+                        Nov–Dec 2026
+                      </div>
+                    </div>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "21px", lineHeight: "1.25", margin: "0 0 8px", color: "var(--color-ink)" }}>
+                      Prejudice and Identity — Face Reality
+                    </p>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
+                      Hero to Protagonist. Going beneath the surface of how neighbors see each other.
+                    </p>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", color: "var(--color-orange)", marginTop: "10px" }}>
+                      {"Read the brief\u00a0→"}
+                    </div>
+                  </Link>
+                  <Link to="/" target="_blank" rel="noopener" style={{ textDecoration: "none", background: "var(--color-paper)", padding: "22px 20px", display: "block" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "baseline", justifyContent: "space-between", marginBottom: "10px" }}>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-orange)" }}>
+                        Session 02 · Online
+                      </div>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)" }}>
+                        Jan–Feb 2027
+                      </div>
+                    </div>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "21px", lineHeight: "1.25", margin: "0 0 8px", color: "var(--color-ink)" }}>
+                      Foresight Imagination — Expand Perspective
+                    </p>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
+                      Beginning from what is already alive, and imagining what youth could activate.
+                    </p>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", color: "var(--color-orange)", marginTop: "10px" }}>
+                      {"Read the brief\u00a0→"}
+                    </div>
+                  </Link>
+                  <Link to="/" target="_blank" rel="noopener" style={{ textDecoration: "none", background: "var(--color-paper)", padding: "22px 20px", display: "block" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "baseline", justifyContent: "space-between", marginBottom: "10px" }}>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-orange)" }}>
+                        Session 03 · Online
+                      </div>
+                      <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)" }}>
+                        Mar 2027
+                      </div>
+                    </div>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "21px", lineHeight: "1.25", margin: "0 0 8px", color: "var(--color-ink)" }}>
+                      Springtime Activation — Neighborhood Blossoming
+                    </p>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
+                      From learning to leading: each team plans its own Pop-Up Lab.
+                    </p>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", color: "var(--color-orange)", marginTop: "10px" }}>
+                      {"Read the brief\u00a0→"}
+                    </div>
+                  </Link>
+                </div>
+                <Link to="/bridge-builder" style={{ marginTop: "22px", textDecoration: "none", display: "flex", flexWrap: "wrap", gap: "14px 20px", alignItems: "center", justifyContent: "space-between", background: "var(--color-orange)", color: "var(--color-paper)", padding: "26px 28px" }} className="in-plain">
+                  <div>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.8)", marginBottom: "8px" }}>
+                      Take part
+                    </div>
+                    <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(24px, 2.8vw, 32px)", lineHeight: "1.1", letterSpacing: "-0.015em" }}>
+                      How to become a BridgeBuilder
+                    </div>
+                  </div>
+                  <span style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", whiteSpace: "nowrap" }}>
+                    {"Read the path "}
+                    <span style={{ flex: "0 0 auto", width: "48px", height: "48px", borderRadius: "50%", background: "var(--color-paper)", color: "var(--color-orange)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
+                      →
+                    </span>
+                  </span>
+                </Link>
+              </div>
               {/* POP-UP LABS */}
               <div style={{ marginTop: "44px" }}>
                 <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "22px", letterSpacing: "0.12em", lineHeight: "1.1", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                   Pop-Up Labs
                 </div>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", lineHeight: "1.5", margin: "0 0 26px", maxWidth: "62ch", color: "rgba(46,59,64,0.82)" }}>
-                  Each journey culminates in a lab that is not an event but an invitation — co-created with neighbors and taking its own local form.
+                  {"Each journey culminates in a lab that is not an event but an invitation — co-created with neighbors and taking its own local form. "}
+                  <b>
+                    One lab meets in person, hosted by a local team and open to its neighbors.
+                  </b>
                 </p>
                 <div className="pj-labs" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2px", background: "rgba(46,59,64,0.14)" }}>
                   <div style={{ background: "var(--color-paper)", padding: "22px 20px" }}>
@@ -155,7 +250,7 @@ export default function ProjectAsiaExchangeEN() {
                       Seoul
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
-                      MEWE dialogue and meaningful conversation spaces.
+                      ME=WE dialogue and meaningful conversation spaces.
                     </p>
                   </div>
                   <div style={{ background: "var(--color-paper)", padding: "22px 20px" }}>
@@ -202,7 +297,7 @@ export default function ProjectAsiaExchangeEN() {
                   </p>
                 </div>
                 <div style={{ marginTop: "34px" }}>
-                  <Link to="/protagonist" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 28px", justifyContent: "center", lineHeight: "1.2" }} className="in-plain">
+                  <Link to="/pathway" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 28px", justifyContent: "center", lineHeight: "1.2" }} className="in-plain">
                     BridgeBuilder on the Protagonist path →
                   </Link>
                 </div>
@@ -218,7 +313,7 @@ export default function ProjectAsiaExchangeEN() {
         <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
-              Are you IN?
+              Are You IN?
             </p>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 28px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               Bring the Exchange to your own neighborhood.
@@ -227,7 +322,7 @@ export default function ProjectAsiaExchangeEN() {
               <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Start a conversation
               </Link>
-              <Link to="/protagonist" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/pathway" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the Protagonist path
               </Link>
             </div>

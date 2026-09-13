@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모든 프로젝트 · IN</title>
+<link rel="icon" href="innoco-mark.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="모든 프로젝트 · IN">
+<meta property="og:image" content="IN_Logo.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600&amp;family=Archivo:wght@600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600&amp;family=Noto+Sans+KR:wght@400;700&amp;display=swap" rel="stylesheet">
+</helmet>
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif;">
+  <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; color: rgba(46,59,64,0.5); margin-bottom: 14px;">모든 프로젝트</div>
+  <div style="display: flex; flex-direction: column;">
+    <sc-for list="{{ items }}" as="p" hint-placeholder-count="8">
+      <a href="{{ p.href }}" style="{{ p.style }}">
+        <span style="display:block; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.1em; color: #1E5A64; margin-bottom: 3px;">{{ p.meta }}</span>
+        <span style="display:block; font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: 17px; line-height: 1.32; color: #1A1613;">{{ p.title }}</span>
+      </a>
+    </sc-for>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 300, &quot;height&quot;: 520}, &quot;current&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;asia-exchange&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+class Component extends DCLogic {
+  data() {
+    return [
+      { slug: 'asia-exchange',      title: 'ME=WE 아시아 익스체인지',        meta: '대표 프로젝트 · 2026–27',   href: 'Project-Asia-Exchange.KO.dc.html' },
+      { slug: 'food-revolution',    title: '푸드 레볼루션',                  meta: '자이드 대학교 · 2017–22',   href: 'Project-Food-Revolution.KO.dc.html' },
+      { slug: 'uae-youth',          title: 'UAE 청년 사회혁신 워크숍 시리즈', meta: '샤르자 · 2017',            href: 'Project-UAE-Youth-Social-Innovation.KO.dc.html' },
+      { slug: 'unc',                title: 'UAE-네팔-커넥트(UNC) 사회혁신',   meta: '카트만두 · 2016–18',       href: 'Project-UNC.KO.dc.html' },
+      { slug: 'unc-documentary',    title: 'UNC 다큐멘터리',                 meta: '네팔 · 2017–18',           href: 'Project-UNC-Documentary.KO.dc.html' },
+      { slug: 'light-shadow-shift', title: '빛, 그림자, 전환',               meta: 'UAE · 여성 리트릿',        href: 'Project-Light-Shadow-Shift-Womens-Retreat.KO.dc.html' },
+      { slug: 'jungle-jam',         title: '정글 잼',                        meta: '두바이 · 2022',            href: 'Project-Jungle-Jam.KO.dc.html' },
+      { slug: 'shadow-shifter',     title: '섀도 시프터',                    meta: '대만 · 2023',              href: 'Project-Shadow-Shifter.KO.dc.html' }
+    ];
+  }
+  renderVals() {
+    const current = this.props.current;
+    const items = this.data().map(p => {
+      const on = p.slug === current;
+      return {
+        title: p.title,
+        meta: p.en ? p.meta + ' · EN' : p.meta,
+        href: p.href,
+        style: 'display:block; text-decoration:none; cursor:pointer; background:' + (on ? 'rgba(30,90,100,0.12)' : 'transparent') + '; border-bottom:1px solid rgba(46,59,64,0.12); padding:13px 8px 13px 10px; ' + (on ? 'box-shadow: inset 3px 0 0 #1E5A64;' : '')
+      };
+    });
+    return { items };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -108,7 +108,7 @@ export default function Community() {
               {t("014_h2")}
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/protagonist", locale)} style={{ textDecoration: "none", color: "var(--color-red)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/pathway", locale)} style={{ textDecoration: "none", color: "var(--color-red)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("015_a")}
               </Link>
               <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">

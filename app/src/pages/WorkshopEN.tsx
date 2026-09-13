@@ -8,10 +8,10 @@ import './WorkshopEN.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopEN() {
   return (
-    <SiteLayout page="Workshop.EN.dc.html" className="page-workshop-en" footer={{ loop: "0.171", cta: "#E6328C" }}>
+    <SiteLayout page="Workshop.EN.dc.html" className="page-workshop-en" footer={{ loop: "0.171", cta: "#E5188C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (key color box · magenta) ===================== */}
-        <section style={{ background: "var(--color-magenta)", color: "var(--color-paper)" }}>
+        <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "22px" }}>
               <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
@@ -23,7 +23,7 @@ export default function WorkshopEN() {
               Where practice becomes a lifestyle.
             </h1>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.2", maxWidth: "760px", margin: "0", color: "rgba(250,244,226,0.94)", fontStyle: "normal" }}>
-              No lectures. Every workshop is built on conversation and making — guided by questions you respond to, not reply to. Each one walks the MEWE Loop, together.
+              No lectures. Every workshop is built on conversation and making — guided by questions you respond to, not reply to. Each one walks the ME=WE Loop, together.
             </p>
           </div>
         </section>
@@ -31,7 +31,7 @@ export default function WorkshopEN() {
         <section style={{ margin: "80px 0 22px" }}>
           <Link to="/workshop/mobius-making" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", color: "var(--color-paper)", overflow: "hidden", minHeight: "360px", maxWidth: "1320px", margin: "0 auto" }}>
             <div style={{ position: "relative", minHeight: "300px" }}>
-              <ImageSlot id="workshop-mobius-hero" shape="rect" placeholder="Someone holding a Möbius strip they made" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", left: "-9px", top: "-1px" }} />
+              <ImageSlot id="workshop-mobius-hero" src="slot-img/workshop-mobius-hero.webp" shape="rect" placeholder="Someone holding a Möbius strip they made" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", left: "-9px", top: "-1px" }} />
               <div style={{ position: "absolute", left: "16px", top: "16px", background: "var(--color-paper)", color: "var(--color-ink)", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
                 Signature · Start here
               </div>
@@ -45,7 +45,7 @@ export default function WorkshopEN() {
                   Möbius Making
                 </h2>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "24px", lineHeight: "1.44", margin: "0", color: "rgba(250,244,226,0.92)", maxWidth: "48ch" }}>
-                  The foundational workshop — the first experience of MEWE as something lived, not just explained. 3 hours core; extendable to half-day or full-day, with follow-up sessions available as a package.
+                  The foundational workshop — the first experience of ME=WE as something lived, not just explained. 3 hours core; extendable to half-day or full-day, with follow-up sessions available as a package.
                 </p>
               </div>
               <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "16px" }}>
@@ -69,11 +69,11 @@ export default function WorkshopEN() {
         {/* ===================== MADE BY MANY HANDS ===================== */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ borderTop: "1px solid rgba(46,59,64,0.14)", paddingTop: "26px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "12px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
               Made by many hands
             </div>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "38px", lineHeight: "1.5", maxWidth: "760px", margin: "0", color: "rgba(46,59,64,0.78)", width: "900px", height: "500px" }}>
-              No workshop here is one person’s creation. Each one was co-created — with colleagues, students, and neighbors across generations, fields, and countries — and each keeps evolving with every group that walks through it. The workshops themselves are MEWE at work.
+              No workshop here is one person’s creation. Each one was co-created — with colleagues, students, and neighbors across generations, fields, and countries — and each keeps evolving with every group that walks through it. The workshops themselves are ME=WE at work.
             </p>
           </div>
         </section>
@@ -85,15 +85,15 @@ export default function WorkshopEN() {
         </section>
         {/* ===================== HOST A STUDIO ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "30px 28px 20px" }}>
-          <Link to="/collectives" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center", gap: "24px", background: "var(--color-paper)", border: "1.5px solid var(--color-ink)", color: "var(--color-ink)", padding: "34px 36px" }}>
+          <Link to="/people" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center", gap: "24px", background: "var(--color-paper)", border: "1.5px solid var(--color-ink)", color: "var(--color-ink)", padding: "34px 36px" }}>
             <div>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "12px" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
                 Host a studio
               </div>
               <h3 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 38px)", lineHeight: "1.04", margin: "0 0 10px", height: "80px" }}>
-                Bring MEWE to your community
+                Bring ME=WE to your community
               </h3>
-              <p style={{ fontFamily: "'Newsreader', serif", fontSize: "30px", lineHeight: "1.42", margin: "0", color: "var(--color-magenta)", maxWidth: "60ch", fontStyle: "italic", width: "700px", fontWeight: "500" }}>
+              <p style={{ fontFamily: "'Newsreader', serif", fontSize: "30px", lineHeight: "1.42", margin: "0", color: "var(--color-magenta-hot)", maxWidth: "60ch", fontStyle: "italic", width: "700px", fontWeight: "500" }}>
                 IN-Collectives host studios and adapt every workshop to their own local context. Not a branch — a partner.
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function WorkshopEN() {
           </Link>
         </section>
         {/* ===================== CTA BAND ===================== */}
-        <section style={{ background: "var(--color-magenta)", color: "var(--color-paper)", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Not sure where to start?

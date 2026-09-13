@@ -8,10 +8,10 @@ import './WorkshopKO.css';
  *  take this file over by hand and remove it from the converter's input. */
 export default function WorkshopKO() {
   return (
-    <SiteLayout page="Workshop.KO.dc.html" className="page-workshop-ko" footer={{ loop: "0.171", cta: "#E6328C" }}>
+    <SiteLayout page="Workshop.KO.dc.html" className="page-workshop-ko" footer={{ loop: "0.171", cta: "#E5188C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (key color box · magenta) ===================== */}
-        <section style={{ background: "var(--color-magenta)", color: "var(--color-paper)" }}>
+        <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "22px" }}>
               <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
@@ -23,7 +23,7 @@ export default function WorkshopKO() {
               실천이 삶의 방식이 되는 곳.
             </h1>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "500", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.2", maxWidth: "760px", margin: "0", color: "rgba(250,244,226,0.94)", fontStyle: "normal" }}>
-              강의는 없습니다. 모든 워크숍은 대화와 만들기 위에 세워집니다 — 대답이 아니라 응답하게 되는 질문들이 안내합니다. 각 워크숍은 MEWE 루프를 함께 걷습니다.
+              강의는 없습니다. 모든 워크숍은 대화와 만들기 위에 세워집니다 — 대답이 아니라 응답하게 되는 질문들이 안내합니다. 각 워크숍은 ME=WE 루프를 함께 걷습니다.
             </p>
           </div>
         </section>
@@ -54,7 +54,7 @@ export default function WorkshopKO() {
         <section style={{ margin: "6px 0 22px" }}>
           <Link to="/ko/workshop/mobius-making" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", color: "var(--color-paper)", overflow: "hidden", minHeight: "360px", maxWidth: "1320px", margin: "0 auto" }}>
             <div style={{ position: "relative", minHeight: "300px" }}>
-              <ImageSlot id="workshop-mobius-hero" shape="rect" placeholder="Someone holding a Möbius strip they made" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", left: "-9px", top: "-1px" }} />
+              <ImageSlot id="workshop-mobius-hero" src="slot-img/workshop-mobius-hero.webp" shape="rect" placeholder="Someone holding a Möbius strip they made" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", left: "-9px", top: "-1px" }} />
               <div style={{ position: "absolute", left: "16px", top: "16px", background: "var(--color-paper)", color: "var(--color-ink)", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
                 대표 워크숍 · 여기서 시작
               </div>
@@ -68,7 +68,7 @@ export default function WorkshopKO() {
                   뫼비우스 만들기
                 </h2>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "24px", lineHeight: "1.44", margin: "0", color: "rgba(250,244,226,0.92)", maxWidth: "48ch" }}>
-                  기초가 되는 워크숍 — 설명이 아니라 살아 있는 것으로서 MEWE를 처음 경험하는 자리. 기본 3시간, 반나절이나 하루로 확장 가능하며 후속 세션 패키지도 있습니다.
+                  기초가 되는 워크숍 — 설명이 아니라 살아 있는 것으로서 ME=WE를 처음 경험하는 자리. 기본 3시간, 반나절이나 하루로 확장 가능하며 후속 세션 패키지도 있습니다.
                 </p>
               </div>
               <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "16px" }}>
@@ -92,11 +92,11 @@ export default function WorkshopKO() {
         {/* ===================== MADE BY MANY HANDS ===================== */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ borderTop: "1px solid rgba(46,59,64,0.14)", paddingTop: "26px" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "12px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
               여러 손으로 만들어졌습니다
             </div>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "400", fontSize: "38px", lineHeight: "1.5", maxWidth: "760px", margin: "0", color: "rgba(46,59,64,0.78)", width: "900px", height: "500px" }}>
-              이곳의 어떤 워크숍도 한 사람의 창작물이 아닙니다. 세대와 분야와 나라를 가로질러 동료, 학생, 이웃과 함께 만들어졌고, 지나가는 모든 그룹과 함께 계속 진화합니다. 워크숍 그 자체가 작동 중인 MEWE입니다.
+              이곳의 어떤 워크숍도 한 사람의 창작물이 아닙니다. 세대와 분야와 나라를 가로질러 동료, 학생, 이웃과 함께 만들어졌고, 지나가는 모든 그룹과 함께 계속 진화합니다. 워크숍 그 자체가 작동 중인 ME=WE입니다.
             </p>
           </div>
         </section>
@@ -106,15 +106,15 @@ export default function WorkshopKO() {
         </section>
         {/* ===================== HOST A STUDIO ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "30px 28px 20px" }}>
-          <Link to="/ko/collectives" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center", gap: "24px", background: "var(--color-paper)", border: "1.5px solid var(--color-ink)", color: "var(--color-ink)", padding: "34px 36px" }}>
+          <Link to="/ko/people" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center", gap: "24px", background: "var(--color-paper)", border: "1.5px solid var(--color-ink)", color: "var(--color-ink)", padding: "34px 36px" }}>
             <div>
-              <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "12px" }}>
+              <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
                 스튜디오 열기
               </div>
               <h3 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 38px)", lineHeight: "1.18", margin: "0 0 10px", height: "80px" }}>
-                당신의 공동체에 MEWE를
+                당신의 공동체에 ME=WE를
               </h3>
-              <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "30px", lineHeight: "1.42", margin: "0", color: "var(--color-magenta)", maxWidth: "60ch", fontStyle: "normal", width: "700px", fontWeight: "500" }}>
+              <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "30px", lineHeight: "1.42", margin: "0", color: "var(--color-magenta-hot)", maxWidth: "60ch", fontStyle: "normal", width: "700px", fontWeight: "500" }}>
                 IN-콜렉티브는 스튜디오를 열고 모든 워크숍을 자신들의 지역 맥락에 맞게 바꿉니다. 지부가 아니라 — 파트너입니다.
               </p>
             </div>
@@ -127,7 +127,7 @@ export default function WorkshopKO() {
           </Link>
         </section>
         {/* ===================== CTA BAND ===================== */}
-        <section style={{ background: "var(--color-magenta)", color: "var(--color-paper)", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               어디서 시작할지 모르겠다면?

@@ -23,13 +23,13 @@ export default function ProjectEN() {
               The practice, out in the world.
             </h1>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.2", maxWidth: "720px", margin: "0", color: "rgba(250,244,226,0.94)" }}>
-              Real work with real neighbors — gardens, youth camps, cross-country exchanges. Where MEWE stops being an idea and becomes something a community can point to.
+              Real work with real neighbors — gardens, youth camps, cross-country exchanges. Where ME=WE stops being an idea and becomes something a community can point to.
             </p>
           </div>
         </section>
         {/* FEATURED — ASIA EXCHANGE / BRIDGEBUILDER */}
         <section id="bridgebuilder" style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px 22px", scrollMarginTop: "80px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", background: "var(--color-magenta)", color: "var(--color-paper)", overflow: "hidden", minHeight: "340px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", background: "var(--color-magenta-hot)", color: "var(--color-paper)", overflow: "hidden", minHeight: "340px" }}>
             <div style={{ position: "relative", minHeight: "280px" }}>
               <ImageSlot id="project-asia-hero" shape="rect" placeholder="Young BridgeBuilders across a neighborhood, five-country feel" style={{ position: "absolute", inset: "0", width: "100%", height: "100%" }} src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=1100&q=80" credit="Photo by Hannah Busing on Unsplash" credit-href="https://unsplash.com/@hannahbusing" />
               <div style={{ position: "absolute", left: "16px", top: "16px", background: "var(--color-paper)", color: "var(--color-ink)", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
@@ -42,7 +42,7 @@ export default function ProjectEN() {
                   China · Japan · Korea · Nepal · Taiwan
                 </div>
                 <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 3.2vw, 46px)", lineHeight: "1.02", margin: "0 0 14px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-                  MEWE Asia Exchange
+                  ME=WE Asia Exchange
                 </h2>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", lineHeight: "1.44", margin: "0 0 14px", color: "rgba(250,244,226,0.92)", maxWidth: "50ch" }}>
                   {"A cross-border program in which young people called "}
@@ -53,12 +53,12 @@ export default function ProjectEN() {
                 </p>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.44", margin: "0", color: "rgba(250,244,226,0.8)", maxWidth: "50ch" }}>
                   {"BridgeBuilder is also a stage on the practice path — "}
-                  <Link to="/protagonist" style={{ color: "var(--color-paper)", textDecoration: "underline" }} className="in-plain">
+                  <Link to="/pathway" style={{ color: "var(--color-paper)", textDecoration: "underline" }} className="in-plain">
                     see it on the Protagonist path →
                   </Link>
                 </p>
               </div>
-              <Link to="/project/asia-exchange" style={{ textDecoration: "none", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", letterSpacing: "0.04em", color: "var(--color-magenta)", background: "var(--color-paper)", borderRadius: "999px", padding: "13px 26px", lineHeight: "1.2" }} className="in-plain">
+              <Link to="/project/asia-exchange" style={{ textDecoration: "none", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", letterSpacing: "0.04em", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "13px 26px", lineHeight: "1.2" }} className="in-plain">
                 Read the full project →
               </Link>
             </div>
@@ -84,7 +84,7 @@ export default function ProjectEN() {
         <section style={{ background: "var(--color-slate)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
-              Are you IN?
+              Are You IN?
             </p>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 28px", letterSpacing: "-0.01em", textWrap: "balance" }}>
               Bring a project to your own community.
@@ -93,7 +93,7 @@ export default function ProjectEN() {
               <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-deepblue)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Start a conversation
               </Link>
-              <Link to="/protagonist" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/pathway" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the Protagonist path
               </Link>
             </div>

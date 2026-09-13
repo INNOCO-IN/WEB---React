@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>브릿지빌더 · IN</title>
+<link rel="icon" href="innoco-mark.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="브릿지빌더 · IN">
+<meta property="og:image" content="IN_Logo.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Archivo:wght@500;600;700;800&amp;family=Noto+Serif+KR:wght@400;500;600&amp;family=Noto+Sans+KR:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #F05A28; color: #FAF4E2; }
+  a { color: #F05A28; }
+  a:hover { color: #B4321A; }
+  .stage { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+  .stage:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }
+</style>
+<style id="in-mobile">
+@media (max-width: 1000px){
+  [style*="grid-template-columns: 96px 1fr auto"]{grid-template-columns:1fr !important; gap:18px !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  img,svg,video{max-width:100% !important;}
+}
+@media (max-width: 600px){
+  [style*="padding: 70px 28px"]{padding:44px 20px !important;}
+  [style*="padding: 56px 52px"]{padding:30px 22px !important;}
+}
+</style>
+</helmet>
+
+<div style="font-family: 'Newsreader', 'Noto Serif KR', Georgia, serif; min-height: 100vh; overflow-x: hidden;">
+
+  <dc-import name="Nav-KO" active-page="BridgeBuilder.KO.dc.html" hint-size="100%,64px"></dc-import>
+
+  <!-- HERO -->
+  <section style="background: #F05A28; color: #FAF4E2;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 22px 28px 0;">
+      <a href="Pathway.KO.dc.html" style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,244,226,0.78); text-decoration: none;">← 주인공</a>
+    </div>
+    <div style="max-width: 1320px; margin: 0 auto; padding: 30px 28px 60px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 32px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #FAF4E2; flex: 0 0 auto;"></span><span style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; color: #FAF4E2;">브릿지빌더</span></div>
+      <h1 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(44px, 6vw, 88px); line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 22px; max-width: 20ch; text-wrap: balance;">브릿지빌더가 된다는 것.</h1>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 400; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.45; max-width: 720px; margin: 0 0 30px; color: rgba(250,244,226,0.94);"><i>내가 사는 동네에서 무언가가 움직이고 있습니다. 느껴지나요?</i></p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.KO.dc.html" style="text-decoration: none; color: #F05A28; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.3;">브릿지빌더 지원하기 &rarr;</a>
+        <a href="Pathway.KO.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; line-height: 1.3;">네 갈래의 길 보기</a>
+      </div>
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.8); margin-top: 30px;">IN의 네 가지 주인공의 길 가운데 하나</div>
+    </div>
+  </section>
+
+  <!-- WHAT IS -->
+  <section style="max-width: 1320px; margin: 84px auto 0; padding: 0 28px;">
+    <div style="max-width: 940px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #F05A28; margin-bottom: 22px;">브릿지빌더는 누구인가</div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.22; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: balance; color: #2E3B40;">더 많은 것이 가능하다고 느끼고, 그것이 어떤 모습일지 직접 알아보려는 청년.</h2>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 0; max-width: 720px; color: rgba(46,59,64,0.82);">자기 동네에서, 공동체에서, 스스로 안에서. 답을 다 가진 리더도 아니고, 계획을 든 전문가도 아닙니다. 브릿지빌더는 더 깊은 질문을 할 만큼 궁금하고, 조심스럽게 들을 만큼 겸손하고, 이웃과 함께 무언가를 시도할 만큼 용기 있는 사람입니다.</p>
+    </div>
+  </section>
+
+  <!-- THREE STAGES -->
+  <section style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px;">
+      <div style="max-width: 940px; margin-bottom: 34px;">
+        <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #F05A28; margin-bottom: 20px;">무엇을 하게 되나요</div>
+        <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.22; letter-spacing: -0.01em; margin: 0 0 20px; text-wrap: balance; color: #2E3B40;">브릿지빌더의 여정은 한 해에 걸쳐 펼쳐지고, 프로젝트가 아니라 자신에 대한 질문에서 시작합니다.</h2>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 0; max-width: 720px; color: rgba(46,59,64,0.82);">세 단계를 지나갑니다. 각 단계는 같은 워크숍 시리즈의 세션으로 열립니다. 아래 브리프는 그 세션이 어떤 모습인지 보여주는 예시입니다.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+
+        <a href="WS-HTP.KO.dc.html" target="_blank" rel="noopener" class="stage" style="text-decoration: none; display: grid; grid-template-columns: 96px 1fr auto; align-items: center; gap: 28px; color: #2E3B40; padding: 38px 40px; background-color: #FAF4E2; border: 1.5px solid rgba(46,59,64,0.16);">
+          <div style="width: 92px; height: 92px; border-radius: 50%; background: #F05A28; display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2;">Lab&nbsp;1</span></div>
+          <div>
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F05A28; margin-bottom: 10px;">첫 번째 단계</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(26px, 3vw, 40px); line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.01em; text-wrap: balance;">표면 아래로 들어가기</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(18px, 1.9vw, 21px); line-height: 1.65; margin: 0; max-width: 62ch; color: rgba(46,59,64,0.82);">나는 주변 사람들에 대해 어떤 전제를 품고 있을까? 무엇이 이웃을 서로 낯선 사람으로 남게 할까? 평소보다 더 깊이 들어가는 대화를 연습하고, 동네의 보이는 표면 아래 감춰진 것을 발견합니다.</p>
+          </div>
+          <span style="display: flex; align-items: center; gap: 12px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px; white-space: nowrap; color: #2E3B40;">예시 브리프
+            <span style="flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: #2E3B40; color: #FAF4E2; display: flex; align-items: center; justify-content: center; font-size: 22px;">&rarr;</span>
+          </span>
+        </a>
+
+        <a href="WS-Foresight.KO.dc.html" target="_blank" rel="noopener" class="stage" style="text-decoration: none; display: grid; grid-template-columns: 96px 1fr auto; align-items: center; gap: 28px; color: #2E3B40; padding: 38px 40px; background-color: #FAF4E2; border: 1.5px solid rgba(46,59,64,0.16);">
+          <div style="width: 92px; height: 92px; border-radius: 50%; background: #F05A28; display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2;">Lab&nbsp;2</span></div>
+          <div>
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F05A28; margin-bottom: 10px;">두 번째 단계</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(26px, 3vw, 40px); line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.01em; text-wrap: balance;">가능한 것을 상상하기</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(18px, 1.9vw, 21px); line-height: 1.65; margin: 0; max-width: 62ch; color: rgba(46,59,64,0.82);">여기에 이미 살아 있지만 아직 아무도 이름 붙이지 않은 것은 무엇일까? 동네를 부족한 것에서가 아니라 조용히, 끈질기게 있는 것에서 보는 법을 배우고, 청년이 그것을 움직일 때 무엇이 가능해지는지 상상하기 시작합니다.</p>
+          </div>
+          <span style="display: flex; align-items: center; gap: 12px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px; white-space: nowrap; color: #2E3B40;">예시 브리프
+            <span style="flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: #2E3B40; color: #FAF4E2; display: flex; align-items: center; justify-content: center; font-size: 22px;">&rarr;</span>
+          </span>
+        </a>
+
+        <a href="WS-Springtime.KO.dc.html" target="_blank" rel="noopener" class="stage" style="text-decoration: none; display: grid; grid-template-columns: 96px 1fr auto; align-items: center; gap: 28px; color: #2E3B40; padding: 38px 40px; background-color: #FAF4E2; border: 1.5px solid rgba(46,59,64,0.16);">
+          <div style="width: 92px; height: 92px; border-radius: 50%; background: #F05A28; display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF4E2;">Lab&nbsp;3</span></div>
+          <div>
+            <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F05A28; margin-bottom: 10px;">세 번째 단계</div>
+            <h3 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(26px, 3vw, 40px); line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.01em; text-wrap: balance;">함께 만들기</h3>
+            <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: clamp(18px, 1.9vw, 21px); line-height: 1.65; margin: 0; max-width: 62ch; color: rgba(46,59,64,0.82);">ME=WE 팝업 랩을 직접 설계하고 함께 진행합니다. 자신이 발견한 것에 뿌리를 둔 동네의 활성화를, 이웃과 친구, 뜻을 같이하는 사람들과 함께 만듭니다.</p>
+          </div>
+          <span style="display: flex; align-items: center; gap: 12px; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px; white-space: nowrap; color: #2E3B40;">예시 브리프
+            <span style="flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: #2E3B40; color: #FAF4E2; display: flex; align-items: center; justify-content: center; font-size: 22px;">&rarr;</span>
+          </span>
+        </a>
+
+      </div>
+
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 34px 0 0; max-width: 720px; color: rgba(46,59,64,0.82);">그 길에서 다른 동네, 다른 나라의 브릿지빌더들과 이어집니다. 배우고 있는 것을 나누고, 서로의 동네를 지켜보고, 내가 느끼는 연결에 대한 그리움이 문화와 국경을 넘어 함께 있는 것임을 알게 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- POP-UP LAB -->
+  <section style="max-width: 1320px; margin: 46px auto 0; padding: 0 28px;">
+    <div style="background: #F3EAD0; padding: 56px 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+      <div>
+        <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #F05A28; margin-bottom: 16px;">ME=WE 팝업 랩이란</div>
+        <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.2; letter-spacing: -0.01em; margin: 0; text-wrap: balance; color: #2E3B40;">행사가 아니라, 예술적인 초대.</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 0; color: rgba(46,59,64,0.85);">이웃이 서로를, 어쩌면 처음으로 만나는 자리입니다. 창작적 표현과 의미 있는 대화, 함께하는 행동을 통해서.</p>
+        <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 0; color: rgba(46,59,64,0.85);">어떤 모습이 될지는 어디에 있는지와 그 공동체에 무엇이 필요한지에 달려 있습니다. 음악이 있는 자리, 이야기의 원, 대화의 공간, 세대를 잇는 교류, 또는 완전히 새로운 무엇. <b>형식은 당신의 것이고, 뿌리는 함께 나눕니다.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px; max-width: 940px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #F05A28; margin-bottom: 20px;">누가 브릿지빌더가 될 수 있나요</div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.22; letter-spacing: -0.01em; margin: 0 0 26px; text-wrap: balance; color: #2E3B40;">18세에서 35세 사이의 청년이라면, 당신입니다.</h2>
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;">
+        <div style="display: flex; gap: 16px; align-items: baseline;"><span style="flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background: #F05A28;"></span><p style="margin: 0; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.6; color: rgba(46,59,64,0.85);">내 동네에서 더 많은 것이 가능하다고 느낍니다</p></div>
+        <div style="display: flex; gap: 16px; align-items: baseline;"><span style="flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background: #F05A28;"></span><p style="margin: 0; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.6; color: rgba(46,59,64,0.85);">솔직한 자기 발견에서 시작할 마음이 있습니다</p></div>
+        <div style="display: flex; gap: 16px; align-items: baseline;"><span style="flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background: #F05A28;"></span><p style="margin: 0; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.6; color: rgba(46,59,64,0.85);">한 해 동안의 실천과 성찰, 행동에 함께할 수 있습니다</p></div>
+        <div style="display: flex; gap: 16px; align-items: baseline;"><span style="flex: 0 0 auto; width: 10px; height: 10px; border-radius: 50%; background: #F05A28;"></span><p style="margin: 0; font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.6; color: rgba(46,59,64,0.85);">한 도시, 한 나라보다 큰 무언가의 일부가 되고 싶습니다</p></div>
+      </div>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 500; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.5; margin: 0; max-width: 760px; color: #2E3B40; text-wrap: pretty;">공동체 활동이나 퍼실리테이션, 사회혁신 경험은 필요하지 않습니다. 필요한 것은 궁금함, 진심, 그리고 나타날 마음입니다. 이웃을 위해, 그리고 스스로를 위해.</p>
+    </div>
+  </section>
+
+  <!-- PART OF -->
+  <section style="max-width: 1320px; margin: 80px auto 0; padding: 0 28px;">
+    <div style="border-top: 1.5px solid rgba(46,59,64,0.16); padding-top: 42px; max-width: 940px;">
+      <div style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #F05A28; margin-bottom: 20px;">무엇의 일부가 되나요</div>
+      <h2 style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.22; letter-spacing: -0.01em; margin: 0 0 22px; text-wrap: balance; color: #2E3B40;">살아 있는 생태계의 시작.</h2>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 0 0 22px; max-width: 720px; color: rgba(46,59,64,0.82);">브릿지빌더는 각자 자기 동네에서 일하면서 국경을 넘어 서로 이어져 있습니다. 뿌리를 내린다면 어느 한 해가 끝난 뒤에도 계속 자라고 함께 변해 갈 무언가를 위해, 그 조건을 조심스럽게 만들어 보는 시도입니다.</p>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 0 0 22px; max-width: 720px; color: rgba(46,59,64,0.82);">배운 것, 기록한 것, 만든 것은 ME=WE 동네 아카이브의 일부가 됩니다. 다른 사람들이 그 위에 쌓아 올릴 수 있는 살아 있는 자료로. 내가 만나 본 적 없는 맥락과 공동체에서, 조용히 닿아 있게 됩니다.</p>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 20px; line-height: 1.7; margin: 0 0 26px; max-width: 720px; color: rgba(46,59,64,0.82);">이 길은 지금 ME=WE 아시아 익스체인지에서 진행되고 있습니다. 중국, 일본, 한국, 네팔, 대만의 국가 팀과 함께. 브릿지빌더가 일하고 있는 한 예시입니다.</p>
+      <a href="Pathway.KO.dc.html" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; color: #FAF4E2; background: #2E3B40; border-radius: 999px; padding: 14px 28px;">네 갈래의 길 보기 &rarr;</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #F05A28; color: #FAF4E2; margin-top: 84px;">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 70px 28px; text-align: center;">
+      <p style="font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,244,226,0.75); margin: 0 0 18px;">창작을 위해. 진짜 만남을 위해. 다시 발견되는 동네를 위해.</p>
+      <h2 style="font-family: 'Newsreader', sans-serif; font-weight: 500; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 28px; letter-spacing: -0.01em; text-wrap: balance;">Are You IN?</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; font-family: 'Archivo', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 15px;">
+        <a href="Are-you-IN.KO.dc.html" style="text-decoration: none; color: #F05A28; background: #FAF4E2; border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.3;">브릿지빌더 지원하기</a>
+        <a href="Pathway.KO.dc.html" style="text-decoration: none; color: #FAF4E2; background: transparent; border: 1.5px solid rgba(250,244,226,0.7); border-radius: 999px; padding: 15px 32px; display: inline-flex; align-items: center; justify-content: center; line-height: 1.3;">네 갈래의 길 보기</a>
+      </div>
+      <p style="font-family: 'Newsreader', 'Noto Serif KR', serif; font-size: 18px; line-height: 1.6; margin: 30px 0 0; color: rgba(250,244,226,0.86);">IN-Collective(서울)이 조율하며, 정윤선이 설립했습니다.</p>
+    </div>
+  </section>
+
+  <div id="connect"><dc-import name="Footer-KO" cta="#F05A28" loop="0.312" hint-size="100%,460px"></dc-import></div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

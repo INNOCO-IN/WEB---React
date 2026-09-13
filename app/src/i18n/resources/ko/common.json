@@ -8,22 +8,22 @@
   "nav": {
     "label": "섹션",
     "groups": {
-      "startWithin": "안에서 시작하기",
-      "shareTheSpace": "공간을 나누기",
-      "serveTheWhole": "더 큰 우리에게"
+      "startHere": "여기서 시작",
+      "goFurther": "한 걸음 더",
+      "biggerPicture": "더 큰 그림"
     },
     "items": {
-      "manifesto": "매니페스토",
-      "collectives": "콜렉티브",
-      "mewe": "MEWE",
+      "mewe": "ME=WE",
       "workshop": "워크숍",
       "story": "스토리",
-      "protagonist": "주역",
+      "pathway": "길",
       "project": "프로젝트",
       "community": "커뮤니티",
+      "people": "사람들",
+      "manifesto": "매니페스토",
       "constellation": "별자리",
       "news": "소식",
-      "connect": "Are you IN?"
+      "connect": "Are You IN?"
     }
   },
   "footer": {

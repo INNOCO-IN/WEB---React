@@ -2,7 +2,7 @@
 .page-project-en * { box-sizing: border-box; }
 .page-project-en, .page-project-en { margin: 0; padding: 0; }
 .page-project-en { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
-.page-project-en ::selection { background: var(--color-magenta); color: var(--color-paper); }
+.page-project-en ::selection { background: var(--color-magenta-hot); color: var(--color-paper); }
 .page-project-en a { color: var(--color-teal); }
 .page-project-en a:hover { color: var(--color-teal-dark); }
 
