@@ -129,7 +129,7 @@ export function syncHead({ pathname, locale, title, description }: Head): void {
   }
 
   const twins = LOCALES.map((other) => ({ locale: other, alt: alternateFor(pathname, other) })).filter(
-    ({ alt }) => alt.exact,
+    ({ alt }) => alt.reach === 'page',
   );
   if (twins.length < 2) return;
 
@@ -152,6 +152,6 @@ export function syncHead({ pathname, locale, title, description }: Head): void {
 /** Sitemap rows for one path, one per locale that genuinely has the page. */
 export function sitemapEntriesFor(pathname: string, origin: string): string[] {
   return LOCALES.map((locale) => alternateFor(pathname, locale))
-    .filter((alt) => alt.exact)
+    .filter((alt) => alt.reach === 'page')
     .map((alt) => origin + alt.to);
 }

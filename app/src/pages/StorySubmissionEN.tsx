@@ -14,16 +14,16 @@ export default function StorySubmissionEN() {
     <SiteLayout page="Story-Submission.EN.dc.html" className="page-story-submission-en" footer={{ loop: "0.443", cta: "#FAB414" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (key color · amber) */}
-        <section style={{ background: "#FAB414", color: "#2E3B40" }}>
+        <section style={{ background: "var(--color-amber)", color: "var(--color-ink)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "30px 28px 56px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#2E3B40", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#2E3B40" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-ink)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-ink)" }}>
                 Story Submission
               </span>
             </div>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(19px, 2.1vw, 25px)", lineHeight: "1.46", maxWidth: "760px", margin: "0", color: "rgba(46,59,64,0.85)" }}>
-              It can be a few honest sentences, or a drawing, a photo, a film, a piece of music. Start with a short description of the moment — then bring whatever form carries it best. Only steps 1 and 5 are required.&nbsp;
+              {"It can be a few honest sentences, or a drawing, a photo, a film, a piece of music. Start with a short description of the moment — then bring whatever form carries it best. Only steps 1 and 5 are required.\u00a0"}
               <span style={{ fontSize: "clamp(19px, 2.1vw, 25px)" }}>
                 <strong>
                   Thank you for adding your light.
@@ -35,7 +35,7 @@ export default function StorySubmissionEN() {
         </section>
         {/* FORM */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
-          <SupabaseForm table="stories" thanks="Thank you for adding your light. We've got your story — you'll get a note back once we've read it." style={{ maxWidth: "760px", display: "flex", flexDirection: "column", gap: "65px" }}>
+          <SupabaseForm table="stories" thanks="Thank you for adding your light. We've got your story — you'll get a note back once we've read it." idle="You'll get a note back once we've read it. Your piece will appear in the Constellation once published." style={{ maxWidth: "760px", display: "flex", flexDirection: "column", gap: "65px" }}>
             <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", overflow: "hidden" }}>
               <label>
                 Leave this field empty
@@ -64,19 +64,19 @@ export default function StorySubmissionEN() {
                     Good. Only so we can place it well — this one is something you…
                   </p>
                   <ChipGroup name="door" selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" labelledBy="story-door-q" style={{ display: "flex", flexWrap: "wrap", gap: "9px" }}>
-                    <Chip value="lived" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
+                    <Chip value="lived" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
                       lived
                     </Chip>
-                    <Chip value="noticed" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
+                    <Chip value="noticed" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
                       noticed
                     </Chip>
-                    <Chip value="imagined" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
+                    <Chip value="imagined" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
                       imagined
                     </Chip>
-                    <Chip value="were told" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
+                    <Chip value="were told" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
                       were told
                     </Chip>
-                    <Chip value="can't say" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
+                    <Chip value="can't say" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", padding: "10px 18px", borderRadius: "999px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", background: "transparent" }}>
                       can't say
                     </Chip>
                   </ChipGroup>
@@ -156,34 +156,34 @@ export default function StorySubmissionEN() {
                 {" If your story also lives in another form — a drawing, a photo, a video, a song — tell us which, and attach it below. This is how we'll group and show it in the Constellation."}
               </p>
               <ChipGroup name="format" multi selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" labelledBy="story-format-q" style={{ display: "flex", flexWrap: "wrap", gap: "9px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13.5px" }}>
-                <Chip value="Writing" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Writing" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Writing
                 </Chip>
-                <Chip value="Drawing" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Drawing" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Drawing
                 </Chip>
-                <Chip value="Photo" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Photo" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Photo
                 </Chip>
-                <Chip value="Video" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Video" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Video
                 </Chip>
-                <Chip value="Music" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Music" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Music
                 </Chip>
-                <Chip value="Dance" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Dance" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Dance
                 </Chip>
-                <Chip value="Craft" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Craft" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Craft
                 </Chip>
-                <Chip value="Recipe" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Recipe" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Recipe
                 </Chip>
-                <Chip value="Symbol" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Symbol" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Symbol
                 </Chip>
-                <Chip value="Yours" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Yours" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   …Yours
                 </Chip>
               </ChipGroup>
@@ -212,25 +212,25 @@ export default function StorySubmissionEN() {
                 Place your story anywhere on the Loop — including the stuck places. You don't need to name the stage; we'll help place it.
               </p>
               <ChipGroup name="arc_stage" selBg="#FAB414" selFg="#2E3B40" selBorder="#2E3B40" labelledBy="story-arc-q" style={{ display: "flex", flexWrap: "wrap", gap: "9px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px" }}>
-                <Chip value="IGNITE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="IGNITE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   IGNITE
                 </Chip>
-                <Chip value="ME ≠ WE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="ME ≠ WE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   ME ≠ WE
                 </Chip>
-                <Chip value="ME + WE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="ME + WE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   ME + WE
                 </Chip>
-                <Chip value="(ME WE)" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="(ME WE)" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   (ME WE)
                 </Chip>
-                <Chip value="ME = WE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="ME = WE" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   ME = WE
                 </Chip>
-                <Chip value="GLOW" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="GLOW" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   GLOW
                 </Chip>
-                <Chip value="Let IN place it" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "#2E3B40", background: "transparent" }}>
+                <Chip value="Let IN place it" style={{ border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 16px", cursor: "pointer", transition: "all .15s", color: "var(--color-ink)", background: "transparent" }}>
                   Let IN place it
                 </Chip>
               </ChipGroup>
@@ -254,7 +254,7 @@ export default function StorySubmissionEN() {
             {/* STEP 5 (required) */}
             <div>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#B87A00", marginBottom: "12px" }}>
-                {"Step 5 — Email &amp; consent "}
+                {"Step 5 — Email & consent "}
                 <span style={{ color: "rgba(46,59,64,0.5)" }}>
                   · required
                 </span>
@@ -277,17 +277,15 @@ export default function StorySubmissionEN() {
               </p>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", alignItems: "center" }}>
-              <button type="submit" style={{ border: "none", cursor: "pointer", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
+              <button type="submit" style={{ border: "none", cursor: "pointer", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
                 Send my story
               </button>
-              <span data-in-status="1" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "1.4", color: "rgba(46,59,64,0.55)" }}>
-                You'll get a note back once we've read it. Your piece will appear in the Constellation once published.
-              </span>
+              <span data-in-status="1" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", lineHeight: "1.4", color: "rgba(46,59,64,0.55)" }} />
             </div>
           </SupabaseForm>
         </section>
         {/* CTA (teal · constant) */}
-        <section style={{ background: "#FAB414", color: "#2E3B40", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-amber)", color: "var(--color-ink)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)", margin: "0 0 18px" }}>
               Are you IN?
@@ -296,10 +294,10 @@ export default function StorySubmissionEN() {
               Read what others have shared.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/story" style={{ textDecoration: "none", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/story" style={{ textDecoration: "none", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Back to Story
               </Link>
-              <Link to="/constellation" style={{ textDecoration: "none", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/constellation" style={{ textDecoration: "none", color: "var(--color-ink)", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the Constellation →
               </Link>
             </div>

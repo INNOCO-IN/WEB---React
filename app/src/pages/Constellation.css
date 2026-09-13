@@ -1,5 +1,7 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-constellation-0: 0.98;
   --in-constellation-1: 1.05;
@@ -8,7 +10,7 @@
   --in-constellation-4: 1.06;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-constellation-0: 1.14;
   --in-constellation-1: 1.18;
   --in-constellation-2: 1.1;
@@ -19,10 +21,10 @@
 
 .page-constellation * { box-sizing: border-box; }
 .page-constellation, .page-constellation { margin: 0; padding: 0; }
-.page-constellation { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-constellation ::selection { background: #F0D23C; color: #1A1613; }
-.page-constellation a { color: #1E8A86; }
-.page-constellation a:hover { color: #146560; }
+.page-constellation { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-constellation ::selection { background: var(--color-yellow); color: #1A1613; }
+.page-constellation a { color: var(--color-teal); }
+.page-constellation a:hover { color: var(--color-teal-dark); }
   @keyframes ct-twinkle { 0%,100% { opacity: 1; transform: scale(1); }
 50% { opacity: 0.62; transform: scale(0.82); } }
 .page-constellation .ct-dot { transition: left 1s cubic-bezier(0.22,1,0.36,1), top 1s cubic-bezier(0.22,1,0.36,1); }

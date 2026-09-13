@@ -1,9 +1,9 @@
 
 .page-project-light-shadow-shift-womens-retreat-en * { box-sizing: border-box; }
 .page-project-light-shadow-shift-womens-retreat-en, .page-project-light-shadow-shift-womens-retreat-en { margin: 0; padding: 0; }
-.page-project-light-shadow-shift-womens-retreat-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-project-light-shadow-shift-womens-retreat-en ::selection { background: #1E5A64; color: #FAF4E2; }
-.page-project-light-shadow-shift-womens-retreat-en a { color: #146560; }
+.page-project-light-shadow-shift-womens-retreat-en { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-project-light-shadow-shift-womens-retreat-en ::selection { background: var(--color-slate); color: var(--color-paper); }
+.page-project-light-shadow-shift-womens-retreat-en a { color: var(--color-teal-dark); }
 .page-project-light-shadow-shift-womens-retreat-en a:hover { color: #0f4a45; }
 .page-project-light-shadow-shift-womens-retreat-en .col-scroll::-webkit-scrollbar { width: 6px; }
 .page-project-light-shadow-shift-womens-retreat-en .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }

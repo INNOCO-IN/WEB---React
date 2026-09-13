@@ -9,7 +9,7 @@ export default function ActionResearchEN() {
     <SiteLayout page="Action-Research.EN.dc.html" className="page-action-research-en" footer={{ loop: "0.148", cta: "#1E648C" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (key color · deep blue) */}
-        <section style={{ background: "#1E648C", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-deepblue)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "30px 28px 56px" }}>
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "26px", letterSpacing: "0.14em", lineHeight: "1.1", textTransform: "uppercase", color: "rgba(250,244,226,0.82)", marginBottom: "24px" }}>
               Action Research
@@ -21,19 +21,19 @@ export default function ActionResearchEN() {
               MEWE is not a fixed doctrine. It is a working hypothesis we refine through every workshop, project, and neighbor story — evidence about what actually shifts between people, gathered as we practice.
             </p>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginTop: "26px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", background: "rgba(250,244,226,0.16)", border: "1px solid rgba(250,244,226,0.4)", borderRadius: "999px", padding: "9px 16px" }}>
-              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#FAB414" }} />
+              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--color-amber)" }} />
               In progress
             </div>
           </div>
         </section>
         {/* HOW IT WORKS */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
-          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "26px", letterSpacing: "0.14em", lineHeight: "1.1", textTransform: "uppercase", color: "#1E648C", marginBottom: "24px" }}>
+          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "26px", letterSpacing: "0.14em", lineHeight: "1.1", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "24px" }}>
             How the research runs
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "22px" }}>
             <div style={{ borderTop: "1.5px solid rgba(46,59,64,0.2)", paddingTop: "16px" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E648C", marginBottom: "12px" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "12px" }}>
                 In practice
               </div>
               <p style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", lineHeight: "1.5", margin: "0", color: "rgba(46,59,64,0.82)" }}>
@@ -49,7 +49,7 @@ export default function ActionResearchEN() {
               </p>
             </div>
             <div style={{ borderTop: "1.5px solid rgba(46,59,64,0.2)", paddingTop: "16px" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E648C", marginBottom: "12px" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "12px" }}>
                 Shared back
               </div>
               <p style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", lineHeight: "1.5", margin: "0", color: "rgba(46,59,64,0.82)" }}>
@@ -60,12 +60,12 @@ export default function ActionResearchEN() {
         </section>
         {/* PUBLICATIONS */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
-          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "26px", letterSpacing: "0.14em", lineHeight: "1.1", textTransform: "uppercase", color: "#1E648C", marginBottom: "24px" }}>
-            Shared &amp; published
+          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "26px", letterSpacing: "0.14em", lineHeight: "1.1", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "24px" }}>
+            Shared & published
           </div>
           <div style={{ display: "flex", flexDirection: "column", maxWidth: "1000px" }}>
             <div style={{ display: "grid", gridTemplateColumns: "130px 1fr", gap: "24px", padding: "22px 0", borderTop: "1px solid rgba(46,59,64,0.16)" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "#1E648C" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "var(--color-deepblue)" }}>
                 2024
               </div>
               <div style={{ fontFamily: "'Newsreader', serif", fontSize: "20px", lineHeight: "1.4" }}>
@@ -73,7 +73,7 @@ export default function ActionResearchEN() {
               </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "130px 1fr", gap: "24px", padding: "22px 0", borderTop: "1px solid rgba(46,59,64,0.16)" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "#1E648C" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "var(--color-deepblue)" }}>
                 2022
               </div>
               <div style={{ fontFamily: "'Newsreader', serif", fontSize: "20px", lineHeight: "1.4" }}>
@@ -81,7 +81,7 @@ export default function ActionResearchEN() {
               </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "130px 1fr", gap: "24px", padding: "22px 0", borderTop: "1px solid rgba(46,59,64,0.16)" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "#1E648C" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "var(--color-deepblue)" }}>
                 2021
               </div>
               <div style={{ fontFamily: "'Newsreader', serif", fontSize: "20px", lineHeight: "1.4" }}>
@@ -89,7 +89,7 @@ export default function ActionResearchEN() {
               </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "130px 1fr", gap: "24px", padding: "22px 0", borderTop: "1px solid rgba(46,59,64,0.16)" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "#1E648C" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "var(--color-deepblue)" }}>
                 2020
               </div>
               <div style={{ fontFamily: "'Newsreader', serif", fontSize: "20px", lineHeight: "1.4" }}>
@@ -97,7 +97,7 @@ export default function ActionResearchEN() {
               </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "130px 1fr", gap: "24px", padding: "22px 0", borderTop: "1px solid rgba(46,59,64,0.16)" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "#1E648C" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "var(--color-deepblue)" }}>
                 2018
               </div>
               <div style={{ fontFamily: "'Newsreader', serif", fontSize: "20px", lineHeight: "1.4" }}>
@@ -105,7 +105,7 @@ export default function ActionResearchEN() {
               </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "130px 1fr", gap: "24px", padding: "22px 0", borderTop: "1px solid rgba(46,59,64,0.16)", borderBottom: "1px solid rgba(46,59,64,0.16)" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "#1E648C" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "15px", color: "var(--color-deepblue)" }}>
                 2015
               </div>
               <div style={{ fontFamily: "'Newsreader', serif", fontSize: "20px", lineHeight: "1.4" }}>
@@ -118,7 +118,7 @@ export default function ActionResearchEN() {
           </p>
         </section>
         {/* CTA (teal · constant) */}
-        <section style={{ background: "#1E648C", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-deepblue)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -127,10 +127,10 @@ export default function ActionResearchEN() {
               Bring the framework into your community.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/mewe" style={{ textDecoration: "none", color: "#1E8A86", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/mewe" style={{ textDecoration: "none", color: "var(--color-teal)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Back to MEWE
               </Link>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Get involved
               </Link>
             </div>

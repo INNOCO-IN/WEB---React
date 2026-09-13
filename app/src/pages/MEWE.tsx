@@ -21,18 +21,18 @@ export default function MEWE() {
     <SiteLayout page="MEWE.EN.dc.html" className="page-mewe" footer={{ loop: "0.126", cta: "#1E648C" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (locked) */}
-        <section data-screen-label="Hero" style={{ background: "#1E648C", color: "#FAF4E2" }}>
+        <section data-screen-label="Hero" style={{ background: "var(--color-deepblue)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 {t("000_span")}
               </span>
             </div>
             <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(40px, 5.6vw, 80px)", lineHeight: "var(--in-mewe-0)", letterSpacing: "-0.02em", margin: "0 0 22px", maxWidth: "18ch", textWrap: "balance" }}>
               {t("001_h1")}
             </h1>
-            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "clamp(30px, 3.6vw, 50px)", lineHeight: "var(--in-mewe-1)", margin: "0", letterSpacing: "-0.01em", color: "#F0D23C" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "clamp(30px, 3.6vw, 50px)", lineHeight: "var(--in-mewe-1)", margin: "0", letterSpacing: "-0.01em", color: "var(--color-yellow)" }}>
               {t("002_p")}
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function MEWE() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1C6E92", marginBottom: "20px" }}>
               {t("008_div")}
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-3)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "#2E3B40" }}>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-3)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("009_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.55", margin: "0 0 40px", maxWidth: "720px", color: "rgba(46,59,64,0.82)" }}>
@@ -110,7 +110,7 @@ export default function MEWE() {
                 </p>
               </div>
             </div>
-            <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 2.4vw, 28px)", lineHeight: "1.32", margin: "40px 0 0", maxWidth: "760px", color: "#1E648C", textWrap: "pretty" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 2.4vw, 28px)", lineHeight: "1.32", margin: "40px 0 0", maxWidth: "760px", color: "var(--color-deepblue)", textWrap: "pretty" }}>
               {t("019_p")}
               <span style={{ color: "#1C6E92" }}>
                 {t("020_span")}
@@ -135,7 +135,7 @@ export default function MEWE() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1C6E92", marginBottom: "20px" }}>
               {t("023_div")}
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-5)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "#2E3B40" }}>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-5)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("024_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.55", maxWidth: "720px", margin: "0 0 34px", color: "rgba(46,59,64,0.82)" }}>
@@ -219,17 +219,17 @@ export default function MEWE() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1C6E92", marginBottom: "20px" }}>
               {t("043_div")}
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-9)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "#2E3B40" }}>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-9)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("044_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.55", margin: "0 0 40px", maxWidth: "720px", color: "rgba(46,59,64,0.82)" }}>
               {t("045_p")}
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-              <article style={{ display: "flex", flexDirection: "column", background: "#FAF4E2", border: "1px solid rgba(26,22,19,0.14)", color: "#2E3B40" }}>
-                <div style={{ position: "relative", width: "100%", height: "132px", overflow: "hidden", background: "#1E8A86" }}>
+              <article style={{ display: "flex", flexDirection: "column", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)" }}>
+                <div style={{ position: "relative", width: "100%", height: "132px", overflow: "hidden", background: "var(--color-teal)" }}>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "240px" }}>
-                    <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
                   </div>
                 </div>
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
@@ -239,7 +239,7 @@ export default function MEWE() {
                       {t("046_span")}
                     </span>
                   </div>
-                  <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                  <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                     {t("047_div")}
                   </div>
                   <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-mewe-10)", margin: "0 0 10px" }}>
@@ -249,16 +249,16 @@ export default function MEWE() {
                     {t("049_p")}
                   </p>
                   <div style={{ marginTop: "auto", display: "flex", justifyContent: "flex-end", paddingTop: "22px" }}>
-                    <Link to={localize("/action-research", locale)} aria-label={t("050_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <Link to={localize("/action-research", locale)} aria-label={t("050_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </Link>
                   </div>
                 </div>
               </article>
-              <article style={{ display: "flex", flexDirection: "column", background: "#FAF4E2", border: "1px solid rgba(26,22,19,0.14)", color: "#2E3B40" }}>
-                <div style={{ position: "relative", width: "100%", height: "132px", overflow: "hidden", background: "#1E648C" }}>
+              <article style={{ display: "flex", flexDirection: "column", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)" }}>
+                <div style={{ position: "relative", width: "100%", height: "132px", overflow: "hidden", background: "var(--color-deepblue)" }}>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "240px" }}>
-                    <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
                   </div>
                 </div>
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
@@ -268,7 +268,7 @@ export default function MEWE() {
                       {t("051_span")}
                     </span>
                   </div>
-                  <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                  <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                     {t("052_div")}
                   </div>
                   <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-mewe-11)", margin: "0 0 10px" }}>
@@ -278,17 +278,17 @@ export default function MEWE() {
                     {t("054_p")}
                   </p>
                   <div style={{ marginTop: "auto", display: "flex", justifyContent: "flex-end", paddingTop: "22px" }}>
-                    <Link to={localize("/action-research", locale)} aria-label={t("055_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <Link to={localize("/action-research", locale)} aria-label={t("055_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </Link>
                   </div>
                 </div>
               </article>
-              <article style={{ display: "flex", flexDirection: "column", background: "#FAF4E2", border: "1px solid rgba(26,22,19,0.14)", color: "#2E3B40" }}>
-                <div style={{ position: "relative", width: "100%", height: "132px", overflow: "hidden", background: "#D21E28" }}>
+              <article style={{ display: "flex", flexDirection: "column", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)" }}>
+                <div style={{ position: "relative", width: "100%", height: "132px", overflow: "hidden", background: "var(--color-red)" }}>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "240px" }}>
-                    <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
-                    <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-amber)", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-orange)", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
                   </div>
                 </div>
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
@@ -298,7 +298,7 @@ export default function MEWE() {
                       {t("056_span")}
                     </span>
                   </div>
-                  <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                  <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                     {t("057_div")}
                   </div>
                   <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-mewe-12)", margin: "0 0 10px" }}>
@@ -308,7 +308,7 @@ export default function MEWE() {
                     {t("059_p")}
                   </p>
                   <div style={{ marginTop: "auto", display: "flex", justifyContent: "flex-end", paddingTop: "22px" }}>
-                    <Link to={localize("/action-research", locale)} aria-label={t("060_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <Link to={localize("/action-research", locale)} aria-label={t("060_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </Link>
                   </div>
@@ -329,7 +329,7 @@ export default function MEWE() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1C6E92", marginBottom: "20px" }}>
               {t("063_div")}
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-13)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "#2E3B40" }}>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-13)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("064_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.55", maxWidth: "720px", margin: "0", color: "rgba(46,59,64,0.82)" }}>
@@ -347,7 +347,7 @@ export default function MEWE() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1C6E92", marginBottom: "20px" }}>
               {t("068_div")}
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-14)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "#2E3B40" }}>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-mewe-14)", letterSpacing: "-0.01em", margin: "0 0 22px", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("069_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.55", margin: "0 0 18px", maxWidth: "720px", color: "rgba(46,59,64,0.82)" }}>
@@ -357,7 +357,7 @@ export default function MEWE() {
               {t("071_p")}
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5px", background: "rgba(46,59,64,0.16)", border: "1.5px solid rgba(46,59,64,0.16)", maxWidth: "1000px" }}>
-              <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
                 <div style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "40px", lineHeight: "1", color: "#1C6E92", marginBottom: "8px" }}>
                   2015
                 </div>
@@ -365,7 +365,7 @@ export default function MEWE() {
                   {t("072_div")}
                 </div>
               </div>
-              <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
                 <div style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "40px", lineHeight: "1", color: "#1C6E92", marginBottom: "8px" }}>
                   5
                 </div>
@@ -373,7 +373,7 @@ export default function MEWE() {
                   {t("073_div")}
                 </div>
               </div>
-              <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
                 <div style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "40px", lineHeight: "1", color: "#1C6E92", marginBottom: "8px" }}>
                   650+
                 </div>
@@ -381,7 +381,7 @@ export default function MEWE() {
                   {t("074_div")}
                 </div>
               </div>
-              <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
                 <div style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "40px", lineHeight: "1", color: "#1C6E92", marginBottom: "8px" }}>
                   {t("075_div")}
                 </div>
@@ -396,7 +396,7 @@ export default function MEWE() {
           </div>
         </section>
         {/* CTA */}
-        <section data-screen-label="CTA" style={{ background: "#1E648C", color: "#FAF4E2", marginTop: "80px" }}>
+        <section data-screen-label="CTA" style={{ background: "var(--color-deepblue)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               {t("078_p")}
@@ -405,10 +405,10 @@ export default function MEWE() {
               {t("079_h2")}
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/workshop/mobius-making", locale)} style={{ textDecoration: "none", color: "#1E8A86", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/workshop/mobius-making", locale)} style={{ textDecoration: "none", color: "var(--color-teal)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("080_a")}
               </Link>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("081_a")}
               </Link>
             </div>

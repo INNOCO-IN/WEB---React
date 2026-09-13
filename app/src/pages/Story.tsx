@@ -20,7 +20,7 @@ export default function Story() {
     <SiteLayout page="Story.EN.dc.html" className="page-story" footer={{ loop: "0.421", cta: "#FAB414", stroke: "#FAF4E2" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
-        <section style={{ background: "#FAB414", color: "#1A1A1A" }}>
+        <section style={{ background: "var(--color-amber)", color: "#1A1A1A" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
               <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#1A1A1A", flex: "0 0 auto" }} />
@@ -45,7 +45,7 @@ export default function Story() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#B87A00", marginBottom: "20px" }}>
               {t("004_div")}
             </div>
-            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-story-1)", margin: "0 0 24px", letterSpacing: "-0.01em", textWrap: "balance", color: "#2E3B40" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-story-1)", margin: "0 0 24px", letterSpacing: "-0.01em", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("005_p")}
               <br />
               <br />
@@ -65,7 +65,7 @@ export default function Story() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#B87A00", marginBottom: "20px" }}>
               {t("009_div")}
             </div>
-            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-story-2)", letterSpacing: "-0.01em", margin: "0 0 18px", textWrap: "balance", color: "#2E3B40" }}>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-story-2)", letterSpacing: "-0.01em", margin: "0 0 18px", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("010_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.55", margin: "0", maxWidth: "640px", color: "rgba(46,59,64,0.82)" }}>
@@ -79,18 +79,18 @@ export default function Story() {
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#B87A00", marginBottom: "20px" }}>
               {t("012_div")}
             </div>
-            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-story-3)", margin: "0 0 12px", letterSpacing: "-0.01em", textWrap: "balance", color: "#2E3B40" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(30px, 3.6vw, 46px)", lineHeight: "var(--in-story-3)", margin: "0 0 12px", letterSpacing: "-0.01em", textWrap: "balance", color: "var(--color-ink)" }}>
               {t("013_p")}
             </p>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.5", margin: "0 0 28px", maxWidth: "640px", color: "rgba(46,59,64,0.82)" }}>
               {t("014_p")}
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "18px", alignItems: "stretch" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
-                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "#FAB414" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
+                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "var(--color-amber)" }}>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                    <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
-                    <div style={{ position: "absolute", inset: "0", background: "#D21E28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)", mixBlendMode: "multiply" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-orange)", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-red)", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)", mixBlendMode: "multiply" }} />
                   </div>
                 </div>
                 <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", flex: "1" }}>
@@ -102,10 +102,10 @@ export default function Story() {
                   </p>
                 </div>
               </div>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
-                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "#1E8A86" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
+                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "var(--color-teal)" }}>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                    <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
                   </div>
                 </div>
                 <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", flex: "1" }}>
@@ -117,10 +117,10 @@ export default function Story() {
                   </p>
                 </div>
               </div>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
-                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "#1E648C" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
+                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "var(--color-deepblue)" }}>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                    <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)" }} />
                   </div>
                 </div>
                 <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", flex: "1" }}>
@@ -132,10 +132,10 @@ export default function Story() {
                   </p>
                 </div>
               </div>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
-                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "#E6328C" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
+                <div style={{ position: "relative", height: "24px", overflow: "hidden", background: "var(--color-magenta)" }}>
                   <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                    <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)" }} />
+                    <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)" }} />
                   </div>
                 </div>
                 <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", flex: "1" }}>
@@ -148,7 +148,7 @@ export default function Story() {
                 </div>
               </div>
             </div>
-            <div style={{ background: "#2E3B40", color: "#FAF4E2", padding: "32px 30px", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "20px 32px", marginTop: "18px" }}>
+            <div style={{ background: "var(--color-ink)", color: "var(--color-paper)", padding: "32px 30px", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "20px 32px", marginTop: "18px" }}>
               <div style={{ flex: "1 1 380px" }}>
                 <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "14px", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "10px" }}>
                   {t("023_div")}
@@ -157,7 +157,7 @@ export default function Story() {
                   {t("024_p")}
                 </p>
               </div>
-              <Link to={localize("/story/submit", locale)} style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "14px", color: "#2E3B40", background: "#FAF4E2", borderRadius: "999px", padding: "13px 26px" }} className="in-plain">
+              <Link to={localize("/story/submit", locale)} style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "14px", color: "var(--color-ink)", background: "var(--color-paper)", borderRadius: "999px", padding: "13px 26px" }} className="in-plain">
                 {t("025_a")}
               </Link>
             </div>
@@ -169,25 +169,25 @@ export default function Story() {
             {t("026_div")}
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            <Link to={localize("/story/all", locale)} style={{ textDecoration: "none", background: "#2E3B40", color: "#FAF4E2", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
+            <Link to={localize("/story/all", locale)} style={{ textDecoration: "none", background: "var(--color-ink)", color: "var(--color-paper)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
               {t("027_a")}
             </Link>
-            <a href="Story-Index.EN.dc.html?topic=I%20lived%20it" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
+            <a href="Story-Index.EN.dc.html?topic=I%20lived%20it" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
               {t("028_a")}
             </a>
-            <a href="Story-Index.EN.dc.html?topic=I%20noticed%20it" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
+            <a href="Story-Index.EN.dc.html?topic=I%20noticed%20it" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
               {t("029_a")}
             </a>
-            <a href="Story-Index.EN.dc.html?topic=Signature" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
+            <a href="Story-Index.EN.dc.html?topic=Signature" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
               {t("030_a")}
             </a>
-            <a href="Story-Index.EN.dc.html?topic=Family" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
+            <a href="Story-Index.EN.dc.html?topic=Family" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
               {t("031_a")}
             </a>
-            <a href="Story-Index.EN.dc.html?topic=Blog%20reflection" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
+            <a href="Story-Index.EN.dc.html?topic=Blog%20reflection" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
               {t("032_a")}
             </a>
-            <a href="Story-Index.EN.dc.html?format=Writing" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
+            <a href="Story-Index.EN.dc.html?format=Writing" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "9px 18px" }} className="in-plain">
               {t("033_a")}
             </a>
           </div>
@@ -201,8 +201,8 @@ export default function Story() {
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "20px 28px 20px" }}>
           <div style={{ columnWidth: "360px", columnGap: "22px" }}>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ width: "100%", height: "14px", background: "#FAB414" }} />
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ width: "100%", height: "14px", background: "var(--color-amber)" }} />
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
                   <div style={{ position: "absolute", left: "13px", top: "21px", display: "flex", flexDirection: "column", alignItems: "center", gap: "9px" }}>
                     <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#B87A00" }} />
@@ -211,7 +211,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("036_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontStyle: "var(--in-story-4)", fontSize: "30px", lineHeight: "var(--in-story-5)", margin: "0 0 10px" }}>
@@ -222,13 +222,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("039_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("039_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=this-is-us" aria-label={t("040_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=this-is-us" aria-label={t("040_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -236,8 +236,8 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ width: "100%", height: "14px", background: "#FAB414" }} />
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ width: "100%", height: "14px", background: "var(--color-amber)" }} />
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
                   <div style={{ position: "absolute", left: "13px", top: "21px", display: "flex", flexDirection: "column", alignItems: "center", gap: "9px" }}>
                     <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#B87A00" }} />
@@ -246,7 +246,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("042_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontStyle: "var(--in-story-6)", fontSize: "30px", lineHeight: "var(--in-story-7)", margin: "0 0 10px" }}>
@@ -257,13 +257,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("045_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("045_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <Link to={localize("/story/all", locale)} aria-label={t("046_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <Link to={localize("/story/all", locale)} aria-label={t("046_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </Link>
                   </div>
@@ -271,7 +271,7 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
                 <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden" }}>
                   <img src="/story-img/brothers.jpg" alt={t("047_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
@@ -283,7 +283,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("049_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-8)", margin: "0 0 10px" }}>
@@ -294,13 +294,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("052_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("052_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=pathfinder-journey" aria-label={t("053_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=pathfinder-journey" aria-label={t("053_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -308,7 +308,7 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
                 <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden" }}>
                   <img src="/story-img/garden-lead.jpg" alt={t("054_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
                 </div>
@@ -320,7 +320,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("056_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-9)", margin: "0 0 10px" }}>
@@ -331,13 +331,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("059_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("059_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=kulna-garden" aria-label={t("060_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=kulna-garden" aria-label={t("060_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -345,8 +345,8 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ width: "100%", height: "14px", background: "#FAB414" }} />
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ width: "100%", height: "14px", background: "var(--color-amber)" }} />
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
                   <div style={{ position: "absolute", left: "13px", top: "21px", display: "flex", flexDirection: "column", alignItems: "center", gap: "9px" }}>
                     <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#B87A00" }} />
@@ -355,7 +355,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("062_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-10)", margin: "0 0 10px" }}>
@@ -366,13 +366,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("065_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("065_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=mewe-reflection" aria-label={t("066_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=mewe-reflection" aria-label={t("066_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -380,8 +380,8 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ width: "100%", height: "14px", background: "#FAB414" }} />
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ width: "100%", height: "14px", background: "var(--color-amber)" }} />
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
                   <div style={{ position: "absolute", left: "13px", top: "21px", display: "flex", flexDirection: "column", alignItems: "center", gap: "9px" }}>
                     <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#B87A00" }} />
@@ -390,7 +390,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("068_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontStyle: "var(--in-story-11)", fontSize: "30px", lineHeight: "var(--in-story-12)", margin: "0 0 10px" }}>
@@ -401,13 +401,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("071_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("071_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=importance-of-connection" aria-label={t("072_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=importance-of-connection" aria-label={t("072_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -415,7 +415,7 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
                 <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden" }}>
                   <img src="/story-img/driver.jpg" alt={t("073_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
@@ -427,7 +427,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("075_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-13)", margin: "0 0 10px" }}>
@@ -438,13 +438,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("078_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("078_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=shy-to-leading" aria-label={t("079_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=shy-to-leading" aria-label={t("079_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -452,8 +452,8 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/story-img/prototype.jpg" alt={t("080_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
@@ -464,7 +464,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("082_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-14)", margin: "0 0 10px" }}>
@@ -475,13 +475,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("085_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("085_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=beehive" aria-label={t("086_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=beehive" aria-label={t("086_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -489,8 +489,8 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/story-img/village.jpg" alt={t("087_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
@@ -501,7 +501,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("089_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-15)", margin: "0 0 10px" }}>
@@ -512,13 +512,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("092_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("092_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=homestay" aria-label={t("093_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=homestay" aria-label={t("093_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -526,8 +526,8 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/story-img/encouragement.jpg" alt={t("094_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
@@ -538,7 +538,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("096_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-16)", margin: "0 0 10px" }}>
@@ -549,13 +549,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("099_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("099_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=encouragement" aria-label={t("100_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=encouragement" aria-label={t("100_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -563,7 +563,7 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
                 <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden" }}>
                   <img src="/story-img/birthday.jpg" alt={t("101_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
@@ -575,7 +575,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("103_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-17)", margin: "0 0 10px" }}>
@@ -586,13 +586,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("106_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("106_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=birthday" aria-label={t("107_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=birthday" aria-label={t("107_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -600,8 +600,8 @@ export default function Story() {
               </div>
             </article>
             <article className="scard" style={{ display: "inline-block", width: "100%", verticalAlign: "top", breakInside: "avoid", marginBottom: "22px" }}>
-              <div style={{ background: "#F3EAD0", color: "#2E3B40" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", overflow: "hidden", background: "#F3EAD0" }}>
+              <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/story-img/shopkeeper-2.jpg" alt={t("108_alt")} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
                 </div>
                 <div style={{ position: "relative", display: "flex", flexDirection: "column", minHeight: "200px", padding: "22px 24px 20px 50px" }}>
@@ -612,7 +612,7 @@ export default function Story() {
                     </span>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 0 8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 0 8px" }}>
                       {t("110_div")}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-story-18)", margin: "0 0 10px" }}>
@@ -623,13 +623,13 @@ export default function Story() {
                     </p>
                   </div>
                   <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "14px", paddingTop: "22px" }}>
-                    <span title={t("113_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid #2E3B40", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span title={t("113_title")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", border: "1.5px solid var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2E3B40" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 20l3-1 11-11a2 2 0 0 0-3-3L4 16z" />
                         <path d="M14 5l3 3" />
                       </svg>
                     </span>
-                    <a href="Story-Index.EN.dc.html?story=shopkeeper" aria-label={t("114_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "#FAF4E2", textDecoration: "none" }} className="in-plain">
+                    <a href="Story-Index.EN.dc.html?story=shopkeeper" aria-label={t("114_aria-label")} style={{ flex: "0 0 auto", width: "44px", height: "44px", borderRadius: "50%", background: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-paper)", textDecoration: "none" }} className="in-plain">
                       →
                     </a>
                   </div>
@@ -639,7 +639,7 @@ export default function Story() {
           </div>
         </section>
         {/* ===================== CTA (teal · constant) ===================== */}
-        <section style={{ background: "#FAB414", color: "#2E3B40", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-amber)", color: "var(--color-ink)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)", margin: "0 0 18px" }}>
               {t("115_p")}
@@ -651,13 +651,13 @@ export default function Story() {
               {t("117_p")}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("118_a")}
               </Link>
-              <Link to={localize("/constellation", locale)} style={{ textDecoration: "none", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/constellation", locale)} style={{ textDecoration: "none", color: "var(--color-ink)", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("119_a")}
               </Link>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-ink)", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("120_a")}
               </Link>
             </div>

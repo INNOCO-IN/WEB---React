@@ -23,7 +23,7 @@ export default function WorkshopPathfinder() {
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         {/* ===================== HERO ===================== */}
-        <section style={{ background: "#E5188C", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "22px 28px 0" }}>
             <Link to={localize("/workshop", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(250,244,226,0.78)", textDecoration: "none" }} className="in-plain">
               {t("000_a")}
@@ -55,7 +55,7 @@ export default function WorkshopPathfinder() {
                 </span>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-                <a href="#register" style={{ textDecoration: "none", color: "#E5188C", background: "#FAF4E2", border: "1.5px solid #FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+                <a href="#register" style={{ textDecoration: "none", color: "var(--color-magenta-hot)", background: "var(--color-paper)", border: "1.5px solid var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                   {t("008_a")}
                 </a>
               </div>
@@ -66,7 +66,7 @@ export default function WorkshopPathfinder() {
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "64px 28px 24px" }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "52px", alignItems: "flex-start" }}>
             <div style={{ flex: "1 1 460px", minWidth: "300px" }}>
-              <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C", marginBottom: "18px" }}>
+              <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "18px" }}>
                 {t("009_div")}
               </div>
               <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(21px, 2.2vw, 26px)", lineHeight: "1.5", margin: "0 0 20px", letterSpacing: "-0.005em" }}>
@@ -90,7 +90,7 @@ export default function WorkshopPathfinder() {
         {/* ===================== DEFINITION ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px 16px" }}>
           <div style={{ borderTop: "1.5px solid rgba(46,59,64,0.2)", borderBottom: "1.5px solid rgba(46,59,64,0.2)", padding: "34px 0", maxWidth: "900px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C", marginBottom: "14px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "14px" }}>
               {t("014_div")}
               <span style={{ textTransform: "none", letterSpacing: "0.04em" }}>
                 {t("015_span")}
@@ -105,10 +105,10 @@ export default function WorkshopPathfinder() {
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px 8px" }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "52px", alignItems: "flex-start", maxWidth: "1100px" }}>
             <div style={{ flex: "0 1 300px" }}>
-              <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C", marginBottom: "14px" }}>
+              <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "14px" }}>
                 {t("017_div")}
               </div>
-              <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: "1.25", margin: "0", color: "#2E3B40" }}>
+              <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: "1.25", margin: "0", color: "var(--color-ink)" }}>
                 {t("018_p")}
               </p>
             </div>
@@ -136,10 +136,10 @@ export default function WorkshopPathfinder() {
           </p>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#1E8A86", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-teal)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px" }}>
                 00
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
                 {t("025_div")}
               </div>
               <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "22px", lineHeight: "1.34" }}>
@@ -147,10 +147,10 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#1E8A86", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-teal)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
                 1
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
                 {t("027_div")}
               </div>
               <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "22px", lineHeight: "1.34" }}>
@@ -158,10 +158,10 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#1E8A86", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-teal)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
                 2
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "#1E8A86" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "var(--color-teal)" }}>
                 {t("029_div")}
                 <span style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "10.5px", letterSpacing: "0.16em", color: "rgba(46,59,64,0.55)", marginTop: "3px" }}>
                   {t("030_span")}
@@ -172,10 +172,10 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#1E8A86", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-teal)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
                 3
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "#1E8A86" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "var(--color-teal)" }}>
                 {t("032_div")}
                 <span style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "10.5px", letterSpacing: "0.16em", color: "rgba(46,59,64,0.55)", marginTop: "3px" }}>
                   {t("033_span")}
@@ -186,12 +186,12 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#2E3B40", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-ink)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
                 4
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "#2E3B40" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "var(--color-ink)" }}>
                 {t("035_div")}
-                <span style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "10.5px", letterSpacing: "0.16em", color: "#E5188C", marginTop: "3px" }}>
+                <span style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "10.5px", letterSpacing: "0.16em", color: "var(--color-magenta-hot)", marginTop: "3px" }}>
                   {t("036_span")}
                 </span>
               </div>
@@ -200,10 +200,10 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#1E8A86", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-teal)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
                 5
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "#1E8A86" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "17px", letterSpacing: "0.04em", color: "var(--color-teal)" }}>
                 {t("038_div")}
                 <span style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "10.5px", letterSpacing: "0.16em", color: "rgba(46,59,64,0.55)", marginTop: "3px" }}>
                   {t("039_span")}
@@ -214,10 +214,10 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#E5188C", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-magenta-hot)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
                 6
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
                 {t("041_div")}
               </div>
               <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "22px", lineHeight: "1.34" }}>
@@ -225,10 +225,10 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#FAB414", color: "#2E3B40", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-amber)", color: "var(--color-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "19px" }}>
                 7
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#C8791A" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-tan-warm)" }}>
                 {t("043_div")}
               </div>
               <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "22px", lineHeight: "1.34" }}>
@@ -236,10 +236,10 @@ export default function WorkshopPathfinder() {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.18)", borderBottom: "1.5px solid rgba(46,59,64,0.18)", padding: "24px 0" }}>
-              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "#1E8A86", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px" }}>
+              <span style={{ flex: "0 0 auto", width: "52px", height: "52px", borderRadius: "50%", background: "var(--color-teal)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px" }}>
                 →
               </span>
-              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C" }}>
+              <div style={{ flex: "0 0 auto", width: "190px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
                 {t("045_div")}
               </div>
               <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "22px", lineHeight: "1.34" }}>
@@ -253,7 +253,7 @@ export default function WorkshopPathfinder() {
           </div>
           <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.55", maxWidth: "720px", margin: "30px 0 0", color: "rgba(46,59,64,0.82)" }}>
             {t("049_p")}
-            <span style={{ color: "#E5188C" }}>
+            <span style={{ color: "var(--color-magenta-hot)" }}>
               {t("050_span")}
             </span>
             {t("051_p")}
@@ -261,13 +261,13 @@ export default function WorkshopPathfinder() {
         </section>
         {/* ===================== THIS IS FOR YOU WHEN ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px" }}>
-          <div style={{ background: "#F7C7D7", padding: "44px 44px 40px" }}>
+          <div style={{ background: "var(--color-blush)", padding: "44px 44px 40px" }}>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(26px, 3vw, 38px)", lineHeight: "var(--in-workshop-pathfinder-4)", margin: "0 0 28px", textWrap: "balance" }}>
               {t("052_h2")}
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "18px 40px" }}>
               <div style={{ display: "flex", gap: "14px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "14px" }}>
-                <span style={{ flex: "0 0 auto", color: "#2E3B40", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
+                <span style={{ flex: "0 0 auto", color: "var(--color-ink)", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
                   →
                 </span>
                 <span style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.35" }}>
@@ -275,7 +275,7 @@ export default function WorkshopPathfinder() {
                 </span>
               </div>
               <div style={{ display: "flex", gap: "14px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "14px" }}>
-                <span style={{ flex: "0 0 auto", color: "#2E3B40", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
+                <span style={{ flex: "0 0 auto", color: "var(--color-ink)", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
                   →
                 </span>
                 <span style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.35" }}>
@@ -283,7 +283,7 @@ export default function WorkshopPathfinder() {
                 </span>
               </div>
               <div style={{ display: "flex", gap: "14px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "14px" }}>
-                <span style={{ flex: "0 0 auto", color: "#2E3B40", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
+                <span style={{ flex: "0 0 auto", color: "var(--color-ink)", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
                   →
                 </span>
                 <span style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.35" }}>
@@ -291,7 +291,7 @@ export default function WorkshopPathfinder() {
                 </span>
               </div>
               <div style={{ display: "flex", gap: "14px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "14px" }}>
-                <span style={{ flex: "0 0 auto", color: "#2E3B40", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
+                <span style={{ flex: "0 0 auto", color: "var(--color-ink)", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
                   →
                 </span>
                 <span style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.35" }}>
@@ -299,7 +299,7 @@ export default function WorkshopPathfinder() {
                 </span>
               </div>
               <div style={{ display: "flex", gap: "14px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "14px" }}>
-                <span style={{ flex: "0 0 auto", color: "#2E3B40", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
+                <span style={{ flex: "0 0 auto", color: "var(--color-ink)", fontWeight: "800", fontFamily: "var(--font-sans)" }}>
                   →
                 </span>
                 <span style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.35" }}>
@@ -310,14 +310,14 @@ export default function WorkshopPathfinder() {
           </div>
         </section>
         {/* ===================== A PATHFINDER STORY ===================== */}
-        <section style={{ background: "#2E3B40", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-ink)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "66px 28px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#F7C7D7", marginBottom: "22px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-blush)", marginBottom: "22px" }}>
               {t("058_div")}
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "52px", alignItems: "flex-start" }}>
               <div style={{ flex: "1 1 520px", minWidth: "300px" }}>
-                <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: "1.35", margin: "0 0 22px", maxWidth: "26ch", color: "#F7C7D7" }}>
+                <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: "1.35", margin: "0 0 22px", maxWidth: "26ch", color: "var(--color-blush)" }}>
                   {t("059_p")}
                 </p>
               </div>
@@ -341,7 +341,7 @@ export default function WorkshopPathfinder() {
             {t("063_h2")}
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5px", background: "rgba(46,59,64,0.16)", border: "1.5px solid rgba(46,59,64,0.16)" }}>
-            <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+            <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
               <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.55)", marginBottom: "8px" }}>
                 {t("064_div")}
               </div>
@@ -349,7 +349,7 @@ export default function WorkshopPathfinder() {
                 {t("065_div")}
               </div>
             </div>
-            <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+            <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
               <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.55)", marginBottom: "8px" }}>
                 {t("066_div")}
               </div>
@@ -357,7 +357,7 @@ export default function WorkshopPathfinder() {
                 {t("067_div")}
               </div>
             </div>
-            <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+            <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
               <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.55)", marginBottom: "8px" }}>
                 {t("068_div")}
               </div>
@@ -365,7 +365,7 @@ export default function WorkshopPathfinder() {
                 {t("069_div")}
               </div>
             </div>
-            <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+            <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
               <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.55)", marginBottom: "8px" }}>
                 {t("070_div")}
               </div>
@@ -373,7 +373,7 @@ export default function WorkshopPathfinder() {
                 {t("071_div")}
               </div>
             </div>
-            <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+            <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
               <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.55)", marginBottom: "8px" }}>
                 {t("072_div")}
               </div>
@@ -381,7 +381,7 @@ export default function WorkshopPathfinder() {
                 {t("073_div")}
               </div>
             </div>
-            <div style={{ background: "#FAF4E2", padding: "22px 24px" }}>
+            <div style={{ background: "var(--color-paper)", padding: "22px 24px" }}>
               <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.55)", marginBottom: "8px" }}>
                 {t("074_div")}
               </div>
@@ -396,9 +396,9 @@ export default function WorkshopPathfinder() {
         </section>
         {/* ===================== SIBLING ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 28px 40px" }}>
-          <Link to={localize("/community/bridge-builders", locale)} style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", justifyContent: "space-between", textDecoration: "none", color: "#2E3B40", borderTop: "1.5px solid rgba(46,59,64,0.2)", borderBottom: "1.5px solid rgba(46,59,64,0.2)", padding: "26px 0" }} className="in-plain">
+          <Link to={localize("/community/bridge-builders", locale)} style={{ display: "flex", flexWrap: "wrap", gap: "26px", alignItems: "baseline", justifyContent: "space-between", textDecoration: "none", color: "var(--color-ink)", borderTop: "1.5px solid rgba(46,59,64,0.2)", borderBottom: "1.5px solid rgba(46,59,64,0.2)", padding: "26px 0" }} className="in-plain">
             <div style={{ flex: "1 1 420px" }}>
-              <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C", marginBottom: "10px" }}>
+              <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "10px" }}>
                 {t("077_div")}
               </div>
               <div style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(22px, 2.4vw, 30px)", lineHeight: "1.2" }}>
@@ -407,19 +407,19 @@ export default function WorkshopPathfinder() {
             </div>
             <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.5", color: "rgba(46,59,64,0.8)" }}>
               {t("079_div")}
-              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", color: "#E5188C" }}>
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "15px", color: "var(--color-magenta-hot)" }}>
                 →
               </span>
             </div>
           </Link>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 28px 44px" }}>
-          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
+          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
             {t("080_a")}
           </a>
         </section>
         {/* ===================== REGISTER CTA ===================== */}
-        <section id="register" style={{ background: "#E5188C", color: "#FAF4E2", marginTop: "8px" }}>
+        <section id="register" style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)", marginTop: "8px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               {t("081_p")}
@@ -430,10 +430,10 @@ export default function WorkshopPathfinder() {
             {/* The hero's "Register now" scrolls here. The links below it are a question and the way back, not a sign-up. */}
             <WorkshopRegister slug="pathfinder" accent="#E5188C" />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#E5188C", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("083_a")}
               </Link>
-              <Link to={localize("/workshop", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/workshop", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("084_a")}
               </Link>
             </div>

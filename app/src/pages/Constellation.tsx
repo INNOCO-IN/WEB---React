@@ -24,7 +24,7 @@ export default function Constellation() {
     <SiteLayout page="Constellation.EN.dc.html" className="page-constellation" footer={{ loop: "0.897", cta: "#F0D23C" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO (unchanged) */}
-        <section data-screen-label="Hero" style={{ background: "#F0D23C", color: "#1A1A1A" }}>
+        <section data-screen-label="Hero" style={{ background: "var(--color-yellow)", color: "#1A1A1A" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
               <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#1A1A1A", flex: "0 0 auto" }} />
@@ -41,7 +41,7 @@ export default function Constellation() {
           </div>
         </section>
         {/* THE SKY */}
-        <section data-screen-label="The Sky" style={{ background: "#16242E", color: "#FAF4E2" }}>
+        <section data-screen-label="The Sky" style={{ background: "#16242E", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "30px 28px 44px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", alignItems: "center", justifyContent: "space-between", marginBottom: "8px" }}>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", alignItems: "center" }}>
@@ -87,7 +87,7 @@ export default function Constellation() {
                     <span style={{ position: "absolute", left: "15px", top: "40px", writingMode: "vertical-rl", whiteSpace: "nowrap", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)" }}>
                       {selFormat}
                     </span>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#2E3B40", margin: "0 30px 8px 0" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink)", margin: "0 30px 8px 0" }}>
                       {selMeta}
                     </div>
                     <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "700", fontSize: "30px", lineHeight: "var(--in-constellation-1)", margin: "0 0 10px", textWrap: "balance" }}>
@@ -99,21 +99,21 @@ export default function Constellation() {
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "16px" }}>
                       {hasRead ? (
                         <>
-                        <a href={selRead} style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "12px 24px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+                        <a href={selRead} style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "12px 24px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                           {t("005_a")}
                         </a>
                         </>
                       ) : null}
                       {hasMedia ? (
                         <>
-                        <a href={selMedia} target="_blank" rel="noopener" style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "12px 24px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+                        <a href={selMedia} target="_blank" rel="noopener" style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", color: "var(--color-ink)", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "12px 24px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                           {mediaLabel}{" →"}
                         </a>
                         </>
                       ) : null}
                       {hasView ? (
                         <>
-                        <a href={selView} target="_blank" rel="noopener" style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "12px 24px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+                        <a href={selView} target="_blank" rel="noopener" style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", color: "var(--color-ink)", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "12px 24px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                           {t("006_a")}
                         </a>
                         </>
@@ -139,7 +139,7 @@ export default function Constellation() {
         </section>
         {/* DRAFT NOTE */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "26px 28px 0" }}>
-          <div style={{ borderLeft: "3px solid #F0D23C", background: "rgba(240,210,60,0.16)", padding: "16px 22px", fontFamily: "var(--font-sans)", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.72)" }}>
+          <div style={{ borderLeft: "3px solid var(--color-yellow)", background: "rgba(240,210,60,0.16)", padding: "16px 22px", fontFamily: "var(--font-sans)", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.72)" }}>
             {t("007_div")}
           </div>
         </section>
@@ -149,10 +149,10 @@ export default function Constellation() {
             {t("008_h2")}
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "18px", alignItems: "stretch", maxWidth: "1100px" }}>
-            <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
+            <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", height: "96px", overflow: "hidden", background: "#16242E" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "184px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(50% 14%, 76% 100%, 24% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(50% 14%, 76% 100%, 24% 100%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#7BC4F0", clipPath: "polygon(76% 100%, 82% 100%, 54% 14%, 50% 14%)" }} />
                 </div>
               </div>
@@ -165,11 +165,11 @@ export default function Constellation() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
+            <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", height: "96px", overflow: "hidden", background: "#16242E" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "184px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(4% 0, 26% 0, 60% 100%, 38% 100%)" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(24% 0, 34% 0, 68% 100%, 56% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(4% 0, 26% 0, 60% 100%, 38% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-amber)", clipPath: "polygon(24% 0, 34% 0, 68% 100%, 56% 100%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#35C0B4", clipPath: "polygon(74% 0, 96% 0, 62% 100%, 40% 100%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#7BC4F0", clipPath: "polygon(66% 0, 76% 0, 44% 100%, 30% 100%)" }} />
                 </div>
@@ -183,10 +183,10 @@ export default function Constellation() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
+            <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", height: "96px", overflow: "hidden", background: "#16242E" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "184px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(38% 8%, 72% 46%, 38% 84%, 4% 46%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(38% 8%, 72% 46%, 38% 84%, 4% 46%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#7BC4F0", clipPath: "polygon(72% 46%, 76% 46%, 42% 8%, 38% 8%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#35C0B4", clipPath: "polygon(66% 44%, 96% 78%, 66% 112%, 36% 78%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#CDE3CF", clipPath: "polygon(96% 78%, 100% 78%, 70% 44%, 66% 44%)" }} />
@@ -201,15 +201,15 @@ export default function Constellation() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
+            <div style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", height: "96px", overflow: "hidden", background: "#16242E" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "184px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(22% 28%, 38% 46%, 22% 64%, 6% 46%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(22% 28%, 38% 46%, 22% 64%, 6% 46%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#7BC4F0", clipPath: "polygon(38% 46%, 41% 46%, 25% 28%, 22% 28%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#35C0B4", clipPath: "polygon(56% 8%, 72% 26%, 56% 44%, 40% 26%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#CDE3CF", clipPath: "polygon(72% 26%, 75% 26%, 59% 8%, 56% 8%)" }} />
                   <div style={{ position: "absolute", inset: "0", background: "#7BC4F0", clipPath: "polygon(76% 50%, 94% 70%, 76% 90%, 58% 70%)" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(94% 70%, 97% 70%, 79% 50%, 76% 50%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(94% 70%, 97% 70%, 79% 50%, 76% 50%)" }} />
                 </div>
               </div>
               <div style={{ padding: "22px 24px 26px", display: "flex", flexDirection: "column", flex: "1", gap: "10px" }}>
@@ -226,13 +226,13 @@ export default function Constellation() {
             {t("013_p")}
           </p>
           <div style={{ marginTop: "26px" }}>
-            <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.06em", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+            <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.06em", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
               {t("014_a")}
             </Link>
           </div>
         </section>
         {/* CTA (unchanged) */}
-        <section data-screen-label="CTA" style={{ background: "#F0D23C", color: "#2E3B40", marginTop: "80px" }}>
+        <section data-screen-label="CTA" style={{ background: "var(--color-yellow)", color: "var(--color-ink)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)", margin: "0 0 18px" }}>
               {t("015_p")}
@@ -241,10 +241,10 @@ export default function Constellation() {
               {t("016_h2")}
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("017_a")}
               </Link>
-              <Link to={localize("/mewe", locale)} style={{ textDecoration: "none", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/mewe", locale)} style={{ textDecoration: "none", color: "var(--color-ink)", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("018_a")}
               </Link>
             </div>

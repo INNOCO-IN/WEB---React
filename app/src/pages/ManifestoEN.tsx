@@ -9,11 +9,11 @@ export default function ManifestoEN() {
     <SiteLayout page="Manifesto.EN.dc.html" className="page-manifesto-en" footer={{ loop: "0.080", cta: "#1E8A86" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
-        <section style={{ color: "#FAF4E2", backgroundColor: "#1E8A86" }}>
+        <section style={{ color: "var(--color-paper)", backgroundColor: "var(--color-teal)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 Manifesto
               </span>
             </div>
@@ -31,22 +31,22 @@ export default function ManifestoEN() {
         </section>
         {/* ===================== §1 · WHO WE ARE ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "80px 28px 0" }}>
-          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E8A86", marginBottom: "24px" }}>
+          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal)", marginBottom: "24px" }}>
             ABOUT IN | WHO WE ARE
           </div>
           <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(28px, 3.4vw, 50px)", lineHeight: "1.15", margin: "0 0 20px", letterSpacing: "-0.01em", maxWidth: "22ch", fontWeight: "600", height: "330px", width: "800px" }}>
             {"IN is a small studio built on one idea: personal growth and the wellbeing of the people around us aren't separate things. We call this "}
-            <span style={{ color: "#1E8A86", fontStyle: "normal", fontWeight: "700" }}>
+            <span style={{ color: "var(--color-teal)", fontStyle: "normal", fontWeight: "700" }}>
               MEWE
             </span>
             .
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-            <div style={{ background: "#F3EAD0" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#D21E28" }}>
+            <div style={{ background: "var(--color-paper-dim)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-red)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-amber)", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-orange)", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -65,14 +65,14 @@ export default function ManifestoEN() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#1E648C" }}>
+            <div style={{ background: "var(--color-paper-dim)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-deepblue)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "14px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "14px" }}>
                   Our Posture
                 </div>
                 <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
@@ -83,10 +83,10 @@ export default function ManifestoEN() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#E6328C" }}>
+            <div style={{ background: "var(--color-paper-dim)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-magenta)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -107,10 +107,10 @@ export default function ManifestoEN() {
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "var(--color-paper)" }}>
               <div style={{ padding: "28px 28px 24px" }}>
                 <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
-                  Interactive &amp; Experiential
+                  Interactive & Experiential
                 </div>
                 <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
                   Beyond theory
@@ -120,9 +120,9 @@ export default function ManifestoEN() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ padding: "28px 28px 24px", backgroundColor: "#FAF4E2" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ padding: "28px 28px 24px", backgroundColor: "var(--color-paper)" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "14px" }}>
                   Grounded in Research
                 </div>
                 <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
@@ -133,9 +133,9 @@ export default function ManifestoEN() {
                 </p>
               </div>
             </div>
-            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "var(--color-paper)" }}>
               <div style={{ padding: "28px 28px 24px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
                   Adaptable
                 </div>
                 <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
@@ -158,14 +158,14 @@ export default function ManifestoEN() {
             This isn't a question for elders alone — it's for everyone, at any age. We're all bridges between who came before us and who comes next.
           </p>
         </section>
-        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "#F3EAD0" }}>
+        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "var(--color-paper-dim)" }}>
           <div aria-hidden="true" style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: "47px", overflow: "hidden", background: "#E52D84", transform: "rotate(180deg)" }}>
             <div style={{ position: "absolute", inset: "0", background: "#433370", clipPath: "polygon(0 0, 100% 0, 100% 12.05%)" }} />
             <div style={{ position: "absolute", inset: "0", background: "#D4232B", clipPath: "polygon(100% 87.95%, 100% 100%, 0 100%)" }} />
           </div>
           <div style={{ position: "relative", maxWidth: "1320px", margin: "0 auto", padding: "76px 28px 80px 82px" }}>
             <div style={{ maxWidth: "900px" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "18px", whiteSpace: "nowrap" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "18px", whiteSpace: "nowrap" }}>
                 A living agreement
               </div>
               <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: "1.18", letterSpacing: "-0.01em", margin: "0", color: "#1A1613", fontStyle: "italic", textWrap: "pretty" }}>
@@ -175,7 +175,7 @@ export default function ManifestoEN() {
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "80px 28px 0" }}>
-          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E8A86", marginBottom: "14px" }}>
+          <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal)", marginBottom: "14px" }}>
             THE MANIFESTO | WHAT WE BELIEVE
           </div>
           <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.0", letterSpacing: "-0.02em", margin: "0 0 28px", textWrap: "balance" }}>
@@ -187,8 +187,8 @@ export default function ManifestoEN() {
         </section>
         {/* ===================== PRINCIPLES ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px 0" }}>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E8A86", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-teal)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               1 · Pattern
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -198,8 +198,8 @@ export default function ManifestoEN() {
               We're more reachable than any generation before us, and more alone. That's not a contradiction — it's a pattern we've stopped questioning. IN starts by naming it plainly: taking the veils off, without judgment, and relearning how to actually listen.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #E6328C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               2 · Truth
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -209,8 +209,8 @@ export default function ManifestoEN() {
               Growing as a person and caring for the people around you were never two separate projects. Like a Möbius strip, what looks like two sides — self and society — is one continuous surface. Once you see it, the old choice between them disappears.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E648C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-deepblue)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "14px" }}>
               3 · Perspective
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -220,8 +220,8 @@ export default function ManifestoEN() {
               No one holds the whole elephant in the dark room — not from lack of insight, but because every vantage point is partial by nature. So we look from many sides, on purpose, together. In our workshops, this isn't a discussion. It's a discipline.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #46325A", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#46325A", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-plum)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-plum)", marginBottom: "14px" }}>
               4 · Blind spot
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -231,7 +231,7 @@ export default function ManifestoEN() {
               Waste, treated as fine. The gap between rich and poor, treated as inevitable. Isolation, absorbed until it feels ordinary. Wars, watched from a safe distance. These aren't oversights — they're agreements we made without noticing. We choose to notice.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #3C8246", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-green)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#2E6B33", marginBottom: "14px" }}>
               5 · Shift
             </div>
@@ -242,7 +242,7 @@ export default function ManifestoEN() {
               This is the hardest part, and the most courageous. Letting go of ego, prejudice, judgment — not once, but daily, in how we think, speak, and act. It's not unnatural. Bone restructures. Atoms rearrange. Growth has always worked this way.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #FAB414", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-amber)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#7A5200", marginBottom: "14px" }}>
               6 · Practice
             </div>
@@ -253,8 +253,8 @@ export default function ManifestoEN() {
               MEWE isn't taught — it's practiced, in workshops and real projects with real neighbors, drawing on nature, science, art, and social action, across generations and fields that rarely share a room. The framework was never the point. What shifts between people is.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E8A86", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-teal)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               7 · Protagonist
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -264,8 +264,8 @@ export default function ManifestoEN() {
               Empathy isn't installed — it's already there, built into what it means to be human. Everyone who comes through IN carries a birthright and a responsibility to help others thrive. Every person leads their own path. No one waits in the wings.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #E6328C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               8 · Bridge
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -275,8 +275,8 @@ export default function ManifestoEN() {
               What any one of us can do is small, and bounded by time. That's exactly why we build bridges, not monuments: between our own higher self and our communities, between the generation before us and the one still arriving.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderBottom: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E648C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderBottom: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-deepblue)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "14px" }}>
               9 · Invitation
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -287,14 +287,14 @@ export default function ManifestoEN() {
             </p>
           </div>
         </section>
-        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "#F3EAD0" }}>
+        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "var(--color-paper-dim)" }}>
           <div aria-hidden="true" style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: "47px", overflow: "hidden", background: "#E52D84", transform: "rotate(180deg)" }}>
             <div style={{ position: "absolute", inset: "0", background: "#433370", clipPath: "polygon(0 0, 100% 0, 100% 12.05%)" }} />
             <div style={{ position: "absolute", inset: "0", background: "#D4232B", clipPath: "polygon(100% 87.95%, 100% 100%, 0 100%)" }} />
           </div>
           <div style={{ position: "relative", maxWidth: "1320px", margin: "0 auto", padding: "76px 28px 80px 82px" }}>
             <div style={{ maxWidth: "900px" }}>
-              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "18px", whiteSpace: "nowrap" }}>
+              <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "18px", whiteSpace: "nowrap" }}>
                 What we believe → How we practice
               </div>
               <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: "1.1", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "12px" }}>
@@ -312,7 +312,7 @@ export default function ManifestoEN() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ paddingTop: "40px", position: "relative" }}>
-            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E8A86", marginBottom: "16px", height: "60px" }}>
+            <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal)", marginBottom: "16px", height: "60px" }}>
               IN STORY | HOW WE PRACTICE
             </div>
             <h2 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.0", letterSpacing: "-0.02em", margin: "0 0 22px", maxWidth: "20ch", textWrap: "balance", width: "800px" }}>
@@ -326,11 +326,11 @@ export default function ManifestoEN() {
         {/* ===================== IN STORY · the journey ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "36px 28px 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#1E648C", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-amber)", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-deepblue)", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -345,15 +345,15 @@ export default function ManifestoEN() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#E6328C", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-magenta)", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
                   Room → community
                 </div>
                 <div style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
@@ -364,11 +364,11 @@ export default function ManifestoEN() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-orange)", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -396,7 +396,7 @@ export default function ManifestoEN() {
             <Link to="/project" style={{ color: "rgb(30, 138, 134)" }} className="in-plain">
               Project
             </Link>
-            {" pages.&nbsp;"}
+            {" pages.\u00a0"}
             <br />
           </p>
           <p style={{ margin: "0", fontSize: "22px", lineHeight: "1.3" }}>
@@ -404,15 +404,15 @@ export default function ManifestoEN() {
           </p>
           <div style={{ display: "flex", flexDirection: "column", maxWidth: "1000px" }} />
           <div style={{ maxWidth: "1000px", margin: "48px 0 0", borderTop: "1.5px solid rgba(38,42,56,0.16)", paddingTop: "32px" }}>
-            <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", margin: "0 0 12px" }}>
-              Research &amp; Recognition
+            <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", margin: "0 0 12px" }}>
+              Research & Recognition
             </p>
             <p style={{ fontFamily: "'Newsreader', serif", fontSize: "22px", lineHeight: "1.3", margin: "0", color: "#262A38" }}>
               The MEWE framework has been shared through peer-reviewed work and international forums: a Springer handbook chapter, “Self, Society, Service in MEWE” (2024); “Co-Designing a Pathway Through Food Revolution for Social Change” (2021); “Co-designing a social innovation model for changemakers” (2018); and a youth-empowerment case study (Banff / RSD, 2015). Presented at Dubai EXPO 2020 and the Parliament of the World's Religions 2022.
             </p>
           </div>
         </section>
-        <section style={{ background: "#1E8A86", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-teal)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -421,10 +421,10 @@ export default function ManifestoEN() {
               The door is open.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/mewe" style={{ textDecoration: "none", color: "#1E8A86", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/mewe" style={{ textDecoration: "none", color: "var(--color-teal)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the framework
               </Link>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Connect
               </Link>
             </div>

@@ -24,7 +24,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parse } from './lib/html-to-jsx.mjs';
+import { parse, decodeEntities as decode } from './lib/html-to-jsx.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SITE = join(HERE, '..', '..', 'site');
@@ -74,31 +74,17 @@ const attr = (node, name) => node.attrs?.find((a) => a.name === name)?.value ?? 
 const hasClass = (node, cls) => (attr(node, 'class') ?? '').split(/\s+/).includes(cls);
 
 /**
- * Named entities the legacy pages actually use.
+ * All text under a node, entities decoded and whitespace collapsed.
  *
  * A row is data, not markup: `2016&ndash;2018` has to reach the database as
- * `2016–2018` or every reader of that row has to know to decode it. The
- * numeric forms are handled by the regex below, so this only lists the names.
+ * `2016–2018` or every reader of that row has to know to decode it. The table
+ * that says so now lives in lib/html-to-jsx.mjs, because the converter needed
+ * exactly the same one and had been managing without.
+ *
+ * The collapse is the plain `\s+`, unlike the converter's: a `&nbsp;` is a
+ * typesetting instruction about a line, and a row on its way to a card that
+ * is set again somewhere else has no line for it to hold together.
  */
-const ENTITIES = {
-  amp: '&', quot: '"', lt: '<', gt: '>', nbsp: ' ', ne: '≠',
-  mdash: '—', ndash: '–', middot: '·',
-  lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”',
-  larr: '←', rarr: '→', uarr: '↑', darr: '↓',
-};
-
-const decode = (value) =>
-  value.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (whole, name) => {
-    if (name[0] === '#') {
-      const code = name[1] === 'x' || name[1] === 'X'
-        ? parseInt(name.slice(2), 16)
-        : parseInt(name.slice(1), 10);
-      return Number.isFinite(code) ? String.fromCodePoint(code) : whole;
-    }
-    return ENTITIES[name] ?? whole;
-  });
-
-/** All text under a node, entities decoded and whitespace collapsed. */
 function text(node) {
   let out = '';
   for (const n of walk(node)) if (n.type === 'text') out += n.value;

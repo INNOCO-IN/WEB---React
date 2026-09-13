@@ -1,5 +1,7 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-story-index-0: 0.98;
   --in-story-index-1: 1.0;
@@ -7,7 +9,7 @@
   --in-story-index-3: italic;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-story-index-0: 1.08;
   --in-story-index-1: 1.1;
   --in-story-index-2: normal;
@@ -17,8 +19,8 @@
 
 .page-story-index * { box-sizing: border-box; }
 .page-story-index, .page-story-index { margin: 0; padding: 0; }
-.page-story-index { background: #FAF4E2; color: #1A1613; -webkit-font-smoothing: antialiased; }
-.page-story-index ::selection { background: #C9962B; color: #FAF4E2; }
+.page-story-index { background: var(--color-paper); color: #1A1613; -webkit-font-smoothing: antialiased; }
+.page-story-index ::selection { background: #C9962B; color: var(--color-paper); }
 .page-story-index a { color: #B87A00; }
 .page-story-index a:hover { color: #8f5f00; }
 .page-story-index .col-scroll::-webkit-scrollbar { width: 6px; }

@@ -22,7 +22,7 @@ export default function WorkshopSecondLife() {
     <SiteLayout page="Workshop-Second-Life.EN.dc.html" className="page-workshop-second-life" footer={{ loop: "0.47", cta: "#E5188C" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
-        <section style={{ background: "#E5188C", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "22px 28px 0" }}>
             <Link to={localize("/workshop", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(250,244,226,0.78)", textDecoration: "none" }} className="in-plain">
               {t("000_a")}
@@ -39,15 +39,15 @@ export default function WorkshopSecondLife() {
               {t("003_p")}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <a href="#register" style={{ textDecoration: "none", color: "#E5188C", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <a href="#register" style={{ textDecoration: "none", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("004_a")}
               </a>
             </div>
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "64px 28px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "baseline", borderTop: "2px solid #2E3B40", paddingTop: "24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "baseline", borderTop: "2px solid var(--color-ink)", paddingTop: "24px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("005_div")}
             </div>
             <div style={{ maxWidth: "760px" }}>
@@ -62,7 +62,7 @@ export default function WorkshopSecondLife() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 0" }}>
           <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("008_div")}
             </div>
             <div style={{ maxWidth: "760px" }}>
@@ -77,7 +77,7 @@ export default function WorkshopSecondLife() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 8px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "start", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("011_div")}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "22px 40px", maxWidth: "900px" }}>
@@ -117,37 +117,37 @@ export default function WorkshopSecondLife() {
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "start", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px", borderBottom: "2px solid #2E3B40", paddingBottom: "34px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "start", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px", borderBottom: "2px solid var(--color-ink)", paddingBottom: "34px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("020_div")}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: "1.5px", background: "rgba(46,59,64,0.16)", border: "1.5px solid rgba(46,59,64,0.16)", maxWidth: "900px" }}>
-              <div style={{ background: "#FAF4E2", padding: "26px 22px 30px" }}>
-                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5188C", marginBottom: "12px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "26px 22px 30px" }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
                   {t("021_div")}
                 </div>
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.4", margin: "0" }}>
                   {t("022_p")}
                 </p>
               </div>
-              <div style={{ background: "#FAF4E2", padding: "26px 22px 30px" }}>
-                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5188C", marginBottom: "12px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "26px 22px 30px" }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
                   {t("023_div")}
                 </div>
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.4", margin: "0" }}>
                   {t("024_p")}
                 </p>
               </div>
-              <div style={{ background: "#FAF4E2", padding: "26px 22px 30px" }}>
-                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5188C", marginBottom: "12px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "26px 22px 30px" }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
                   {t("025_div")}
                 </div>
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.4", margin: "0" }}>
                   {t("026_p")}
                 </p>
               </div>
-              <div style={{ background: "#FAF4E2", padding: "26px 22px 30px" }}>
-                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#E5188C", marginBottom: "12px" }}>
+              <div style={{ background: "var(--color-paper)", padding: "26px 22px 30px" }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "12px" }}>
                   {t("027_div")}
                 </div>
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.4", margin: "0" }}>
@@ -168,7 +168,7 @@ export default function WorkshopSecondLife() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px" }}>
           <div style={{ background: "#CDE3CF", padding: "44px 44px 40px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40", marginBottom: "16px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)", marginBottom: "16px" }}>
               {t("030_div")}
             </div>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(26px, 3vw, 38px)", lineHeight: "1.1", margin: "0 0 18px", maxWidth: "26ch", textWrap: "balance" }}>
@@ -183,11 +183,11 @@ export default function WorkshopSecondLife() {
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 28px 44px" }}>
-          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
+          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
             {t("034_a")}
           </a>
         </section>
-        <section id="register" style={{ background: "#E5188C", color: "#FAF4E2" }}>
+        <section id="register" style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.7)", margin: "0 0 18px" }}>
               {t("035_p")}
@@ -198,10 +198,10 @@ export default function WorkshopSecondLife() {
             {/* The hero's "Register now" scrolls here. The links below it are a question and the way back, not a sign-up. */}
             <WorkshopRegister slug="second-life" accent="#E5188C" />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#E5188C", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("037_a")}
               </Link>
-              <Link to={localize("/workshop", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/workshop", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("038_a")}
               </Link>
             </div>

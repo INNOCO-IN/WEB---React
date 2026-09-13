@@ -23,7 +23,7 @@ export default function StoryIndex() {
   return (
     <SiteLayout page="Story-Index.EN.dc.html" className="page-story-index" footer={{ loop: "0.421", cta: "#FAB414" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
-        <section style={{ background: "#FAB414", color: "#1A1A1A" }}>
+        <section style={{ background: "var(--color-amber)", color: "#1A1A1A" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "22px" }}>
               <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#1A1A1A" }} />
@@ -150,13 +150,13 @@ export default function StoryIndex() {
                 ) : null}
                 {current.isDraft ? (
                   <>
-                  <p style={{ fontFamily: "var(--font-serif)", fontStyle: "var(--in-story-index-3)", fontSize: "18px", lineHeight: "1.5", margin: "30px 0 0", padding: "16px 20px", background: "#F3EAD0", color: "rgba(26,22,19,0.7)" }}>
+                  <p style={{ fontFamily: "var(--font-serif)", fontStyle: "var(--in-story-index-3)", fontSize: "18px", lineHeight: "1.5", margin: "30px 0 0", padding: "16px 20px", background: "var(--color-paper-dim)", color: "rgba(26,22,19,0.7)" }}>
                     {t("005_p")}
                   </p>
                   </>
                 ) : null}
                 <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "14px", borderTop: "1.5px solid rgba(26,22,19,0.16)", marginTop: "52px", paddingTop: "26px" }}>
-                  <button type="button" onClick={toTop} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FAF4E2", background: "#1A1613", border: "none", borderRadius: "999px", padding: "14px 26px" }}>
+                  <button type="button" onClick={toTop} style={{ cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-paper)", background: "#1A1613", border: "none", borderRadius: "999px", padding: "14px 26px" }}>
                     {t("006_button")}
                   </button>
                   <span style={{ fontFamily: "var(--font-serif)", fontSize: "18px", lineHeight: "1.4", color: "rgba(26,22,19,0.6)" }}>
@@ -167,7 +167,7 @@ export default function StoryIndex() {
             </div>
             {/* RIGHT · scalable index */}
             <div className="si-right col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderLeft: "1px solid rgba(26,22,19,0.14)", paddingLeft: "20px" }}>
-              <div style={{ position: "sticky", top: "0", background: "#FAF4E2", paddingBottom: "12px", zIndex: "2" }}>
+              <div style={{ position: "sticky", top: "0", background: "var(--color-paper)", paddingBottom: "12px", zIndex: "2" }}>
                 <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "10px", marginBottom: "12px" }}>
                   <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(26,22,19,0.5)" }}>
                     {indexHeading}
@@ -181,7 +181,7 @@ export default function StoryIndex() {
                     <circle cx="11" cy="11" r="7" />
                     <path d="M21 21l-4-4" strokeLinecap="round" />
                   </svg>
-                  <input id="si-search" type="search" value={query} onChange={onSearch} placeholder="Search titles…" style={{ width: "100%", fontFamily: "var(--font-serif)", fontSize: "16px", color: "#1A1613", background: "#F3EAD0", border: "1.5px solid rgba(26,22,19,0.14)", borderRadius: "999px", padding: "11px 16px 11px 36px", outline: "none" }} />
+                  <input id="si-search" type="search" value={query} onChange={onSearch} placeholder={t("009_placeholder")} style={{ width: "100%", fontFamily: "var(--font-serif)", fontSize: "16px", color: "#1A1613", background: "var(--color-paper-dim)", border: "1.5px solid rgba(26,22,19,0.14)", borderRadius: "999px", padding: "11px 16px 11px 36px", outline: "none" }} />
                 </div>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -215,7 +215,7 @@ export default function StoryIndex() {
               {isEmpty ? (
                 <>
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "16px", color: "rgba(26,22,19,0.5)", padding: "20px 2px" }}>
-                  {t("009_p")}
+                  {t("010_p")}
                 </p>
                 </>
               ) : null}
@@ -223,23 +223,23 @@ export default function StoryIndex() {
           </div>
         </section>
         {/* ===================== CTA (matches Story page) ===================== */}
-        <section style={{ background: "#FAB414", color: "#2E3B40", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-amber)", color: "var(--color-ink)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)", margin: "0 0 18px" }}>
-              {t("010_p")}
+              {t("011_p")}
             </p>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 16px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              {t("011_h2")}
+              {t("012_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.5", maxWidth: "640px", margin: "0 auto 28px", color: "rgba(46,59,64,0.82)" }}>
-              {t("012_p")}
+              {t("013_p")}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
-                {t("013_a")}
-              </Link>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#2E3B40", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/story/submit", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("014_a")}
+              </Link>
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-ink)", background: "transparent", border: "1.5px solid rgba(46,59,64,0.5)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+                {t("015_a")}
               </Link>
             </div>
           </div>

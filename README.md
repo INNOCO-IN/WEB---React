@@ -18,6 +18,12 @@ cd app && npm install && npm run dev     # http://localhost:5174
 Vite + React 19 + TypeScript + React Router + i18next. Scripts: `dev`, `build`
 (typecheck + build), `preview`, `lint`, `typecheck`, `test`.
 
+`dev` runs against a **Supabase on this machine** (`vite --mode devdb`), so it
+wants Docker up and `npm run db:start`. `dev:live` is the one that reaches the
+hosted project. Neither is required to see the site: with no database at all
+every page renders from its bundled copy — see [Content from the
+database](#content-from-the-database).
+
 All 71 routes, both languages, with real URLs:
 
 ```
@@ -193,7 +199,28 @@ storytelling photo, referenced at a path that does not exist, now resolves.
 
 Both write to Supabase and are verified end-to-end — see [`SUPABASE.md`](SUPABASE.md).
 `/connect` inserts into `submissions`; `/story/submit` inserts into `stories`
-and uploads to the `story-media` bucket.
+and uploads to the `story-media` bucket. A third, the workshop sign-up, is
+`app/`-only for now.
+
+A form's `<select>` sends a slug, never the sentence the reader saw, so the same
+answer arrives as the same string in all three languages. Conditional blocks and
+prefilling links are declared on the markup, as `field=value`. Both are in
+[`SUPABASE.md`](SUPABASE.md#what-a-value-may-be).
+
+## The review desk
+
+`/review` shows what visitors sent — submissions, stories, workshop sign-ups —
+and lets a reviewer move a row's status.
+
+It is deliberately not a page of the site: no nav, no footer, no locale, no
+entry in the route table, `noindex`, and nothing links to it. Sign-in is a
+mailed link (`npm run signin-link` prints one in development), and what a signed-in
+person can see is decided by RLS, not by the page.
+
+Marking a story `published` records the decision; it does not put the story on
+the site. `stories` and `story_entries` are different tables and the gap between
+them is editorial — a title, a topic and a permalink the form never asked for.
+`npm run promote-story` is what carries one across.
 
 ## Not included (internal, by prior decision)
 

@@ -37,10 +37,10 @@
  * and is what RLS actually checks — see seed-staff.sql.
  */
 
-import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createClient } from '@supabase/supabase-js';
+import { readEnvFiles, isLocalUrl } from './lib/env-files.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const APP = join(HERE, '..');
@@ -52,25 +52,12 @@ const APP = join(HERE, '..');
  * Default is `.env.local` then `.env.devdb` overriding it, which is what
  * `vite --mode devdb` does and therefore what `npm run dev` is pointed at.
  * `--live` reads `.env.local` alone, matching `npm run dev:live`.
+ *
+ * The reading itself is in lib/env-files.mjs, shared with promote-watch.mjs —
+ * see the note there about what a copy of it each cost us.
  */
 function env(live) {
-  const files = live ? ['.env.local'] : ['.env.local', '.env.devdb'];
-  const out = {};
-
-  for (const file of files) {
-    let text;
-    try {
-      text = readFileSync(join(APP, file), 'utf8');
-    } catch {
-      continue;
-    }
-    for (const line of text.split('\n')) {
-      const match = /^\s*([A-Z0-9_]+)\s*=\s*(.*)$/.exec(line);
-      if (!match) continue;
-      out[match[1]] = match[2].trim().replace(/^["']|["']$/g, '');
-    }
-  }
-  return out;
+  return readEnvFiles(APP, live ? ['.env.local'] : ['.env.local', '.env.devdb']);
 }
 
 const [, , email, ...rest] = process.argv;
@@ -84,11 +71,16 @@ if (!email || !email.includes('@')) {
   process.exit(1);
 }
 
-const vars = { ...env(live), ...process.env };
+const { values, from } = env(live);
+const vars = { ...values, ...process.env };
 const url = vars.VITE_SUPABASE_URL;
 const serviceKey = vars.SUPABASE_SERVICE_ROLE_KEY;
 
 const source = live ? 'app/.env.local' : 'app/.env.devdb or app/.env.local';
+
+/** Where a value actually came from, for a line that has to be believable. */
+const origin = (name) =>
+  process.env[name] ? 'the environment' : from[name] ? `app/${from[name]}` : source;
 
 if (!url) {
   console.error(`No VITE_SUPABASE_URL in ${source}.`);
@@ -98,8 +90,34 @@ if (!url) {
   process.exit(1);
 }
 
-// Which database this is about to write to, said before it writes to it.
-console.error(`Project: ${url}${live ? ' (hosted — --live)' : ' (local)'}`);
+// Which database this is about to write to, said before it writes to it — and
+// said as where the address came from rather than as a label. The label is what
+// went wrong before: it read "(local)" off the absence of `--live` while the
+// URL underneath it was the hosted project.
+console.error(`Project: ${url}   (${origin('VITE_SUPABASE_URL')}${live ? ', --live' : ''})`);
+
+// Without `--live` this script is about the stack on your machine, so a hosted
+// address here means the local one was not read, not that you meant this. It
+// matters because `--create` writes: the cost of guessing is a real auth user
+// in the live project for somebody to go and find.
+if (!live && !isLocalUrl(url)) {
+  console.error(
+    [
+      '',
+      `Refusing to run: that is not a local stack, and --live was not passed.`,
+      '',
+      'app/.env.devdb is what points this at the Supabase on your machine, and',
+      'nothing in it was read — so what answered was app/.env.local underneath.',
+      'Start the stack and regenerate the file:',
+      '',
+      '  npx supabase start --workdir app',
+      '  npm --prefix app run db:env',
+      '',
+      'Or pass --live if the hosted project is genuinely what you meant.',
+    ].join('\n'),
+  );
+  process.exit(1);
+}
 
 if (!serviceKey) {
   console.error(

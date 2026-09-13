@@ -9,14 +9,14 @@ export default function CommunityIndexEN() {
   return (
     <SiteLayout page="Community-Index.EN.dc.html" className="page-community-index-en" footer={{ loop: "0.74", cta: "#D21E28" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
-        <section style={{ background: "#D21E28", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-red)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <Link to="/community" style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(250,244,226,0.85)", textDecoration: "none", display: "inline-block", marginBottom: "28px" }} className="in-plain">
               ← Community
             </Link>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 Community Index
               </span>
             </div>
@@ -31,7 +31,7 @@ export default function CommunityIndexEN() {
         <section style={{ maxWidth: "1000px", margin: "80px auto 0", padding: "0 28px 20px" }}>
           <CommunityIndexList />
         </section>
-        <section style={{ background: "#D21E28", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-red)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -40,7 +40,7 @@ export default function CommunityIndexEN() {
               Find your people, or start a new circle.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#D21E28", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-red)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Get involved
               </Link>
             </div>

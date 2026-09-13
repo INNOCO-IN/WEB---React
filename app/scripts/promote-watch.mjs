@@ -44,10 +44,10 @@
  * reads it and it never reaches the browser.
  */
 
-import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createClient } from '@supabase/supabase-js';
+import { readEnvFiles, isLocalUrl } from './lib/env-files.mjs';
 import {
   FORMATS,
   buildEntry,
@@ -70,25 +70,8 @@ const mapToo = !flags.includes('--no-constellation');
 /* ------------------------------------------------------------------- env */
 
 /** The same read `dev-signin-link.mjs` does: Vite's files, in Vite's order. */
-function env() {
-  const out = {};
-  for (const file of ['.env.local', '.env.devdb']) {
-    let text;
-    try {
-      text = readFileSync(join(APP, file), 'utf8');
-    } catch {
-      continue;
-    }
-    for (const line of text.split('\n')) {
-      const match = /^\s*([A-Z0-9_]+)\s*=\s*(.*)$/.exec(line);
-      if (!match) continue;
-      out[match[1]] = match[2].trim().replace(/^["']|["']$/g, '');
-    }
-  }
-  return out;
-}
-
-const { VITE_SUPABASE_URL: url, SUPABASE_SERVICE_ROLE_KEY: key } = env();
+const { values: vars } = readEnvFiles(APP, ['.env.local', '.env.devdb']);
+const { VITE_SUPABASE_URL: url, SUPABASE_SERVICE_ROLE_KEY: key } = vars;
 
 if (!url || !key) {
   console.error(
@@ -100,20 +83,17 @@ if (!url || !key) {
   process.exit(1);
 }
 
-const host = (() => {
-  try {
-    return new URL(url).hostname;
-  } catch {
-    return '';
-  }
-})();
-
-if (!['127.0.0.1', 'localhost', '::1', '[::1]'].includes(host)) {
+if (!isLocalUrl(url)) {
   console.error(
     `Refusing to run: ${url} is not a local stack.\n\n` +
       'This script invents a headline, a permalink and sometimes a topic. That is\n' +
       'fine on your own machine and not fine on the site. To publish there, use\n' +
-      'promote-story.mjs, which asks a person for all three.',
+      'promote-story.mjs, which asks a person for all three.\n\n' +
+      'If you expected the local one: app/.env.devdb is what points here, and\n' +
+      'nothing in it was read — so app/.env.local answered instead. Start the\n' +
+      'stack and regenerate it:\n' +
+      '  npx supabase start --workdir app\n' +
+      '  npm --prefix app run db:env',
   );
   process.exit(1);
 }

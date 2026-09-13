@@ -1,9 +1,9 @@
 
 .page-project-uncen * { box-sizing: border-box; }
 .page-project-uncen, .page-project-uncen { margin: 0; padding: 0; }
-.page-project-uncen { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-project-uncen ::selection { background: #1E5A64; color: #FAF4E2; }
-.page-project-uncen a { color: #146560; }
+.page-project-uncen { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-project-uncen ::selection { background: var(--color-slate); color: var(--color-paper); }
+.page-project-uncen a { color: var(--color-teal-dark); }
 .page-project-uncen a:hover { color: #0f4a45; }
 .page-project-uncen .col-scroll::-webkit-scrollbar { width: 6px; }
 .page-project-uncen .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }

@@ -74,33 +74,33 @@ describe('locale-prefixed routing', () => {
 describe('switching language keeps your place', () => {
   it('lands on the same page when the twin exists', () => {
     const alt = alternateFor('/ko/workshop/metanoia', 'en');
-    expect(alt).toMatchObject({ to: '/workshop/metanoia', exact: true, available: true });
+    expect(alt).toMatchObject({ to: '/workshop/metanoia', reach: 'page', available: true });
   });
 
   it('falls back to the section rather than the home page', () => {
     // No Korean project briefs exist, so the nearest true thing is the index.
     expect(alternateFor('/project/food-revolution', 'ko')).toMatchObject({
       to: '/ko/project',
-      exact: false,
+      reach: 'section',
       available: true,
     });
     expect(alternateFor('/community/animators', 'ko')).toMatchObject({
       to: '/ko/community',
-      exact: false,
+      reach: 'section',
     });
-    expect(alternateFor('/story/submit', 'ko')).toMatchObject({ to: '/ko/story', exact: false });
+    expect(alternateFor('/story/submit', 'ko')).toMatchObject({ to: '/ko/story', reach: 'section' });
   });
 
   it('reaches the locale home only when there is nothing in between', () => {
-    expect(alternateFor('/action-research', 'ko')).toMatchObject({ to: '/ko', exact: false });
+    expect(alternateFor('/action-research', 'ko')).toMatchObject({ to: '/ko', reach: 'home' });
   });
 
   it('answers in Chinese for the pages that were collapsed', () => {
     // Sixteen page pairs are one component now, and a collapsed page answers
     // in every language — its Chinese words are empty and fall back, but the
     // address is real.
-    expect(alternateFor('/news', 'zh-TW')).toMatchObject({ to: '/zh-tw/news', exact: true });
-    expect(alternateFor('/', 'zh-TW')).toMatchObject({ to: '/zh-tw', exact: true });
+    expect(alternateFor('/news', 'zh-TW')).toMatchObject({ to: '/zh-tw/news', reach: 'page' });
+    expect(alternateFor('/', 'zh-TW')).toMatchObject({ to: '/zh-tw', reach: 'page' });
   });
 
   it('degrades to the Chinese home for a page that was not collapsed', () => {
@@ -108,8 +108,26 @@ describe('switching language keeps your place', () => {
     // has no Chinese address. The switch lands on the nearest thing that does.
     expect(alternateFor('/manifesto', 'zh-TW')).toMatchObject({
       to: '/zh-tw',
-      exact: false,
+      reach: 'home',
       available: true,
+    });
+  });
+
+  it('tells the section and the home page apart', () => {
+    // The switcher says which one happened, so the two cannot share an answer.
+    // A Korean project brief keeps the reader in the projects; a Chinese one
+    // of the four workshops still on the :slug template has nowhere nearer
+    // than the home page, because `/zh-tw/workshop` is not a route either.
+    expect(alternateFor('/project/food-revolution', 'ko').reach).toBe('section');
+    expect(alternateFor('/workshop/heros-journey', 'zh-TW')).toMatchObject({
+      to: '/zh-tw',
+      reach: 'home',
+      available: true,
+    });
+    // And the six that have Chinese pages of their own are not affected.
+    expect(alternateFor('/workshop/pathfinder', 'zh-TW')).toMatchObject({
+      to: '/zh-tw/workshop/pathfinder',
+      reach: 'page',
     });
   });
 

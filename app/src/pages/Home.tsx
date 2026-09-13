@@ -22,17 +22,17 @@ export default function Home() {
       <div id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
         <section style={{ padding: "84px 0 72px 120px" }}>
           <div style={{ maxWidth: "1000px", position: "relative", minHeight: "426px" }}>
-            <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "80px", lineHeight: "var(--in-home-0)", color: "#1E8A86", margin: "0 0 12px" }}>
+            <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "80px", lineHeight: "var(--in-home-0)", color: "var(--color-teal)", margin: "0 0 12px" }}>
               {t("000_h1")}
             </h1>
-            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "100", fontSize: "60px", lineHeight: "1", color: "#1E8A86", maxWidth: "800px", margin: "0" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontWeight: "100", fontSize: "60px", lineHeight: "1", color: "var(--color-teal)", maxWidth: "800px", margin: "0" }}>
               {t("001_p")}
               <em>
                 {t("002_em")}
               </em>
               {t("003_p")}
             </p>
-            <span style={{ position: "absolute", fontSize: "300px", lineHeight: "0.6", opacity: "1", pointerEvents: "none", left: "565px", top: "326px", color: "#1E8A86", fontFamily: "var(--font-serif)", height: "100px" }} aria-hidden="true">
+            <span style={{ position: "absolute", fontSize: "300px", lineHeight: "0.6", opacity: "1", pointerEvents: "none", left: "565px", top: "326px", color: "var(--color-teal)", fontFamily: "var(--font-serif)", height: "100px" }} aria-hidden="true">
               ”
             </span>
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
             <Link to={localize("/mewe", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-deepblue)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>
@@ -68,7 +68,7 @@ export default function Home() {
             <Link to={localize("/workshop/mobius-making", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-magenta)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(0 0, 100% 0, 50% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(0 0, 100% 0, 50% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>
@@ -106,8 +106,8 @@ export default function Home() {
             <Link to={localize("/protagonist", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-orange)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#D21E28", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#D21E28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-red)", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-red)", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>
@@ -145,7 +145,7 @@ export default function Home() {
             <Link to={localize("/story", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "flex-end", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-amber)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-orange)", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>
@@ -170,7 +170,7 @@ export default function Home() {
             <Link to={localize("/community", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-red)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-amber)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>
@@ -195,7 +195,7 @@ export default function Home() {
             <Link to={localize("/constellation", locale)} style={{ textDecoration: "none", position: "relative", display: "flex", flexDirection: "column", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-yellow)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#3C8246", clipPath: "polygon(0 0, 100% 0, 50% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-green)", clipPath: "polygon(0 0, 100% 0, 50% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>
@@ -258,7 +258,7 @@ export default function Home() {
             <Link to={localize("/project", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-slate)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(18% 100%, 30% 12%, 46% 100%)" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>
@@ -283,7 +283,7 @@ export default function Home() {
             <Link to={localize("/manifesto", locale)} style={{ position: "relative", display: "flex", flexDirection: "column", textDecoration: "none", background: "var(--color-paper)", border: "1px solid rgba(26,22,19,0.14)", color: "var(--color-ink)", minHeight: "340px", transition: "transform .16s var(--ease-standard), box-shadow .16s var(--ease-standard)" }} className="in-card in-plain">
               <div style={{ position: "relative", width: "100%", height: "14px", overflow: "hidden", flex: "0 0 auto", background: "var(--color-teal)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "46px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F0D23C", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-yellow)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ position: "relative", display: "flex", flexDirection: "column", flex: "1", padding: "20px 22px 20px 44px" }}>

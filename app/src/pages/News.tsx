@@ -22,10 +22,10 @@ export default function News() {
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
         {/* HERO */}
-        <section style={{ background: "#966432", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-tan)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
               <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase" }}>
                 {t("000_span")}
               </span>
@@ -44,8 +44,8 @@ export default function News() {
             <img src="/community-img/news-fuller-quote-card.jpg" alt={t("003_alt")} style={{ display: "block", width: "100%", maxWidth: "420px", height: "auto" }} />
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "18px" }}>
-                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#966432" }} />
-                <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#966432" }}>
+                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--color-tan)" }} />
+                <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--color-tan)" }}>
                   {t("004_span")}
                 </span>
               </div>
@@ -60,7 +60,7 @@ export default function News() {
         </section>
         {/* NEWS GRID */}
         <section id="news" style={{ maxWidth: "1320px", margin: "64px auto 0", padding: "0 28px 12px" }}>
-          <div style={{ marginBottom: "28px", borderTop: "2px solid #2E3B40", paddingTop: "24px" }}>
+          <div style={{ marginBottom: "28px", borderTop: "2px solid var(--color-ink)", paddingTop: "24px" }}>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(28px, 3.4vw, 44px)", lineHeight: "var(--in-news-1)", margin: "0", letterSpacing: "-0.01em" }}>
               {t("007_h2")}
             </h2>
@@ -69,12 +69,12 @@ export default function News() {
         </section>
         {/* BACK TO TOP */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 0" }}>
-          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
+          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
             {t("008_a")}
           </a>
         </section>
         {/* CTA */}
-        <section style={{ background: "#966432", color: "#FAF4E2", marginTop: "60px" }}>
+        <section style={{ background: "var(--color-tan)", color: "var(--color-paper)", marginTop: "60px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               {t("009_p")}
@@ -83,10 +83,10 @@ export default function News() {
               {t("010_h2")}
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#966432", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-tan)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("011_a")}
               </Link>
-              <Link to={localize("/community", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/community", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("012_a")}
               </Link>
             </div>

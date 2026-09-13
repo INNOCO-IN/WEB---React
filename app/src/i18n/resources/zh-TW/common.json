@@ -41,6 +41,7 @@
     "current": "目前語言：{{name}}",
     "switchTo": "切換為{{name}}",
     "approximate": "本頁面沒有{{name}}版本 — 將前往上層區塊",
+    "approximateHome": "本頁面沒有{{name}}版本 — 將前往{{name}}首頁",
     "unavailable": "尚未提供{{name}}版本",
     "names": {
       "en": "英文",
@@ -48,6 +49,7 @@
       "ko": "韓文"
     },
     "approximateShort": "前往上層區塊",
+    "approximateHomeShort": "前往首頁",
     "unavailableShort": "尚未提供"
   },
   "cards": {
@@ -96,6 +98,9 @@
     "submit": "送出",
     "submitting": "傳送中…",
     "sent": "謝謝您 — 我們收到了。",
+    "unreachable": "無法連線到伺服器，請再試一次。",
+    "sendFailed": "沒有送出成功。請再試一次，或來信 {{email}}。",
+    "notConnected": "這個表單還沒接上，請來信 {{email}}。",
     "validation": {
       "required": "{{field}}為必填。",
       "email": "這看起來不像是電子郵件地址。",

@@ -15,7 +15,7 @@ export default function ProjectUNCDocumentaryEN() {
     <SiteLayout page="Project-UNC-Documentary.EN.dc.html" className="page-project-uncdocumentary-en" footer={{ loop: "0.557", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
@@ -41,14 +41,14 @@ export default function ProjectUNCDocumentaryEN() {
           <div className="pj-grid" style={{ display: "grid", gridTemplateColumns: "226px 1fr 288px", gap: "40px", alignItems: "start" }}>
             {/* LEFT · about */}
             <aside className="pj-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(46,59,64,0.14)", paddingRight: "22px" }}>
-              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "26px" }} className="in-plain">
-                &larr; All projects
+              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "26px" }} className="in-plain">
+                ← All projects
               </Link>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Format
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Documentary film
                 </span>
               </div>
@@ -56,19 +56,19 @@ export default function ProjectUNCDocumentaryEN() {
                 Topic
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Resilience
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Youth
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Social innovation
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", borderTop: "1.5px solid rgba(46,59,64,0.16)", paddingTop: "18px" }}>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Place
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -76,7 +76,7 @@ export default function ProjectUNCDocumentaryEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Filmed
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -84,19 +84,19 @@ export default function ProjectUNCDocumentaryEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Led by
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
-                    Yunsun Chung, with Joanne Renaux &amp; Michael Ogden
+                    Yunsun Chung, with Joanne Renaux & Michael Ogden
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Part of
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
-                    &ldquo;Designing for Social Innovation,&rdquo; Zayed University
+                    “Designing for Social Innovation,” Zayed University
                   </div>
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function ProjectUNCDocumentaryEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid">
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/project-img/unc-documentary.jpg" alt="A young Nepali man being interviewed in a brick courtyard — the film crew seated behind the camera" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
                 <figcaption style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.6)", marginTop: "12px" }}>
@@ -112,25 +112,25 @@ export default function ProjectUNCDocumentaryEN() {
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "var(--color-ink)", textWrap: "pretty" }}>
                   Filming began in 2017, while the bootcamp was still running. The idea was simple: rather than write up what happened, follow the young people and find out what lasted.
                 </p>
                 <div className="story-body">
                   <p>
-                    It was one strand of a wider action research project, &ldquo;Designing for Social Innovation,&rdquo; based at Zayed University in Dubai &mdash; led by Yunsun Chung with Joanne Renaux and Michael Ogden.
+                    It was one strand of a wider action research project, “Designing for Social Innovation,” based at Zayed University in Dubai — led by Yunsun Chung with Joanne Renaux and Michael Ogden.
                   </p>
                   <p>
-                    A year later the team returned to Kathmandu. Some of the projects pitched at the bootcamp had become real. Some had stalled. Some had turned into something their founders never planned. The film follows those paths rather than the program that started them, because resilience is only visible over time &mdash; never on a closing day.
+                    A year later the team returned to Kathmandu. Some of the projects pitched at the bootcamp had become real. Some had stalled. Some had turned into something their founders never planned. The film follows those paths rather than the program that started them, because resilience is only visible over time — never on a closing day.
                   </p>
                 </div>
-                <blockquote style={{ margin: "40px 0", padding: "0 0 0 26px", borderLeft: "3px solid #1E5A64" }}>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontStyle: "italic", fontSize: "clamp(24px, 3vw, 30px)", lineHeight: "1.32", margin: "0", color: "#2E3B40", textWrap: "pretty" }}>
-                    Resilience is only visible over time &mdash; never on a closing day.
+                <blockquote style={{ margin: "40px 0", padding: "0 0 0 26px", borderLeft: "3px solid var(--color-slate)" }}>
+                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontStyle: "italic", fontSize: "clamp(24px, 3vw, 30px)", lineHeight: "1.32", margin: "0", color: "var(--color-ink)", textWrap: "pretty" }}>
+                    Resilience is only visible over time — never on a closing day.
                   </p>
                 </blockquote>
                 <div className="story-body">
                   <p>
-                    That August 2018 return also brought everyone back together for a one-day reunion at The Inn Patan in Kathmandu: youth from every UNC year, saying where they&rsquo;d got to and what they still needed.
+                    That August 2018 return also brought everyone back together for a one-day reunion at The Inn Patan in Kathmandu: youth from every UNC year, saying where they’d got to and what they still needed.
                   </p>
                 </div>
                 {/* GALLERY · embedded lightbox */}
@@ -167,16 +167,16 @@ export default function ProjectUNCDocumentaryEN() {
                   </div>
                 </div>
                 <div style={{ borderTop: "1.5px solid rgba(30,90,100,0.45)", marginTop: "44px", paddingTop: "30px" }}>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "20px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "20px" }}>
                     Watch
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "18px" }}>
-                    <a href="https://youtu.be/d1J4AECO_9g" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                    <a href="https://youtu.be/d1J4AECO_9g" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                         <img src="https://img.youtube.com/vi/d1J4AECO_9g/hqdefault.jpg" alt="UNC documentary" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                         <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                            <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                           </span>
                         </span>
                       </div>
@@ -187,8 +187,8 @@ export default function ProjectUNCDocumentaryEN() {
                   </div>
                 </div>
                 <div style={{ marginTop: "40px" }}>
-                  <Link to="/project/unc" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
-                    Read the UNC project &rarr;
+                  <Link to="/project/unc" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+                    Read the UNC project →
                   </Link>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function ProjectUNCDocumentaryEN() {
           </div>
         </section>
         {/* ===== CTA ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -209,7 +209,7 @@ export default function ProjectUNCDocumentaryEN() {
               What holds is only visible over time.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E5A64", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Get involved
               </Link>
             </div>

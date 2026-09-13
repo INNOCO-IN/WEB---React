@@ -1,5 +1,7 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-community-0: 0.98;
   --in-community-1: 1.04;
@@ -9,7 +11,7 @@
   --in-community-5: 1.06;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-community-0: 1.14;
   --in-community-1: 1.18;
   --in-community-2: 1.18;
@@ -21,8 +23,8 @@
 
 .page-community * { box-sizing: border-box; }
 .page-community, .page-community { margin: 0; padding: 0; }
-.page-community { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-community ::selection { background: #E6328C; color: #FAF4E2; }
+.page-community { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-community ::selection { background: var(--color-magenta); color: var(--color-paper); }
 .page-community .cm-card { transition: transform 0.18s ease, box-shadow 0.18s ease; text-decoration: none; }
 .page-community .cm-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }
 .page-community .cm-arrow { transition: transform 0.18s ease; }

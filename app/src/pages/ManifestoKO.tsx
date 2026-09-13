@@ -9,15 +9,15 @@ export default function ManifestoKO() {
     <SiteLayout page="Manifesto.KO.dc.html" className="page-manifesto-ko" footer={{ loop: "0.080", cta: "#1E8A86" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
-        <section style={{ color: "#FAF4E2", backgroundColor: "#1E8A86" }}>
+        <section style={{ color: "var(--color-paper)", backgroundColor: "var(--color-teal)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 매니페스토
               </span>
             </div>
-            <h1 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(40px, 5.6vw, 80px)", lineHeight: "1.14", letterSpacing: "-0.02em", margin: "0 0 26px", textWrap: "balance", color: "#FAF4E2" }}>
+            <h1 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(40px, 5.6vw, 80px)", lineHeight: "1.14", letterSpacing: "-0.02em", margin: "0 0 26px", textWrap: "balance", color: "var(--color-paper)" }}>
               긴 질문 하나를 품은 작은 스튜디오.
             </h1>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: "1.2", margin: "0", color: "rgba(250,244,226,0.94)", maxWidth: "56ch", textAlign: "left" }}>
@@ -38,7 +38,7 @@ export default function ManifestoKO() {
         </section>
         {/* ===================== §1 · WHO WE ARE ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "80px 28px 0" }}>
-          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "24px" }}>
+          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "24px" }}>
             ABOUT IN | 우리는 누구인가
           </div>
           <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.2", letterSpacing: "-0.02em", margin: "0 0 28px", maxWidth: "28ch", color: "#1A1613", wordBreak: "keep-all", textWrap: "pretty" }}>
@@ -48,11 +48,11 @@ export default function ManifestoKO() {
             흔히 우리가 물질적 성공에 집착하고 복잡한 사회적, 환경적, 정신적 문제들에 압도 당하고 하지만, 이곳은 워크샵과 프로젝트의 다양한 예술활동과 성찰을 통해 일상의 고민들에 대한 새로운 관점을 발견하는 공간이며, 현재의 어려움과 도전들을 다른 각도에서 바라보고 그것이 개인, 가정이나 일터, 속한 작은 사회 속에서 어떤 변화를 만드는지 알아채고, 긍정의 ‘뒤집고 연결하기’을 만들고 나누는 분들을 위한 곳입니다.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-            <div style={{ background: "#F3EAD0" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#D21E28" }}>
+            <div style={{ background: "var(--color-paper-dim)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-red)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-amber)", clipPath: "polygon(0 100%, 0 40%, 54% 100%)" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-orange)", clipPath: "polygon(100% 100%, 100% 18%, 58% 100%)" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -73,14 +73,14 @@ export default function ManifestoKO() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#1E648C" }}>
+            <div style={{ background: "var(--color-paper-dim)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-deepblue)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(100% 100%, 100% 34%, 30% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
-                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "14px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "14px" }}>
                   우리의 자세
                 </div>
                 <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
@@ -93,10 +93,10 @@ export default function ManifestoKO() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#E6328C" }}>
+            <div style={{ background: "var(--color-paper-dim)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-magenta)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(34% 100%, 50% 22%, 66% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -107,17 +107,17 @@ export default function ManifestoKO() {
                   개인과 네트워크를 동시에
                 </div>
                 <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "17px", lineHeight: "1.3", margin: "0", color: "rgba(26,22,19,0.78)" }}>
-                  인(IN)은 성숙해지는 워크샵과 프로젝트들의 활성화와 동시에 다양한 주인공들이&nbsp;
+                  {"인(IN)은 성숙해지는 워크샵과 프로젝트들의 활성화와 동시에 다양한 주인공들이\u00a0"}
                   <Link to="/ko/collectives" style={{ color: "rgb(142, 33, 102)" }} className="in-plain">
                     IN-콜렉티
                   </Link>
-                  를 중심으로&nbsp;MEWE 실천을 통해 키워가는 역량과 배움을 공유하며 각자의 공동체의 일들을 이어갑니다.
+                  {"를 중심으로\u00a0MEWE 실천을 통해 키워가는 역량과 배움을 공유하며 각자의 공동체의 일들을 이어갑니다."}
                 </p>
               </div>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "var(--color-paper)" }}>
               <div style={{ padding: "28px 28px 24px" }}>
                 <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B4321A", marginBottom: "14px" }}>
                   상호적 · 경험적
@@ -130,9 +130,9 @@ export default function ManifestoKO() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ padding: "28px 28px 24px", backgroundColor: "#FAF4E2" }}>
-                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ padding: "28px 28px 24px", backgroundColor: "var(--color-paper)" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "14px" }}>
                   연구에 뿌리내림
                 </div>
                 <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
@@ -143,9 +143,9 @@ export default function ManifestoKO() {
                 </p>
               </div>
             </div>
-            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "#FAF4E2" }}>
+            <div style={{ border: "1px solid rgba(26,22,19,0.14)", backgroundColor: "var(--color-paper)" }}>
               <div style={{ padding: "28px 28px 24px" }}>
-                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+                <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
                   유연함
                 </div>
                 <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-0.01em", color: "#1A1613", marginBottom: "14px", textWrap: "balance" }}>
@@ -162,7 +162,7 @@ export default function ManifestoKO() {
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ maxWidth: "900px", display: "flex", flexDirection: "column" }} />
         </section>
-        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "#F3EAD0" }}>
+        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "var(--color-paper-dim)" }}>
           <div aria-hidden="true" style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: "47px", overflow: "hidden", background: "#E52D84", transform: "rotate(180deg)" }}>
             <div style={{ position: "absolute", inset: "0", background: "#433370", clipPath: "polygon(0 0, 100% 0, 100% 12.05%)" }} />
             <div style={{ position: "absolute", inset: "0", background: "#D4232B", clipPath: "polygon(100% 87.95%, 100% 100%, 0 100%)" }} />
@@ -179,7 +179,7 @@ export default function ManifestoKO() {
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "80px 28px 0" }}>
-          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "14px" }}>
+          <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "14px" }}>
             매니페스토 | 우리가 믿는 것
           </div>
           <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.1", letterSpacing: "-0.02em", margin: "0 0 28px", textWrap: "balance" }}>
@@ -194,8 +194,8 @@ export default function ManifestoKO() {
         </section>
         {/* ===================== PRINCIPLES ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px 0" }}>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E8A86", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-teal)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               1 · 패턴
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -205,7 +205,7 @@ export default function ManifestoKO() {
               우리는 이전 어느 세대보다 닿기 쉬워졌지만, 더 외롭습니다. 모순이 아니라, 우리가 묻기를 그만둔 패턴입니다. IN은 그것을 담백하게 이름 부르는 데서 시작합니다: 판단 없이 베일을 걷어내고, 진짜로 듣는 법을 다시 배우는 것.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #E6328C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
               2 · 진실
             </div>
@@ -216,8 +216,8 @@ export default function ManifestoKO() {
               한 사람으로 자라는 것과 곁의 사람들을 돌보는 것은 애초에 두 개의 과제가 아니었습니다. 뫼비우스 띠처럼, 양면으로 보이는 것 — 자신과 사회 — 은 하나의 이어진 면입니다. 한번 보고 나면, 둘 사이에서 골라야 했던 오래된 선택은 사라집니다.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E648C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-deepblue)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "14px" }}>
               3 · 관점
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -227,8 +227,8 @@ export default function ManifestoKO() {
               어두운 방에서 코끼리 전체를 붙잡은 사람은 없습니다 — 통찰이 부족해서가 아니라, 모든 시점은 본래 부분적이기 때문입니다. 그래서 우리는 일부러, 함께, 여러 방향에서 바라봅니다. 우리 워크숍에서 이것은 토론이 아니라 수련입니다.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #46325A", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#46325A", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-plum)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-plum)", marginBottom: "14px" }}>
               4 · 사각지대
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -238,7 +238,7 @@ export default function ManifestoKO() {
               괜찮은 것으로 여겨지는 낭비. 불가피한 것으로 여겨지는 빈부의 격차. 평범하게 느껴질 때까지 스며든 고립. 안전한 거리에서 바라보는 전쟁. 이것들은 실수가 아니라 — 우리도 모르게 맺은 합의입니다. 우리는 알아차리기를 선택합니다.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #3C8246", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-green)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#2E6B33", marginBottom: "14px" }}>
               5 · 전환
             </div>
@@ -249,7 +249,7 @@ export default function ManifestoKO() {
               가장 어렵고, 가장 용기 있는 부분입니다. 에고와 편견과 판단을 내려놓는 것 — 한 번이 아니라 매일, 생각하고 말하고 행동하는 방식 안에서. 부자연스러운 일이 아닙니다. 뼈는 재구성되고, 원자는 재배열됩니다. 성장은 언제나 이렇게 일어났습니다.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #FAB414", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-amber)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#7A5200", marginBottom: "14px" }}>
               6 · 실천
             </div>
@@ -260,8 +260,8 @@ export default function ManifestoKO() {
               MEWE는 가르쳐지지 않습니다 — 워크숍에서, 진짜 이웃과 함께하는 진짜 프로젝트에서 연습됩니다. 자연, 과학, 예술, 사회적 실천을 넘나들며, 한자리에 모이기 어려운 세대와 분야를 가로질러. 프레임워크가 핵심이었던 적은 없습니다. 사람들 사이에서 무엇이 달라지는가가 핵심입니다.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E8A86", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#146560", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-teal)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-teal-dark)", marginBottom: "14px" }}>
               7 · 주역
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -271,7 +271,7 @@ export default function ManifestoKO() {
               공감은 설치되는 것이 아닙니다 — 인간이라는 것 안에 이미 새겨져 있습니다. IN을 거쳐 가는 모두는 타인의 번영을 도울 타고난 권리와 책임을 지닙니다. 저마다 자기 길의 주역이며, 무대 뒤에서 기다리는 사람은 없습니다.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #E6328C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-magenta)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
             <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#C21573", marginBottom: "14px" }}>
               8 · 다리
             </div>
@@ -282,8 +282,8 @@ export default function ManifestoKO() {
               한 사람이 할 수 있는 일은 작고, 시간에 매여 있습니다. 바로 그래서 우리는 기념비가 아니라 다리를 짓습니다: 더 높은 나와 우리의 공동체 사이에, 앞선 세대와 아직 도착하고 있는 세대 사이에.
             </p>
           </div>
-          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderBottom: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid #1E648C", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E648C", marginBottom: "14px" }}>
+          <div style={{ borderTop: "1px solid rgba(38,42,56,0.16)", borderBottom: "1px solid rgba(38,42,56,0.16)", borderLeft: "7px solid var(--color-deepblue)", padding: "44px 0 44px 30px", maxWidth: "1000px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-deepblue)", marginBottom: "14px" }}>
               9 · 초대
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 50px)", lineHeight: "1.18", margin: "0 0 18px", letterSpacing: "-0.01em", textWrap: "balance" }}>
@@ -294,7 +294,7 @@ export default function ManifestoKO() {
             </p>
           </div>
         </section>
-        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "#F3EAD0" }}>
+        <section style={{ position: "relative", width: "100%", margin: "80px 0 0", padding: "0", overflow: "hidden", background: "var(--color-paper-dim)" }}>
           <div aria-hidden="true" style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: "47px", overflow: "hidden", background: "#E52D84", transform: "rotate(180deg)" }}>
             <div style={{ position: "absolute", inset: "0", background: "#433370", clipPath: "polygon(0 0, 100% 0, 100% 12.05%)" }} />
             <div style={{ position: "absolute", inset: "0", background: "#D4232B", clipPath: "polygon(100% 87.95%, 100% 100%, 0 100%)" }} />
@@ -319,7 +319,7 @@ export default function ManifestoKO() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ paddingTop: "40px", position: "relative" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "16px", height: "60px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "600", fontSize: "26px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "16px", height: "60px" }}>
               IN 스토리 | 우리가 실천해 온 길
             </div>
             <h2 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "1.1", letterSpacing: "-0.02em", margin: "0 0 22px", maxWidth: "20ch", textWrap: "balance", width: "800px" }}>
@@ -333,11 +333,11 @@ export default function ManifestoKO() {
         {/* ===================== IN STORY · the journey ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "36px 28px 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "18px", alignItems: "stretch" }}>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#FAB414", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#1E648C", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-amber)", clipPath: "polygon(0 0, 28% 0, 100% 100%, 72% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-deepblue)", clipPath: "polygon(72% 0, 100% 0, 28% 100%, 0 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -352,11 +352,11 @@ export default function ManifestoKO() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#E6328C", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#1E8A86", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-magenta)", clipPath: "polygon(0 0, 26% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-teal)", clipPath: "polygon(74% 0, 100% 0, 62% 100%, 38% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -371,11 +371,11 @@ export default function ManifestoKO() {
                 </p>
               </div>
             </div>
-            <div style={{ background: "#F3EAD0", border: "1px solid rgba(26,22,19,0.14)" }}>
-              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "#FAF4E2" }}>
+            <div style={{ background: "var(--color-paper-dim)", border: "1px solid rgba(26,22,19,0.14)" }}>
+              <div style={{ position: "relative", height: "56px", overflow: "hidden", background: "var(--color-paper)" }}>
                 <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "102px" }}>
-                  <div style={{ position: "absolute", inset: "0", background: "#F05A28", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
-                  <div style={{ position: "absolute", inset: "0", background: "#46325A", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-orange)", clipPath: "polygon(0 100%, 48% 0, 96% 100%)", mixBlendMode: "multiply" }} />
+                  <div style={{ position: "absolute", inset: "0", background: "var(--color-plum)", clipPath: "polygon(24% 100%, 100% 0, 100% 100%)", mixBlendMode: "multiply" }} />
                 </div>
               </div>
               <div style={{ padding: "28px 28px 32px" }}>
@@ -403,7 +403,7 @@ export default function ManifestoKO() {
             <Link to="/ko/project" style={{ color: "rgb(30, 138, 134)" }} className="in-plain">
               프로젝트
             </Link>
-            {" 페이지에 있습니다.&nbsp;"}
+            {" 페이지에 있습니다.\u00a0"}
             <br />
           </p>
           <p style={{ margin: "0", fontSize: "22px", lineHeight: "1.3" }}>
@@ -411,7 +411,7 @@ export default function ManifestoKO() {
           </p>
           <div style={{ display: "flex", flexDirection: "column", maxWidth: "1000px" }} />
           <div style={{ maxWidth: "1000px", margin: "48px 0 0", borderTop: "1.5px solid rgba(38,42,56,0.16)", paddingTop: "32px" }}>
-            <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", margin: "0 0 12px" }}>
+            <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", margin: "0 0 12px" }}>
               연구와 인정
             </p>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "22px", lineHeight: "1.3", margin: "0", color: "#262A38" }}>
@@ -419,7 +419,7 @@ export default function ManifestoKO() {
             </p>
           </div>
         </section>
-        <section style={{ background: "#1E8A86", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-teal)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -428,10 +428,10 @@ export default function ManifestoKO() {
               문은 열려 있습니다.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/ko/mewe" style={{ textDecoration: "none", color: "#1E8A86", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/ko/mewe" style={{ textDecoration: "none", color: "var(--color-teal)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 프레임워크 보기
               </Link>
-              <Link to="/ko/connect" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/ko/connect" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 연결하기
               </Link>
             </div>

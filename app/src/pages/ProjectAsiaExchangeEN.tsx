@@ -10,7 +10,7 @@ export default function ProjectAsiaExchangeEN() {
     <SiteLayout page="Project-Asia-Exchange.EN.dc.html" className="page-project-asia-exchange-en" footer={{ loop: "0.478", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
@@ -36,14 +36,14 @@ export default function ProjectAsiaExchangeEN() {
           <div className="pj-grid" style={{ display: "grid", gridTemplateColumns: "226px 1fr 288px", gap: "40px", alignItems: "start" }}>
             {/* LEFT · about */}
             <aside className="pj-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(46,59,64,0.14)", paddingRight: "22px" }}>
-              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "26px" }} className="in-plain">
-                &larr; All projects
+              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "26px" }} className="in-plain">
+                ← All projects
               </Link>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Audience
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Youth · BridgeBuilders
                 </span>
               </div>
@@ -51,19 +51,19 @@ export default function ProjectAsiaExchangeEN() {
                 Topic
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Neighborhood
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Exchange
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Belonging
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", borderTop: "1.5px solid rgba(46,59,64,0.16)", paddingTop: "18px" }}>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Countries
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -71,7 +71,7 @@ export default function ProjectAsiaExchangeEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Frame
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -79,7 +79,7 @@ export default function ProjectAsiaExchangeEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Root system
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -91,7 +91,7 @@ export default function ProjectAsiaExchangeEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid">
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(46,59,64,0.4)" }}>
                     Photos to come
                   </span>
@@ -101,18 +101,18 @@ export default function ProjectAsiaExchangeEN() {
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "var(--color-ink)", textWrap: "pretty" }}>
                   Where youth lead, neighborhoods stir.
                 </p>
                 <div className="story-body">
                   <p>
-                    Across urban and rural Asia, young people are experiencing rising loneliness and disconnection from community life. But something else is also true: many of them sense that more is possible. They are not indifferent. They are waiting for conditions in which their own capacity might become useful &mdash; to others, and to themselves.
+                    Across urban and rural Asia, young people are experiencing rising loneliness and disconnection from community life. But something else is also true: many of them sense that more is possible. They are not indifferent. They are waiting for conditions in which their own capacity might become useful — to others, and to themselves.
                   </p>
                   <p>
                     The Asia Exchange creates those conditions, across five countries and one shared question: what begins to stir, inwardly and outwardly, when young people are given space to practice coherent community life in their own neighborhoods?
                   </p>
                 </div>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", margin: "40px 0 18px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", margin: "40px 0 18px" }}>
                   A journey of self-discovery and neighborhood rediscovery
                 </div>
                 <div className="story-body">
@@ -121,89 +121,89 @@ export default function ProjectAsiaExchangeEN() {
                     <strong>
                       BridgeBuilders
                     </strong>
-                    {" begin not with a project plan but with honest self-examination &mdash; the assumptions and prejudices that keep neighbors strangers, and the capacity to see what is already alive nearby but unnamed. Through a series of Global Labs they move along one continuous inner-outer arc: first going beneath the surface and practicing conversations that go deeper than usual; then imagining, not from what is missing but from what is quietly already present; then planning and acting, designing a neighborhood activation together with neighbors and local organizations."}
+                    {" begin not with a project plan but with honest self-examination — the assumptions and prejudices that keep neighbors strangers, and the capacity to see what is already alive nearby but unnamed. Through a series of Global Labs they move along one continuous inner-outer arc: first going beneath the surface and practicing conversations that go deeper than usual; then imagining, not from what is missing but from what is quietly already present; then planning and acting, designing a neighborhood activation together with neighbors and local organizations."}
                   </p>
                 </div>
               </div>
               {/* POP-UP LABS */}
               <div style={{ marginTop: "44px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "22px", letterSpacing: "0.12em", lineHeight: "1.1", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "22px", letterSpacing: "0.12em", lineHeight: "1.1", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                   Pop-Up Labs
                 </div>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "19px", lineHeight: "1.5", margin: "0 0 26px", maxWidth: "62ch", color: "rgba(46,59,64,0.82)" }}>
-                  Each journey culminates in a lab that is not an event but an invitation &mdash; co-created with neighbors and taking its own local form.
+                  Each journey culminates in a lab that is not an event but an invitation — co-created with neighbors and taking its own local form.
                 </p>
                 <div className="pj-labs" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2px", background: "rgba(46,59,64,0.14)" }}>
-                  <div style={{ background: "#FAF4E2", padding: "22px 20px" }}>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
+                  <div style={{ background: "var(--color-paper)", padding: "22px 20px" }}>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                       Beijing
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
                       Multicultural dialogue across cultural and linguistic difference.
                     </p>
                   </div>
-                  <div style={{ background: "#FAF4E2", padding: "22px 20px" }}>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
+                  <div style={{ background: "var(--color-paper)", padding: "22px 20px" }}>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                       Yamaguchi
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
                       Music, song, and farm-to-table gathering.
                     </p>
                   </div>
-                  <div style={{ background: "#FAF4E2", padding: "22px 20px" }}>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
+                  <div style={{ background: "var(--color-paper)", padding: "22px 20px" }}>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                       Seoul
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
                       MEWE dialogue and meaningful conversation spaces.
                     </p>
                   </div>
-                  <div style={{ background: "#FAF4E2", padding: "22px 20px" }}>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
+                  <div style={{ background: "var(--color-paper)", padding: "22px 20px" }}>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                       Sindhuli
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
                       Storytelling, digital mapping, and intergenerational wisdom circles.
                     </p>
                   </div>
-                  <div style={{ background: "#FAF4E2", padding: "22px 20px" }}>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
+                  <div style={{ background: "var(--color-paper)", padding: "22px 20px" }}>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                       Caotun / Taichung
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.45", margin: "0", color: "rgba(46,59,64,0.85)" }}>
                       Junior-youth animator networks as everyday neighborhood presence.
                     </p>
                   </div>
-                  <div style={{ background: "#1E5A64", padding: "22px 20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <div style={{ background: "var(--color-slate)", padding: "22px 20px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                     <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(250,244,226,0.7)", marginBottom: "10px" }}>
                       The shared root
                     </div>
-                    <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "20px", lineHeight: "1.3", margin: "0", color: "#FAF4E2" }}>
+                    <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "20px", lineHeight: "1.3", margin: "0", color: "var(--color-paper)" }}>
                       Observe → Connect → Create → Share.
                     </p>
                   </div>
                 </div>
               </div>
               <div style={{ maxWidth: "680px", marginTop: "44px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "18px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "18px" }}>
                   One living network
                 </div>
                 <div className="story-body">
                   <p>
-                    Practitioners from all five countries travel to each other&rsquo;s neighborhoods &mdash; walking the streets, co-facilitating, witnessing what has grown, carrying it home. This is not five parallel projects. It is one network, strengthening what each team already wants to do.
+                    Practitioners from all five countries travel to each other’s neighborhoods — walking the streets, co-facilitating, witnessing what has grown, carrying it home. This is not five parallel projects. It is one network, strengthening what each team already wants to do.
                   </p>
                 </div>
                 <div style={{ borderTop: "1.5px solid rgba(30,90,100,0.45)", marginTop: "30px", paddingTop: "30px" }}>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(26px, 3.4vw, 34px)", lineHeight: "1.24", letterSpacing: "-0.015em", margin: "0", color: "#2E3B40", textWrap: "balance" }}>
+                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(26px, 3.4vw, 34px)", lineHeight: "1.24", letterSpacing: "-0.015em", margin: "0", color: "var(--color-ink)", textWrap: "balance" }}>
                     {"A prototype, not an event. The one-year frame is not the container. "}
-                    <span style={{ color: "#1E5A64" }}>
+                    <span style={{ color: "var(--color-slate)" }}>
                       It is the seed.
                     </span>
                   </p>
                 </div>
                 <div style={{ marginTop: "34px" }}>
-                  <Link to="/protagonist" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "14px 28px", justifyContent: "center", lineHeight: "1.2" }} className="in-plain">
-                    BridgeBuilder on the Protagonist path &rarr;
+                  <Link to="/protagonist" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 28px", justifyContent: "center", lineHeight: "1.2" }} className="in-plain">
+                    BridgeBuilder on the Protagonist path →
                   </Link>
                 </div>
               </div>
@@ -215,7 +215,7 @@ export default function ProjectAsiaExchangeEN() {
           </div>
         </section>
         {/* ===== CTA ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -224,10 +224,10 @@ export default function ProjectAsiaExchangeEN() {
               Bring the Exchange to your own neighborhood.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E5A64", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Start a conversation
               </Link>
-              <Link to="/protagonist" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/protagonist" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the Protagonist path
               </Link>
             </div>

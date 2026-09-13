@@ -13,6 +13,8 @@
  * all in the attribute and binding translation, not in parsing edge cases.
  */
 
+import { tokeniseColours } from './design-tokens.mjs';
+
 const VOID = new Set([
   'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta',
   'param', 'source', 'track', 'wbr',
@@ -83,12 +85,15 @@ const ATTR = {
   'markerheight': 'markerHeight',
 };
 
+/** Elements whose `placeholder` a visitor reads, rather than an editor. */
+const FIELDS = new Set(['input', 'textarea', 'select']);
+
 /** Editor-only attributes from the design tool. They mean nothing at runtime. */
 const DROP_ATTR = new Set([
   'hint-size', 'hint-placeholder-val', 'hint-placeholder-count', 'style-hover',
   'data-dc-script', 'data-props',
   // Consumed by SupabaseForm / ChipGroup, which read them as props instead.
-  'data-in-form', 'data-in-thanks', 'data-chip-group', 'data-multi',
+  'data-in-form', 'data-in-thanks', 'data-in-idle', 'data-chip-group', 'data-multi',
   'data-sel-bg', 'data-sel-fg', 'data-sel-border', 'data-value', 'data-label-id',
   // The long form of <image-slot>; the component is resolved by import.
   'component-from-global-scope', 'from',
@@ -170,11 +175,13 @@ function fontToken(stack) {
 /**
  * @param {object} [opts]
  * @param {boolean} [opts.tokeniseFonts] rewrite literal stacks to design tokens
+ * @param {{byHex: Map<string,string>, seen: Map<string,number>}} [opts.colours]
+ *   the palette to name hex against, and where to record what it could not name
  * @param {string[][]} [opts.capture]    collect `[prop, value]` pairs per style
  * @param {Map<string,string>} [opts.substitute] prop → replacement value
  */
 export function styleStringToObject(css, opts = {}) {
-  const { tokeniseFonts = false, capture = null, substitute = null } = opts;
+  const { tokeniseFonts = false, colours = null, capture = null, substitute = null } = opts;
   // A style object cannot repeat a key, and duplicated declarations do occur
   // in the source. CSS resolves them last-wins, so a Map does the same.
   const entries = new Map();
@@ -194,6 +201,12 @@ export function styleStringToObject(css, opts = {}) {
       const token = fontToken(value);
       if (token) value = token;
     }
+    // Colour is not one property. It arrives as `color` and `background`, and
+    // inside the `border`, `outline` and `box-shadow` shorthands, so the value
+    // is rewritten whatever the key is — one holding no hex comes back
+    // untouched. Before `capture` for the same reason the font rule is: two
+    // editions that differ only in spelling a colour should compare equal.
+    if (colours) value = tokeniseColours(value, colours.byHex, colours.seen);
     // A value that differs between the two language editions is a design
     // decision about that language, not a word — a Hangul headline needs more
     // leading than a Latin one. It becomes a custom property so the one
@@ -220,6 +233,57 @@ function asBinding(value) {
 function hasBinding(text) {
   return /\{\{[\s\S]*?\}\}/.test(text);
 }
+
+/* ---------------------------------------------------------------- entities */
+
+/**
+ * Named entities the legacy pages actually use.
+ *
+ * The numeric forms are handled by the regex below, so this only lists the
+ * names. `nbsp` is a real U+00A0 and not a space — see `collapse`, which is
+ * careful to keep it that way.
+ */
+const ENTITIES = {
+  amp: '&', quot: '"', lt: '<', gt: '>', nbsp: ' ', ne: '≠',
+  mdash: '—', ndash: '–', middot: '·',
+  lsquo: '‘', rsquo: '’', ldquo: '“', rdquo: '”',
+  larr: '←', rarr: '→', uarr: '↑', darr: '↓',
+};
+
+/**
+ * `&mdash;` → `—`.
+ *
+ * An entity is how HTML spells a character, and everything downstream of the
+ * parser wants the character. JSX text is the one position where leaving it
+ * alone happens to work — JSX decodes its own literals — but copy does not stay
+ * in that position: `alt`, `aria-label` and every keyed sentence become
+ * JavaScript strings, and a string is rendered as what it says. That is how
+ * `Facilitators &amp; facilitators-to-be` reached the page intact.
+ *
+ * Shared with extract-content.mjs, which decodes for the same reason one layer
+ * further out: a database row is data, and a reader of it should not have to
+ * know HTML.
+ */
+export const decodeEntities = (value) =>
+  value.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (whole, name) => {
+    if (name[0] === '#') {
+      const code = name[1] === 'x' || name[1] === 'X'
+        ? parseInt(name.slice(2), 16)
+        : parseInt(name.slice(1), 10);
+      return Number.isFinite(code) ? String.fromCodePoint(code) : whole;
+    }
+    return ENTITIES[name] ?? whole;
+  });
+
+/**
+ * Layout whitespace → one space, leaving a non-breaking space alone.
+ *
+ * The indentation in the source is not content and the page is better off
+ * without it. A U+00A0 is the opposite: somebody wrote `&nbsp;` to stop a line
+ * breaking there, and `\s` matches it, so the obvious `/\s+/` would quietly
+ * undo the one piece of whitespace that was deliberate.
+ */
+const collapse = (value) => value.replace(/[^\S ]+/g, ' ');
 
 /* ------------------------------------------------------------------ parser */
 
@@ -373,15 +437,22 @@ function isCopy(value) {
 function wordKey(ctx, tag, value) {
   const index = String(ctx.words.size).padStart(3, '0');
   const key = `${index}_${tag ?? 'text'}`;
-  ctx.words.set(key, value.replace(/\s+/g, ' '));
+  ctx.words.set(key, collapse(decodeEntities(value)));
   return key;
 }
 
+/** A JS string literal, with the characters nobody can see spelled out. */
+const quote = (value) => JSON.stringify(value).replace(/ /g, '\\u00a0');
+
 function jsxText(value) {
-  const collapsed = value.replace(/\s+/g, ' ');
+  const collapsed = collapse(decodeEntities(value));
   if (!collapsed.trim()) return '';
-  if (collapsed !== collapsed.trim() || /[{}<>]/.test(collapsed)) {
-    return `{${JSON.stringify(collapsed)}}`;
+  // A non-breaking space survives decoding on purpose, which makes it the one
+  // character here that is content and invisible at the same time. It always
+  // takes the string-expression form, so that it is ` ` in the source
+  // rather than something that looks like a space and is not one.
+  if (collapsed !== collapsed.trim() || /[{}<> ]/.test(collapsed)) {
+    return `{${quote(collapsed)}}`;
   }
   return collapsed;
 }
@@ -413,12 +484,13 @@ function jsxTextWithBindings(value) {
  * on the other.
  */
 function styleOpts(ctx) {
-  if (!ctx.styles2) return { tokeniseFonts: ctx.tokeniseFonts };
+  if (!ctx.styles2) return { tokeniseFonts: ctx.tokeniseFonts, colours: ctx.colours };
   const index = ctx.styles2.length;
   const capture = [];
   ctx.styles2.push(capture);
   return {
     tokeniseFonts: ctx.tokeniseFonts,
+    colours: ctx.colours,
     capture,
     substitute: ctx.substitutions?.get(index) ?? null,
   };
@@ -563,8 +635,19 @@ export function toJsx(node, ctx, depth = 0) {
     ctx.imports.add('SupabaseForm');
     name = 'SupabaseForm';
     props.push(`table=${JSON.stringify(attrOf('data-in-form'))}`);
-    const thanks = attrOf('data-in-thanks');
-    if (thanks) props.push(`thanks=${JSON.stringify(thanks)}`);
+    // What the form says once it has sent, and what its status line says
+    // before it has. Both are sentences a reader reads, so both are words —
+    // a form that thanks a Korean reader in English is a form that forgot
+    // which page it was on.
+    for (const [attr, prop] of [['data-in-thanks', 'thanks'], ['data-in-idle', 'idle']]) {
+      const value = attrOf(attr);
+      if (!value) continue;
+      props.push(
+        ctx.words
+          ? `${prop}={t(${JSON.stringify(wordKey(ctx, prop, value))})}`
+          : `${prop}=${JSON.stringify(value)}`,
+      );
+    }
   }
 
   if (attrOf('data-chip-group')) {
@@ -645,7 +728,12 @@ ${INDENT(depth)}</ChipGroup>`;
 
     // alt, and the labels assistive technology reads aloud, are copy — they
     // describe the page to someone in the language they are reading it in.
-    if (ctx.words && ['alt', 'aria-label', 'title'].includes(lower) && isCopy(value) && !asBinding(value)) {
+    // So is a form field's placeholder, which is the one hint a reader has
+    // about what to type; `<image-slot placeholder>` is not — that one names
+    // a picture for whoever fills the slot, and never reaches a reader.
+    const isFieldHint = lower === 'placeholder' && FIELDS.has(tag);
+    if (ctx.words && (isFieldHint || ['alt', 'aria-label', 'title'].includes(lower))
+        && isCopy(value) && !asBinding(value)) {
       const react = lower === 'aria-label' ? 'aria-label' : lower;
       props.push(`${react}={t(${JSON.stringify(wordKey(ctx, lower, value))})}`);
       continue;

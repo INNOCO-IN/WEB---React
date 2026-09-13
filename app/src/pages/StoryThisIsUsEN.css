@@ -1,8 +1,8 @@
 
 .page-story-this-is-us-en * { box-sizing: border-box; }
 .page-story-this-is-us-en, .page-story-this-is-us-en { margin: 0; padding: 0; }
-.page-story-this-is-us-en { background: #FAF4E2; color: #1A1613; -webkit-font-smoothing: antialiased; }
-.page-story-this-is-us-en ::selection { background: #C9962B; color: #FAF4E2; }
+.page-story-this-is-us-en { background: var(--color-paper); color: #1A1613; -webkit-font-smoothing: antialiased; }
+.page-story-this-is-us-en ::selection { background: #C9962B; color: var(--color-paper); }
 .page-story-this-is-us-en a { color: #B87A00; }
 .page-story-this-is-us-en a:hover { color: #8f5f00; }
 .page-story-this-is-us-en .col-scroll::-webkit-scrollbar { width: 6px; }

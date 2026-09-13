@@ -29,6 +29,41 @@ table="stories">` owns the submit, the upload and the status line, and
 
 Adding a field is still just adding an input whose `name` matches the column.
 
+### What a value may be
+
+A `<select>` without an explicit `value` sends its visible text. Three editions
+of the same page then send three different strings for the same answer, and the
+review desk sorts one kind of enquiry into three buckets depending on which
+language the sender happened to be reading. So **every option carries a stable
+slug**:
+
+```html
+<option value="keep-me-posted">Just keep me posted about events</option>
+<option value="keep-me-posted">행사 소식만 받아볼게요</option>
+```
+
+The column holds the slug; the sentence is the page's, and a translator may
+change it freely.
+
+### Two attributes the page owns
+
+Both spell a condition the same way, `field=value`, for the same reason — a
+rule must never name a sentence:
+
+| Attribute | Sits on | Means |
+|---|---|---|
+| `data-hide-when="brings=keep-me-posted"` | a block inside the form | that answer retires this question — hide it, and clear what it holds, because hidden is not absent and a message the visitor believes they took back would otherwise still be sent |
+| `data-prefill="brings=keep-me-posted"` | a link elsewhere on the page | scrolling to the form also answers that question |
+
+`data-in-idle` is the status line's resting text — the page's promise to write
+back. It is an attribute rather than text inside the `data-in-status` slot
+because the slot is replaced the moment the visitor presses send; written in
+the markup the sentence would exist twice and agree only until somebody edited
+one of them.
+
+Both trees read these off the DOM: `in-supabase.js` in `site/`, and an effect
+in `SupabaseForm.tsx` in `app/`.
+
 > **Reading content is separate.** The tables the site *reads* — news,
 > workshops, the IN-Collective roster, projects, communities, stories — are
 > documented in [`CONTENT.md`](CONTENT.md), along with how each page stays

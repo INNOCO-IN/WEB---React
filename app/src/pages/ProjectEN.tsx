@@ -11,11 +11,11 @@ export default function ProjectEN() {
     <SiteLayout page="Project.EN.dc.html" className="page-project-en" footer={{ loop: "0.489", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 Project
               </span>
             </div>
@@ -29,10 +29,10 @@ export default function ProjectEN() {
         </section>
         {/* FEATURED — ASIA EXCHANGE / BRIDGEBUILDER */}
         <section id="bridgebuilder" style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px 22px", scrollMarginTop: "80px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", background: "#E6328C", color: "#FAF4E2", overflow: "hidden", minHeight: "340px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", background: "var(--color-magenta)", color: "var(--color-paper)", overflow: "hidden", minHeight: "340px" }}>
             <div style={{ position: "relative", minHeight: "280px" }}>
               <ImageSlot id="project-asia-hero" shape="rect" placeholder="Young BridgeBuilders across a neighborhood, five-country feel" style={{ position: "absolute", inset: "0", width: "100%", height: "100%" }} src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=1100&q=80" credit="Photo by Hannah Busing on Unsplash" credit-href="https://unsplash.com/@hannahbusing" />
-              <div style={{ position: "absolute", left: "16px", top: "16px", background: "#FAF4E2", color: "#2E3B40", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
+              <div style={{ position: "absolute", left: "16px", top: "16px", background: "var(--color-paper)", color: "var(--color-ink)", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
                 Flagship · 2026–2027
               </div>
             </div>
@@ -53,12 +53,12 @@ export default function ProjectEN() {
                 </p>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "17px", lineHeight: "1.44", margin: "0", color: "rgba(250,244,226,0.8)", maxWidth: "50ch" }}>
                   {"BridgeBuilder is also a stage on the practice path — "}
-                  <Link to="/protagonist" style={{ color: "#FAF4E2", textDecoration: "underline" }} className="in-plain">
+                  <Link to="/protagonist" style={{ color: "var(--color-paper)", textDecoration: "underline" }} className="in-plain">
                     see it on the Protagonist path →
                   </Link>
                 </p>
               </div>
-              <Link to="/project/asia-exchange" style={{ textDecoration: "none", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", letterSpacing: "0.04em", color: "#E6328C", background: "#FAF4E2", borderRadius: "999px", padding: "13px 26px", lineHeight: "1.2" }} className="in-plain">
+              <Link to="/project/asia-exchange" style={{ textDecoration: "none", alignSelf: "flex-start", display: "inline-flex", alignItems: "center", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", letterSpacing: "0.04em", color: "var(--color-magenta)", background: "var(--color-paper)", borderRadius: "999px", padding: "13px 26px", lineHeight: "1.2" }} className="in-plain">
                 Read the full project →
               </Link>
             </div>
@@ -81,7 +81,7 @@ export default function ProjectEN() {
           </p>
         </section>
         {/* CTA */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -90,10 +90,10 @@ export default function ProjectEN() {
               Bring a project to your own community.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E648C", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-deepblue)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Start a conversation
               </Link>
-              <Link to="/protagonist" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/protagonist" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the Protagonist path
               </Link>
             </div>

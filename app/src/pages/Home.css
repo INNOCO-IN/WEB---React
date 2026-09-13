@@ -1,11 +1,13 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-home-0: 0.95;
   --in-home-1: italic;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-home-0: 1.12;
   --in-home-1: normal;
 }

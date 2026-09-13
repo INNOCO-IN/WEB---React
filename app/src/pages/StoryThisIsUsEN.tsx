@@ -20,7 +20,7 @@ export default function StoryThisIsUsEN() {
             {/* ================= LEFT · browse ================= */}
             <div className="si-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(26,22,19,0.14)", paddingRight: "22px" }}>
               <Link to="/story/all" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#B87A00", marginBottom: "26px" }} className="in-plain">
-                &larr; All stories
+                ← All stories
               </Link>
               <div style={{ display: "flex", gap: "6px", marginBottom: "20px" }}>
                 <button onClick={setByFormat} style={sx(byFormatStyle)}>
@@ -57,10 +57,10 @@ export default function StoryThisIsUsEN() {
                   </span>
                 </div>
                 <h1 style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(48px, 7vw, 84px)", lineHeight: "1.0", letterSpacing: "-0.025em", margin: "0 0 24px", textWrap: "balance" }}>
-                  &ldquo;This is us&rdquo;
+                  “This is us”
                 </h1>
                 <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontStyle: "italic", fontSize: "clamp(23px, 2.6vw, 29px)", lineHeight: "1.34", letterSpacing: "-0.01em", margin: "0 0 28px", color: "rgba(26,22,19,0.72)", textWrap: "pretty" }}>
-                  I stopped teaching and asked one real question. By the end, a boy pointed at what they&rsquo;d made and said: this is us.
+                  I stopped teaching and asked one real question. By the end, a boy pointed at what they’d made and said: this is us.
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "12px", paddingBottom: "30px", borderBottom: "1.5px solid rgba(26,22,19,0.16)" }}>
                   <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.06em", textTransform: "uppercase", color: "#1A1613" }}>
@@ -76,32 +76,32 @@ export default function StoryThisIsUsEN() {
                     Twenty minutes into the lesson on constellations, no one had looked up.
                   </p>
                   <p>
-                    {"I could hear how flat my own voice was. The words were on the board &mdash; definitions, distances, names &mdash; and none of it was landing. I remember thinking: "}
+                    {"I could hear how flat my own voice was. The words were on the board — definitions, distances, names — and none of it was landing. I remember thinking: "}
                     <em>
-                      why can&rsquo;t I reach them?
+                      why can’t I reach them?
                     </em>
                     {" I had planned this well. I was doing everything I was supposed to do."}
                   </p>
                   <p>
-                    What I didn&rsquo;t see then was how hard I was working to hold the room together by myself. That was the job, as I understood it. Thirty students, one of me, and a wall between us that it was my responsibility to get across.
+                    What I didn’t see then was how hard I was working to hold the room together by myself. That was the job, as I understood it. Thirty students, one of me, and a wall between us that it was my responsibility to get across.
                   </p>
                   <p>
-                    So when I stopped, it wasn&rsquo;t wisdom. It was exhaustion.
+                    So when I stopped, it wasn’t wisdom. It was exhaustion.
                   </p>
                   <p>
-                    {"I put down the lesson plan and asked them something I genuinely didn&rsquo;t have the answer to. "}
+                    {"I put down the lesson plan and asked them something I genuinely didn’t have the answer to. "}
                     <em>
                       Why do you think stars connect?
                     </em>
                   </p>
                   <p>
-                    &ldquo;Stars, I guess,&rdquo; someone said. Then someone else, quieter: &ldquo;Connected stars?&rdquo;
+                    “Stars, I guess,” someone said. Then someone else, quieter: “Connected stars?”
                   </p>
                   <p>
-                    I sat down among them &mdash; not at the front &mdash; and asked what kind of star each of them would be. A bright one. Part of a cluster. A lonely one, one boy said, and didn&rsquo;t look up.
+                    I sat down among them — not at the front — and asked what kind of star each of them would be. A bright one. Part of a cluster. A lonely one, one boy said, and didn’t look up.
                   </p>
                   <p>
-                    Then something happened that I didn&rsquo;t do.
+                    Then something happened that I didn’t do.
                   </p>
                   <p>
                     {"They stopped answering me and started answering each other. "}
@@ -111,30 +111,30 @@ export default function StoryThisIsUsEN() {
                     {" They were up, moving, drawing. My part had shrunk to almost nothing, and the lesson was working better than it ever had when I was carrying it."}
                   </p>
                   <p>
-                    I felt the old panic first &mdash; if I&rsquo;m not holding this, it falls apart. It didn&rsquo;t fall apart. It got better. That was the hardest and best thing I learned that day: the room was never mine to hold. I was one of them, not above them, and the moment I sat down, they could feel it.
+                    I felt the old panic first — if I’m not holding this, it falls apart. It didn’t fall apart. It got better. That was the hardest and best thing I learned that day: the room was never mine to hold. I was one of them, not above them, and the moment I sat down, they could feel it.
                   </p>
                   <p>
-                    By the end they&rsquo;d made a map, every star one of them. A boy pointed at it and said, &ldquo;This is us.&rdquo;
+                    By the end they’d made a map, every star one of them. A boy pointed at it and said, “This is us.”
                   </p>
                 </article>
                 <div style={{ borderTop: "1.5px solid rgba(201,150,43,0.5)", marginTop: "52px", paddingTop: "38px" }}>
                   <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(27px, 3.6vw, 36px)", lineHeight: "1.24", letterSpacing: "-0.015em", margin: "0", color: "#1A1613", textWrap: "balance" }}>
-                    I thought ME=WE was the thing I&rsquo;d write on the board.
+                    I thought ME=WE was the thing I’d write on the board.
                     <br />
                     <span style={{ color: "#B87A00" }}>
                       It was the thing that happened when I sat down.
                     </span>
                   </p>
                 </div>
-                <div style={{ background: "#F3EAD0", padding: "42px 40px", marginTop: "64px" }}>
+                <div style={{ background: "var(--color-paper-dim)", padding: "42px 40px", marginTop: "64px" }}>
                   <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#B87A00", marginBottom: "16px" }}>
                     Pass it on
                   </div>
                   <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "22px", lineHeight: "1.5", margin: "0 0 26px", color: "#241f19", textWrap: "pretty" }}>
-                    If a room ever taught you this too &mdash; the moment you stopped holding it and it held itself &mdash; write it down. Fifteen honest minutes. That&rsquo;s how one ray becomes a glow.
+                    If a room ever taught you this too — the moment you stopped holding it and it held itself — write it down. Fifteen honest minutes. That’s how one ray becomes a glow.
                   </p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px" }}>
-                    <Link to="/story/submit" style={{ textDecoration: "none", color: "#FAF4E2", background: "#1A1613", borderRadius: "999px", padding: "14px 30px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+                    <Link to="/story/submit" style={{ textDecoration: "none", color: "var(--color-paper)", background: "#1A1613", borderRadius: "999px", padding: "14px 30px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                       Share your story
                     </Link>
                     <Link to="/story/all" style={{ textDecoration: "none", color: "#1A1613", background: "transparent", border: "1.5px solid rgba(26,22,19,0.4)", borderRadius: "999px", padding: "14px 30px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">

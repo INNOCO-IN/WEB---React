@@ -15,7 +15,7 @@ export default function ProjectUAEYouthSocialInnovationEN() {
     <SiteLayout page="Project-UAE-Youth-Social-Innovation.EN.dc.html" className="page-project-uaeyouth-social-innovation-en" footer={{ loop: "0.534", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
@@ -41,14 +41,14 @@ export default function ProjectUAEYouthSocialInnovationEN() {
           <div className="pj-grid" style={{ display: "grid", gridTemplateColumns: "226px 1fr 288px", gap: "40px", alignItems: "start" }}>
             {/* LEFT · about */}
             <aside className="pj-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(46,59,64,0.14)", paddingRight: "22px" }}>
-              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "26px" }} className="in-plain">
-                &larr; All projects
+              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "26px" }} className="in-plain">
+                ← All projects
               </Link>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Audience
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Youth
                 </span>
               </div>
@@ -56,19 +56,19 @@ export default function ProjectUAEYouthSocialInnovationEN() {
                 Topic
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Social innovation
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Entrepreneurship
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Need-finding
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", borderTop: "1.5px solid rgba(46,59,64,0.16)", paddingTop: "18px" }}>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Place
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -76,7 +76,7 @@ export default function ProjectUAEYouthSocialInnovationEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Year
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -84,7 +84,7 @@ export default function ProjectUAEYouthSocialInnovationEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Participants
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -96,30 +96,30 @@ export default function ProjectUAEYouthSocialInnovationEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid" style={{ minWidth: "0" }}>
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/project-img/UAE-Youth-Social-Innovation.jpg" alt="The full cohort of 38 young participants and facilitators at Sheraa, Sharjah" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
                 <figcaption style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.6)", marginTop: "12px" }}>
-                  The cohort at Sheraa, Sharjah &mdash; young people from across the UAE.
+                  The cohort at Sheraa, Sharjah — young people from across the UAE.
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "var(--color-ink)", textWrap: "pretty" }}>
                   Over six months, in partnership with Sheraa, 38 young people across the UAE registered to turn something they cared about into a real social enterprise. About twenty saw it through to the end.
                 </p>
                 <div className="story-body">
                   <p>
-                    Not by lecture. They worked through a series of workshops rooted in the MEWE framework and supported by systems thinking, design thinking, and appreciative inquiry &mdash; exploring their own identity, their relationships with self, society, and service, and where passion meets purpose.
+                    Not by lecture. They worked through a series of workshops rooted in the MEWE framework and supported by systems thinking, design thinking, and appreciative inquiry — exploring their own identity, their relationships with self, society, and service, and where passion meets purpose.
                   </p>
                   <p>
-                    Then they went out. Deep listening and conversations in their own communities came first &mdash; need-finding before ideas &mdash; then shaping what they heard into something, then testing it again and again with the people they hoped to serve. Most ideas changed several times before they held.
+                    Then they went out. Deep listening and conversations in their own communities came first — need-finding before ideas — then shaping what they heard into something, then testing it again and again with the people they hoped to serve. Most ideas changed several times before they held.
                   </p>
                   <p>
                     The support around them was its own lesson. INNOCO facilitators, like-minded individuals, and organizations gave their knowledge, expertise, and in-kind services freely, with no expectation of return.
                   </p>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "40px 0 0", color: "#2E3B40", textWrap: "pretty" }}>
-                    {"What came out of it wasn&rsquo;t a set of assignments. "}
-                    <span style={{ color: "#1E5A64" }}>
+                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "40px 0 0", color: "var(--color-ink)", textWrap: "pretty" }}>
+                    {"What came out of it wasn’t a set of assignments. "}
+                    <span style={{ color: "var(--color-slate)" }}>
                       It was real prototypes, real pitches, and a group of young people who discovered they could build something.
                     </span>
                   </p>
@@ -160,80 +160,80 @@ export default function ProjectUAEYouthSocialInnovationEN() {
               </div>
               {/* WATCH */}
               <div style={{ maxWidth: "680px", borderTop: "1.5px solid rgba(30,90,100,0.45)", marginTop: "44px", paddingTop: "30px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "20px" }}>
-                  Watch &mdash; the videos are their own
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "20px" }}>
+                  Watch — the videos are their own
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                  <a href="https://youtu.be/Pl1IBR7fnTU" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                  <a href="https://youtu.be/Pl1IBR7fnTU" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                       <img src="https://img.youtube.com/vi/Pl1IBR7fnTU/hqdefault.jpg" alt="Hasaad — a participant venture in organic food and farming, Dubai" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                       <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                          <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                         </span>
                       </span>
                     </div>
                     <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", marginTop: "12px", lineHeight: "1.3" }}>
-                      Hasaad &mdash; a participant venture in organic food and farming, Dubai
+                      Hasaad — a participant venture in organic food and farming, Dubai
                     </div>
                   </a>
-                  <a href="https://youtu.be/Qwv9_7UkjAo" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                  <a href="https://youtu.be/Qwv9_7UkjAo" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                       <img src="https://img.youtube.com/vi/Qwv9_7UkjAo/hqdefault.jpg" alt="Collect, Convert, Contribute — a circular-economy answer to food waste in the UAE" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                       <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                          <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                         </span>
                       </span>
                     </div>
                     <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", marginTop: "12px", lineHeight: "1.3" }}>
-                      Collect, Convert, Contribute &mdash; a circular-economy answer to food waste in the UAE
+                      Collect, Convert, Contribute — a circular-economy answer to food waste in the UAE
                     </div>
                   </a>
-                  <a href="https://youtu.be/C7yOhZdsoCI" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                  <a href="https://youtu.be/C7yOhZdsoCI" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                       <img src="https://img.youtube.com/vi/C7yOhZdsoCI/hqdefault.jpg" alt="Sustainable tech at home — saving water and energy without drastic lifestyle changes" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                       <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                          <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                         </span>
                       </span>
                     </div>
                     <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", marginTop: "12px", lineHeight: "1.3" }}>
-                      Sustainable tech at home &mdash; saving water and energy without drastic lifestyle changes
+                      Sustainable tech at home — saving water and energy without drastic lifestyle changes
                     </div>
                   </a>
-                  <a href="https://youtu.be/HwG7iL8wGAA" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                  <a href="https://youtu.be/HwG7iL8wGAA" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                       <img src="https://img.youtube.com/vi/HwG7iL8wGAA/hqdefault.jpg" alt="Test before you build — validating business assumptions before investing resources" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                       <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                          <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                         </span>
                       </span>
                     </div>
                     <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", marginTop: "12px", lineHeight: "1.3" }}>
-                      Test before you build &mdash; validating business assumptions before investing resources
+                      Test before you build — validating business assumptions before investing resources
                     </div>
                   </a>
-                  <a href="https://youtu.be/CCCkqa3mOi4" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                  <a href="https://youtu.be/CCCkqa3mOi4" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                       <img src="https://img.youtube.com/vi/CCCkqa3mOi4/hqdefault.jpg" alt="After the workshop series — participants reflect on the journey" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                       <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                          <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                         </span>
                       </span>
                     </div>
                     <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "14px", marginTop: "12px", lineHeight: "1.3" }}>
-                      After the workshop series &mdash; participants reflect on the journey
+                      After the workshop series — participants reflect on the journey
                     </div>
                   </a>
                 </div>
               </div>
               {/* CREDITS */}
-              <div style={{ maxWidth: "680px", background: "#F3EAD0", padding: "34px 36px", marginTop: "44px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "16px" }}>
+              <div style={{ maxWidth: "680px", background: "var(--color-paper-dim)", padding: "34px 36px", marginTop: "44px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "16px" }}>
                   With thanks
                 </div>
                 <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.55", margin: "0 0 14px", color: "rgba(46,59,64,0.85)" }}>
@@ -252,8 +252,8 @@ export default function ProjectUAEYouthSocialInnovationEN() {
                 </p>
               </div>
               <div style={{ maxWidth: "680px", marginTop: "40px" }}>
-                <Link to="/community/uae-youth-cluster" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
-                  See the UAE Youth Cluster &rarr;
+                <Link to="/community/uae-youth-cluster" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+                  See the UAE Youth Cluster →
                 </Link>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function ProjectUAEYouthSocialInnovationEN() {
           </div>
         </section>
         {/* ===== CTA ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -273,7 +273,7 @@ export default function ProjectUAEYouthSocialInnovationEN() {
               Every practice began as one conversation.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E5A64", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Get involved
               </Link>
             </div>

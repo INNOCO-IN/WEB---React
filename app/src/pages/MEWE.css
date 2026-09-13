@@ -1,5 +1,7 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-mewe-0: 0.98;
   --in-mewe-1: 1.0;
@@ -20,7 +22,7 @@
   --in-mewe-16: 1.08;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-mewe-0: 1.14;
   --in-mewe-1: 1.16;
   --in-mewe-2: normal;
@@ -43,8 +45,8 @@
 
 .page-mewe * { box-sizing: border-box; }
 .page-mewe, .page-mewe { margin: 0; padding: 0; }
-.page-mewe { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-mewe ::selection { background: #1C6E92; color: #FAF4E2; }
+.page-mewe { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-mewe ::selection { background: #1C6E92; color: var(--color-paper); }
 .page-mewe a { color: #1C6E92; }
 .page-mewe a:hover { color: #14506B; }
 

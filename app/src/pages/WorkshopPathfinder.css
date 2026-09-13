@@ -1,5 +1,7 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-workshop-pathfinder-0: 1.0;
   --in-workshop-pathfinder-1: italic;
@@ -11,7 +13,7 @@
   --in-workshop-pathfinder-7: 1.06;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-workshop-pathfinder-0: 1.1;
   --in-workshop-pathfinder-1: normal;
   --in-workshop-pathfinder-2: 1.12;
@@ -25,10 +27,10 @@
 
 .page-workshop-pathfinder * { box-sizing: border-box; }
 .page-workshop-pathfinder, .page-workshop-pathfinder { margin: 0; padding: 0; }
-.page-workshop-pathfinder { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-workshop-pathfinder ::selection { background: #E5188C; color: #FAF4E2; }
-.page-workshop-pathfinder a { color: #146560; }
-.page-workshop-pathfinder a:hover { color: #E5188C; }
+.page-workshop-pathfinder { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-workshop-pathfinder ::selection { background: var(--color-magenta-hot); color: var(--color-paper); }
+.page-workshop-pathfinder a { color: var(--color-teal-dark); }
+.page-workshop-pathfinder a:hover { color: var(--color-magenta-hot); }
 
 
 @media (max-width: 1000px){

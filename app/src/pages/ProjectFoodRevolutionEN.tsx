@@ -10,7 +10,7 @@ export default function ProjectFoodRevolutionEN() {
     <SiteLayout page="Project-Food-Revolution.EN.dc.html" className="page-project-food-revolution-en" footer={{ loop: "0.511", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO (full width) ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
@@ -36,34 +36,34 @@ export default function ProjectFoodRevolutionEN() {
           <div className="pj-grid" style={{ display: "grid", gridTemplateColumns: "226px 1fr 288px", gap: "40px", alignItems: "start" }}>
             {/* LEFT · about this project */}
             <aside className="pj-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(46,59,64,0.14)", paddingRight: "22px" }}>
-              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "26px" }} className="in-plain">
-                &larr; All projects
+              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "26px" }} className="in-plain">
+                ← All projects
               </Link>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Audience
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
-                  Students &amp; faculty
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                  Students & faculty
                 </span>
               </div>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Topic
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Food systems
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Social innovation
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Wellbeing
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", borderTop: "1.5px solid rgba(46,59,64,0.16)", paddingTop: "18px" }}>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Place
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -71,7 +71,7 @@ export default function ProjectFoodRevolutionEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Years
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -79,7 +79,7 @@ export default function ProjectFoodRevolutionEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Published
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -91,7 +91,7 @@ export default function ProjectFoodRevolutionEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid">
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/project-img/food-revolution.jpg" alt="Two students holding bowls of freshly harvested greens beside the raised beds of the KULNA garden" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
                 <figcaption style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.6)", marginTop: "12px" }}>
@@ -99,45 +99,45 @@ export default function ProjectFoodRevolutionEN() {
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "var(--color-ink)", textWrap: "pretty" }}>
                   It started as a three-raised-bed experiment and became a small forest ecosystem on the campus.
                 </p>
                 <div className="story-body">
                   <p>
-                    &ldquo;Co-designing Food Revolution for Social Change&rdquo; was a four-year, federally funded action research project at Zayed University, asking how individual and collective wellbeing shift when you change a food system. The question was never only about food.
+                    “Co-designing Food Revolution for Social Change” was a four-year, federally funded action research project at Zayed University, asking how individual and collective wellbeing shift when you change a food system. The question was never only about food.
                   </p>
                   <p>
                     {"At its center was "}
                     <strong>
                       KULNA Community Garden
                     </strong>
-                    {" &mdash; "}
+                    {" — "}
                     <em>
                       All of Us
                     </em>
                     {" in Arabic. A physical sanctuary where students and faculty grew food, and in growing it, found reasons to be in the same place at the same time. Around the garden grew hands-on workshops, lectures, campaigns, and the ordinary interactions that turn a site into a community."}
                   </p>
                   <p>
-                    What emerged was a web of connection none of the participants could have seen alone &mdash; farmers, filmmakers, naturalists, permaculture researchers, students, volunteers &mdash; and, hidden inside it, a picture of what the future would ask of them.
+                    What emerged was a web of connection none of the participants could have seen alone — farmers, filmmakers, naturalists, permaculture researchers, students, volunteers — and, hidden inside it, a picture of what the future would ask of them.
                   </p>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "40px 0 0", color: "#2E3B40", textWrap: "pretty" }}>
+                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "40px 0 0", color: "var(--color-ink)", textWrap: "pretty" }}>
                     {"The project produced multiple academic papers. "}
-                    <span style={{ color: "#1E5A64" }}>
+                    <span style={{ color: "var(--color-slate)" }}>
                       It also produced a network that is still exchanging today, long after the funding ended.
                     </span>
                   </p>
                 </div>
                 <div style={{ borderTop: "1.5px solid rgba(30,90,100,0.45)", marginTop: "44px", paddingTop: "30px" }}>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "20px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "20px" }}>
                     Watch
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "18px" }}>
-                    <a href="https://youtu.be/5LYvqNAJ_Nw" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                    <a href="https://youtu.be/5LYvqNAJ_Nw" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                         <img src="https://img.youtube.com/vi/5LYvqNAJ_Nw/hqdefault.jpg" alt="Introduction by Zayed University students" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                         <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                            <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                           </span>
                         </span>
                       </div>
@@ -145,12 +145,12 @@ export default function ProjectFoodRevolutionEN() {
                         Introduction by Zayed University students
                       </div>
                     </a>
-                    <a href="https://youtu.be/-aLZarjNENU" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                    <a href="https://youtu.be/-aLZarjNENU" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                         <img src="https://img.youtube.com/vi/-aLZarjNENU/hqdefault.jpg" alt="Food Revolution documentary" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                         <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                            <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                           </span>
                         </span>
                       </div>
@@ -169,7 +169,7 @@ export default function ProjectFoodRevolutionEN() {
           </div>
         </section>
         {/* ===== CTA (full width) ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -178,7 +178,7 @@ export default function ProjectFoodRevolutionEN() {
               Every practice began as one conversation.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E5A64", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Get involved
               </Link>
             </div>

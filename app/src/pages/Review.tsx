@@ -384,6 +384,23 @@ function Field({ label, value }: { label: string; value: unknown }) {
   );
 }
 
+/**
+ * What each answer to "What brings you here?" means.
+ *
+ * The form stores a slug so that one answer is one answer whichever language
+ * it was given in; this is the desk's half of that bargain. Anything else is
+ * shown as it arrived — enquiries sent before the slugs carry the whole
+ * sentence, in whatever language the sender happened to be reading.
+ */
+const BRINGS: Record<string, string> = {
+  'workshop-curious': 'Curious about a workshop',
+  'workshop-for-org': 'Wants a workshop for their organisation',
+  'in-the-work': 'Already in the work — a question, or something they need',
+  proposal: 'Proposing something to build together',
+  'keep-me-posted': 'Only wants to hear about events',
+  other: 'Something else',
+};
+
 /** Each table shows the fields its form actually asked for. */
 function Body({ table, row }: { table: IntakeTable; row: Record<string, unknown> }) {
   if (table === 'stories') {
@@ -413,7 +430,7 @@ function Body({ table, row }: { table: IntakeTable; row: Record<string, unknown>
       <>
         <Field label="Name" value={enquiry.name} />
         <Field label="Email" value={enquiry.email} />
-        <Field label="Brings" value={enquiry.brings} />
+        <Field label="Brings" value={BRINGS[enquiry.brings ?? ''] ?? enquiry.brings} />
         <Field label="Message" value={enquiry.message} />
         <Field label="From" value={enquiry.source_page} />
       </>

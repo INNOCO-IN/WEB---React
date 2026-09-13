@@ -11,11 +11,11 @@ export default function WorkshopKO() {
     <SiteLayout page="Workshop.KO.dc.html" className="page-workshop-ko" footer={{ loop: "0.171", cta: "#E6328C" }}>
       <div style={{ fontFamily: "'Newsreader', 'Noto Serif KR', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (key color box · magenta) ===================== */}
-        <section style={{ background: "#E6328C", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-magenta)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "22px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 워크숍
               </span>
             </div>
@@ -30,32 +30,32 @@ export default function WorkshopKO() {
         {/* ===================== FILTER CHIPS ===================== */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px 26px" }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "9px", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13.5px", letterSpacing: "0.02em", whiteSpace: "nowrap" }}>
-            <span style={{ background: "#2E3B40", color: "#FAF4E2", borderRadius: "999px", padding: "9px 18px" }}>
+            <span style={{ background: "var(--color-ink)", color: "var(--color-paper)", borderRadius: "999px", padding: "9px 18px" }}>
               모든 워크숍
             </span>
-            <span style={{ background: "transparent", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
+            <span style={{ background: "transparent", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
               모두에게
             </span>
-            <span style={{ background: "transparent", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
+            <span style={{ background: "transparent", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
               부모
             </span>
-            <span style={{ background: "transparent", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
+            <span style={{ background: "transparent", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
               조직
             </span>
-            <span style={{ background: "transparent", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
+            <span style={{ background: "transparent", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
               청년
             </span>
-            <span style={{ background: "transparent", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
+            <span style={{ background: "transparent", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "9px 18px" }}>
               여성
             </span>
           </div>
         </section>
         {/* ===================== FEATURED (Signature — Möbius Making, full-bleed) ===================== */}
         <section style={{ margin: "6px 0 22px" }}>
-          <Link to="/ko/workshop/mobius-making" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", color: "#FAF4E2", overflow: "hidden", minHeight: "360px", maxWidth: "1320px", margin: "0 auto" }}>
+          <Link to="/ko/workshop/mobius-making" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", color: "var(--color-paper)", overflow: "hidden", minHeight: "360px", maxWidth: "1320px", margin: "0 auto" }}>
             <div style={{ position: "relative", minHeight: "300px" }}>
               <ImageSlot id="workshop-mobius-hero" shape="rect" placeholder="Someone holding a Möbius strip they made" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", left: "-9px", top: "-1px" }} />
-              <div style={{ position: "absolute", left: "16px", top: "16px", background: "#FAF4E2", color: "#2E3B40", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
+              <div style={{ position: "absolute", left: "16px", top: "16px", background: "var(--color-paper)", color: "var(--color-ink)", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
                 대표 워크숍 · 여기서 시작
               </div>
             </div>
@@ -80,7 +80,7 @@ export default function WorkshopKO() {
                     3시간 · 확장 가능
                   </span>
                 </div>
-                <span className="ws-arrow" style={{ flex: "0 0 auto", width: "48px", height: "48px", borderRadius: "50%", background: "#FAF4E2", color: "#1E8A86", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
+                <span className="ws-arrow" style={{ flex: "0 0 auto", width: "48px", height: "48px", borderRadius: "50%", background: "var(--color-paper)", color: "var(--color-teal)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
                   →
                 </span>
               </div>
@@ -92,7 +92,7 @@ export default function WorkshopKO() {
         {/* ===================== MADE BY MANY HANDS ===================== */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ borderTop: "1px solid rgba(46,59,64,0.14)", paddingTop: "26px" }}>
-            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "12px" }}>
+            <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "12px" }}>
               여러 손으로 만들어졌습니다
             </div>
             <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "400", fontSize: "38px", lineHeight: "1.5", maxWidth: "760px", margin: "0", color: "rgba(46,59,64,0.78)", width: "900px", height: "500px" }}>
@@ -106,28 +106,28 @@ export default function WorkshopKO() {
         </section>
         {/* ===================== HOST A STUDIO ===================== */}
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "30px 28px 20px" }}>
-          <Link to="/ko/collectives" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center", gap: "24px", background: "#FAF4E2", border: "1.5px solid #2E3B40", color: "#2E3B40", padding: "34px 36px" }}>
+          <Link to="/ko/collectives" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center", gap: "24px", background: "var(--color-paper)", border: "1.5px solid var(--color-ink)", color: "var(--color-ink)", padding: "34px 36px" }}>
             <div>
-              <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E6328C", marginBottom: "12px" }}>
+              <div style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta)", marginBottom: "12px" }}>
                 스튜디오 열기
               </div>
               <h3 style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 38px)", lineHeight: "1.18", margin: "0 0 10px", height: "80px" }}>
                 당신의 공동체에 MEWE를
               </h3>
-              <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "30px", lineHeight: "1.42", margin: "0", color: "#E6328C", maxWidth: "60ch", fontStyle: "normal", width: "700px", fontWeight: "500" }}>
+              <p style={{ fontFamily: "'Newsreader', 'Noto Serif KR', serif", fontSize: "30px", lineHeight: "1.42", margin: "0", color: "var(--color-magenta)", maxWidth: "60ch", fontStyle: "normal", width: "700px", fontWeight: "500" }}>
                 IN-콜렉티브는 스튜디오를 열고 모든 워크숍을 자신들의 지역 맥락에 맞게 바꿉니다. 지부가 아니라 — 파트너입니다.
               </p>
             </div>
             <span style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "14px", whiteSpace: "nowrap" }}>
               {"콜렉티브 만나기 "}
-              <span className="ws-arrow" style={{ flex: "0 0 auto", width: "48px", height: "48px", borderRadius: "50%", background: "#2E3B40", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
+              <span className="ws-arrow" style={{ flex: "0 0 auto", width: "48px", height: "48px", borderRadius: "50%", background: "var(--color-ink)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
                 →
               </span>
             </span>
           </Link>
         </section>
         {/* ===================== CTA BAND ===================== */}
-        <section style={{ background: "#E6328C", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-magenta)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               어디서 시작할지 모르겠다면?
@@ -136,10 +136,10 @@ export default function WorkshopKO() {
               뫼비우스 만들기로 시작하세요. 나머지는 모두 거기서 자랍니다.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/ko/workshop/mobius-making" style={{ textDecoration: "none", color: "#1E8A86", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/ko/workshop/mobius-making" style={{ textDecoration: "none", color: "var(--color-teal)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 뫼비우스 만들기 알아보기
               </Link>
-              <Link to="/ko/connect" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/ko/connect" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 질문하기
               </Link>
             </div>

@@ -1,20 +1,22 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-workshop-jungle-jam-0: 0.96;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-workshop-jungle-jam-0: 1.06;
 }
 
 
 .page-workshop-jungle-jam * { box-sizing: border-box; }
 .page-workshop-jungle-jam, .page-workshop-jungle-jam { margin: 0; padding: 0; }
-.page-workshop-jungle-jam { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-workshop-jungle-jam ::selection { background: #E5188C; color: #FAF4E2; }
-.page-workshop-jungle-jam a { color: #146560; }
-.page-workshop-jungle-jam a:hover { color: #E5188C; }
+.page-workshop-jungle-jam { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-workshop-jungle-jam ::selection { background: var(--color-magenta-hot); color: var(--color-paper); }
+.page-workshop-jungle-jam a { color: var(--color-teal-dark); }
+.page-workshop-jungle-jam a:hover { color: var(--color-magenta-hot); }
 
 
 @media (max-width: 1000px){

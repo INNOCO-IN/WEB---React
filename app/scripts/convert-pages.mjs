@@ -18,6 +18,17 @@ import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse, toJsx } from './lib/html-to-jsx.mjs';
+import { colourTokens, tokeniseColoursInCss } from './lib/design-tokens.mjs';
+
+/**
+ * The palette every page is rewritten against, and a tally of what it could
+ * not name.
+ *
+ * One object for the whole run so the tally is complete, and reported at the
+ * end rather than guessed at: an unnamed colour becomes a line somebody writes
+ * in `styles/tokens/colors.css`, never a name this script invented.
+ */
+const COLOURS = { ...colourTokens(), seen: new Map() };
 import {
   NON_ROUTES, ALIASES, TAKEN_OVER, TEMPLATES, routesForTemplate,
   parseFile, componentName, routeFor,
@@ -442,6 +453,7 @@ function harvest(file) {
     words: new Map(),
     styles2: [],
     tokeniseFonts: true,
+    colours: COLOURS,
   };
   const tree = parse(extractBody(html), []);
   applyDataSwaps(tree, file, ctx);
@@ -566,6 +578,7 @@ for (const file of files) {
     usesSx: false,
     resolveHref,
     resolveAsset,
+    colours: COLOURS,
   };
 
   // The differences between the two editions were worked out before the loop.
@@ -593,7 +606,7 @@ for (const file of files) {
   const jsx = toJsx(tree, ctx, 3).replace(/\n{3,}/g, '\n\n');
 
   const scope = 'page-' + name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-  const css = ctx.styles.join('\n').trim();
+  const css = tokeniseColoursInCss(ctx.styles.join('\n').trim(), COLOURS.byHex, COLOURS.seen);
   // Values this page sets differently in each language become custom
   // properties, defined once at the root and once under the other language.
   // That is how one component keeps a headline at `line-height: 0.98` in
@@ -602,12 +615,14 @@ for (const file of files) {
     langVars && langVars.rootVars.length
       ? [
           '/* Set differently per language — mostly leading, which Hangul needs',
-          '   more of than Latin does. Generated: edit the legacy pages. */',
+          '   more of than Latin does. Chinese wants the same, and the zh-TW',
+          '   pages are these same components, so the Korean block answers for',
+          '   both. Generated: edit the legacy pages. */',
           ':root {',
           ...langVars.rootVars,
           '}',
           '',
-          ":root[lang='ko'] {",
+          ":root[lang='ko'], :root[lang='zh-Hant-TW'] {",
           ...langVars.otherVars,
           '}',
           '',
@@ -930,6 +945,22 @@ if (conflicted.length) {
 }
 
 const takenOver = generated.filter((g) => g.template);
+// Colours the pages use that the design system has never named. Reported, not
+// solved: a name is a decision about the palette, and the converter is the
+// wrong place to take it.
+if (COLOURS.seen.size) {
+  const byUse = [...COLOURS.seen].sort((a, b) => b[1] - a[1]);
+  const total = byUse.reduce((n, [, uses]) => n + uses, 0);
+  console.log('');
+  console.log(
+    `!! ${COLOURS.seen.size} colours have no token — ${total} uses left as literal hex:`,
+  );
+  for (const [hex, uses] of byUse.slice(0, 10)) console.log(`   ${hex}  ${uses} uses`);
+  if (byUse.length > 10) console.log(`   … and ${byUse.length - 10} more`);
+  console.log('   Name one in src/styles/tokens/colors.css and re-run to adopt it.');
+  console.log('');
+}
+
 console.log(`pages:      ${generated.length - takenOver.length} converted + ${takenOver.length} served by a template`);
 for (const name of [...new Set(takenOver.map((g) => g.template))].sort()) {
   const served = takenOver.filter((g) => g.template === name);

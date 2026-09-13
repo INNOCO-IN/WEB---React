@@ -23,11 +23,11 @@ export default function Collectives() {
     <SiteLayout page="Collectives.EN.dc.html" className="page-collectives" footer={{ loop: "0.103", cta: "#46325A" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO (plum band) = the CONCEPT ===================== */}
-        <section style={{ background: "#46325A", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-plum)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 {t("000_span")}
               </span>
             </div>
@@ -53,13 +53,13 @@ export default function Collectives() {
         </section>
         {/* ===================== IN-COLLECTIVES ROSTER ===================== */}
         <section id="facilitators" style={{ maxWidth: "1320px", margin: "56px auto 0", padding: "0 28px 24px" }}>
-          <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#46325A", marginBottom: "40px" }}>
+          <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-plum)", marginBottom: "40px" }}>
             {t("006_div")}
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "26px" }}>
             {(roster ?? []).map((person, personIndex) => (
               <Fragment key={personIndex}>
-                <article style={{ background: "#FAF4E2" }}>
+                <article style={{ background: "var(--color-paper)" }}>
                   <img className="tm-photo" src={person.photo} alt={person.name} />
                   <div style={{ padding: "16px 2px 0" }}>
                     <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.03em", color: "rgba(38,42,56,0.45)", marginBottom: "4px" }}>
@@ -68,7 +68,7 @@ export default function Collectives() {
                     <div style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "23px", lineHeight: "1.1", marginBottom: "6px" }}>
                       {person.name}
                     </div>
-                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.03em", color: "#3C8246", marginBottom: "8px" }}>
+                    <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.03em", color: "var(--color-green)", marginBottom: "8px" }}>
                       {person.role}
                     </div>
                     <p style={{ fontFamily: "var(--font-serif)", fontSize: "16px", lineHeight: "1.45", margin: "0 0 12px", color: "rgba(38,42,56,0.75)" }}>
@@ -102,7 +102,7 @@ export default function Collectives() {
           </div>
         </section>
         {/* ===================== JOIN CTA (green) ===================== */}
-        <section id="join" style={{ background: "#46325A", color: "#FAF4E2", marginTop: "80px" }}>
+        <section id="join" style={{ background: "var(--color-plum)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.78)", marginBottom: "18px" }}>
               {t("009_div")}
@@ -125,10 +125,10 @@ export default function Collectives() {
               </>
             ) : null}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#46325A", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-plum)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("013_a")}
               </Link>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("014_a")}
               </Link>
             </div>

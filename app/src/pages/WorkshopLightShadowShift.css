@@ -1,20 +1,22 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-workshop-light-shadow-shift-0: 0.98;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-workshop-light-shadow-shift-0: 1.08;
 }
 
 
 .page-workshop-light-shadow-shift * { box-sizing: border-box; }
 .page-workshop-light-shadow-shift, .page-workshop-light-shadow-shift { margin: 0; padding: 0; }
-.page-workshop-light-shadow-shift { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-workshop-light-shadow-shift ::selection { background: #E5188C; color: #FAF4E2; }
-.page-workshop-light-shadow-shift a { color: #146560; }
-.page-workshop-light-shadow-shift a:hover { color: #E5188C; }
+.page-workshop-light-shadow-shift { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-workshop-light-shadow-shift ::selection { background: var(--color-magenta-hot); color: var(--color-paper); }
+.page-workshop-light-shadow-shift a { color: var(--color-teal-dark); }
+.page-workshop-light-shadow-shift a:hover { color: var(--color-magenta-hot); }
 
 
 @media (max-width: 1000px){

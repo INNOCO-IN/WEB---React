@@ -27,4 +27,95 @@
 
 ## 專案約定
 
-（這一節留給你以後自己加規則，例如建置指令、程式碼風格、不要碰的目錄等。）
+### 兩棵樹
+
+- `site/` 是 **Vercel 現在服務的東西**，也是設計的真相來源（80 個 `.dc.html` 畫板）。
+- `app/` 是 React 移植版，本機跑得起來但**還沒上線**。切換的步驟寫在 `README.md` 的 Deploy。
+- 要改設計就改 `site/` 的 `.dc.html`，然後重跑 generator；不要直接改 `app/src/pages/*.tsx`。
+
+### 畫面的分工：結構歸 code，樣子歸 design
+
+這是兩件不同的事，各有各的真相來源，不要混在一起：
+
+| | 真相來源 | 意思 |
+|---|---|---|
+| **畫面怎麼組成**——結構、行為、路由、資料、狀態 | **code**（`app/`） | 手寫的元件、模板、hook 才是實作。不要為了「跟設計稿一致」去改它們的行為。 |
+| **畫面長什麼樣**——顏色、字體、間距 | **design**（`app/src/styles/tokens/`） | 值只在 token 檔定義一次，頁面**只能引用名字**。 |
+
+所以：
+
+- 頁面裡**不要出現寫死的 hex**。要用一個顏色，就用 `var(--color-x)`。
+- 要加一個新顏色，是去 `src/styles/tokens/colors.css` 命名一行，然後重跑
+  `node scripts/convert-pages.mjs`——不是在頁面上寫 hex。轉換器會自己把有名字的
+  顏色換成 token，並在結尾列出它叫不出名字的那些。
+- **例外**：`<SiteLayout footer={{ cta: "#1E648C" }}>` 必須是字面 hex。
+  `Footer.tsx` 會用 `isDark()` 解析它來決定線條要米色還是墨色，`var()` 會讓它
+  靜默失效。SVG 的 `fill` / `stroke` 屬性同理，維持現狀。
+
+目前這條規則只有一半成立：**樣子**已經歸 design 了，但**結構**還是從
+`site/` 產生的（見下一節）。那是還沒收掉的落差，不是規則的例外。
+
+### Design 改了東西之後：用 design-sync，不要直接跑 convert-pages
+
+`convert-pages.mjs` 會把一頁**整個**重產——元件、樣式、路由、文案。當 `site/` 是設計、
+React 頁面只是它的輸出時，那是對的工具。但元件一旦有人手動改過，它就會把一次
+「文案更新」變成一次沒人要求的元件覆寫。
+
+所以 Design 那邊有新內容時，走這個：
+
+```
+npm --prefix app run design:check    # 只報告，不寫任何檔案
+npm --prefix app run design:words    # 只收文案，元件原封不動
+npm --prefix app run design:apply    # 全收（等同 convert-pages）
+```
+
+它會把一次設計改動分成三類：
+
+| 類別 | 意思 | 怎麼辦 |
+|---|---|---|
+| **words** | 只有句子變了 | 安全，`design:words` 收下 |
+| **structure** | 區塊搬了、加了或刪了 | 元件必須跟著改，這是決定不是同步，先看再說 |
+| **stale** | 文案變動讓 key 重新編號 | **中文翻譯靜默失效**，它會逐頁點名 |
+
+第三類是這支工具真正的理由。key 是**依位置編號**的（`000_div`、`001_h1`…），所以在
+設計裡插一段文字，後面每個 key 都會位移——而 `zh-TW/pages/*.json` 是手寫的、轉換器
+故意不覆蓋，於是它繼續回答舊的號碼。**頁面照樣渲染，只是講錯話。** 沒有別的東西會
+發現這件事。
+
+注意：`site/` 的 `.dc.html` 是 **CRLF**。用會改寫換行的方式編輯它，會讓整頁看起來
+都變了，`design:check` 就會誤報成 structure 變更。
+
+### 不要手改的產物
+
+這些是 `app/scripts/` 生出來的，手改下次重跑就沒了：
+
+- `app/src/pages/*.tsx` 和 `*.css`、`registry.ts`、`route-map.ts`
+- `app/src/lib/content/*.ts`、根目錄的 `seed*.sql`
+- `ROUTES.md` 的路由表、`CONTENT.md` 的內容對照表
+
+例外：`app/src/i18n/resources/zh-TW/pages/*.json` 是**手寫**的，
+`convert-pages.mjs` 只會建空檔不會覆蓋（`HAND_TRANSLATED`）。
+
+### 檢查指令
+
+```
+npm --prefix app run typecheck     # tsc --noEmit
+npm --prefix app test              # vitest run
+npm --prefix app run lint          # oxlint
+npm --prefix app run dev           # 本機 Supabase（vite --mode devdb）
+npm --prefix app run dev:live      # 打 hosted 專案
+```
+
+### git status 的假訊號
+
+倉庫沒有 `.gitattributes`，而 `core.autocrlf=true`，所以 `git status` 會長期
+顯示一批「已修改」但其實只有換行符不同的檔案（目前約 55 個）。
+**`git diff` 才是真相**——`git diff --name-only` 沒列到的就是沒有實質改動。
+統計實際改了什麼用 `git diff --stat`，不要數 `git status` 的行數。
+
+### 表單欄位的值要是穩定 slug
+
+`site/` 的表單 `<option>` 一定要寫 `value="some-slug"`，不能讓瀏覽器拿顯示文字
+當值——三個語言版本的同一個選項必須送出同一個字串，否則審稿台會把同一種詢問
+分進三個桶。`data-prefill` 和 `data-hide-when` 都用 `field=value` 的寫法，
+理由同上：規則裡不要出現任何會被翻譯改掉的句子。

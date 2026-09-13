@@ -1,10 +1,10 @@
 
 .page-project-ko * { box-sizing: border-box; }
 .page-project-ko, .page-project-ko { margin: 0; padding: 0; }
-.page-project-ko { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; word-break: keep-all; }
-.page-project-ko ::selection { background: #E6328C; color: #FAF4E2; }
-.page-project-ko a { color: #1E8A86; }
-.page-project-ko a:hover { color: #146560; }
+.page-project-ko { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; word-break: keep-all; }
+.page-project-ko ::selection { background: var(--color-magenta); color: var(--color-paper); }
+.page-project-ko a { color: var(--color-teal); }
+.page-project-ko a:hover { color: var(--color-teal-dark); }
 
 
 @media (max-width: 1000px){

@@ -22,11 +22,11 @@ export default function Community() {
     <SiteLayout page="Community.EN.dc.html" className="page-community" footer={{ loop: "0.716", cta: "#D21E28" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         {/* HERO */}
-        <section style={{ background: "#D21E28", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-red)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "52px 28px 60px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#FAF4E2", flex: "0 0 auto" }} />
-              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "#FAF4E2" }}>
+              <span style={{ width: "12px", height: "12px", borderRadius: "50%", background: "var(--color-paper)", flex: "0 0 auto" }} />
+              <span style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "17px", letterSpacing: "0.14em", lineHeight: "1", textTransform: "uppercase", color: "var(--color-paper)" }}>
                 {t("000_span")}
               </span>
             </div>
@@ -50,7 +50,7 @@ export default function Community() {
           </div>
           <CommunityGrid />
           <div style={{ display: "flex", justifyContent: "center", marginTop: "32px" }}>
-            <Link to={localize("/community/all", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#D21E28", textDecoration: "none", border: "1.5px solid #D21E28", borderRadius: "999px", padding: "13px 28px" }} className="in-plain">
+            <Link to={localize("/community/all", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-red)", textDecoration: "none", border: "1.5px solid var(--color-red)", borderRadius: "999px", padding: "13px 28px" }} className="in-plain">
               {t("005_a")}
             </Link>
           </div>
@@ -67,7 +67,7 @@ export default function Community() {
           </div>
           <NewsGrid feed="community" />
           <div style={{ display: "flex", justifyContent: "center", marginTop: "32px" }}>
-            <Link to={localize("/story", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#D21E28", textDecoration: "none", border: "1.5px solid #D21E28", borderRadius: "999px", padding: "13px 28px" }} className="in-plain">
+            <Link to={localize("/story", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-red)", textDecoration: "none", border: "1.5px solid var(--color-red)", borderRadius: "999px", padding: "13px 28px" }} className="in-plain">
               {t("008_a")}
             </Link>
           </div>
@@ -79,7 +79,7 @@ export default function Community() {
               {t("009_h2")}
             </h2>
           </div>
-          <Link to={localize("/constellation", locale)} className="cm-card in-plain" style={{ display: "block", backgroundColor: "#F0D23C", color: "#2E3B40", padding: "40px 40px 42px" }}>
+          <Link to={localize("/constellation", locale)} className="cm-card in-plain" style={{ display: "block", backgroundColor: "var(--color-yellow)", color: "var(--color-ink)", padding: "40px 40px 42px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "32px", alignItems: "flex-end", justifyContent: "space-between" }}>
               <div style={{ flex: "1 1 460px", minWidth: "300px" }}>
                 <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: "14px" }}>
@@ -92,14 +92,14 @@ export default function Community() {
                   {t("012_p")}
                 </p>
               </div>
-              <span className="cm-arrow" style={{ flex: "0 0 auto", width: "56px", height: "56px", borderRadius: "50%", background: "#2E3B40", color: "#FAF4E2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px" }}>
+              <span className="cm-arrow" style={{ flex: "0 0 auto", width: "56px", height: "56px", borderRadius: "50%", background: "var(--color-ink)", color: "var(--color-paper)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px" }}>
                 →
               </span>
             </div>
           </Link>
         </section>
         {/* CTA BAND */}
-        <section style={{ background: "#D21E28", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-red)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               {t("013_p")}
@@ -108,10 +108,10 @@ export default function Community() {
               {t("014_h2")}
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/protagonist", locale)} style={{ textDecoration: "none", color: "#D21E28", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/protagonist", locale)} style={{ textDecoration: "none", color: "var(--color-red)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("015_a")}
               </Link>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 {t("016_a")}
               </Link>
             </div>

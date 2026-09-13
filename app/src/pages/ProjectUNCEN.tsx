@@ -10,7 +10,7 @@ export default function ProjectUNCEN() {
     <SiteLayout page="Project-UNC.EN.dc.html" className="page-project-uncen" footer={{ loop: "0.557", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
@@ -36,14 +36,14 @@ export default function ProjectUNCEN() {
           <div className="pj-grid" style={{ display: "grid", gridTemplateColumns: "226px 1fr 288px", gap: "40px", alignItems: "start" }}>
             {/* LEFT · about */}
             <aside className="pj-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(46,59,64,0.14)", paddingRight: "22px" }}>
-              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "26px" }} className="in-plain">
-                &larr; All projects
+              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "26px" }} className="in-plain">
+                ← All projects
               </Link>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Audience
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Cross-country youth
                 </span>
               </div>
@@ -51,19 +51,19 @@ export default function ProjectUNCEN() {
                 Topic
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Social innovation
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Exchange
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Resilience
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", borderTop: "1.5px solid rgba(46,59,64,0.16)", paddingTop: "18px" }}>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Place
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -71,7 +71,7 @@ export default function ProjectUNCEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Years
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -79,15 +79,15 @@ export default function ProjectUNCEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Led by
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
-                    Joanne Renaux &amp; Yunsun Chung
+                    Joanne Renaux & Yunsun Chung
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Became
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -99,56 +99,56 @@ export default function ProjectUNCEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid">
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/project-img/unc.jpg" alt="UAE and Nepal youth participants and facilitators together at the ICA Training Centre, Lalitpur" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
                 <figcaption style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.6)", marginTop: "12px" }}>
-                  UAE and Nepal youth together in Lalitpur &mdash; the Social Innovation Bootcamp, 2017.
+                  UAE and Nepal youth together in Lalitpur — the Social Innovation Bootcamp, 2017.
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "#2E3B40", textWrap: "pretty" }}>
-                  In 2016, two Dubai-based art and design educators went to Nepal &mdash; not with a program, but with a question.
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "var(--color-ink)", textWrap: "pretty" }}>
+                  In 2016, two Dubai-based art and design educators went to Nepal — not with a program, but with a question.
                 </p>
                 <div className="story-body">
                   <p>
                     Joanne Renaux and Yunsun Chung travelled as action research, carrying a question about what young people there needed after the 2015 earthquake.
                   </p>
                   <p>
-                    What they built over the next three years, with an international team of volunteers, was &ldquo;MEWE, Cultivating Change.&rdquo; It began with a four-day youth camp and the slower work of building relationships with people already doing this &mdash; many local NGOs, among them one led by Abdus Miya, and a youth enterprise. That groundwork led, in June 2017, to a nine-day Social Innovation Bootcamp at the ICA Training Centre in Lalitpur, and to the years of accompaniment around it. Youth from the UAE and Nepal worked side by side, and the bootcamp closed with social project pitches to a panel of community judges.
+                    What they built over the next three years, with an international team of volunteers, was “MEWE, Cultivating Change.” It began with a four-day youth camp and the slower work of building relationships with people already doing this — many local NGOs, among them one led by Abdus Miya, and a youth enterprise. That groundwork led, in June 2017, to a nine-day Social Innovation Bootcamp at the ICA Training Centre in Lalitpur, and to the years of accompaniment around it. Youth from the UAE and Nepal worked side by side, and the bootcamp closed with social project pitches to a panel of community judges.
                   </p>
                   <p>
-                    Alongside it ran something quieter: seven mentors, recruited from Nepal and abroad, each matched with a young person. Not oversight &mdash; relationship. Guests came through too, from many fields &mdash; among them Mahabir Pun, the social entrepreneur who brought the internet to Nepal&rsquo;s mountain villages, whose visit left a particular mark on the young people in the room.
+                    Alongside it ran something quieter: seven mentors, recruited from Nepal and abroad, each matched with a young person. Not oversight — relationship. Guests came through too, from many fields — among them Mahabir Pun, the social entrepreneur who brought the internet to Nepal’s mountain villages, whose visit left a particular mark on the young people in the room.
                   </p>
                   <p>
-                    The part that mattered most wasn&rsquo;t the pitches. Ideas became real work: a literacy and reading program in a rural community, a homestay for women facing domestic violence, new approaches to bee and fruit farming, a hydroponic farm, a waste management system, and youth empowerment in villages long treated as untouchable. Some launched. Some are still going. The Nepali participants reorganized themselves into an independent, youth-led NGO. Several became entrepreneurs &mdash; and several appear elsewhere on this site, as collaborators, not alumni.
+                    The part that mattered most wasn’t the pitches. Ideas became real work: a literacy and reading program in a rural community, a homestay for women facing domestic violence, new approaches to bee and fruit farming, a hydroponic farm, a waste management system, and youth empowerment in villages long treated as untouchable. Some launched. Some are still going. The Nepali participants reorganized themselves into an independent, youth-led NGO. Several became entrepreneurs — and several appear elsewhere on this site, as collaborators, not alumni.
                   </p>
                 </div>
-                <blockquote style={{ margin: "40px 0", padding: "0 0 0 26px", borderLeft: "3px solid #1E5A64" }}>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontStyle: "italic", fontSize: "clamp(24px, 3vw, 30px)", lineHeight: "1.32", margin: "0", color: "#2E3B40", textWrap: "pretty" }}>
-                    &ldquo;What we learn in schools is not everything. I want kids and young adults to learn life skills that will bring out the best person that they can be.&rdquo;
+                <blockquote style={{ margin: "40px 0", padding: "0 0 0 26px", borderLeft: "3px solid var(--color-slate)" }}>
+                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontStyle: "italic", fontSize: "clamp(24px, 3vw, 30px)", lineHeight: "1.32", margin: "0", color: "var(--color-ink)", textWrap: "pretty" }}>
+                    “What we learn in schools is not everything. I want kids and young adults to learn life skills that will bring out the best person that they can be.”
                   </p>
                   <cite style={{ display: "block", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontStyle: "normal", fontSize: "13px", letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginTop: "16px" }}>
                     A participant
                   </cite>
                 </blockquote>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "0", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "0", color: "var(--color-ink)", textWrap: "pretty" }}>
                   {"Relationships were the actual output. "}
-                  <span style={{ color: "#1E5A64" }}>
+                  <span style={{ color: "var(--color-slate)" }}>
                     Everything else was the occasion for them.
                   </span>
                 </p>
                 <div style={{ borderTop: "1.5px solid rgba(30,90,100,0.45)", marginTop: "44px", paddingTop: "30px" }}>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "20px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "20px" }}>
                     Watch
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "18px" }}>
-                    <a href="https://youtu.be/d1J4AECO_9g" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                    <a href="https://youtu.be/d1J4AECO_9g" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                         <img src="https://img.youtube.com/vi/d1J4AECO_9g/hqdefault.jpg" alt="UNC documentary" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                         <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                            <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                           </span>
                         </span>
                       </div>
@@ -156,12 +156,12 @@ export default function ProjectUNCEN() {
                         Documentary
                       </div>
                     </a>
-                    <a href="https://youtu.be/3mDaD4I7w-E" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "#2E3B40", display: "block" }} className="in-plain">
-                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#1E5A64" }}>
+                    <a href="https://youtu.be/3mDaD4I7w-E" target="_blank" rel="noopener" style={{ textDecoration: "none", color: "var(--color-ink)", display: "block" }} className="in-plain">
+                      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-slate)" }}>
                         <img src="https://img.youtube.com/vi/3mDaD4I7w-E/hqdefault.jpg" alt="UNC 2017" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: "0.9" }} />
                         <span style={{ position: "absolute", inset: "0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <span style={{ width: "52px", height: "52px", borderRadius: "50%", background: "rgba(250,244,226,0.94)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <span style={{ borderLeft: "15px solid #1E5A64", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
+                            <span style={{ borderLeft: "15px solid var(--color-slate)", borderTop: "9px solid transparent", borderBottom: "9px solid transparent", marginLeft: "4px" }} />
                           </span>
                         </span>
                       </div>
@@ -172,8 +172,8 @@ export default function ProjectUNCEN() {
                   </div>
                 </div>
                 <div style={{ marginTop: "40px" }}>
-                  <Link to="/community/nepal-youth-cluster" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "15px 32px", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
-                    See the Nepal Youth Cluster &rarr;
+                  <Link to="/community/nepal-youth-cluster" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "12px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "15px 32px", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+                    See the Nepal Youth Cluster →
                   </Link>
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default function ProjectUNCEN() {
           </div>
         </section>
         {/* ===== CTA ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -194,7 +194,7 @@ export default function ProjectUNCEN() {
               Every practice began as one conversation.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E5A64", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Get involved
               </Link>
             </div>

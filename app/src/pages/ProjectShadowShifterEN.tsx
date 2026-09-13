@@ -15,7 +15,7 @@ export default function ProjectShadowShifterEN() {
     <SiteLayout page="Project-Shadow-Shifter.EN.dc.html" className="page-project-shadow-shifter-en" footer={{ loop: "0.531", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
@@ -44,14 +44,14 @@ export default function ProjectShadowShifterEN() {
           <div className="pj-grid" style={{ display: "grid", gridTemplateColumns: "226px 1fr 288px", gap: "40px", alignItems: "start" }}>
             {/* LEFT · about */}
             <aside className="pj-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(46,59,64,0.14)", paddingRight: "22px" }}>
-              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "26px" }} className="in-plain">
+              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "26px" }} className="in-plain">
                 ← All projects
               </Link>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Audience
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Youth (18–26)
                 </span>
               </div>
@@ -59,19 +59,19 @@ export default function ProjectShadowShifterEN() {
                 Topic
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Retreat
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Transformation
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Facilitation
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", borderTop: "1.5px solid rgba(46,59,64,0.16)", paddingTop: "18px" }}>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Place
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -79,7 +79,7 @@ export default function ProjectShadowShifterEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Dates
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -87,7 +87,7 @@ export default function ProjectShadowShifterEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Participants
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)", lineHeight: "1.3" }}>
@@ -95,11 +95,11 @@ export default function ProjectShadowShifterEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Team
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)", lineHeight: "1.3" }}>
-                    Lua Lo, Lin Zheng (Bibi), WanChi Zhao, with Taejin Kim &amp; Vahid Buehrer
+                    Lua Lo, Lin Zheng (Bibi), WanChi Zhao, with Taejin Kim & Vahid Buehrer
                   </div>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function ProjectShadowShifterEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid">
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/project-img/shadow-shifter.jpg" alt="Three young people holding hand-written cards and a LEGO model in front of the hand-drawn Shadow Shifter wall" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
                 <figcaption style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.6)", marginTop: "12px" }}>
@@ -115,7 +115,7 @@ export default function ProjectShadowShifterEN() {
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "600", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "var(--color-ink)", textWrap: "pretty" }}>
                   When an object finds light, it creates a shadow — and we can change the shape of our own shadow through our actions.
                 </p>
                 <div className="story-body">
@@ -133,8 +133,8 @@ export default function ProjectShadowShifterEN() {
                     The frame was four words: light, shadow, shift, capacity. Nine challenges across two days, all of them hands-on. Meditative drawing, to notice the light and shadow qualities in other people. A mindful walk in the morning. Murals drawn straight onto the wall. A case clinic circle, where one person’s real challenge was listened to by everyone in the room. A role model built out of LEGO. And a letter each participant wrote to themselves.
                   </p>
                 </div>
-                <blockquote style={{ margin: "40px 0", padding: "0 0 0 26px", borderLeft: "3px solid #1E5A64" }}>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontStyle: "italic", fontSize: "clamp(24px, 3vw, 30px)", lineHeight: "1.32", margin: "0", color: "#2E3B40", textWrap: "pretty" }}>
+                <blockquote style={{ margin: "40px 0", padding: "0 0 0 26px", borderLeft: "3px solid var(--color-slate)" }}>
+                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontStyle: "italic", fontSize: "clamp(24px, 3vw, 30px)", lineHeight: "1.32", margin: "0", color: "var(--color-ink)", textWrap: "pretty" }}>
                     “When an object finds light, it creates a shadow. And we can change the shape of our own shadow through our actions.”
                   </p>
                   <cite style={{ display: "block", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontStyle: "normal", fontSize: "13px", letterSpacing: "0.06em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginTop: "16px" }}>
@@ -187,9 +187,9 @@ export default function ProjectShadowShifterEN() {
                 </div>
               </div>
               <div style={{ maxWidth: "680px", borderTop: "1.5px solid rgba(30,90,100,0.45)", marginTop: "44px", paddingTop: "30px" }}>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "0 0 26px", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "0 0 26px", color: "var(--color-ink)", textWrap: "pretty" }}>
                   {"Shadow Shifter is Jungle Jam’s Taiwan chapter — "}
-                  <span style={{ color: "#1E5A64" }}>
+                  <span style={{ color: "var(--color-slate)" }}>
                     the same pattern, re-made by a different team, in a different place.
                   </span>
                 </p>
@@ -197,13 +197,13 @@ export default function ProjectShadowShifterEN() {
                   One pattern, many forms
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px" }}>
-                  <Link to="/project/shadow-shifter" style={{ textDecoration: "none", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
+                  <Link to="/project/shadow-shifter" style={{ textDecoration: "none", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
                     Shadow Shifter — Taiwan youth
                   </Link>
-                  <Link to="/project/jungle-jam" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
+                  <Link to="/project/jungle-jam" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
                     Jungle Jam — UAE youth
                   </Link>
-                  <Link to="/project/light-shadow-shift-womens-retreat" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
+                  <Link to="/project/light-shadow-shift-womens-retreat" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
                     Women’s Retreat — UAE
                   </Link>
                 </div>
@@ -216,7 +216,7 @@ export default function ProjectShadowShifterEN() {
           </div>
         </section>
         {/* ===== CTA ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -225,10 +225,10 @@ export default function ProjectShadowShifterEN() {
               A different team, in a different place — could be yours.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E5A64", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Start a conversation
               </Link>
-              <Link to="/protagonist" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/protagonist" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the Protagonist path
               </Link>
             </div>

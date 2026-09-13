@@ -5,13 +5,14 @@
   "003_button": "Format",
   "004_button": "Topic",
   "005_p": "A fuller telling of this story is still being written — this is what we can share so far.",
-  "006_button": "&uarr; Choose another story",
+  "006_button": "↑ Choose another story",
   "007_span": "Back to the top of the index.",
   "008_label": "Search stories by title",
-  "009_p": "No stories match that yet.",
-  "010_p": "Share",
-  "011_h2": "Three honest sentences is a story.",
-  "012_p": "A story is a free gift — your experience, offered so others can see further. It doesn't need to be polished; it needs to be honest.",
-  "013_a": "Share your story",
-  "014_a": "Get involved"
+  "009_placeholder": "Search titles…",
+  "010_p": "No stories match that yet.",
+  "011_p": "Share",
+  "012_h2": "Three honest sentences is a story.",
+  "013_p": "A story is a free gift — your experience, offered so others can see further. It doesn't need to be polished; it needs to be honest.",
+  "014_a": "Share your story",
+  "015_a": "Get involved"
 }

@@ -18,7 +18,7 @@ export default function AreyouIN() {
     <SiteLayout page="Are-you-IN.EN.dc.html" className="page-areyou-in" footer={{ loop: "0.920", cta: "#1E8A86" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===================== HERO ===================== */}
-        <section style={{ background: "#1E8A86", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-teal)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "72px 28px 76px" }}>
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.82)", marginBottom: "22px" }}>
               {t("000_div")}
@@ -41,74 +41,76 @@ export default function AreyouIN() {
               <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.5", margin: "0 0 28px", color: "rgba(46,59,64,0.78)", maxWidth: "520px" }}>
                 {t("004_p")}
               </p>
-              <SupabaseForm table="submissions" thanks="Thank you — your message is with us. We read every one, and we'll be in touch soon." id="cf-form" style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              <SupabaseForm table="submissions" thanks={t("005_thanks")} idle={t("006_idle")} id="cf-form" style={{ display: "flex", flexDirection: "column", gap: "16px", scrollMarginTop: "96px" }}>
                 <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", overflow: "hidden" }}>
                   <label>
-                    {t("005_label")}
+                    {t("007_label")}
                     <input type="text" name="_hp" tabIndex={-1} autoComplete="off" />
                   </label>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
                   <div style={{ flex: "1 1 200px", minWidth: "180px" }}>
                     <label htmlFor="cf-name" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
-                      {t("006_label")}
+                      {t("008_label")}
                     </label>
-                    <input className="in-field" type="text" name="name" id="cf-name" placeholder="Your name" required={true} />
+                    <input className="in-field" type="text" name="name" id="cf-name" placeholder={t("009_placeholder")} required={true} />
                   </div>
                   <div style={{ flex: "1 1 200px", minWidth: "180px" }}>
                     <label htmlFor="cf-email" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
-                      {t("007_label")}
+                      {t("010_label")}
                     </label>
-                    <input className="in-field" type="email" name="email" id="cf-email" placeholder="you@example.com" required={true} />
+                    <input className="in-field" type="email" name="email" id="cf-email" placeholder={t("011_placeholder")} required={true} />
                   </div>
                 </div>
                 <div>
                   <label htmlFor="cf-brings" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
-                    {t("008_label")}
+                    {t("012_label")}
                   </label>
+                  {/* The value is what reaches the `brings` column. It has to be the
+                 same word in every edition of this page, or the review desk
+                 sorts one enquiry into three buckets depending on which
+                 language the sender happened to be reading. */}
                   <select className="in-field" id="cf-brings" name="brings">
-                    <option>
-                      {t("009_option")}
-                    </option>
-                    <option>
-                      {t("010_option")}
-                    </option>
-                    <option>
-                      {t("011_option")}
-                    </option>
-                    <option>
-                      {t("012_option")}
-                    </option>
-                    <option>
+                    <option value="workshop-curious">
                       {t("013_option")}
                     </option>
-                    <option>
+                    <option value="workshop-for-org">
                       {t("014_option")}
+                    </option>
+                    <option value="in-the-work">
+                      {t("015_option")}
+                    </option>
+                    <option value="proposal">
+                      {t("016_option")}
+                    </option>
+                    <option value="keep-me-posted">
+                      {t("017_option")}
+                    </option>
+                    <option value="other">
+                      {t("018_option")}
                     </option>
                   </select>
                 </div>
-                <div id="cf-msg-wrap">
+                <div id="cf-msg-wrap" data-hide-when="brings=keep-me-posted">
                   <label htmlFor="cf-message" style={{ display: "block", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "11.5px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.6)", marginBottom: "8px" }}>
-                    {t("015_label")}
+                    {t("019_label")}
                   </label>
-                  <textarea className="in-field" name="message" id="cf-message" rows={5} placeholder="What are you hoping to explore?" style={{ resize: "vertical" }} />
+                  <textarea className="in-field" name="message" id="cf-message" rows={5} placeholder={t("020_placeholder")} style={{ resize: "vertical" }} />
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "18px", flexWrap: "wrap", marginTop: "4px" }}>
-                  <button type="submit" style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.02em", color: "#FAF4E2", background: "#2E3B40", border: "none", borderRadius: "999px", padding: "15px 34px", cursor: "pointer" }}>
-                    {t("016_button")}
+                  <button type="submit" style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px", letterSpacing: "0.02em", color: "var(--color-paper)", background: "var(--color-ink)", border: "none", borderRadius: "999px", padding: "15px 34px", cursor: "pointer" }}>
+                    {t("021_button")}
                   </button>
-                  <span data-in-status="1" style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "14px", lineHeight: "1.4", color: "rgba(46,59,64,0.55)" }}>
-                    {t("017_span")}
-                  </span>
+                  <span data-in-status="1" style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "14px", lineHeight: "1.4", color: "rgba(46,59,64,0.55)" }} />
                 </div>
               </SupabaseForm>
             </div>
             <div style={{ flex: "1 1 480px", minWidth: "320px" }}>
               <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(46,59,64,0.55)", marginBottom: "18px" }}>
-                {t("018_div")}
+                {t("022_div")}
               </div>
-              <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", background: "#2E3B40" }}>
-                <iframe src="https://www.youtube-nocookie.com/embed/RRV2gOjVx3U?rel=0" title={t("019_title")} loading="lazy" referrerPolicy="strict-origin-when-cross-origin" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0" }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true} />
+              <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", background: "var(--color-ink)" }}>
+                <iframe src="https://www.youtube-nocookie.com/embed/RRV2gOjVx3U?rel=0" title={t("023_title")} loading="lazy" referrerPolicy="strict-origin-when-cross-origin" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0" }} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true} />
               </div>
             </div>
           </div>
@@ -116,69 +118,69 @@ export default function AreyouIN() {
         {/* ===================== THREE CARDS ===================== */}
         <section style={{ maxWidth: "1320px", margin: "80px auto 0", padding: "0 28px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "22px" }}>
-            <div style={{ background: "#BDDAE7", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt={t("020_alt")} style={{ display: "block", width: "100%", aspectRatio: "16 / 9", objectFit: "cover" }} />
-              <div style={{ display: "flex", gap: "16px", padding: "26px 28px 28px", flex: "1", backgroundColor: "#F0D23C" }}>
+            <div style={{ background: "#BDDAE7", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt={t("024_alt")} style={{ display: "block", width: "100%", aspectRatio: "16 / 9", objectFit: "cover" }} />
+              <div style={{ display: "flex", gap: "16px", padding: "26px 28px 28px", flex: "1", backgroundColor: "var(--color-yellow)" }}>
                 <div style={{ flex: "0 0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#2E3B40" }} />
+                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--color-ink)" }} />
                   <span style={{ writingMode: "vertical-rl", whiteSpace: "nowrap", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)" }}>
-                    {t("021_span")}
+                    {t("025_span")}
                   </span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", flex: "1" }}>
                   <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "30px", lineHeight: "var(--in-are-you-in-2)", margin: "0 0 10px" }}>
-                    {t("022_h3")}
+                    {t("026_h3")}
                   </h3>
                   <p style={{ fontFamily: "var(--font-serif)", fontSize: "17px", lineHeight: "1.2", margin: "0 0 22px", color: "rgba(46,59,64,0.8)" }}>
-                    {t("023_p")}
+                    {t("027_p")}
                   </p>
-                  <a href="#cf-form" data-scroll-form="1" style={{ marginTop: "auto", alignSelf: "flex-start", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "12px 24px" }} className="in-plain">
-                    {t("024_a")}
+                  <a href="#cf-form" data-scroll-form="1" style={{ marginTop: "auto", alignSelf: "flex-start", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "12px 24px" }} className="in-plain">
+                    {t("028_a")}
                   </a>
                 </div>
               </div>
             </div>
-            <div style={{ background: "#46325A", color: "#FAF4E2", display: "flex", flexDirection: "column" }}>
-              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80" alt={t("025_alt")} style={{ display: "block", width: "100%", aspectRatio: "16 / 9", objectFit: "cover" }} />
+            <div style={{ background: "var(--color-plum)", color: "var(--color-paper)", display: "flex", flexDirection: "column" }}>
+              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80" alt={t("029_alt")} style={{ display: "block", width: "100%", aspectRatio: "16 / 9", objectFit: "cover" }} />
               <div style={{ display: "flex", gap: "16px", padding: "26px 28px 28px", flex: "1" }}>
                 <div style={{ flex: "0 0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#FAF4E2" }} />
+                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--color-paper)" }} />
                   <span style={{ writingMode: "vertical-rl", whiteSpace: "nowrap", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)" }}>
-                    {t("026_span")}
+                    {t("030_span")}
                   </span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", flex: "1" }}>
                   <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "30px", lineHeight: "var(--in-are-you-in-3)", margin: "0 0 10px" }}>
-                    {t("027_h3")}
+                    {t("031_h3")}
                   </h3>
                   <p style={{ fontFamily: "var(--font-serif)", fontSize: "17px", lineHeight: "1.2", margin: "0 0 22px", color: "rgba(250,244,226,0.9)" }}>
-                    {t("028_p")}
+                    {t("032_p")}
                   </p>
-                  <a href="#cf-form" data-scroll-form="1" data-prefill="Just keep me posted about events" style={{ marginTop: "auto", alignSelf: "flex-start", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#46325A", background: "#FAF4E2", borderRadius: "999px", padding: "12px 24px" }} className="in-plain">
-                    {t("029_a")}
+                  <a href="#cf-form" data-scroll-form="1" data-prefill="brings=keep-me-posted" style={{ marginTop: "auto", alignSelf: "flex-start", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-plum)", background: "var(--color-paper)", borderRadius: "999px", padding: "12px 24px" }} className="in-plain">
+                    {t("033_a")}
                   </a>
                 </div>
               </div>
             </div>
             {/* Card 3: NEWS — structured for a future Instagram auto-feed; static entry until connected */}
-            <div data-ig-feed="innoco.co" style={{ background: "#F3EAD0", color: "#2E3B40", display: "flex", flexDirection: "column" }}>
-              <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?auto=format&fit=crop&w=900&q=80" alt={t("030_alt")} style={{ display: "block", width: "100%", aspectRatio: "16 / 9", objectFit: "cover" }} />
-              <div style={{ display: "flex", gap: "16px", padding: "26px 28px 28px", flex: "1", backgroundColor: "#D21E28" }}>
+            <div data-ig-feed="innoco.co" style={{ background: "var(--color-paper-dim)", color: "var(--color-ink)", display: "flex", flexDirection: "column" }}>
+              <img src="https://images.unsplash.com/photo-1522543558187-768b6df7c25c?auto=format&fit=crop&w=900&q=80" alt={t("034_alt")} style={{ display: "block", width: "100%", aspectRatio: "16 / 9", objectFit: "cover" }} />
+              <div style={{ display: "flex", gap: "16px", padding: "26px 28px 28px", flex: "1", backgroundColor: "var(--color-red)" }}>
                 <div style={{ flex: "0 0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#2E3B40" }} />
+                  <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--color-ink)" }} />
                   <span style={{ writingMode: "vertical-rl", whiteSpace: "nowrap", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "12px", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(46,59,64,0.7)" }}>
-                    {t("031_span")}
+                    {t("035_span")}
                   </span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", flex: "1" }}>
                   <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "30px", lineHeight: "var(--in-are-you-in-4)", margin: "0 0 10px" }}>
-                    {t("032_h3")}
+                    {t("036_h3")}
                   </h3>
                   <p style={{ fontFamily: "var(--font-serif)", fontSize: "17px", lineHeight: "1.2", margin: "0 0 22px", color: "rgba(46,59,64,0.8)" }}>
-                    {t("033_p")}
+                    {t("037_p")}
                   </p>
-                  <a href="https://instagram.com/innoco.co" target="_blank" rel="noopener" style={{ marginTop: "auto", alignSelf: "flex-start", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "12px 24px" }} className="in-plain">
-                    {t("034_a")}
+                  <a href="https://instagram.com/innoco.co" target="_blank" rel="noopener" style={{ marginTop: "auto", alignSelf: "flex-start", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "12px 24px" }} className="in-plain">
+                    {t("038_a")}
                   </a>
                 </div>
               </div>
@@ -186,13 +188,13 @@ export default function AreyouIN() {
           </div>
         </section>
         {/* ===================== TRIAD BOX (teal) ===================== */}
-        <section style={{ background: "#1E8A86", color: "#FAF4E2", marginTop: "80px" }}>
+        <section style={{ background: "var(--color-teal)", color: "var(--color-paper)", marginTop: "80px" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "clamp(30px, 4vw, 52px)", lineHeight: "var(--in-are-you-in-5)", margin: "0 0 12px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              {t("035_h2")}
+              {t("039_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", margin: "0", color: "rgba(250,244,226,0.9)" }}>
-              {t("036_p")}
+              {t("040_p")}
             </p>
           </div>
         </section>

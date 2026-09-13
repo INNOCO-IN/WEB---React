@@ -1,11 +1,13 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-workshop-bucket-list-0: 0.96;
   --in-workshop-bucket-list-1: italic;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-workshop-bucket-list-0: 1.06;
   --in-workshop-bucket-list-1: normal;
 }
@@ -13,10 +15,10 @@
 
 .page-workshop-bucket-list * { box-sizing: border-box; }
 .page-workshop-bucket-list, .page-workshop-bucket-list { margin: 0; padding: 0; }
-.page-workshop-bucket-list { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-workshop-bucket-list ::selection { background: #E5188C; color: #FAF4E2; }
-.page-workshop-bucket-list a { color: #146560; }
-.page-workshop-bucket-list a:hover { color: #E5188C; }
+.page-workshop-bucket-list { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-workshop-bucket-list ::selection { background: var(--color-magenta-hot); color: var(--color-paper); }
+.page-workshop-bucket-list a { color: var(--color-teal-dark); }
+.page-workshop-bucket-list a:hover { color: var(--color-magenta-hot); }
 
 
 @media (max-width: 1000px){

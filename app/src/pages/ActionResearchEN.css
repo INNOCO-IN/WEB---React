@@ -1,9 +1,9 @@
 
 .page-action-research-en * { box-sizing: border-box; }
 .page-action-research-en, .page-action-research-en { margin: 0; padding: 0; }
-.page-action-research-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-action-research-en ::selection { background: #1E648C; color: #FAF4E2; }
-.page-action-research-en a { color: #1E648C; }
+.page-action-research-en { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-action-research-en ::selection { background: var(--color-deepblue); color: var(--color-paper); }
+.page-action-research-en a { color: var(--color-deepblue); }
 
 
 @media (max-width: 1000px){

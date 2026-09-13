@@ -1,9 +1,9 @@
 
 .page-project-jungle-jam-en * { box-sizing: border-box; }
 .page-project-jungle-jam-en, .page-project-jungle-jam-en { margin: 0; padding: 0; }
-.page-project-jungle-jam-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-project-jungle-jam-en ::selection { background: #1E5A64; color: #FAF4E2; }
-.page-project-jungle-jam-en a { color: #146560; }
+.page-project-jungle-jam-en { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-project-jungle-jam-en ::selection { background: var(--color-slate); color: var(--color-paper); }
+.page-project-jungle-jam-en a { color: var(--color-teal-dark); }
 .page-project-jungle-jam-en a:hover { color: #0f4a45; }
 .page-project-jungle-jam-en .col-scroll::-webkit-scrollbar { width: 6px; }
 .page-project-jungle-jam-en .col-scroll::-webkit-scrollbar-thumb { background: rgba(46,59,64,0.2); border-radius: 3px; }

@@ -41,6 +41,7 @@
     "current": "Current language: {{name}}",
     "switchTo": "Switch to {{name}}",
     "approximate": "This page has no {{name}} version — going to the section instead",
+    "approximateHome": "This page has no {{name}} version — going to the {{name}} home page instead",
     "unavailable": "Not available in {{name}} yet",
     "names": {
       "en": "English",
@@ -48,6 +49,7 @@
       "ko": "Korean"
     },
     "approximateShort": "Goes to the section",
+    "approximateHomeShort": "Goes to the home page",
     "unavailableShort": "Not available yet"
   },
   "cards": {
@@ -96,6 +98,9 @@
     "submit": "Send",
     "submitting": "Sending…",
     "sent": "Thank you — that reached us.",
+    "unreachable": "Could not reach the server. Please try again.",
+    "sendFailed": "That did not send. Please try again, or email {{email}}.",
+    "notConnected": "This form is not connected yet. Please email {{email}}.",
     "validation": {
       "required": "{{field}} is required.",
       "email": "That does not look like an email address.",

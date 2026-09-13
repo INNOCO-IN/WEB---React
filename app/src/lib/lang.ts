@@ -109,8 +109,15 @@ export interface Alternate {
   locale: Locale;
   /** Where the switcher goes for this locale. */
   to: string;
-  /** True when that is the same page. False means the nearest thing above it. */
-  exact: boolean;
+  /**
+   * How close it got: the same page, the section above it, or the home page.
+   *
+   * Three outcomes rather than a boolean, because the switcher tells the
+   * reader which one happened and the two inexact ones are not the same news.
+   * "Goes to the section" over a link to the home page is the switcher saying
+   * something that is not true — which is the failure this replaced.
+   */
+  reach: 'page' | 'section' | 'home';
   /** False when the locale has nothing to offer at all — the switch is dead. */
   available: boolean;
 }
@@ -125,13 +132,13 @@ export interface Alternate {
  * section above it (`/project/food-revolution` becomes `/ko/project`), and the
  * home page only when there is nothing in between.
  *
- * `exact` is false for both of the latter so the switcher can say so, and
+ * `reach` names which of the three happened so the switcher can say so, and
  * `available` is false when even the locale's home is not a route — which is
  * where Traditional Chinese starts, having no pages of its own yet.
  */
 export function alternateFor(pathname: string, locale: Locale): Alternate {
   const to = pathIn(pathname, locale);
-  if (isRoute(to)) return { locale, to, exact: true, available: true };
+  if (isRoute(to)) return { locale, to, reach: 'page', available: true };
 
   const home = localeHome(locale);
   let up = to;
@@ -140,9 +147,15 @@ export function alternateFor(pathname: string, locale: Locale): Alternate {
     if (cut <= 0) break;
     up = up.slice(0, cut);
     if (up.length < home.length) break;
-    if (isRoute(up)) return { locale, to: up, exact: false, available: true };
+    // Giving up a segment at a time can land on the locale's home itself —
+    // `/ko/action-research` has `/ko` above it and nothing else. That is the
+    // home page arrived at from the other direction, not a section, and the
+    // switcher says different things about the two.
+    if (isRoute(up)) {
+      return { locale, to: up, reach: up === home ? 'home' : 'section', available: true };
+    }
   }
-  return { locale, to: home, exact: false, available: isRoute(home) };
+  return { locale, to: home, reach: 'home', available: isRoute(home) };
 }
 
 /** Every locale's answer for this path, in declaration order. */

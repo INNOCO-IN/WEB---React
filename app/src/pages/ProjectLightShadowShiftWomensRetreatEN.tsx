@@ -15,7 +15,7 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
     <SiteLayout page="Project-Light-Shadow-Shift-Womens-Retreat.EN.dc.html" className="page-project-light-shadow-shift-womens-retreat-en" footer={{ loop: "0.503", cta: "#1E5A64" }}>
       <div style={{ fontFamily: "'Newsreader', Georgia, serif", minHeight: "100vh", overflowX: "hidden" }}>
         {/* ===== HERO ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 52px" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "22px", fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "12px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               <span style={{ background: "rgba(250,244,226,0.18)", borderRadius: "999px", padding: "8px 15px" }}>
@@ -32,7 +32,7 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
               Light, Shadow, Shift
             </h1>
             <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.8)", marginBottom: "22px" }}>
-              Women&rsquo;s Retreat
+              Women’s Retreat
             </div>
             <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(19px, 2.1vw, 25px)", lineHeight: "1.46", maxWidth: "760px", margin: "0", color: "rgba(250,244,226,0.94)" }}>
               Two days, one circle of women, and the same question asked a hundred small ways: what do you want to carry, and what are you ready to leave behind?
@@ -44,14 +44,14 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
           <div className="pj-grid" style={{ display: "grid", gridTemplateColumns: "226px 1fr 288px", gap: "40px", alignItems: "start" }}>
             {/* LEFT · about */}
             <aside className="pj-left col-scroll" style={{ position: "sticky", top: "78px", maxHeight: "calc(100vh - 100px)", overflowY: "auto", borderRight: "1px solid rgba(46,59,64,0.14)", paddingRight: "22px" }}>
-              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "26px" }} className="in-plain">
-                &larr; All projects
+              <Link to="/project" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12.5px", letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "26px" }} className="in-plain">
+                ← All projects
               </Link>
               <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(46,59,64,0.5)", marginBottom: "10px" }}>
                 Audience
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "22px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Women
                 </span>
               </div>
@@ -59,19 +59,19 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
                 Topic
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "24px" }}>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Retreat
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Transformation
                 </span>
-                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
+                <span style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "12px", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.3)", borderRadius: "999px", padding: "6px 12px" }}>
                   Self-inquiry
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px", borderTop: "1.5px solid rgba(46,59,64,0.16)", paddingTop: "18px" }}>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Place
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -79,7 +79,7 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Format
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -87,7 +87,7 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "3px" }}>
+                  <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "3px" }}>
                     Pattern
                   </div>
                   <div style={{ fontFamily: "'Newsreader', serif", fontSize: "15px", color: "rgba(46,59,64,0.85)" }}>
@@ -99,18 +99,18 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
             {/* MIDDLE · the story */}
             <div className="pj-mid">
               <figure style={{ margin: "0 0 40px" }}>
-                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#F3EAD0" }}>
+                <div style={{ width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--color-paper-dim)" }}>
                   <img src="/project-img/light-shadow-shift-women.jpg" alt="Women reaching up to a projected wall showing overlapping circles of light, shadow, and shift" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
                 <figcaption style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "600", fontSize: "13px", letterSpacing: "0.02em", color: "rgba(46,59,64,0.6)", marginTop: "12px" }}>
-                  Light, shadow, and shift &mdash; three overlapping circles, each woman adding her own pledge.
+                  Light, shadow, and shift — three overlapping circles, each woman adding her own pledge.
                 </figcaption>
               </figure>
               <div style={{ maxWidth: "680px" }}>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "18px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "18px" }}>
                   What it is
                 </div>
-                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "#2E3B40", textWrap: "pretty" }}>
+                <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "400", fontSize: "clamp(26px, 3vw, 32px)", lineHeight: "1.32", letterSpacing: "-0.01em", margin: "0 0 34px", color: "var(--color-ink)", textWrap: "pretty" }}>
                   A pattern IN keeps returning to, reshaped for whoever it meets.
                 </p>
                 <div className="story-body">
@@ -126,25 +126,25 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
                     {" for youth in Taiwan, and here, over two residential days, for a circle of women."}
                   </p>
                   <p>
-                    The pattern is simple to say and slow to live: notice what&rsquo;s in the light, what&rsquo;s in the shadow, and what it takes to shift. Everything in the two days is a different door into that same question.
+                    The pattern is simple to say and slow to live: notice what’s in the light, what’s in the shadow, and what it takes to shift. Everything in the two days is a different door into that same question.
                   </p>
                 </div>
-                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#1E5A64", margin: "40px 0 18px" }}>
+                <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-slate)", margin: "40px 0 18px" }}>
                   The journey
                 </div>
                 <div className="story-body">
                   <p>
-                    A wall becomes a shared canvas &mdash; light, shadow, and shift as three overlapping circles, projected and written into live, each woman reaching up to add her own pledge. Later the same wall holds a mural the group draws together, some of it by flashlight after dark, shadow made visible by hand.
+                    A wall becomes a shared canvas — light, shadow, and shift as three overlapping circles, projected and written into live, each woman reaching up to add her own pledge. Later the same wall holds a mural the group draws together, some of it by flashlight after dark, shadow made visible by hand.
                   </p>
                   <p>
-                    There&rsquo;s a walk outward, too &mdash; out to find something small that brings joy, a flower, a leaf, a found thing, carried back into the room and set beside a few words on what it means to reform from within.
+                    There’s a walk outward, too — out to find something small that brings joy, a flower, a leaf, a found thing, carried back into the room and set beside a few words on what it means to reform from within.
                   </p>
                   <p>
-                    Sitting in a circle on the floor, the group paints, unhurried. On long strips of paper laid out like a shared timeline, they mark a journey together in colored notes &mdash; where they&rsquo;ve been, where they&rsquo;re headed. A yoga session closes the retreat in the body, after two days spent mostly in mind and heart.
+                    Sitting in a circle on the floor, the group paints, unhurried. On long strips of paper laid out like a shared timeline, they mark a journey together in colored notes — where they’ve been, where they’re headed. A yoga session closes the retreat in the body, after two days spent mostly in mind and heart.
                   </p>
-                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "40px 0 0", color: "#2E3B40", textWrap: "pretty" }}>
-                    {"Nothing here is separate from anything else &mdash; "}
-                    <span style={{ color: "#1E5A64" }}>
+                  <p style={{ fontFamily: "'Newsreader', serif", fontWeight: "500", fontSize: "clamp(24px, 2.8vw, 30px)", lineHeight: "1.3", margin: "40px 0 0", color: "var(--color-ink)", textWrap: "pretty" }}>
+                    {"Nothing here is separate from anything else — "}
+                    <span style={{ color: "var(--color-slate)" }}>
                       all one continuous conversation, carried by hands as much as words.
                     </span>
                   </p>
@@ -186,15 +186,15 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
               <div style={{ maxWidth: "680px", borderTop: "1.5px solid rgba(30,90,100,0.45)", marginTop: "44px", paddingTop: "30px" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "22px" }}>
                   <div>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
-                      Who it&rsquo;s for
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
+                      Who it’s for
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.5", margin: "0", color: "rgba(46,59,64,0.82)" }}>
-                      Women ready for two days away from the ordinary &mdash; no experience required, only the willingness to sit in a circle and be honest.
+                      Women ready for two days away from the ordinary — no experience required, only the willingness to sit in a circle and be honest.
                     </p>
                   </div>
                   <div>
-                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1E5A64", marginBottom: "10px" }}>
+                    <div style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "800", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-slate)", marginBottom: "10px" }}>
                       Format
                     </div>
                     <p style={{ fontFamily: "'Newsreader', serif", fontSize: "18px", lineHeight: "1.5", margin: "0", color: "rgba(46,59,64,0.82)" }}>
@@ -207,13 +207,13 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
                     One pattern, many forms
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-                    <Link to="/project/light-shadow-shift-womens-retreat" style={{ textDecoration: "none", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
+                    <Link to="/project/light-shadow-shift-womens-retreat" style={{ textDecoration: "none", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
                       Women’s Retreat — UAE
                     </Link>
-                    <Link to="/project/jungle-jam" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
+                    <Link to="/project/jungle-jam" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
                       Jungle Jam — UAE youth
                     </Link>
-                    <Link to="/project/shadow-shifter" style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
+                    <Link to="/project/shadow-shifter" style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "10px 18px" }} className="in-plain">
                       Shadow Shifter — Taiwan youth
                     </Link>
                   </div>
@@ -227,7 +227,7 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
           </div>
         </section>
         {/* ===== CTA ===== */}
-        <section style={{ background: "#1E5A64", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-slate)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.75)", margin: "0 0 18px" }}>
               Are you IN?
@@ -236,10 +236,10 @@ export default function ProjectLightShadowShiftWomensRetreatEN() {
               Bring a retreat to your own circle.
             </h2>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "'Archivo', sans-serif", fontWeight: "700", fontSize: "15px" }}>
-              <Link to="/connect" style={{ textDecoration: "none", color: "#1E5A64", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/connect" style={{ textDecoration: "none", color: "var(--color-slate)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 Start a conversation
               </Link>
-              <Link to="/protagonist" style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
+              <Link to="/protagonist" style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", justifyContent: "center", lineHeight: "1.2", minHeight: "24px" }} className="in-plain">
                 See the Protagonist path
               </Link>
             </div>

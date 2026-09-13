@@ -28,18 +28,26 @@
   window.addEventListener('click', function (e) {
     var a = e.target.closest('[data-scroll-form]');
     if (!a) return;
-    e.preventDefault();
-    var pre = a.getAttribute('data-prefill');
-    var sel = document.getElementById('cf-brings');
-    if (sel && pre) { sel.value = pre; sel.dispatchEvent(new Event('change', { bubbles: true })); }
     var form = document.getElementById('cf-form');
-    if (form) window.scrollTo({ top: form.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+    if (!form) return;
+    e.preventDefault();
+    // data-prefill="field=value" — the same spelling data-hide-when uses, so
+    // the card that preselects an answer and the block that answer hides are
+    // written the same way, and neither names a sentence that a translator
+    // would change out from under it.
+    var pre = (a.getAttribute('data-prefill') || '').split('=');
+    var field = pre.length === 2 ? form.elements[pre[0]] : null;
+    if (field) { field.value = pre[1]; field.dispatchEvent(new Event('change', { bubbles: true })); }
+    window.scrollTo({ top: form.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
   });
   window.addEventListener('change', function (e) {
-    if (e.target && e.target.id === 'cf-brings') {
-      var msg = document.getElementById('cf-msg-wrap');
-      if (msg) msg.style.display = (e.target.value === 'Just keep me posted about events') ? 'none' : '';
-    }
+    var form = e.target && e.target.form;
+    if (!form) return;
+    Array.prototype.forEach.call(form.querySelectorAll('[data-hide-when]'), function (el) {
+      var rule = el.getAttribute('data-hide-when').split('=');
+      var field = form.elements[rule[0]];
+      if (field) el.hidden = field.value === rule[1];
+    });
   });
 </script>
 <style id="in-mobile">
@@ -99,7 +107,7 @@
       <div style="flex: 1 1 460px; min-width: 320px;">
         <h2 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.04; margin: 0 0 8px; letter-spacing: -0.01em; text-wrap: balance;">Let's start a conversation</h2>
         <p style="font-family: 'Newsreader', serif; font-size: 19px; line-height: 1.5; margin: 0 0 28px; color: rgba(46,59,64,0.78); max-width: 520px;">Tell us a little about you and what you're hoping to explore. We read every message.</p>
-        <form id="cf-form" data-in-form="submissions" data-in-thanks="Thank you — your message is with us. We read every one, and we'll be in touch soon." style="display: flex; flex-direction: column; gap: 16px;">
+        <form id="cf-form" data-in-form="submissions" data-in-thanks="Thank you — your message is with us. We read every one, and we'll be in touch soon." data-in-idle="We'll be in touch soon." style="display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 96px;">
           <div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
             <label>Leave this field empty<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>
           </div>
@@ -115,22 +123,26 @@
           </div>
           <div>
             <label for="cf-brings" style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">What brings you here?</label>
+            <!-- The value is what reaches the `brings` column. It has to be the
+                 same word in every edition of this page, or the review desk
+                 sorts one enquiry into three buckets depending on which
+                 language the sender happened to be reading. -->
             <select class="in-field" id="cf-brings" name="brings">
-              <option>Curious about a workshop</option>
-              <option>Bringing a workshop to my organization</option>
-              <option>Already in the work — a question, or something I need</option>
-              <option>Proposing something we could build together</option>
-              <option>Just keep me posted about events</option>
-              <option>Something else</option>
+              <option value="workshop-curious">Curious about a workshop</option>
+              <option value="workshop-for-org">Bringing a workshop to my organization</option>
+              <option value="in-the-work">Already in the work — a question, or something I need</option>
+              <option value="proposal">Proposing something we could build together</option>
+              <option value="keep-me-posted">Just keep me posted about events</option>
+              <option value="other">Something else</option>
             </select>
           </div>
-          <div id="cf-msg-wrap">
+          <div id="cf-msg-wrap" data-hide-when="brings=keep-me-posted">
             <label for="cf-message" style="display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(46,59,64,0.6); margin-bottom: 8px;">Message</label>
             <textarea class="in-field" name="message" id="cf-message" rows="5" placeholder="What are you hoping to explore?" style="resize: vertical;"></textarea>
           </div>
           <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 4px;">
             <button type="submit" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; color: #FAF4E2; background: #2E3B40; border: none; border-radius: 999px; padding: 15px 34px; cursor: pointer;">Send message</button>
-            <span data-in-status="1" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; line-height: 1.4; color: rgba(46,59,64,0.55);">We'll be in touch soon.</span>
+            <span data-in-status="1" style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 14px; line-height: 1.4; color: rgba(46,59,64,0.55);"></span>
           </div>
         </form>
       </div>
@@ -168,7 +180,7 @@
           <div style="display: flex; flex-direction: column; flex: 1;">
             <h3 style="font-family: 'Newsreader', serif; font-weight: 600; font-size: 30px; line-height: 1.05; margin: 0 0 10px;">Where to find us next</h3>
             <p style="font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.2; margin: 0 0 22px; color: rgba(250,244,226,0.9);">Pop-up studios, global labs, and community sessions are announced first to those on the list. Ask to be notified.</p>
-            <a href="#cf-form" data-scroll-form="1" data-prefill="Just keep me posted about events" style="margin-top: auto; align-self: flex-start; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #46325A; background: #FAF4E2; border-radius: 999px; padding: 12px 24px;">Let's start a conversation</a>
+            <a href="#cf-form" data-scroll-form="1" data-prefill="brings=keep-me-posted" style="margin-top: auto; align-self: flex-start; text-decoration: none; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #46325A; background: #FAF4E2; border-radius: 999px; padding: 12px 24px;">Let's start a conversation</a>
           </div>
         </div>
       </div>

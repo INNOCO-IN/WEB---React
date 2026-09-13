@@ -1,5 +1,7 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-protagonist-0: 0.96;
   --in-protagonist-1: 1.04;
@@ -17,7 +19,7 @@
   --in-protagonist-13: 1.06;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-protagonist-0: 1.12;
   --in-protagonist-1: 1.12;
   --in-protagonist-2: 1.12;
@@ -37,9 +39,9 @@
 
 .page-protagonist * { box-sizing: border-box; }
 .page-protagonist, .page-protagonist { margin: 0; padding: 0; }
-.page-protagonist { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-protagonist ::selection { background: #E6328C; color: #FAF4E2; }
-.page-protagonist a { color: #F05A28; }
+.page-protagonist { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-protagonist ::selection { background: var(--color-magenta); color: var(--color-paper); }
+.page-protagonist a { color: var(--color-orange); }
 .page-protagonist a:hover { color: #B4321A; }
 .page-protagonist .stage { transition: transform 0.18s ease, box-shadow 0.18s ease; }
 .page-protagonist .stage:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }

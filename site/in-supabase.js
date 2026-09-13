@@ -185,6 +185,11 @@
     var table = form.getAttribute('data-in-form');
     initGroups(form);
     form.noValidate = true;   // property, not attribute — survives re-render
+    // The reassurance the status slot shows before anything has happened. It
+    // is an attribute on the form rather than text inside the slot because the
+    // slot's contents are overwritten on the first send, and a line that a
+    // translator has to write twice is a line that ends up saying two things.
+    status(form, form.getAttribute('data-in-idle') || '');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }

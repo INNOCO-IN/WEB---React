@@ -1,8 +1,8 @@
 
 .page-manifesto-en * { box-sizing: border-box; }
 .page-manifesto-en, .page-manifesto-en { margin: 0; padding: 0; }
-.page-manifesto-en { background: #FAF4E2; color: #262A38; -webkit-font-smoothing: antialiased; }
-.page-manifesto-en ::selection { background: #E6328C; color: #FAF4E2; }
+.page-manifesto-en { background: var(--color-paper); color: #262A38; -webkit-font-smoothing: antialiased; }
+.page-manifesto-en ::selection { background: var(--color-magenta); color: var(--color-paper); }
 
 
 @media (max-width: 1000px){

@@ -1,10 +1,10 @@
 
 .page-project-en * { box-sizing: border-box; }
 .page-project-en, .page-project-en { margin: 0; padding: 0; }
-.page-project-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-project-en ::selection { background: #E6328C; color: #FAF4E2; }
-.page-project-en a { color: #1E8A86; }
-.page-project-en a:hover { color: #146560; }
+.page-project-en { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-project-en ::selection { background: var(--color-magenta); color: var(--color-paper); }
+.page-project-en a { color: var(--color-teal); }
+.page-project-en a:hover { color: var(--color-teal-dark); }
 
 
 @media (max-width: 1000px){

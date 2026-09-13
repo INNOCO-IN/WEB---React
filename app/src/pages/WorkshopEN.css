@@ -1,8 +1,8 @@
 
 .page-workshop-en * { box-sizing: border-box; }
 .page-workshop-en, .page-workshop-en { margin: 0; padding: 0; }
-.page-workshop-en { background: #FAF4E2; color: #2E3B40; -webkit-font-smoothing: antialiased; }
-.page-workshop-en ::selection { background: #E6328C; color: #FAF4E2; }
+.page-workshop-en { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+.page-workshop-en ::selection { background: var(--color-magenta); color: var(--color-paper); }
 .page-workshop-en .ws-card { transition: transform 0.18s ease, box-shadow 0.18s ease; }
 .page-workshop-en .ws-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(46,59,64,0.16); }
 .page-workshop-en .ws-card:hover .ws-arrow { transform: translateX(4px); }

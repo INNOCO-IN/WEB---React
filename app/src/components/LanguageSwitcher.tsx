@@ -191,26 +191,38 @@ export default function LanguageSwitcher({ idPrefix, className, placement = 'dow
             );
           }
 
-          const note = alt.exact
+          // What the link is about to do, in the reader's own words. The two
+          // inexact answers get their own sentence: a reader sent to the
+          // section above has kept most of their place, and one sent to the
+          // home page has lost it, and being told the first while the second
+          // happens is worse than being told nothing.
+          const exact = alt.reach === 'page';
+          const note = exact
             ? t('language.switchTo', { name: translated })
-            : t('language.approximate', { name: translated });
+            : t(alt.reach === 'section' ? 'language.approximate' : 'language.approximateHome', {
+                name: translated,
+              });
 
           return (
             <li key={alt.locale}>
               <Link
                 to={alt.to}
                 lang={HTML_LANG[alt.locale]}
-                className={`in-lang__item${alt.exact ? '' : ' is-approximate'}`}
-                title={alt.exact ? undefined : note}
+                className={`in-lang__item${exact ? '' : ' is-approximate'}`}
+                title={exact ? undefined : note}
                 aria-label={note}
                 data-lang-item
                 onClick={() => storeLocale(alt.locale)}
               >
                 {name}
-                {alt.exact ? null : (
+                {exact ? null : (
                   // Short on screen, and the whole sentence on the accessible
                   // name — a switcher is not the place for three lines of prose.
-                  <span className="in-lang__note">{t('language.approximateShort')}</span>
+                  <span className="in-lang__note">
+                    {t(alt.reach === 'section'
+                      ? 'language.approximateShort'
+                      : 'language.approximateHomeShort')}
+                  </span>
                 )}
               </Link>
             </li>

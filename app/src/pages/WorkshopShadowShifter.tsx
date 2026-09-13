@@ -21,7 +21,7 @@ export default function WorkshopShadowShifter() {
     <SiteLayout page="Workshop-Shadow-Shifter.EN.dc.html" className="page-workshop-shadow-shifter" footer={{ loop: "0.41", cta: "#E5188C" }}>
       <div style={{ fontFamily: "var(--font-serif)", minHeight: "100vh", overflowX: "hidden" }}>
         <span id="top" />
-        <section style={{ background: "#E5188C", color: "#FAF4E2" }}>
+        <section style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "22px 28px 0" }}>
             <Link to={localize("/workshop", locale)} style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(250,244,226,0.78)", textDecoration: "none" }} className="in-plain">
               {t("000_a")}
@@ -38,15 +38,15 @@ export default function WorkshopShadowShifter() {
               {t("003_p")}
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <a href="#register" style={{ textDecoration: "none", color: "#E5188C", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <a href="#register" style={{ textDecoration: "none", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("004_a")}
               </a>
             </div>
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "64px 28px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "baseline", borderTop: "2px solid #2E3B40", paddingTop: "24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "baseline", borderTop: "2px solid var(--color-ink)", paddingTop: "24px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("005_div")}
             </div>
             <div style={{ maxWidth: "760px" }}>
@@ -61,7 +61,7 @@ export default function WorkshopShadowShifter() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 0" }}>
           <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "baseline", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("008_div")}
             </div>
             <div style={{ maxWidth: "760px" }}>
@@ -76,7 +76,7 @@ export default function WorkshopShadowShifter() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 8px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "start", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("011_div")}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "22px 40px", maxWidth: "900px" }}>
@@ -132,13 +132,13 @@ export default function WorkshopShadowShifter() {
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "44px 28px 0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "start", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px", borderBottom: "2px solid #2E3B40", paddingBottom: "34px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E5188C" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "190px 1fr", gap: "40px", alignItems: "start", borderTop: "1.5px solid rgba(46,59,64,0.25)", paddingTop: "24px", borderBottom: "2px solid var(--color-ink)", paddingBottom: "34px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-magenta-hot)" }}>
               {t("024_div")}
             </div>
             <div style={{ maxWidth: "900px", display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "baseline", padding: "0 0 18px" }}>
-                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40" }}>
+                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)" }}>
                   {t("025_div")}
                 </div>
                 <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.4" }}>
@@ -146,7 +146,7 @@ export default function WorkshopShadowShifter() {
                 </div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "baseline", borderTop: "1px solid rgba(46,59,64,0.16)", padding: "18px 0" }}>
-                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40" }}>
+                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)" }}>
                   {t("027_div")}
                 </div>
                 <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.4" }}>
@@ -154,7 +154,7 @@ export default function WorkshopShadowShifter() {
                 </div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "baseline", borderTop: "1px solid rgba(46,59,64,0.16)", padding: "18px 0" }}>
-                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40" }}>
+                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)" }}>
                   {t("029_div")}
                 </div>
                 <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.4" }}>
@@ -162,7 +162,7 @@ export default function WorkshopShadowShifter() {
                 </div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "baseline", borderTop: "1px solid rgba(46,59,64,0.16)", padding: "18px 0" }}>
-                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40" }}>
+                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)" }}>
                   {t("031_div")}
                 </div>
                 <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.4" }}>
@@ -170,7 +170,7 @@ export default function WorkshopShadowShifter() {
                 </div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "baseline", borderTop: "1px solid rgba(46,59,64,0.16)", padding: "18px 0" }}>
-                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40" }}>
+                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)" }}>
                   {t("033_div")}
                 </div>
                 <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.4" }}>
@@ -178,7 +178,7 @@ export default function WorkshopShadowShifter() {
                 </div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "baseline", borderTop: "1px solid rgba(46,59,64,0.16)", borderBottom: "1.5px solid rgba(46,59,64,0.25)", padding: "18px 0" }}>
-                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40" }}>
+                <div style={{ flex: "0 0 auto", width: "150px", fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "12.5px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)" }}>
                   {t("035_div")}
                 </div>
                 <div style={{ flex: "1 1 320px", fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.4" }}>
@@ -206,7 +206,7 @@ export default function WorkshopShadowShifter() {
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px" }}>
           <div style={{ background: "#BDDAE7", padding: "44px 44px 40px" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#2E3B40", marginBottom: "16px" }}>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)", marginBottom: "16px" }}>
               {t("041_div")}
             </div>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(26px, 3vw, 38px)", lineHeight: "1.1", margin: "0 0 18px", maxWidth: "24ch", textWrap: "balance" }}>
@@ -218,27 +218,27 @@ export default function WorkshopShadowShifter() {
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "8px 28px 40px" }}>
-          <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#E5188C", marginBottom: "16px" }}>
+          <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-magenta-hot)", marginBottom: "16px" }}>
             {t("044_div")}
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13.5px" }}>
-            <Link to={localize("/workshop/jungle-jam", locale)} style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "11px 20px" }} className="in-plain">
+            <Link to={localize("/workshop/jungle-jam", locale)} style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "11px 20px" }} className="in-plain">
               {t("045_a")}
             </Link>
-            <Link to={localize("/workshop/light-shadow-shift", locale)} style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "11px 20px" }} className="in-plain">
+            <Link to={localize("/workshop/light-shadow-shift", locale)} style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "11px 20px" }} className="in-plain">
               {t("046_a")}
             </Link>
-            <Link to={localize("/workshop/mobius-making", locale)} style={{ textDecoration: "none", color: "#2E3B40", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "11px 20px" }} className="in-plain">
+            <Link to={localize("/workshop/mobius-making", locale)} style={{ textDecoration: "none", color: "var(--color-ink)", border: "1.5px solid rgba(46,59,64,0.35)", borderRadius: "999px", padding: "11px 20px" }} className="in-plain">
               {t("047_a")}
             </Link>
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 28px 44px" }}>
-          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "#FAF4E2", background: "#2E3B40", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
+          <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
             {t("048_a")}
           </a>
         </section>
-        <section id="register" style={{ background: "#E5188C", color: "#FAF4E2" }}>
+        <section id="register" style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.7)", margin: "0 0 18px" }}>
               {t("049_p")}
@@ -249,10 +249,10 @@ export default function WorkshopShadowShifter() {
             {/* The hero's "Register now" scrolls here. The links below it are a question and the way back, not a sign-up. */}
             <WorkshopRegister slug="shadow-shifter" accent="#E5188C" />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
-              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "#E5188C", background: "#FAF4E2", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("051_a")}
               </Link>
-              <Link to={localize("/workshop", locale)} style={{ textDecoration: "none", color: "#FAF4E2", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
+              <Link to={localize("/workshop", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
                 {t("052_a")}
               </Link>
             </div>

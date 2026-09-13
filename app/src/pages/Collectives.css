@@ -1,5 +1,7 @@
 /* Set differently per language — mostly leading, which Hangul needs
-   more of than Latin does. Generated: edit the legacy pages. */
+   more of than Latin does. Chinese wants the same, and the zh-TW
+   pages are these same components, so the Korean block answers for
+   both. Generated: edit the legacy pages. */
 :root {
   --in-collectives-0: 0.98;
   --in-collectives-1: 1.04;
@@ -13,7 +15,7 @@
   --in-collectives-9: 1.04;
 }
 
-:root[lang='ko'] {
+:root[lang='ko'], :root[lang='zh-Hant-TW'] {
   --in-collectives-0: 1.14;
   --in-collectives-1: 1.12;
   --in-collectives-2: normal;
@@ -29,12 +31,12 @@
 
 .page-collectives * { box-sizing: border-box; }
 .page-collectives, .page-collectives { margin: 0; padding: 0; }
-.page-collectives { background: #FAF4E2; color: #262A38; -webkit-font-smoothing: antialiased; }
-.page-collectives ::selection { background: #3C8246; color: #FAF4E2; }
-.page-collectives .tm-photo { width: 70%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: #F3EAD0; border-radius: 50%; filter: grayscale(0.15) contrast(1.02); }
+.page-collectives { background: var(--color-paper); color: #262A38; -webkit-font-smoothing: antialiased; }
+.page-collectives ::selection { background: var(--color-green); color: var(--color-paper); }
+.page-collectives .tm-photo { width: 70%; aspect-ratio: 1 / 1; object-fit: cover; display: block; background: var(--color-paper-dim); border-radius: 50%; filter: grayscale(0.15) contrast(1.02); }
 .page-collectives .tm-ph-block { width: 70%; aspect-ratio: 1 / 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: 0.02em; }
 .page-collectives .tm-more { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; color: #43326D; background: none; border: none; padding: 0; cursor: pointer; text-align: left; }
-.page-collectives .tm-more:hover { color: #E6328C; }
+.page-collectives .tm-more:hover { color: var(--color-magenta); }
 
 
 @media (max-width: 1000px){

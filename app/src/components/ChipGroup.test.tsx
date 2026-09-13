@@ -278,7 +278,7 @@ describe('inside a form', () => {
     fireEvent.click(screen.getByRole('checkbox', { name: '…Yours' }));
     fireEvent.click(screen.getByRole('button', { name: 'Send' }));
 
-    expect(await screen.findByText('Thank you — we have it.')).toBeInTheDocument();
+    expect(await screen.findByText('Thank you — that reached us.')).toBeInTheDocument();
     expect(submitted().door).toBe('noticed');
     expect(submitted().format).toEqual(['Photo', 'Yours']);
     // The values arrive through the context, and the twenty-odd inputs that
@@ -299,7 +299,7 @@ describe('inside a form', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Send' }));
 
-    expect(await screen.findByText('Thank you — we have it.')).toBeInTheDocument();
+    expect(await screen.findByText('Thank you — that reached us.')).toBeInTheDocument();
     // Both columns are optional: `door` is nullable and `format` defaults to
     // an empty array, so this is the shape the table already expects.
     expect(submitted().door).toBeNull();
