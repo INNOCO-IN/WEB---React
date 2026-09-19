@@ -129,7 +129,11 @@ rather than a broken image.
 
 **`story_entries`** — the curated story collection, both languages on one row
 as `en` and `ko` JSON. `id` is the permalink (`/story/all?story=this-is-us`),
-so it never changes.
+so it never changes. `wall_order` is the only editorial column: null everywhere
+until a reviewer pins a card to the wall at the foot of `/story`, which is
+otherwise the twelve most recent. Edited from `/review` → Stories, which lists
+this table and `stories` as one list joined on `published_as`; a row edited
+there carries `edited_at` and stops following `site/data`.
 
 **`constellation_points`** — a superset of the stories: each carries who it
 came from and up to three ways to follow it (read / watch / view).

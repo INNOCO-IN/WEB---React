@@ -9,7 +9,7 @@
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
 .page-manifesto-en [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
 .page-manifesto-en [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
-.page-manifesto-en [style*="grid-template-columns: repeat(3, .page-manifesto-en minmax(0"] {grid-template-columns:1fr !important;}
+.page-manifesto-en [style*="grid-template-columns: repeat(3, minmax(0"] {grid-template-columns:1fr !important;}
 .page-manifesto-en img, .page-manifesto-en svg, .page-manifesto-en video {max-width:100% !important;}
 .page-manifesto-en [style*="font-size: 300px"] {display:none !important;}
 .page-manifesto-en [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}

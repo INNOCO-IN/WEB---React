@@ -312,10 +312,17 @@ Read them in the Supabase Table Editor, or at **`/review`** — see below.
 ## The review desk
 
 `/review` is a staff page in the app. It lists the three intake tables, groups
-each into waiting and handled, and moves a row's status. It has no locale, no
-nav, nothing links to it, and it is `noindex`: it is a tool, not a page of the
-site, which is also why its route is written into `App.tsx` rather than the
-generated `pages/registry.ts`.
+each into waiting and handled, narrows them with a search and the fields each
+form already collects, moves a row's status, and publishes a story to the site.
+It has no locale, no nav, nothing links to it, and it is `noindex`: it is a tool,
+not a page of the site, which is also why its route is written into `App.tsx`
+rather than the generated `pages/registry.ts`.
+
+Three screens sit under it — the queue, `/review/story/:id` for reading one
+submission on its own, and `/review/publish/:id` for the publishing flow — all
+behind the one session check. Rows are read live: the desk subscribes to the
+three intake tables through the same `services/realtime.ts` the public pages use,
+so a desk left open for an hour is not showing counts from when it loaded.
 
 **Sign-in is a mailed link, never a password.** `signInWithOtp` with
 `shouldCreateUser: false`, so the form cannot double as a registration form and
@@ -334,6 +341,29 @@ Staff may read and change status on `stories`, `submissions` and
 `workshop_registrations`. They may not delete: a submission is someone's account
 of something that happened to them, and declining it is a status rather than an
 erasure.
+
+Staff may also **write the two published tables** — `story_entries` and
+`constellation_points` — which is what lets the desk publish a story rather than
+only record that somebody decided to. Insert and update only, still no delete,
+and still narrowed to `is_staff()` rather than to `authenticated`: a signed-in
+visitor is a reader of the public site and carries that role too. The migration
+is `20260914090000_staff_publish_stories.sql`, and it also adds
+`stories.published_as` — the permalink a submission was published as, which is
+the only thing connecting the two story tables and therefore the only way the
+queue can say "on the site" instead of merely "published".
+
+Those same grants are what lets the desk **edit a story that is already up**,
+which `20260919160000_the_wall_on_story.sql` adds the two missing columns for.
+`story_entries.wall_order` is which cards the wall at the foot of `/story`
+shows, and in what order — null on every row until somebody pins one, and then
+a rank rather than a slot, with the slots left over filled by date exactly as
+before. `edited_at` / `edited_by` are the news queue's bargain again
+(20260919104500): `seed-stories.sql` overwrites this table's words on every run
+because `site/data/stories.js` has been their authority, so a row the desk has
+written carries a mark and the generated upsert holds that row's columns back.
+Hiding and pinning are deliberately *not* stamped — neither column is in the
+seed, so no re-seed can undo them, and stamping would freeze a row's words
+against `site/` as a side effect of deciding where it sits.
 
 **The allowlist is not in the repository.** It lives in `seed-staff.sql`, which
 is gitignored for the same reason `.env.local` is: who has admin access differs
@@ -405,6 +435,47 @@ door and a format. An index entry needs a permalink, a title, a topic and an
 eyebrow, and none of those are collected, which is why a person promotes a
 story rather than a trigger.
 
+**The usual way is now the desk.** `Publish →` on a story row opens
+`/review/publish/:id`, where those four get written with the story open beside
+them, and the last look names what the press does before it does it: the index,
+the story page, the Korean page, and the Constellation if it was asked for. One
+press writes the entry, optionally places the point, and marks the submission
+`published` — recording the permalink in `stories.published_as` so the queue can
+afterwards say *on the site* rather than only *published*.
+
+**Afterwards is the same row.** The stories tab lists both tables as one list,
+joined on `published_as`, so a story that is up carries the actions for looking
+after it: correcting a headline in either edition, changing the date, topic or
+format, replacing the picture, taking it off the site and putting it back,
+marking it still being written, and curating the wall at the foot of `/story`.
+The picture can be uploaded rather than only addressed — into `story-media`,
+whose insert policy already covers `authenticated`, under a uuid filename and
+leaving the file it replaces in place, because a picture may be in use
+somewhere this screen cannot see. `Pin these 12` is
+the press that turns "the twelve most recent" into "these twelve": once every
+slot is pinned, publishing a thirteenth story no longer pushes one off — so a
+newly published submission reaches the wall only by being pinned, and pinning
+puts it at the front. The publishing screen says which of the two states the
+wall is in before the press, because the alternative is finding out by looking
+at an unchanged page. Every
+such row says which authority it answers to, because an edited row stops
+following `site/data` — and it says what was decided in the queue separately
+from where the story is, because those two come apart.
+
+**A story with no submission behind it** is written at `/review/add`. Same
+table, same builder (`composeEntry` in `app/src/lib/story-promotion.ts`, which
+both roads now go through), and the staff `insert` policy from 20260914090000 is
+what allows it — no migration. Three differences from publishing a submission:
+it is an insert rather than an upsert, so a permalink that already exists is
+refused rather than silently overwriting a story nobody re-read; the row is
+stamped `edited_at`, because the desk wrote every word of it; and the
+Constellation point is **on by default**, since a story the desk sits down to
+write is being put on the site deliberately.
+
+The two below remain, and are still the right tool in two cases: when you would
+rather read the SQL before running it, and when you are working on your own
+machine and would rather not type a headline at all.
+
 ```bash
 npm --prefix app run promote-story -- row.json --slug=the-chairs-moved --title="The chairs moved themselves" --topic=noticed --context="A closing circle"
 ```
@@ -445,9 +516,14 @@ What it derives, and how wrong it can be:
 | **topic** | the door, where the door is a topic. `lived` and `noticed` are; `imagined`, `were told` and `can't say` are not, so those land in `blog` or `family` and the line says it guessed |
 | **format** | the first format chip, or `writing` when the form collected none |
 
-The rest is the derivation `promote-story` already does. Both read
-[`scripts/lib/story-promotion.mjs`](app/scripts/lib/story-promotion.mjs), so the
-row this writes and the row that one prints cannot drift apart.
+The rest is the derivation `promote-story` already does. All three — this, that,
+and the desk's publishing flow — read
+[`src/lib/story-promotion.ts`](app/src/lib/story-promotion.ts), so the row this
+writes, the row that one prints and the row the desk sends cannot drift apart.
+It lives under `src/` because the browser is the caller that ships and cannot
+import out of `scripts/`; Node strips the types, and
+`scripts/lib/story-promotion.mjs` is a re-export so both scripts keep the import
+they had.
 
 **It refuses to run against anything but a local stack**, and the check is the
 URL rather than a flag. A guessed headline is a fine thing to put on a

@@ -23,8 +23,8 @@
 
 @media (max-width: 1000px){
   [style*="grid-template-columns: 190px 1fr"]{grid-template-columns:1fr !important;}
-.page-workshop-second-life [style*="grid-template-columns: repeat(2, .page-workshop-second-life minmax(0"] {grid-template-columns:1fr !important;}
-.page-workshop-second-life [style*="grid-template-columns: repeat(4, .page-workshop-second-life minmax(0"] {grid-template-columns:repeat(2, minmax(0,1fr)) !important;}
+.page-workshop-second-life [style*="grid-template-columns: repeat(2, minmax(0"] {grid-template-columns:1fr !important;}
+.page-workshop-second-life [style*="grid-template-columns: repeat(4, minmax(0"] {grid-template-columns:repeat(2, minmax(0,1fr)) !important;}
 }
 @media (max-width: 600px){
   [style*="padding: 70px 28px"]{padding:44px 20px !important;}

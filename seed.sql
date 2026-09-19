@@ -8,6 +8,13 @@
 -- filled with coalesce, so a row that already carries a translation keeps
 -- the one in the database and only an empty column is seeded. Supabase is where
 -- translations are edited, and a re-seed must never undo an editor's work.
+--
+-- News has a third case, because it is the one table the review desk edits.
+-- A row it has written carries `edited_at`, and every column the desk can type
+-- into is held back for that row alone — see the clause below. Authority moves
+-- one row at a time rather than all at once: an item nobody has opened still
+-- follows the register, and an item somebody rewrote is not quietly reverted by
+-- the next run of this script.
 
 -- ========== news ==========
 insert into public.news
@@ -15,12 +22,12 @@ insert into public.news
    kind_ko, eyebrow_ko, title_ko, body_ko,
    image, accent, link, credit, credit_href, status)
 values
-  ('COMM/NEWS/up-jungle-jam', '2026-09-12', array['news'], 'Upcoming', 'Seoul, Korea', 'JUNGLE JAM · Autumn Session', 'Two days of rhythm, improvisation, and collective making. Open to anyone who has been through a MEWE session — and to those who have not.', '예정', '서울', '정글 잼 · 가을 세션', '리듬과 즉흥, 함께 만들기의 이틀. MEWE 세션을 경험한 사람도, 아직 경험하지 않은 사람도 환영합니다.', null, 'tan', null, null, null, 'live'),
+  ('COMM/NEWS/up-jungle-jam', '2026-09-12', array['news'], 'Upcoming', 'Seoul, Korea', 'JUNGLE JAM · Autumn Session', 'Two days of rhythm, improvisation, and collective making. Open to anyone who has been through a ME=WE session — and to those who have not.', '예정', '서울', '정글 잼 · 가을 세션', '리듬과 즉흥, 함께 만들기의 이틀. ME=WE 세션을 경험한 사람도, 아직 경험하지 않은 사람도 환영합니다.', null, 'tan', null, null, null, 'live'),
   ('COMM/NEWS/1', '2026-09-05', array['news', 'community', 'home'], 'News', 'Network · Growing', 'BridgeBuilder Network', 'A growing network of young people building small bridges in their own neighborhoods.', '소식', '네트워크 · 성장 중', '브리지빌더 네트워크', '자신의 동네에서 작은 다리를 짓는 청년들의 자라나는 네트워크.', 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80', 'magenta', '/community/bridge-builders', 'Photo by Duy Pham on Unsplash', 'https://unsplash.com/@miinyui', 'live'),
   ('COMM/NEWS/2', '2026-08-15', array['news', 'community', 'home'], 'News', 'Online · Every two months', 'BridgeBuilder Virtual Lab', 'Online labs where BridgeBuilders across countries share what they’re discovering, every two months.', '소식', '온라인 · 두 달마다', '브리지빌더 버추얼 랩', '여러 나라의 브리지빌더들이 두 달마다 발견한 것을 나누는 온라인 랩.', null, 'red', '/community/bridge-builders', null, null, 'live'),
   ('COMM/NEWS/up-open-studio', '2026-08-03', array['news'], 'Open Studio', 'Online · Monthly', 'Open Studio Returns Monthly', 'The first Monday of every month, the studio door stays open. Drop in, bring a question, leave with a practice.', '오픈 스튜디오', '온라인 · 매달', '오픈 스튜디오, 매달 열립니다', '매달 첫째 월요일, 스튜디오의 문이 열려 있습니다. 들러서 질문 하나를 가져오고, 실천 하나를 얻어 가세요.', null, 'tan', null, null, null, 'live'),
   ('STORY/1', '2026-08-01', array['story'], null, 'Story · Song', '“Perhaps we were already connected.”', 'A participant reflection carried out of a ME=WE Core session.', null, null, null, null, null, 'teal', '/story/submit', null, null, 'live'),
-  ('COMM/NEWS/mile-collective-nepal', '2026-07-21', array['news'], 'Milestone', 'Sindhuli, Nepal', 'A New IN-Collective in Nepal', 'StoryCycle becomes the studio''s fifth IN-Collective, carrying MEWE into village storytelling circles in their own language.', '이정표', '신둘리, 네팔', '네팔의 새 IN-콜렉티브', '스토리사이클이 스튜디오의 다섯 번째 IN-콜렉티브가 되어, MEWE를 자신들의 언어로 마을 스토리 모임에 실어 나릅니다.', null, 'tan', null, null, null, 'live'),
+  ('COMM/NEWS/mile-collective-nepal', '2026-07-21', array['news'], 'Milestone', 'Sindhuli, Nepal', 'A New IN-Collective in Nepal', 'StoryCycle becomes the studio''s fifth IN-Collective, carrying ME=WE into village storytelling circles in their own language.', '이정표', '신둘리, 네팔', '네팔의 새 IN-콜렉티브', '스토리사이클이 스튜디오의 다섯 번째 IN-콜렉티브가 되어, ME=WE를 자신들의 언어로 마을 스토리 모임에 실어 나릅니다.', null, 'tan', null, null, null, 'live'),
   ('COMM/NEWS/3', '2026-07-20', array['news', 'community', 'home'], 'News', 'Sindhuli, Nepal', 'Sindhuli Storytelling Festival', 'The StoryCycle group, led by Saurav Dhakal, is preparing a festival to celebrate the folk stories of Sindhuli village, connecting elders and youth.', '소식', '신둘리, 네팔', '신둘리 스토리텔링 축제', '사우라브 다칼이 이끄는 스토리사이클 그룹이 신둘리 마을의 옛이야기를 기리는 축제를 준비하고 있습니다 — 어르신과 청년을 이으며.', '/community-img/nepal-storytelling.jpg', 'green', '/community/nepal-youth-cluster', null, null, 'live'),
   ('STORY/2', '2026-07-10', array['story'], null, 'Story · Drawing', 'Two hands, one line', 'A drawing made during Möbius Making — where the ME and WE surfaces became one.', null, null, null, null, null, 'deepblue', '/story/submit', null, null, 'live'),
   ('COMM/NEWS/4', '2026-06-10', array['news', 'community', 'home'], 'News', 'Yamaguchi, Japan', 'Yamaguchi Family Festival', 'A family-focused community in Yamaguchi City uses music and song to support children’s spiritual wellbeing — learning, practicing, and celebrating life together.', '소식', '야마구치, 일본', '야마구치 가족 축제', '야마구치시의 가족 중심 공동체는 음악과 노래로 아이들의 영적 안녕을 돌봅니다 — 함께 배우고, 연습하고, 삶을 축하하면서.', null, 'amber', '/community/animators', null, null, 'live'),
@@ -34,29 +41,42 @@ values
   ('COMM/NEWS/proj-asia-exchange', '2026-04-14', array['news'], 'Project', 'Beijing · Taichung · Yamaguchi', 'Asia Exchange Enters Year Two', 'Three cities, one rotating question. The second cycle adds a shared journal that travels with the group.', '프로젝트', '베이징 · 타이중 · 야마구치', '아시아 익스체인지, 2년 차로', '세 도시, 돌고 도는 하나의 질문. 두 번째 사이클에는 그룹과 함께 여행하는 공동 저널이 더해집니다.', null, 'tan', null, null, null, 'live'),
   ('COMM/NEWS/kin-storycycle', '2026-03-28', array['news'], 'Kindred', 'Kathmandu, Nepal', 'Walking with StoryCycle', 'A like-minded practice we keep learning from: mapping a country through the stories people tell about the water they drink.', '동행', '카트만두, 네팔', '스토리사이클과 함께 걷기', '우리가 계속 배우는 뜻이 맞는 실천: 사람들이 마시는 물에 대해 들려주는 스토리로 한 나라를 지도로 그리는 일.', null, 'tan', null, null, null, 'live')
 on conflict (id) do update set
-  published_at = excluded.published_at, feeds = excluded.feeds, kind = excluded.kind,
-  eyebrow = excluded.eyebrow, title = excluded.title, body = excluded.body,
+  -- Placement and imagery stay the register's, always: where a card appears,
+  -- what it is dated, which picture it carries and who took it are decided in
+  -- site/data and nowhere else, so no desk edit can drift from them.
+  published_at = excluded.published_at, feeds = excluded.feeds,
+  image = excluded.image, accent = excluded.accent, link = excluded.link,
+  credit = excluded.credit, credit_href = excluded.credit_href,
+  -- The words and the decision. These are the five the desk can type into, and
+  -- for a row it has written (`edited_at` not null) the database keeps what is
+  -- there. For every other row — which is all of them until somebody opens one
+  -- — this is the plain overwrite it has always been.
+  kind    = case when news.edited_at is null then excluded.kind    else news.kind    end,
+  eyebrow = case when news.edited_at is null then excluded.eyebrow else news.eyebrow end,
+  title   = case when news.edited_at is null then excluded.title   else news.title   end,
+  body    = case when news.edited_at is null then excluded.body    else news.body    end,
+  status  = case when news.edited_at is null then excluded.status  else news.status  end,
+  -- Translations need no such guard: coalesce already means "the database wins
+  -- wherever it has one", which covers the desk and the Table Editor alike.
   kind_ko    = coalesce(news.kind_ko,    excluded.kind_ko),
   eyebrow_ko = coalesce(news.eyebrow_ko, excluded.eyebrow_ko),
   title_ko   = coalesce(news.title_ko,   excluded.title_ko),
-  body_ko    = coalesce(news.body_ko,    excluded.body_ko),
-  image = excluded.image, accent = excluded.accent, link = excluded.link,
-  credit = excluded.credit, credit_href = excluded.credit_href, status = excluded.status;
+  body_ko    = coalesce(news.body_ko,    excluded.body_ko);
 
 -- ========== workshops ==========
 insert into public.workshops
   (slug, title, eyebrow, blurb, audience, duration, accent, ink, route, featured, cta, sort_order, active)
 values
-  ('mobius-making', 'Möbius Making', 'The signature workshop · For All', 'The foundational workshop — the first experience of MEWE as something lived, not just explained. 3 hours core; extendable to half-day or full-day, with follow-up sessions available as a package.', 'For All', '3 hrs · extendable', 'gold', 'paper', '/workshop/mobius-making', true, 'Explore', 0, true),
-  ('pathfinder', 'Pathfinder', null, 'Ready to hold the space for others? Learn the MEWE workshop from the inside, then carry it forward in your own context.', 'For All', null, 'amber', 'ink', '/workshop/pathfinder', false, 'Explore', 1, true),
+  ('mobius-making', 'Möbius Making', 'The signature workshop · For All', 'The foundational workshop — the first experience of ME=WE as something lived, not just explained. 3 hours core; extendable to half-day or full-day, with follow-up sessions available as a package.', 'For All', '3 hrs · extendable', 'gold', 'paper', '/workshop/mobius-making', true, 'Explore', 0, true),
+  ('pathfinder', 'Pathfinder', null, 'Ready to hold the space for others? Learn the ME=WE workshop from the inside, then carry it forward in your own context.', 'For All', null, 'amber', 'ink', '/workshop/pathfinder', false, 'Explore', 1, true),
   ('metanoia', 'Metanoia', null, 'Change from within. A four-day intensive for people whose inner condition shapes a community — educators, directors, anyone who holds space for others.', 'Organizations', null, 'yellow', 'ink', '/workshop/metanoia', false, 'Explore', 2, true),
   ('jungle-jam', 'Jungle Jam', null, 'Leave the ordinary. Meet yourself. A residential gathering for young people — creativity, adventure, and honest reflection.', 'Youth', null, 'magenta', 'paper', '/workshop/jungle-jam', false, 'Explore', 3, true),
-  ('two-wings', 'Two Wings', null, 'For parents, couples, and families — a space to practice MEWE inside the family, customizable to the neighborhood level.', 'Parents', null, 'deepblue', 'paper', '/workshop/two-wings', false, 'Register', 4, true),
-  ('heros-journey', 'Hero''s Journey', null, 'A guided passage through a personal threshold, using MEWE to navigate change.', 'For All', null, 'teal', 'paper', '/workshop/heros-journey', false, 'Register', 5, true),
+  ('two-wings', 'Two Wings', null, 'For parents, couples, and families — a space to practice ME=WE inside the family, customizable to the neighborhood level.', 'Parents', null, 'deepblue', 'paper', '/workshop/two-wings', false, 'Register', 4, true),
+  ('heros-journey', 'Hero''s Journey', null, 'A guided passage through a personal threshold, using ME=WE to navigate change.', 'For All', null, 'teal', 'paper', '/workshop/heros-journey', false, 'Register', 5, true),
   ('second-life', 'Second Life Series', null, 'Self-care fundamentals — exercise, sleep, eating, meditation. Co-created with Taejin Kim & Vahid Buehrer.', 'Youth', null, 'green', 'paper', '/workshop/second-life', false, 'Register', 6, true),
   ('shadow-shifter', 'Shadow Shifter', null, 'How might we become protagonists? Two days, nine hands-on challenges — designed and co-facilitated by young people in Taiwan.', 'Youth', null, 'slate', 'paper', '/workshop/shadow-shifter', false, 'Explore', 7, true),
-  ('bucket-list', 'MEWE Bucket List', null, 'Clarify who you are, and act on it — for yourself and others. Co-created with Hojin Choi.', 'For All', null, 'deepblue', 'paper', '/workshop/bucket-list', false, 'Explore', 8, true),
-  ('light-shadow-shift', 'Women''s Retreat', null, 'A dedicated space for women to step back, reconnect, and practice MEWE together. Full details coming soon.', 'Women', null, 'crimson', 'paper', '/workshop/light-shadow-shift', false, 'Register', 9, true)
+  ('bucket-list', 'ME=WE Bucket List', null, 'Clarify who you are, and act on it — for yourself and others. Co-created with Hojin Choi.', 'For All', null, 'deepblue', 'paper', '/workshop/bucket-list', false, 'Explore', 8, true),
+  ('light-shadow-shift', 'Women''s Retreat', null, 'A dedicated space for women to step back, reconnect, and practice ME=WE together. Full details coming soon.', 'Women', null, 'crimson', 'paper', '/workshop/light-shadow-shift', false, 'Register', 9, true)
 on conflict (slug) do update set
   title = excluded.title, eyebrow = excluded.eyebrow, blurb = excluded.blurb,
   audience = excluded.audience, duration = excluded.duration, accent = excluded.accent,
@@ -67,7 +87,7 @@ on conflict (slug) do update set
 insert into public.projects
   (slug, title, title_ko, meta, eyebrow, eyebrow_ko, body, body_ko, image, accent, route, started_on, featured, sort_order, status)
 values
-  ('asia-exchange', 'MEWE Asia Exchange', null, 'Flagship · 2026–27', 'China · Japan · Korea · Nepal · Taiwan · 2026–2027', null, 'Five countries, five neighborhoods, one question — what stirs when young people are given room to practice community life where they already live?', null, '/community-img/asia-exchange.jpg', 'magenta', '/project/asia-exchange', '2026-06-01', true, 1, 'live'),
+  ('asia-exchange', 'ME=WE Asia Exchange', null, 'Flagship · 2026–27', 'China · Japan · Korea · Nepal · Taiwan · 2026–2027', null, 'Five countries, five neighborhoods, one question — what stirs when young people are given room to practice community life where they already live?', null, '/community-img/asia-exchange.jpg', 'magenta', '/project/asia-exchange', '2026-06-01', true, 1, 'live'),
   ('food-revolution', 'Food Revolution', '푸드 레볼루션', 'Zayed University · 2017–22', 'Zayed University, UAE · Since 2016', '자이드 대학교, UAE · 2016년부터', 'A university garden became a social lab — and a four-year study of how a food system shapes the wellbeing of everyone inside it.', '대학의 정원이 사회 실험실이 되었습니다 — 먹거리 시스템이 그 안의 모든 이의 안녕을 어떻게 빚는지에 대한 4년의 연구.', '/project-img/food-revolution.jpg', 'slate', '/project/food-revolution', '2022-01-01', false, 2, 'live'),
   ('uae-youth', 'UAE Youth Social Innovation', 'UAE 청년 사회혁신 워크숍 시리즈', 'Sharjah · 2017', 'Sharjah, UAE · 2017', '샤르자, UAE · 2017', 'Six months in which young people turned something they cared about into a social enterprise prototype — through seriously playful investigation.', '청년들이 마음 쓰는 것을 소셜 벤처 프로토타입으로 바꿔낸 여섯 달 — 진지하게 유쾌한 탐구를 통해.', '/project-img/uae-youth-social-innovation.jpg', 'slate', '/project/uae-youth-social-innovation', '2017-01-01', false, 3, 'live'),
   ('unc', 'UAE-Nepal-Connect (UNC)', 'UAE-네팔-커넥트(UNC) 사회혁신', 'Kathmandu · 2016–18', 'Kathmandu, Nepal · 2016–2018', '카트만두, 네팔 · 2016–2018', 'After the 2015 earthquake, youth in two countries built relationships that outlasted the program that introduced them.', '2015년 지진 이후, 두 나라의 청년들은 그들을 이어준 프로그램보다 오래 남은 관계를 지었습니다.', '/project-img/unc.jpg', 'slate', '/project/unc', '2018-01-01', false, 4, 'live'),
@@ -93,12 +113,12 @@ on conflict (slug) do update set
 insert into public.communities
   (slug, title, title_ko, meta, meta_ko, eyebrow, eyebrow_ko, body, body_ko, image, accent, route, sort_order, status)
 values
-  ('open-studio', 'MEWE Hub', 'MEWE 허브', 'Online · Resuming soon', '온라인 · 곧 재개', 'Community', '커뮤니티', 'Anyone who completes Möbius Making joins the Hub, an online community that keeps practicing together. Through Open Studio, members share how MEWE is living in their daily lives.', '뫼비우스 만들기를 마친 누구나 허브에 함께합니다 — 계속 함께 연습하는 온라인 공동체. 오픈 스튜디오를 통해 MEWE가 일상 속에서 어떻게 살아 있는지 나눕니다.', '/community-img/mewe-hub.jpg', 'ink', '/community/open-studio', 1, 'live'),
+  ('open-studio', 'ME=WE Hub', 'ME=WE 허브', 'Online · Resuming soon', '온라인 · 곧 재개', 'Community', '커뮤니티', 'Anyone who completes Möbius Making joins the Hub, an online community that keeps practicing together. Through Open Studio, members share how ME=WE is living in their daily lives.', '뫼비우스 만들기를 마친 누구나 허브에 함께합니다 — 계속 함께 연습하는 온라인 공동체. 오픈 스튜디오를 통해 ME=WE가 일상 속에서 어떻게 살아 있는지 나눕니다.', '/community-img/mewe-hub.jpg', 'ink', '/community/open-studio', 1, 'live'),
   ('animators', 'Animator Community', '애니메이터 커뮤니티', 'With Junior Youth', '주니어 유스와 함께', 'Community', '커뮤니티', 'Animators walking alongside Junior Youth groups — building true friendship and supporting young people’s expression. As friendships deepen, animators find their own blind spots and new ways to grow.', '주니어 유스 그룹과 나란히 걷는 애니메이터들 — 진짜 우정을 쌓고 청소년들의 표현을 지지합니다. 우정이 깊어질수록 애니메이터들도 자신의 사각지대와 새로운 성장의 길을 발견합니다.', '/community-img/animators.jpg', 'ink', '/community/animators', 2, 'live'),
-  ('in-collectives', 'IN-Collective Open Studio', 'IN-콜렉티브 오픈 스튜디오', 'Weekly + annual', '매주 + 매년', 'Community', '커뮤니티', 'IN-Collectives meet to reflect on their journeys and on how MEWE practice is developing — consulting one another on real project challenges through a MEWE lens.', 'IN-콜렉티브들이 모여 각자의 여정과 MEWE 실천의 성장을 돌아봅니다 — 실제 프로젝트의 과제를 MEWE의 렌즈로 서로에게 묻고 답하면서.', '/community-img/open-studio.jpg', 'ink', '/community/in-collectives', 3, 'live'),
+  ('in-collectives', 'IN-Collective Open Studio', 'IN-콜렉티브 오픈 스튜디오', 'Weekly + annual', '매주 + 매년', 'Community', '커뮤니티', 'IN-Collectives meet to reflect on their journeys and on how ME=WE practice is developing — consulting one another on real project challenges through a ME=WE lens.', 'IN-콜렉티브들이 모여 각자의 여정과 ME=WE 실천의 성장을 돌아봅니다 — 실제 프로젝트의 과제를 ME=WE의 렌즈로 서로에게 묻고 답하면서.', '/community-img/open-studio.jpg', 'ink', '/community/in-collectives', 3, 'live'),
   ('facilitators', 'Pathfinder Community', '패스파인더 커뮤니티', 'Facilitators · Growing', '퍼실리테이터 · 성장 중', 'Community', '커뮤니티', 'Those who complete Pathfinder facilitator training join a community that keeps growing, carrying the practice into their own contexts and holding space for others.', '패스파인더 퍼실리테이터 훈련을 마친 이들은 계속 자라나는 공동체에 합류해, 실천을 자신의 맥락으로 옮기고 다른 이들을 위한 공간을 엽니다.', '/community-img/facilitators.jpg', 'ink', '/community/facilitators', 4, 'live'),
   ('bridge-builders', 'BridgeBuilder Community', '브리지빌더 커뮤니티', 'Wherever someone steps in', '누군가 발을 딛는 곳 어디든', 'Community', '커뮤니티', 'Young people building small bridges in their own neighborhoods. Reaches well beyond the Asia Exchange’s five countries — Canada, the USA, Saudi Arabia, India, and more. Anyone who begins belongs here.', '자신의 동네에서 작은 다리를 짓는 청년들. 아시아 익스체인지의 다섯 나라를 훌쩍 넘어 — 캐나다, 미국, 사우디아라비아, 인도까지. 시작하는 누구나 이곳에 속합니다.', null, 'ink', '/community/bridge-builders', 5, 'live'),
-  ('asia-exchange-community', 'Asia Exchange Community', '아시아 익스체인지 커뮤니티', 'China · Japan · Korea · Nepal · Taiwan', '중국 · 일본 · 한국 · 네팔 · 대만', 'Community', '커뮤니티', 'The group living the one-year MEWE Asia Exchange — five communities, each practicing in their own place while learning together. Full detail on the Asia Exchange project page.', '1년의 MEWE 아시아 익스체인지를 살아가는 그룹 — 다섯 공동체가 각자의 자리에서 실천하며 함께 배웁니다. 자세한 내용은 아시아 익스체인지 프로젝트 페이지에.', '/community-img/asia-exchange.jpg', 'ink', '/project/asia-exchange', 6, 'live'),
+  ('asia-exchange-community', 'Asia Exchange Community', '아시아 익스체인지 커뮤니티', 'China · Japan · Korea · Nepal · Taiwan', '중국 · 일본 · 한국 · 네팔 · 대만', 'Community', '커뮤니티', 'The group living the one-year ME=WE Asia Exchange — five communities, each practicing in their own place while learning together. Full detail on the Asia Exchange project page.', '1년의 ME=WE 아시아 익스체인지를 살아가는 그룹 — 다섯 공동체가 각자의 자리에서 실천하며 함께 배웁니다. 자세한 내용은 아시아 익스체인지 프로젝트 페이지에.', '/community-img/asia-exchange.jpg', 'ink', '/project/asia-exchange', 6, 'live'),
   ('i-grow-seeds-kulna', 'I Grow Seeds — KULNA', '아이 그로우 시즈 — KULNA', 'Dubai · Online', '두바이 · 온라인', 'Community', '커뮤니티', 'Grew out of Food Revolution. A living network of farmers, filmmakers, naturalists, researchers, graduates, and volunteers, still exchanging across locations. Quieter now, but still connected.', '푸드 레볼루션에서 자라났습니다. 농부, 영화감독, 자연학자, 연구자, 졸업생, 자원활동가로 이루어진 살아 있는 네트워크 — 지금은 조용하지만 여전히 연결되어 있습니다.', '/community-img/igrowseeds.jpg', 'red', '/project/food-revolution', 7, 'live'),
   ('nepal-youth-cluster', 'Nepal / UAE Youth Cluster', '네팔 / UAE 유스 클러스터', 'On hold · Archive', '휴면 · 아카이브', 'Community', '커뮤니티', 'An earlier community of youth across Nepal and the UAE. Not active right now — held in the archive, part of how the practice grew.', '네팔과 UAE를 잇던 초기 청년 공동체. 지금은 활동하지 않지만 — 아카이브에 간직되어, 실천이 자라온 길의 일부로 남아 있습니다.', '/community-img/nepal-cluster.jpg', 'red', '/community/nepal-youth-cluster', 8, 'live'),
   ('uae-youth-cluster', 'UAE Youth Cluster', 'UAE 유스 클러스터', 'On hold · Archive', '휴면 · 아카이브', 'Community', '커뮤니티', 'An earlier community of youth across Nepal and the UAE. Not active right now — held in the archive, part of how the practice grew.', '네팔과 UAE를 잇던 초기 청년 공동체. 지금은 활동하지 않지만 — 아카이브에 간직되어, 실천이 자라온 길의 일부로 남아 있습니다.', '/community-img/uae-cluster.jpg', 'red', '/community/uae-youth-cluster', 9, 'live')

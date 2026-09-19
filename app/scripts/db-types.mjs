@@ -24,6 +24,22 @@
  *
  * Only `public` is generated. Storage is reached through the storage client,
  * which carries its own types, and auth is unused — the site is anonymous.
+ *
+ * **`--linked` means the hosted project, and that is a trap while work is
+ * local.** A column that exists only on the local stack — because its migration
+ * has been applied there and not pushed — is not in the hosted schema, so a run
+ * of this script deletes it from the types without a word. The app then fails to
+ * compile against a database that has the column, and the error names the app
+ * rather than the gap. Five columns are in exactly that state today —
+ * `news.edited_at` and `news.edited_by` (20260919104500_staff_edit_news.sql),
+ * and `story_entries.wall_order`, `.edited_at` and `.edited_by`
+ * (20260919160000_the_wall_on_story.sql) — so until those two migrations are
+ * pushed, re-running this strips them and they have to go back by hand.
+ *
+ * The other half of the same problem is why this is not simply switched to
+ * `--local`: the local stack is shared by every worktree on the machine, so it
+ * carries columns from branches this one has never seen, and generating from it
+ * would have the types claim columns this branch does not create.
  */
 
 import { spawnSync } from 'node:child_process';

@@ -6,7 +6,7 @@ import type { ProjectCard } from './types';
 export const projects: ProjectCard[] = [
   {
     "slug": "asia-exchange",
-    "title": "MEWE Asia Exchange",
+    "title": "ME=WE Asia Exchange",
     "title_ko": null,
     "meta": "Flagship · 2026–27",
     "eyebrow": "China · Japan · Korea · Nepal · Taiwan · 2026–2027",

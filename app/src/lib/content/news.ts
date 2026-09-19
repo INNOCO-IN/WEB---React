@@ -13,7 +13,7 @@ export const news: NewsItem[] = [
     "kind": "Upcoming",
     "eyebrow": "Seoul, Korea",
     "title": "JUNGLE JAM · Autumn Session",
-    "body": "Two days of rhythm, improvisation, and collective making. Open to anyone who has been through a MEWE session — and to those who have not.",
+    "body": "Two days of rhythm, improvisation, and collective making. Open to anyone who has been through a ME=WE session — and to those who have not.",
     "image": null,
     "accent": "tan",
     "link": null,
@@ -23,7 +23,7 @@ export const news: NewsItem[] = [
     "kind_ko": "예정",
     "eyebrow_ko": "서울",
     "title_ko": "정글 잼 · 가을 세션",
-    "body_ko": "리듬과 즉흥, 함께 만들기의 이틀. MEWE 세션을 경험한 사람도, 아직 경험하지 않은 사람도 환영합니다."
+    "body_ko": "리듬과 즉흥, 함께 만들기의 이틀. ME=WE 세션을 경험한 사람도, 아직 경험하지 않은 사람도 환영합니다."
   },
   {
     "id": "COMM/NEWS/1",
@@ -122,7 +122,7 @@ export const news: NewsItem[] = [
     "kind": "Milestone",
     "eyebrow": "Sindhuli, Nepal",
     "title": "A New IN-Collective in Nepal",
-    "body": "StoryCycle becomes the studio's fifth IN-Collective, carrying MEWE into village storytelling circles in their own language.",
+    "body": "StoryCycle becomes the studio's fifth IN-Collective, carrying ME=WE into village storytelling circles in their own language.",
     "image": null,
     "accent": "tan",
     "link": null,
@@ -132,7 +132,7 @@ export const news: NewsItem[] = [
     "kind_ko": "이정표",
     "eyebrow_ko": "신둘리, 네팔",
     "title_ko": "네팔의 새 IN-콜렉티브",
-    "body_ko": "스토리사이클이 스튜디오의 다섯 번째 IN-콜렉티브가 되어, MEWE를 자신들의 언어로 마을 스토리 모임에 실어 나릅니다."
+    "body_ko": "스토리사이클이 스튜디오의 다섯 번째 IN-콜렉티브가 되어, ME=WE를 자신들의 언어로 마을 스토리 모임에 실어 나릅니다."
   },
   {
     "id": "COMM/NEWS/3",

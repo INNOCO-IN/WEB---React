@@ -142,6 +142,24 @@ async function promote(row) {
     return;
   }
 
+  // Record which entry this submission became — the column the desk's own
+  // publishing flow writes, and the only thing tying the two tables together.
+  // Without it the desk reports a story that is on the site as "not on the
+  // site", and cannot take it down when the decision changes, because it does
+  // not know what to remove.
+  //
+  // Only when nothing is recorded yet: the desk's permalink is a reviewer's
+  // and this one is a guess, so a guess never overwrites it. That is also what
+  // keeps `--force` from looping — this write is a `stories` change, and a
+  // `stories` change is what wakes this script up.
+  if (!row.published_as) {
+    const { error: linkError } = await supabase
+      .from('stories')
+      .update({ published_as: slug })
+      .eq('id', row.id);
+    if (linkError) say(`  wrote the entry but not the link back — ${linkError.message}`);
+  }
+
   say(`published "${title}" → /story/all?story=${slug}`);
   if (guessed) {
     say(`  topic guessed as "${topic}" (the door was "${row.door ?? '—'}") — change it in Studio if it is wrong`);
@@ -193,11 +211,12 @@ const channel = supabase
       promote(row);
       return;
     }
-    // Declining something already published is a real decision, and taking the
-    // page down is not this script's to make: it would delete an editor's work
-    // on a guess about what the status change meant.
+    // Declining something already published is a real decision, and it is not
+    // this script's to act on: it would be guessing at what a status change
+    // meant. The desk does not have to guess — `declineStory` hides the entry
+    // and the point as part of the same press — so this only says what it saw.
     if (old?.status === 'published') {
-      say(`${row.id} is no longer published — its index entry, if any, is still live`);
+      say(`${row.id} is no longer published — the desk hides its entry; a status changed elsewhere does not`);
     }
   })
   .subscribe((status) => {

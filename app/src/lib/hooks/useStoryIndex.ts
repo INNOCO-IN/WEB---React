@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchStoryEntries } from '../services/content';
 import { watchTable } from '../services/realtime';
 import { STORY_ENTRIES, TAXONOMY, type StoryCopy, type StoryEntry } from '../content/stories';
+import { wall } from '../story-wall';
 
 /**
  * The Story index: filter by format or topic, search, paginate, read one.
@@ -218,8 +219,22 @@ export default function useStoryIndex(given?: Locale) {
     [entries, locale],
   );
 
-  // ?story=<id> selects the featured story, which is what the permalinks do.
-  const requested = params.get('story');
+  /**
+   * Which story the reading pane opens with.
+   *
+   * `?story=<id>` wins, because that is what a permalink is — every link the
+   * wall, the Constellation and the home card hand out carries one.
+   *
+   * Without one, it opens on the first card of the wall at the foot of
+   * `/story` rather than on whatever is newest. Those were the same answer
+   * until the wall could be curated, and then they came apart: a reader who
+   * lands on the index bare would start somewhere the rest of the site does
+   * not point at, and today that is a test row. `wall` is the same function
+   * the wall itself asks — with no pins it still answers "the newest", so this
+   * changes nothing on a collection nobody has curated.
+   */
+  const opensWith = useMemo(() => wall(entries, 1)[0]?.id, [entries]);
+  const requested = params.get('story') ?? opensWith;
   const currentIndex = Math.max(0, all.findIndex((s) => s.id === requested));
 
   function select(index: number) {

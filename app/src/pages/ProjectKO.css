@@ -11,7 +11,7 @@
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
 .page-project-ko [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
 .page-project-ko [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
-.page-project-ko [style*="grid-template-columns: repeat(3, .page-project-ko minmax(0"] {grid-template-columns:1fr !important;}
+.page-project-ko [style*="grid-template-columns: repeat(3, minmax(0"] {grid-template-columns:1fr !important;}
 .page-project-ko img, .page-project-ko svg, .page-project-ko video {max-width:100% !important;}
 .page-project-ko [style*="font-size: 300px"] {display:none !important;}
 .page-project-ko [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}

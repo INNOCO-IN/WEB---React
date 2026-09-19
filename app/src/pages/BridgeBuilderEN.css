@@ -12,7 +12,7 @@
 @media (max-width: 1000px){
   [style*="grid-template-columns: 96px 1fr auto"]{grid-template-columns:1fr !important; gap:18px !important;}
 .page-bridge-builder-en [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
-.page-bridge-builder-en [style*="grid-template-columns: repeat(3, .page-bridge-builder-en 1fr)"] {grid-template-columns:1fr !important;}
+.page-bridge-builder-en [style*="grid-template-columns: repeat(3, 1fr)"] {grid-template-columns:1fr !important;}
 .page-bridge-builder-en img, .page-bridge-builder-en svg, .page-bridge-builder-en video {max-width:100% !important;}
 }
 @media (max-width: 600px){

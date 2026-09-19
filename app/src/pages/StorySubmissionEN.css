@@ -13,7 +13,7 @@
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
 .page-story-submission-en [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
 .page-story-submission-en [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
-.page-story-submission-en [style*="grid-template-columns: repeat(3, .page-story-submission-en minmax(0"] {grid-template-columns:1fr !important;}
+.page-story-submission-en [style*="grid-template-columns: repeat(3, minmax(0"] {grid-template-columns:1fr !important;}
 .page-story-submission-en img, .page-story-submission-en svg, .page-story-submission-en video {max-width:100% !important;}
 .page-story-submission-en [style*="font-size: 300px"] {display:none !important;}
 .page-story-submission-en [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}

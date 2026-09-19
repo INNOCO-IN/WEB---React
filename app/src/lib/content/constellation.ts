@@ -53,6 +53,23 @@ export const FORMAT_COLORS: Record<string, string> = {
 
 export const CONSTELLATION: ConstellationPoint[] = [
   {
+    "id": "grandma-it-worked",
+    "title": "“Grandma, it worked!”",
+    "by": "A grandmother",
+    "format": "writing",
+    "topic": "Family",
+    "arc": null,
+    "month": "2026-07",
+    "caption": "A grandson comes home breathless — he tried MEWE on his friends, and for the first time, watched it actually work.",
+    "titleKo": "“할머니, 됐어요!”",
+    "byKo": "한 할머니",
+    "captionKo": "손자가 숨차게 집으로 뛰어 들어옵니다 — 친구들에게 MEWE를 시도해 봤고, 처음으로 그것이 실제로 작동하는 것을 지켜봤습니다.",
+    "topicKo": "가족",
+    "read": "/story/all?story=grandma-it-worked",
+    "media": null,
+    "view": null
+  },
+  {
     "id": "this-is-us",
     "title": "“This is us”",
     "by": "A teacher",
@@ -63,7 +80,11 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "caption": "I stopped teaching and asked one real question. By the end, a boy pointed at what they’d made and said: this is us.",
     "read": "/story/all?story=this-is-us",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "“이게 우리예요”",
+    "byKo": "한 선생님",
+    "captionKo": "가르치기를 멈추고 진짜 질문 하나를 던졌습니다. 끝날 무렵, 한 아이가 함께 만든 것을 가리키며 말했습니다: 이게 우리예요.",
+    "topicKo": "교실"
   },
   {
     "id": "connected",
@@ -73,10 +94,14 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "topic": "Collective",
     "arc": null,
     "month": "2026-02",
-    "caption": "A participant reflection, carried out of a MEWE Core session.",
+    "caption": "A participant reflection, carried out of a ME=WE Core session.",
     "read": "/story/all?story=connected",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "“어쩌면 우리는 이미 연결되어 있었는지도.”",
+    "byKo": "익명",
+    "captionKo": "ME=WE 코어 세션에서 나온 한 참가자의 회고.",
+    "topicKo": "콜렉티브"
   },
   {
     "id": "two-hands",
@@ -89,7 +114,11 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "caption": "A drawing made during Möbius Making — where the ME and WE surfaces became one.",
     "read": "/story/all?story=two-hands",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "두 손, 하나의 선",
+    "byKo": "한 참가자",
+    "captionKo": "뫼비우스 만들기에서 그려진 그림 — ME와 WE의 면이 하나가 된 곳.",
+    "topicKo": "콜렉티브"
   },
   {
     "id": "song-whole",
@@ -100,9 +129,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2026-01",
     "caption": "Recorded after a retreat — voices that learned to listen before they sang.",
-    "read": null,
+    "read": "/story/all?story=song-whole",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "전체를 위한 노래",
+    "byKo": "한 콜렉티브",
+    "captionKo": "리트릿 후 녹음된 노래 — 부르기 전에 듣는 법을 배운 목소리들.",
+    "topicKo": "콜렉티브"
   },
   {
     "id": "week-after",
@@ -113,9 +146,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2026-01",
     "caption": "A participant writes about the small action they chose — and what it changed at home.",
-    "read": null,
+    "read": "/story/all?story=week-after",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "워크숍 다음 주",
+    "byKo": "한 참가자",
+    "captionKo": "한 참가자가 자신이 고른 작은 행동에 대해 씁니다 — 그것이 집에서 무엇을 바꿨는지.",
+    "topicKo": "가족"
   },
   {
     "id": "street-exp",
@@ -125,10 +162,14 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "topic": "Neighbors",
     "arc": null,
     "month": "2025-12",
-    "caption": "One person tried a single MEWE action for a week — and wrote down what changed on their street.",
-    "read": null,
+    "caption": "One person tried a single ME=WE action for a week — and wrote down what changed on their street.",
+    "read": "/story/all?story=street-exp",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "어느 이웃의 작은 실험",
+    "byKo": "한 이웃",
+    "captionKo": "한 사람이 일주일간 하나의 ME=WE 행동을 시도하고 — 자신의 거리에서 달라진 것을 적었습니다.",
+    "topicKo": "이웃"
   },
   {
     "id": "harmony",
@@ -139,22 +180,30 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-12",
     "caption": "Overheard after a singing circle — the group found the chord before anyone taught it.",
-    "read": null,
+    "read": "/story/all?story=harmony",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "“화음은 이미 그들 안에 있었다.”",
+    "byKo": "한 퍼실리테이터",
+    "captionKo": "노래 모임 후 우연히 들은 말 — 누가 가르치기 전에 그룹이 화음을 찾아냈습니다.",
+    "topicKo": "콜렉티브"
   },
   {
     "id": "noticed",
-    "title": "A moment someone noticed MEWE",
+    "title": "A moment someone noticed ME=WE",
     "by": "Anonymous",
     "format": "photo",
     "topic": "Noticed in the world",
     "arc": null,
     "month": "2025-11",
     "caption": "A photo of strangers becoming, briefly, one thing.",
-    "read": null,
+    "read": "/story/all?story=noticed",
     "media": null,
-    "view": "/project-img/light-shadow-shift-women3.jpg"
+    "view": "/project-img/light-shadow-shift-women3.jpg",
+    "titleKo": "누군가 ME=WE를 알아차린 순간",
+    "byKo": "익명",
+    "captionKo": "낯선 이들이 잠시 하나가 되는 사진.",
+    "topicKo": "세상에서 발견"
   },
   {
     "id": "hasaad",
@@ -165,9 +214,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-11",
     "caption": "A participant venture in organic food and farming, Dubai.",
-    "read": null,
+    "read": "/story/all?story=hasaad",
     "media": "https://youtu.be/Pl1IBR7fnTU",
-    "view": null
+    "view": null,
+    "titleKo": "하사드 — 이웃을 위해 기른 먹거리",
+    "byKo": "UAE 청년 벤처",
+    "captionKo": "두바이의 유기농 먹거리·농업 참가자 벤처.",
+    "topicKo": "자연"
   },
   {
     "id": "what-held",
@@ -178,9 +231,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-10",
     "caption": "A camera followed Nepali youth for two years — to see what lasted.",
-    "read": null,
+    "read": "/story/all?story=what-held",
     "media": "https://youtu.be/d1J4AECO_9g",
-    "view": null
+    "view": null,
+    "titleKo": "부트캠프 후에 남은 것",
+    "byKo": "UNC 영상팀",
+    "captionKo": "카메라가 네팔 청년들을 2년간 따라갔습니다 — 무엇이 지속되는지 보기 위해.",
+    "topicKo": "콜렉티브"
   },
   {
     "id": "circle-dance",
@@ -191,9 +248,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-10",
     "caption": "Nobody planned it. The last session ended and the chairs moved themselves.",
-    "read": null,
+    "read": "/story/all?story=circle-dance",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "마무리의 원무",
+    "byKo": "익명",
+    "captionKo": "아무도 계획하지 않았습니다. 마지막 세션이 끝나자 의자들이 스스로 움직였습니다.",
+    "topicKo": "콜렉티브"
   },
   {
     "id": "plate",
@@ -204,9 +265,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-09",
     "caption": "Made in an afternoon, given the same evening.",
-    "read": null,
+    "read": "/story/all?story=plate",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "이웃을 위한 접시",
+    "byKo": "라나",
+    "captionKo": "한나절에 만들어, 그날 저녁에 건넸습니다.",
+    "topicKo": "이웃"
   },
   {
     "id": "soup",
@@ -217,9 +282,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-09",
     "caption": "The recipe says feeds six. She always made it feed twelve.",
-    "read": null,
+    "read": "/story/all?story=soup",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "두 배로 끓인 할머니의 국",
+    "byKo": "익명",
+    "captionKo": "조리법엔 6인분이라 적혀 있지만, 할머니는 늘 12인분을 만드셨습니다.",
+    "topicKo": "가족"
   },
   {
     "id": "wire-mobius",
@@ -230,9 +299,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-08",
     "caption": "Bent by four hands taking turns — one surface, no inside or outside.",
-    "read": null,
+    "read": "/story/all?story=wire-mobius",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "철사로 만든 뫼비우스 띠",
+    "byKo": "워크숍 그룹",
+    "captionKo": "네 손이 번갈아 구부린 것 — 안도 밖도 없는 하나의 면.",
+    "topicKo": "세상에서 발견"
   },
   {
     "id": "our-street",
@@ -243,9 +316,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-08",
     "caption": "Every house drawn with its door open.",
-    "read": null,
+    "read": "/story/all?story=our-street",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "우리 모두가 사는 거리",
+    "byKo": "아미나, 11세",
+    "captionKo": "모든 집이 문을 연 채로 그려져 있습니다.",
+    "topicKo": "이웃"
   },
   {
     "id": "mural",
@@ -256,9 +333,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-07",
     "caption": "Shadow made visible by hand, after dark.",
-    "read": null,
+    "read": "/story/all?story=mural",
     "media": null,
-    "view": "/project-img/shadow-shifter3.jpg"
+    "view": "/project-img/shadow-shifter3.jpg",
+    "titleKo": "손전등 벽화, 한창 그리던 중",
+    "byKo": "리트릿 서클",
+    "captionKo": "어둠 속에서 손으로 드러낸 그림자.",
+    "topicKo": "콜렉티브"
   },
   {
     "id": "letter",
@@ -269,9 +350,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-07",
     "caption": "Opened a year later. Half of it had come true; the other half still asks.",
-    "read": null,
+    "read": "/story/all?story=letter",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "나에게 쓴 편지",
+    "byKo": "익명",
+    "captionKo": "1년 뒤에 열었습니다. 절반은 이루어졌고, 나머지 절반은 여전히 묻고 있습니다.",
+    "topicKo": "가족"
   },
   {
     "id": "farm-song",
@@ -282,9 +367,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-06",
     "caption": "Sung while carrying vegetables from the field to the table.",
-    "read": null,
+    "read": "/story/all?story=farm-song",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "밭에서 식탁까지의 노래",
+    "byKo": "야마구치의 친구들",
+    "captionKo": "밭에서 식탁으로 채소를 나르며 부른 노래.",
+    "topicKo": "자연"
   },
   {
     "id": "leaf",
@@ -295,9 +384,13 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-06",
     "caption": "Carried back into the room beside a few words on reforming from within.",
-    "read": null,
+    "read": "/story/all?story=leaf",
     "media": null,
-    "view": null
+    "view": null,
+    "titleKo": "주워서 눌러 둔 잎",
+    "byKo": "익명",
+    "captionKo": "안에서부터 다시 빚어진다는 몇 마디 곁에 놓여 방으로 돌아왔습니다.",
+    "topicKo": "자연"
   },
   {
     "id": "dawn-yoga",
@@ -308,7 +401,181 @@ export const CONSTELLATION: ConstellationPoint[] = [
     "arc": null,
     "month": "2025-05",
     "caption": "Two days spent in mind and heart, closed in the body.",
-    "read": null,
+    "read": "/story/all?story=dawn-yoga",
+    "media": null,
+    "view": null,
+    "titleKo": "새벽의 움직임, 이틀째",
+    "byKo": "리트릿 서클",
+    "captionKo": "마음과 머리로 보낸 이틀을, 몸으로 닫았습니다.",
+    "topicKo": "자연"
+  },
+  {
+    "id": "pathfinder-journey",
+    "title": "I had done it everywhere but home",
+    "by": "Alia Ahmed",
+    "format": "writing",
+    "topic": "I lived it",
+    "arc": null,
+    "month": "2023-07",
+    "caption": "She had run social impact programs for years. It never occurred to her to point one at her own brothers.",
+    "titleKo": "집만 빼고 어디서나 해 왔다는 것",
+    "byKo": "Alia Ahmed",
+    "captionKo": "그녀는 수년간 소셜 임팩트 프로그램을 운영해 왔습니다. 그것을 자신의 형제들에게 향하게 할 생각은 한 번도 하지 못했습니다.",
+    "topicKo": "내가 살아낸 것",
+    "read": "/story/all?story=pathfinder-journey",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "mewe-reflection",
+    "title": "Reflections of a Pathfinder",
+    "by": "Rajaa Bokhari",
+    "format": "writing",
+    "topic": "Blog reflection",
+    "arc": null,
+    "month": "2022-09",
+    "caption": "Two sessions of one Pathfinder cohort: five time zones discovering how closely their hopes aligned, then practising letting go of ego — the flip, from independence to interdependence.",
+    "titleKo": "어느 패스파인더의 회고",
+    "byKo": "Rajaa Bokhari",
+    "captionKo": "한 패스파인더 기수의 두 세션: 다섯 시간대의 사람들이 서로의 바람이 얼마나 닮았는지 발견하고, 에고를 내려놓는 연습을 했습니다 — 독립에서 상호의존으로의 뒤집기.",
+    "topicKo": "블로그 회고",
+    "read": "/story/all?story=mewe-reflection",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "importance-of-connection",
+    "title": "“Now I can see the importance of connection”",
+    "by": "Fr. Akhil Abrahim",
+    "format": "writing",
+    "topic": "Blog reflection",
+    "arc": null,
+    "month": "2022-09",
+    "caption": "A participant describes a meditation on letting go — and the moment ME+WE stopped being an idea.",
+    "titleKo": "“이제 연결의 소중함이 보여요”",
+    "byKo": "Fr. Akhil Abrahim",
+    "captionKo": "한 참가자가 내려놓음에 대한 명상을 들려줍니다 — ME+WE가 관념이기를 멈춘 순간을.",
+    "topicKo": "블로그 회고",
+    "read": "/story/all?story=importance-of-connection",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "kulna-garden",
+    "title": "Trying to find my place",
+    "by": "Almanar Al Bastaki",
+    "format": "writing",
+    "topic": "I lived it",
+    "arc": null,
+    "month": "2021-11",
+    "caption": "A visual art student walked into a garden project to see what it was. She stayed three years and built a food forest.",
+    "titleKo": "내 자리를 찾아서",
+    "byKo": "Almanar Al Bastaki",
+    "captionKo": "시각예술을 배우던 학생이 무엇인지 궁금해 정원 프로젝트에 들어섰습니다. 3년을 머물렀고, 먹거리 숲을 지었습니다.",
+    "topicKo": "내가 살아낸 것",
+    "read": "/story/all?story=kulna-garden",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "shy-to-leading",
+    "title": "My father spent it on the village",
+    "by": "Pabitra Majhi",
+    "format": "writing",
+    "topic": "I lived it",
+    "arc": null,
+    "month": "2018-09",
+    "caption": "He was a driver with savings meant for his daughters. He built a youth club instead — and took her with him.",
+    "titleKo": "아버지는 그 돈을 마을에 썼습니다",
+    "byKo": "Pabitra Majhi",
+    "captionKo": "딸들을 위해 모아 둔 돈이 있던 운전기사였습니다. 그는 대신 청년 클럽을 지었고 — 딸을 데리고 갔습니다.",
+    "topicKo": "내가 살아낸 것",
+    "read": "/story/all?story=shy-to-leading",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "encouragement",
+    "title": "More than her words",
+    "by": "Jyoti",
+    "format": "writing",
+    "topic": "I noticed it",
+    "arc": null,
+    "month": "2017-09",
+    "caption": "She was unemployed and poor, and thought encouragement was the only thing she had to give.",
+    "titleKo": "그녀의 말보다 더 많은 것",
+    "byKo": "조티",
+    "captionKo": "일자리도 돈도 없던 그녀는, 줄 수 있는 것이 격려뿐이라고 생각했습니다.",
+    "topicKo": "내가 알아차린 것",
+    "read": "/story/all?story=encouragement",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "beehive",
+    "title": "Taller than the Eiffel Tower",
+    "by": "Shashank Pokharel",
+    "format": "writing",
+    "topic": "I lived it",
+    "arc": null,
+    "month": "2017-08",
+    "caption": "His first poem, written at eight. His first prototype, abandoned at twenty-one. Both taught the same thing.",
+    "titleKo": "에펠탑보다 높이",
+    "byKo": "Shashank Pokharel",
+    "captionKo": "여덟 살에 쓴 첫 시. 스물한 살에 접은 첫 프로토타입. 둘 다 같은 것을 가르쳐 주었습니다.",
+    "topicKo": "내가 살아낸 것",
+    "read": "/story/all?story=beehive",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "homestay",
+    "title": "The work that isn't counted",
+    "by": "Sajana Bhadel",
+    "format": "writing",
+    "topic": "I lived it",
+    "arc": null,
+    "month": "2017-08",
+    "caption": "Her village is a World Heritage Site. The women who hold it together don’t appear in any figure.",
+    "titleKo": "셈해지지 않는 일",
+    "byKo": "Sajana Bhadel",
+    "captionKo": "그녀의 마을은 세계문화유산입니다. 그 마을을 지탱하는 여성들은 어떤 통계에도 나오지 않습니다.",
+    "topicKo": "내가 살아낸 것",
+    "read": "/story/all?story=homestay",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "shopkeeper",
+    "title": "If someone can teach us",
+    "by": "Shahadev Balami",
+    "format": "writing",
+    "topic": "I noticed it",
+    "arc": null,
+    "month": "2016-08",
+    "caption": "The power cuts out most afternoons in Parphing. A shopkeeper decided what to do with the hours it left him.",
+    "titleKo": "누군가 가르쳐 줄 수 있다면",
+    "byKo": "Shahadev Balami",
+    "captionKo": "파르핑에서는 오후마다 전기가 끊깁니다. 한 가게 주인은 남겨진 그 시간으로 무엇을 할지 결정했습니다.",
+    "topicKo": "내가 알아차린 것",
+    "read": "/story/all?story=shopkeeper",
+    "media": null,
+    "view": null
+  },
+  {
+    "id": "birthday",
+    "title": "The night the camp became a family",
+    "by": "UNC2016",
+    "format": "writing",
+    "topic": "I noticed it",
+    "arc": null,
+    "month": "2016-07",
+    "caption": "Eighteen strangers, three days in. One of them had a birthday. Nobody organised what happened next.",
+    "titleKo": "캠프가 가족이 된 밤",
+    "byKo": "UNC2016",
+    "captionKo": "낯선 열여덟 명, 사흘째. 그중 한 명의 생일이었습니다. 그다음에 일어난 일은 아무도 계획하지 않았습니다.",
+    "topicKo": "내가 알아차린 것",
+    "read": "/story/all?story=birthday",
     "media": null,
     "view": null
   }

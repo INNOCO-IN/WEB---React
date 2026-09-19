@@ -9,7 +9,7 @@
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
 .page-manifesto-ko [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
 .page-manifesto-ko [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
-.page-manifesto-ko [style*="grid-template-columns: repeat(3, .page-manifesto-ko minmax(0"] {grid-template-columns:1fr !important;}
+.page-manifesto-ko [style*="grid-template-columns: repeat(3, minmax(0"] {grid-template-columns:1fr !important;}
 .page-manifesto-ko img, .page-manifesto-ko svg, .page-manifesto-ko video {max-width:100% !important;}
 .page-manifesto-ko [style*="font-size: 300px"] {display:none !important;}
 .page-manifesto-ko [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}

@@ -17,7 +17,7 @@
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parse, toJsx } from './lib/html-to-jsx.mjs';
+import { cssPropToJs, parse, toJsx } from './lib/html-to-jsx.mjs';
 import { colourTokens, tokeniseColoursInCss } from './lib/design-tokens.mjs';
 
 /**
@@ -160,16 +160,51 @@ function extractBodyStyle(html) {
   return out;
 }
 
+/**
+ * A selector list split on the commas that separate selectors.
+ *
+ * The responsive rules the design tool writes select on inline style text, and
+ * that text has commas in it — `[style*="grid-template-columns: repeat(3,
+ * minmax(0"]`. Splitting on that comma makes two halves of one selector, and
+ * scoping each half writes the page's own class into the middle of a string it
+ * was meant to match.
+ */
+function splitSelectorList(selectors) {
+  const out = [];
+  let depth = 0;
+  let quote = null;
+  let start = 0;
+  for (let i = 0; i < selectors.length; i++) {
+    const c = selectors[i];
+    if (quote) {
+      if (c === quote) quote = null;
+      continue;
+    }
+    if (c === '"' || c === "'") quote = c;
+    else if (c === '[' || c === '(') depth++;
+    else if (c === ']' || c === ')') depth--;
+    else if (c === ',' && depth === 0) {
+      out.push(selectors.slice(start, i));
+      start = i + 1;
+    }
+  }
+  out.push(selectors.slice(start));
+  return out;
+}
+
 /** Prefixes every selector in a page's CSS so one page cannot restyle another. */
 function scopeCss(css, scope) {
   return css.replace(/(^|\})\s*([^@{}]+)\{/g, (match, brace, selectors) => {
     if (/^\s*$/.test(selectors)) return match;
-    const scoped = selectors
-      .split(',')
+    const scoped = splitSelectorList(selectors)
       .map((s) => {
         const sel = s.trim();
         if (!sel) return sel;
         if (sel.startsWith('from') || sel.startsWith('to') || /^\d+%$/.test(sel)) return sel;
+        // A page's :root rule sets a custom property, and the per-language
+        // definitions of that property are at the root too. Scoping it would
+        // move it to an element those definitions never see.
+        if (sel.startsWith(':root')) return sel;
         if (sel.startsWith('body') || sel.startsWith('html')) return sel.replace(/^(body|html)/, `.${scope}`);
         return `.${scope} ${sel}`;
       })
@@ -516,6 +551,86 @@ function styleDifferences(base, other, prefix) {
   return { substitutions, rootVars, otherVars, aligned: base.length === other.length };
 }
 
+/** `fontSize` → `font-size`, which is how a `[style*="…"]` selector spells it. */
+function jsPropToCss(key) {
+  return key.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`);
+}
+
+/**
+ * Narrow-screen rules written against a value that has since become a token.
+ *
+ * An artboard has no classes to hang a media query on, so the design tool
+ * writes its responsive rules against the text of the inline style itself:
+ * `[style*="font-size: 130px"]{font-size:64px}`. Collapsing two editions into
+ * one component moves every value that differs between them into a custom
+ * property, and that text stops saying `130px`. The rule still parses, still
+ * ships, and matches nothing — the headline stays at its full size on a phone,
+ * and nothing anywhere says so.
+ *
+ * So it is rewritten as what it was always saying: at this width that property
+ * is worth something else. As the property it now is, at `:root`, and without
+ * `!important` — which is what lets `:root[lang='ko']` keep the number given to
+ * the edition that never had the literal.
+ *
+ * A rule that cannot be said that way is left exactly as it is, and reported.
+ */
+function retargetTokenised(css, diff, styles, onOrphan) {
+  if (!diff.substitutions.size) return css;
+
+  // The declaration each token replaced, spelled the way a selector spells it.
+  const replaced = new Map();
+  for (const [index, props] of diff.substitutions) {
+    for (const [prop] of props) {
+      const captured = styles[index]?.find(([key]) => key === prop);
+      if (!captured) continue;
+      const literal = `${jsPropToCss(prop)}: ${captured[1]}`;
+      if (!replaced.has(literal)) replaced.set(literal, []);
+      replaced.get(literal).push(index);
+    }
+  }
+  if (!replaced.size) return css;
+
+  return css.replace(/([^{}]+)\{([^{}]*)\}/g, (rule, selector, declarations) => {
+    // One literal per part of the list: two in one part means "an element
+    // matching both", and a token answers for only one of them.
+    const literals = selector
+      .split(',')
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .map((part) => {
+        const found = [...part.matchAll(/\[style\*="([^"]+)"\]/g)].map((m) => m[1]);
+        return found.length === 1 ? found[0] : null;
+      });
+    if (!literals.some((literal) => literal && replaced.has(literal))) return rule;
+    if (!literals.every((literal) => literal && replaced.has(literal))) {
+      onOrphan(selector.trim(), 'only part of the selector list moved to a token');
+      return rule;
+    }
+
+    const elements = [...new Set(literals.flatMap((literal) => replaced.get(literal)))];
+    const overrides = [];
+    for (const declaration of declarations.split(';')) {
+      const colon = declaration.indexOf(':');
+      if (colon === -1) continue;
+      const prop = declaration.slice(0, colon).trim();
+      const value = declaration.slice(colon + 1).replace(/\s*!important\s*$/i, '').trim();
+      if (!prop || !value) continue;
+      for (const index of elements) {
+        const token = diff.substitutions.get(index)?.get(cssPropToJs(prop));
+        // The rule sets something the two editions agree on, so there is no
+        // custom property to move, and no way to say it per language.
+        if (!token) {
+          onOrphan(selector.trim(), prop);
+          return rule;
+        }
+        overrides.push(`${token.slice('var('.length, -1)}: ${value};`);
+      }
+    }
+    const indent = /^\s*/.exec(selector)[0];
+    return overrides.length ? `${indent}:root { ${overrides.join(' ')} }` : rule;
+  });
+}
+
 /**
  * Decides which pairs can be collapsed, before anything is written.
  *
@@ -553,6 +668,7 @@ for (const name of COLLAPSED_CANDIDATES) {
   COLLAPSE_PLANS.set(name, {
     en: mine.words,
     ko: theirs.words,
+    styles: mine.styles,
     diff: styleDifferences(mine.styles, theirs.styles, `in-${namespaceFor(name)}`),
   });
 }
@@ -565,6 +681,7 @@ mkdirSync(join(SRC, 'logic'), { recursive: true });
 const generated = [];
 const needsLogic = [];
 const malformed = [];
+const orphanedRules = [];
 const dataDriven = [];
 
 for (const file of files) {
@@ -610,8 +727,10 @@ for (const file of files) {
   // ordinary pages and nothing is lost.
   let words = null;
   let langVars = null;
+  let baseStyles = null;
   if (collapsed) {
     const plan = COLLAPSE_PLANS.get(parsed.name);
+    baseStyles = plan.styles;
     ctx.substitutions = plan.diff.substitutions;
     ctx.styles2 = [];
     ctx.tokeniseFonts = true;
@@ -630,7 +749,14 @@ for (const file of files) {
   const jsx = toJsx(tree, ctx, 3).replace(/\n{3,}/g, '\n\n');
 
   const scope = 'page-' + name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-  const css = tokeniseColoursInCss(ctx.styles.join('\n').trim(), COLOURS.byHex, COLOURS.seen);
+  let css = tokeniseColoursInCss(ctx.styles.join('\n').trim(), COLOURS.byHex, COLOURS.seen);
+  // The page's own responsive rules select on inline style text, which the
+  // language tokens have just rewritten. See retargetTokenised.
+  if (langVars) {
+    css = retargetTokenised(css, langVars, baseStyles, (rule, prop) =>
+      orphanedRules.push({ file, rule, prop }),
+    );
+  }
   // Values this page sets differently in each language become custom
   // properties, defined once at the root and once under the other language.
   // That is how one component keeps a headline at `line-height: 0.98` in
@@ -977,6 +1103,15 @@ if (conflicted.length) {
   console.log('');
   console.log('!! unmerged conflict markers in the source — HEAD side taken:');
   for (const c of conflicted) console.log(`   ${c.file} — ${c.hunks} hunk(s)`);
+  console.log('');
+}
+
+if (orphanedRules.length) {
+  console.log('');
+  console.log('!! responsive rules that select a value the language tokens replaced:');
+  for (const o of orphanedRules) console.log(`   ${o.file} — ${o.rule} (${o.prop})`);
+  console.log('   They still ship and they match nothing. Say them against the page');
+  console.log('   wrapper in src/styles/site.css, where the responsive layer is written.');
   console.log('');
 }
 
