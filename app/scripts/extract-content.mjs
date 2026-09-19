@@ -74,6 +74,21 @@ const attr = (node, name) => node.attrs?.find((a) => a.name === name)?.value ?? 
 const hasClass = (node, cls) => (attr(node, 'class') ?? '').split(/\s+/).includes(cls);
 
 /**
+ * Whether a node's inline style carries a declaration, however it is spaced.
+ *
+ * `style="writing-mode:vertical-rl"` and `style="writing-mode: vertical-rl"`
+ * are the same declaration, and `site/` contains both — the 2026 pages write
+ * the wall's cards without the space and the older ones with it. A substring
+ * match therefore reads one and silently skips the other, which is how every
+ * workshop card lost its rail label: nine `eyebrow`s extracted as null, in
+ * three languages, with the text sitting in the markup the whole time and
+ * nothing to notice it but the eye.
+ */
+const styleHas = (node, declaration) =>
+  (attr(node, 'style') ?? '').replace(/\s*:\s*/g, ':').replace(/\s+/g, ' ')
+    .includes(declaration.replace(/\s*:\s*/g, ':'));
+
+/**
  * All text under a node, entities decoded and whitespace collapsed.
  *
  * A row is data, not markup: `2016&ndash;2018` has to reach the database as
@@ -208,11 +223,11 @@ function koNews() {
     const id = attr(card, 'data-card');
     if (!id || out.has(id)) continue;
 
-    const rail = find(card, (n) => n.type === 'element' && (attr(n, 'style') ?? '').includes('writing-mode: vertical-rl'));
+    const rail = find(card, (n) => n.type === 'element' && styleHas(n, 'writing-mode: vertical-rl'));
     const heading = find(card, (n) => n.tag === 'h3');
     const paragraph = find(card, (n) => n.tag === 'p');
     const dateline = find(card, (n) =>
-      n.type === 'element' && n.tag === 'div' && (attr(n, 'style') ?? '').includes('letter-spacing: 0.14em') && text(n));
+      n.type === 'element' && n.tag === 'div' && styleHas(n, 'letter-spacing: 0.14em') && text(n));
 
     out.set(id, {
       kind_ko: rail ? text(rail) : null,
@@ -238,12 +253,12 @@ function extractNews() {
     if (!id) continue;
 
     const accentBar = card.children.find((c) => c.type === 'element' && background(c));
-    const rail = find(card, (n) => n.type === 'element' && (attr(n, 'style') ?? '').includes('writing-mode: vertical-rl'));
+    const rail = find(card, (n) => n.type === 'element' && styleHas(n, 'writing-mode: vertical-rl'));
     const heading = find(card, (n) => n.tag === 'h3');
     const paragraph = find(card, (n) => n.tag === 'p');
 
     const dateline = find(card, (n) =>
-      n.type === 'element' && n.tag === 'div' && (attr(n, 'style') ?? '').includes('letter-spacing: 0.14em') && text(n));
+      n.type === 'element' && n.tag === 'div' && styleHas(n, 'letter-spacing: 0.14em') && text(n));
 
     const { date, place } = splitDateline(dateline ? text(dateline) : '');
 
@@ -314,6 +329,76 @@ function extractNews() {
 /* ---------------------------------------------------------------- workshops */
 
 /**
+ * Korean copy for the workshop wall, keyed by the route each card links to.
+ *
+ * Like the project and community walls, the KO page is not a translation of a
+ * data source — it is the same wall with Korean written into the markup. When
+ * the wall became a table, nothing read that copy out, so `/ko/workshop`
+ * rendered nine English cards inside Korean chrome. Route rather than position
+ * because a card added to one edition and not the other should leave a gap,
+ * not shift every translation down by one.
+ */
+function koWorkshopCards() {
+  const tree = parse(html('Workshop.KO.dc.html'));
+  const out = new Map();
+
+  for (const card of findAll(tree, (n) => n.tag === 'a' && /^Workshop-/.test(attr(n, 'href') ?? ''))) {
+    const route = neutralRoute(routeFor(attr(card, 'href')));
+    if (!route || out.has(route)) continue;
+
+    const heading = find(card, (n) => n.tag === 'h3' || n.tag === 'h2');
+    if (!heading) continue;
+
+    const rail = find(card, (n) => n.type === 'element' && styleHas(n, 'writing-mode: vertical-rl'));
+    const paragraph = find(card, (n) => n.tag === 'p');
+    const tracked = (within) => findAll(within, (n) =>
+      n.type === 'element' && styleHas(n, 'letter-spacing: 0.14em') && text(n));
+
+    // A wall card wears its eyebrow sideways in the rail and its call to
+    // action along the foot, both tracked out — the rail at 0.2em, the foot at
+    // 0.14em. The featured card has no rail: its eyebrow is a 0.14em line
+    // above the title, and so is the "Signature · Start here" badge in the
+    // corner. They are told apart the way extractWorkshops tells them apart —
+    // the copy panel is the one painted with `background-color`, the badge
+    // with the `background` shorthand.
+    const panel = find(card, (n) =>
+      n.type === 'element' && /background-color:/i.test(attr(n, 'style') ?? ''));
+    const lines = tracked(card);
+    const eyebrow = rail ?? tracked(panel ?? card)[0] ?? lines[0] ?? null;
+
+    out.set(route, {
+      title: text(heading),
+      eyebrow: eyebrow ? text(eyebrow) : null,
+      blurb: paragraph ? text(paragraph) : null,
+      cta: rail && lines.length ? text(lines[lines.length - 1]) : null,
+    });
+  }
+  return out;
+}
+
+/**
+ * English audience → the word the Korean page prints on its filter chip.
+ *
+ * The two lists are positional: the English page names its chips in a `labels`
+ * array and the Korean page draws the same six as pills, in the same order.
+ * The first is "All workshops", which the app translates itself, so it is
+ * dropped here rather than stored on a row.
+ */
+function koAudiences(enSource) {
+  const labels = /const labels = \[([^\]]*)\]/.exec(enSource);
+  const en = labels
+    ? labels[1].split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, '')).filter(Boolean)
+    : [];
+  const ko = [...html('Workshop.KO.dc.html')
+    .matchAll(/border-radius:\s*999px;\s*padding:\s*9px 18px;?[^>]*>([^<]+)</g)]
+    .map((m) => decode(m[1]).trim());
+
+  const out = new Map();
+  for (let i = 1; i < en.length; i++) if (ko[i]) out.set(en[i], ko[i]);
+  return out;
+}
+
+/**
  * The workshop wall. Audiences live in the page's filter logic rather than in
  * the markup, so they are read out of that array and zipped onto the cards in
  * source order — which is exactly how the legacy filter matched them.
@@ -327,6 +412,9 @@ function extractWorkshops() {
     ? audienceMatch[1].split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, ''))
     : [];
 
+  const ko = koWorkshopCards();
+  const koAudience = koAudiences(source);
+
   const rows = [];
 
   // The signature workshop sits above the wall in its own full-bleed block.
@@ -336,12 +424,17 @@ function extractWorkshops() {
     // "Signature · Start here" badge uses the `background` shorthand.
     const panel = find(featured, (n) =>
       n.type === 'element' && /background-color:/i.test(attr(n, 'style') ?? ''));
+    const koFeatured = ko.get('/workshop/mobius-making');
     rows.push({
       slug: 'mobius-making',
       title: text(find(featured, (n) => n.tag === 'h2') ?? { children: [] }) || 'Möbius Making',
+      title_ko: koFeatured?.title ?? null,
       eyebrow: 'The signature workshop · For All',
+      eyebrow_ko: koFeatured?.eyebrow ?? null,
       blurb: text(find(featured, (n) => n.tag === 'p') ?? { children: [] }),
+      blurb_ko: koFeatured?.blurb ?? null,
       audience: 'For All',
+      audience_ko: koAudience.get('For All') ?? null,
       duration: '3 hrs · extendable',
       accent: tokenFor(panel ? background(panel) : '#EEAF05'),
       ink: 'paper',
@@ -358,7 +451,7 @@ function extractWorkshops() {
   cards.forEach((card, i) => {
     const href = attr(card, 'href') ?? '';
     const panel = card.children.find((c) => c.type === 'element' && background(c)) ?? card;
-    const rail = find(card, (n) => n.type === 'element' && (attr(n, 'style') ?? '').includes('writing-mode: vertical-rl'));
+    const rail = find(card, (n) => n.type === 'element' && styleHas(n, 'writing-mode: vertical-rl'));
     const heading = find(card, (n) => n.tag === 'h3');
     const paragraph = find(card, (n) => n.tag === 'p');
     const cta = findAll(card, (n) => n.tag === 'span' && /^(Explore|Register)$/.test(text(n))).pop();
@@ -369,18 +462,25 @@ function extractWorkshops() {
     const panelStyle = attr(panel, 'style') ?? '';
     const inkIsPaper = /color:\s*#FAF4E2/i.test(panelStyle);
 
+    const translated = ko.get(routeFor(href)) ?? null;
+
     rows.push({
       slug,
       title: heading ? text(heading) : '',
+      title_ko: translated?.title ?? null,
       eyebrow: rail ? text(rail) : null,
+      eyebrow_ko: translated?.eyebrow ?? null,
       blurb: paragraph ? text(paragraph) : null,
+      blurb_ko: translated?.blurb ?? null,
       audience: audiences[i] ?? null,
+      audience_ko: koAudience.get(audiences[i]) ?? null,
       duration: null,
       accent: tokenFor(background(panel)),
       ink: inkIsPaper ? 'paper' : 'ink',
       route: routeFor(href),
       featured: false,
       cta: cta ? text(cta) : 'Explore',
+      cta_ko: translated?.cta ?? null,
       sort_order: i + 1,
       active: true,
     });
@@ -679,19 +779,47 @@ const communities = extractCommunities();
 
 mkdirSync(CONTENT, { recursive: true });
 
-function writeTs(file, name, type, rows) {
+function writeTs(file, name, type, rows, extra = '') {
   const banner = `// Generated by scripts/extract-content.mjs — do not edit by hand.
 // Bundled fallback for the ${name} table: what the site renders before the
 // database is seeded, and if a query fails. Edit the rows in Supabase.
 `;
   writeFileSync(
     join(CONTENT, file),
-    `${banner}import type { ${type} } from './types';\n\nexport const ${name}: ${type}[] = ${JSON.stringify(rows, null, 2)};\n`,
+    `${banner}import type { ${type} } from './types';\n\nexport const ${name}: ${type}[] = ${JSON.stringify(rows, null, 2)};\n${extra}`,
   );
 }
 
+/**
+ * The order the filter chips are written in on the legacy page.
+ *
+ * Which chips exist is derived from the rows — a workshop for a new audience
+ * has to bring its own chip, and a hand-kept list would not. The *order* is
+ * not derivable: the page states it, and it is not the order the cards happen
+ * to appear in, so deriving it from them put Parents after Youth. So the wall
+ * takes both: the chips from the rows, ranked by this.
+ */
+const audienceOrder = (() => {
+  const source = html('Workshop.EN.dc.html');
+  const m = /const labels = \[([^\]]*)\]/.exec(source);
+  if (!m) return [];
+  return m[1].split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, '')).filter(Boolean);
+})();
+
+const AUDIENCE_ORDER_DOC = `
+/**
+ * The chip order the legacy page writes, "All workshops" first.
+ *
+ * Which audiences exist comes from the rows above; only their order is here,
+ * because the page states an order the cards do not imply. An audience this
+ * does not name still gets a chip — at the end, where a new one belongs until
+ * somebody places it.
+ */
+export const workshopAudienceOrder: string[] = ${JSON.stringify(audienceOrder, null, 2)};
+`;
+
 writeTs('news.ts', 'news', 'NewsItem', news);
-writeTs('workshops.ts', 'workshops', 'WorkshopCard', workshops);
+writeTs('workshops.ts', 'workshops', 'WorkshopCard', workshops, AUDIENCE_ORDER_DOC);
 writeTs('projects.ts', 'projects', 'ProjectCard', projects);
 writeTs('communities.ts', 'communities', 'CommunityCard', communities);
 
@@ -752,14 +880,19 @@ on conflict (id) do update set
 
 -- ========== workshops ==========
 insert into public.workshops
-  (slug, title, eyebrow, blurb, audience, duration, accent, ink, route, featured, cta, sort_order, active)
+  (slug, title, title_ko, eyebrow, eyebrow_ko, blurb, blurb_ko, audience, audience_ko,
+   duration, accent, ink, route, featured, cta, cta_ko, sort_order, active)
 values
-${workshops.map((w) => `  (${q(w.slug)}, ${q(w.title)}, ${q(w.eyebrow)}, ${q(w.blurb)}, ${q(w.audience)}, ${q(w.duration)}, ${q(w.accent)}, ${q(w.ink)}, ${q(w.route)}, ${bool(w.featured)}, ${q(w.cta)}, ${num(w.sort_order)}, ${bool(w.active)})`).join(',\n')}
+${workshops.map((w) => `  (${q(w.slug)}, ${q(w.title)}, ${q(w.title_ko)}, ${q(w.eyebrow)}, ${q(w.eyebrow_ko)}, ${q(w.blurb)}, ${q(w.blurb_ko)}, ${q(w.audience)}, ${q(w.audience_ko)}, ${q(w.duration)}, ${q(w.accent)}, ${q(w.ink)}, ${q(w.route)}, ${bool(w.featured)}, ${q(w.cta)}, ${q(w.cta_ko)}, ${num(w.sort_order)}, ${bool(w.active)})`).join(',\n')}
 on conflict (slug) do update set
-  title = excluded.title, eyebrow = excluded.eyebrow, blurb = excluded.blurb,
-  audience = excluded.audience, duration = excluded.duration, accent = excluded.accent,
+  title = excluded.title, title_ko = excluded.title_ko,
+  eyebrow = excluded.eyebrow, eyebrow_ko = excluded.eyebrow_ko,
+  blurb = excluded.blurb, blurb_ko = excluded.blurb_ko,
+  audience = excluded.audience, audience_ko = excluded.audience_ko,
+  duration = excluded.duration, accent = excluded.accent,
   ink = excluded.ink, route = excluded.route, featured = excluded.featured,
-  cta = excluded.cta, sort_order = excluded.sort_order, active = excluded.active;
+  cta = excluded.cta, cta_ko = excluded.cta_ko,
+  sort_order = excluded.sort_order, active = excluded.active;
 
 -- ========== projects ==========
 insert into public.projects

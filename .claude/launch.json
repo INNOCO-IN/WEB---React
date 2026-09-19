@@ -24,6 +24,18 @@
       ],
       "port": 5174,
       "autoPort": true
+    },
+    {
+      "name": "a2",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4174",
+        "-d",
+        "New COM/IN Website 2026 A2/vercel-deploy"
+      ],
+      "port": 4174
     }
   ]
 }

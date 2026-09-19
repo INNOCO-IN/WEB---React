@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWorkshops } from '../../lib/hooks/useContent';
+import { workshopAudienceOrder } from '../../lib/content/workshops';
 import { accentColor, inLang, type WorkshopCard as Workshop } from '../../lib/content/types';
 import { useTranslation } from 'react-i18next';
 import { localize, useLocaleOr, type Locale } from '../../lib/lang';
@@ -30,8 +31,12 @@ export default function WorkshopWall({ locale: given }: Props) {
 
   const cards = useMemo(() => workshops.filter((w) => !w.featured), [workshops]);
 
-  // Audiences in the order the cards appear, deduped — a fixed list would go
-  // stale the moment someone adds a workshop for a new audience.
+  // Which audiences there are is derived from the rows, deduped — a fixed list
+  // would go stale the moment someone adds a workshop for a new audience.
+  // Their order is not derivable, so it comes from the design: the legacy page
+  // writes For All, Parents, Organizations, Youth, Women, which is not the
+  // order the cards happen to sit in. An audience the design has not placed
+  // sorts to the end rather than disappearing.
   //
   // Key and label are separate: the filter matches on the English `audience`,
   // which is what every row carries, while the chip is labelled in the
@@ -44,7 +49,13 @@ export default function WorkshopWall({ locale: given }: Props) {
         seen.set(card.audience, inLang(card.audience, { ko: card.audience_ko, 'zh-TW': card.audience_zh_tw }, locale) ?? card.audience);
       }
     }
-    return [...seen].map(([key, label]) => ({ key, label }));
+    const rank = (key: string) => {
+      const i = workshopAudienceOrder.indexOf(key);
+      return i === -1 ? workshopAudienceOrder.length : i;
+    };
+    return [...seen]
+      .map(([key, label]) => ({ key, label }))
+      .sort((a, b) => rank(a.key) - rank(b.key));
   }, [cards, locale]);
 
   const visible = filter ? cards.filter((card) => card.audience === filter) : cards;

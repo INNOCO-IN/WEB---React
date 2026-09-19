@@ -65,23 +65,28 @@ on conflict (id) do update set
 
 -- ========== workshops ==========
 insert into public.workshops
-  (slug, title, eyebrow, blurb, audience, duration, accent, ink, route, featured, cta, sort_order, active)
+  (slug, title, title_ko, eyebrow, eyebrow_ko, blurb, blurb_ko, audience, audience_ko,
+   duration, accent, ink, route, featured, cta, cta_ko, sort_order, active)
 values
-  ('mobius-making', 'Möbius Making', 'The signature workshop · For All', 'The foundational workshop — the first experience of ME=WE as something lived, not just explained. 3 hours core; extendable to half-day or full-day, with follow-up sessions available as a package.', 'For All', '3 hrs · extendable', 'gold', 'paper', '/workshop/mobius-making', true, 'Explore', 0, true),
-  ('pathfinder', 'Pathfinder', null, 'Ready to hold the space for others? Learn the ME=WE workshop from the inside, then carry it forward in your own context.', 'For All', null, 'amber', 'ink', '/workshop/pathfinder', false, 'Explore', 1, true),
-  ('metanoia', 'Metanoia', null, 'Change from within. A four-day intensive for people whose inner condition shapes a community — educators, directors, anyone who holds space for others.', 'Organizations', null, 'yellow', 'ink', '/workshop/metanoia', false, 'Explore', 2, true),
-  ('jungle-jam', 'Jungle Jam', null, 'Leave the ordinary. Meet yourself. A residential gathering for young people — creativity, adventure, and honest reflection.', 'Youth', null, 'magenta', 'paper', '/workshop/jungle-jam', false, 'Explore', 3, true),
-  ('two-wings', 'Two Wings', null, 'For parents, couples, and families — a space to practice ME=WE inside the family, customizable to the neighborhood level.', 'Parents', null, 'deepblue', 'paper', '/workshop/two-wings', false, 'Register', 4, true),
-  ('heros-journey', 'Hero''s Journey', null, 'A guided passage through a personal threshold, using ME=WE to navigate change.', 'For All', null, 'teal', 'paper', '/workshop/heros-journey', false, 'Register', 5, true),
-  ('second-life', 'Second Life Series', null, 'Self-care fundamentals — exercise, sleep, eating, meditation. Co-created with Taejin Kim & Vahid Buehrer.', 'Youth', null, 'green', 'paper', '/workshop/second-life', false, 'Register', 6, true),
-  ('shadow-shifter', 'Shadow Shifter', null, 'How might we become protagonists? Two days, nine hands-on challenges — designed and co-facilitated by young people in Taiwan.', 'Youth', null, 'slate', 'paper', '/workshop/shadow-shifter', false, 'Explore', 7, true),
-  ('bucket-list', 'ME=WE Bucket List', null, 'Clarify who you are, and act on it — for yourself and others. Co-created with Hojin Choi.', 'For All', null, 'deepblue', 'paper', '/workshop/bucket-list', false, 'Explore', 8, true),
-  ('light-shadow-shift', 'Women''s Retreat', null, 'A dedicated space for women to step back, reconnect, and practice ME=WE together. Full details coming soon.', 'Women', null, 'crimson', 'paper', '/workshop/light-shadow-shift', false, 'Register', 9, true)
+  ('mobius-making', 'Möbius Making', '뫼비우스 만들기', 'The signature workshop · For All', '대표 워크숍 · 모두에게', 'The foundational workshop — the first experience of ME=WE as something lived, not just explained. 3 hours core; extendable to half-day or full-day, with follow-up sessions available as a package.', '기초가 되는 워크숍 — 설명이 아니라 살아 있는 것으로서 ME=WE를 처음 경험하는 자리. 기본 3시간, 반나절이나 하루로 확장 가능하며 후속 세션 패키지도 있습니다.', 'For All', '모두에게', '3 hrs · extendable', 'gold', 'paper', '/workshop/mobius-making', true, 'Explore', null, 0, true),
+  ('pathfinder', 'Pathfinder', '패스파인더', 'Facilitator Training', '퍼실리테이터 훈련', 'Ready to hold the space for others? Learn the ME=WE workshop from the inside, then carry it forward in your own context.', '다른 이들을 위한 공간을 열 준비가 되었나요? ME=WE 워크숍을 안에서부터 배우고, 자신의 맥락으로 이어 가세요.', 'For All', '모두에게', null, 'amber', 'ink', '/workshop/pathfinder', false, 'Explore', '알아보기', 1, true),
+  ('metanoia', 'Metanoia', '메타노이아', 'Organizations · 1–4 Days', '조직 · 1–4일', 'Change from within. A four-day intensive for people whose inner condition shapes a community — educators, directors, anyone who holds space for others.', '안에서부터의 변화. 내면의 상태가 공동체를 빚는 사람들 — 교육자, 디렉터, 누군가를 위한 공간을 여는 모든 이 — 를 위한 4일 집중 과정.', 'Organizations', '조직', null, 'yellow', 'ink', '/workshop/metanoia', false, 'Explore', '알아보기', 2, true),
+  ('jungle-jam', 'Jungle Jam', '정글 잼', 'Youth · Residential', '청년 · 합숙', 'Leave the ordinary. Meet yourself. A residential gathering for young people — creativity, adventure, and honest reflection.', '일상을 떠나 자신을 만나는 시간. 청년들을 위한 합숙 모임 — 창의성, 모험, 그리고 정직한 성찰.', 'Youth', '청년', null, 'magenta', 'paper', '/workshop/jungle-jam', false, 'Explore', '알아보기', 3, true),
+  ('two-wings', 'Two Wings', '두 날개', 'For Parents', '부모를 위해', 'For parents, couples, and families — a space to practice ME=WE inside the family, customizable to the neighborhood level.', '부모, 부부, 가족을 위해 — 가족 안에서 ME=WE를 연습하는 공간. 동네 단위로도 맞출 수 있습니다.', 'Parents', '부모', null, 'deepblue', 'paper', '/workshop/two-wings', false, 'Register', '신청하기', 4, true),
+  ('heros-journey', 'Hero''s Journey', '영웅의 여정', 'For All', '모두에게', 'A guided passage through a personal threshold, using ME=WE to navigate change.', 'ME=WE와 함께 변화를 항해하며, 저마다의 문턱을 건너는 안내된 여정.', 'For All', '모두에게', null, 'teal', 'paper', '/workshop/heros-journey', false, 'Register', '신청하기', 5, true),
+  ('second-life', 'Second Life Series', '세컨드 라이프 시리즈', 'Junior Youth & Youth', '주니어 유스 & 청년', 'Self-care fundamentals — exercise, sleep, eating, meditation. Co-created with Taejin Kim & Vahid Buehrer.', '자기 돌봄의 기본 — 운동, 수면, 식사, 명상. 김태진 & Vahid Buehrer와 공동 제작.', 'Youth', '청년', null, 'green', 'paper', '/workshop/second-life', false, 'Register', '신청하기', 6, true),
+  ('shadow-shifter', 'Shadow Shifter', '섀도 시프터', 'Youth · Residential', '청년 · 합숙', 'How might we become protagonists? Two days, nine hands-on challenges — designed and co-facilitated by young people in Taiwan.', '우리는 어떻게 주역이 될 수 있을까? 이틀, 아홉 가지 실습 과제 — 대만의 청년들이 직접 설계하고 함께 진행합니다.', 'Youth', '청년', null, 'slate', 'paper', '/workshop/shadow-shifter', false, 'Explore', '알아보기', 7, true),
+  ('bucket-list', 'ME=WE Bucket List', 'ME=WE 버킷 리스트', 'For All · Half Day', '모두에게 · 반나절', 'Clarify who you are, and act on it — for yourself and others. Co-created with Hojin Choi.', '내가 누구인지 분명히 하고, 행동으로 옮기기 — 나와 타인을 위해. 최호진과 공동 제작.', 'For All', '모두에게', null, 'deepblue', 'paper', '/workshop/bucket-list', false, 'Explore', '알아보기', 8, true),
+  ('light-shadow-shift', 'Women''s Retreat', '여성 리트릿', 'Women', '여성', 'A dedicated space for women to step back, reconnect, and practice ME=WE together. Full details coming soon.', '여성들이 한 걸음 물러나 다시 연결되고, 함께 ME=WE를 연습하는 전용 공간. 자세한 내용이 곧 공개됩니다.', 'Women', '여성', null, 'crimson', 'paper', '/workshop/light-shadow-shift', false, 'Register', '신청하기', 9, true)
 on conflict (slug) do update set
-  title = excluded.title, eyebrow = excluded.eyebrow, blurb = excluded.blurb,
-  audience = excluded.audience, duration = excluded.duration, accent = excluded.accent,
+  title = excluded.title, title_ko = excluded.title_ko,
+  eyebrow = excluded.eyebrow, eyebrow_ko = excluded.eyebrow_ko,
+  blurb = excluded.blurb, blurb_ko = excluded.blurb_ko,
+  audience = excluded.audience, audience_ko = excluded.audience_ko,
+  duration = excluded.duration, accent = excluded.accent,
   ink = excluded.ink, route = excluded.route, featured = excluded.featured,
-  cta = excluded.cta, sort_order = excluded.sort_order, active = excluded.active;
+  cta = excluded.cta, cta_ko = excluded.cta_ko,
+  sort_order = excluded.sort_order, active = excluded.active;
 
 -- ========== projects ==========
 insert into public.projects
