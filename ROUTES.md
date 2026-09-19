@@ -98,23 +98,37 @@ for real, set `LOCALE_PREFIX.en` in
 [`app/src/i18n/locales.ts`](app/src/i18n/locales.ts) — the router, the
 switcher, `hreflang` and the canonical tags all read it from there.
 
-Traditional Chinese has one page, `/zh-tw/news`, served by the page builder.
-Everywhere else the switcher shows 繁中 disabled rather than linking into a
-language that has nothing to say.
+Traditional Chinese answers at every route the other two do. It has no
+edition in `site/` and is not going to get one — its words are written by hand
+into `app/src/i18n/resources/zh-TW/`, and until somebody writes them the copy
+falls back to English inside Chinese chrome.
+
+That is a translation gap, and for a while the converter treated it as an
+existence gap: a Chinese route was emitted only for a page whose English and
+Korean editions had collapsed into one component, and never for a `:slug`
+template. So the Chinese site had no Workshop, Story, Project, Manifesto or
+BridgeBuilder section at all, and none of it showed — `localize` answers a
+missing route with the English address, so the Chinese nav quietly linked out
+of Chinese instead of linking at a 404. `LOCALE_PREFIX` in
+[`app/scripts/lib/routes.mjs`](app/scripts/lib/routes.mjs) is the one list the
+converter spreads every route over now, and `lang.test.ts` asserts the parity
+rather than trusting it.
 
 ### Falling back
 
-Fifteen English routes have no Korean twin — every `Project-*` brief, the seven
-`Community-*` pages, `/community/all`, `/story/submit`, `/story/this-is-us`,
-`/action-research`. Three things degrade rather than break:
+No published page is missing in any language now: the 2026 design wrote a
+Korean edition for the twenty-seven that had none, and every route is emitted
+in all three. What still has to degrade is a URL with no page behind it — one
+the design dropped, like `/story/this-is-us`, or a mistyped one:
 
 - **The EN/KR switch** gives up a segment at a time. Same page if it exists,
   else the section above it (`/project/food-revolution` → `/ko/project`), and
   the Korean home only when there is nothing in between. When it is not the
   same page the link is dimmed and says so, instead of silently moving you.
-- **Card links** take the twin where there is one and stay English where there
-  is not — which is why `/ko/workshop` links to `/ko/workshop/metanoia` but
-  `/ko/project` still links to the English brief.
+- **Card links** take the twin where there is one and stay put where there is
+  not — `localize` in [`app/src/lib/lang.ts`](app/src/lib/lang.ts), which also
+  carries an anchor across (`/#connect` → `/zh-tw#connect`) rather than
+  letting it fail the route check and drop the reader into English.
 - **Row copy** falls back field by field. A row with a Korean title and no
   Korean blurb shows the Korean title and the English blurb. `inLang` in
   [`app/src/lib/content/types.ts`](app/src/lib/content/types.ts) is the only
@@ -128,8 +142,8 @@ real twin, because pointing it at a section would tell a search engine that a
 project brief and the project index are the same document in two languages.
 
 This replaced a generated `LANG_ALTERNATES` table, which could only hold the
-pairs the converter knew about — never a `:slug` route — so all fifteen of
-those routes used to drop you on the Korean home page.
+pairs the converter knew about — never a `:slug` route — so fifteen routes used
+to drop you on the Korean home page.
 
 ## Redirects
 

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import type { BriefFact, DetailLink } from '../../lib/content/detail-types';
+import { localize, useLocale } from '../../lib/lang';
 import './detail.css';
 
 /**
@@ -46,12 +47,17 @@ export interface HeroProps {
 export function DetailHero({ accent, mode, back, chips, chipStyle = 'pills', title, lede }: HeroProps) {
   const tint = on(mode);
   const text = mode === 'paper' ? 'var(--color-paper)' : 'var(--color-ink)';
+  // The targets are extracted from `site/`, which wrote each page's links in
+  // that page's own language. Traditional Chinese has no page there and reads
+  // the English copy, so without this the way back out is the one control that
+  // leaves the Chinese site.
+  const locale = useLocale();
 
   return (
     <section style={{ background: accent, color: text }}>
       <div className="in-detail__hero">
         <Link
-          to={back.to}
+          to={localize(back.to, locale)}
           className="in-plain"
           style={{
             fontFamily: SANS, fontWeight: '700', fontSize: '13px', letterSpacing: '0.1em',
@@ -160,9 +166,10 @@ export function BriefGrid({ label, facts, accent }: BriefGridProps) {
 
 /** The ink pill a page uses to send you on to the project or circle beside it. */
 export function InkLink({ link }: { link: DetailLink }) {
+  const locale = useLocale();
   return (
     <Link
-      to={link.to}
+      to={localize(link.to, locale)}
       className="in-plain"
       style={{
         textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '12px',
@@ -183,6 +190,7 @@ export function InkLink({ link }: { link: DetailLink }) {
  * live here rather than in the extracted copy.
  */
 export function ClosingBand({ accent }: { accent: string }) {
+  const locale = useLocale();
   return (
     <section style={{ background: accent, color: 'var(--color-paper)', marginTop: '80px' }}>
       <div className="in-detail__cta">
@@ -204,7 +212,7 @@ export function ClosingBand({ accent }: { accent: string }) {
         </h2>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', fontFamily: SANS, fontWeight: '700', fontSize: '15px' }}>
           <Link
-            to="/connect"
+            to={localize('/connect', locale)}
             className="in-plain"
             style={{
               textDecoration: 'none', color: 'var(--color-teal)', background: 'var(--color-paper)',

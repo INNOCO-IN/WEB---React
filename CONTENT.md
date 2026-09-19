@@ -68,7 +68,7 @@ one.
 Generated from [`app/src/lib/page-model.ts`](app/src/lib/page-model.ts) by
 `node scripts/content-map.mjs`. Edit the model, re-run, commit both.
 
-75 of 92 pages read or write a table; the rest carry their copy in the
+81 of 102 pages read or write a table; the rest carry their copy in the
 component. Every table listed under **Reads** is watched while a page that reads it
 is open, so an edit in the Table Editor arrives without a reload.
 

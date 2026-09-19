@@ -6,7 +6,7 @@ import WorkshopRegister from '../../components/WorkshopRegister';
 import NotFound from '../NotFound';
 import { WORKSHOP_DETAILS, type Run } from '../../lib/content/workshop-details';
 import { accentColor } from '../../lib/content/types';
-import { useLocale } from '../../lib/lang';
+import { localize, useLocale } from '../../lib/lang';
 import './WorkshopDetail.css';
 
 /**
@@ -77,7 +77,7 @@ export default function WorkshopDetail() {
         <section style={{ background: accent, color: 'var(--color-paper)' }}>
           <div className="ws__back">
             <Link
-              to={w.back.to}
+              to={localize(w.back.to, locale)}
               className="in-plain"
               style={{
                 fontFamily: SANS, fontWeight: '700', fontSize: '13px', letterSpacing: '0.08em',
@@ -354,7 +354,7 @@ export default function WorkshopDetail() {
               {w.cta.links.map((link, i) => (
                 <Link
                   key={link.label}
-                  to={link.to}
+                  to={localize(link.to, locale)}
                   className="in-plain"
                   style={i === 0
                     ? {

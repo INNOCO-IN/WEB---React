@@ -31,7 +31,7 @@ import { colourTokens, tokeniseColoursInCss } from './lib/design-tokens.mjs';
 const COLOURS = { ...colourTokens(), seen: new Map() };
 import {
   NON_ROUTES, ALIASES, RENAMED_ROUTES, TAKEN_OVER, TEMPLATES, routesForTemplate,
-  parseFile, componentName, routeFor,
+  LOCALE_PREFIX, HAND_TRANSLATED, parseFile, componentName, routeFor,
 } from './lib/routes.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -457,11 +457,15 @@ const wordIdent = (locale) => `words${locale.replace(/[^A-Za-z0-9]/g, '')}`;
 
 const RESOURCES = join(SRC, 'i18n', 'resources');
 
-/** Mirrors LOCALE_PREFIX in src/i18n/locales.ts for the locales emitted here. */
-const LOCALE_PREFIX = { 'zh-TW': 'zh-tw' };
 const collapsedPages = [];
 
-/** Routes for the locales a collapsed page serves without a page in `site/`. */
+/**
+ * Pages that keep one component per language but still answer for a locale
+ * with no edition in `site/` — see `localized` in the emitter.
+ */
+const localizedPages = [];
+
+/** Routes for the locales a page serves without an edition in `site/`. */
 const extraLocaleRoutes = [];
 
 /**
@@ -488,9 +492,6 @@ function writeWords(namespace, byLocale) {
     if (!existsSync(target)) writeFileSync(target, '{}\n');
   }
 }
-
-/** Locales with no edition in `site/`, whose words are written by hand. */
-const HAND_TRANSLATED = ['zh-TW'];
 
 /**
  * Walks one edition of a page, collecting its words and its inline styles.
@@ -722,20 +723,41 @@ for (const file of files) {
     colours: COLOURS,
   };
 
+  /**
+   * Whether this component answers for more than the language it was written
+   * in — and therefore has to keep its sentences in the catalogue rather than
+   * in its JSX, and localize its links.
+   *
+   * A collapsed pair is the obvious case: one component, three languages. The
+   * other is an English page whose Korean twin *did not* collapse. It still
+   * has to serve Traditional Chinese, because there is no zh-TW edition in
+   * `site/` to convert and there never will be — the Chinese words are
+   * written by hand against the English page.
+   *
+   * Leaving that second case out is what emptied the Chinese site of its
+   * Workshop, Story, Project, Manifesto and BridgeBuilder sections: no route
+   * was emitted, so `/zh-tw/workshop` was a 404 and `localize()` quietly sent
+   * the Chinese nav to the English page instead.
+   */
+  const localized = collapsed || (parsed && parsed.lang === 'EN');
+
   // The differences between the two editions were worked out before the loop.
   // A pair that did not line up is not in COLLAPSED, so it lands here as two
-  // ordinary pages and nothing is lost.
+  // ordinary pages — the English one still carrying Chinese, the Korean one
+  // answering only for Korean.
   let words = null;
   let langVars = null;
   let baseStyles = null;
+  if (localized) {
+    ctx.words = new Map();
+    ctx.localizeLinks = true;
+  }
   if (collapsed) {
     const plan = COLLAPSE_PLANS.get(parsed.name);
     baseStyles = plan.styles;
     ctx.substitutions = plan.diff.substitutions;
     ctx.styles2 = [];
     ctx.tokeniseFonts = true;
-    ctx.words = new Map();
-    ctx.localizeLinks = true;
     langVars = plan.diff;
     words = { en: plan.en, ko: plan.ko };
   }
@@ -805,12 +827,18 @@ for (const file of files) {
 
   const imports = [];
   if (ctx.imports.has('Fragment')) imports.push(`import { Fragment } from 'react';`);
-  if (collapsed && ctx.words.size) {
+  // The languages this component's own words come in. A collapsed page reads
+  // all three; an English page that also answers for Chinese reads those two,
+  // because the Korean edition is a component of its own and its words are in
+  // its own JSX.
+  const wordLocales = localized ? ['en', ...HAND_TRANSLATED, ...(collapsed ? ['ko'] : [])] : [];
+
+  if (localized && ctx.words.size) {
     // The words come in with the page, not with the shell — see
     // src/i18n/page-words.ts for why.
     const ns = namespaceFor(parsed.name);
     imports.push(`import { usePageWords } from '../i18n/page-words';`);
-    for (const locale of ['en', 'zh-TW', 'ko']) {
+    for (const locale of wordLocales) {
       imports.push(
         `import ${wordIdent(locale)} from '../i18n/resources/${locale}/pages/${ns}.json';`,
       );
@@ -833,7 +861,7 @@ for (const file of files) {
     else parts.push(`import { Chip } from '../components/ChipGroup';`);
     imports.push(...parts);
   }
-  if (collapsed && ctx.imports.has('Link')) imports.push(`import { localize, useLocale } from '../lib/lang';`);
+  if (localized && ctx.imports.has('Link')) imports.push(`import { localize, useLocale } from '../lib/lang';`);
   if (ctx.usesSx) imports.push(`import { sx } from '../lib/sx';`);
   if (bindings.length) imports.push(`import useLogic from '../logic/${name}';`);
   if (css || langCss) imports.push(`import './${name}.css';`);
@@ -842,15 +870,15 @@ for (const file of files) {
   // language from the route. Both are only declared when used, so a page
   // with no links does not carry an unused `locale`.
   const preamble = [];
-  if (collapsed && ctx.words.size) {
-    const bundles = ['en', 'zh-TW', 'ko']
+  if (localized && ctx.words.size) {
+    const bundles = wordLocales
       .map((locale) => `${JSON.stringify(locale)}: ${wordIdent(locale)}`)
       .join(', ');
     preamble.push(
       `  const t = usePageWords(${JSON.stringify(namespaceFor(parsed.name))}, { ${bundles} });`,
     );
   }
-  if (collapsed && ctx.imports.has('Link')) preamble.push('  const locale = useLocale();');
+  if (localized && ctx.imports.has('Link')) preamble.push('  const locale = useLocale();');
   if (bindings.length) preamble.push(`  const { ${bindings.join(', ')} } = useLogic();`);
   const destructure = preamble.length ? `${preamble.join('\n')}\n\n` : '';
 
@@ -862,7 +890,14 @@ ${collapsed
  *  src/i18n/resources/<locale>/pages/${namespaceFor(parsed.name)}.json; the
  *  line-heights that differ by language are custom properties in ${name}.css.
  *  Edit the legacy pages, not this file. */`
-    : `/** ${file} — generated by scripts/convert-pages.mjs. Edit the legacy page, or
+    : localized
+      ? `/** ${file} — generated by scripts/convert-pages.mjs. Serves ${entry.route} and
+ *  ${HAND_TRANSLATED.map((l) => `${LOCALE_PREFIX[l]}${entry.route === '/' ? '' : entry.route}`).join(', ')}: this page's KO twin did not collapse into it, but
+ *  ${HAND_TRANSLATED.join(', ')} has no edition in site/ and reads this one. Its words are in
+ *  src/i18n/resources/<locale>/pages/${namespaceFor(parsed.name)}.json.
+ *  Edit the legacy page, or take this file over by hand and remove it from
+ *  the converter's input. */`
+      : `/** ${file} — generated by scripts/convert-pages.mjs. Edit the legacy page, or
  *  take this file over by hand and remove it from the converter's input. */`}
 export default function ${name}() {
 ${destructure}  return (
@@ -874,29 +909,45 @@ ${jsx}
 `;
 
   writeFileSync(join(PAGES, `${name}.tsx`), source);
-  if (collapsed) {
-    writeWords(namespaceFor(parsed.name), { en: ctx.words, ko: words.ko });
+  if (localized) {
+    const namespace = namespaceFor(parsed.name);
+    // The KO file only when this component is the one Korean reads. A
+    // non-collapsed page's Korean words are in WorkshopKO.tsx, not here, and a
+    // ko/pages/workshop.json beside them would be a file nobody reads and a
+    // second place to translate the same page.
+    writeWords(namespace, collapsed ? { en: ctx.words, ko: words.ko } : { en: ctx.words });
     extraLocaleRoutes.push(
       ...HAND_TRANSLATED.map((locale) => ({ locale, route: entry.route, component: name })),
     );
-    collapsedPages.push({ name, namespace: namespaceFor(parsed.name), strings: ctx.words.size });
+    const page = { name, namespace, strings: ctx.words.size, locales: wordLocales };
+    (collapsed ? collapsedPages : localizedPages).push(page);
   }
   generated.push({ file, ...entry, ...(collapsed ? { component: name } : {}) });
 }
 
 /* --------------------------------------------------------- page word bundles */
 
-// A module listing every collapsed page's words. Nothing imports it at
-// runtime — the pages carry their own — but i18next.d.ts types the catalogue
-// off it, so `t('001_h1')` is checked against the words actually extracted.
-if (collapsedPages.length) {
+// A module listing the words of every page that keeps them in the catalogue.
+// Nothing imports it at runtime — the pages carry their own — but i18next.d.ts
+// types the catalogue off it, so `t('001_h1')` is checked against the words
+// actually extracted.
+//
+// Sorted by namespace so the file does not reshuffle when a page starts or
+// stops collapsing; a page appears under the languages it actually has, which
+// for a non-collapsed English page is English and the hand-translated ones.
+const wordPages = [...collapsedPages, ...localizedPages].sort((a, b) =>
+  a.namespace.localeCompare(b.namespace),
+);
+
+if (wordPages.length) {
   const locales = ['en', 'zh-TW', 'ko'];
   const ident = (locale, ns) =>
     `${locale.replace(/[^A-Za-z0-9]/g, '')}_${ns.replace(/[^A-Za-z0-9]/g, '_')}`;
+  const pagesIn = (locale) => wordPages.filter((page) => page.locales.includes(locale));
 
   const imports = [];
   for (const locale of locales) {
-    for (const page of collapsedPages) {
+    for (const page of pagesIn(locale)) {
       imports.push(
         `import ${ident(locale, page.namespace)} from './${locale}/pages/${page.namespace}.json';`,
       );
@@ -905,7 +956,7 @@ if (collapsedPages.length) {
 
   const bundles = locales
     .map((locale) => {
-      const entries = collapsedPages
+      const entries = pagesIn(locale)
         .map((page) => `    ${JSON.stringify(page.namespace)}: ${ident(locale, page.namespace)},`)
         .join('\n');
       return `  ${JSON.stringify(locale)}: {\n${entries}\n  },`;
@@ -916,20 +967,25 @@ if (collapsedPages.length) {
 ${imports.join('\n')}
 
 /**
- * The words of every page that is served by one component in every language.
+ * The words of every page whose sentences live in the catalogue rather than
+ * in its JSX.
  *
- * A collapsed page keeps its structure in src/pages and its sentences here,
- * one namespace per page and one file per language. The English and Korean
- * files are extracted from site/; a language with no page in site/ has an
- * empty file that the converter creates once and never overwrites, because
- * that is where a translation with no HTML behind it has to live.
+ * Those pages keep their structure in src/pages and their sentences here, one
+ * namespace per page and one file per language. The English and Korean files
+ * are extracted from site/; a language with no page in site/ has an empty file
+ * that the converter creates once and never overwrites, because that is where
+ * a translation with no HTML behind it has to live.
+ *
+ * A page appears under English and Traditional Chinese but not Korean when
+ * its Korean edition is a component of its own — it is this component that
+ * Chinese reads, and the Korean words are in the Korean one.
  */
 export const PAGE_RESOURCES = {
 ${bundles}
 } as const;
 
 export const PAGE_NAMESPACES = [
-${collapsedPages.map((p) => `  ${JSON.stringify(p.namespace)},`).join('\n')}
+${wordPages.map((p) => `  ${JSON.stringify(p.namespace)},`).join('\n')}
 ] as const;
 `;
   writeFileSync(join(RESOURCES, 'pages.ts'), source);
@@ -947,11 +1003,11 @@ const templateRoutes = templateNames.flatMap((name) =>
 // to ask "is this a route?" — that is how the language switch knows whether a
 // page has a twin — and asking the registry drags every page's dynamic import
 // into the shell's chunk.
-// A collapsed page answers in every language, including the ones with no
+// Every converted page answers in every language, including the ones with no
 // edition in `site/` — their words come from a hand-written file that falls
 // back to English until somebody fills it in.
 const localeRoutes = extraLocaleRoutes.map(({ locale, route, component }) => ({
-  route: route === '/' ? `/${LOCALE_PREFIX[locale]}` : `/${LOCALE_PREFIX[locale]}${route}`,
+  route: route === '/' ? LOCALE_PREFIX[locale] : `${LOCALE_PREFIX[locale]}${route}`,
   component,
 }));
 
@@ -1090,6 +1146,17 @@ if (COLLAPSED.size || COLLAPSE_REJECTED.length) {
   }
   if (COLLAPSE_REJECTED.length) {
     console.log('     Their structures have drifted. Reconcile them in site/ to collapse them.');
+  }
+}
+
+if (localizedPages.length) {
+  console.log('');
+  console.log(
+    `hand-translated: ${localizedPages.length} EN pages also answer for ` +
+      `${HAND_TRANSLATED.join(', ')}, whose words are written by hand`,
+  );
+  for (const page of localizedPages) {
+    console.log(`   ${page.name} — ${page.strings} strings`);
   }
 }
 

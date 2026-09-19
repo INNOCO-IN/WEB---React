@@ -97,10 +97,24 @@ export function isRoute(path: string): boolean {
  * twin. So the rule is neither "always prefix" nor "never": take the twin
  * where there is one, keep the default where there is not.
  *
- * External URLs and anchors are returned untouched.
+ * External URLs and bare anchors are returned untouched.
  */
 export function localize(path: string | null | undefined, locale: Locale): string {
   if (!path || !path.startsWith('/')) return path ?? '';
+
+  // A path can carry an anchor — `/#connect` is the home page plus one, and
+  // the detail pages are full of them. The anchor is not part of the route,
+  // so it is set aside and put back: left in, the whole string fails the route
+  // check and the link stays in whichever language it was written in, which
+  // on a Chinese page means the reader is quietly sent to the English site.
+  const hash = path.indexOf('#');
+  if (hash >= 0) {
+    const base = localize(path.slice(0, hash) || '/', locale);
+    // `/#connect` in the default locale is already what it should be, and
+    // shortening it to `#connect` would make it relative to the current page.
+    return base === '/' ? path : `${base}${path.slice(hash)}`;
+  }
+
   const target = pathIn(path, locale);
   return isRoute(target) ? target : path;
 }

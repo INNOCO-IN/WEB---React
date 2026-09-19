@@ -112,6 +112,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   '/zh-tw/action-research': { lang: 'zh-TW', section: 'bigger-picture', title: 'Action Research' },
   '/bridge-builder': { lang: 'en', section: 'bigger-picture', title: 'Bridge Builder' },
   '/ko/bridge-builder': { lang: 'ko', section: 'bigger-picture', title: 'Bridge Builder' },
+  '/zh-tw/bridge-builder': { lang: 'zh-TW', section: 'bigger-picture', title: 'Bridge Builder' },
   '/community': {
     lang: 'en',
     section: 'go-further',
@@ -141,6 +142,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/community/:slug': { lang: 'en', section: 'go-further', title: 'Community detail' },
   '/ko/community/:slug': { lang: 'ko', section: 'go-further', title: 'Community detail' },
+  '/zh-tw/community/:slug': { lang: 'zh-TW', section: 'go-further', title: 'Community detail' },
   '/community/all': {
     lang: 'en',
     section: 'go-further',
@@ -215,6 +217,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/manifesto': { lang: 'en', section: 'bigger-picture', title: 'Manifesto' },
   '/ko/manifesto': { lang: 'ko', section: 'bigger-picture', title: 'Manifesto' },
+  '/zh-tw/manifesto': { lang: 'zh-TW', section: 'bigger-picture', title: 'Manifesto' },
   '/mewe': { lang: 'en', section: 'start-here', title: 'MEWE' },
   '/ko/mewe': { lang: 'ko', section: 'start-here', title: 'MEWE' },
   '/zh-tw/mewe': { lang: 'zh-TW', section: 'start-here', title: 'MEWE' },
@@ -285,6 +288,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'projects', drives: 'the wall of project briefs — every project but the one the page features' },
     ],
   },
+  '/zh-tw/project': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'Project index',
+    reads: [
+      { table: 'projects', drives: 'the wall of project briefs — every project but the one the page features' },
+    ],
+  },
   '/project/:slug': {
     lang: 'en',
     section: 'go-further',
@@ -301,6 +312,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'projects', drives: 'the title, and the All projects rail beside the article' },
     ],
   },
+  '/zh-tw/project/:slug': {
+    lang: 'zh-TW',
+    section: 'go-further',
+    title: 'Project detail',
+    reads: [
+      { table: 'projects', drives: 'the title, and the All projects rail beside the article' },
+    ],
+  },
   '/project/asia-exchange': {
     lang: 'en',
     section: 'go-further',
@@ -311,6 +330,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/ko/project/asia-exchange': {
     lang: 'ko',
+    section: 'go-further',
+    title: 'Asia Exchange',
+    reads: [
+      { table: 'projects', drives: 'the All projects rail beside the article' },
+    ],
+  },
+  '/zh-tw/project/asia-exchange': {
+    lang: 'zh-TW',
     section: 'go-further',
     title: 'Asia Exchange',
     reads: [
@@ -487,6 +514,7 @@ export const PAGE_MODELS: Record<string, PageModel> = {
   },
   '/story': { lang: 'en', section: 'start-here', title: 'Story' },
   '/ko/story': { lang: 'ko', section: 'start-here', title: 'Story' },
+  '/zh-tw/story': { lang: 'zh-TW', section: 'start-here', title: 'Story' },
   '/story/all': {
     lang: 'en',
     section: 'start-here',
@@ -527,6 +555,14 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'stories', drives: 'the submission, and its attachment in the story-media bucket' },
     ],
   },
+  '/zh-tw/story/submit': {
+    lang: 'zh-TW',
+    section: 'start-here',
+    title: 'Story submission',
+    writes: [
+      { table: 'stories', drives: 'the submission, and its attachment in the story-media bucket' },
+    ],
+  },
   '/workshop': {
     lang: 'en',
     section: 'start-here',
@@ -543,8 +579,17 @@ export const PAGE_MODELS: Record<string, PageModel> = {
       { table: 'workshops', drives: 'the featured row, the card wall below it, and the audience filter chips' },
     ],
   },
+  '/zh-tw/workshop': {
+    lang: 'zh-TW',
+    section: 'start-here',
+    title: 'Workshop',
+    reads: [
+      { table: 'workshops', drives: 'the featured row, the card wall below it, and the audience filter chips' },
+    ],
+  },
   '/workshop/:slug': { lang: 'en', section: 'start-here', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
   '/ko/workshop/:slug': { lang: 'ko', section: 'start-here', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
+  '/zh-tw/workshop/:slug': { lang: 'zh-TW', section: 'start-here', title: 'Workshop detail', writes: WORKSHOP_SIGNUP },
   '/workshop/bucket-list': { lang: 'en', section: 'start-here', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
   '/ko/workshop/bucket-list': { lang: 'ko', section: 'start-here', title: 'Bucket List', writes: WORKSHOP_SIGNUP },
   '/zh-tw/workshop/bucket-list': { lang: 'zh-TW', section: 'start-here', title: 'Bucket List', writes: WORKSHOP_SIGNUP },

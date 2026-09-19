@@ -203,17 +203,31 @@ describe('the language switcher', () => {
     );
   });
 
-  it('offers the section, marked, where the page has no twin', async () => {
-    // Chinese, because Korean no longer has a gap to demonstrate: the 2026
-    // design gave every English page a Korean edition, so the Korean link is
-    // exact everywhere and it is Chinese that falls back to the section.
-    await visit('/community/animators');
+  it('offers the section, marked, where there is no page to land on', async () => {
+    // No published page demonstrates this any more — every one of them exists
+    // in all three languages. What still does is a URL with nothing behind it:
+    // the nav is on the 404 page precisely so a mistyped address still gets
+    // you somewhere, and the switch has to be honest about where.
+    await visit('/people/someone-who-left');
     const menu = await openSwitcher();
     const chinese = menu.getByRole('link', { name: /Chinese/ });
-    expect(chinese).toHaveAttribute('href', '/zh-tw/community');
+    expect(chinese).toHaveAttribute('href', '/zh-tw/people');
     expect(chinese).toHaveClass('is-approximate');
     // And it says why, rather than only looking different.
     expect(chinese).toHaveAccessibleName(/no .*Chinese.* version/i);
+  });
+
+  it('is exact in every language on a page that exists', async () => {
+    // The Workshop hub was the worst of the gap: its Chinese switch landed on
+    // the Chinese home page, and its Chinese nav dot pointed at the English
+    // hub. Both are the page itself now.
+    await visit('/workshop');
+    const menu = await openSwitcher();
+    for (const [name, href] of [[/Chinese/, '/zh-tw/workshop'], [/Korean/, '/ko/workshop']] as const) {
+      const link = menu.getByRole('link', { name });
+      expect(link).toHaveAttribute('href', href);
+      expect(link).not.toHaveClass('is-approximate');
+    }
   });
 });
 
@@ -242,18 +256,26 @@ describe('document metadata', () => {
     );
   });
 
-  it('names only the languages that genuinely have the page', async () => {
-    // No page is one-language-only any more — the 2026 design closed that gap
-    // for Korean — so what is worth checking is the other half of the rule: a
-    // page in two languages advertises two, and does not invent a third by
-    // pointing Chinese at the section above it.
+  it('names all three where all three have the page', async () => {
+    // Every converted page exists in every language now, so this is the shape
+    // hreflang should have almost everywhere.
     await visit('/story/submit');
     await screen.findByRole('banner');
 
-    const alternates = [...document.head.querySelectorAll('link[rel="alternate"]')];
-    const langs = alternates.map((link) => link.getAttribute('hreflang'));
-    expect(langs).toEqual(['en', 'ko', 'x-default']);
-    expect(langs).not.toContain('zh-Hant-TW');
+    const langs = [...document.head.querySelectorAll('link[rel="alternate"]')].map((link) =>
+      link.getAttribute('hreflang'),
+    );
+    expect(langs).toEqual(['en', 'zh-Hant-TW', 'ko', 'x-default']);
+  });
+
+  it('names nothing where there is no page to name', async () => {
+    // hreflang has to point at the *same* document, so the section the
+    // language switcher falls back to is not a twin and is not advertised as
+    // one — a 404 under /people is not the team page in three languages.
+    await visit('/people/someone-who-left');
+    await screen.findByRole('banner');
+
+    expect(document.head.querySelectorAll('link[rel="alternate"]')).toHaveLength(0);
   });
 
   it('sets a canonical URL', async () => {

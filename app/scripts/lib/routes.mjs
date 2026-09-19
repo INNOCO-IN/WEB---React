@@ -87,22 +87,49 @@ export const TAKEN_OVER = new Map([
 ]);
 
 /**
- * Template → the route pattern, or patterns, it serves.
+ * The URL prefix each language answers under. The default locale has none.
  *
- * One entry in the registry, not one per page it replaced. React Router ranks
- * a static path above a dynamic one, so the richer project pages that still
- * have components of their own keep winning `/project/asia-exchange`.
+ * `site/` holds at most two editions of a page, EN and KO, so for those the
+ * filename says which language it is. Traditional Chinese has no edition and
+ * is not going to get one — its words are written by hand against the English
+ * page — so the only place it can be written down is here. That is exactly
+ * why it kept being left out: every other part of the pipeline can read the
+ * language off a filename, and this one cannot.
  *
- * A template that serves both languages names both paths: the workshop pages
- * are the same layout with different words, so one component renders
- * `/workshop/metanoia` and `/ko/workshop/metanoia` and reads the language off
- * the path.
+ * Mirrors LOCALE_PREFIX in src/i18n/locales.ts.
  */
-export const TEMPLATES = {
-  ProjectDetail: ['/project/:slug', '/ko/project/:slug'],
-  CommunityDetail: ['/community/:slug', '/ko/community/:slug'],
-  WorkshopDetail: ['/workshop/:slug', '/ko/workshop/:slug'],
+export const LOCALE_PREFIX = { en: '', ko: '/ko', 'zh-TW': '/zh-tw' };
+
+/** Locales with no edition in `site/`, whose words are written by hand. */
+export const HAND_TRANSLATED = ['zh-TW'];
+
+/** Base path per template, before the language prefix. */
+const TEMPLATE_PATHS = {
+  ProjectDetail: '/project/:slug',
+  CommunityDetail: '/community/:slug',
+  WorkshopDetail: '/workshop/:slug',
 };
+
+/**
+ * Template → the route patterns it serves, one per language.
+ *
+ * One entry in the registry per language, not one per page it replaced. React
+ * Router ranks a static path above a dynamic one, so the richer project pages
+ * that still have components of their own keep winning
+ * `/project/asia-exchange`.
+ *
+ * The languages are spread over the base path rather than listed, because a
+ * hand-written list is how `/zh-tw/workshop/mobius-making` came to be a 404
+ * while its English and Korean twins worked: the template reads the language
+ * off the path and renders all three perfectly well, and simply had no route
+ * saying so.
+ */
+export const TEMPLATES = Object.fromEntries(
+  Object.entries(TEMPLATE_PATHS).map(([name, path]) => [
+    name,
+    Object.values(LOCALE_PREFIX).map((prefix) => `${prefix}${path}`),
+  ]),
+);
 
 /** Every route a template serves, however it was written. */
 export const routesForTemplate = (name) =>
