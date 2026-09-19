@@ -11,7 +11,7 @@
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
 .page-project-en [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
 .page-project-en [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
-.page-project-en [style*="grid-template-columns: repeat(3, .page-project-en minmax(0"] {grid-template-columns:1fr !important;}
+.page-project-en [style*="grid-template-columns: repeat(3, minmax(0"] {grid-template-columns:1fr !important;}
 .page-project-en img, .page-project-en svg, .page-project-en video {max-width:100% !important;}
 .page-project-en [style*="font-size: 300px"] {display:none !important;}
 .page-project-en [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}

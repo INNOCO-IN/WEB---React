@@ -210,17 +210,70 @@ prefilling links are declared on the markup, as `field=value`. Both are in
 ## The review desk
 
 `/review` shows what visitors sent — submissions, stories, workshop sign-ups —
-and lets a reviewer move a row's status.
+in three queues, each grouped into waiting and handled, each with a search and
+the filters that read off the fields its form already collects. A reviewer moves
+a row's status, replies by handing over to their mail client, and publishes a
+story to the site.
 
 It is deliberately not a page of the site: no nav, no footer, no locale, no
 entry in the route table, `noindex`, and nothing links to it. Sign-in is a
 mailed link (`npm run signin-link` prints one in development), and what a signed-in
-person can see is decided by RLS, not by the page.
+person can see is decided by RLS, not by the page. Its screens live in
+`app/src/review/`, which is a module rather than a page for the reason
+`app/src/builder/` is: its own palette, its own states, its own routes.
 
-Marking a story `published` records the decision; it does not put the story on
-the site. `stories` and `story_entries` are different tables and the gap between
-them is editorial — a title, a topic and a permalink the form never asked for.
-`npm run promote-story` is what carries one across.
+Every row records the **edition it was written in** — derived from the path it
+came from, `/ko/are-you-in` being Korean — because the reply has to go back in
+that language. The desk chrome itself switches EN · KO; the rows never do.
+
+**"Published" and "on the site" are two different facts, and the desk keeps them
+apart.** `stories` and `story_entries` are different tables and the gap between
+them is editorial — a permalink, a headline, a topic and a summary the form never
+asked for. `/review/publish/:id` is where somebody writes those: it derives what
+it can, shows the story alongside the whole way down, and the last look names the
+three or four places the press puts it before it puts it anywhere. A row that was
+decided before that flow existed says so rather than claiming to be live.
+
+`npm run promote-story` still prints the same SQL for anyone who would rather
+read it before running it — both build the row through
+`app/src/lib/story-promotion.ts`, so the two cannot disagree about its shape.
+
+**The stories tab is one list of stories, not one table.** It reads both —
+what visitors sent (`stories`) and what the site is serving (`story_entries`) —
+joins them on the permalink, and shows each story once, in three runs:
+**waiting** is the work, **on the site** is what a visitor can read right now,
+and **not on the site** is everything else that exists (declined, taken down, or
+decided before anything could carry it across). Most of the collection is in no
+queue at all: it predates the submission form.
+
+A story that is up carries the other set of actions on the same row — correct a
+headline in either edition, change the date, topic or format, put a new picture
+on it (uploaded into the `story-media` bucket, or an address typed in, with the
+current one shown so a wrong address cannot pass for a right one), take it off
+the site and put it back, mark it still being written, and curate the wall of
+cards at the foot of `/story`. That wall was "the twelve most recent" and
+nothing else until now; a card can be pinned and moved, and `Pin these 12` fixes
+the wall as it stands so a thirteenth story stops pushing one off. **Pinning
+puts a card at the front**, because the wall has twelve places and a pin that
+merely joined the end of a full run was a button that changed no page. A story
+published after that is on the site but not on the wall until somebody pins it
+or unpins one — which the publishing screen's last look now says, with the
+count, rather than leaving it to be discovered. Which twelve
+the desk calls the wall is [`app/src/lib/story-wall.ts`](app/src/lib/story-wall.ts)
+— the same function the page draws from, so the two cannot come to disagree.
+
+**A story nobody sent** is written at `/review/add`, reached from the list. It
+is the other door into the same table: most of the collection came through
+`site/data/stories.js` and the seed, so adding one IN wrote itself used to mean
+editing a file and re-running two scripts. The screen asks for what nothing can
+derive — permalink, headline, topic, format, the words, a picture — and, unlike
+publishing a submission, **places a point on the Constellation by default**: a
+story the desk sits down to write is being put on the site deliberately.
+
+**One list is still two facts.** A row says separately what was decided in the
+queue and where the story actually is, because those come apart: `Published ·
+Taken off the site` is a real state somebody chose. An edited row also says it
+has stopped following `site/data`; see [`SUPABASE.md`](SUPABASE.md).
 
 ## Not included (internal, by prior decision)
 

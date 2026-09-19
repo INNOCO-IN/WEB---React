@@ -32,6 +32,16 @@ export interface StoryEntry {
   imageFit: string | null;
   imageRatio: string | null;
   imagePosition: string | null;
+  /**
+   * Where this entry sits on the wall of cards at the foot of /story, or
+   * absent to let the date decide.
+   *
+   * Optional because only the database can have one: it is a curation the
+   * review desk writes, and `site/data/stories.js` has no opinion about it, so
+   * every row in this file lacks it and every row read from `story_entries`
+   * may carry one.
+   */
+  wallOrder?: number | null;
   en: StoryCopy;
   ko: StoryCopy;
 }
@@ -217,6 +227,595 @@ export const STORY_ENTRIES: StoryEntry[] = [
         "그리고 아이는 진지한 얼굴로 저를 보았습니다. “계속 배우고 싶어요, 할머니. 다른 아이들은 자기 동네에서 이걸 어떻게 하는지 듣고 싶어요. 찾는 걸 도와주실래요?”",
         "“물론이지.” 제가 말했습니다.",
         "우리는 큰 종이를 꺼내 함께 아이디어를 그리기 시작했습니다."
+      ]
+    }
+  },
+  {
+    "id": "connected",
+    "date": "2026-02-01",
+    "format": "music",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Collective",
+      "title": "“Perhaps we were already connected.”",
+      "body": "A participant reflection, carried out of a ME=WE Core session.",
+      "credit": "Anonymous",
+      "paras": [
+        "A participant reflection, carried out of a ME=WE Core session."
+      ]
+    },
+    "ko": {
+      "eyebrow": "콜렉티브",
+      "title": "“어쩌면 우리는 이미 연결되어 있었는지도.”",
+      "body": "ME=WE 코어 세션에서 나온 한 참가자의 회고.",
+      "credit": "익명",
+      "paras": [
+        "ME=WE 코어 세션에서 나온 한 참가자의 회고."
+      ]
+    }
+  },
+  {
+    "id": "two-hands",
+    "date": "2026-02-01",
+    "format": "drawing",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Collective",
+      "title": "Two hands, one line",
+      "body": "A drawing made during Möbius Making — where the ME and WE surfaces became one.",
+      "credit": "A participant",
+      "paras": [
+        "A drawing made during Möbius Making — where the ME and WE surfaces became one."
+      ]
+    },
+    "ko": {
+      "eyebrow": "콜렉티브",
+      "title": "두 손, 하나의 선",
+      "body": "뫼비우스 만들기에서 그려진 그림 — ME와 WE의 면이 하나가 된 곳.",
+      "credit": "한 참가자",
+      "paras": [
+        "뫼비우스 만들기에서 그려진 그림 — ME와 WE의 면이 하나가 된 곳."
+      ]
+    }
+  },
+  {
+    "id": "song-whole",
+    "date": "2026-01-01",
+    "format": "music",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Collective",
+      "title": "A song for the whole",
+      "body": "Recorded after a retreat — voices that learned to listen before they sang.",
+      "credit": "A collective",
+      "paras": [
+        "Recorded after a retreat — voices that learned to listen before they sang."
+      ]
+    },
+    "ko": {
+      "eyebrow": "콜렉티브",
+      "title": "전체를 위한 노래",
+      "body": "리트릿 후 녹음된 노래 — 부르기 전에 듣는 법을 배운 목소리들.",
+      "credit": "한 콜렉티브",
+      "paras": [
+        "리트릿 후 녹음된 노래 — 부르기 전에 듣는 법을 배운 목소리들."
+      ]
+    }
+  },
+  {
+    "id": "week-after",
+    "date": "2026-01-01",
+    "format": "writing",
+    "topic": "family",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Family",
+      "title": "The week after the workshop",
+      "body": "A participant writes about the small action they chose — and what it changed at home.",
+      "credit": "A participant",
+      "paras": [
+        "A participant writes about the small action they chose — and what it changed at home."
+      ]
+    },
+    "ko": {
+      "eyebrow": "가족",
+      "title": "워크숍 다음 주",
+      "body": "한 참가자가 자신이 고른 작은 행동에 대해 씁니다 — 그것이 집에서 무엇을 바꿨는지.",
+      "credit": "한 참가자",
+      "paras": [
+        "한 참가자가 자신이 고른 작은 행동에 대해 씁니다 — 그것이 집에서 무엇을 바꿨는지."
+      ]
+    }
+  },
+  {
+    "id": "street-exp",
+    "date": "2025-12-01",
+    "format": "writing",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Neighbors",
+      "title": "A neighbor’s small experiment",
+      "body": "One person tried a single ME=WE action for a week — and wrote down what changed on their street.",
+      "credit": "A neighbor",
+      "paras": [
+        "One person tried a single ME=WE action for a week — and wrote down what changed on their street."
+      ]
+    },
+    "ko": {
+      "eyebrow": "이웃",
+      "title": "어느 이웃의 작은 실험",
+      "body": "한 사람이 일주일간 하나의 ME=WE 행동을 시도하고 — 자신의 거리에서 달라진 것을 적었습니다.",
+      "credit": "한 이웃",
+      "paras": [
+        "한 사람이 일주일간 하나의 ME=WE 행동을 시도하고 — 자신의 거리에서 달라진 것을 적었습니다."
+      ]
+    }
+  },
+  {
+    "id": "harmony",
+    "date": "2025-12-01",
+    "format": "music",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Collective",
+      "title": "“The harmony was already in them.”",
+      "body": "Overheard after a singing circle — the group found the chord before anyone taught it.",
+      "credit": "A facilitator",
+      "paras": [
+        "Overheard after a singing circle — the group found the chord before anyone taught it."
+      ]
+    },
+    "ko": {
+      "eyebrow": "콜렉티브",
+      "title": "“화음은 이미 그들 안에 있었다.”",
+      "body": "노래 모임 후 우연히 들은 말 — 누가 가르치기 전에 그룹이 화음을 찾아냈습니다.",
+      "credit": "한 퍼실리테이터",
+      "paras": [
+        "노래 모임 후 우연히 들은 말 — 누가 가르치기 전에 그룹이 화음을 찾아냈습니다."
+      ]
+    }
+  },
+  {
+    "id": "noticed",
+    "date": "2025-11-01",
+    "format": "photo",
+    "topic": "noticed",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Noticed in the world",
+      "title": "A moment someone noticed ME=WE",
+      "body": "A photo of strangers becoming, briefly, one thing.",
+      "credit": "Anonymous",
+      "paras": [
+        "A photo of strangers becoming, briefly, one thing."
+      ]
+    },
+    "ko": {
+      "eyebrow": "세상에서 발견",
+      "title": "누군가 ME=WE를 알아차린 순간",
+      "body": "낯선 이들이 잠시 하나가 되는 사진.",
+      "credit": "익명",
+      "paras": [
+        "낯선 이들이 잠시 하나가 되는 사진."
+      ]
+    }
+  },
+  {
+    "id": "hasaad",
+    "date": "2025-11-01",
+    "format": "video",
+    "topic": "noticed",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Nature",
+      "title": "Hasaad — food grown for neighbors",
+      "body": "A participant venture in organic food and farming, Dubai.",
+      "credit": "A UAE youth venture",
+      "paras": [
+        "A participant venture in organic food and farming, Dubai."
+      ]
+    },
+    "ko": {
+      "eyebrow": "자연",
+      "title": "하사드 — 이웃을 위해 기른 먹거리",
+      "body": "두바이의 유기농 먹거리·농업 참가자 벤처.",
+      "credit": "UAE 청년 벤처",
+      "paras": [
+        "두바이의 유기농 먹거리·농업 참가자 벤처."
+      ]
+    }
+  },
+  {
+    "id": "what-held",
+    "date": "2025-10-01",
+    "format": "video",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Collective",
+      "title": "What held after the bootcamp",
+      "body": "A camera followed Nepali youth for two years — to see what lasted.",
+      "credit": "The UNC film team",
+      "paras": [
+        "A camera followed Nepali youth for two years — to see what lasted."
+      ]
+    },
+    "ko": {
+      "eyebrow": "콜렉티브",
+      "title": "부트캠프 후에 남은 것",
+      "body": "카메라가 네팔 청년들을 2년간 따라갔습니다 — 무엇이 지속되는지 보기 위해.",
+      "credit": "UNC 영상팀",
+      "paras": [
+        "카메라가 네팔 청년들을 2년간 따라갔습니다 — 무엇이 지속되는지 보기 위해."
+      ]
+    }
+  },
+  {
+    "id": "circle-dance",
+    "date": "2025-10-01",
+    "format": "dance",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Collective",
+      "title": "A circle dance at closing",
+      "body": "Nobody planned it. The last session ended and the chairs moved themselves.",
+      "credit": "Anonymous",
+      "paras": [
+        "Nobody planned it. The last session ended and the chairs moved themselves."
+      ]
+    },
+    "ko": {
+      "eyebrow": "콜렉티브",
+      "title": "마무리의 원무",
+      "body": "아무도 계획하지 않았습니다. 마지막 세션이 끝나자 의자들이 스스로 움직였습니다.",
+      "credit": "익명",
+      "paras": [
+        "아무도 계획하지 않았습니다. 마지막 세션이 끝나자 의자들이 스스로 움직였습니다."
+      ]
+    }
+  },
+  {
+    "id": "plate",
+    "date": "2025-09-01",
+    "format": "craft",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Neighbors",
+      "title": "A plate for a neighbor",
+      "body": "Made in an afternoon, given the same evening.",
+      "credit": "Rana",
+      "paras": [
+        "Made in an afternoon, given the same evening."
+      ]
+    },
+    "ko": {
+      "eyebrow": "이웃",
+      "title": "이웃을 위한 접시",
+      "body": "한나절에 만들어, 그날 저녁에 건넸습니다.",
+      "credit": "라나",
+      "paras": [
+        "한나절에 만들어, 그날 저녁에 건넸습니다."
+      ]
+    }
+  },
+  {
+    "id": "soup",
+    "date": "2025-09-01",
+    "format": "recipe",
+    "topic": "family",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Family",
+      "title": "My grandmother’s soup, doubled",
+      "body": "The recipe says feeds six. She always made it feed twelve.",
+      "credit": "Anonymous",
+      "paras": [
+        "The recipe says feeds six. She always made it feed twelve."
+      ]
+    },
+    "ko": {
+      "eyebrow": "가족",
+      "title": "두 배로 끓인 할머니의 국",
+      "body": "조리법엔 6인분이라 적혀 있지만, 할머니는 늘 12인분을 만드셨습니다.",
+      "credit": "익명",
+      "paras": [
+        "조리법엔 6인분이라 적혀 있지만, 할머니는 늘 12인분을 만드셨습니다."
+      ]
+    }
+  },
+  {
+    "id": "wire-mobius",
+    "date": "2025-08-01",
+    "format": "symbol",
+    "topic": "noticed",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Noticed in the world",
+      "title": "A Möbius strip in wire",
+      "body": "Bent by four hands taking turns — one surface, no inside or outside.",
+      "credit": "A workshop group",
+      "paras": [
+        "Bent by four hands taking turns — one surface, no inside or outside."
+      ]
+    },
+    "ko": {
+      "eyebrow": "세상에서 발견",
+      "title": "철사로 만든 뫼비우스 띠",
+      "body": "네 손이 번갈아 구부린 것 — 안도 밖도 없는 하나의 면.",
+      "credit": "워크숍 그룹",
+      "paras": [
+        "네 손이 번갈아 구부린 것 — 안도 밖도 없는 하나의 면."
+      ]
+    }
+  },
+  {
+    "id": "our-street",
+    "date": "2025-08-01",
+    "format": "drawing",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Neighbors",
+      "title": "The street where we all live",
+      "body": "Every house drawn with its door open.",
+      "credit": "Amina, age 11",
+      "paras": [
+        "Every house drawn with its door open."
+      ]
+    },
+    "ko": {
+      "eyebrow": "이웃",
+      "title": "우리 모두가 사는 거리",
+      "body": "모든 집이 문을 연 채로 그려져 있습니다.",
+      "credit": "아미나, 11세",
+      "paras": [
+        "모든 집이 문을 연 채로 그려져 있습니다."
+      ]
+    }
+  },
+  {
+    "id": "mural",
+    "date": "2025-07-01",
+    "format": "photo",
+    "topic": "lived",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Collective",
+      "title": "Flashlight mural, mid-shift",
+      "body": "Shadow made visible by hand, after dark.",
+      "credit": "A retreat circle",
+      "paras": [
+        "Shadow made visible by hand, after dark."
+      ]
+    },
+    "ko": {
+      "eyebrow": "콜렉티브",
+      "title": "손전등 벽화, 한창 그리던 중",
+      "body": "어둠 속에서 손으로 드러낸 그림자.",
+      "credit": "리트릿 서클",
+      "paras": [
+        "어둠 속에서 손으로 드러낸 그림자."
+      ]
+    }
+  },
+  {
+    "id": "letter",
+    "date": "2025-07-01",
+    "format": "writing",
+    "topic": "family",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Family",
+      "title": "A letter I wrote to myself",
+      "body": "Opened a year later. Half of it had come true; the other half still asks.",
+      "credit": "Anonymous",
+      "paras": [
+        "Opened a year later. Half of it had come true; the other half still asks."
+      ]
+    },
+    "ko": {
+      "eyebrow": "가족",
+      "title": "나에게 쓴 편지",
+      "body": "1년 뒤에 열었습니다. 절반은 이루어졌고, 나머지 절반은 여전히 묻고 있습니다.",
+      "credit": "익명",
+      "paras": [
+        "1년 뒤에 열었습니다. 절반은 이루어졌고, 나머지 절반은 여전히 묻고 있습니다."
+      ]
+    }
+  },
+  {
+    "id": "farm-song",
+    "date": "2025-06-01",
+    "format": "music",
+    "topic": "noticed",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Nature",
+      "title": "A farm-to-table song",
+      "body": "Sung while carrying vegetables from the field to the table.",
+      "credit": "Friends in Yamaguchi",
+      "paras": [
+        "Sung while carrying vegetables from the field to the table."
+      ]
+    },
+    "ko": {
+      "eyebrow": "자연",
+      "title": "밭에서 식탁까지의 노래",
+      "body": "밭에서 식탁으로 채소를 나르며 부른 노래.",
+      "credit": "야마구치의 친구들",
+      "paras": [
+        "밭에서 식탁으로 채소를 나르며 부른 노래."
+      ]
+    }
+  },
+  {
+    "id": "leaf",
+    "date": "2025-06-01",
+    "format": "other",
+    "topic": "noticed",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Nature",
+      "title": "A found leaf, pressed",
+      "body": "Carried back into the room beside a few words on reforming from within.",
+      "credit": "Anonymous",
+      "paras": [
+        "Carried back into the room beside a few words on reforming from within."
+      ]
+    },
+    "ko": {
+      "eyebrow": "자연",
+      "title": "주워서 눌러 둔 잎",
+      "body": "안에서부터 다시 빚어진다는 몇 마디 곁에 놓여 방으로 돌아왔습니다.",
+      "credit": "익명",
+      "paras": [
+        "안에서부터 다시 빚어진다는 몇 마디 곁에 놓여 방으로 돌아왔습니다."
+      ]
+    }
+  },
+  {
+    "id": "dawn-yoga",
+    "date": "2025-05-01",
+    "format": "dance",
+    "topic": "noticed",
+    "color": null,
+    "href": null,
+    "draft": false,
+    "image": null,
+    "imageFit": null,
+    "imageRatio": null,
+    "imagePosition": null,
+    "en": {
+      "eyebrow": "Nature",
+      "title": "Movement at dawn, day two",
+      "body": "Two days spent in mind and heart, closed in the body.",
+      "credit": "A retreat circle",
+      "paras": [
+        "Two days spent in mind and heart, closed in the body."
+      ]
+    },
+    "ko": {
+      "eyebrow": "자연",
+      "title": "새벽의 움직임, 이틀째",
+      "body": "마음과 머리로 보낸 이틀을, 몸으로 닫았습니다.",
+      "credit": "리트릿 서클",
+      "paras": [
+        "마음과 머리로 보낸 이틀을, 몸으로 닫았습니다."
       ]
     }
   },

@@ -1,0 +1,891 @@
+/* The review desk — the internal tool at /review.
+
+   Its own palette, scoped to `.rv`. The site's ink is #2E3B40, a blue-grey that
+   carries fourteen taxonomy colours behind it; the desk's is #1A1613, a warm
+   near-black that carries one accent. That is not a second opinion about the
+   same colour — it is a different surface, and naming it `--color-ink` in
+   tokens/colors.css would repaint every page of the site. So the desk's values
+   are named here, once, and the two that *are* the system's (red and amber) are
+   aliased from it rather than retyped.
+
+   Flat colour only. No gradients, no shadows, and no border-radius anywhere —
+   every corner in this tool is square, including the controls, which set
+   `border-radius: 0` explicitly to beat the user agent. */
+
+.rv {
+  /* ---- The desk's ink and paper ---- */
+  --rv-paper: #faf4e2;
+  --rv-paper-dim: #f3ead0; /* the attachment placeholder's hatching, and nothing else */
+  --rv-ink: #1a1613;
+  --rv-teal: #1e8a86;
+  --rv-teal-hover: #146560;
+
+  --rv-ink-soft: rgba(26, 22, 19, 0.72); /* secondary text, muted labels, mono paths */
+  --rv-ink-quiet: rgba(26, 22, 19, 0.62); /* group headings, placeholders, handled rows */
+  --rv-ink-dot: rgba(26, 22, 19, 0.38); /* separator dots */
+  --rv-ink-archived: rgba(26, 22, 19, 0.35); /* the archived status square */
+  --rv-line-strong: rgba(26, 22, 19, 0.28); /* field underlines, button borders */
+  --rv-line: rgba(26, 22, 19, 0.12); /* panel borders, row dividers */
+  --rv-paper-45: rgba(250, 244, 226, 0.45); /* button border on the ink selection bar */
+
+  /* ---- The two that the system already names ----
+     Red means a read that failed, and nothing else in this tool is allowed to
+     be red. Amber marks a thing that is true and temporary — Korean copy
+     carried across — which is neither an error nor a success. */
+  --rv-failed: var(--color-red);
+  --rv-carried-across: var(--color-amber);
+
+  /* ---- Sizes ---- */
+  --rv-fs-read: 20px; /* reading size; nothing in the tool reads below 17px */
+  --rv-fs-label-sm: 12px; /* the floor, and only for uppercase Archivo labels */
+  --rv-measure-read: 720px;
+
+  background: var(--rv-paper);
+  color: var(--rv-ink);
+  font-family: var(--font-serif);
+}
+
+.rv * {
+  box-sizing: border-box;
+}
+
+.rv-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 48px 48px 96px;
+}
+
+/* The sign-in is the one screen in the tool allowed to be nearly empty. */
+.rv-page--narrow {
+  max-width: 560px;
+  padding: 48px 56px 96px;
+}
+
+/* ---------------------------------------------------------------- type */
+
+.rv-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--rv-fs-label-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.rv-label-strong {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.rv-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--rv-ink-soft);
+  word-break: break-all;
+}
+
+.rv-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1;
+  margin: 0;
+}
+
+.rv-row-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.rv-read {
+  font-size: var(--rv-fs-read);
+  line-height: 1.6;
+  text-wrap: pretty;
+  max-width: var(--rv-measure-read);
+  margin: 0;
+}
+
+.rv-secondary {
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.rv-muted {
+  color: var(--rv-ink-soft);
+}
+
+.rv-quiet {
+  color: var(--rv-ink-quiet);
+}
+
+.rv a {
+  color: var(--rv-teal);
+  text-decoration: none;
+}
+
+.rv a:hover {
+  color: var(--rv-teal-hover);
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------- panel */
+
+.rv-panel {
+  border: 1px solid var(--rv-line);
+  padding: 36px 44px 0;
+}
+
+.rv-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--rv-line);
+}
+
+.rv-eyebrow {
+  color: var(--rv-teal);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.rv-whoami {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--rv-ink-soft);
+}
+
+/* ---------------------------------------------------------------- tabs */
+
+.rv-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0 0;
+}
+
+.rv-tab-rail {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.rv-tab {
+  background: none;
+  border: 0;
+  padding: 0 0 10px;
+  cursor: pointer;
+  color: inherit;
+  border-bottom: 3px solid transparent;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.rv-tab[aria-current='true'] {
+  border-bottom-color: var(--rv-ink);
+}
+
+.rv-tab:hover:not([aria-current='true']) {
+  color: var(--rv-teal);
+}
+
+/* The counts are the only ambient signal in the product — they are what makes
+   three queues cheaper than one merged stream. */
+.rv-count {
+  color: var(--rv-teal);
+  font-size: 13px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------- controls */
+
+.rv-field,
+.rv-select {
+  font-family: var(--font-serif);
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-bottom: 1px solid var(--rv-line-strong);
+  border-radius: 0;
+  width: 100%;
+}
+
+.rv-field {
+  font-size: 18px;
+  padding: 6px 0 8px;
+}
+
+.rv-select {
+  font-size: 17px;
+  padding: 4px 0 6px;
+}
+
+.rv-field:focus,
+.rv-select:focus {
+  outline: none;
+  border-bottom-color: var(--rv-ink);
+}
+
+.rv-field::placeholder {
+  color: var(--rv-ink-quiet);
+}
+
+.rv-search {
+  width: 280px;
+  max-width: 100%;
+}
+
+/* The desk's own language, in the header rather than in the filter bar.
+   Same control, sized to the strip it sits in: everything else on that line is
+   the 12px label face, so a 17px reading-size select would be the loudest thing
+   in a row of quiet ones — and it sizes to its longest name rather than to the
+   row, which a bare `.rv-select` would stretch to fill.
+
+   Not uppercased, unlike its neighbours: these are the names of languages in
+   their own script, and `text-transform` plus a 0.14em tracking does nothing
+   for `한국어` but push its syllables apart. */
+.rv-select--chrome {
+  width: auto;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--rv-fs-label-sm);
+  letter-spacing: 0.08em;
+  color: var(--rv-ink-soft);
+  padding: 2px 0;
+}
+
+.rv-select--chrome:hover {
+  color: var(--rv-teal);
+}
+
+.rv-control {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.rv-control > .rv-label {
+  color: var(--rv-ink-quiet);
+}
+
+.rv-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 28px 0 0;
+}
+
+/* Segmented control — Arrived, Language. */
+.rv-segmented {
+  display: flex;
+  border: 1px solid var(--rv-line-strong);
+  /* Wraps rather than overflowing its own border. Four uppercase labels are
+     wider than a phone, and the alternative — a control that scrolls sideways
+     inside a box — hides options behind a gesture nobody is told about. */
+  flex-wrap: wrap;
+}
+
+.rv-segmented button {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--rv-fs-label-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-left: 1px solid var(--rv-line-strong);
+  border-radius: 0;
+  padding: 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.rv-segmented button:first-child {
+  border-left: 0;
+}
+
+.rv-segmented button:hover {
+  color: var(--rv-teal);
+}
+
+.rv-segmented button[aria-pressed='true'] {
+  background: var(--rv-ink);
+  color: var(--rv-paper);
+}
+
+/* Buttons. Left-aligned text on the primary: the decisions stack in the rail
+   and a centred label would make a column of ragged words.
+
+   Every selector here is written `.rv .rv-btn` rather than `.rv-btn`, and that
+   is not tidiness. Some of these buttons are links — `Publish →` opens the
+   publishing flow, so it has to be an anchor a reviewer can middle-click — and
+   `.rv a` above is one class plus one element, which outranks a bare class.
+   Left unscoped, the primary decision button renders teal-on-ink: still legible
+   enough to pass a glance, and wrong. Two classes settles it. */
+.rv .rv-btn,
+.rv .rv-btn-secondary,
+.rv .rv-btn-quiet {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--rv-fs-label-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 0;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.rv .rv-btn {
+  background: var(--rv-ink);
+  color: var(--rv-paper);
+  border: 0;
+  padding: 12px 14px;
+}
+
+.rv .rv-btn:hover:not(:disabled) {
+  background: var(--rv-teal);
+  color: var(--rv-paper);
+  text-decoration: none;
+}
+
+.rv .rv-btn-secondary {
+  background: transparent;
+  color: var(--rv-ink);
+  border: 1px solid var(--rv-line-strong);
+  padding: 12px 14px;
+}
+
+.rv .rv-btn-secondary:hover:not(:disabled) {
+  border-color: var(--rv-ink);
+  color: var(--rv-ink);
+  text-decoration: none;
+}
+
+.rv .rv-btn-quiet {
+  background: transparent;
+  color: var(--rv-ink);
+  border: 0;
+  border-bottom: 1px solid var(--rv-line-strong);
+  padding: 2px 0;
+}
+
+.rv .rv-btn-quiet:hover:not(:disabled) {
+  color: var(--rv-teal);
+  border-bottom-color: var(--rv-teal);
+  text-decoration: none;
+}
+
+.rv .rv-btn:disabled,
+.rv .rv-btn-secondary:disabled,
+.rv .rv-btn-quiet:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ---------------------------------------------------------------- status */
+
+/* A 9px square, not a circle. Status is carried by the square and the word
+   together, never by colour alone. */
+.rv-dot {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  flex: none;
+}
+
+.rv-dot--new {
+  background: var(--rv-teal);
+}
+
+.rv-dot--decided {
+  background: var(--rv-ink);
+}
+
+.rv-dot--archived {
+  background: var(--rv-ink-archived);
+}
+
+/* Hollow, for an enquiry that arrived before the form stored slugs. */
+.rv-dot--legacy {
+  border: 1.5px solid var(--rv-ink-quiet);
+}
+
+.rv-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------------------------------------------------------------- rows */
+
+.rv-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 44px 0 0;
+}
+
+.rv-group--handled {
+  padding: 56px 0 0;
+}
+
+.rv-group-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--rv-line-strong);
+}
+
+.rv-group--handled .rv-group-rule {
+  background: var(--rv-line);
+}
+
+.rv-row {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  column-gap: 44px;
+  padding: 32px 0 36px;
+  border-bottom: 1px solid var(--rv-line);
+}
+
+.rv-row:last-child {
+  border-bottom: 0;
+}
+
+.rv-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.rv-reading {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  max-width: var(--rv-measure-read);
+}
+
+.rv-decisions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The edition tag sits directly above the path it came from, because the reply
+   has to go back in the language the row was written in. */
+.rv-provenance {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rv-edition {
+  color: var(--rv-ink-soft);
+}
+
+.rv-name-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* What the form collected, across the top of the reading column: a run of
+   label-over-value pairs that wraps rather than a table, because how many there
+   are depends on how much the person filled in. */
+.rv-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.rv-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rv-pair > .rv-label {
+  color: var(--rv-ink-soft);
+}
+
+.rv-pair-value {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.rv-sep {
+  color: var(--rv-ink-dot);
+}
+
+/* ---------------------------------------------------------------- strips */
+
+/* Two facts, two strips: the status square in the rail records what we decided,
+   these record what the public can read. A story can be Published and Not on
+   the site, and the row says so in words rather than leaving it to be inferred. */
+.rv-strip {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--rv-line);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.rv-strip--live .rv-strip-mark {
+  color: var(--rv-teal);
+}
+
+.rv-strip--carried .rv-strip-mark {
+  color: var(--rv-carried-across);
+}
+
+.rv-strip-mark {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--rv-fs-label-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* ---------------------------------------------------------------- selection */
+
+/* Off until asked for, and it only ever offers archive. */
+.rv-select-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: var(--rv-ink);
+  color: var(--rv-paper);
+  padding: 14px 18px;
+  margin: 22px 0 0;
+}
+
+.rv-select-bar .rv-btn-secondary {
+  border-color: var(--rv-paper-45);
+  color: var(--rv-paper);
+}
+
+.rv-select-bar .rv-btn-secondary:hover {
+  border-color: var(--rv-paper);
+}
+
+.rv-check {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--rv-line-strong);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  flex: none;
+}
+
+.rv-check[aria-checked='true'] {
+  background: var(--rv-ink);
+  border-color: var(--rv-ink);
+}
+
+/* ---------------------------------------------------------------- chips */
+
+.rv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 0 0;
+}
+
+.rv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--rv-line-strong);
+  padding: 6px 10px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--rv-fs-label-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.rv-chip:hover {
+  border-color: var(--rv-ink);
+  color: var(--rv-teal);
+}
+
+/* ---------------------------------------------------------------- states */
+
+.rv-state {
+  padding: 64px 0 72px;
+  max-width: var(--rv-measure-read);
+}
+
+/* A failed read must not look like an empty one. Empty is a sentence at display
+   size on bare paper; failed carries a rule down its left edge, the database's
+   own words in mono, and two ways out. */
+.rv-failed {
+  border-left: 3px solid var(--rv-failed);
+  padding-left: 22px;
+}
+
+.rv-failed-detail {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--rv-ink-soft);
+  word-break: break-word;
+}
+
+.rv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 22px 0 0;
+}
+
+/* ---------------------------------------------------------------- attachment */
+
+.rv-attachment {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.rv-thumb {
+  width: 112px;
+  height: 84px;
+  flex: none;
+  object-fit: cover;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--rv-paper-dim) 0 6px,
+    var(--rv-paper) 6px 12px
+  );
+  border: 1px solid var(--rv-line);
+}
+
+.rv-thumb--wide {
+  width: 100%;
+  height: auto;
+  max-width: var(--rv-measure-read);
+  object-fit: contain;
+}
+
+/* ---------------------------------------------------------------- publish */
+
+.rv-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: start;
+}
+
+/* The story stays open on the left at reading size the whole way down, rather
+   than collapsing into a header — the reviewer is making editorial calls about
+   something they are still reading. */
+.rv-sticky {
+  position: sticky;
+  top: 48px;
+}
+
+.rv-step {
+  padding: 36px 0 0;
+  border-top: 1px solid var(--rv-line);
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rv-step:first-child {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.rv-ask {
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--rv-ink-soft);
+}
+
+.rv-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rv-choice {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--rv-fs-label-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: transparent;
+  color: inherit;
+  border: 1px solid var(--rv-line-strong);
+  border-radius: 0;
+  padding: 9px 12px;
+  cursor: pointer;
+}
+
+.rv-choice:hover {
+  color: var(--rv-teal);
+  border-color: var(--rv-ink);
+}
+
+.rv-choice[aria-pressed='true'] {
+  background: var(--rv-ink);
+  color: var(--rv-paper);
+  border-color: var(--rv-ink);
+}
+
+.rv-swatch {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--rv-line-strong);
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.rv-swatch[aria-pressed='true'] {
+  outline: 2px solid var(--rv-ink);
+  outline-offset: 2px;
+}
+
+/* The Korean warning is the only amber in the tool. */
+.rv-note-amber {
+  border-left: 3px solid var(--rv-carried-across);
+  padding-left: 18px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.rv-card-preview {
+  border: 1px solid var(--rv-line);
+  padding: 0 0 20px;
+}
+
+.rv-plate {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.rv-card-body {
+  padding: 18px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---------------------------------------------------------------- reflow */
+
+/* One reflow, no second design. It is opened on a laptop. */
+/* ------------------------------------------------------------------- editor */
+
+/* The news editor, opened inside a row rather than on a screen of its own.
+
+   Editing a news item is a small, reversible correction — a headline, a
+   sentence, the Korean that was never written — and sending somebody to another
+   page for it would lose the thing they were comparing it against. So the
+   fields open under the item they belong to, indented to the reading column and
+   ruled off at the top, and the row above stays on screen as the reference.
+
+   A rule rather than a panel: the desk has no cards, and a filled box here
+   would be the only one in the tool. */
+.rv-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rv-line);
+}
+
+/* The body field is the one that holds a paragraph, so it is the one control in
+   the desk that may grow. Vertical only — a resizable width would break the
+   reading column it is measured to. */
+.rv-textarea {
+  resize: vertical;
+  min-height: 92px;
+  line-height: 1.55;
+}
+
+@media (max-width: 1000px) {
+  .rv-stack {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rv-sticky {
+    position: static;
+  }
+}
+
+@media (max-width: 760px) {
+  .rv-page,
+  .rv-page--narrow {
+    padding: 32px 20px 72px;
+  }
+
+  .rv-panel {
+    padding: 24px 20px 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .rv-row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 22px;
+  }
+
+  /* The decisions become a full-width pair rather than a stacked column. */
+  .rv-decisions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .rv-decisions > * {
+    flex: 1 1 140px;
+  }
+
+  .rv-filters {
+    gap: 22px;
+  }
+
+  .rv-control {
+    flex: 1 1 100%;
+  }
+}

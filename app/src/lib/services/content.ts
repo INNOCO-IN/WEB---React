@@ -180,6 +180,16 @@ interface StoryEntryRow {
   image_fit: string | null;
   image_ratio: string | null;
   image_position: string | null;
+  /** True for an entry the desk took back off the site. See `visible` below. */
+  hidden?: boolean | null;
+  /**
+   * Where the desk pinned this entry on the wall at the foot of /story, or
+   * null to let the date decide. Optional for the same reason `hidden` is: it
+   * arrived in a later migration, and a database that has not run it should
+   * serve an unpinned wall rather than fall back to the bundled collection
+   * over a column it has never heard of.
+   */
+  wall_order?: number | null;
   /**
    * `jsonb`, so Postgres guarantees valid JSON and nothing about its shape —
    * the generated types call it `Json`, which is the truth. Narrowed where the
@@ -190,18 +200,38 @@ interface StoryEntryRow {
   ko: Json;
 }
 
+/**
+ * Whether a published row is still being served.
+ *
+ * Declining a story that was already on the site sets `hidden` rather than
+ * deleting the row — the headline, permalink and topic on it are somebody's
+ * work, and a decision that can be taken is a decision that can be taken back.
+ * See `declineStory` in services/review.ts.
+ *
+ * Read in JavaScript rather than as `.eq('hidden', false)`, and the column is
+ * not named in any select, for the reason the Constellation read already gives
+ * for using `*`: this is a later migration, and a database that has not run it
+ * should still serve the index rather than fall back to the bundled copy over a
+ * column it has never heard of. An absent column reads as undefined, which is
+ * not hidden, which is what a database without the concept means.
+ *
+ * Not access control — the policies in 20260917090000 stop anon from reading a
+ * hidden row at all. This is what keeps a signed-in reviewer from seeing, on
+ * the public site, the story they have just declined.
+ */
+const visible = (row: { hidden?: boolean | null }) => !row.hidden;
+
 /** The curated story collection behind the Story index and the Constellation. */
 export function fetchStoryEntries(): Promise<StoryEntry[] | null> {
   return query<StoryEntryRow>('story_entries', () =>
     supabase!
       .from('story_entries')
-      .select(
-        'id, published_on, format, topic, color, href, draft, image, image_fit, image_ratio, image_position, en, ko',
-      )
+      // `*` rather than the column list this once carried — see `visible`.
+      .select('*')
       .order('published_on', { ascending: false }),
   ).then(
     (rows) =>
-      rows?.map((row) => ({
+      rows?.filter(visible).map((row) => ({
         id: row.id,
         date: row.published_on,
         format: row.format,
@@ -213,6 +243,7 @@ export function fetchStoryEntries(): Promise<StoryEntry[] | null> {
         imageFit: row.image_fit,
         imageRatio: row.image_ratio,
         imagePosition: row.image_position,
+        wallOrder: row.wall_order ?? null,
         en: row.en as unknown as StoryEntry['en'],
         ko: row.ko as unknown as StoryEntry['ko'],
       })) ?? null,
@@ -232,6 +263,7 @@ interface ConstellationRow {
   read_href: string | null;
   media_href: string | null;
   view_href: string | null;
+  hidden?: boolean | null;
   title_ko?: string | null;
   by_line_ko?: string | null;
   caption_ko?: string | null;
@@ -256,7 +288,7 @@ export function fetchConstellation(): Promise<ConstellationPoint[] | null> {
       .order('month', { ascending: false }),
   ).then(
     (rows) =>
-      rows?.map((row) => ({
+      rows?.filter(visible).map((row) => ({
         id: row.id,
         title: row.title,
         by: row.by_line,

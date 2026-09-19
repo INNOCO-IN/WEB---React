@@ -148,6 +148,7 @@ export type Database = {
           caption_zh_tw: string | null
           created_at: string
           format: string
+          hidden: boolean
           id: string
           media_href: string | null
           month: string
@@ -170,6 +171,7 @@ export type Database = {
           caption_zh_tw?: string | null
           created_at?: string
           format: string
+          hidden?: boolean
           id: string
           media_href?: string | null
           month: string
@@ -192,6 +194,7 @@ export type Database = {
           caption_zh_tw?: string | null
           created_at?: string
           format?: string
+          hidden?: boolean
           id?: string
           media_href?: string | null
           month?: string
@@ -215,6 +218,8 @@ export type Database = {
           created_at: string
           credit: string | null
           credit_href: string | null
+          edited_at: string | null
+          edited_by: string | null
           eyebrow: string | null
           eyebrow_ko: string | null
           eyebrow_zh_tw: string | null
@@ -240,6 +245,8 @@ export type Database = {
           created_at?: string
           credit?: string | null
           credit_href?: string | null
+          edited_at?: string | null
+          edited_by?: string | null
           eyebrow?: string | null
           eyebrow_ko?: string | null
           eyebrow_zh_tw?: string | null
@@ -265,6 +272,8 @@ export type Database = {
           created_at?: string
           credit?: string | null
           credit_href?: string | null
+          edited_at?: string | null
+          edited_by?: string | null
           eyebrow?: string | null
           eyebrow_ko?: string | null
           eyebrow_zh_tw?: string | null
@@ -449,6 +458,7 @@ export type Database = {
           format: string[] | null
           id: string
           media: Json | null
+          published_as: string | null
           source_page: string | null
           status: string
         }
@@ -464,6 +474,7 @@ export type Database = {
           format?: string[] | null
           id?: string
           media?: Json | null
+          published_as?: string | null
           source_page?: string | null
           status?: string
         }
@@ -479,6 +490,7 @@ export type Database = {
           format?: string[] | null
           id?: string
           media?: Json | null
+          published_as?: string | null
           source_page?: string | null
           status?: string
         }
@@ -489,8 +501,11 @@ export type Database = {
           color: string | null
           created_at: string
           draft: boolean
+          edited_at: string | null
+          edited_by: string | null
           en: Json
           format: string
+          hidden: boolean
           href: string | null
           id: string
           image: string | null
@@ -500,13 +515,17 @@ export type Database = {
           ko: Json
           published_on: string
           topic: string
+          wall_order: number | null
         }
         Insert: {
           color?: string | null
           created_at?: string
           draft?: boolean
+          edited_at?: string | null
+          edited_by?: string | null
           en: Json
           format: string
+          hidden?: boolean
           href?: string | null
           id: string
           image?: string | null
@@ -516,13 +535,17 @@ export type Database = {
           ko: Json
           published_on: string
           topic: string
+          wall_order?: number | null
         }
         Update: {
           color?: string | null
           created_at?: string
           draft?: boolean
+          edited_at?: string | null
+          edited_by?: string | null
           en?: Json
           format?: string
+          hidden?: boolean
           href?: string | null
           id?: string
           image?: string | null
@@ -532,6 +555,7 @@ export type Database = {
           ko?: Json
           published_on?: string
           topic?: string
+          wall_order?: number | null
         }
         Relationships: []
       }
@@ -710,7 +734,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_staff: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never

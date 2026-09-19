@@ -29,6 +29,16 @@ create table if not exists public.stories (
   status         text not null default 'pending'  -- pending | published | declined
 );
 
+-- Which `story_entries` row this submission became, or null.
+--
+-- "Published" and "on the site" are two different facts and the review desk
+-- keeps them apart on purpose, which means something has to record the second.
+-- The two tables share no key and cannot: `id` here is a uuid the form
+-- generated, `story_entries.id` is a permalink a reviewer writes at the moment
+-- of publishing. Deliberately not a foreign key — an entry can be renamed or
+-- taken off the site without that erasing what was decided in the queue.
+alter table public.stories add column if not exists published_as text;
+
 create index if not exists stories_published_idx
   on public.stories (status, created_at desc);
 
@@ -237,6 +247,21 @@ create table if not exists public.news (
 
 create index if not exists news_live_idx on public.news (status, published_at desc);
 
+-- Which rows the review desk has taken over.
+--
+-- News is the one content table the desk edits, and `seed.sql` is generated
+-- from `site/data` — so without this the next extract would silently revert
+-- whatever a reviewer typed, with no error and nothing on the page to show it.
+-- A row the desk has written carries `edited_at`, and the generated upsert
+-- holds back the five columns the desk can type into for that row alone.
+-- Authority moves one row at a time; an item nobody has opened still follows
+-- the register. See app/scripts/extract-content.mjs and the migration
+-- 20260919104500_staff_edit_news.sql.
+alter table public.news add column if not exists edited_at timestamptz;
+alter table public.news add column if not exists edited_by text;
+
+create index if not exists news_edited_idx on public.news (edited_at desc nulls last);
+
 -- Korean and Traditional Chinese copy, as on projects. Nullable and
 -- unbackfilled: the site falls back to English field by field, so translating
 -- one headline does not oblige anyone to translate its blurb in the same
@@ -391,6 +416,20 @@ drop policy if exists "anon reads live news" on public.news;
 create policy "anon reads live news" on public.news
   for select to anon, authenticated using (status = 'live');
 
+-- The desk's news queue needs the two states the site hides. Added beside the
+-- public rule rather than widening it: Postgres ORs permissive policies, so a
+-- visitor keeps `live` and a reviewer gets drafts and the archive as well,
+-- while the public rule stays legible as the public rule. Update, because the
+-- desk edits the words and the status; no insert, because a news id is the
+-- content register's key and a row created here would answer to nothing.
+drop policy if exists "staff read every news row" on public.news;
+create policy "staff read every news row" on public.news
+  for select to authenticated using (public.is_staff());
+
+drop policy if exists "staff edit news" on public.news;
+create policy "staff edit news" on public.news
+  for update to authenticated using (public.is_staff()) with check (public.is_staff());
+
 drop policy if exists "anon reads active workshops" on public.workshops;
 create policy "anon reads active workshops" on public.workshops
   for select to anon, authenticated using (active = true);
@@ -428,13 +467,57 @@ create table if not exists public.story_entries (
   ko             jsonb not null
 );
 
+-- Taken off the site without being erased — what declining a published story
+-- does. Not `draft`: a draft is published and badged as unfinished, this is not
+-- served at all. The row stays because the headline, permalink, topic and
+-- summary on it are somebody's work, and publishing again upserts `false` back
+-- over this. See 20260917090000_decline_hides_the_story.sql.
+alter table public.story_entries add column if not exists hidden boolean not null default false;
+
+-- Where an entry sits on the wall of cards at the foot of /story, or null to
+-- let the date decide — which is what every row says until a reviewer pins one.
+-- Twelve pins are the answer to "which twelve", because twelve pinned rows
+-- leave no slot for the date to fill, which is why there is no second column
+-- for on-the-wall / off-the-wall to disagree with.
+-- See 20260919160000_the_wall_on_story.sql.
+alter table public.story_entries add column if not exists wall_order integer;
+
+-- Which rows the review desk has taken over. Null means the seed still owns the
+-- copy on this row; a value means `extract-stories.mjs` holds its columns back
+-- so an edit made in the desk survives the next run. The same bargain the news
+-- queue struck in 20260919104500, for the same reason.
+alter table public.story_entries add column if not exists edited_at timestamptz;
+alter table public.story_entries add column if not exists edited_by text;
+
 create index if not exists story_entries_date_idx on public.story_entries (published_on desc);
+create index if not exists story_entries_wall_idx
+  on public.story_entries (wall_order asc nulls last, published_on desc);
 
 alter table public.story_entries enable row level security;
 
+-- Two permissive select policies are OR'd, which is what makes this pair work:
+-- the public one narrows to what is being served, the staff one restores the
+-- rest so the desk can say what it is able to put back.
 drop policy if exists "anon reads story entries" on public.story_entries;
 create policy "anon reads story entries" on public.story_entries
-  for select to anon, authenticated using (true);
+  for select to anon, authenticated using (not hidden);
+
+drop policy if exists "staff read hidden story entries" on public.story_entries;
+create policy "staff read hidden story entries" on public.story_entries
+  for select to authenticated using (public.is_staff());
+
+-- Staff write it, from the review desk's publishing flow. Insert and update
+-- only — `id` is the permalink, so publishing the same story twice is an editor
+-- correcting a headline rather than a second story, and taking one back off the
+-- site is the `hidden` column above rather than a delete. See
+-- 20260914090000_staff_publish_stories.sql and 20260917090000.
+drop policy if exists "staff publish story entries" on public.story_entries;
+create policy "staff publish story entries" on public.story_entries
+  for insert to authenticated with check (public.is_staff());
+
+drop policy if exists "staff edit story entries" on public.story_entries;
+create policy "staff edit story entries" on public.story_entries
+  for update to authenticated using (public.is_staff()) with check (public.is_staff());
 
 -- ---------- 5g. Constellation points ----------
 -- The lights on the Constellation map. A superset of story_entries: every
@@ -467,11 +550,29 @@ alter table public.constellation_points add column if not exists by_line_zh_tw t
 alter table public.constellation_points add column if not exists caption_zh_tw text;
 alter table public.constellation_points add column if not exists topic_zh_tw   text;
 
+-- Taken off the map without being erased. See story_entries.hidden above.
+alter table public.constellation_points add column if not exists hidden boolean not null default false;
+
 alter table public.constellation_points enable row level security;
 
 drop policy if exists "anon reads constellation" on public.constellation_points;
 create policy "anon reads constellation" on public.constellation_points
-  for select to anon, authenticated using (true);
+  for select to anon, authenticated using (not hidden);
+
+drop policy if exists "staff read hidden constellation points" on public.constellation_points;
+create policy "staff read hidden constellation points" on public.constellation_points
+  for select to authenticated using (public.is_staff());
+
+-- The desk asks "also place this on the map?" as its own yes/no, because the
+-- map is a third place rather than a view of the index — so the write is its
+-- own grant rather than something publishing drags along.
+drop policy if exists "staff place constellation points" on public.constellation_points;
+create policy "staff place constellation points" on public.constellation_points
+  for insert to authenticated with check (public.is_staff());
+
+drop policy if exists "staff edit constellation points" on public.constellation_points;
+create policy "staff edit constellation points" on public.constellation_points
+  for update to authenticated using (public.is_staff()) with check (public.is_staff());
 
 -- ---------- 5h. IN-Collectives ----------
 -- The roster on /collectives: the people who carry MEWE into their own
@@ -778,6 +879,18 @@ to authenticated;
 
 -- `is_staff()` consults this, and a staff member may see the list they are on.
 grant select on table public.staff_emails to authenticated;
+
+-- Publish a reviewed story to the index, and place it on the map. The two
+-- published tables only, and still no delete — the policies in 5f and 5g narrow
+-- this to `is_staff()`, exactly as the intake grant above is narrowed.
+grant insert, update on table
+  public.story_entries,
+  public.constellation_points
+to authenticated;
+
+-- News is update-only: the desk rewrites an item the register already named,
+-- and never names a new one. See 5e for the two policies behind this.
+grant update on table public.news to authenticated;
 
 -- ---------- service_role: the bypass key ----------
 --

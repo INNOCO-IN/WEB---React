@@ -526,6 +526,14 @@ function cardRoute(card) {
 }
 
 /**
+ * A route with its locale prefix taken off — `/ko/project/unc` → `/project/unc`.
+ *
+ * One row carries both languages, so the thing that identifies it has to be the
+ * one thing both editions agree on. The URL is not it.
+ */
+const neutralRoute = (route) => (route ? route.replace(/^\/ko(?=\/|$)/, '') : route);
+
+/**
  * Korean copy from a KO page, keyed by the route each card links to.
  *
  * The KO pages are not translations of a data source — they are the same
@@ -533,13 +541,22 @@ function cardRoute(card) {
  * data, that copy has to be read out and put on the row, or /ko/project and
  * /ko/community would quietly start rendering English. Matched by route,
  * because a slug appears nowhere in the markup.
+ *
+ * Keyed on the *neutral* route, which is the whole difficulty. A Korean card
+ * links to the Korean page — `Community-Animators.KO.dc.html`, which `routeFor`
+ * resolves to `/ko/community/animators` — while the row being filled is the
+ * English card's, at `/community/animators`. Keyed raw, the two halves of the
+ * same card never meet, and nothing says so: `ko.get(route)` returns undefined,
+ * every `*_ko` is written null, and the page renders English under a Korean
+ * heading exactly as it would if nobody had translated it yet. The generated
+ * files hid it for a while by being older than this script.
  */
 function koCopy(file, isCard) {
   const tree = parse(html(file));
   const out = new Map();
 
   for (const card of findAll(tree, (n) => n.type === 'element' && isCard(n))) {
-    const route = cardRoute(card);
+    const route = neutralRoute(cardRoute(card));
     if (!route || out.has(route)) continue;
 
     const copy = cardCopy(card);
@@ -695,6 +712,13 @@ const seed = `-- IN Website — content seed
 -- filled with coalesce, so a row that already carries a translation keeps
 -- the one in the database and only an empty column is seeded. Supabase is where
 -- translations are edited, and a re-seed must never undo an editor's work.
+--
+-- News has a third case, because it is the one table the review desk edits.
+-- A row it has written carries \`edited_at\`, and every column the desk can type
+-- into is held back for that row alone — see the clause below. Authority moves
+-- one row at a time rather than all at once: an item nobody has opened still
+-- follows the register, and an item somebody rewrote is not quietly reverted by
+-- the next run of this script.
 
 -- ========== news ==========
 insert into public.news
@@ -704,14 +728,27 @@ insert into public.news
 values
 ${news.map((n) => `  (${q(n.id)}, ${q(n.published_at)}, ${arr(n.feeds)}, ${q(n.kind)}, ${q(n.eyebrow)}, ${q(n.title)}, ${q(n.body)}, ${q(n.kind_ko)}, ${q(n.eyebrow_ko)}, ${q(n.title_ko)}, ${q(n.body_ko)}, ${q(n.image)}, ${q(n.accent)}, ${q(n.link)}, ${q(n.credit)}, ${q(n.credit_href)}, ${q(n.status)})`).join(',\n')}
 on conflict (id) do update set
-  published_at = excluded.published_at, feeds = excluded.feeds, kind = excluded.kind,
-  eyebrow = excluded.eyebrow, title = excluded.title, body = excluded.body,
+  -- Placement and imagery stay the register's, always: where a card appears,
+  -- what it is dated, which picture it carries and who took it are decided in
+  -- site/data and nowhere else, so no desk edit can drift from them.
+  published_at = excluded.published_at, feeds = excluded.feeds,
+  image = excluded.image, accent = excluded.accent, link = excluded.link,
+  credit = excluded.credit, credit_href = excluded.credit_href,
+  -- The words and the decision. These are the five the desk can type into, and
+  -- for a row it has written (\`edited_at\` not null) the database keeps what is
+  -- there. For every other row — which is all of them until somebody opens one
+  -- — this is the plain overwrite it has always been.
+  kind    = case when news.edited_at is null then excluded.kind    else news.kind    end,
+  eyebrow = case when news.edited_at is null then excluded.eyebrow else news.eyebrow end,
+  title   = case when news.edited_at is null then excluded.title   else news.title   end,
+  body    = case when news.edited_at is null then excluded.body    else news.body    end,
+  status  = case when news.edited_at is null then excluded.status  else news.status  end,
+  -- Translations need no such guard: coalesce already means "the database wins
+  -- wherever it has one", which covers the desk and the Table Editor alike.
   kind_ko    = coalesce(news.kind_ko,    excluded.kind_ko),
   eyebrow_ko = coalesce(news.eyebrow_ko, excluded.eyebrow_ko),
   title_ko   = coalesce(news.title_ko,   excluded.title_ko),
-  body_ko    = coalesce(news.body_ko,    excluded.body_ko),
-  image = excluded.image, accent = excluded.accent, link = excluded.link,
-  credit = excluded.credit, credit_href = excluded.credit_href, status = excluded.status;
+  body_ko    = coalesce(news.body_ko,    excluded.body_ko);
 
 -- ========== workshops ==========
 insert into public.workshops

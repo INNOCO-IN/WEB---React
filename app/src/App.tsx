@@ -48,8 +48,13 @@ export default function App() {
             the registry is generated from `site/` and would drop it on the next
             run. It is also not a page of the site: no locale, no nav, nothing
             links to it, and it is `noindex`. See pages/Review.tsx.
+
+            A splat, because the desk routes its own screens — the queue, one
+            story read on its own, and the two-step publishing flow. They are
+            nested inside it so that everything past `/review` stays behind the
+            one session check rather than each screen repeating it.
           */}
-          <Route path="/review" element={<Review />} />
+          <Route path="/review/*" element={<Review />} />
 
           <Route path="*" element={<Unmatched />} />
         </Routes>
@@ -121,10 +126,15 @@ function Unmatched() {
 
   // `/Workshop.EN.dc.html` → `/workshop`. Only a single segment can be an old
   // filename, and the leading slash is dropped before the lookup.
+  //
+  // The query comes along, as it does for a rename above. It is not decoration
+  // on these URLs: `Story-Index.EN.dc.html?story=beehive` names the story to
+  // open and `?topic=Family` the filter to apply, so dropping it landed every
+  // one of those links on an unfiltered index with nothing selected.
   const { path } = stripLocale(trimmed);
   const file = decodeURIComponent(path.slice(1));
   const legacy = file && !file.includes('/') ? LEGACY_ROUTES[file] : undefined;
-  if (legacy) return <Navigate to={legacy} replace />;
+  if (legacy) return <Navigate to={`${legacy}${search}${hash}`} replace />;
 
   return <NotFound />;
 }

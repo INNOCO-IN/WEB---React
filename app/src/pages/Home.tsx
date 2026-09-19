@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <SiteLayout page="Home.EN.dc.html" className="page-home" footer={{ loop: "0.14" }}>
       <main id="top" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 40px" }}>
-        <section style={{ padding: "84px 0 72px 120px", minHeight: "300px", height: "200px" }}>
+        <section style={{ padding: "84px 0 72px 120px", minHeight: "300px" }}>
           <div style={{ maxWidth: "1000px", position: "relative" }}>
             <h1 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "var(--in-home-0)", lineHeight: "var(--in-home-1)", color: "var(--in-home-2)", marginBottom: "12px" }}>
               {t("000_h1")}

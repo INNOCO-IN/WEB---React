@@ -23,7 +23,7 @@
 
 @media (max-width: 1000px){
   [style*="grid-template-columns: 190px 1fr"]{grid-template-columns:1fr !important;}
-.page-workshop-shadow-shifter [style*="grid-template-columns: repeat(2, .page-workshop-shadow-shifter minmax(0"] {grid-template-columns:1fr !important;}
+.page-workshop-shadow-shifter [style*="grid-template-columns: repeat(2, minmax(0"] {grid-template-columns:1fr !important;}
 .page-workshop-shadow-shifter img {max-width:100% !important;}
 }
 @media (max-width: 600px){

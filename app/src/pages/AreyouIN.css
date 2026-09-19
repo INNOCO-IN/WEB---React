@@ -35,7 +35,7 @@
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
 .page-areyou-in [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
 .page-areyou-in [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
-.page-areyou-in [style*="grid-template-columns: repeat(3, .page-areyou-in minmax(0"] {grid-template-columns:1fr !important;}
+.page-areyou-in [style*="grid-template-columns: repeat(3, minmax(0"] {grid-template-columns:1fr !important;}
 .page-areyou-in img, .page-areyou-in svg, .page-areyou-in video {max-width:100% !important;}
 .page-areyou-in [style*="font-size: 300px"] {display:none !important;}
 .page-areyou-in [style*="font-size: 60px"][style*="height: 300px"] {height:auto !important;}

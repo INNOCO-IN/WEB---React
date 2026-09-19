@@ -183,7 +183,15 @@ export function routeFor(file) {
  * still written down in somebody's bookmarks.
  */
 export const ALIASES = {
+  // Three spellings of one page. `MEWE` is the file in `site/`; `ME=WE` is what
+  // the components tree calls it; `ME-WE` is what the 2026 bundle exports it
+  // as. A bundle taken with an unknown filename produces a page at no route at
+  // all — it is not in `site/`, so nothing redirects it, and it renders
+  // perfectly well at a URL nothing links to. Naming the spelling is cheaper
+  // than discovering that.
   'ME=WE.EN.dc.html': '/mewe',
+  'ME-WE.EN.dc.html': '/mewe',
+  'ME-WE.KO.dc.html': '/ko/mewe',
   'index.html': '/',
   'kr.html': '/ko',
 

@@ -37,7 +37,7 @@
   [style*="grid-template-columns: 1.05fr 1fr"]{grid-template-columns:1fr !important;}
 .page-workshop-pathfinder [style*="grid-template-columns: 1fr 1fr"] {grid-template-columns:1fr !important;}
 .page-workshop-pathfinder [style*="grid-template-columns: 1.05fr"] {grid-template-columns:1fr !important;}
-.page-workshop-pathfinder [style*="grid-template-columns: repeat(3, .page-workshop-pathfinder minmax(0"] {grid-template-columns:1fr !important;}
+.page-workshop-pathfinder [style*="grid-template-columns: repeat(3, minmax(0"] {grid-template-columns:1fr !important;}
 .page-workshop-pathfinder img, .page-workshop-pathfinder svg, .page-workshop-pathfinder video {max-width:100% !important;}
 .page-workshop-pathfinder [style*="font-size: 300px"] {display:none !important;}
 .page-workshop-pathfinder [style*="72px 120px"] {padding:56px 0 48px 0 !important;}
