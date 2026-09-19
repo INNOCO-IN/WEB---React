@@ -54,7 +54,7 @@ export default function WorkshopKO() {
         <section style={{ margin: "6px 0 22px" }}>
           <Link to="/ko/workshop/mobius-making" className="ws-card in-plain" style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1.05fr 1fr", alignItems: "stretch", color: "var(--color-paper)", overflow: "hidden", minHeight: "360px", maxWidth: "1320px", margin: "0 auto" }}>
             <div style={{ position: "relative", minHeight: "300px" }}>
-              <ImageSlot id="workshop-mobius-hero" src="slot-img/workshop-mobius-hero.webp" shape="rect" placeholder="Someone holding a Möbius strip they made" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", left: "-9px", top: "-1px" }} />
+              <ImageSlot id="workshop-mobius-hero" src="/slot-img/workshop-mobius-hero.webp" shape="rect" placeholder="Someone holding a Möbius strip they made" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", left: "-9px", top: "-1px" }} />
               <div style={{ position: "absolute", left: "16px", top: "16px", background: "var(--color-paper)", color: "var(--color-ink)", fontFamily: "'Archivo', 'Noto Sans KR', sans-serif", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", padding: "6px 12px" }}>
                 대표 워크숍 · 여기서 시작
               </div>

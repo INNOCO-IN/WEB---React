@@ -4,7 +4,6 @@ import wordszhTW from '../i18n/resources/zh-TW/pages/workshop-bucket-list.json';
 import wordsko from '../i18n/resources/ko/pages/workshop-bucket-list.json';
 import { Link } from 'react-router-dom';
 import SiteLayout from '../components/SiteLayout';
-import ImageSlot from '../components/ImageSlot';
 import WorkshopRegister from '../components/WorkshopRegister';
 import { localize, useLocale } from '../lib/lang';
 import './WorkshopBucketList.css';
@@ -160,52 +159,43 @@ export default function WorkshopBucketList() {
             </div>
           </div>
         </section>
-        <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "34px 28px 10px" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", alignItems: "flex-start" }}>
-            <ImageSlot id="ws-bucket-list-1" shape="rect" placeholder="Bucket List session photo" style={{ display: "block", flex: "0 0 auto", width: "300px", aspectRatio: "16/9" }} />
-            <ImageSlot id="ws-bucket-list-2" shape="rect" placeholder="Bucket List session photo" style={{ display: "block", flex: "0 0 auto", width: "300px", aspectRatio: "16/9" }} />
-            <div style={{ flex: "1 1 260px", fontFamily: "var(--font-sans)", fontWeight: "600", fontSize: "13px", lineHeight: "1.5", color: "rgba(46,59,64,0.6)", paddingTop: "4px" }}>
-              {t("030_div")}
-            </div>
-          </div>
-        </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "40px 28px" }}>
           <div style={{ background: "#BDDAE7", padding: "44px 44px 40px" }}>
             <div style={{ fontFamily: "var(--font-sans)", fontWeight: "800", fontSize: "13px", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-ink)", marginBottom: "16px" }}>
-              {t("031_div")}
+              {t("030_div")}
             </div>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "600", fontSize: "clamp(26px, 3vw, 38px)", lineHeight: "1.1", margin: "0 0 18px", maxWidth: "26ch", textWrap: "balance" }}>
-              {t("032_h2")}
+              {t("031_h2")}
             </h2>
             <p style={{ fontFamily: "var(--font-serif)", fontSize: "20px", lineHeight: "1.5", margin: "0 0 14px", maxWidth: "62ch" }}>
-              {t("033_p")}
+              {t("032_p")}
             </p>
             <p style={{ fontFamily: "var(--font-serif)", fontStyle: "var(--in-workshop-bucket-list-1)", fontSize: "18px", lineHeight: "1.5", margin: "0", color: "rgba(46,59,64,0.7)" }}>
-              {t("034_p")}
+              {t("033_p")}
             </p>
           </div>
         </section>
         <section style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 28px 44px" }}>
           <a href="#top" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-paper)", background: "var(--color-ink)", borderRadius: "999px", padding: "14px 26px" }} className="in-plain">
-            {t("035_a")}
+            {t("034_a")}
           </a>
         </section>
         <section id="register" style={{ background: "var(--color-magenta-hot)", color: "var(--color-paper)" }}>
           <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "70px 28px", textAlign: "center" }}>
             <p style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(250,244,226,0.7)", margin: "0 0 18px" }}>
-              {t("036_p")}
+              {t("035_p")}
             </p>
             <h2 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "clamp(32px, 4.6vw, 58px)", lineHeight: "1.06", margin: "0 0 28px", letterSpacing: "-0.01em", textWrap: "balance" }}>
-              {t("037_h2")}
+              {t("036_h2")}
             </h2>
             {/* The hero's "Register now" scrolls here. The links below it are a question and the way back, not a sign-up. */}
             <WorkshopRegister slug="bucket-list" accent="#E5188C" />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "15px" }}>
               <Link to={localize("/connect", locale)} style={{ textDecoration: "none", color: "var(--color-magenta-hot)", background: "var(--color-paper)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
-                {t("038_a")}
+                {t("037_a")}
               </Link>
               <Link to={localize("/workshop", locale)} style={{ textDecoration: "none", color: "var(--color-paper)", background: "transparent", border: "1.5px solid rgba(250,244,226,0.7)", borderRadius: "999px", padding: "15px 32px", display: "inline-flex", alignItems: "center", lineHeight: "1.2" }} className="in-plain">
-                {t("039_a")}
+                {t("038_a")}
               </Link>
             </div>
           </div>

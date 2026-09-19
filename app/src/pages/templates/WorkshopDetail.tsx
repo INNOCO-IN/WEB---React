@@ -167,10 +167,18 @@ export default function WorkshopDetail() {
               ))}
             </div>
 
-            {w.intro.image && (
+            {/* Only where there is a photograph. Hero's Journey and Two Wings
+                have a slot in the design and nothing in it; rendering the
+                empty frame gives the reader a dashed box captioned "Drop
+                workshop photo", which is a note to whoever fills the slot, and
+                keeping the column without the frame gives them 380px of
+                nothing. So the column goes with the picture. */}
+            {w.intro.image?.src && (
               <div style={{ flex: '1 1 380px', minWidth: '280px' }}>
                 <ImageSlot
-                  id={w.intro.image.id}
+                  id={w.intro.image.id ?? undefined}
+                  src={w.intro.image.src}
+                  alt={w.intro.image.alt ?? undefined}
                   shape="rect"
                   placeholder={w.intro.image.placeholder}
                   style={{ display: 'block', width: '100%', aspectRatio: w.intro.image.aspect }}

@@ -58,7 +58,14 @@ export interface WorkshopDetail {
   intro: {
     label: string;
     paragraphs: string[];
-    image: { id: string; placeholder: string; aspect: string } | null;
+    image: {
+      id: string | null;
+      /** Root-absolute, or null where the design has left the slot empty. */
+      src: string | null;
+      alt: string | null;
+      placeholder: string;
+      aspect: string;
+    } | null;
   };
   codesign: {
     heading: string;
@@ -121,13 +128,15 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
       ],
       "image": {
         "id": "ws-herosjourney-hero",
+        "src": null,
+        "alt": null,
         "placeholder": "Drop workshop photo",
         "aspect": "4 / 5"
       }
     },
     "codesign": {
       "heading": "What we co-design together",
-      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every MEWE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
+      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every ME=WE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
       "steps": [
         {
           "n": "1",
@@ -195,7 +204,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "The session closes with each participant articulating a personal "
         },
         {
-          "text": "MEWE Story",
+          "text": "ME=WE Story",
           "em": true
         },
         {
@@ -295,13 +304,15 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
       ],
       "image": {
         "id": "ws-herosjourney-hero",
+        "src": null,
+        "alt": null,
         "placeholder": "워크숍 사진을 놓아 주세요",
         "aspect": "4 / 5"
       }
     },
     "codesign": {
       "heading": "함께 디자인하는 것",
-      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 MEWE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
+      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 ME=WE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
       "steps": [
         {
           "n": "1",
@@ -369,7 +380,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "세션은 각 참가자가 자신의 "
         },
         {
-          "text": "MEWE 스토리",
+          "text": "ME=WE 스토리",
           "em": true
         },
         {
@@ -469,13 +480,15 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
       ],
       "image": {
         "id": "ws-metanoia-hero",
+        "src": "/slot-img/ws-metanoia-hero.webp",
+        "alt": null,
         "placeholder": "Drop workshop photo",
         "aspect": "4 / 5"
       }
     },
     "codesign": {
       "heading": "What we co-design together",
-      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every MEWE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
+      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every ME=WE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
       "steps": [
         {
           "n": "1",
@@ -543,7 +556,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "The session closes with each participant articulating a personal "
         },
         {
-          "text": "MEWE Story",
+          "text": "ME=WE Story",
           "em": true
         },
         {
@@ -643,13 +656,15 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
       ],
       "image": {
         "id": "ws-metanoia-hero",
+        "src": "/slot-img/ws-metanoia-hero.webp",
+        "alt": null,
         "placeholder": "워크숍 사진을 놓아 주세요",
         "aspect": "4 / 5"
       }
     },
     "codesign": {
       "heading": "함께 디자인하는 것",
-      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 MEWE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
+      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 ME=WE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
       "steps": [
         {
           "n": "1",
@@ -717,7 +732,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "세션은 각 참가자가 자신의 "
         },
         {
-          "text": "MEWE 스토리",
+          "text": "ME=WE 스토리",
           "em": true
         },
         {
@@ -800,7 +815,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
     },
     "eyebrow": "Core Workshop · Start Here",
     "title": "Möbius Making",
-    "lede": "Craft a Möbius strip and discover that ME and WE were never two sides. The first experience of MEWE as something lived, not just explained — for everyone.",
+    "lede": "Craft a Möbius strip and discover that ME and WE were never two sides. The first experience of ME=WE as something lived, not just explained — for everyone.",
     "pills": [
       "3 hrs core · extendable",
       "For everyone",
@@ -816,14 +831,16 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
         "So why do we — already connected — so often push each other away and treat disconnection as normal? Perhaps connection isn't broken. Perhaps we simply haven't looked at it from another angle yet."
       ],
       "image": {
-        "id": "ws-core-hero",
-        "placeholder": "Drop workshop photo",
-        "aspect": "4 / 5"
+        "id": null,
+        "src": "/mobius-strips-cut.jpg",
+        "alt": "Two Möbius strips, one cut open into a single long loop",
+        "placeholder": "Two Möbius strips, one cut open into a single long loop",
+        "aspect": "4 / 3"
       }
     },
     "codesign": {
       "heading": "What we co-design together",
-      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every MEWE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
+      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every ME=WE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
       "steps": [
         {
           "n": "1",
@@ -877,9 +894,9 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
         },
         {
           "n": "6",
-          "dot": "amber",
+          "dot": "magenta-hot",
           "labelSize": "formula",
-          "labelColor": "tan-warm",
+          "labelColor": "magenta-hot",
           "label": "Glow",
           "note": null,
           "noteColor": null,
@@ -891,7 +908,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "The session closes with each participant articulating a personal "
         },
         {
-          "text": "MEWE Story",
+          "text": "ME=WE Story",
           "em": true
         },
         {
@@ -974,7 +991,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
     },
     "eyebrow": "코어 워크숍 · 여기서 시작",
     "title": "뫼비우스 만들기",
-    "lede": "뫼비우스 띠를 직접 만들며 ME와 WE가 애초에 양면이 아니었음을 발견하세요. 설명이 아니라 살아 있는 것으로서 MEWE를 처음 경험하는 자리 — 모두를 위한 워크숍.",
+    "lede": "뫼비우스 띠를 직접 만들며 ME와 WE가 애초에 양면이 아니었음을 발견하세요. 설명이 아니라 살아 있는 것으로서 ME=WE를 처음 경험하는 자리 — 모두를 위한 워크숍.",
     "pills": [
       "기본 3시간 · 확장 가능",
       "모두에게",
@@ -990,14 +1007,16 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
         "이미 연결된 우리는 왜 이토록 자주 서로를 밀어내고 단절을 당연하게 여길까요? 어쩌면 연결이 끊어진 것이 아니라, 아직 다른 각도에서 바라보지 않았을 뿐인지도 모릅니다."
       ],
       "image": {
-        "id": "ws-core-hero",
-        "placeholder": "워크숍 사진을 놓아 주세요",
-        "aspect": "4 / 5"
+        "id": null,
+        "src": "/mobius-strips-cut.jpg",
+        "alt": "가운데를 한 번 자른 뫼비우스 띠 — 하나의 더 긴 고리",
+        "placeholder": "가운데를 한 번 자른 뫼비우스 띠 — 하나의 더 긴 고리",
+        "aspect": "4 / 3"
       }
     },
     "codesign": {
       "heading": "함께 디자인하는 것",
-      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 MEWE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
+      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 ME=WE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
       "steps": [
         {
           "n": "1",
@@ -1051,9 +1070,9 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
         },
         {
           "n": "6",
-          "dot": "amber",
+          "dot": "magenta-hot",
           "labelSize": "formula",
-          "labelColor": "tan-warm",
+          "labelColor": "magenta-hot",
           "label": "Glow",
           "note": null,
           "noteColor": null,
@@ -1065,7 +1084,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "세션은 각 참가자가 자신의 "
         },
         {
-          "text": "MEWE 스토리",
+          "text": "ME=WE 스토리",
           "em": true
         },
         {
@@ -1165,13 +1184,15 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
       ],
       "image": {
         "id": "ws-twowings-hero",
+        "src": null,
+        "alt": null,
         "placeholder": "Drop workshop photo",
         "aspect": "4 / 5"
       }
     },
     "codesign": {
       "heading": "What we co-design together",
-      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every MEWE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
+      "lede": "It is not a session for listening to explanations. It is a time to see with your own eyes and build with your own hands. Every ME=WE workshop walks the same Loop — six movements, head, heart, and hands in the same room.",
       "steps": [
         {
           "n": "1",
@@ -1239,7 +1260,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "The session closes with each participant articulating a personal "
         },
         {
-          "text": "MEWE Story",
+          "text": "ME=WE Story",
           "em": true
         },
         {
@@ -1339,13 +1360,15 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
       ],
       "image": {
         "id": "ws-twowings-hero",
+        "src": null,
+        "alt": null,
         "placeholder": "워크숍 사진을 놓아 주세요",
         "aspect": "4 / 5"
       }
     },
     "codesign": {
       "heading": "함께 디자인하는 것",
-      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 MEWE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
+      "lede": "설명을 듣는 세션이 아닙니다. 자기 눈으로 보고 자기 손으로 짓는 시간입니다. 모든 ME=WE 워크숍은 같은 루프를 걷습니다 — 여섯 개의 악장, 머리와 가슴과 손이 한 방에.",
       "steps": [
         {
           "n": "1",
@@ -1413,7 +1436,7 @@ export const WORKSHOP_DETAILS: Record<string, WorkshopDetail> = {
           "text": "세션은 각 참가자가 자신의 "
         },
         {
-          "text": "MEWE 스토리",
+          "text": "ME=WE 스토리",
           "em": true
         },
         {

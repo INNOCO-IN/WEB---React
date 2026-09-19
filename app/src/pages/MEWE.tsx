@@ -77,7 +77,7 @@ export default function MEWE() {
                 <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1C6E92" }}>
                   {t("011_div")}
                 </div>
-                <ImageSlot id="mewe-dna" src="slot-img/mewe-dna.webp" shape="rect" placeholder="DNA — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
+                <ImageSlot id="mewe-dna" src="/slot-img/mewe-dna.webp" shape="rect" placeholder="DNA — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.42", margin: "0", color: "rgba(46,59,64,0.82)" }}>
                   {t("012_p")}
                 </p>
@@ -86,7 +86,7 @@ export default function MEWE() {
                 <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1C6E92" }}>
                   {t("013_div")}
                 </div>
-                <ImageSlot id="mewe-nervous" src="slot-img/mewe-nervous.webp" shape="rect" placeholder="Nervous systems — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
+                <ImageSlot id="mewe-nervous" src="/slot-img/mewe-nervous.webp" shape="rect" placeholder="Nervous systems — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.42", margin: "0", color: "rgba(46,59,64,0.82)" }}>
                   {t("014_p")}
                 </p>
@@ -95,7 +95,7 @@ export default function MEWE() {
                 <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1C6E92" }}>
                   {t("015_div")}
                 </div>
-                <ImageSlot id="mewe-roots" src="slot-img/mewe-roots.webp" shape="rect" placeholder="Forest roots — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
+                <ImageSlot id="mewe-roots" src="/slot-img/mewe-roots.webp" shape="rect" placeholder="Forest roots — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.42", margin: "0", color: "rgba(46,59,64,0.82)" }}>
                   {t("016_p")}
                 </p>
@@ -104,7 +104,7 @@ export default function MEWE() {
                 <div style={{ fontFamily: "var(--font-sans)", fontWeight: "700", fontSize: "13px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#1C6E92" }}>
                   {t("017_div")}
                 </div>
-                <ImageSlot id="mewe-ecosystems" src="slot-img/mewe-ecosystems.webp" shape="rect" placeholder="Ecosystems — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
+                <ImageSlot id="mewe-ecosystems" src="/slot-img/mewe-ecosystems.webp" shape="rect" placeholder="Ecosystems — photo or illustration" style={{ display: "block", width: "100%", aspectRatio: "16 / 9" }} />
                 <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.42", margin: "0", color: "rgba(46,59,64,0.82)" }}>
                   {t("018_p")}
                 </p>

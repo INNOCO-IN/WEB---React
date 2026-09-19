@@ -111,6 +111,58 @@ function section(html, needle, nth = 0) {
   return body ? body.slice(0, body.indexOf('</section>')) : '';
 }
 
+/** One attribute off a single tag's source. */
+const attr = (tag, name) => new RegExp(`\\b${name}="([^"]*)"`).exec(tag)?.[1] ?? null;
+
+/**
+ * `slot-img/ws-metanoia-hero.webp` → `/slot-img/ws-metanoia-hero.webp`.
+ *
+ * In `site/` a page and its pictures are neighbours in one folder, so the
+ * markup addresses them relatively. In the app they are served from the root
+ * while the page is at `/workshop/metanoia` — and, since the Chinese routes
+ * exist, at `/zh-tw/workshop/metanoia` too, where a relative address resolves
+ * one folder deeper again and fetches the SPA shell instead of a photograph.
+ * Mirrors resolveAsset in convert-pages.mjs.
+ */
+const asset = (path) =>
+  !path || /^(https?:|data:|\/)/i.test(path) ? path : '/' + path.replace(/^\.\//, '');
+
+/**
+ * The picture beside the opening paragraphs, however the page spells it.
+ *
+ * Two spellings, because the 2026 design changed one of them. `<x-import>` is
+ * the design tool's droppable slot and carries an id and a caption for whoever
+ * fills it; Möbius Making has a plain `<img>` with the photograph already
+ * chosen. Reading only the first is how that page came to be a dashed
+ * placeholder box on a page whose picture was sitting in the bundle, under an
+ * id — `ws-core-hero` — that no longer appeared anywhere in `site/`.
+ */
+function introImage(intro) {
+  const slot = /<x-import[^>]*>/.exec(intro)?.[0];
+  if (slot) {
+    return {
+      id: attr(slot, 'id'),
+      src: asset(attr(slot, 'src')),
+      alt: attr(slot, 'alt'),
+      placeholder: attr(slot, 'placeholder') ?? '',
+      aspect: /aspect-ratio:\s*([^;"]+)/.exec(attr(slot, 'style') ?? '')?.[1].trim() ?? '4 / 5',
+    };
+  }
+
+  const img = /<img[^>]*>/.exec(intro)?.[0];
+  if (!img) return null;
+  const alt = attr(img, 'alt');
+  return {
+    id: null,
+    src: asset(attr(img, 'src')),
+    alt,
+    // A chosen photograph has no caption for a slot nobody has to fill, so its
+    // alt text stands in — it is the sentence that describes this picture.
+    placeholder: alt ?? '',
+    aspect: /aspect-ratio:\s*([^;"]+)/.exec(attr(img, 'style') ?? '')?.[1].trim() ?? '4 / 5',
+  };
+}
+
 function detailFor(name, lang) {
   const file = `${name}.${lang}.dc.html`;
   const html = readFileSync(join(SITE, file), 'utf8');
@@ -132,7 +184,7 @@ function detailFor(name, lang) {
   /* ------------------------------------------------------------- the intro */
 
   const intro = section(html, 'padding: 64px 28px 24px');
-  const slot = /<x-import[^>]*id="([^"]+)"[^>]*placeholder="([^"]*)"[^>]*style="([^"]*)"/.exec(intro);
+  const image = introImage(intro);
 
   /* -------------------------------------------------- what we co-design */
 
@@ -195,7 +247,7 @@ function detailFor(name, lang) {
     intro: {
       label: text(/<div style="font-family: 'Archivo'[^"]*font-size: 13px;[^"]*">([\s\S]*?)<\/div>/.exec(intro)?.[1] ?? ''),
       paragraphs: [...intro.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => text(m[1])),
-      image: slot ? { id: slot[1], placeholder: slot[2], aspect: /aspect-ratio:\s*([^;]+)/.exec(slot[3])?.[1].trim() ?? '4 / 5' } : null,
+      image,
     },
     codesign: {
       heading: text(/<h2[^>]*>([\s\S]*?)<\/h2>/.exec(arc)?.[1] ?? ''),
@@ -302,7 +354,14 @@ export interface WorkshopDetail {
   intro: {
     label: string;
     paragraphs: string[];
-    image: { id: string; placeholder: string; aspect: string } | null;
+    image: {
+      id: string | null;
+      /** Root-absolute, or null where the design has left the slot empty. */
+      src: string | null;
+      alt: string | null;
+      placeholder: string;
+      aspect: string;
+    } | null;
   };
   codesign: {
     heading: string;

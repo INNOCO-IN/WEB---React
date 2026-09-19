@@ -4,7 +4,6 @@ import wordszhTW from '../i18n/resources/zh-TW/pages/workshop-pathfinder.json';
 import wordsko from '../i18n/resources/ko/pages/workshop-pathfinder.json';
 import { Link } from 'react-router-dom';
 import SiteLayout from '../components/SiteLayout';
-import ImageSlot from '../components/ImageSlot';
 import WorkshopRegister from '../components/WorkshopRegister';
 import { localize, useLocale } from '../lib/lang';
 import './WorkshopPathfinder.css';
@@ -81,9 +80,6 @@ export default function WorkshopPathfinder() {
               <p style={{ fontFamily: "var(--font-serif)", fontSize: "19px", lineHeight: "1.55", margin: "0", color: "rgba(46,59,64,0.82)" }}>
                 {t("013_p")}
               </p>
-            </div>
-            <div style={{ flex: "1 1 380px", minWidth: "280px" }}>
-              <ImageSlot id="ws-pathfinder-hero" shape="rect" placeholder="Drop Pathfinder cohort photo" style={{ display: "block", width: "100%", aspectRatio: "4 / 5" }} />
             </div>
           </div>
         </section>
