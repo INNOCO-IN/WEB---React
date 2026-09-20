@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Nav from '../components/Nav';
 import { isSupabaseConfigured } from '../lib/supabase';
-import { useSession } from '../lib/auth';
+import { useSession, useStrength, verifiedCount } from '../lib/auth';
+import { gateFor, type SecondFactorPolicy } from '../lib/second-factor';
+import { fetchSecondFactorPolicy } from '../lib/services/review';
 import '../review/review.css';
 import Add from '../review/Add';
 import Desk from '../review/Desk';
 import Publish from '../review/Publish';
+import SecondFactor from '../review/SecondFactor';
 import SignIn from '../review/SignIn';
 import StoryView from '../review/StoryView';
 import { NoKeys } from '../review/States';
@@ -77,8 +80,42 @@ export default function Review() {
   );
 }
 
+/**
+ * Two doors, in order: the mailed link, then the code.
+ *
+ * The order is the whole of the logic. A session arrives at `aal1` from the
+ * link and has to be raised to `aal2` before the database will answer, and
+ * since `20260919180000_second_factor_on_the_desk.sql` `is_staff()` is what
+ * enforces that — so this component decides which *screen* to show and never
+ * whether to let anybody in. Deleting the gate below would not open the desk;
+ * it would leave a reviewer staring at an empty one with no idea why.
+ *
+ * That is also why the second factor is checked before the allowlist. The two
+ * used to be one question and they answer differently now: at `aal1` a reviewer
+ * of ten years' standing reads as not-staff, because the roster is itself
+ * behind `is_staff()`. Asking "are you strong enough" first means nobody is
+ * told they are a stranger when what is true is that they have not typed their
+ * code yet.
+ */
 function Screens() {
   const { session, loading } = useSession();
+  const strength = useStrength(session);
+  const [policy, setPolicy] = useState<SecondFactorPolicy | null>(null);
+
+  // Read once per mount rather than compiled in: the switch is a row somebody
+  // flips when the reviewers have been told, not something that waits for a
+  // deploy. `second_factor_ok()` reads the same row, so a desk holding a stale
+  // copy shows the wrong screen but never the wrong data.
+  useEffect(() => {
+    if (!session) return;
+    let cancelled = false;
+    void fetchSecondFactorPolicy().then((value) => {
+      if (!cancelled) setPolicy(value);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [session]);
 
   if (!isSupabaseConfigured) {
     return (
@@ -88,10 +125,19 @@ function Screens() {
     );
   }
 
-  // Nothing at all until the first answer, so the desk does not flash a
-  // sign-in form at somebody who is already signed in.
-  if (loading) return <div style={{ minHeight: '100vh' }} />;
+  // Nothing at all until every answer is in, so the desk does not flash a
+  // sign-in form at somebody already signed in, or an enrol screen at somebody
+  // who has been enrolled for months.
+  if (loading) return <Blank />;
   if (!session) return <SignIn />;
+  if (strength.loading || policy === null) return <Blank />;
+
+  const factors = verifiedCount(strength.factors);
+  const gate = gateFor({ policy, assurance: strength.assurance, verifiedFactors: factors });
+
+  if (gate !== 'ready') {
+    return <SecondFactor email={session.user.email ?? ''} hasFactor={gate === 'challenge'} required={policy === 'required'} />;
+  }
 
   const email = session.user.email ?? '';
 
@@ -108,4 +154,9 @@ function Screens() {
       <Route path="*" element={<Navigate to="/review" replace />} />
     </Routes>
   );
+}
+
+/** Held height, so answering one question does not jump the page. */
+function Blank() {
+  return <div style={{ minHeight: '100vh' }} />;
 }

@@ -281,7 +281,7 @@ the CLI's default `127.0.0.1:3000`.
 
 ### What config.toml carries
 
-`supabase init` left 400-odd lines. Six values in it are ours; everything else
+`supabase init` left 400-odd lines. Eleven values in it are ours; everything else
 is left untouched so that a future CLI upgrade has the shape it expects.
 
 | | |
@@ -289,6 +289,10 @@ is left untouched so that a future CLI upgrade has the shape it expects.
 | `project_id` | names the containers |
 | `[db.seed] sql_paths` | the root seeds, so a reset restores content |
 | `[auth] site_url` + `additional_redirect_urls` | `localhost:5174`, so the sign-in link lands |
+| `[auth.mfa.totp] enroll_enabled` + `verify_enabled` | the review desk's second factor; left false, enrolling 422s |
+| `[auth.sessions] timebox` + `inactivity_timeout` | 12h / 2h, because the desk is read on borrowed computers |
+| `[auth.captcha]` | Turnstile on the sign-in form; ships `enabled = false` until you have keys |
+| `[auth] enable_signup` + `[auth.email] enable_signup` | **false** — without it a script self-registers past `shouldCreateUser` |
 | `[edge_runtime] enabled = false` | no functions in this project |
 | `[analytics] enabled = false` | nothing reads the local log pipeline, and it is the heaviest part of the stack |
 
@@ -380,6 +384,184 @@ Adding a reviewer is two steps, and the second is easy to forget:
 `shouldCreateUser: false` means the sign-in form will not do step 2 for you —
 that is the point of it. An address on the list with no auth user gets a link
 that signs nobody in.
+
+There is no third step for the second factor: the reviewer enrols themselves,
+the first time they sign in. See below.
+
+## The second factor
+
+The link is one factor and it is a mailbox, so whoever holds the mailbox holds
+the desk. `20260919180000_second_factor_on_the_desk.sql` adds the second: TOTP,
+from any authenticator app.
+
+**It is `is_staff()` that enforces it, not the page.** That function now asks
+two questions instead of one — are you on the list, and is this session strong
+enough — so every policy written against it since 20260903090000 gained the
+second factor without being touched, and so will the next table somebody adds.
+A session that skipped the code is refused by the database; the screens in
+`src/review/SecondFactor.tsx` only explain that and get the token upgraded.
+`aal` is GoTrue's own claim, so it is a fact the browser cannot assert about
+itself — which is the whole reason this is worth having over a page-level gate.
+
+Not a second email, and not SMS. A code mailed to the same mailbox is one break
+away from being no second factor at all, and Supabase has no email factor to
+raise `aal` with, so the database could not see it even if it were worth
+having. SMS needs Twilio, costs money per message, and is the weakest of the
+three.
+
+### How hard it bites
+
+One row, `public.review_policy`, so that applying the migration changes nothing
+on the day it lands:
+
+| | |
+|---|---|
+| `off` | one factor again |
+| `enrolled` | **the default.** A factor must be used *if you have one*. Nobody is compelled, so this is a migration path rather than a policy |
+| `required` | every reviewer holds a factor and reaches `aal2` |
+
+```sql
+update public.review_policy set second_factor = 'required', changed_at = now();
+```
+
+Flip it when the reviewers have actually been told. Under `required` anyone
+without a factor sees the enrol screen instead of the queue until they finish —
+**enrolling is self-serve at `aal1`, so nobody is permanently locked out** and
+no admin is needed to onboard anybody. That is what stops `required` being a
+trap.
+
+Readable by anyone signed in, writable by nobody: it says how the door works,
+not who may open it, and a stolen session must not be able to switch its own
+second factor off.
+
+### The lost phone
+
+Deliberately not self-serve. Everything a reviewer could prove on that screen
+is control of the mailbox, which is the *first* factor — so a "lost your
+device?" button there would be a second door opened by the same key. Recovery
+is a person who can satisfy themselves about who is asking, by some channel
+that is not email:
+
+```bash
+npm --prefix app run mfa-reset -- them@example.com              # list, changes nothing
+npm --prefix app run mfa-reset -- them@example.com --remove     # take it off
+npm --prefix app run mfa-reset -- them@example.com --remove --live
+```
+
+Local by default, `--live` for the hosted project, same as `signin-link` and
+for the same reason: `--remove` writes, and guessing wrong locks a reviewer out
+of production. Removing a factor puts them back where a new starter is; it
+grants nothing, because `staff_emails` still decides who may read anything.
+
+## The CAPTCHA on the sign-in form
+
+`shouldCreateUser: false` already means an uninvited address gets no mail, and
+the form answers the same way either way, so the allowlist cannot be read one
+guess at a time. What was left was **volume**: the rate limits allow 30 sign-in
+requests per IP per five minutes, which is plenty for a script to keep mailing a
+real reviewer a real sign-in link all day and then phish one of them. Cloudflare
+Turnstile is aimed at that and at nothing else — a determined person targeting
+one known mailbox is the second factor's problem, not this one.
+
+**It is one switch in two places, and they must agree.**
+
+| | where | which key |
+|---|---|---|
+| the widget | `VITE_TURNSTILE_SITE_KEY` in `app/.env.local` | **site** key — public, in the browser bundle by design |
+| the check | `[auth.captcha]` in `config.toml`, or Authentication → Settings on a hosted project | **secret** key — never `VITE_`, never the browser |
+
+Enabled on the project with no site key in the build, every sign-in fails with
+`captcha protection: request disallowed`. Enabled in the build with the project
+switched off, the token is ignored. **Turn both on together or neither** — and
+note that `[auth.captcha] enabled` ships as `false`, so nothing changes until
+you have a real key pair from Cloudflare → Turnstile → Add site (free).
+
+Verified against Cloudflare's published test keys: with the always-pass secret a
+sign-in with no token at all is refused `captcha_failed`, and with the
+always-fail secret even a token the widget really produced is refused
+`invalid-input-response` — so the check is Supabase calling Cloudflare, not the
+page marking its own homework.
+
+A refused CAPTCHA is the one server error the form repeats verbatim. Everything
+else collapses into "check your mail" so the form cannot be used to test the
+allowlist; this one cannot, because it says nothing about whether the address
+exists, and the alternative would leave a reviewer waiting on a link that was
+never sent.
+
+**The widget is re-armed after every attempt, successful or not.** A Turnstile
+token is single use, so a form that keeps one after spending it tells the next
+attempt it failed a puzzle it already solved. That reset is the thing to
+preserve if this screen is ever rewritten.
+
+## Sessions time out
+
+`[auth.sessions]` — `inactivity_timeout = "2h"` and `timebox = "12h"`.
+
+The desk gets read on borrowed computers, and the failure mode there is somebody
+forgetting to sign out and walking away; "Sign out" is on every screen but
+cannot be relied on to be pressed. Two hours is long enough that nobody is
+thrown out mid-review and short enough that a borrowed machine is not left
+holding a live desk all afternoon. Both apply on the reviewer's own machine too,
+where the cost is re-entering a TOTP code.
+
+Worth knowing what a borrowed computer does and does not hold: the link goes to
+a mailbox and the code comes off a phone, so **the machine never holds both
+factors** — which is the part that makes signing in somewhere else reasonable at
+all. What it does hold is a live session, and that is what these two settings
+close.
+
+### Who may sign in at all
+
+Two places, and both are needed — neither alone gets anybody in:
+
+| | controls | where |
+|---|---|---|
+| auth user | whether a link can be **received** | Authentication → Users, or `signin-link --create` |
+| `staff_emails` | whether anything can be **seen** | `seed-staff.sql` |
+
+An auth user not on the list signs in to an empty desk. An address on the list
+with no auth user never gets a link. There is no third place.
+
+**`enable_signup = false` is what makes the first row true, and it was not set
+until 2026-09-20.** `shouldCreateUser: false` lives in our client, so it only
+governs what our own page asks for — it is a field in a request body, and a
+script skips the page and sends `create_user: true` with the public anon key
+instead. Measured on the local stack before the flag was set: a stranger put
+themselves in `auth.users` and Mailpit received a real "Your sign-in link"
+addressed to them. They could not read anything, because `staff_emails` is what
+RLS consults — but they held an account on the project and could have it mail
+them on demand, which on a hosted project is our sending reputation.
+
+It is set in two places in `config.toml`, `[auth]` and `[auth.email]`, because
+the provider does not inherit the project-level flag. Both now refuse with
+`signup_disabled`, by `POST /auth/v1/otp` and by `POST /auth/v1/signup` alike.
+
+**A hosted project has its own copy of this setting and does not read
+`config.toml`** — Authentication → Sign In / Providers → "Allow new users to
+sign up". Turning it off here does nothing there. Check it.
+
+Creating reviewers is unaffected: the admin API bypasses the flag, so
+`signin-link --create` and Authentication → Users keep working. Verified after
+the change.
+
+One consequence, and it is the right trade: with signups off, `POST /auth/v1/otp`
+answers **200 for a known address and 422 `otp_disabled` for an unknown one**, so
+the API distinguishes them where it used to return 200 either way. That is an
+enumeration oracle for anyone scripting the endpoint, and it is why the CAPTCHA
+matters — it makes the script pay per guess. Our own form gives nothing away:
+`lib/sign-in.ts` collapses every "no such account" refusal onto the same neutral
+screen as a success, and `review/sign-in.test.ts` pins that with the exact
+strings the server returned. The alternative — leaving signups on — trades a
+guessable address for a working account and a mail relay, which is worse.
+
+### Turning it on for a hosted project
+
+MFA has to be enabled on the project as well as in this repo — Authentication →
+Providers → MFA, or the TOTP lines in `config.toml` for the local stack. Left
+off, enrolling fails with a 422 and the enrol screen says so. **Enabling TOTP
+in `config.toml` needs a full `supabase stop` / `start`**: the CLI bakes those
+values into the auth container's environment at start, so a container restart
+alone keeps the old ones.
 
 ### Signing in during development
 

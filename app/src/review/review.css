@@ -889,3 +889,100 @@
     flex: 1 1 100%;
   }
 }
+
+/* ------------------------------------------------- the second door (TOTP) */
+
+/* The enrol screen is the one place in the tool with numbered steps, because it
+   is the one thing a reviewer does exactly once and must not get half-way
+   through. The rule down the left is the tool's own hairline, not a new idea. */
+.rv-enrol {
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
+}
+
+.rv-enrol > li {
+  padding: 0 0 34px 22px;
+  border-left: 1px solid var(--rv-line);
+}
+
+.rv-enrol > li:last-child {
+  padding-bottom: 0;
+}
+
+.rv-enrol > li > .rv-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.rv-enrol > li > .rv-secondary {
+  max-width: var(--rv-measure-read);
+  padding-bottom: 20px;
+}
+
+/* White ground under the QR whatever the paper is doing. A QR read by a phone
+   camera wants real white and real quiet around it — the tool's paper is warm,
+   and a warm ground is where a scan starts failing in poor light. */
+.rv-qr {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 232px;
+  height: 232px;
+  background: #ffffff;
+  border: 1px solid var(--rv-line);
+}
+
+.rv-qr img {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+
+/* Waiting, or failed: same footprint, so the step does not resize under the
+   reviewer when the code lands. */
+.rv-qr--empty {
+  background: transparent;
+  padding: 0 24px;
+  text-align: center;
+}
+
+/* The typed alternative to scanning. Mono and letter-spaced because it is
+   transcribed by hand from screen to phone, where an l and a 1 that look alike
+   cost somebody the whole setup. Selectable, and it wraps. */
+.rv-secret {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  word-break: break-all;
+  max-width: 420px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--rv-line);
+  color: var(--rv-ink-soft);
+  user-select: all;
+}
+
+/* Six digits, read back at a glance. Wide tracking and a short field: the
+   shape itself says how much is wanted, so the form needs no counter. */
+.rv-code {
+  max-width: 220px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 0.3em;
+}
+
+@media (max-width: 640px) {
+  .rv-qr {
+    width: 100%;
+    max-width: 232px;
+  }
+}
+
+/* The CAPTCHA widget on the sign-in form.
+   Cloudflare renders it in an iframe whose look is theirs, so there is nothing
+   to style inside it — only the space it sits in. Its own box is 300x65 and it
+   reserves that height, so the form does not jump when it finishes loading. */
+.rv-captcha {
+  min-height: 65px;
+}

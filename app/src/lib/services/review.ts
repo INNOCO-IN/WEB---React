@@ -2,6 +2,7 @@ import { supabase, STORY_MEDIA_BUCKET } from '../supabase';
 import type { Database } from '../database.types';
 import { byWall, type WallItem } from '../story-wall';
 import { workshops } from '../content/workshops';
+import type { SecondFactorPolicy } from '../second-factor';
 import { LOCALES, LOCALE_PREFIX, type Locale } from '../../i18n/locales';
 import {
   FORMATS,
@@ -162,6 +163,49 @@ export async function isStaff(): Promise<boolean> {
   if (!supabase) return false;
   const { data, error } = await supabase.from('staff_emails').select('email').limit(1);
   return !error && (data?.length ?? 0) > 0;
+}
+
+/**
+ * On the allowlist — asked without the second factor in the way.
+ *
+ * `isStaff()` above reads the roster, and since
+ * `20260919180000_second_factor_on_the_desk.sql` that read is itself behind
+ * `is_staff()`, which now wants aal2. So at aal1 it answers false for a
+ * reviewer of ten years' standing, and the desk would tell them they are not
+ * staff when what is true is that they have not typed their code yet.
+ *
+ * This asks the narrower question. It is a function rather than a select
+ * because a boolean about yourself is all the desk needs and all anyone should
+ * be able to get: the roster stays behind the full check.
+ */
+export async function onStaffList(): Promise<boolean> {
+  if (!supabase) return false;
+  const { data, error } = await supabase.rpc('on_staff_list');
+  return !error && data === true;
+}
+
+/**
+ * How hard the second factor bites, as the database currently has it.
+ *
+ * Read rather than compiled in, because the switch is a row somebody flips
+ * when the reviewers have been told — not something that waits for a deploy.
+ * The desk reads it to pick a screen; `second_factor_ok()` reads the same row
+ * to decide the actual answer, so the page cannot talk the database into a
+ * different one by getting this wrong.
+ *
+ * An unreachable or unmigrated database falls back to `enrolled`, matching the
+ * SQL's own coalesce. A build pointed at a project without this migration then
+ * behaves exactly as it did before there was a second factor, which is the
+ * honest reading of a database that has never heard of one.
+ */
+export async function fetchSecondFactorPolicy(): Promise<SecondFactorPolicy> {
+  if (!supabase) return 'enrolled';
+
+  const { data, error } = await supabase.from('review_policy').select('second_factor').limit(1).maybeSingle();
+  if (error || !data) return 'enrolled';
+
+  const value = data.second_factor;
+  return value === 'off' || value === 'required' ? value : 'enrolled';
 }
 
 /* ------------------------------------------------------------------- news */

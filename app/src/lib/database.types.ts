@@ -433,6 +433,24 @@ export type Database = {
         }
         Relationships: []
       }
+      review_policy: {
+        Row: {
+          changed_at: string
+          only_row: boolean
+          second_factor: string
+        }
+        Insert: {
+          changed_at?: string
+          only_row?: boolean
+          second_factor?: string
+        }
+        Update: {
+          changed_at?: string
+          only_row?: boolean
+          second_factor?: string
+        }
+        Relationships: []
+      }
       staff_emails: {
         Row: {
           email: string
@@ -735,6 +753,8 @@ export type Database = {
     }
     Functions: {
       is_staff: { Args: never; Returns: boolean }
+      on_staff_list: { Args: never; Returns: boolean }
+      second_factor_ok: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never

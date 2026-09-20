@@ -114,17 +114,78 @@ alter table public.staff_emails enable row level security;
 --
 -- Execute is granted to `authenticated` alone. `anon` never needs to ask
 -- whether it is staff, and being able to ask is a way of testing the list.
-create or replace function public.is_staff() returns boolean
+-- Since 20260919180000 this is three functions rather than one, because the
+-- desk has a second factor and `is_staff()` is where it bites. Splitting the
+-- allowlist out of it lets the desk tell "not staff" from "staff, no factor
+-- yet" -- which used to be the same empty queue.
+
+-- How hard the second factor bites. One row; see the migration for why the
+-- default is `enrolled` rather than `required`.
+create table if not exists public.review_policy (
+  only_row      boolean primary key default true check (only_row),
+  second_factor text not null default 'enrolled'
+                check (second_factor in ('off', 'enrolled', 'required')),
+  changed_at    timestamptz not null default now()
+);
+
+insert into public.review_policy (only_row) values (true)
+  on conflict (only_row) do nothing;
+
+alter table public.review_policy enable row level security;
+
+drop policy if exists "signed in read policy" on public.review_policy;
+create policy "signed in read policy" on public.review_policy
+  for select to authenticated using (true);
+
+-- Am I on the list? A boolean about the caller, never the list itself.
+create or replace function public.on_staff_list() returns boolean
   language sql
   stable
   security definer
-  set search_path = public
+  set search_path = ''
 as $$
   select exists (
     select 1
     from public.staff_emails
     where lower(email) = lower(auth.jwt() ->> 'email')
   );
+$$;
+
+revoke execute on function public.on_staff_list() from public, anon;
+grant execute on function public.on_staff_list() to authenticated;
+
+-- Is my session strong enough? `aal` is GoTrue's own claim, so this reads a
+-- fact the browser cannot assert about itself.
+create or replace function public.second_factor_ok() returns boolean
+  language sql
+  stable
+  security definer
+  set search_path = ''
+as $$
+  select case coalesce((select p.second_factor from public.review_policy p limit 1), 'enrolled')
+    when 'off' then true
+    when 'required' then coalesce(auth.jwt() ->> 'aal', 'aal1') = 'aal2'
+    else coalesce(auth.jwt() ->> 'aal', 'aal1') = 'aal2'
+      or not exists (
+        select 1
+        from auth.mfa_factors f
+        where f.user_id = auth.uid()
+          and f.status = 'verified'
+      )
+  end;
+$$;
+
+revoke execute on function public.second_factor_ok() from public, anon;
+grant execute on function public.second_factor_ok() to authenticated;
+
+-- Both, and every policy below asks only this one.
+create or replace function public.is_staff() returns boolean
+  language sql
+  stable
+  security definer
+  set search_path = ''
+as $$
+  select public.on_staff_list() and public.second_factor_ok();
 $$;
 
 revoke execute on function public.is_staff() from public, anon;
@@ -880,6 +941,11 @@ to authenticated;
 -- `is_staff()` consults this, and a staff member may see the list they are on.
 grant select on table public.staff_emails to authenticated;
 
+-- How the door works, not who may open it. Readable by anyone signed in so the
+-- desk can pick a screen before it knows whether the reader is staff; writable
+-- by nobody, so a stolen session cannot switch its own second factor off.
+grant select on table public.review_policy to authenticated;
+
 -- Publish a reviewed story to the index, and place it on the map. The two
 -- published tables only, and still no delete — the policies in 5f and 5g narrow
 -- this to `is_staff()`, exactly as the intake grant above is narrowed.
@@ -912,5 +978,6 @@ grant select, insert, update, delete on table
   public.submissions,
   public.stories,
   public.workshop_registrations,
-  public.staff_emails
+  public.staff_emails,
+  public.review_policy
 to service_role;

@@ -28,6 +28,7 @@
     "promote-story": "node scripts/promote-story.mjs",
     "promote-watch": "node scripts/promote-watch.mjs",
     "signin-link": "node scripts/dev-signin-link.mjs",
+    "mfa-reset": "node scripts/mfa-reset.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "builder:migrate": "node scripts/migrate-builder-page.mjs",

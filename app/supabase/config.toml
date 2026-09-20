@@ -185,7 +185,21 @@ enable_refresh_token_rotation = true
 # Requires enable_refresh_token_rotation = true.
 refresh_token_reuse_interval = 10
 # Allow/disallow new user signups to your project.
-enable_signup = true
+#
+# **False, and this is the line that makes the sign-in form ours rather than
+# everyone's.** `shouldCreateUser: false` in the client only governs what our
+# own page asks for -- it is a parameter in a request, so a script skips the
+# page and sends `create_user: true` with the public anon key instead. Measured
+# before this was set: a stranger put themselves in `auth.users` and was mailed
+# a working sign-in link. They still saw nothing, because `staff_emails` is what
+# RLS consults -- but they held an account and could be mailed by us on demand,
+# which on a hosted project is our sending reputation.
+#
+# Turning it off costs nothing here: the public site has no accounts and wants
+# none. Reviewers are created deliberately, by the admin API, which bypasses
+# this flag -- so `signin-link --create` and Authentication -> Users keep
+# working. See SUPABASE.md.
+enable_signup = false
 # Allow/disallow anonymous sign-ins to your project.
 enable_anonymous_sign_ins = false
 # Allow/disallow testing manual linking of accounts
@@ -223,14 +237,30 @@ token_verifications = 30
 web3 = 30
 
 # Configure one of the supported captcha providers: `hcaptcha`, `turnstile`.
-# [auth.captcha]
-# enabled = true
-# provider = "hcaptcha"
-# secret = ""
+#
+# Ours: the sign-in form at /review. `shouldCreateUser: false` already means an
+# uninvited address gets no mail and the form answers the same way either way,
+# so what is left is volume -- the rate limits above allow 30 sign-in requests
+# per IP per five minutes, enough for a script to keep mailing a real reviewer a
+# real sign-in link all day and then phish one of them.
+#
+# **This is one switch in two places.** Enabled here, Supabase refuses any
+# sign-in that arrives without a token -- so `VITE_TURNSTILE_SITE_KEY` must be
+# set in the build as well, or every sign-in fails with "captcha protection:
+# request disallowed". Turn both on together, or neither. See SUPABASE.md.
+#
+# The SECRET key goes here; its public pair is the site key in the browser.
+# `env()` keeps it out of git the way the Twilio token above is kept out.
+[auth.captcha]
+enabled = false
+provider = "turnstile"
+secret = "env(SUPABASE_AUTH_CAPTCHA_SECRET)"
 
 [auth.email]
 # Allow/disallow new user signups via email to your project.
-enable_signup = true
+# The email provider's own copy of the flag above, and it has to agree with it:
+# the project-level one is not a ceiling the provider inherits.
+enable_signup = false
 # If enabled, a user will be required to confirm any email change on both the old, and new email
 # addresses. If disabled, only the new email is required to confirm.
 double_confirm_changes = true
@@ -281,11 +311,18 @@ max_frequency = "5s"
 # 4152127777 = "123456"
 
 # Configure logged in session timeouts.
-# [auth.sessions]
+# Ours: the review desk is read on borrowed computers, and the failure mode
+# there is somebody forgetting to sign out and walking away. `inactivity_timeout`
+# is what closes that; the "Sign out" button cannot be relied on to be pressed.
+# 2h is long enough that nobody is thrown out mid-review -- a reviewer sits down
+# for twenty minutes -- and short enough that a borrowed machine is not left
+# holding a live desk all afternoon. Both also apply on the reviewer's own
+# machine, where the cost is re-entering a TOTP code.
+[auth.sessions]
 # Force log out after the specified duration.
-# timebox = "24h"
+timebox = "12h"
 # Force log out if the user has been inactive longer than the specified duration.
-# inactivity_timeout = "8h"
+inactivity_timeout = "2h"
 
 # This hook runs before a new user is created and allows developers to reject the request based on the incoming user object.
 # [auth.hook.before_user_created]
@@ -311,9 +348,13 @@ auth_token = "env(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN)"
 max_enrolled_factors = 10
 
 # Control MFA via App Authenticator (TOTP)
+# Ours: the review desk's second factor. Both must be true -- enrol mints the
+# secret, verify is what raises the session to aal2, and `is_staff()` reads that
+# claim. Left false, the desk's enrol screen fails with "unsupported factor"
+# and nobody can reach the queue under the `required` policy.
 [auth.mfa.totp]
-enroll_enabled = false
-verify_enabled = false
+enroll_enabled = true
+verify_enabled = true
 
 # Configure MFA via Phone Messaging
 [auth.mfa.phone]
