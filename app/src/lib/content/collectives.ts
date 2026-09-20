@@ -217,7 +217,7 @@ export const ROSTER: Collective[] = [
   {
     "num": "16",
     "name": "Deepika Gyawali",
-    "photo": "/data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
+    "photo": "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==",
     "oneLiner": "Keeps the books, and keeps the neighborhood in the room.",
     "fullBio": "Photo and full bio coming soon.",
     "role": "Accountant & Community Builder · Sindhuli, Nepal",

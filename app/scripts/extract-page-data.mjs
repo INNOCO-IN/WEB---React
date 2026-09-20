@@ -59,6 +59,23 @@ function photosIn(html) {
 const BLANK_GIF = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
 /**
+ * A photo slot as an `src` the browser can use.
+ *
+ * Site-relative paths get the leading slash, because the roster writes them
+ * without one and the app serves `site/` from the root. A data URI or an
+ * absolute URL must be left exactly as it is: the page writes the blank GIF
+ * inline as often as it uses the `BLANK` constant, and prefixing that one
+ * produces `/data:image/gif;base64,…` — a path no server has, so the card
+ * shows a broken image instead of the invisible pixel it was meant to show.
+ * Silent, because a missing portrait is what the placeholder already looks like.
+ */
+function srcFrom(value) {
+  if (value === 'BLANK') return BLANK_GIF;
+  if (/^(data:|https?:|\/\/)/i.test(value)) return value;
+  return '/' + value.replace(/^\//, '');
+}
+
+/**
  * The same roster, read off the page instead of out of its script.
  *
  * The 2026 design writes each person out as their own `<article>` rather than
@@ -91,7 +108,7 @@ function rosterInMarkup(html) {
     rows.push({
       num: num[1],
       name: decode(photo[2]),
-      photo: '/' + photo[1].replace(/^\//, ''),
+      photo: srcFrom(photo[1]),
       oneLiner: paras[0] ?? '',
       fullBio: paras[1] ?? '',
       role: after[1] && after[1] !== paras[0] ? after[1] : null,
@@ -122,7 +139,7 @@ function rosterIn(html) {
   while ((m = re.exec(block[1]))) {
     // BLANK is a 1×1 transparent GIF the source uses where no portrait exists.
     // Kept verbatim: an empty src would make the browser re-request the page.
-    const photo = m[3] === 'BLANK' ? BLANK_GIF : '/' + unquote(m[3].slice(1, -1)).replace(/^\//, '');
+    const photo = m[3] === 'BLANK' ? BLANK_GIF : srcFrom(unquote(m[3].slice(1, -1)));
     rows.push({
       num: m[1],
       name: unquote(m[2]),
