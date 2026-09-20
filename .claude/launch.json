@@ -36,6 +36,30 @@
         "New COM/IN Website 2026 A2/vercel-deploy"
       ],
       "port": 4174
+    },
+    {
+      "name": "app-live",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "app",
+        "run",
+        "dev:live"
+      ],
+      "port": 5174,
+      "autoPort": true
+    },
+    {
+      "name": "app-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "app",
+        "run",
+        "preview"
+      ],
+      "port": 4173,
+      "autoPort": true
     }
   ]
 }
