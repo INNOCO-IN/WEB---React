@@ -163,6 +163,37 @@ To switch to the React app, in one commit:
 
 The build already copies `site/`'s imagery into `app/dist/`, so assets resolve.
 
+### Two things the switch needs that this repo cannot show you
+
+Both were read off the Vercel account on 2026-09-21. Neither is visible in any
+file here, and the three steps above are not enough without them.
+
+**The Vercel project deploys a different repository.** `web` — the project that
+holds `innoco.co` and `www.innoco.co` — is connected to `INNOCO-IN/WEB`, branch
+`main`, and its live production build is commit `093fcab`. That is the
+predecessor repo, not this one. So the three steps can be made and committed
+here and nothing will happen, because Vercel never reads this repository.
+Either repoint that project at `INNOCO-IN/WEB---React`, or stand up a second
+project for this repo and move the two domains once it looks right. The second
+way is reversible until the domains move; the first is not.
+
+**Vercel has no `VITE_` variables.** The project carries seventeen environment
+variables and every one of them was planted by the Supabase integration, spelled
+for Next.js: `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_ANON_KEY`, `POSTGRES_*`. Vite
+only puts a `VITE_`-prefixed variable into the bundle, so deploying today builds
+a site with no database at all — `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`
+are `undefined`, the client is tree-shaken out, every page falls back to the copy
+bundled in `src/lib/content/`, and both forms and `/review` quietly stop working.
+Nothing errors and nothing looks broken; the pages just stop being live. Add the
+two from `app/.env.local` to the project that will do the building, for the
+production target, before the first deploy rather than after.
+
+The build itself is ready. `npm --prefix app run build` is green, and the output
+was exercised with `npm --prefix app run preview` on 2026-09-21: the production
+bundle reaches the hosted project (`collectives` answers with all eighteen),
+`/Workshop.EN.dc.html` redirects to `/workshop`, `/zh-tw/` renders Chinese, the
+footer's `mailto` is `hi@innoco.co`, and no resource 404s.
+
 ## Known state
 
 Two problems in `site/` that the conversion surfaced. Both are in the source,

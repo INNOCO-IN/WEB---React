@@ -12,6 +12,9 @@ _ARCHIVE-*
 .image-slots.state.json
 .thumbnail
 
-# The React app has no build step wired into this deploy yet.
-# Drop this line once app/ is meant to ship (see README → Deploy).
-app/
+# app/ ships now — vercel.json builds it and serves app/dist. Vercel excludes
+# node_modules and the build output on its own, so only sources go up.
+#
+# site/ is NOT ignored and must not be: the Vite build copies its 28 MB of
+# imagery into app/dist, so the tree has to be there at build time even though
+# none of its .dc.html pages is served any more.
