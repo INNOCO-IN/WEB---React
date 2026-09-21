@@ -262,9 +262,18 @@ drop policy if exists "anon uploads story media" on storage.objects;
 create policy "anon uploads story media" on storage.objects
   for insert to anon, authenticated with check (bucket_id = 'story-media');
 
+-- Enumeration is staff-only; see 20260920140000_shut_the_bucket_to_strangers.sql
+-- for why. Downloads on a `public = true` bucket are served by the
+-- /object/public/ route without consulting RLS, which is what keeps published
+-- images rendering for anon -- this policy only governs the *list* endpoint. A
+-- `for select to public` here (the shape this replaced) let any unauthenticated
+-- caller enumerate every object name and walk the bucket; scoping it to
+-- is_staff() means the uuid in a staff-gated row is the only way to an
+-- unpublished attachment.
 drop policy if exists "public reads story media" on storage.objects;
-create policy "public reads story media" on storage.objects
-  for select to public using (bucket_id = 'story-media');
+drop policy if exists "staff lists story media" on storage.objects;
+create policy "staff lists story media" on storage.objects
+  for select to authenticated using (bucket_id = 'story-media' and public.is_staff());
 
 -- ========================================================================
 -- 5. Editorial content
