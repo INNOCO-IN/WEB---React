@@ -453,13 +453,22 @@ export type Database = {
       }
       staff_emails: {
         Row: {
+          added_at: string
+          added_by: string | null
           email: string
+          is_admin: boolean
         }
         Insert: {
+          added_at?: string
+          added_by?: string | null
           email: string
+          is_admin?: boolean
         }
         Update: {
+          added_at?: string
+          added_by?: string | null
           email?: string
+          is_admin?: boolean
         }
         Relationships: []
       }
@@ -752,9 +761,23 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      is_admin: { Args: never; Returns: boolean }
       is_staff: { Args: never; Returns: boolean }
       on_staff_list: { Args: never; Returns: boolean }
+      roster: {
+        Args: never
+        Returns: {
+          email: string
+          is_admin: boolean
+          added_at: string
+          added_by: string | null
+          has_account: boolean
+          has_factor: boolean
+          last_sign_in: string | null
+        }[]
+      }
       second_factor_ok: { Args: never; Returns: boolean }
+      set_second_factor: { Args: { wanted: string }; Returns: string }
     }
     Enums: {
       [_ in never]: never

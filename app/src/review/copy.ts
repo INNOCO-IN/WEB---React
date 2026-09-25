@@ -188,6 +188,47 @@ export interface DeskCopy {
   onSite: string;
   view: string;
   carriedAcross: string;
+  /**
+   * The People screen, which is a different kind of thing from the queues.
+   *
+   * Nested rather than flattened into the keys above, because these are the
+   * only words in the desk that are about the desk itself rather than about
+   * what somebody sent us — and because an administrator-only screen should be
+   * easy to leave out of a translation pass without leaving holes in one.
+   */
+  people: {
+    link: string;
+    title: string;
+    lead: string;
+    notAdmin: string;
+    needsFactor: string;
+    stepUp: string;
+    stepUpButton: string;
+    addTitle: string;
+    addEmail: string;
+    addAdmin: string;
+    addButton: string;
+    colAdmin: string;
+    colAccount: string;
+    colFactor: string;
+    colLastSeen: string;
+    yes: string;
+    no: string;
+    never: string;
+    noAccount: string;
+    remove: string;
+    removeConfirm: (email: string) => string;
+    promote: string;
+    demote: string;
+    resetMfa: string;
+    resetMfaConfirm: (email: string) => string;
+    doorTitle: string;
+    doorLead: string;
+    doorOff: string;
+    doorEnrolled: string;
+    doorRequired: string;
+    doorWarn: (n: number) => string;
+  };
 }
 
 const EN: DeskCopy = {
@@ -336,6 +377,44 @@ const EN: DeskCopy = {
   onSite: 'On the site',
   view: 'View',
   carriedAcross: 'Korean: English carried across',
+  people: {
+    link: 'People',
+    title: 'People',
+    lead: 'Two things let somebody in, and both are needed: a place on this list, and an account that can receive a link. Adding here does both.',
+    notAdmin: 'This screen is for administrators. Ask one of them to add you, or to make the change for you.',
+    needsFactor:
+      'Managing people needs a second factor on this session, and this account has not enrolled one. The desk offers that at the door once the setting below asks for it.',
+    stepUp:
+      'Managing people needs a second factor on this session, whatever the setting below says — adding a reviewer is the one action that must not be reachable by a mailbox alone.',
+    stepUpButton: 'Unlock this screen',
+    addTitle: 'Add a reviewer',
+    addEmail: 'Their address',
+    addAdmin: 'They can manage people too',
+    addButton: 'Add them',
+    colAdmin: 'Administrator',
+    colAccount: 'Account',
+    colFactor: 'Second factor',
+    colLastSeen: 'Last signed in',
+    yes: 'Yes',
+    no: 'No',
+    never: 'Never',
+    noAccount: 'No account — cannot receive a link',
+    remove: 'Remove',
+    removeConfirm: (email) =>
+      `Remove ${email} from the list? They lose access immediately. Their account stays, and can see nothing.`,
+    promote: 'Make administrator',
+    demote: 'Remove administrator',
+    resetMfa: 'Reset second factor',
+    resetMfaConfirm: (email) =>
+      `Remove the second factor on ${email}? Do this only once you are sure who is asking, by some channel that is not their email.`,
+    doorTitle: 'The second factor',
+    doorLead: 'How hard the door bites. Enrolling is self-serve, so nobody is permanently shut out either way.',
+    doorOff: 'Off — one factor, a mailbox',
+    doorEnrolled: 'Enrolled — asked of whoever has one',
+    doorRequired: 'Required — everybody',
+    doorWarn: (n) =>
+      `${n} ${n === 1 ? 'person has' : 'people have'} not enrolled yet. Under "required" they meet the enrol screen instead of the queue.`,
+  },
 };
 
 const KO: DeskCopy = {
@@ -484,6 +563,43 @@ const KO: DeskCopy = {
   onSite: '사이트에 있음',
   view: '보기',
   carriedAcross: '한국어: 영어를 그대로 옮김',
+  people: {
+    link: '사람',
+    title: '사람',
+    lead: '두 가지가 모두 있어야 들어올 수 있습니다: 이 목록에 있는 것, 그리고 링크를 받을 수 있는 계정. 여기서 추가하면 둘 다 만들어집니다.',
+    notAdmin: '이 화면은 관리자용입니다. 관리자에게 추가를 요청하거나 대신 변경해 달라고 하세요.',
+    needsFactor:
+      '사람을 관리하려면 이 세션에 두 번째 인증이 필요하지만, 이 계정은 아직 등록하지 않았습니다. 아래 설정이 요구하면 데스크 입구에서 등록할 수 있습니다.',
+    stepUp:
+      '사람을 관리하려면 아래 설정과 관계없이 이 세션에 두 번째 인증이 필요합니다 — 리뷰어를 추가하는 일은 메일함만으로 닿을 수 있어서는 안 되는 유일한 동작입니다.',
+    stepUpButton: '이 화면 열기',
+    addTitle: '리뷰어 추가',
+    addEmail: '주소',
+    addAdmin: '이 사람도 사람을 관리할 수 있음',
+    addButton: '추가',
+    colAdmin: '관리자',
+    colAccount: '계정',
+    colFactor: '두 번째 인증',
+    colLastSeen: '마지막 로그인',
+    yes: '예',
+    no: '아니오',
+    never: '없음',
+    noAccount: '계정 없음 — 링크를 받을 수 없음',
+    remove: '삭제',
+    removeConfirm: (email) =>
+      `${email}을(를) 목록에서 삭제할까요? 접근 권한이 즉시 사라집니다. 계정은 남지만 아무것도 볼 수 없습니다.`,
+    promote: '관리자로 지정',
+    demote: '관리자 해제',
+    resetMfa: '두 번째 인증 초기화',
+    resetMfaConfirm: (email) =>
+      `${email}의 두 번째 인증을 삭제할까요? 이메일이 아닌 다른 경로로 본인이 맞는지 확인한 뒤에만 하세요.`,
+    doorTitle: '두 번째 인증',
+    doorLead: '문을 얼마나 세게 잠글지. 등록은 본인이 직접 할 수 있으므로 어느 쪽이든 영구히 막히는 사람은 없습니다.',
+    doorOff: '끄기 — 인증 하나, 메일함',
+    doorEnrolled: '등록한 사람만 — 가진 사람에게만 요구',
+    doorRequired: '필수 — 모두',
+    doorWarn: (n) => `${n}명이 아직 등록하지 않았습니다. "필수"에서는 목록 대신 등록 화면을 보게 됩니다.`,
+  },
 };
 
 /**
@@ -639,6 +755,42 @@ const ZH: DeskCopy = {
   onSite: '已在網站上',
   view: '檢視',
   carriedAcross: '韓文：沿用英文',
+  people: {
+    link: '成員',
+    title: '成員',
+    lead: '要進得來需要兩件事，缺一不可：在這份名單上，以及有一個收得到連結的帳號。在這裡新增會一次做完兩件。',
+    notAdmin: '這個畫面是給管理者的。請找其中一位把你加進來，或請他代為修改。',
+    needsFactor:
+      '管理成員需要這個工作階段帶有第二因素，而這個帳號還沒綁定。等下面的設定開始要求之後，審稿台門口就會提供綁定。',
+    stepUp:
+      '管理成員需要這個工作階段帶有第二因素，不管下面的設定是什麼——新增審稿者是唯一一件不該只憑一個信箱就能做到的事。',
+    stepUpButton: '解鎖這個畫面',
+    addTitle: '新增審稿者',
+    addEmail: '對方的信箱',
+    addAdmin: '這個人也可以管理成員',
+    addButton: '加入',
+    colAdmin: '管理者',
+    colAccount: '帳號',
+    colFactor: '第二因素',
+    colLastSeen: '最後登入',
+    yes: '是',
+    no: '否',
+    never: '從未',
+    noAccount: '沒有帳號 —— 收不到登入連結',
+    remove: '移除',
+    removeConfirm: (email) => `把 ${email} 從名單移除？他會立刻失去存取權。帳號會留著，但什麼都看不到。`,
+    promote: '設為管理者',
+    demote: '取消管理者',
+    resetMfa: '重設第二因素',
+    resetMfaConfirm: (email) =>
+      `移除 ${email} 的第二因素？請先用電子郵件以外的管道確認提出要求的人確實是本人，再執行。`,
+    doorTitle: '第二因素',
+    doorLead: '這扇門要咬多緊。綁定是自助的，所以不管選哪一個都不會有人被永久關在外面。',
+    doorOff: '關閉 —— 只有一道，就是信箱',
+    doorEnrolled: '已綁定者 —— 只問有綁的人',
+    doorRequired: '全部強制 —— 每個人都要',
+    doorWarn: (n) => `還有 ${n} 個人沒有綁定。轉成「全部強制」之後，他們看到的會是綁定畫面而不是待辦清單。`,
+  },
 };
 
 export const DESK_COPY: Record<DeskLocale, DeskCopy> = { en: EN, ko: KO, 'zh-TW': ZH };

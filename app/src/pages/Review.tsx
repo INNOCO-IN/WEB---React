@@ -8,6 +8,7 @@ import { fetchSecondFactorPolicy } from '../lib/services/review';
 import '../review/review.css';
 import Add from '../review/Add';
 import Desk from '../review/Desk';
+import People from '../review/People';
 import Publish from '../review/Publish';
 import SecondFactor from '../review/SecondFactor';
 import SignIn from '../review/SignIn';
@@ -149,6 +150,11 @@ function Screens() {
       {/* The other door into the collection: a story nobody sent. It takes the
           address because every row it writes is stamped with who wrote it. */}
       <Route path="add" element={<Add email={email} />} />
+      {/* Who reaches the desk at all. Routed for everyone and refused inside,
+          because the refusal has two readings — not an administrator, and an
+          administrator who has not typed their code — and a route guard here
+          could only redirect, which would say neither. */}
+      <Route path="people" element={<People />} />
       {/* A deep link into a screen that no longer exists lands on the desk
           rather than on the site's 404, which has a nav and a footer on it. */}
       <Route path="*" element={<Navigate to="/review" replace />} />

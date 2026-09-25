@@ -169,6 +169,19 @@ export function useStrength(session: Session | null): Strength {
       return;
     }
 
+    /*
+      Loading again, because the session almost never exists at mount.
+      `useState` computed the initial `loading` from a session that was still
+      null, so it said false; the read below then starts with `factors` empty
+      and nothing marking it unread. A caller that trusts `loading` therefore
+      gets one render of "signed in, zero factors" — and under the `required`
+      policy `gateFor` reads that as `enrol` and offers a QR code to somebody
+      who enrolled months ago. GoTrue refuses it ("AAL2 required to enroll a new
+      factor"), so the flash is harmless to the account and invisible in the
+      logs of anyone not looking, which is exactly why it survived.
+    */
+    setState((previous) => ({ ...previous, loading: true }));
+
     let cancelled = false;
 
     async function read() {

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { signOut } from '../lib/auth';
 import { watchTable } from '../lib/services/realtime';
 import {
@@ -12,6 +12,7 @@ import {
   type IntakeTable,
   type NewsRow,
 } from '../lib/services/review';
+import { amAdmin } from '../lib/services/roster';
 import { DESK_LOCALES, useDeskCopy, type DeskLocale } from './copy';
 import { HTML_LANG, LOCALE_NAMES } from '../i18n/locales';
 import { toDeskRow, type DeskRow } from './filters';
@@ -87,6 +88,9 @@ const BLANK_ENTRIES: EntriesState = { rows: [], error: null, loading: true };
 export default function Desk({ email }: { email: string }) {
   const [params, setParams] = useSearchParams();
   const [staff, setStaff] = useState<boolean | null>(null);
+  // Null until asked, so the header does not flash a People link at somebody
+  // who is not an administrator, or withhold one from somebody who is.
+  const [admin, setAdmin] = useState<boolean | null>(null);
   const [queues, setQueues] = useState<Record<IntakeTable, QueueState>>({
     stories: BLANK,
     submissions: BLANK,
@@ -146,6 +150,7 @@ export default function Desk({ email }: { email: string }) {
 
   useEffect(() => {
     void isStaff().then(setStaff);
+    void amAdmin().then(setAdmin);
     for (const table of INTAKE) void load(table);
     void loadNews();
     void loadEntries();
@@ -217,6 +222,17 @@ export default function Desk({ email }: { email: string }) {
               ))}
             </select>
             <span className="rv-label">{email}</span>
+            {/*
+              Only for the people it is for. Not a security measure -- the
+              screen refuses on its own and the endpoint behind it asks the
+              database -- but a link nobody else can use is a link nobody else
+              should be invited to press.
+            */}
+            {admin ? (
+              <Link to="/review/people" className="rv-btn-quiet">
+                {copy.people.link}
+              </Link>
+            ) : null}
             <button type="button" className="rv-btn-quiet" onClick={() => void signOut()}>
               {copy.signOut}
             </button>

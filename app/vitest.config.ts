@@ -14,6 +14,10 @@ export default defineConfig({
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
+  // The repository root, so `../api/*.test.js` can be loaded at all. Vite
+  // refuses to serve outside its root by default and reports it as a missing
+  // module, which reads as a typo in the include pattern rather than a policy.
+  server: { fs: { allow: ['..'] } },
   test: {
     environment: 'jsdom',
     // No keys, so `isSupabaseConfigured` is false and the content layer takes
@@ -22,6 +26,11 @@ export default defineConfig({
     env: { VITE_SUPABASE_URL: '', VITE_SUPABASE_ANON_KEY: '' },
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.test.{ts,tsx}'],
+    // `../api` is outside this config's root on purpose: the roster endpoint
+    // lives at the repository root because that is where Vercel looks for
+    // functions, and its guards are the one part of it that is pure enough to
+    // test without a database. Leaving them out of the suite is how they went
+    // untested in the first place.
+    include: ['src/**/*.test.{ts,tsx}', '../api/**/*.test.js'],
   },
 })

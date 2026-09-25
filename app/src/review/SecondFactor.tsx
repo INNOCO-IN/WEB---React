@@ -179,6 +179,41 @@ function Qr({ enrolment, error }: { enrolment: Enrolment | null; error: string |
 
 /** Signing in with one you already have. One field, and a way back out. */
 function Challenge({ email }: { email: string }) {
+  return (
+    <Door>
+      <StepUp label="Open the desk" />
+
+      {/* Named rather than hinted at. A reviewer whose phone is gone needs to
+          know who to ask, not to be told to try again on a screen that cannot
+          help them -- and self-serve recovery here would be a second door opened
+          by the same key as the first. */}
+      <p className="rv-secondary rv-muted" style={{ paddingTop: '30px' }}>
+        Lost the device it was on? Nobody can reset this from the desk, by design. Ask whoever holds the
+        service-role key to run <code className="rv-mono">npm run mfa-reset</code> for this address, then set a new
+        one up.
+      </p>
+
+      <Footer email={email} />
+    </Door>
+  );
+}
+
+/**
+ * The code, asked for wherever it is needed rather than only at the door.
+ *
+ * Exported because the door is not the only place a session has to get
+ * stronger. Under the `off` policy nobody is ever challenged, so a session
+ * stays at aal1 for its whole life -- and `is_admin()` wants aal2 whatever the
+ * policy says. Without a way to ask for the code from inside the desk, an
+ * administrator who set the policy to `off` could never reach the screen that
+ * would let them set it back. The switch has to work in both directions or it
+ * is not a switch.
+ *
+ * Verifying replaces the token in place, so nothing here needs to route or
+ * reload: `onAuthStateChange` fires, `useStrength` re-reads, and whatever was
+ * waiting on aal2 simply appears.
+ */
+export function StepUp({ label }: { label: string }) {
   const [code, setCode] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -210,27 +245,15 @@ function Challenge({ email }: { email: string }) {
   }
 
   return (
-    <Door>
+    <>
       <p className="rv-read">Your authenticator has a six-digit code. Type it in.</p>
 
       <div style={{ paddingTop: '30px' }}>
-        <CodeForm code={code} setCode={setCode} onSubmit={submit} busy={busy} disabled={false} label="Open the desk" />
+        <CodeForm code={code} setCode={setCode} onSubmit={submit} busy={busy} disabled={false} label={label} />
       </div>
 
       {error ? <Failure detail={error} /> : null}
-
-      {/* Named rather than hinted at. A reviewer whose phone is gone needs to
-          know who to ask, not to be told to try again on a screen that cannot
-          help them — and self-serve recovery here would be a second door opened
-          by the same key as the first. */}
-      <p className="rv-secondary rv-muted" style={{ paddingTop: '30px' }}>
-        Lost the device it was on? Nobody can reset this from the desk, by design. Ask whoever holds the
-        service-role key to run <code className="rv-mono">npm run mfa-reset</code> for this address, then set a new
-        one up.
-      </p>
-
-      <Footer email={email} />
-    </Door>
+    </>
   );
 }
 
