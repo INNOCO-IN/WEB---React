@@ -9,10 +9,15 @@ import { useLocaleOr, type Locale } from '../lang';
 /**
  * The Constellation — every story as a light, clustered by format or topic.
  *
- * Placement is deterministic, not random: each cluster gets a cell on a loose
+ * Format and Topic are deterministic: each cluster gets a cell on a loose
  * grid, and within a cluster the points spiral out at the golden angle, seeded
  * by the group name. The same data always draws the same sky, which is what
  * makes a point's position mean something between visits.
+ *
+ * Random is the one mode that is not: no clusters, every light scattered over
+ * the whole sky from a seed that is rolled each time the button is pressed.
+ * Positions come from the seed and the point's id, so a realtime refetch does
+ * not reshuffle the sky under the reader — only pressing Random again does.
  */
 
 export type { Locale };
@@ -26,10 +31,77 @@ interface Dot {
   inner: string;
 }
 
-const MODES = [
-  { id: 'format' as const, of: (p: ConstellationPoint) => p.format },
-  { id: 'topic' as const, of: (p: ConstellationPoint) => p.topic },
+type Mode = 'format' | 'topic' | 'random';
+
+const MODES: { id: Mode; of?: (p: ConstellationPoint) => string }[] = [
+  { id: 'format', of: (p) => p.format },
+  { id: 'topic', of: (p) => p.topic },
+  { id: 'random' },
 ];
+
+const MODE_LABELS = { format: 'sky.format', topic: 'sky.topic', random: 'sky.random' } as const;
+
+/** FNV-1a — turns a point id into a number the seed can be mixed with. */
+function hash(text: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+/** mulberry32 — a small seeded generator, so a seed always draws the same scatter. */
+function seeded(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** How far apart (in % of the sky) two scattered lights try to stay. */
+const SCATTER_GAP = 7;
+const SCATTER_TRIES = 24;
+
+/**
+ * Every point somewhere in the sky, drawn from the seed. Each point takes the
+ * first of its candidates that keeps clear of the ones already placed, or the
+ * roomiest one if none does. Points are visited in id order so the result does
+ * not depend on the order the database returned them in.
+ */
+function scatter(points: ConstellationPoint[], seed: number): Record<string, { x: number; y: number }> {
+  const placed: Record<string, { x: number; y: number }> = {};
+  const taken: { x: number; y: number }[] = [];
+  const ids = points.map((p) => p.id).sort();
+
+  for (const id of ids) {
+    const next = seeded(seed ^ hash(id));
+    let best = { x: 50, y: 50 };
+    let bestRoom = -1;
+    for (let i = 0; i < SCATTER_TRIES; i++) {
+      const candidate = { x: 6 + next() * 88, y: 8 + next() * 82 };
+      // The sky is wider than it is tall, so a step across counts for less.
+      const room = taken.reduce(
+        (min, t) => Math.min(min, Math.hypot((candidate.x - t.x) / 1.15, candidate.y - t.y)),
+        Infinity,
+      );
+      if (room > bestRoom) {
+        best = candidate;
+        bestRoom = room;
+      }
+      if (room >= SCATTER_GAP) break;
+    }
+    placed[id] = best;
+    taken.push(best);
+  }
+  return placed;
+}
+
+const rollSeed = () => Math.floor(Math.random() * 4294967296);
 
 const CLOSE_DELAY = 260;
 
@@ -37,7 +109,8 @@ export default function useConstellation(given?: Locale) {
   const locale = useLocaleOr(given);
   const { t } = useTranslation();
   const [points, setPoints] = useState<ConstellationPoint[]>(CONSTELLATION);
-  const [mode, setMode] = useState<'format' | 'topic'>('format');
+  const [mode, setMode] = useState<Mode>('format');
+  const [seed, setSeed] = useState(rollSeed);
   const [selected, setSelected] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const selectedPosition = useRef({ x: 50, y: 50 });
@@ -68,13 +141,22 @@ export default function useConstellation(given?: Locale) {
 
   const active = MODES.find((m) => m.id === mode) ?? MODES[0];
 
+  /** Where each light sits in Random mode — nothing when another mode is on. */
+  const scattered = useMemo(
+    () => (mode === 'random' ? scatter(points, seed) : null),
+    [points, mode, seed],
+  );
+
   /** Cluster centres on a loose grid, staggered row by row. */
   const { groups, centers, byGroup } = useMemo(() => {
+    // Random has no clusters: one unnamed group that carries every point.
+    if (!active.of) return { groups: [''], centers: { '': { x: 50, y: 50 } }, byGroup: { '': points } };
+
     const order: string[] = [];
     const buckets: Record<string, ConstellationPoint[]> = {};
 
     for (const point of points) {
-      const group = active.of(point);
+      const group = active.of!(point);
       if (!buckets[group]) {
         buckets[group] = [];
         order.push(group);
@@ -120,8 +202,10 @@ export default function useConstellation(given?: Locale) {
       // same size do not come out as the same shape.
       const angle = i * 2.39996 + group.length;
       const radius = members.length === 1 ? 0 : 3.5 + 8.5 * Math.sqrt((i + 1) / members.length);
-      const x = Math.min(95, Math.max(4, centers[group].x + Math.cos(angle) * radius * 1.15));
-      const y = Math.min(92, Math.max(6, centers[group].y + Math.sin(angle) * radius));
+      const { x, y } = scattered?.[point.id] ?? {
+        x: Math.min(95, Math.max(4, centers[group].x + Math.cos(angle) * radius * 1.15)),
+        y: Math.min(92, Math.max(6, centers[group].y + Math.sin(angle) * radius)),
+      };
 
       const color = FORMAT_COLORS[point.format] ?? '#FAF4E2';
       const on = selected === point.id;
@@ -148,7 +232,7 @@ export default function useConstellation(given?: Locale) {
     });
   }
 
-  const labels = groups.map((group) => ({
+  const labels = (scattered ? [] : groups).map((group) => ({
     text: groupLabel(group),
     style:
       `position:absolute; left:${centers[group].x}%; top:${Math.max(2, centers[group].y - 16)}%; ` +
@@ -160,11 +244,15 @@ export default function useConstellation(given?: Locale) {
   const modeButtons = MODES.map((m) => {
     const on = m.id === mode;
     return {
-      label: m.id === 'format' ? t('sky.format') : t('sky.topic'),
+      label: t(MODE_LABELS[m.id]),
       // Two buttons, one of them always the current grouping — so each says
       // whether it is the one in effect. Colour alone said it before.
       on,
-      onClick: () => setMode(m.id),
+      // Pressing Random again rolls a new sky; the others just switch.
+      onClick: () => {
+        if (m.id === 'random') setSeed(rollSeed());
+        setMode(m.id);
+      },
       style:
         "font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; " +
         'text-transform:uppercase; border-radius:999px; padding:11px 22px; cursor:pointer; line-height:1.2; ' +

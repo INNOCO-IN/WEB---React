@@ -68,6 +68,7 @@
   "sky": {
     "format": "형식",
     "topic": "주제",
+    "random": "무작위",
     "watch": "보기",
     "listen": "듣기",
     "hint": "{{count}}개의 빛 — 하나를 가리키거나 눌러 보세요",

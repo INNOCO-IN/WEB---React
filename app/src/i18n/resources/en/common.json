@@ -68,6 +68,7 @@
   "sky": {
     "format": "Format",
     "topic": "Topic",
+    "random": "Random",
     "watch": "WATCH",
     "listen": "LISTEN",
     "hint": "{{count}} lights and growing — hover or tap one",

@@ -68,6 +68,7 @@
   "sky": {
     "format": "形式",
     "topic": "主題",
+    "random": "隨機",
     "watch": "觀看",
     "listen": "聆聽",
     "hint": "{{count}} 個光點，且正在增加 — 移過去或點一下",
