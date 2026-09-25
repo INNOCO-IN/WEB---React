@@ -51,14 +51,14 @@ describe('existing pages still render', () => {
 });
 
 describe('the new locale', () => {
-  it('serves a collapsed page in a language it has no words for yet', async () => {
+  it('serves a collapsed page in its Chinese words', async () => {
     await visit('/zh-tw/news');
-    // News is one component for every language. Chinese has an empty word
-    // file, so the copy falls back to English…
+    // News is one component for every language; the copy comes from the
+    // hand-written zh-TW word file…
     expect(
-      await screen.findByRole('heading', { name: 'What the network is doing right now.' }),
+      await screen.findByRole('heading', { name: '網絡此刻正在做的事。' }),
     ).toBeInTheDocument();
-    // …while the chrome, which is translated, is Chinese.
+    // …and the chrome from common.json.
     expect(screen.getAllByText('工作坊').length).toBeGreaterThan(0);
   });
 
@@ -80,7 +80,7 @@ describe('URL normalisation', () => {
   it('redirects an alternative Chinese spelling to the canonical one', async () => {
     await visit('/zh-Hant/news');
     expect(
-      await screen.findByRole('heading', { name: 'What the network is doing right now.' }),
+      await screen.findByRole('heading', { name: '網絡此刻正在做的事。' }),
     ).toBeInTheDocument();
   });
 
